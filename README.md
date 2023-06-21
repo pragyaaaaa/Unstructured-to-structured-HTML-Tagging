@@ -20,15 +20,6 @@ The following python libraries are also needed:
 - re
 
 
-### Installing
-
-To install this framework, simply clone this repository and install the required Python packages by running:
-
-
-- git clone https://github.com/KulAnkur/simplitiv_nlp.git
-- cd simplitiv_nlp
-
-
 Run these commands to install the necessary python libraries: 
 ```
 pip install pandas 
