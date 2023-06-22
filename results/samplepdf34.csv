@@ -1,0 +1,107 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+Sumit Bhatia and Praveen Prakash have completed his B. Tech. in ,False,False,False,False,False,False
+"Electrical Engineering from Indian Institute of Technology, Roorkee, India ",False,False,False,False,False,False
+"in June2008. (e-mail: sumit.summit@gmail.com, pravnuee@gmail.com )   ",False,False,False,False,False,False
+"G. N. Pillai was with the Electrical Engineering Department, N. I.T. ",False,False,False,False,False,False
+"Kurukshera, India. He is now with the Electrical Engineering Department, ",False,False,False,False,False,False
+"Indian Institute of Technology Roorkee, Roorkee (phone: +91-1332-285198, ",False,False,False,False,False,False
+"+91-1332-273560,  e-mail: gnathfee@iitr.ernet.in) ",False,False,False,False,False,False
+"(, )",False,False,False,False,False,False
+ii,False,False,False,False,False,False
+x,False,False,False,False,False,False
+x,False,False,False,False,False,False
+y  where the vectors ,False,False,False,False,False,False
+SVM Based Decision Support System for Heart ,False,False,False,False,False,False
+Disease Classification with Integer-Coded ,False,False,False,False,False,False
+Genetic Algorithm to Select Critical Features ,False,False,False,False,False,False
+"Sumit Bhatia, Praveen Prakash, and G.N. Pillai ",False,False,False,False,False,False
+"Proceedings of the World Congress on Engineering and Computer Science 2008WCECS 2008, October 22 - 24, 2008, San Francisco, USA",False,False,False,False,False,False
+Proceedings of the World Congress on Engineering and Computer Science 2008,False,False,False,False,False,False
+"WCECS 2008, October 22 - 24, 2008, San Francisco, USA",False,False,False,False,False,False
+ISBN: 978-988-98671-0-2,True,False,False,True,False,False
+ISBN: 978-988-98671-0-2,True,False,False,True,False,False
+WCECS 2008,True,False,False,True,False,False
+WCECS 2008,True,False,False,True,False,False
+x,False,False,False,False,False,False
+x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+H,True,False,False,True,False,False
+H,True,False,False,True,False,False
+y,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+H,True,False,False,True,False,False
+H,True,False,False,True,False,False
+",0xHwx b∈+=  ,wHbR∈∈ ",False,False,False,False,False,False
+K,True,False,False,True,False,False
+x,False,False,False,False,False,False
+"Proceedings of the World Congress on Engineering and Computer Science 2008WCECS 2008, October 22 - 24, 2008, San Francisco, USA",False,False,False,False,False,False
+Proceedings of the World Congress on Engineering and Computer Science 2008,False,False,False,False,False,False
+"WCECS 2008, October 22 - 24, 2008, San Francisco, USA",False,False,False,False,False,False
+ISBN: 978-988-98671-0-2,True,False,False,True,False,False
+ISBN: 978-988-98671-0-2,True,False,False,True,False,False
+WCECS 2008,True,False,False,True,False,False
+WCECS 2008,True,False,False,True,False,False
+"Proceedings of the World Congress on Engineering and Computer Science 2008WCECS 2008, October 22 - 24, 2008, San Francisco, USA",False,False,False,False,False,False
+Proceedings of the World Congress on Engineering and Computer Science 2008,False,False,False,False,False,False
+"WCECS 2008, October 22 - 24, 2008, San Francisco, USA",False,False,False,False,False,False
+ISBN: 978-988-98671-0-2,True,False,False,True,False,False
+ISBN: 978-988-98671-0-2,True,False,False,True,False,False
+WCECS 2008,True,False,False,True,False,False
+WCECS 2008,True,False,False,True,False,False
+http://www.nlm.nih.gov/medlineplus/heartdiseases.html,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"[2]  Yan, H., Zheng, J., Jiang, Y., Peng, C. and Li, Q., ‘Development of a ",False,False,False,False,False,False
+decision support system for heart disease diagnosis using multilayer ,False,False,False,False,False,False
+perceptron’;,False,False,False,False,False,False
+V709-V712 ,True,False,False,True,False,False
+"[3]  Kumaravel, N., Sridhar,K.S., and Nithiyanandam, N., ‘Automatic ",False,False,False,False,False,False
+"Proceedings of the World Congress on Engineering and Computer Science 2008WCECS 2008, October 22 - 24, 2008, San Francisco, USA",False,False,False,False,False,False
+Proceedings of the World Congress on Engineering and Computer Science 2008,False,False,False,False,False,False
+"WCECS 2008, October 22 - 24, 2008, San Francisco, USA",False,False,False,False,False,False
+ISBN: 978-988-98671-0-2,True,False,False,True,False,False
+ISBN: 978-988-98671-0-2,True,False,False,True,False,False
+WCECS 2008,True,False,False,True,False,False
+WCECS 2008,True,False,False,True,False,False
+319-322. ,False,False,False,False,False,False
+system based on support vector machines for diagnosis of the heart ,False,False,False,False,False,False
+valve diseases’.,False,False,False,False,False,False
+"[5]  Yang J. and Honavar, V., ‘Feature Subset Selection using a Genetic ",False,False,False,False,False,False
+"Algorithm’,",False,False,False,False,False,False
+"[6]  Huang, C.-L. and Wang, C.-J.,’A GA-based feature selection and ",False,False,False,False,False,False
+"[7]  Yan, H., Zheng, J., Jiang, Y.,  Peng, C. and Xiao, C., ’ Selecting critical ",False,False,False,False,False,False
+clinical features for heart diseases diagnosis with a real-coded genetic ,False,False,False,False,False,False
+"algorithm’,Applied Soft Computing, Vol.-8,(2008), pp 1105-1111. ",False,False,False,False,False,False
+[8]  UCI Machine Learning Repository: Heart Disease Data Set.. ,False,False,False,False,False,False
+http://archive.ics.uci.edu/ml/datasets/Heart+Disease,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"[9]  Detrano, R., Janosi, A., Steinbrunn, W., Pfisterer, M., Schmid, J., ",False,False,False,False,False,False
+"Sandhu, S., Guppy, K., Lee, S., & Froelicher,V. International ",False,False,False,False,False,False
+application of a new probability algorithm for the diagnosis of coronary ,False,False,False,False,False,False
+"[10] Vishwanathan, S. V., & Murthy, M. N. SSVM : A Simple SVM ",False,False,False,False,False,False
+"Honolulu, HI, USA. pp. 2393-2398, 2002. ",False,False,False,False,False,False
+"[11]  Vapnik, V. N. The nature of statistical learning theory. New York: ",False,False,False,False,False,False
+"Springer, 1995 ",False,False,False,False,False,False
+"[12]  Haykin, S., Neural Networks – A Comprehensive Foundation, Pearson ",False,False,False,False,False,False
+"Education (Singapore) Pte. Ltd., 2002. ",False,False,False,False,False,False
+"[13] Liu, Y., & Zheng, F. Y., ‘One-Against-All Multiclass SVM ",False,False,False,False,False,False
+"Classification Using Reliability Measures ‘, Proccedings of ",False,False,False,False,False,False
+"July-4 Aug. 2005, pp. 849-854. ",False,False,False,False,False,False
+"[14] Hsu, C.W. and. Lin, C.J.,(2002), ‘A comparison of methods for ",False,False,False,False,False,False
+"multi-class support vector machines’,",False,False,False,False,False,False
+"[15]  Goldberg, D. E. (1989). Genetic algorithms in search optimization and ",False,False,False,False,False,False
+"machine learning. Reading, MA: Addison-Wesley. ",False,False,False,False,False,False
+"[16]  Gaelle  Loosli,  Simple  SVM  Toolbox,     ",False,False,False,False,False,False
+http://asi.insa-rouen.fr/enseignants/~gloosli/simpleSVM.html,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"[17]  E. Boros, P. L. Hammer, T.Ibaraki, A. Kogan, ‘An Implementation of ",False,False,False,False,False,False
+Logical Analysis of Data’ IEEE transactions on knowledge and data ,False,False,False,False,False,False
+"engineering, vol. 12, no. 2, March April 2000, pp. 292-306 ",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"Proceedings of the World Congress on Engineering and Computer Science 2008WCECS 2008, October 22 - 24, 2008, San Francisco, USA",False,False,False,False,False,False
+Proceedings of the World Congress on Engineering and Computer Science 2008,False,False,False,False,False,False
+"WCECS 2008, October 22 - 24, 2008, San Francisco, USA",False,False,False,False,False,False
+ISBN: 978-988-98671-0-2,True,False,False,True,False,False
+ISBN: 978-988-98671-0-2,True,False,False,True,False,False
+WCECS 2008,True,False,False,True,False,False
+WCECS 2008,True,False,False,True,False,False

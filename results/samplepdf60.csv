@@ -1,0 +1,1328 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+1,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+1,False,False,False,False,False,False
+"Ramanujan Computing Centre, Anna University, Chennai, Tamil Nadu 600025, India",False,False,False,False,False,False
+2,False,False,False,False,False,False
+"DepartmentofInformationScienceandTechnology,AnnaUniversity,Chennai,TamilNadu600025,India",False,False,False,False,False,False
+Correspondence should be addressed to Khanna Nehemiah Harichandran; nehemiah@annauniv.edu,False,False,False,False,False,False
+Received  October ; Accepted  January ,False,False,False,False,False,False
+Academic Editor: Liangjiang Wang,False,False,False,False,False,False
+Copyright ©  Kindie Biredagn Nahato et al. is is an open access article distributed under the Creative Commons Attribution,False,False,False,False,False,False
+"License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.",False,False,False,False,False,False
+e availability of clinical datasets and knowledge mining methodologies encourages the researchers to pursue research in,False,False,False,False,False,False
+"extracting knowledge from clinical datasets. Dierent data mining techniques have been used for mining rules, and mathematical",False,False,False,False,False,False
+models have been developed to assist the clinician in decision making. e objective of this research is to build a classier that,False,False,False,False,False,False
+will predict the presence or absence of a disease by learning from the minimal set of attributes that has been extracted from the,False,False,False,False,False,False
+clinical dataset. In this work rough set indiscernibility relation method with backpropagation neural network (RS-BPNN) is used.,False,False,False,False,False,False
+is work has two stages. e rst stage is handling of missing values to obtain a smooth data set and selection of appropriate,False,False,False,False,False,False
+attributes from the clinical dataset by indiscernibility relation method. e second stage is classication using backpropagation,False,False,False,False,False,False
+"neural network on the selected reducts of the dataset. e classier has been tested with hepatitis, Wisconsin breast cancer, and",False,False,False,False,False,False
+Statlog heart disease datasets obtained from the University of California at Irvine (UCI) machine learning repository. e accuracy,False,False,False,False,False,False
+"obtained from the proposed method is .%, .%, and .% for hepatitis, breast cancer, and heart disease, respectively. e",False,False,False,False,False,False
+proposed system provides an eective classication model for clinical datasets.,False,False,False,False,False,False
+In this information era the advancement of computerized,False,False,False,False,False,False
+database system facilitates the enhancement of decision,False,False,False,False,False,False
+making and diagnosis in medical science. Analysis of clinical,False,False,False,False,False,False
+"datasets by using data mining methodology, techniques, and",False,False,False,False,False,False
+tools helps to develop a knowledge based system that can,False,False,False,False,False,False
+"assist clinicians in decision making [, ]. Clinical dataset",False,False,False,False,False,False
+consists of information about the current condition of the,False,False,False,False,False,False
+"patients []. e information includes data of patient prole,",False,False,False,False,False,False
+"physical checkup, and laboratory results. Mining knowledge",False,False,False,False,False,False
+from clinical dataset refers to the discovery of hidden valuable,False,False,False,False,False,False
+"knowledge, to develop clinical expert system [, ].",False,False,False,False,False,False
+Knowledge mining methodology applied on the clinical,False,False,False,False,False,False
+dataset depends on the type of dataset and the purpose to,False,False,False,False,False,False
+attain the desired objective. e major data mining function-,False,False,False,False,False,False
+"alities are association rule mining, classication, and clus-",False,False,False,False,False,False
+tering []. Association rule discovers interesting relationship,False,False,False,False,False,False
+among the attributes. e interestingness of the relation is,False,False,False,False,False,False
+"measured using two metrics, namely, support and condence",False,False,False,False,False,False
+"[, ]. Classication is applied on a dataset which has a",False,False,False,False,False,False
+predened class. Classication process learns from a set of,False,False,False,False,False,False
+attributes that include decision attribute to decide the class,False,False,False,False,False,False
+label. e learning process is done by a learning algorithm,False,False,False,False,False,False
+"applied over a training dataset, whereas the performance of",False,False,False,False,False,False
+learning is evaluated using performance measures over the,False,False,False,False,False,False
+testing dataset []. Clustering is performed on a dataset to,False,False,False,False,False,False
+categorize it into a group by maximizing the similarity and,False,False,False,False,False,False
+minimizing the dierence in a group. e learning technique,False,False,False,False,False,False
+used in classication is supervised whereas in clustering it is,False,False,False,False,False,False
+"unsupervised [, ].",False,False,False,False,False,False
+In this work a classier that predicts the presence or,False,False,False,False,False,False
+absence of a disease using rough set indiscernibility relation,False,False,False,False,False,False
+method and backpropagation learning algorithm is devel-,False,False,False,False,False,False
+oped.,False,False,False,False,False,False
+"Rough set theory, proposed by Pawlak during s, deals",False,False,False,False,False,False
+"with uncertainty, vagueness, imprecision, and incomplete",False,False,False,False,False,False
+"information [–] for feature selection, feature reduction,",False,False,False,False,False,False
+and extraction of decision rule from the given dataset.,False,False,False,False,False,False
+Indiscernibility relation method of rough set theory is used,False,False,False,False,False,False
+Hindawi Publishing Corporation,False,False,False,False,False,False
+Computational and Mathematical Methods in Medicine,False,False,False,False,False,False
+"Volume 2015, Article ID 460189, 13 pages",False,False,False,False,False,False
+http://dx.doi.org/10.1155/2015/460189,False,False,False,False,False,False
+ Computational and Mathematical Methods in Medicine,False,False,False,False,False,False
+to select minimal representative subset of the attributes,False,False,False,False,False,False
+fromthedataset.eselectedattributesareusedasinputs,False,False,False,False,False,False
+to the backpropagation neural network learning process.,False,False,False,False,False,False
+Backpropagation(BP)methodiscommonlyusedinarticial,False,False,False,False,False,False
+"neural network (ANN) model proposed by Rumelharth [,",False,False,False,False,False,False
+]. Backpropagation neural network (BPNN) consists of,False,False,False,False,False,False
+"three types of layers, namely, input layer, one or more hidden",False,False,False,False,False,False
+"layers, and output layer [, ]. BPNN has to perform three",False,False,False,False,False,False
+"tasks, namely, feedforward from input layer to output layer,",False,False,False,False,False,False
+"computeandbackpropagatetheerror,andupdatetheweights",False,False,False,False,False,False
+"from output layer to input layer [, ].",False,False,False,False,False,False
+e proposed technique has been applied on three dier-,False,False,False,False,False,False
+ent clinical datasets obtained from University of California at,False,False,False,False,False,False
+Irvine (UCI) machine learning repository. ese datasets are,False,False,False,False,False,False
+"hepatitis, Wisconsin breast cancer, and Statlog heart disease",False,False,False,False,False,False
+dataset [].,False,False,False,False,False,False
+Hepatitis refers to inammation of the largest internal,False,False,False,False,False,False
+"humanorgan,liver,causedbyviralinfection.ehepatitis",False,False,False,False,False,False
+"viruscanbegroupedasA,B,C,D,andE.esevirusescause",False,False,False,False,False,False
+"acute to chronic disease; type B and type C, especially, lead to",False,False,False,False,False,False
+chronic diseases.,False,False,False,False,False,False
+Cancer is a major cause for high mortality globally.,False,False,False,False,False,False
+"According to World Health Organization (WHO) statistics,",False,False,False,False,False,False
+half a billion women died in  due to breast cancer. e,False,False,False,False,False,False
+uncontrolled growth of cells creates mass of tissue called,False,False,False,False,False,False
+tumor. e tumor can be categorized as benign (not can-,False,False,False,False,False,False
+cerous) and malignant (cancer). Breast cancer caused by a,False,False,False,False,False,False
+malignant tumor develops in the cells of breast.,False,False,False,False,False,False
+"Cardiovascular disease (CVD), which aects the heart,",False,False,False,False,False,False
+"blood vessels, and circulation of blood throughout the body,",False,False,False,False,False,False
+"isoneoftheleadingcausesofdeath.AsstatedbyWHO,about",False,False,False,False,False,False
+millionpeople(%ofglobaldeath)diedindueto,False,False,False,False,False,False
+CVD and this number will increase to  million in the next,False,False,False,False,False,False
+one and half decades.,False,False,False,False,False,False
+e rest of the paper is organized as follows. Section ,False,False,False,False,False,False
+explains the related work carried out by other researchers and,False,False,False,False,False,False
+highlights the signicance of this work. System architecture,False,False,False,False,False,False
+of the proposed work is discussed in Section . Experimental,False,False,False,False,False,False
+results are discussed in Section . Conclusion and scope for,False,False,False,True,False,False
+future work are mentioned in Section .,False,False,False,False,False,False
+Shao et al. []intheirworkhaveproposedahybrid,False,False,False,False,False,False
+intelligent modeling system for heart disease classication.,False,False,False,False,False,False
+e dataset used by the researchers consists of  patients’,False,False,False,False,False,False
+records with  attributes. ey have used instance elimi-,False,False,False,False,False,False
+nation method for handling missing values. Aer removal,False,False,False,False,False,False
+"of records with missing values, the dataset reduces to ",False,False,False,False,False,False
+"records. e researchers have used single stage modeling,",False,False,False,False,False,False
+"namely, logistic regression (LR), multivariate adaptive regres-",False,False,False,False,False,False
+"sion splines (MARS), rough sets (RS), and articial neural",False,False,False,False,False,False
+network (ANN). e researchers have applied backprop-,False,False,False,False,False,False
+agation network (BPNN) for ANN structure. e hybrid,False,False,False,False,False,False
+"intelligent models used in their work are LR-ANN, MARS-",False,False,False,False,False,False
+"ANN, RS-ANN, LR-MARS, RS-MARS, LR-RS, MARS-RS,",True,False,False,True,False,False
+"MARS-LR,andRS-LR.eresearchershaveachievedan",False,False,False,False,False,False
+accuracy of .% for the MARS-LR hybrid intelligent,False,False,False,False,False,False
+model with six attributes. It can be inferred from their work,False,False,False,False,False,False
+thattheaccuracyofhybridmodelsishigherthansinglestage,False,False,False,False,False,False
+models.,False,False,False,False,False,False
+Kaya and Uyar []intheirworkdevelopedhybriddeci-,False,False,False,False,False,False
+sion support system based on rough set and extreme learning,False,False,False,False,False,False
+machine for diagnosis of hepatitis disease. ey have used,False,False,False,False,False,False
+hepatitis disease dataset from UCI repository. e authors,False,False,False,False,False,False
+produce  reducts with a range of three to seven attributes,False,False,False,False,False,False
+using rough set. e reducts are selected before removing the,False,False,False,False,False,False
+missing value. e records with missing value are removed,False,False,False,False,False,False
+from each reduct. Classication is done by means of extreme,False,False,False,False,False,False
+learning machine. e researchers have obtained % accu-,False,False,False,False,False,False
+"racy with the reduct of four attributes (fatigue, malaise,",False,False,False,False,False,False
+"protime, and histology) with the division of –% for",False,False,False,False,False,False
+training-testing. e selected reduct holds only  records.,False,False,False,False,False,False
+Sartakhti et al. [] have designed a hybrid system of,False,False,False,False,False,False
+support vector machine and simulated annealing (SVM-SA),False,False,False,False,False,False
+for detecting hepatitis disease. e researchers have taken the,False,False,False,False,False,False
+"dataset from UCI repository. By removing the missing value,",False,False,False,False,False,False
+the researchers have reduced the size of the dataset to  sam-,False,False,False,False,False,False
+ples. e class label “Die” has  samples and the remaining,False,False,False,False,False,False
+ samples are from the class “Live.” To avoid the numerical,False,False,False,False,False,False
+"dierences, the researchers have normalized the dataset. e",False,False,False,False,False,False
+SVM-SA method is applied with -fold cross validation,False,False,False,False,False,False
+procedure and tuned parameters are used for enhancing the,False,False,False,False,False,False
+classication accuracy. ey achieved accuracy of .%.,False,False,False,False,False,False
+"By using weighted fuzzy rule, Anooj []hasdeveloped",False,False,False,False,False,False
+heart disease risk prediction technique. e researcher has,False,False,False,False,False,False
+"used three heart disease datasets from the UCI repository,",False,False,False,False,False,False
+"namely, Cleveland data, Hungarian data, and Switzerland",False,False,False,False,False,False
+data.eresearcherhasappliedpreprocessingstagefor,False,False,False,False,False,False
+removing missing values and other noisy information from,False,False,False,False,False,False
+theselecteddataset.eresearcherhasgroupedtheinstances,False,False,False,False,False,False
+basedontheclasslabelandthenchangednumericaldata,False,False,False,False,False,False
+type to categorical based on equi-width technique. Aer,False,False,False,False,False,False
+"discretization, the researcher has selected attributes for the",False,False,False,False,False,False
+"fuzzy rule base, based on the occurrence of the attribute value",False,False,False,False,False,False
+in each class. e weighted fuzzy rule is applied to Mamdani,False,False,False,False,False,False
+fuzzy inference system. Accuracy (training-testing) of the,False,False,False,False,False,False
+"generated IF-THEN rule has become .–., .–., and",False,False,False,False,False,False
+".–. for Cleveland, Hungarian, and Switzerland dataset,",False,False,False,False,False,False
+respectively.,False,False,False,False,False,False
+Chen et al. [] have built automatic diagnostic system by,False,False,False,False,False,False
+using support vector machine (SVM) with rough set based,False,False,False,False,False,False
+feature selection. It is tested using Wisconsin breast cancer,False,False,False,False,False,False
+dataset. e researcher discarded  records due to their,False,False,False,False,False,False
+"missing value. Aer removal of missing value, the dataset",False,False,False,False,False,False
+consists of  samples belonging to benign class and ,False,False,False,False,False,False
+samples to malignant class. ey produce  reducts by using,False,False,False,False,False,False
+genetic algorithm based rough set approach. Seven reducts,False,False,False,False,False,False
+have been selected for further classication process. Before,False,False,False,False,False,False
+"classication, the researchers have normalized the dataset",False,False,False,False,False,False
+"to the range of [−1,1].eyhaveperformed-foldcross",False,False,False,False,False,False
+"validation with the data division of %, %, and % train-",False,False,False,False,False,False
+ing datasets. e researchers have ne-tuned the parameter,False,False,False,False,False,False
+of SVM to obtain higher accuracy. With the reduct of ve,False,False,False,False,False,False
+"attributes, the researchers have achieved % accuracy.",False,False,False,False,False,False
+Marcano-Cede,False,False,False,False,False,False
+˜,False,False,False,False,False,False
+no et al. [] proposed breast cancer,False,False,False,False,False,False
+classication method by using articial metaplasticity multi-,False,False,False,False,False,False
+layer perceptron (AMMLP). e researchers have used UCI,False,False,False,False,False,False
+Computational and Mathematical Methods in Medicine ,False,False,False,False,False,False
+Wisconsin breast cancer dataset. By removing the sample,False,False,False,False,False,False
+"with missing value, the remaining  samples are taken for",False,False,False,False,False,False
+further analysis. eir proposed network is trained by % of,False,False,False,False,False,False
+"the dataset, that is,  samples. e remaining  samples",False,False,False,False,False,False
+are used for testing. eir proposed AMMLP has a single,False,False,False,False,False,False
+hidden layer with eight neurons. ey used two criteria to,False,False,False,False,False,False
+stop the training process. e rst one is if the mean squared,False,False,False,False,False,False
+error is approached to . and the other one is by xing the,False,False,False,False,False,False
+training epochs to . eir classier achieves accuracy of,False,False,False,False,False,False
+.%.,False,False,False,False,False,False
+Chen et al. []appliedahybridoflocalFisherdiscrim-,False,False,False,False,False,False
+inant analysis (LFDA) and support vector machines (SVM),False,False,False,False,False,False
+for hepatitis disease prediction. e proposed system was,False,False,False,False,False,False
+implemented on hepatitis dataset from UCI. e researchers,False,False,False,False,False,False
+imputedallthemissingvaluesandthennormalizedthe,False,False,False,False,False,False
+"dataset between an interval of [0, 1].eyhavereducedthe",False,False,False,False,False,False
+dimension of the data from  to  components by using,False,False,False,False,False,False
+LFDA. e researchers distribute the dataset to training-,False,False,False,False,False,False
+"testing partition of (–%, –%, and -%) by",False,False,False,False,False,False
+stratied sampling techniques. ey have used the SVM,False,False,False,False,False,False
+classier with -fold cross validation. e researchers ne-,False,False,False,False,False,False
+tuned the two parameters of SVM: regularization () and,False,False,False,False,False,False
+"kernel function parameter () to . and , respectively. ey",False,False,False,False,False,False
+have achieved .% accuracy with the data division of –,False,False,False,False,False,False
+"% for training-testing. In their study, the researchers have",False,False,False,False,False,False
+imputed the attribute with more than % of missing value,False,False,False,False,False,False
+attributes.,False,False,False,False,False,False
+C¸alis¸ir and Dogantekin [] proposed an intelligent sys-,False,False,False,False,False,False
+tem using principal component analysis (PCA) and least,False,False,False,False,False,False
+square support vector machine (LSSVM). e proposed,False,False,False,False,False,False
+method is applied on hepatitis dataset from UCI. e,False,False,False,False,False,False
+researchers have reduced the dimension to  using PCA.,False,False,False,False,False,False
+"eir classier, LSSVM, includes two parameters: the width",False,False,False,False,False,False
+of Gaussian kernel () and regularization factor ().ey,False,False,False,False,False,False
+have obtained accuracy of .% with a ne-tuned value,False,False,False,False,False,False
+"of . and  for  and ,respectively.eirproposed",False,False,False,False,False,False
+method did not explain whether the missing value is rejected,False,False,False,False,False,False
+or imputed.,False,False,False,False,False,False
+Vijaya et al. [] developed an intelligent model by using,False,False,False,False,False,False
+fuzzy neurogenetic approach for predicting the severity of,False,False,False,False,False,False
+cardiovascular disease. eir proposed method was tested,False,False,False,False,False,False
+on Cleveland heart disease dataset from UCI repository.,False,False,False,False,False,False
+e researchers have used trapezoidal membership function,False,False,False,False,False,False
+"for fuzzication process. eir architecture holds , ,",False,False,False,False,False,False
+"and  neurons in the input layer, hidden layer, and output",False,False,False,False,False,False
+"layer, respectively. Sigmoidal activation function has been",False,False,False,False,False,False
+applied for both hidden layer and output layer neurons. ey,False,False,False,False,False,False
+have selected the weight associated between nodes based on,False,False,False,False,False,False
+the best tness value of the chromosome by using genetic,False,False,False,False,False,False
+algorithm. eir system produced IF...THEN rules with an,False,False,False,False,False,False
+accuracy of %.,False,False,False,False,False,False
+Dogantekin et al. []haveproposeddiagnosissystem,False,False,False,False,False,False
+based on linear discriminant analysis and adaptive network,False,False,False,False,False,False
+based on fuzzy inference system (LDA-ANFIS). ey applied,False,False,False,False,False,False
+the proposed system on hepatitis dataset from UCI reposi-,False,False,False,False,False,False
+"tory. By using LDA, the researchers have extracted  features",False,False,False,False,False,False
+fromthedataset.eyimputedallthemissingvalueinthe,False,False,False,False,False,False
+records. In their experiment  and  samples were assigned,False,False,False,False,False,False
+to training and testing dataset respectively. eir proposed,False,False,False,False,False,False
+"ANFIS classier comprises  layers, bell-shaped membership",False,False,False,False,False,False
+"function, and  rules. e mean square error (MSE) and",False,False,False,False,False,False
+"number of epochs are . and , respectively. With the",False,False,False,False,False,False
+"mentioned MSE and epochs, the researchers have achieved",False,False,False,False,False,False
+accuracy of .%.,False,False,False,False,False,False
+Karabatak and Ince [] developed a breast cancer detec-,False,False,False,False,False,False
+tion system using association rules (AR) and neural network,False,False,False,False,False,False
+(NN). e dataset used for this study is taken from UCI. e,False,False,False,False,False,False
+"researchers have used two dierent techniques of AR, AR",False,False,False,False,False,False
+"and AR, to reduce the features of the dataset. AR feature",False,False,False,False,False,False
+selection eliminates the attributes if it depends on others,False,False,False,False,False,False
+"with threshold value of support and condence, whereas AR",False,False,False,False,False,False
+selects the frequent attributes in each class. By using AR,False,False,False,False,False,False
+method they reduced the feature size to eight from nine. e,False,False,False,False,False,False
+AR method selects four attributes based on their frequency.,False,False,False,False,False,False
+"In their study, both ARNN and ARNN have  and  neuron",False,False,False,False,False,False
+in their hidden and output layer respectively. e activation,False,False,False,False,False,False
+functions selected by the researchers are tangent sigmoid,False,False,False,False,False,False
+"and linear for hidden and output layer, respectively. ey",False,False,False,False,False,False
+have used Levenberg-Marquardt backpropagation learning,False,False,False,False,False,False
+rule and MSE of .. ey have achieved accuracy of .%,False,False,False,False,False,False
+with AR reducts.,False,False,False,False,False,False
+Kahramanli and Allahverdi []proposedahybridneu-,False,False,False,False,False,False
+ral network system by integrating articial neural network,False,False,False,False,False,False
+(ANN) and fuzzy neural network (FNN) to diagnose diabetes,False,False,False,False,False,False
+"and heart disease. e two datasets, namely, Pima Indian",False,False,False,False,False,False
+"diabetes and Cleveland heart disease dataset, are taken from",False,False,False,False,False,False
+UCI machine learning repository. Missing value for heart,False,False,False,False,False,False
+disease is imputed by the mean value of the attribute to which,False,False,False,False,False,False
+the tuple class belongs. e researcher used two separate,False,False,False,False,False,False
+phases (FNN and ANN) and one more phase (ANN) by,False,False,False,False,False,False
+using the output of the two phases as input. ey have used,False,False,False,False,False,False
+triangular membership function and maximum defuzzier,False,False,False,False,False,False
+for FNN phase. Crisp value is taken as input and sigmoid,False,False,False,False,False,False
+activation function is applied for both hidden and output,False,False,False,False,False,False
+layers for ANN backpropagation phase. e output of the rst,False,False,False,False,False,False
+two phases becomes input for ANN. eir proposed system,False,False,False,False,False,False
+achieved accuracy of % and % for diabetes and heart,False,False,False,False,False,False
+"disease dataset, respectively.",False,False,False,False,False,False
+"Compared to the work discussed in the literature, the",False,False,False,False,False,False
+"proposed system is dierent in the following ways: rst, the",False,False,False,False,False,False
+system handles the missing values of the dataset by reject-,False,False,False,False,False,False
+ing or imputing records. If the quantum of missing value,False,False,False,False,False,False
+"is greater than twenty-ve percent, the system rejects the",False,False,False,False,False,False
+"record, else the system imputes by the most frequent value of",False,False,False,False,False,False
+the attribute belonging to the same class label of the record.,False,False,False,False,False,False
+"Aer handling the missing value, dimension reduction is per-",False,False,False,False,False,False
+formed by using rough set indiscernibility method. Selected,False,False,False,False,False,False
+reducts are given as input to the articial neural network for,False,False,False,False,False,False
+classication.,False,False,False,False,False,False
+e architecture of the proposed system is shown in Figure .,False,False,False,False,False,False
+3.1. Dataset Description. For this study three clinical datasets,False,False,False,False,False,False
+have been selected from the UCI machine learning repos-,False,False,False,False,False,False
+"itory. ese are hepatitis dataset, Wisconsin breast cancer",False,False,False,False,False,False
+"dataset, and Statlog heart disease dataset. Hepatitis dataset",False,False,False,False,False,False
+ Computational and Mathematical Methods in Medicine,False,False,False,False,False,False
+Clinical dataset ,False,False,False,False,False,False
+Handling missing data,False,False,False,False,False,False
+Feature selection using rough set,False,False,False,False,False,False
+Test ing dat a,False,False,False,False,False,False
+Training using ,False,False,False,False,False,False
+backpropagation,False,False,False,False,False,False
+Performance evaluation,False,False,False,False,False,False
+Testing trained ,False,False,False,False,False,False
+neural network,False,False,False,False,False,False
+Reduct,False,False,False,False,False,False
+Training data ,False,False,False,False,False,False
+Classication subsystem,False,False,False,False,False,False
+Preprocess subsystem,False,False,False,False,False,False
+Trained neural ,False,False,False,False,False,False
+network,False,False,False,False,False,False
+Classication results,False,False,False,False,False,False
+F : System architecture.,False,False,False,False,False,False
+consists of  samples with  case attributes and a class label.,False,False,False,False,False,False
+e class label predicts whether the patient with hepatitis will,False,False,False,False,False,False
+live or not. e dataset has  “Die” and  “Live” instances.,False,False,False,False,False,False
+Table  describes the attributes of the hepatitis dataset.,False,False,False,False,False,True
+e Wisconsin breast cancer dataset identies whether,False,False,False,False,False,False
+the patient’s breast tissue is malignant or benign. Benign,False,False,False,False,False,False
+class has  (.%) records and malignant class holds ,False,False,False,False,False,False
+"(.%)records.Aerexcludingthesamplecodenumber,",False,False,False,False,False,False
+the dataset consists of nine features and a class attribute. All,False,False,False,False,False,False
+attributes have a data type of integer value ranging from  to,False,False,False,False,False,False
+. It holds  samples with missing value. All the missing,False,False,False,False,False,False
+values belong to the attribute of bare nucleoli. Table  briefs,False,False,False,False,False,False
+the attributes of Wisconsin breast cancer dataset.,False,False,False,False,False,False
+e third clinical dataset for this study is the Statlog heart,False,False,False,False,False,False
+disease. is dataset has  samples with  features and a,False,False,False,False,False,False
+class attribute. ere are no missing values in this dataset. A,False,False,False,False,False,False
+description of the dataset is given in Table .,False,False,False,False,False,False
+3.2. Handling Missing Value. Handling of missing values is,False,False,False,False,False,False
+adatapreprocessingtechniquetoobtainasmoothdataset.,False,False,False,False,False,False
+e common methods include ignoring the tuple that holds,False,False,False,False,False,False
+"missing value, imputing with the mean, or imputing with the",False,False,False,False,False,False
+most frequent value []. Hepatitis and breast cancer dataset,False,False,False,False,False,False
+have missing values but not Statlog heart disease dataset.,False,False,False,False,False,False
+"In this study, missing value is handled as follows. If the",False,False,False,False,False,False
+percentage of missing value in a tuple is greater than or equal,False,False,False,False,False,False
+"to %, then reject that tuple from the dataset or else impute",False,False,False,False,False,False
+it by the most frequent value of the attribute in the class that,False,False,False,False,False,False
+belongs to the tuple. e same applies to attributes too.,False,False,False,False,False,False
+"Aer handling missing values, the hepatitis dataset is",False,False,False,False,False,False
+reduced to  samples with  attributes by rejecting Protime,False,False,False,False,False,False
+attribute and  tuples from the dataset. For breast cancer,False,False,False,False,False,False
+"dataset, all the missing values are imputed by the most",False,False,False,False,False,False
+frequent value of the attribute of the class label that belongs,False,False,False,False,False,False
+to the tuple.,False,False,False,False,False,False
+3.3. Feature Selection Using Rough Set. Feature selection,False,False,False,False,False,False
+using rough set theory has been widely used in data analysis,False,False,False,False,False,False
+"[]. e selected subset of attributes, which has the same",False,False,False,False,False,False
+"equivalence relation of entire attribute, is referred to as",False,False,False,False,False,False
+"reduct (Red (R)) [–]. In this work, rough set theory indis-",False,False,False,False,False,False
+cernibility relation method is used for feature selection.,False,False,False,False,False,False
+Information System Table. Information system table is a two-,False,False,False,False,False,True
+dimensional table (column and row). e row shows denite,False,False,False,False,False,True
+"number of objects, whereas the column shows the attribute",False,False,False,False,False,False
+valueandclasslabeloftheobjects[]. It can be presented,False,False,False,False,False,False
+"as =(,∪)where  is nite set of objects,  is set of",False,False,False,False,False,False
+"attribute, and is decision (class label). Table  shows sample",False,False,False,False,False,False
+of information system table based on three attributes.,False,False,False,False,False,False
+Computational and Mathematical Methods in Medicine ,False,False,False,False,False,False
+T : Description of hepatitis dataset.,False,False,False,False,False,False
+Number Attribute name Domain values Number of missing values,False,False,False,False,False,False
+" Age ,,,,,,, ",False,False,False,False,False,False
+" Sex Male, female ",False,False,False,False,False,False
+" Steroid No, yes ",False,False,False,False,False,False
+"Antivirals No,yes ",False,False,False,False,False,False
+" Fatigue No, yes ",False,False,False,False,False,False
+"Malaise No,yes ",False,False,False,False,False,False
+"Anorexia No,yes ",False,False,False,False,False,False
+"Liverbig No,yes ",False,False,False,False,False,False
+" Liver rm No, yes ",False,False,False,False,False,False
+" Spleen palpable No, yes ",False,False,False,False,False,False
+" Spiders No, yes ",False,False,False,False,False,False
+" Ascites No, yes ",False,False,False,False,False,False
+" Varices No, yes ",False,False,False,False,False,False
+" Bilirubin ., ., ., ., ., . ",False,False,False,False,False,False
+" Alk phosphate , , , , ,  ",False,False,False,False,False,False
+" Sgot , , , , ,  ",False,False,False,False,False,False
+" Albumin ., ., ., ., ., . ",False,False,False,False,False,False
+" Protime , , , , , , , ,  ",False,False,False,False,False,False
+" Histology No, yes ",False,False,False,False,False,False
+" Class Die, live ",False,False,False,False,False,False
+T : Description of breast cancer dataset.,False,False,False,False,False,False
+Number,False,False,False,False,False,False
+Attribute name Domain,False,False,False,False,False,False
+Missing,False,False,False,False,False,False
+value,False,False,False,False,False,False
+,False,False,False,False,False,False
+Clump thickness – ,False,False,False,False,False,False
+,False,False,False,False,False,False
+Uniformity of cell size – ,False,False,False,False,False,False
+,False,False,False,False,False,False
+Uniformity of cell shape – ,False,False,False,False,False,False
+,False,False,False,False,False,False
+Marginal adhesion – ,False,False,False,False,False,False
+,False,False,False,False,False,False
+Single epithelial cell size – ,False,False,False,False,False,False
+,False,False,False,False,False,False
+Bare nucleoli – ,False,False,False,False,False,False
+,False,False,False,False,False,False
+Bland chromatin – ,False,False,False,False,False,False
+,False,False,False,False,False,False
+Normal nucleoli – ,False,False,False,False,False,False
+,False,False,False,False,False,False
+Mitosis – ,False,False,False,False,False,False
+,False,False,False,False,False,False
+Class,False,False,False,False,False,False
+" for benign,",False,False,False,False,False,False
+formalignant,False,False,False,False,False,False
+,False,False,False,False,False,False
+Indiscernibility Relation (()).Itisanequivalencerela-,False,False,False,False,False,False
+"tion. Let ∈, ⊆; indiscernibility relation is dened as",False,False,False,False,False,False
+IND,True,False,False,True,False,False
+(,False,False,False,False,False,False
+,False,False,False,False,False,False
+),False,False,False,False,False,False
+"=,∈×:∀∈,",False,False,False,False,False,False
+(,False,False,False,False,False,False
+,False,False,False,False,False,False
+),False,False,False,False,False,False
+=.,False,False,False,False,False,False
+(),False,False,False,False,False,False
+Indiscernibility relation can be explained by block,False,False,False,False,False,False
+partitioning of objects. In Table  objects ,False,False,False,False,False,False
+1,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+4,False,False,False,False,False,False
+have the,False,False,False,False,False,False
+"same value () for attribute Chp, objects ",False,False,False,False,False,False
+3,False,False,False,False,False,False
+", ",False,False,False,False,False,False
+5,False,False,False,False,False,False
+",and",False,False,False,False,False,False
+6,False,False,False,False,False,False
+also,False,False,False,False,False,False
+"have the same value (), but object ",False,False,False,False,False,False
+2,False,False,False,False,False,False
+has a unique value ().,False,False,False,False,False,False
+BasedonthisIND(Chp) = {{,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",",False,False,False,False,False,False
+4,False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+2,False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+3,False,False,False,False,False,False
+",",False,False,False,False,False,False
+5,False,False,False,False,False,False
+",",False,False,False,False,False,False
+6,False,False,False,False,False,False
+}}.,False,False,False,False,False,False
+Upper approximation of a set  (,False,False,False,False,False,False
+()) includes all,False,False,False,False,False,False
+objects of information system table which possibly belongs,False,False,False,False,False,False
+to the class . Lower approximation of set  (,False,False,False,False,False,False
+())isthe,False,False,False,False,False,False
+set of objects of the information system table which certainly,False,False,False,False,False,False
+belongs to the class .esetofallobjectsthatbelong,False,False,False,False,False,False
+to lower approximation is referred to as positive region,False,False,False,False,False,False
+(Pos,False,False,False,False,False,False
+𝑅,True,False,False,True,False,False
+()). e dierence between upper approximation set,False,False,False,False,False,False
+and lower approximation set is referred to as boundary region,False,False,False,False,False,False
+(Bnd()).Equations()–() show mathematical formula,False,False,False,False,False,False
+for (,False,False,False,False,False,False
+"()), (()), (Bnd()),and(Pos",False,False,False,False,False,False
+𝑅,True,False,False,True,False,False
+()):,False,False,False,False,False,False
+,False,False,False,False,False,False
+(,False,False,False,False,False,False
+,False,False,False,False,False,False
+),False,False,False,False,False,False
+=,False,False,False,False,False,False
+{,False,False,False,False,False,False
+∈:,False,False,False,False,False,False
+(,False,False,False,False,False,False
+,False,False,False,False,False,False
+),False,False,False,False,False,False
+∩ =,False,False,False,False,False,False
+},False,False,False,False,False,False
+",",False,False,False,False,False,False
+(),False,False,False,False,False,False
+,False,False,False,False,False,False
+(,False,False,False,False,False,False
+,False,False,False,False,False,False
+),False,False,False,False,False,False
+=,False,False,False,False,False,False
+{,False,False,False,False,False,False
+∈:,False,False,False,False,False,False
+(,False,False,False,False,False,False
+,False,False,False,False,False,False
+),False,False,False,False,False,False
+⊆,False,False,False,False,False,False
+},False,False,False,False,False,False
+",",False,False,False,False,False,False
+(),False,False,False,False,False,False
+Bnd,False,False,False,False,False,False
+(,False,False,False,False,False,False
+,False,False,False,False,False,False
+),False,False,False,False,False,False
+=,False,False,False,False,False,False
+,False,False,False,False,False,False
+(,False,False,False,False,False,False
+,False,False,False,False,False,False
+),False,False,False,False,False,False
+−,False,False,False,False,False,False
+(,False,False,False,False,False,False
+,False,False,False,False,False,False
+),False,False,False,False,False,False
+",",False,False,False,False,False,False
+(),False,False,False,False,False,False
+Pos,False,False,False,False,False,False
+𝑅,True,False,False,True,False,False
+(,False,False,False,False,False,False
+,False,False,False,False,False,False
+),False,False,False,False,False,False
+=,False,False,False,False,False,False
+,False,False,False,False,False,False
+𝑥∈𝑈/IND(𝑃),False,False,False,False,False,False
+,False,False,False,False,False,False
+(,False,False,False,False,False,False
+,False,False,False,False,False,False
+),False,False,False,False,False,False
+.,False,True,False,True,False,False
+(),False,False,False,False,False,False
+e minimal subset of attributes with the same property,False,False,False,False,False,False
+as that of whole attribute is called reduct (Red (R)). e,False,False,False,False,False,False
+intersection of the elements of reducts is called core ().By,False,False,False,False,False,False
+"excluding empty set and whole conditional attribute, the total",False,False,False,False,False,False
+number of minimal subsets of attributes () competing for,False,False,False,False,False,False
+reducts becomes,False,False,False,False,False,False
+=2,False,False,False,False,False,False
+𝑛,False,False,False,False,False,False
+"−2,",False,False,False,False,False,False
+(),False,False,False,False,False,False
+where  stands for total number of attributes.,False,False,False,False,False,False
+e number of minimal subset of attributes generated in,False,False,False,False,False,False
+each number of attributes (,False,False,False,False,False,False
+𝑖,False,False,False,False,False,False
+)canbecomputedbyruleof,False,False,False,False,False,False
+combination (). It becomes,False,False,False,False,False,False
+,False,False,False,False,False,False
+𝑖,False,False,False,False,False,False
+=,False,False,False,False,False,False
+𝑁,True,False,False,True,False,False
+𝑛𝑖,False,False,False,False,False,False
+",",False,False,False,False,False,False
+(),False,False,False,False,False,False
+where  = number of attributes in minimal subset.,False,False,False,False,False,False
+ Computational and Mathematical Methods in Medicine,False,False,False,False,False,False
+T : Attribute information of Statlog heart disease dataset.,False,False,False,False,False,False
+Number Attribute,False,False,False,False,False,False
+Description,False,False,False,False,False,False
+Data type,False,False,False,False,False,False
+Domain,False,False,False,False,False,False
+Age,False,False,False,False,False,False
+Patient age in year,False,False,False,False,False,False
+Numerical,False,False,False,False,False,False
+ to ,False,False,False,False,False,False
+Sex,False,False,False,False,False,False
+Gender,False,False,False,False,False,False
+Binary,False,False,False,False,False,False
+=female,False,False,False,False,False,False
+=male,False,False,False,False,False,False
+Chp,False,False,False,False,False,False
+Chest pain type,False,False,False,False,False,False
+Nominal,False,False,False,False,False,False
+" = typical angina,  = atypical angina",False,False,False,False,False,False
+" = nonanginal pain,  = asymptomatic",False,False,False,False,False,False
+Bp,False,False,False,False,False,False
+Resting blood,False,False,False,False,False,False
+pressure,False,False,False,False,False,False
+Numerical,False,False,False,False,False,False
+ to ,False,False,False,False,False,False
+Sch,False,False,False,False,False,False
+Serum cholesterol,False,False,False,False,False,False
+Numerical,False,False,False,False,False,False
+to,False,False,False,False,False,False
+Fbs,False,False,False,False,False,False
+Fasting blood sugar,False,False,False,False,False,False
+> mg/dL,False,False,False,False,False,False
+Binary,False,False,False,False,False,False
+=false,False,False,False,False,False,False
+=True,False,False,False,False,False,False
+Ecg,False,False,False,False,False,False
+Resting,False,False,False,False,False,False
+electrocardiographic,False,False,False,False,False,False
+result,False,False,False,False,False,False
+Nominal,False,False,False,False,False,False
+=normal,False,False,False,False,False,False
+ = having ST-T wave abnormality,False,False,False,False,False,False
+ = le ventricular hypertrophy,False,False,False,False,False,False
+ Mhrt,False,False,False,False,False,False
+Maximum heart rate,False,False,False,False,False,False
+Numerical,False,False,False,False,False,False
+ to ,False,False,False,False,False,False
+Exian,False,False,False,False,False,False
+Exercise induced,False,False,False,False,False,False
+angina,False,False,False,False,False,False
+Binary,False,False,False,False,False,False
+=no,False,False,False,False,False,False
+=yes,False,False,False,False,False,False
+ Opk,False,False,False,False,False,False
+Old peak,False,False,False,False,False,False
+Numerical,False,False,False,False,False,False
+Continuous ( to .),False,False,False,False,False,False
+ Slope,False,False,False,False,False,False
+Slope of peak exercise,False,False,False,False,False,False
+ST segment,False,False,False,False,False,False
+Nominal,False,False,False,False,False,False
+ = upsloping,False,False,False,False,False,False
+=at,False,False,False,False,False,False
+ = downsloping,False,False,False,False,False,False
+ Vessel,False,False,False,False,False,False
+Number of major,False,False,False,False,False,False
+vessels,False,False,False,False,False,False
+Nominal,False,False,False,False,False,False
+to,False,False,False,False,False,False
+ al,False,False,False,False,False,False
+Defect type,False,False,False,False,False,False
+Nominal,False,False,False,False,False,False
+"=normal,=xeddefect,",False,False,False,False,False,False
+=reversibledefect,False,False,False,False,False,False
+ Class,False,False,False,False,False,False
+Heart disease,False,False,False,False,False,False
+Binary,False,False,False,False,False,False
+" = absence,  = presence",False,False,False,False,False,False
+T : Sample of information system table of heart disease.,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+Chp ECG Vessel Class,False,False,False,False,False,False
+,False,False,False,False,False,False
+ Yes,False,False,False,False,False,False
+,False,False,False,False,False,False
+ No,False,False,False,False,False,False
+,False,False,False,False,False,False
+ Yes,False,False,False,False,False,False
+,False,False,False,False,False,False
+ No,False,False,False,False,False,False
+,False,False,False,False,False,False
+ No,False,False,False,False,False,False
+,False,False,False,False,False,False
+ Yes,False,False,False,False,False,False
+Feature Selection. e steps to select the reduct are as follows.,False,False,False,False,False,False
+Step 1. Find upper approximation of each class using ().,False,False,False,False,False,False
+Step 2. Find lower approximation of each class by applying,False,False,False,False,False,False
+().,False,False,False,False,False,False
+Step 3. Compute positive region of the universe by imple-,False,False,False,False,False,False
+menting ().,False,False,False,False,False,False
+Step 4. Calculate the number of minimal subsets of attributes,False,False,False,False,False,False
+by using () and ().,False,False,False,False,False,False
+Step 5. Find indiscernibility of each subset of attributes of a,False,False,False,False,False,False
+positive region using ().,False,False,False,False,False,False
+Step 6. Compare the indiscernibility of each subset to the,False,False,False,False,False,False
+indiscernibility of the whole attribute.,False,False,False,False,False,False
+Step 7. Select equivalent indiscernibility as reduct.,False,False,False,False,False,False
+"Basedonthegivensteps,thereductofTable  is com-",False,False,False,False,False,False
+puted as shown in Algorithm .,False,False,False,False,False,False
+Information system table shown in Table  has two,False,False,False,False,False,True
+"reducts as shown in Algorithm .eyare{Chp,Vessel} and",False,False,False,False,False,False
+"{ECG,Vess el}.",False,False,False,False,False,False
+3.4. Training and Testing the Classier. e experimental,False,False,False,False,False,False
+analysis of the proposed work has been done by dividing,False,False,False,False,False,False
+"the dataset into training-testing sets in the ratio of (–),",False,False,False,False,False,False
+"(–), and (–). -fold cross validation technique is",False,False,False,False,False,False
+used for validating the training phase of the classier. e,False,False,False,False,False,False
+attributes of the selected reducts are connected to the input,False,False,False,False,False,False
+layer of BPNN. e architecture of the proposed BPNN with,False,False,False,False,False,False
+"minimal set of attributes, pertaining to the Statlog heart",False,False,False,False,False,False
+"disease dataset, is shown in Figure .",False,False,False,False,False,False
+"Besides feature selection, suitable parameters of the",False,False,False,False,False,False
+proposed system help to improve the performance of the,False,False,False,False,False,False
+Computational and Mathematical Methods in Medicine ,False,False,False,False,False,False
+Step 1. ( = Ye s )={,False,False,False,False,False,False
+",",False,False,False,False,False,False
+",",False,False,False,False,False,False
+",",False,False,False,False,False,False
+} ( = No)={,False,False,False,False,False,False
+",",False,False,False,False,False,False
+",",False,False,False,False,False,False
+",",False,False,False,False,False,False
+},False,False,False,False,False,False
+Step 2. ,False,False,False,False,False,False
+( = Ye s)={,False,False,False,False,False,False
+",",False,False,False,False,False,False
+}( = No)={,False,False,False,False,False,False
+",",False,False,False,False,False,False
+},False,False,False,False,False,False
+Step 3.Pos,False,False,False,False,False,False
+() = {,False,False,False,False,False,False
+",",False,False,False,False,False,False
+",",False,False,False,False,False,False
+",",False,False,False,False,False,False
+},False,False,False,False,False,False
+Step 4. =2,False,False,False,False,False,False
+−2=6 ,False,False,False,False,False,False
+=,False,False,False,False,False,False
+=3 ,False,False,False,False,False,False
+=,False,False,False,False,False,False
+=3,False,False,False,False,False,False
+Step 5.IND(Chp)={{,False,False,False,False,False,False
+",",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+}} IND(ECG) = {{,True,False,False,True,False,False
+",",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+",",False,False,False,False,False,False
+}},False,False,False,False,False,False
+IND(Vessel) = {{,False,False,False,False,False,False
+",",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"}} IND(Chp, ECG) = {{",False,False,False,False,False,False
+",",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+}},False,False,False,False,False,False
+"IND(Chp, Vessel) = {{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"}} IND(ECG, Vessel) = {{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+}},False,False,False,False,False,False
+"IND() = IND(Chp, ECG, Vessel) = {{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+}},False,False,False,False,False,False
+Step 6.IND(Chp) = IND()IND(ECG)= IND(),False,False,False,False,False,False
+"IND(Vessel) = IND()IND(Chp,ECG)= IND()",False,False,False,False,False,False
+"IND(Chp, Vessel) = IND() IND(ECG, Vessel) = IND()",False,False,False,False,False,False
+"IND() = IND(Chp, ECG, Vessel) = {{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+"},{",False,False,False,False,False,False
+}},False,False,False,False,False,False
+"Step 7.Red()={{Chp, Vessel}, {ECG, Vessel}} Core()={Vessel}",False,False,False,False,False,False
+A : Steps to extract reduct from dataset.,False,False,False,False,False,False
+Opk,False,False,False,False,False,False
+Age,False,False,False,False,False,False
+Class label,False,False,False,False,False,False
+Sch,False,False,False,False,False,False
+Chp,False,False,False,False,False,False
+O,True,False,False,True,False,False
+I,True,False,False,True,False,False
+1,False,False,False,False,False,False
+I,True,False,False,True,False,False
+2,False,False,False,False,False,False
+I,True,False,False,True,False,False
+3,False,False,False,False,False,False
+I,True,False,False,True,False,False
+4,False,False,False,False,False,False
+H,True,False,False,True,False,False
+1,False,False,False,False,False,False
+H,True,False,False,True,False,False
+2,False,False,False,False,False,False
+H,True,False,False,True,False,False
+3,False,False,False,False,False,False
+H,True,False,False,True,False,False
+25,False,False,False,False,False,False
+W,True,False,False,True,False,False
+ij,False,False,False,False,False,False
+W,True,False,False,True,False,False
+jk,False,False,False,False,False,False
+.,False,True,False,True,False,False
+.,False,True,False,True,False,False
+.,False,True,False,True,False,False
+F : Architecture of BPNN for reduct R of Stalog Heart disease dataset.,False,False,False,False,False,False
+T : Parameters of BPNN.,False,False,False,False,False,False
+Number of,False,False,False,False,False,False
+layers,False,False,False,False,False,False
+Input layer:  with – features for hepatitis,False,False,False,False,False,False
+ features for breast cancer,False,False,False,False,False,False
+– features for heart disease,False,False,False,False,False,False
+Hidden layer:  with  nodes (,False,False,False,False,False,False
+",",False,False,False,False,False,False
+",...,",False,False,False,False,False,False
+),False,False,False,False,False,False
+Output layer:  with class label ( or ),False,False,False,False,False,False
+Activation,False,False,False,False,False,False
+function,False,False,False,False,False,False
+Hidden layer: tangent sigmoid,False,False,False,False,False,False
+Output layer: linear,False,False,False,False,False,False
+Learning,False,False,False,False,False,False
+algorithm,False,False,False,False,False,False
+Backpropagation,False,False,False,False,False,False
+Dataset,False,False,False,False,False,False
+division,False,False,False,False,False,False
+Random division,False,False,False,False,False,False
+classier. e parameters of the proposed BPNN to obtain,False,False,False,False,False,False
+higher performance are indicated in Table .,False,False,False,False,False,False
+"3.5. Performance Evaluation. e confusion matrix, shown in",False,False,False,False,False,False
+"Table , consists of true positive (TP), false positive (FP), true",False,False,False,False,False,True
+"negative (TN), and false negative (FN). Accuracy, sensitivity,",False,False,False,False,False,False
+and specicity of rough set backpropagation method are,False,False,False,False,False,False
+computed based on the confusion matrix. Accuracy is the,False,False,False,False,False,False
+percentage of the sample data that are correctly classied,False,False,False,False,False,False
+T : Confusion matrix.,False,False,False,False,False,False
+Predicted class,False,False,False,False,False,False
+Positive Negative,False,False,False,False,False,False
+Actual class,False,False,False,False,False,False
+Positive TP FN,False,False,False,False,False,False
+Negative FP TN,False,False,False,False,False,False
+by the classier. Sensitivity is the percentage of how many,False,False,False,False,False,False
+samples are correctly classied as true positive. Specicity is,False,False,False,False,False,False
+thepercentageofhowmanytruenegativesarepredictedby,False,False,False,False,False,False
+the classier. True positive rate (TPR) and false positive rate,False,False,False,False,False,False
+are also the other performance metrics. TPR is the same as,False,False,False,False,False,False
+"sensitivity; FPR becomes 1−specicity. Equations (), (),",False,False,False,False,False,False
+"(), (),and() denes the performance metrics:",False,False,False,False,False,False
+Accuracy =,False,False,False,False,False,False
+TP + TN,True,False,False,True,False,False
+TP + TN + FP + FN,True,False,False,True,False,False
+"× 100%,",False,False,False,False,False,False
+(),False,False,False,False,False,False
+Sensitivity =,False,False,False,False,False,False
+TP,True,False,False,True,False,False
+TP + FN,True,False,False,True,False,False
+"× 100%,",False,False,False,False,False,False
+(),False,False,False,False,False,False
+Specicity =,False,False,False,False,False,False
+TN,True,False,False,True,False,False
+TN + FP,True,False,False,True,False,False
+"× 100%,",False,False,False,False,False,False
+(),False,False,False,False,False,False
+ Computational and Mathematical Methods in Medicine,False,False,False,False,False,False
+"T : Reduct size for (a) hepatitis, (b) breast cancer, and (c) heart disease dataset.",False,False,False,False,False,False
+(a) Reduct for hepatitis dataset,False,False,False,False,False,False
+Number of attributes         ,False,False,False,False,False,False
+Number of subsets         ,False,False,False,False,False,False
+Number of reducts         ,False,False,False,False,False,False
+(b) Reduct for breast cancer dataset,False,False,False,False,False,False
+Number of attributes        ,False,False,False,False,False,False
+Number of subsets        ,False,False,False,False,False,False
+Selected reducts — — — — — —  ,False,False,False,False,False,False
+(c) Reductforheartdiseasedataset,False,False,False,False,False,False
+Number of attributes          ,False,False,False,False,False,False
+Number of subsets          ,False,False,False,False,False,False
+Number of reducts          ,False,False,False,False,False,False
+T : Selected reducts for hepatitis dataset.,False,False,False,False,False,False
+Reduct Number of attributes Attribute set,False,False,False,False,False,False
+1  [],False,False,False,False,False,False
+2  [],False,False,False,False,False,False
+3  [],False,False,False,False,False,False
+4  [],False,False,False,False,False,False
+5  [],False,False,False,False,False,False
+6  [],False,False,False,False,False,False
+7  [],False,False,False,False,False,False
+8  [],False,False,False,False,False,False
+9  [],False,False,False,False,False,False
+All  [],False,False,False,False,False,False
+TPR =,True,False,False,True,False,False
+TP,True,False,False,True,False,False
+TP + FN,True,False,False,True,False,False
+",",False,False,False,False,False,False
+(),False,False,False,False,False,False
+FPR =,True,False,False,True,False,False
+FP,True,False,False,True,False,False
+FP + TN,True,False,False,True,False,False
+.,False,True,False,True,False,False
+(),False,False,False,False,False,False
+"Besides the above performance metrics, a graphical measur-",False,False,False,False,False,False
+"ing tool, receiving operating characteristics (ROC), is also",False,False,False,False,False,False
+used.ROCcurveshowsthecut-obetweenTPRandFPR.,False,False,False,False,False,False
+e experiment on the selected clinical datasets has been,False,False,False,False,False,False
+"performed using MATLAB tool version ., release Ra.",False,False,False,False,False,False
+4.1. Feature Selection Result. Hepatitis dataset has a set of,False,False,False,False,False,False
+ (2,False,False,False,False,False,False
+18,False,False,False,False,False,False
+"−2)competing for reduct. Out of these, ",False,False,False,False,False,False
+subsets of attributes fulll the equivalent indiscernibility,False,False,False,False,False,False
+relation to be a reduct. Each reduct has  to  attributes. Table,False,False,False,False,False,False
+(a) shows the number of hepatitis reducts.,False,False,False,False,False,False
+Selected reducts of hepatitis dataset are shown in Table,False,False,False,False,False,False
+. Each attribute is represented by  or . If the attribute,False,False,False,False,False,False
+"exists in the set, it is represented by “” or else it becomes",False,False,False,False,False,False
+"“” based on the following sequence of attributes {age, sex,",False,False,False,False,False,False
+"steroid, antivirals, fatigue, malaise, anorexia, liver big, liver",False,False,False,False,False,False
+"rm, spleen palpable, spiders, ascites, varices, bilirubin, Alk",False,False,False,False,False,False
+"phosphate, Sgot, albumin, and histology}. Two reducts are",False,False,False,False,False,False
+selected from each of  to  sets of attributes and one reduct,False,False,False,False,False,False
+is selected from  sets of attributes. More or less all selections,False,False,False,False,False,False
+"are trying to focus on attributes age, steroid, anorexia, fatigue,",False,False,False,False,False,False
+"Alk phosphate, Sgot, albumin, histology, and some other",False,False,False,False,False,False
+attributes to get more accurate results.,False,False,False,False,False,False
+Breast cancer dataset has a total of  (2,False,False,False,False,False,False
+9,False,False,False,False,False,False
+−2)sets of,False,False,False,False,False,False
+attributes competing for reducts. e indiscernibility of all,False,False,False,False,False,False
+"subsets is not fully similar, but partial. For this study we have",False,False,False,False,False,False
+taken those subsets which have more than % similarity,False,False,False,False,False,False
+to the indiscernibility of all attributes.  subsets that fulll,False,False,False,False,False,False
+the threshold value are selected as reducts. Nine out of ,False,False,False,False,False,False
+reducts are selected for classication analysis. Five reducts,False,False,False,False,False,False
+are selected from a subset of  attributes and four reducts,False,False,False,False,False,False
+are from a subset of  attributes. All the nine reducts are,False,False,False,False,False,False
+selected based on the accuracy achieved. e reducts of breast,False,False,False,False,False,False
+cancer are shown in Table (b). Table  shows the selected,False,False,False,False,False,False
+attribute in each reduct. e sequence of attributes is {clump,False,False,False,False,False,False
+"thickness, uniformity of cell size, uniformity of cell shape,",False,False,False,False,False,False
+"marginal adhesion, single epithelial cell size, bare nuclei,",False,False,False,False,False,False
+"bland chromatin, normal nucleoli, and mitoses}.",False,False,False,False,False,False
+Computational and Mathematical Methods in Medicine ,False,False,False,False,False,False
+T : Example of reducts of breast cancer dataset.,False,False,False,False,False,False
+Reduct Attribute size Attribute members,False,False,False,False,False,False
+1  [],False,False,False,False,False,False
+2  [],False,False,False,False,False,False
+3  [],False,False,False,False,False,False
+4  [],False,False,False,False,False,False
+5  [],False,False,False,False,False,False
+6  [],False,False,False,False,False,False
+7  [],False,False,False,False,False,False
+8  [],False,False,False,False,False,False
+9  [],False,False,False,False,False,False
+All  [],False,False,False,False,False,False
+T : Selected reducts for heart disease dataset.,False,False,False,False,False,False
+Reduct,False,False,False,False,False,False
+Attribute,False,False,False,False,False,False
+size,False,False,False,False,False,False
+Attribute set,False,False,False,False,False,False
+1,False,False,False,False,False,False
+,False,False,False,False,False,False
+[],False,False,False,False,False,False
+2,False,False,False,False,False,False
+,False,False,False,False,False,False
+[],False,False,False,False,False,False
+3,False,False,False,False,False,False
+,False,False,False,False,False,False
+[],False,False,False,False,False,False
+4,False,False,False,False,False,False
+,False,False,False,False,False,False
+[],False,False,False,False,False,False
+5,False,False,False,False,False,False
+,False,False,False,False,False,False
+[],False,False,False,False,False,False
+6,False,False,False,False,False,False
+,False,False,False,False,False,False
+[],False,False,False,False,False,False
+7,False,False,False,False,False,False
+,False,False,False,False,False,False
+[],False,False,False,False,False,False
+8,False,False,False,False,False,False
+,False,False,False,False,False,False
+[],False,False,False,False,False,False
+9,False,False,False,False,False,False
+,False,False,False,False,False,False
+[],False,False,False,False,False,False
+All,False,False,False,False,False,False
+,False,False,False,False,False,False
+[],False,False,False,False,False,False
+Heart disease dataset has a subset of  (2,False,False,False,False,False,False
+13,False,False,False,False,False,False
+−2)sets,False,False,False,False,False,False
+of attributes competing for reducts. e proposed feature,False,False,False,False,False,False
+selection method generates  reducts with the size of  to,False,False,False,False,False,False
+ attributes in a subset. Table (c) shows the reducts of heart,False,False,False,False,False,False
+disease dataset. Nine reducts are selected for classication,False,False,False,False,False,False
+purpose. Two reducts are selected from each candidate reduct,False,False,False,False,False,False
+with  to  attribute sets. One more reduct is added from a,False,False,False,False,False,False
+subset of  attributes. More or less the selection of reducts,False,False,False,False,False,False
+"is done by including vessel attributes and excluding sex,",False,False,False,False,False,False
+"Fbs,andslopeandaddingsomeotherattributestoobtain",False,False,False,False,False,False
+improved results. Table  describes the attributes of the,False,False,False,False,False,True
+"selected reducts as the sequence of the following: {age, sex,",False,False,False,False,False,False
+"Chp,Bp,Sch,Fbs,Ecg,Mhrt,Exian,Opk,slope,vessel,and",False,False,False,False,False,False
+al}.,False,False,False,False,False,False
+4.2. Classication Result. By using suitable parameters for,False,False,False,False,False,False
+"BPNN as shown in Table , the classication result of the",False,False,False,False,False,False
+selected reducts of each dataset is discussed. All the selected,False,False,False,False,False,False
+hepatitis reducts have achieved accuracy of more than %.,False,False,False,False,False,False
+e best accuracy scored is .% obtained from Reduct-,False,False,False,False,False,False
+"R with attribute set of {age, steroid, antivirals, fatigue, liver",False,False,False,False,False,False
+"big, liver rm, spiders, varices, bilirubin, Alk phosphate,",False,False,False,False,False,False
+"Sgot, albumin, and histology} and the data division of (–",False,False,False,False,False,False
+). Accuracy of the selected reducts of hepatitis is given,False,False,False,False,False,False
+in Table (a). e ROC graph of Reduct-R is displayed in,False,False,False,False,False,True
+Figure (a). e bold line on the graph shows border region,False,False,False,False,True,False
+"of the ROC, whereas the broken line drawn from the bottom",False,False,False,False,False,False
+"T : Accuracy of reducts for (a) hepatitis, (b) breast cancer, and",False,False,False,False,False,False
+(c) heart disease.,False,False,False,False,False,False
+(a) Hepatitis accuracy (%),False,False,False,False,False,False
+Reduct (–) (–) (–),False,False,False,False,False,False
+1 . . .,False,False,False,False,False,False
+2 . . .,False,False,False,False,False,False
+3 . . .,False,False,False,False,False,False
+4 . . .,False,False,False,False,False,False
+5 . . .,False,False,False,False,False,False
+6 . . .,False,False,False,False,False,False
+7 . . .,False,False,False,False,False,False
+8 . . .,False,False,False,False,False,False
+9 . . .,False,False,False,False,False,False
+A l l f e a t u r e s  .   .    . ,False,False,False,False,False,False
+(b) Breast cancer accuracy (%),False,False,False,False,False,False
+Reduct (–) (–) (–),False,False,False,False,False,False
+1 . . .,False,False,False,False,False,False
+2 . . .,False,False,False,False,False,False
+3 . . .,False,False,False,False,False,False
+4 . . .,False,False,False,False,False,False
+5 . . .,False,False,False,False,False,False
+6 . . .,False,False,False,False,False,False
+7 . . .,False,False,False,False,False,False
+8 . . .,False,False,False,False,False,False
+9 . . .,False,False,False,False,False,False
+A l l f e a t u r e s  .   .   . ,False,False,False,False,False,False
+(c) Heart Disease Accuracy,False,False,False,False,False,False
+Reduct (–) (–) (–),False,False,False,False,False,False
+1 . . .,False,False,False,False,False,False
+2 . . .,False,False,False,False,False,False
+3 . . .,False,False,False,False,False,False
+4 . . .,False,False,False,False,False,False
+5 . . .,False,False,False,False,False,False
+6 . . .,False,False,False,False,False,False
+7 . . .,False,False,False,False,False,False
+8 . . .,False,False,False,False,False,False
+9 . . .,False,False,False,False,False,False
+All features . . .,False,False,False,False,False,False
+le corner to upper right corner is the ideal line to show that,False,False,False,False,False,False
+theAUCisgreaterthan..Figure  shows the performance,False,False,False,False,False,False
+of target class and output result or Reduct-R by taking the,False,False,False,False,False,False
+rst  input records.,False,False,False,False,False,False
+Breast cancer Reduct-R with seven features (clump,False,False,False,False,False,False
+"thickness, uniformity of cell size, uniformity of cell shape,",False,False,False,False,False,False
+"marginal adhesion, single epithelial cell size, bare nuclei,",False,False,False,False,False,False
+and bland chromatin) obtains accuracy of .% with a data,False,False,False,False,False,False
+division of –. e remaining breast cancer reducts and,False,False,False,False,False,False
+all features score accuracy greater than %. e classication,False,False,False,False,False,False
+accuracy of breast cancer reducts is mentioned in Table (b).,False,False,False,False,False,False
+e ROC graph of Reduct-R is displayed in Figure (b).e,False,False,False,False,False,False
+ Computational and Mathematical Methods in Medicine,False,False,False,False,False,False
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1,False,False,False,False,False,False
+0,False,False,False,False,False,False
+0.1,False,False,False,False,False,False
+0.2,False,False,False,False,False,False
+0.3,False,False,False,False,False,False
+0.4,False,False,False,False,False,False
+0.5,False,False,False,False,False,False
+0.6,False,False,False,False,False,False
+0.7,False,False,False,False,False,False
+0.8,False,False,False,False,False,False
+0.9,False,False,False,False,False,False
+1,False,False,False,False,False,False
+False positive rate,False,False,False,False,False,False
+True positive rate,False,False,False,False,False,False
+ROC curve for hepatitis reduct,False,False,False,False,False,False
+AUC = 0.94928,True,False,False,True,False,False
+(a),False,False,False,False,False,False
+False positive rate,False,False,False,False,False,False
+True positive rate,False,False,False,False,False,False
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1,False,False,False,False,False,False
+0,False,False,False,False,False,False
+0.1,False,False,False,False,False,False
+0.2,False,False,False,False,False,False
+0.3,False,False,False,False,False,False
+0.4,False,False,False,False,False,False
+0.5,False,False,False,False,False,False
+0.6,False,False,False,False,False,False
+0.7,False,False,False,False,False,False
+0.8,False,False,False,False,False,False
+0.9,False,False,False,False,False,False
+1,False,False,False,False,False,False
+ROC curve for breast cancer reduct,False,False,False,False,False,False
+AUC = 0.99523,True,False,False,True,False,False
+(b),False,False,False,False,False,False
+False positive rate,False,False,False,False,False,False
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1,False,False,False,False,False,False
+0,False,False,False,False,False,False
+0.1,False,False,False,False,False,False
+0.2,False,False,False,False,False,False
+0.3,False,False,False,False,False,False
+0.4,False,False,False,False,False,False
+0.5,False,False,False,False,False,False
+0.6,False,False,False,False,False,False
+0.7,False,False,False,False,False,False
+0.8,False,False,False,False,False,False
+0.9,False,False,False,False,False,False
+1,False,False,False,False,False,False
+True positive rate,False,False,False,False,False,False
+ROC curve for heart disease reduct,False,False,False,False,False,False
+AUC = 0.92044,True,False,False,True,False,False
+(c),False,False,False,False,False,False
+"F : ROC graph for (a) Hepatitis Reduct-R, (b) Breast cancer Reduct-R, (c) Heart disease Reduct-R.",False,False,False,False,False,False
+0 10 20 30 40 50 60 70 80 90 100,False,False,False,False,False,False
+0,False,False,False,False,False,False
+0.2,False,False,False,False,False,False
+0.4,False,False,False,False,False,False
+0.6,False,False,False,False,False,False
+0.8,False,False,False,False,False,False
+1,False,False,False,False,False,False
+Input data size,False,False,False,False,False,False
+Output value,False,False,False,False,False,False
+Hepatitis sample dataset performance using RS-BPNN,False,False,False,False,False,False
+Target class,False,False,False,False,False,False
+Output class,False,False,False,False,False,False
+F : Result of Hepatitis Reduct-R.,False,False,False,False,False,False
+Computational and Mathematical Methods in Medicine ,False,False,False,False,False,False
+T : Performance measure of best reducts of each dataset.,False,False,False,False,False,False
+Dataset Reduct TP FN TN FP Accuracy (%) Sensitivity (%) Specicity (%) TPR FPR AUC,False,False,False,False,False,False
+Hepatitis Reduct-9     . . . . . .,False,False,False,False,False,False
+Breast cancer Reduct-1     . . . . . .,False,False,False,False,False,False
+Heart disease Reduct-7     . . . . . .,False,False,False,False,False,False
+T : Comparison of proposed system with recent works.,False,False,False,False,False,False
+Author Technique,False,False,False,False,False,False
+Accuracy of dataset (%),False,False,False,False,False,False
+Hepatitis Breast cancer Heart disease,False,False,False,False,False,False
+Sartakhti et al. () [] SVM-SA . — —,False,False,False,False,False,False
+Chen et al. () [] LFDA-SVM . — —,False,False,False,False,False,False
+C¸alis¸ir and Dogantekin () [] PCA-LSSVM . — —,False,False,False,False,False,False
+Bascil and Temurtas () []MLNN.——,False,False,False,False,False,False
+Dogantekin et al. () [] LDA-ANFIS . — —,False,False,False,False,False,False
+Polat and G,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+unes¸()[]FS,False,False,False,False,False,False
+AIRS .,True,False,False,True,False,False
+Zheng et al. () []K-SVM—.—,False,False,False,False,False,False
+Karabatak and Ince () []AR,False,False,False,False,False,False
+NN — . —,True,False,False,True,False,False
+Shao et al. () [] MARS-LR — — .,False,False,False,False,False,False
+Anooj () [] Weighted fuzzy — — ,False,False,False,False,False,False
+Vijaya et al. () [] Fuzzy neurogenetic — — ,False,False,False,False,False,False
+Kahramanli and Allahverdi () [] ANN-FNN — — ,False,False,False,False,False,False
+Proposed method RS-BPNN . . .,False,False,False,False,False,False
+T : Comparison of proposed system with conventional meth-,False,False,False,False,False,False
+ods.,False,False,False,False,False,False
+Technique,False,False,False,False,False,False
+Accuracy (%),False,False,False,False,False,False
+Hepatitis Breast cancer Heart disease,False,False,False,False,False,False
+CHAID . . .,True,False,False,True,False,False
+CRT . . .,True,False,False,True,False,False
+MLP . . .,True,False,False,True,False,False
+RBFN . . .,True,False,False,True,False,False
+RS-BPNN . . .,True,False,False,True,False,False
+performanceoftargetclassandoutputresultorReduct-Rby,False,False,False,False,False,False
+taking the rst  input records is shown in Figure .,False,False,False,False,False,False
+e best performance result for heart disease is obtained,False,False,False,False,False,False
+"fromReduct-Rwithattributes(Chp,Sch,Ecg,Opk,vessel,",False,False,False,False,False,False
+and al). It achieves .% accuracy. e other reducts and,False,False,False,False,False,False
+full attributes score accuracy of %. Table (c) shows the,False,False,False,False,False,False
+performanceevaluationofheartdiseasereducts.ROCgraph,False,False,False,False,False,False
+of Reduct-R is shown in Figure (c). Figure  shows the,False,False,False,False,False,False
+dierence in the obtained results and expected results for ,False,False,False,False,False,False
+records.,False,False,False,False,False,False
+Table  summarizes the best performed reducts of each,False,False,False,False,False,True
+dataset with a data division of training-testing of –. It,False,False,False,False,False,False
+provides major performance metrics of the proposed system.,False,False,False,False,False,False
+"4.3. Performance Comparison. e proposed method, RS-",False,False,False,False,False,False
+"BPNN, provides higher performance when compared to",False,False,False,False,False,False
+earlier methods proposed by other authors and conventional,False,False,False,False,False,False
+methods. Table  shows a comparison of the proposed,False,False,False,False,False,True
+method with other authors’ methods. Table  compares,False,False,False,False,False,False
+0 10 20 30 40 50 60 70 80 90 100,False,False,False,False,False,False
+0,False,False,False,False,False,False
+0.2,False,False,False,False,False,False
+0.4,False,False,False,False,False,False
+0.6,False,False,False,False,False,False
+0.8,False,False,False,False,False,False
+1,False,False,False,False,False,False
+Breast cancer sample dataset performance using RS-BPNN,False,False,False,False,False,False
+Input data size,False,False,False,False,False,False
+Output value,False,False,False,False,False,False
+Target class,False,False,False,False,False,False
+Output class,False,False,False,False,False,False
+F : Result of Breast cancer Reduct-R.,False,False,False,False,False,False
+the proposed system’s experimental result with conventional,False,False,False,False,False,False
+methods such as CHAID (Chi-squared automatic interaction,False,False,False,False,False,False
+"detection), CRT (classication and regression tree), MLP",False,False,False,False,False,False
+"(multilayer perceptron), and RBFN (radial basis function",False,False,False,False,False,False
+network).,False,False,False,False,False,False
+is paper combines rough set theory with backpropagation,False,False,False,False,False,False
+neural network to classify the clinical dataset. e proposed,False,False,False,False,False,False
+ Computational and Mathematical Methods in Medicine,False,False,False,False,False,False
+Heart disease sample dataset performance using RS-BPNN,False,False,False,False,False,False
+0 102030405060708090100,False,False,False,False,False,False
+0,False,False,False,False,False,False
+0.2,False,False,False,False,False,False
+0.4,False,False,False,False,False,False
+0.6,False,False,False,False,False,False
+0.8,False,False,False,False,False,False
+1,False,False,False,False,False,False
+Input data size,False,False,False,False,False,False
+Output value,False,False,False,False,False,False
+Target class,False,False,False,False,False,False
+Output class,False,False,False,False,False,False
+F : Result of Heart disease Reduct-R.,False,False,False,False,False,False
+algorithm is applied in three clinical datasets from UCI.,False,False,False,False,False,False
+"esearehepatitis,Wisconsinbreastcancer,andStatlogheart",False,False,False,False,False,False
+disease datasets. e rough set theory is used to produce,False,False,False,False,False,False
+minimal subset of attributes to represent the whole features of,False,False,False,False,False,False
+thedataset.Fromroughsettheorytheproposedmethodused,False,False,False,False,False,False
+indiscernibility relation method to select the reducts. From,False,False,False,False,False,False
+hepatitis dataset indiscernibility relation method produced,False,False,False,False,False,False
+ reducts with the attribute ranging from  to . From,False,False,False,False,False,False
+breastcancerdiseasedatasettheproposedmethodobtained,False,False,False,False,False,False
+reducts with  and  attributes. From heart disease dataset the,False,False,False,False,False,False
+proposed method produced  reducts with attribute of ,False,False,False,False,False,False
+to.Ninereductsandallattributesfromeachofthedatasets,False,False,False,False,False,False
+are used for comparison of classication result. An articial,False,False,False,False,False,False
+neural network with backpropagation learning algorithm is,False,False,False,False,False,False
+used for classication. e proposed work achieves superior,False,False,False,False,False,False
+performance when compared to recent and conventional,False,False,False,False,False,False
+works.Itisnotalwaystruethatthereductwithlessnumber,False,False,False,False,False,False
+of attributes gives highest classication accuracy. In this,False,False,False,False,False,False
+study hepatitis and heart disease dataset have got their best,False,False,False,False,False,False
+accuracy performance with the reduct that consists of  and,False,False,False,False,False,False
+" attributes, respectively. But there were reducts with less",False,False,False,False,False,False
+number of attributes in both datasets. Breast cancer dataset,False,False,False,False,False,False
+obtaineditshigherperformancewithareductofleastnumber,False,False,False,False,False,False
+of attributes.,False,False,False,False,False,False
+e proposed method of rough set theory examines,False,False,False,False,False,False
+the set of attributes for indiscernibility relation method to,False,False,False,False,False,False
+"obtain reducts. In future, the use of hybrid methods of rough",False,False,False,False,False,False
+set theory with optimization techniques like particle swarm,False,False,False,False,False,False
+"optimization (PSO), ant colony optimization (ACO), genetic",False,False,False,False,False,False
+"algorithm (GA), and bacterial foraging (BF) can be experi-",False,False,False,False,False,False
+mented with many more datasets.,False,False,False,False,False,False
+e authors declare that there is no conict of interests,False,False,False,False,False,False
+regarding the publication of this paper.,False,False,False,False,False,False
+"[] J. Han and M. Kamber, Data Mining Concepts and Techniques,",False,False,False,False,False,False
+"Morgan Kaufmann, San Francisco, Calif, USA, nd edition,",False,False,False,False,False,False
+.,False,False,False,False,False,False
+"[] M.-S. Chen, J. Han, and P. S. Yu, “Data mining: an overview",False,False,False,False,False,False
+"fromadatabaseperspective,”IEEE Transactions on Knowledge",False,False,False,False,False,False
+"andDataEngineering,vol.,no.,pp.–,.",False,False,False,False,False,False
+"[] S. H. El-Sappagh and S. El-Masri, “A distributed clinical",False,False,False,False,False,False
+"decision support system architecture,” Journal of King Saud",False,False,False,False,False,False
+"University—Computer and Information Sciences,vol.,no.,",False,False,False,False,False,False
+"pp.–,.",False,False,False,False,False,False
+"[] I. M. Mullins, M. S. Siadaty, J. Lyman et al., “Data mining and",False,False,False,False,False,False
+"clinical data repositories: insights from a , patient data",False,False,False,False,False,False
+"set,” Computers in Biology and Medicine,vol.,no.,pp.–",False,False,False,False,False,False
+", .",False,False,False,False,False,False
+"[] R. Agrawal, C. Faloutsos, and A. Swami, “Ecient similarity",False,False,False,False,False,False
+"search in sequence databases,” in Proceedings of the 4th Inter-",False,False,False,False,False,False
+national Conference on Foundations of Data Organization and,False,False,False,False,False,False
+"Algorithms,October.",False,False,False,False,False,False
+"[] P. Giudici, Applied Data Mining Statistical Methods for Business",False,False,False,False,False,False
+"and Industry, John Wiley & Sons, Chichester, UK, .",False,False,False,False,False,False
+"[] Z. Pawlak and A. Skowron, “Rudiments of rough sets,” Informa-",False,False,False,False,False,False
+"tion Sciences,vol.,no.,pp.–,.",False,False,False,False,False,False
+"[] Z. Pawlak, “Rough set approach to knowledge-based decision",False,False,False,False,False,False
+"support,” European Journal of Operational Research,vol.,no.",False,False,False,False,False,False
+", pp. –, .",False,False,False,False,False,False
+"[] Z. Pawlak, “Rough sets,” International Journal of Computer and",False,False,False,False,False,False
+"Information Sciences, vol. , no. , pp. –, .",False,False,False,False,False,False
+"[] S. N. Sivanandam and S. N. Deepa, Principles of So Computing,",False,False,False,False,False,False
+"Wiley, New Delhi, India, nd edition, .",False,False,False,False,False,False
+"[] J.-D. R. Jang, C.-T. Sun, and E. Mizutani, Neuro-Fuzzy and",False,False,False,False,False,False
+SoComputing.AComputationalApproachtoLearningand,False,False,False,False,False,False
+"Machine Intelligence, PHI Learning, New Delhi, India, .",False,False,False,False,False,False
+"[] S. Rajesekaran and V. Pai, Neural Networks, Fuzzy Logic, and",False,False,False,False,False,False
+"Genetic Algorithms Synthesis and Applications, Learning Private",False,False,False,False,False,False
+"Limited, New Delhi, India, .",False,False,False,False,False,False
+"[] K. Bache and M. Lichman, UCI Machine Learning Repository,",False,False,False,False,False,False
+"University of California, School of Information and Computer",False,False,False,False,False,False
+"Science, Irvine, Calif, USA, .",False,False,False,False,False,False
+"[] Y. E. Shao, C.-D. Hou, and C.-C. Chiu, “Hybrid intelligent",False,False,False,False,False,False
+"modeling schemes for heart disease classication,” Applied So",False,False,False,False,False,False
+"Computing Journal,vol.,pp.–,.",False,False,False,False,False,False
+"[] Y. Kaya and M. Uyar, “A hybrid decision support system based",False,False,False,False,False,False
+on rough set and extreme learning machine for diagnosis of,False,False,False,False,False,False
+"hepatitis disease,” Applied So Computing Journal,vol.,no.",False,False,False,False,False,False
+", pp. –, .",False,False,False,False,False,False
+"[] J. S. Sartakhti, M. H. Zangooei, and K. Mozafari, “Hepatitis",False,False,False,False,False,False
+disease diagnosis using a novel hybrid method based on support,False,False,False,False,False,False
+"vector machine and simulated annealing (SVM-SA),” Computer",False,False,False,False,False,False
+"Methods and Programs in Biomedicine,vol.,no.,pp.–",False,False,False,False,False,False
+", .",False,False,False,False,False,False
+"[] P. K. Anooj, “Clinical decision support system: risk level",False,False,False,False,False,False
+"prediction of heart disease using weighted fuzzy rules,” Journal",False,False,False,False,False,False
+"of King Saud University—Computer and Information Sciences,",False,False,False,False,False,False
+"vol.,no.,pp.–,.",False,False,False,False,False,False
+"[]H.-L.Chen,B.Yang,J.Liu,andD.-Y.Liu,“Asupportvector",False,False,False,False,False,False
+machine classier with rough set-based feature selection for,False,False,False,False,False,False
+"breast cancer diagnosis,” Expert Systems with Applications,vol.",False,False,False,False,False,False
+", no. , pp. –, .",False,False,False,False,False,False
+Computational and Mathematical Methods in Medicine ,False,False,False,False,False,False
+[] A. Marcano-Cede,False,False,False,False,False,False
+˜,False,False,False,False,False,False
+"no, J. Quintanilla-Dom",False,False,False,False,False,False
+´,False,False,False,False,False,False
+"ınguez, and D. And-",False,False,False,False,False,False
+"ina, “WBCD breast cancer database classication applying",False,False,False,False,False,False
+"articial metaplasticity neural network,” Expert Systems with",False,False,False,False,False,False
+"Applications,vol.,no.,pp.–,.",False,False,False,False,False,False
+"[] H.-L. Chen, D.-Y. Liu, B. Yang, J. Liu, and G. Wang, “A new",False,False,False,False,False,False
+hybrid method based on local sher discriminant analysis and,False,False,False,False,False,False
+"support vector machines for hepatitis disease diagnosis,” Expert",False,False,False,False,False,False
+"Systems with Applications, vol. , no. , pp. –, .",False,False,False,False,False,False
+"[] D. C¸alis¸ir and E. Dogantekin, “A new intelligent hepatitis diag-",False,False,False,False,False,False
+"nosis system: PCA-LSSVM,” Expert Systems with Applications,",False,False,False,False,False,False
+"vol. , no. , pp. –, .",False,False,False,False,False,False
+"[] K.Vijaya,H.K.Nehemiah,A.Kannan,andN.G.Bhuvaneswari,",False,False,False,False,False,False
+“Fuzzy neuro genetic approach for predicting the risk of,False,False,False,False,False,False
+"cardiovascular diseases,” International Journal of Data Mining,",False,False,False,False,False,False
+"Modelling and Management, vol. , no. , pp. –, .",False,False,False,False,False,False
+"[] E. Dogantekin, A. Dogantekin, and D. Avci, “Automatic hepati-",False,False,False,False,False,False
+tis diagnosis system based on Linear Discriminant Analysis and,False,False,False,False,False,False
+"Adaptive Network based on Fuzzy Inference System,” Expert",False,False,False,False,False,False
+"Systems with Applications,vol.,no.,pp.–,.",False,False,False,False,False,False
+"[] M. Karabatak and M. C. Ince, “An expert system for detection",False,False,False,False,False,False
+"of breast cancer based on association rules and neural network,”",False,False,False,False,False,False
+"Expert Systems with Applications,vol.,no.,pp.–,",False,False,False,False,False,False
+.,False,False,False,False,False,False
+"[] H. Kahramanli and N. Allahverdi, “Design of a hybrid system",False,False,False,False,False,False
+"for the diabetes and heart diseases,” Expert Systems with",False,False,False,False,False,False
+"Applications,vol.,no.-,pp.–,.",False,False,False,False,False,False
+"[] M. S. Bascil and F. Temurtas, “A study on hepatitis disease",False,False,False,False,False,False
+diagnosis using multilayer neural network with Levenberg,False,False,False,False,False,False
+"Marquardt training algorithm,” Journal of Medical Systems,vol.",False,False,False,False,False,False
+",no.,pp.–,.",False,False,False,False,False,False
+[] K. Polat and S. G,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"unes¸, “Hepatitis disease diagnosis using a",False,False,False,False,False,False
+new hybrid system based on feature selection (FS) and articial,False,False,False,False,False,False
+"immune recognition system with fuzzy resource allocation,”",False,False,False,False,False,False
+"DigitalSignalProcessing, vol. , no. , pp. –, .",False,False,False,False,False,False
+"[] B. Zheng, S. W. Yoon, and S. S. Lam, “Breast cancer diagnosis",False,False,False,False,False,False
+based on feature extraction using a hybrid of K-means and,False,False,False,False,False,False
+"support vector machine algorithms,” Expert Systems with Appli-",False,False,False,False,False,False
+"cations,vol.,no.,pp.–,.",False,False,False,False,False,False

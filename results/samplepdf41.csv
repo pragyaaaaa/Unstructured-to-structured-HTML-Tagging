@@ -1,0 +1,133 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+An Improved Particle Swarm Optimization for Feature Selection ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Yuanning Liu,False,False,False,False,False,False
+"1,2",False,False,False,False,False,False
+", Gang Wang",False,False,False,False,False,False
+"1,2",False,False,False,False,False,False
+", Huiling Chen",False,False,False,False,False,False
+"1,2",False,False,False,False,False,False
+", Hao Dong",False,False,False,False,False,False
+"1,2",False,False,False,False,False,False
+", Xiaodong Zhu",False,False,False,False,False,False
+"1,2",False,False,False,False,False,False
+", Sujing Wang",False,False,False,False,False,False
+"1,2",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+p,False,False,False,False,False,False
+1  Introduction ,False,False,False,True,False,False
+[1],False,False,False,False,False,False
+[2–3],False,False,False,False,False,False
+[4–5],False,False,False,False,False,False
+[6],False,False,False,False,False,False
+[7],False,False,False,False,False,False
+[8],False,False,False,False,False,False
+[9],False,False,False,False,False,False
+[10],False,False,False,False,False,False
+2  Basic principles ,False,False,False,False,False,False
+2.1  Particle swarm optimization  ,False,False,False,False,False,False
+[2–3],False,False,False,False,False,False
+1,False,False,False,False,False,False
+11 2 2,False,False,False,False,False,False
+"() ( ),",False,False,False,False,False,False
+tt tt tt,False,False,False,False,False,False
+id id id id gd id,False,False,False,False,False,False
+,False,False,False,False,False,False
+ u u   u    (1) ,False,False,False,False,False,False
+where i represents the ith particle and d is the dimension ,False,False,False,False,False,False
+"of the solution space, c",False,False,False,False,False,False
+1,False,False,False,False,False,False
+ denotes the cognition learning ,False,False,False,False,False,False
+"factor, and c",False,False,False,False,False,False
+2,False,False,False,False,False,False
+" indicates the social learning factor, r",False,False,False,False,False,False
+1,False,False,False,False,False,False
+ and ,False,False,False,False,False,False
+2,False,False,False,False,False,False
+" are random numbers uniformly distributed in (0,1), p",False,False,False,False,False,False
+id,False,False,False,False,False,False
+t ,False,False,False,False,False,False
+and p,False,False,False,False,False,False
+gd,False,False,False,False,False,False
+t ,False,False,False,False,False,False
+stand for the position with the best fitness found ,False,False,False,False,False,False
+so far for the ith particle and the best position in the ,False,False,False,False,False,False
+"neighborhood, v",False,False,False,False,False,False
+id,False,False,False,False,False,False
+t,False,False,False,False,False,False
+ and v,False,False,False,False,False,False
+id,False,False,False,False,False,False
+tí1,False,False,False,False,False,False
+ are the velocities at time t ,False,False,False,False,False,False
+"and time t í 1, respectively, and x",False,False,False,False,False,False
+id,False,False,False,False,False,False
+t,False,False,False,False,False,False
+ is the position of ith ,False,False,False,False,False,False
+particle at time t. Each particle then moves to a new ,False,False,False,False,False,False
+potential solution based on the following equation: ,False,False,False,False,False,False
+193,False,False,False,False,False,False
+1,False,False,False,False,False,False
+Kennedy and Eberhart,False,False,False,False,False,False
+[11],False,False,False,False,False,False
+ proposed a binary PSO in ,False,False,False,False,False,False
+which a particle moves in a state space restricted to 0 and ,False,False,False,False,False,False
+"1 on each dimension, in terms of the changes in prob-",False,False,False,False,False,False
+abilities that a bit will be in one state or the other: ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+2.2  Support vector machines ,False,False,False,False,False,False
+[12–13],False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i ,False,False,False,False,False,False
+n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+3  IFS approach ,False,False,False,False,False,False
+a,False,False,False,False,False,False
+b,False,False,False,False,False,False
+3.1  Classification accuracy ,False,False,False,False,False,False
+3.2  F-score ,False,False,False,False,False,False
+k,False,False,False,False,False,False
+[10],False,False,False,False,False,False
+[20],False,False,False,False,False,False
+3.3  Objective function definition ,False,False,False,False,False,False
+a,False,False,False,False,False,False
+i,False,False,False,False,False,False
+b,False,False,False,False,False,False
+3.4  Multi-swarm scheduling module ,False,False,False,False,False,False
+i ,False,False,False,False,False,False
+i ,False,False,False,False,False,False
+3.5  MSPSO algorithm ,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+i ,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+3.6  Convergence and complexity analysis ,False,False,False,False,False,False
+[14],False,False,False,False,False,False
+[15],False,False,False,False,False,False
+[16],False,False,False,False,False,False
+[17],False,False,False,False,False,False
+1 ,False,False,False,False,False,False
+2 ,False,False,False,False,False,False
+4  Experiments and results ,False,False,False,False,False,False
+4.1  Experimental setting ,False,False,False,False,False,False
+í15,False,False,False,False,False,False
+15,False,False,False,False,False,False
+í15,False,False,False,False,False,False
+15,False,False,False,False,False,False
+max,False,False,False,False,False,False
+max,False,False,False,False,False,False
+a ,False,False,False,False,False,False
+b,False,False,False,False,False,False
+4.2  Results ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+5  Conclusion ,False,False,False,True,False,False
+Acknowledgments ,False,False,False,False,False,False
+References ,False,False,False,True,False,False

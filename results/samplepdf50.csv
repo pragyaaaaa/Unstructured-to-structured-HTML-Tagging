@@ -1,0 +1,625 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+           ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+            ,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+           ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+           ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+�  ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+           ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+    (  - ) ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+           ,False,False,False,False,False,False
+           ,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+,False,False,False,False,False,False
+• ,False,False,False,False,False,False
+,False,False,False,False,False,False
+• ,False,False,False,False,False,False
+,False,False,False,False,False,False
+• ,False,False,False,False,False,False
+,False,False,False,False,False,False
+• ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+• ,False,False,False,False,False,False
+,False,False,False,False,False,False
+• ,False,False,False,False,False,False
+,False,False,False,False,False,False
+• ,False,False,False,False,False,False
+,False,False,False,False,False,False
+• ,False,False,False,False,False,False
+,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+,False,False,False,False,False,False
+References ,False,False,False,True,False,False
+,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+           ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+,False,False,False,False,False,False
+          ,False,False,False,False,False,False
+,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+       ,False,False,False,False,False,False
+,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+    ,False,False,False,False,False,False
+,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+        ,False,False,False,False,False,False
+         ,False,False,False,False,False,False
+,False,False,False,False,False,False

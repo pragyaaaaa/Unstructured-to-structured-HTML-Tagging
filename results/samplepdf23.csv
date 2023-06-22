@@ -1,0 +1,31 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+"Learning Agents Center, Department of Computer Science ",False,False,False,False,False,False
+"MSN 4A5, George Mason University, Fairfax, VA 22030, USA ",False,False,False,False,False,False
+"Tel: 1 703 993 {1722, 1591, 1535, 1535, 4669, 1535} ",False,False,False,False,False,False
+ABSTRACT ,True,False,False,True,False,False
+ ,False,False,False,False,False,False
+Keywords,False,False,False,False,False,False
+1.  DISCIPLE-RKF  LEARNING  AGENT ,True,False,True,True,False,False
+SHELL ,True,False,False,True,False,False
+ ,False,False,False,False,False,False
+ 2.  AGENT DEVELOPMENT          ,True,False,False,True,False,False
+METHOD,True,False,False,True,False,False
+OLOGY ,True,False,False,True,False,False
+  ,False,False,False,False,False,False
+Figure 1. Three ontology browsers of Disciple-RKF ,False,False,False,False,True,False
+European  Conference  on  Knowledge  Engineering  and ,False,False,False,False,False,False
+"Knowledge  Management  (EKAW’04),  October  5–8, ",False,False,False,False,False,False
+"2004, Northamptonshire, UK. Copyright resides with the ",False,False,False,False,False,False
+author(s) of this manuscript.,False,False,False,False,False,False
+author(s) of this manuscript.,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+viewer from Fig. 4.  ,False,False,False,False,True,False
+3.  ACKNOWLEDGEMENTS ,True,False,True,True,False,False
+4.  REFERENCES,True,False,True,True,False,False
+ ,False,False,False,False,False,False
+    Figure 2. Reasoning tree and modeling assistant interfaces ,False,False,False,False,True,False
+     Figure 3. Task formalization and explanation,False,False,False,False,True,False
+   Figure 4. Learned rule ,False,False,False,False,True,False

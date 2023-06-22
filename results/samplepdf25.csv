@@ -1,0 +1,1226 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+Abstract—Association rules represent a promising technique to,False,False,False,True,False,False
+"improve heart disease prediction. Unfortunately, when association",False,False,False,False,False,False
+"rules are applied on a medical data set, they produce an extremely",False,False,False,False,False,False
+large number of rules. Most of such rules are medically irrelevant,False,False,False,False,False,False
+and the time required to ﬁnd them can be impractical. A more,False,False,False,False,False,False
+"important issue is that, in general, association rules are mined on",False,False,False,False,False,False
+the entire data set without validation on an independent sample.,False,False,False,False,False,False
+"To solve these limitations, we introduce an algorithm that uses",False,False,False,False,False,False
+"search constraints to reduce the number of rules, searches for",False,False,False,False,False,False
+"association rules on a training set, and ﬁnally validates them on an",False,False,False,False,False,False
+independent test set. The medical signiﬁcance of discovered rules is,False,False,False,False,False,False
+"evaluated with support, conﬁdence, and lift. Association rules are",False,False,False,False,False,False
+applied on a real data set containing medical records of patients,False,False,False,False,False,False
+"with heart disease. In medical terms, association rules relate heart",False,False,False,False,False,False
+perfusion measurements and risk factors to the degree of disease,False,False,False,False,False,False
+in four speciﬁc arteries. Search constraints and test set validation,False,False,False,False,False,False
+signiﬁcantly reduce the number of association rules and produce,False,False,False,False,False,False
+a set of rules with high predictive accuracy. We exhibit important,False,False,False,False,False,False
+"rules with high conﬁdence, high lift, or both, that remain valid on",False,False,False,False,False,False
+the test set on several runs. These rules represent valuable medical,False,False,False,False,False,False
+knowledge.,False,False,False,False,False,False
+"Index Terms—Association rules, heart disease, search con-",False,False,False,False,False,False
+"straint, train and test.",False,False,False,False,False,False
+I. INTRODUCTION,True,True,False,True,False,False
+A,True,False,False,True,False,False
+SSOCIATION rules represent a data mining technique,False,False,False,False,False,False
+that has great potential in the medical domain to improve,False,False,False,False,False,False
+disease prediction. The use of association rules on medical data,False,False,False,False,False,False
+records with heart perfusion measurements is explored for the,False,False,False,False,False,False
+ﬁrst time in [1]. Discovering association rules on segmented,False,False,False,False,False,False
+images is studied in [2]. Neural networks are used to predict,False,False,False,False,False,False
+heart response based on exercise stress and heart muscle thick-,False,False,False,False,False,False
+ening images [3]. A basic set of constraints is introduced in [4],False,False,False,False,False,False
+"and [5], and preliminary results stress the importance of search",False,False,False,False,False,False
+constraints. Given the remarkable similarity between conﬁdence,False,False,False,False,False,False
+"and conﬁdence factors, association rule conﬁdence is used to",False,False,False,False,False,False
+validate conﬁdence factors of production rules in an expert sys-,False,False,False,False,False,False
+tem [6]. Validated discovered rules have been added to an expert,False,False,False,False,False,False
+system knowledge base [7].,False,False,False,False,False,False
+"In this research work, association rules are mined on a medical",False,False,False,False,False,False
+data set to improve heart disease diagnosis. Each rule represents,False,False,False,False,False,False
+a simple predictive pattern that describes a subset of the data set,False,False,False,False,False,False
+"projected on a subset of attributes. From a medical perspective,",False,False,False,False,False,False
+association rules relate combinations of binary target attributes,False,False,False,False,False,False
+(absence/existence of artery disease) and subsets of independent,False,False,False,False,False,False
+attributes (risk factors and heart muscle health measurements).,False,False,False,False,False,False
+Association rules have important advantages over traditional,False,False,False,False,False,False
+"Manuscript received June 9, 2005; revised September 29, 2005.",False,False,False,False,False,False
+"The author is with Teradata (NCR), San Diego, CA 92127 USA (e-mail:",False,False,False,False,False,False
+carlos.ordonez@teradata-ncr.com).,False,False,False,False,False,False
+Digital Object Identiﬁer 10.1109/TITB.2005.864475,False,False,False,False,False,False
+"supervised machine learning or statistical algorithms (e.g., de-",False,False,False,False,False,False
+"cision trees [8], [9], logistic regression [10], and support vector",False,False,False,False,False,False
+machines [10]): they have a straightforward interpretation based,False,False,False,False,False,False
+on the probability of occurrence of a pattern and the conditional,False,False,False,False,False,False
+probability between two patterns (medical measurements and,False,False,False,False,False,False
+risk factors relationship to speciﬁc artery narrowing); they can,False,False,False,False,False,False
+link combinations of predicted attributes (predict coexistence,False,False,False,False,False,False
+of disease in two or more arteries); they can handle several,False,False,False,False,False,False
+predicted attributes simultaneously without the need of having,False,False,False,False,False,False
+separate data subsets or separate runs (predicting disease of all,False,False,False,False,False,False
+arteries with a single data set); they can ﬁnd patterns that exist in,False,False,False,False,False,False
+small subsets of attributes (which is particularly challenging for,False,False,False,False,False,False
+"data sets that are small but also high dimensional); and ﬁnally,",False,False,False,False,False,False
+each rule can refer to overlapping subsets of the data set with,False,False,False,False,False,False
+respect to other rules (avoiding data set fragmentation when,False,False,False,False,False,False
+"possible). In contrast, for our medical data set, supervised or",False,False,False,False,False,False
+"predictive algorithms would require a large set of models (e.g.,",False,False,False,False,False,False
+"many decision trees or regression models), extra data prepara-",False,False,False,False,False,False
+tion and data selection steps to handle infrequent cases or to,False,False,False,False,False,False
+"create adequate target attributes, and complex feature selection",False,False,False,False,False,False
+or stepwise procedures to ﬁnd small subsets of attributes related,False,False,False,False,False,False
+"to a speciﬁc degree of disease. Nevertheless, we discovered two",False,False,False,False,False,False
+main issues when using association rules on a medical data set.,False,False,False,False,False,False
+"First, the number of discovered rules becomes extremely large",False,False,False,False,False,False
+"at low support thresholds, and most rules are medically irrele-",False,False,False,False,False,False
+"vant. Second, previous approaches [11], [12] focus on mining",False,False,False,False,False,False
+"association rules on the entire data set, without validation on",False,False,False,False,False,False
+an independent data set. Another reason supporting a validation,False,False,False,False,False,False
+procedure is the fact that collecting new medical records with,False,False,False,False,False,False
+"similar characteristics is difﬁcult, due to privacy regulations and",False,False,False,False,False,False
+management complexity of medical data [13]. With those is-,False,False,False,False,False,False
+"sues in mind, we deﬁne search constraints [14], [5] to reduce",False,False,False,False,False,False
+the number of rules and introduce a rule learning algorithm that,False,False,False,False,False,False
+"searches for constrained association rules on a training sample,",False,False,False,False,False,False
+and validates them on an independent (disjoint) test sample. This,False,False,False,False,False,False
+approach helps ﬁnding rules with high predictive accuracy and,False,False,False,False,False,False
+reduces the number of unreliable or medically irrelevant rules.,False,False,False,False,False,False
+Our work advances previous research on incorporating con-,False,False,False,False,False,False
+"straints for association rules, including [14], [15], [16], and [17].",False,False,False,False,False,False
+A. Contributions and Outline,False,False,False,False,False,False
+We present an algorithm that incorporates search constraints,False,False,False,False,False,False
+"to ﬁnd medically relevant association rules, and validates them",False,False,False,False,False,False
+"with the well-known train and test approach [10], [18] to get",False,False,False,False,False,False
+rules with high predictive accuracy. Search constraints include,False,False,False,False,False,False
+"maximum association size, item ﬁltering dependent on predic-",False,False,False,False,False,False
+"tive goal (absence or existence of disease), attribute grouping",False,False,False,False,False,False
+"(discard irrelevant combinations), and antecedent/consequent",False,False,False,False,False,False
+1089-7771/$20.00 © 2006 IEEE,True,False,False,True,False,False
+"rule ﬁltering (ﬁnd predictive rules). Support, conﬁdence, and",False,False,False,False,False,False
+lift are the metrics used to evaluate the medical signiﬁcance and,False,False,False,False,False,False
+reliability of association rules. Experiments study the impor-,False,False,False,False,False,False
+tance of each constraint individually. We s how there is a high,False,False,False,False,False,False
+proportion of rules that cannot be generalized after validation,False,False,False,False,False,False
+on the test set. Our proposed algorithm produces a set of rules,False,False,False,False,False,False
+that remain valid in several training/test cycles.,False,False,False,False,False,False
+The paper is organized as follows. Section II introduces deﬁ-,False,False,False,False,False,False
+nitions. Section III explains a transformation process from med-,False,False,False,False,False,False
+"ical record to transaction format, introduces search constraints",False,False,False,False,False,False
+"to ﬁnd predictive rules, and proposes a train and test algorithm",False,False,False,False,False,False
+to ﬁnd and validate rules. Section I V presents experiments with,False,False,False,False,False,False
+a real data set containing medical records of patients with heart,False,False,False,False,False,False
+"disease. Section V explains related work, and Section VI con-",False,False,False,False,False,False
+cludes the paper.,False,False,False,False,False,False
+II. D,True,True,False,True,False,False
+EFINITIONS,True,False,False,True,False,False
+"We use the standard deﬁnition of association rules [19],",False,False,False,False,False,False
+"[2], [5]. Let D be a set of n transactions such that (s.t.)",False,False,False,False,False,False
+D = {T,True,False,False,True,False,False
+1,False,False,False,False,False,False
+",T",True,False,False,True,False,False
+2,False,False,False,False,False,False
+",...,T",True,False,False,True,False,False
+n,False,False,False,False,False,False
+"}, where T",False,False,False,False,False,False
+i,False,False,False,False,False,False
+"⊆Iand I is a set of items, I",False,False,False,False,False,False
+= {i,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",i",False,False,False,False,False,False
+2,False,False,False,False,False,False
+",...,i",False,False,False,False,False,False
+m,False,False,False,False,False,False
+}. A subset of I containing k items is called,False,False,False,False,False,False
+"a k-itemset. Let X and Y be two itemsets s.t. X ⊂I,Y ⊂I,",False,False,False,False,False,False
+and X ∩ Y = ∅. An association rule is an implication denoted,False,False,False,False,False,False
+"by X ⇒ Y , where X is called the antecedent and Y is called",False,False,False,False,False,False
+"the consequent. In our work, patient records consist of numeric",False,False,False,False,False,False
+"and categorical values that are transformed into transactions,",False,False,False,False,False,False
+where each item corresponds to one numeric range or one,False,False,False,False,False,False
+categorical value. This transformation process will be discussed,False,False,False,False,False,False
+in Section III-A.,False,False,False,False,False,False
+We proceed to deﬁne association rule metrics. Given an item-,False,False,False,False,False,False
+"set X, support s(X) is deﬁned as the fraction of transactions",False,False,False,False,False,False
+T,True,False,False,True,False,False
+i,False,False,False,False,False,False
+∈ D such that X ⊆ T,False,False,False,False,False,False
+i,False,False,False,False,False,False
+. Consider P (X) the probability of,False,True,False,True,False,False
+"appearance of X in D, and P (Y |X) the conditional probability",False,False,False,False,False,False
+of appearance of Y given X. P (X) can be estimated as P (X)=,False,False,False,False,False,False
+s(X). The support of a rule X ⇒ Y is deﬁned as s(X ⇒,False,False,False,False,False,False
+Y )=s(X ∪ Y ). An association rule X ⇒ Y has a mea-,False,False,False,False,False,False
+"sure of reliability called conﬁdence, deﬁned as c(X ⇒ Y )=",False,False,False,False,False,False
+s(X ⇒ Y )/s(X). Conﬁdence can be used to estimate P (Y |X):,False,False,False,False,False,False
+P (Y |X)=P (X ∪ Y )/P (X)=c(X ⇒ Y ). A probabilistic,False,False,False,False,False,False
+interpretation of support and conﬁdence is discussed in [10]. We,False,False,False,False,False,False
+"use a third metric called lift [2], deﬁned as l(X ⇒ Y )=P (X ∪",False,False,False,False,False,False
+Y )/(P (X)P (Y )) = c(X ⇒ Y )/s(Y ). Lift quantiﬁes the rela-,False,False,False,False,False,False
+"tionship between X and Y . In general, a lift value greater than 1",False,False,False,False,False,False
+provides strong evidence that X and Y depend on each other. A,False,False,False,False,False,False
+lift value below 1 states X depends on the absence of Y or vice,False,False,False,False,False,False
+versa. A lift value close to 1 indicates X and Y are independent.,False,False,False,False,False,False
+The problem of mining association rules is deﬁned as ﬁnd-,False,False,False,False,False,False
+ing the set of all rules {X ⇒ Y } such that s(X ⇒ Y ) ≥ ψ,False,False,False,False,False,False
+"and c(X ⇒ Y ) ≥ α, given a support threshold ψ and a conﬁ-",False,False,False,False,False,False
+dence threshold α.Ak-itemset X such that s(X) ≥ ψ is called,False,False,False,False,False,False
+frequent.,False,False,False,False,False,False
+III. U,True,True,False,True,False,False
+SING THE TRAIN AND TEST APPROACH WITH,True,False,False,True,False,False
+CONSTRAINED ASSOCIATION RULES,True,False,False,True,False,False
+This section presents an algorithm to ﬁnd predictive,False,False,False,False,False,False
+association rules in a medical data set. The algorithm has,False,False,False,False,False,False
+"three major steps. First, a medical data set with categorical",False,False,False,False,False,False
+and numeric attributes is transformed into a transaction data,False,False,False,False,False,False
+"set, as deﬁned in Section II. Second, four constraints are",False,False,False,False,False,False
+incorporated into the search process to ﬁnd predictive asso-,False,False,False,False,False,False
+ciation rules with medically relevant attribute combinations.,False,False,False,False,False,False
+"Third, a train and test approach is used to validate association",False,False,False,False,False,False
+rules.,False,False,False,False,False,False
+A. Medical Data Set Transformation,False,False,False,False,False,False
+Consider a medical data set containing n patient records,False,False,False,False,False,False
+S = {s,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",s",False,False,False,False,False,False
+2,False,False,False,False,False,False
+",...,s",False,False,False,False,False,False
+n,False,False,False,False,False,False
+"} with categorical, numeric, time, and im-",False,False,False,False,False,False
+age attributes. All attributes are uniformly treated as categori-,False,False,False,False,False,False
+"cal or numeric to make the problem simpler. That is, if S has",False,False,False,False,False,False
+attributes A,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",A",True,False,False,True,False,False
+2,False,False,False,False,False,False
+",...,A",True,False,False,True,False,False
+p,False,False,False,False,False,False
+", then A",False,False,False,False,False,False
+l,False,False,False,False,False,False
+is either a categorical or nu-,False,False,False,False,False,False
+"meric type. In order to use association rules, S is transformed",False,False,False,False,False,False
+into a transaction data set D = {T,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",T",True,False,False,True,False,False
+2,False,False,False,False,False,False
+",...,T",True,False,False,True,False,False
+n,False,False,False,False,False,False
+}. Numeric at-,False,False,False,False,False,False
+tributes are binned (discretized) and each bin becomes an item.,False,False,False,False,False,False
+Categorical attributes are transformed into items by assigning,False,False,False,False,False,False
+"an item to each categorical value. When an attribute is negated,",False,False,False,False,False,False
+additional items are created for each negated categorical value,False,False,False,False,False,False
+"or each negated numeric range. Summarizing, each transaction",False,False,False,False,False,False
+T,True,False,False,True,False,False
+i,False,False,False,False,False,False
+is a set of items that indicate the presence (or absence under,False,False,False,False,False,False
+"negation) of one categorical value, or one numeric interval for",False,False,False,False,False,False
+one patient record s,False,False,False,False,False,False
+i,False,False,False,False,False,False
+.,False,True,False,True,False,False
+B. Constraints for Association Rules,False,False,False,False,False,False
+This section introduces search constraints to ﬁnd only pre-,False,False,False,False,False,False
+dictive association rules and to reduce the number of patterns.,False,False,False,False,False,False
+Let I = {i,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",i",False,False,False,False,False,False
+2,False,False,False,False,False,False
+",...,i",False,False,False,False,False,False
+m,False,False,False,False,False,False
+"} be the set of items to be processed,",False,False,False,False,False,False
+obtained by the transformation process from the attributes,False,False,False,False,False,False
+A = {A,True,False,False,True,False,False
+1,False,False,False,False,False,False
+",...,A",True,False,False,True,False,False
+p,False,False,False,False,False,False
+}. Let attribute : I→Abe a function that,False,False,False,False,False,False
+returns the attribute corresponding to one item.,False,False,False,False,False,False
+The problem of discovering association rules is decomposed,False,False,False,False,False,False
+into two basic subproblems [19]: 1) ﬁnding all frequent k-,False,False,False,False,False,False
+itemsets X such that support s(X) ≥ ψ and 2) ﬁnding all,False,False,False,False,False,False
+rules X ⇒ Y such that c(X ⇒ Y ) ≥ α. This is motivated,False,False,False,False,False,False
+by the fact that the ﬁrst subproblem is generally more difﬁ-,False,False,False,False,False,False
+cult. But in Section IV we shall see that the second subprob-,False,False,False,False,False,False
+lem is actually harder for a medical data set if constraints are,False,False,False,False,False,False
+not used. In our algorithm we call the ﬁrst subproblem Phase,False,False,False,False,False,False
+"1 and the second one Phase 2. We deﬁne four constraints,",False,False,False,False,False,False
+three of which are used in Phase 1 and one on Phase 2. Our,False,False,False,False,False,False
+work extends previous research on constraining association,False,False,False,False,False,False
+"rules [14], [15], [16], [17], where most constraints work on",False,False,False,False,False,False
+Phase 1.,False,False,False,False,False,False
+1) Constraints for Frequent Itemset Search on Phase 1: We,False,False,False,False,False,False
+deﬁne an item ﬁltering constraint based on the predictive goal P .,False,False,False,False,False,False
+For heart disease prediction there will be a set of items for pre-,False,False,False,False,False,False
+dicting existence of disease (P = “Y”) and another set of items,False,False,False,False,False,False
+to predict absence of disease (P = “N”). Some items will be,False,False,False,False,False,False
+used for both predictive goals. This constraint will eliminate any,False,False,False,False,False,False
+"combination containing the ﬁltered items. In our case, item ﬁl-",False,False,False,False,False,False
+"tering is applied before itemset generation during preprocessing,",False,False,False,False,False,False
+instead of applying it during the search phase [20]. Item ﬁltering,False,False,False,False,False,False
+"is a succinct constraint [14], [16]. This constraint is manually",False,False,False,False,False,False
+deﬁned by the medical doctor (domain expert) to include,False,False,False,False,False,False
+"interesting items given the prediction goal, but at the same time",False,False,False,False,False,False
+eliminating many item combinations that are not currently being,False,False,False,False,False,False
+analyzed. It should be clariﬁed that some ﬁltered items may be,False,False,False,False,False,False
+potentially valuable to help in understanding unknown relation-,False,False,False,False,False,False
+"ships among risk factors/perfusion and arteries. That is, any rule",False,False,False,False,False,False
+with high reliability metrics has the potential of being medically,False,False,False,False,False,False
+signiﬁcant.,False,False,False,False,False,False
+"The second constraint is called the rule size constraint, which",False,False,False,False,False,False
+is given by a maximum size κ. Frequent itemsets are generated,False,False,False,False,False,False
+"up to size κ, eliminating complete branches of the search tree",False,False,False,False,False,False
+"having frequent itemsets of size κ +1,κ+2 and so on. This",False,False,False,False,False,False
+"constraint is simple, yet it produces simpler and fewer rules.",False,False,False,False,False,False
+Most approaches ﬁnd all rules above thresholds in an exhaus-,False,False,False,False,False,False
+"tive fashion [19], [21], but in the case of medical data such an",False,False,False,False,False,False
+"approach is not practical. In general, search constraints should",False,False,False,False,False,False
+be used as early as possible to improve efﬁciency [15]. The rule,False,False,False,False,False,False
+"size constraint is applied during itemset generation in Phase 1,",False,False,False,False,False,False
+but it could be applied in Phase 2.,False,False,False,False,False,False
+We now introduce the third and fourth constraints. Input at-,False,False,False,False,False,False
+tributes are extended with two constraints: the group constraint,False,False,False,False,False,False
+and the antecedent-consequent constraint. We will now explain,False,False,False,False,False,False
+the group constraint that is used on Phase 1. The group constraint,False,False,False,False,False,False
+is used to avoid combinations of perfusion measurements and,False,False,False,False,False,False
+trivial combinations of risk factors. Let G = {g,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",g",False,False,False,False,False,False
+2,False,False,False,False,False,False
+",...,g",False,False,False,False,False,False
+p,False,False,False,False,False,False
+} be,False,False,False,False,False,False
+"a set of p group constraints, one for each attribute A",False,False,False,False,False,False
+j,False,False,False,False,False,False
+; g,False,False,False,False,False,False
+j,False,False,False,False,False,False
+is a,False,False,False,False,False,False
+positive integer if A,False,False,False,False,False,False
+j,False,False,False,False,False,False
+is constrained to belong to some group,False,False,False,False,False,False
+or 0 i f A,False,False,False,False,False,False
+j,False,False,False,False,False,False
+is not group-constrained. We deﬁne the function,False,False,False,False,False,False
+group : A→Gas group(A,False,False,False,False,False,False
+j,False,False,False,False,False,False
+)=g,False,False,False,False,False,False
+j,False,False,False,False,False,False
+. Since each attribute belongs,False,True,False,True,False,False
+"to one group, then the group numbers induce a partition on the",False,False,False,False,False,False
+attributes. If g,False,False,False,False,False,False
+j,False,False,False,False,False,False
+> 0 then there should be two or more attributes,False,False,False,False,False,False
+with the same group value of g,False,False,False,False,False,False
+j,False,False,False,False,False,False
+". Otherwise, that would be equiv-",False,True,False,True,False,False
+alent to having g,False,False,False,False,False,False
+j,False,False,False,False,False,False
+=0.ItemsetX is said to be group-interesting,False,False,False,False,False,False
+"if, for every pair {i",False,False,False,False,False,False
+j,False,False,False,False,False,False
+",i",False,False,False,False,False,False
+j,False,False,False,False,False,False
+,False,False,False,False,False,False
+"}, it holds that group(attribute(i",False,False,False,False,False,False
+j,False,False,False,False,False,False
+)) =,False,False,False,False,False,False
+group(attribute(i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+,False,False,False,False,False,False
+)). The group constraint can be considered,False,False,False,False,False,False
+"antimonotonic [14], meaning that if an itemset is not inter-",False,False,False,False,False,False
+"esting, then any superset will not be interesting either. Our",False,False,False,False,False,False
+group constraint differs from item constraints [16] in the sense,False,False,False,False,False,False
+that it induces a partition on attributes and their corresponding,False,False,False,False,False,False
+items.,False,False,False,False,False,False
+2) Constraint for Filtering Rules on Phase 2: There is only,False,False,False,False,False,False
+"one constraint used in Phase 2, applied to rules but not to as-",False,False,False,False,False,False
+"sociations, called the antecedent–consequent (AC) constraint.",False,False,False,False,False,False
+"Intuitively, we can think of it as a template of predictive",False,False,False,False,False,False
+rules. We deﬁne a set of AC constraints on {A,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",...,A",True,False,False,True,False,False
+p,False,False,False,False,False,False
+},False,False,False,False,False,False
+by C = {c,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",...,c",False,False,False,False,False,False
+p,False,False,False,False,False,False
+}. The constraint c,False,False,False,False,False,False
+j,False,False,False,False,False,False
+takes one out of,False,False,False,False,False,False
+three possible values: c,False,False,False,False,False,False
+j,False,False,False,False,False,False
+=1 if attribute A,False,False,False,False,False,False
+j,False,False,False,False,False,False
+can only ap-,False,False,False,False,False,False
+pear in the antecedent of a rule; c,False,False,False,False,False,False
+j,False,False,False,False,False,False
+=2 if A,False,False,False,False,False,False
+j,False,False,False,False,False,False
+can only ap-,False,False,False,False,False,False
+pear in the consequent; and c,False,False,False,False,False,False
+j,False,False,False,False,False,False
+=0 if it can appear in ei-,False,False,False,False,False,False
+ther place. We deﬁne the function antecedent/consequent ac :,False,False,False,False,False,False
+A→C as ac(A,False,False,False,False,False,False
+j,False,False,False,False,False,False
+)=c,False,False,False,False,False,False
+j,False,False,False,False,False,False
+. This constraint is speciﬁed over at-,False,True,False,True,False,False
+"tributes, but not on items like [15] and [16]. Let X be a",False,False,False,False,False,False
+k-itemset; X is said to be antecedent-compliant if ∀i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+∈ X:,True,False,False,True,False,False
+ac(attribute(i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+)) =2;X is said to be consequent-compliant if,False,False,False,False,False,False
+∀i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+∈ X : ac(attribute(i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+)) =1. The ac constraint cannot be,False,False,False,False,False,False
+applied in Phase 1 because it is neither succinct nor antimo-,False,False,False,False,False,False
+notonic [15].,False,False,False,False,False,False
+C. Training and Test Data Sets,False,False,False,False,False,False
+"In machine learning, it is customary to collect disjoint (in-",False,False,False,False,False,False
+dependent) samples from a base data set to build and tune pre-,False,False,False,False,False,False
+dictive (supervised) models [18]. The most common approach,False,False,False,False,False,False
+is called “train and test.” The basic idea is to build a predictive,False,False,False,False,False,False
+model with a training sample and then validate the model us-,False,False,False,False,False,False
+ing an independent test sample. This process has the goals of,False,False,False,False,False,False
+"reducing model overﬁt, providing a realistic estimate of model",False,False,False,False,False,False
+accuracy and improving generalization when the model is used,False,False,False,False,False,False
+on new data.,False,False,False,False,False,False
+We apply this i dea by partitioning D into two disjoint subsets.,False,False,False,False,False,False
+We call the ﬁrst subset the training set D,False,False,False,False,False,False
+train,False,False,False,False,False,False
+and the second,False,False,False,False,False,False
+subset the test set D,False,False,False,False,False,False
+test,False,False,False,False,False,False
+. We introduce a training fraction τ to,False,True,False,True,False,False
+control the size of the training set. Therefore,False,False,False,False,False,False
+|D,True,False,False,True,False,False
+train,False,False,False,False,False,False
+| = τn,False,False,False,False,False,False
+D = D,True,False,False,True,False,False
+train,False,False,False,False,False,False
+∪ D,True,False,False,True,False,False
+test,False,False,False,False,False,False
+and,False,False,False,False,False,False
+D,True,False,False,True,False,False
+train,False,False,False,False,False,False
+∩ D,True,False,False,True,False,False
+test,False,False,False,False,False,False
+= ∅.,False,False,False,False,False,False
+"Given the small size of our medical data set, we cannot apply",False,False,False,False,False,False
+a more reliable train/validate/test approach that requires three,False,False,False,False,False,False
+independent samples [10]. We extend the deﬁnition of associ-,False,False,False,False,False,False
+"ation rules, given in Section II, to have two sets of metrics per",False,False,False,False,False,False
+"rule based on a training and a test set. That is, each rule has six",False,False,False,False,False,False
+"metrics in total. In general, metrics on the training set are used",False,False,False,False,False,False
+"only for search purposes, and metrics on the test set are used to",False,False,False,False,False,False
+validate rules and are taken as the actual rule metrics.,False,False,False,False,False,False
+We can informally think of the set of all association rules as a,False,False,False,False,False,False
+"“global” predictive model. We compute two sets of rules, R",False,False,False,False,False,False
+train,False,False,False,False,False,False
+on D,False,False,False,False,False,False
+train,False,False,False,False,False,False
+and R,False,False,False,False,False,False
+test,False,False,False,False,False,False
+⊆ R,True,False,False,True,False,False
+train,False,False,False,False,False,False
+", such that R",False,False,False,False,False,False
+test,False,False,False,False,False,False
+also has metrics,False,False,False,False,False,False
+"above ψ, α,λ on D",False,False,False,False,False,False
+test,False,False,False,False,False,False
+. The computation of R,False,True,False,True,False,False
+test,False,False,False,False,False,False
+is as follows.,False,False,False,False,False,False
+"Each association has two sets of metrics, one for D",False,False,False,False,False,False
+train,False,False,False,False,False,False
+and one,False,False,False,False,False,False
+for D,False,False,False,False,False,False
+test,False,False,False,False,False,False
+. We search association rules based on D,False,True,False,True,False,False
+train,False,False,False,False,False,False
+to get,False,False,False,False,False,False
+R,True,False,False,True,False,False
+train,False,False,False,False,False,False
+"based on thresholds ψ, α, λ.WesetR",False,False,False,False,False,False
+test,False,False,False,False,False,False
+= R,True,False,False,True,False,False
+train,False,False,False,False,False,False
+.We,False,True,False,True,False,False
+"then compute support, conﬁdence, and lift for each rule in R",False,False,False,False,False,False
+test,False,False,False,False,False,False
+based on D,False,False,False,False,False,False
+test,False,False,False,False,False,False
+. Rules whose test metrics on D,False,True,False,True,False,False
+test,False,False,False,False,False,False
+are below,False,False,False,False,False,False
+"ψ, α,orλ are ﬁltered out from R",False,False,False,False,False,False
+test,False,False,False,False,False,False
+. This process is repeated,False,True,False,True,False,False
+a number of times (t) to achieve basic cross validation and to,False,False,False,False,False,False
+eliminate rules that cannot be generalized.,False,False,False,False,False,False
+D. Algorithm to Find Predictive Rules,False,False,False,False,False,False
+The constraints from Section III-B and the training/validation,False,False,False,False,False,False
+approach from Section III-C are assembled together in one algo-,False,False,False,False,False,False
+rithm that goes from transforming medical records to repeating,False,False,False,False,False,False
+validation on several independent test samples to get a set of,False,False,False,False,False,False
+accurate predictive association rules. The algorithm is shown in,False,False,False,False,False,False
+Fig. 1.,False,False,False,False,True,False
+This is a summary of the input and output of the algorithm.,False,False,False,False,False,False
+The main input parameters are the predictive goal P (P = “Y”,False,False,False,False,False,False
+"for existence of disease and P = “N” for absence of disease), κ",False,False,False,False,False,False
+"(maximum rules size), t (number of times to train/test), as well",False,False,False,False,False,False
+"as the ψ, α,λ thresholds. In general, the training sample fraction",False,False,False,False,False,False
+τ =50%. The output is a set of rules (R,False,False,False,False,False,False
+Y,True,False,False,True,False,False
+or R,False,False,False,False,False,False
+N,True,False,False,True,False,False
+) that are valid,False,False,False,False,False,False
+on all t test sets.,False,False,False,False,False,False
+Fig. 1. Algorithm to ﬁnd association rules with a train/test approach.,False,False,False,False,True,False
+We run the transformation process once. Transformation re-,False,False,False,False,False,False
+quires the user to specify numeric cutoffs and negation. The,False,False,False,False,False,False
+transformation process binning numeric attributes and incorpo-,False,False,False,False,False,False
+"rating negation, creates the input data set for Phase 1, where",False,False,False,False,False,False
+each medical record s,False,False,False,False,False,False
+i,False,False,False,False,False,False
+is transformed into T,False,False,False,False,False,False
+i,False,False,False,False,False,False
+". Thereafter, medi-",False,True,False,True,False,False
+cal records are manipulated as itemsets as deﬁned in Section II.,False,False,False,False,False,False
+Building the training and test samples is repeated several,False,False,False,False,False,False
+times. The constrained association rule algorithm produces,False,False,False,False,False,False
+"different sets of rules with different training/test samples,",False,False,False,False,False,False
+where each set of rules has several different rules and com-,False,False,False,False,False,False
+mon rules have slightly lower or higher metrics. We want to,False,False,False,False,False,False
+ﬁnd rules that are valid on both D,False,False,False,False,False,False
+train,False,False,False,False,False,False
+and D,False,False,False,False,False,False
+test,False,False,False,False,False,False
+in general.,False,False,False,False,False,False
+This motivates repeating the training/test process t times to,False,False,False,False,False,False
+achieve basic cross validation and compute averages for rule,False,False,False,False,False,False
+metrics. Association rules do not represent a model. There-,False,False,False,False,False,False
+"fore, they do not have a goodness of ﬁt statistic; this is be-",False,False,False,False,False,False
+cause each association rule simply represents an individual,False,False,False,False,False,False
+pattern.,False,False,False,False,False,False
+Phase 1 eliminates many items depending on the predictive,False,False,False,False,False,False
+"task, uses the group(·) constraint to discard irrelevant item com-",False,False,False,False,False,False
+"binations, and generates all associations up to size κ.Itemsare",False,False,False,False,False,False
+ﬁltered depending on the prediction goal (P = “N” for absence,False,False,False,False,False,False
+or P = “Y” for existence of disease). Phase 2 ﬁlters predictive,False,False,False,False,False,False
+rules with the ac(·) constraint. Phase 3 eliminates unreliable and,False,False,False,False,False,False
+particular (not general) rules by computing metrics on D,False,False,False,False,False,False
+test,False,False,False,False,False,False
+",",False,False,False,False,False,False
+producing a subset of rules R,False,False,False,False,False,False
+I,True,False,False,True,False,False
+that remains valid on the test,False,False,False,False,False,False
+data set I. The process to create train/test samples and to dis-,False,False,False,False,False,False
+"cover/validate association rules is repeated t times, with t being",False,False,False,False,False,False
+a user-speciﬁed parameter. This process generates t indepen-,False,False,False,False,False,False
+dent training sets and t independent test sets. These t sets will,False,False,False,False,False,False
+"produce different sets of rules that will have rules in common,",False,False,False,False,False,False
+but also different rules.,False,False,False,False,False,False
+"At the end, the algorithm computes a rule set (R",False,False,False,False,False,False
+Y,True,False,False,True,False,False
+for ex-,False,False,False,False,False,False
+"istence of disease, or R",False,False,False,False,False,False
+N,True,False,False,True,False,False
+for absence of disease) that is the,False,False,False,False,False,False
+"intersection of the t rule sets, further eliminating rules that may",False,False,False,False,False,False
+"be particular to one run, or rules that are not valid in general.",False,False,False,False,False,False
+Recall R,False,False,False,False,False,False
+Y,True,False,False,True,False,False
+corresponds to P = “Y” and R,False,False,False,False,False,False
+N,True,False,False,True,False,False
+refers to rules when,False,False,False,False,False,False
+P = “N.” The metrics of each rule are computed as averages of,False,False,False,False,False,False
+the test metrics on the t test sets. Let D,False,False,False,False,False,False
+I,True,False,False,True,False,False
+be the Ith test set. Let,False,False,False,False,False,False
+X ⇒ Y be a valid rule appearing on all t sets. Then,False,False,False,False,False,False
+s(X ⇒ Y )=,False,False,False,False,False,False
+1,False,False,False,False,False,False
+t,False,False,False,False,False,False
+t,False,False,False,False,False,False
+I =1,True,False,False,True,False,False
+"s(X ⇒ Y,D",False,False,False,False,False,False
+I,True,False,False,True,False,False
+) (1),False,False,False,False,False,False
+c(X ⇒ Y )=,False,False,False,False,False,False
+1,False,False,False,False,False,False
+t,False,False,False,False,False,False
+t,False,False,False,False,False,False
+I =1,True,False,False,True,False,False
+"c(X ⇒ Y, D",False,False,False,False,False,False
+I,True,False,False,True,False,False
+) (2),False,False,False,False,False,False
+l(X ⇒ Y )=,False,False,False,False,False,False
+1,False,False,False,False,False,False
+t,False,False,False,False,False,False
+t,False,False,False,False,False,False
+I =1,True,False,False,True,False,False
+"l(X ⇒ Y,D",False,False,False,False,False,False
+I,True,False,False,True,False,False
+). (3),False,False,False,False,False,False
+IV. E,True,True,False,True,False,False
+XPERIMENTS,True,False,False,True,False,False
+Our experiments were conducted on a computer with an,False,False,False,False,False,False
+"800-MHz CPU, 256 MB of memory, and 40 GB on disk. Our",False,False,False,False,False,False
+algorithm was programmed in the C++ language.,False,False,False,False,False,False
+A. Medical Data Set Description,False,False,False,False,False,False
+We used a medical data set obtained from a hospital. The data,False,False,False,False,False,False
+"set contains 655 patient records with 113 attributes, combining",False,False,False,False,False,False
+"numeric, categorical, and image data. There are risk factor at-",False,False,False,False,False,False
+"tributes such as age, race, gender, and smoking habits. There",False,False,False,False,False,False
+"are measurements on the patient such as weight, heart rate,",False,False,False,False,False,False
+"blood pressure, and information regarding the pre-existence of",False,False,False,False,False,False
+other diseases like diabetes. Diagnostic procedures made by a,False,False,False,False,False,False
+clinician are also included. The data set has an important set,False,False,False,False,False,False
+of measurements that estimate the degree of disease in certain,False,False,False,False,False,False
+"regions of the heart, how healthy certain regions remain, and",False,False,False,False,False,False
+quality numbers that summarize the patient’s heart effort under,False,False,False,False,False,False
+"stress and relaxed conditions. Finally, the remaining attributes",False,False,False,False,False,False
+store imaging (perfusion) information from nine regions of the,False,False,False,False,False,False
+myocardium (heart muscle). Table I shows the 25 attributes,False,False,False,False,False,False
+we selected for our experiments that were the most important.,False,False,False,False,False,False
+"Therefore, p =25and n = 655.",False,False,False,False,False,False
+The attributes not used in our experiments involved heart,False,False,False,False,False,False
+"image data for the patient performing exercise or resting, and",False,False,False,False,False,False
+attributes whose value distributions were skewed. To give an ex-,False,False,False,False,False,False
+"ample, race was not used because 82% of patients were of white",False,False,False,False,False,False
+"race, and more than 10% had missing race information. The",False,False,False,False,False,False
+selected attributes shown in Table I provide an accurate proﬁle,False,False,False,False,False,False
+of each patient based on perfusion measurements for speciﬁc,False,False,False,False,False,False
+"regions of the heart, known risk factors for heart disease, and",False,False,False,False,False,False
+the degree of disease in four arteries (percentage of artery nar-,False,False,False,False,False,False
+rowing). Perfusion measurements are obtained with a medical,False,False,False,False,False,False
+procedure that digitizes the ﬂow pattern in the heart of a colored,False,False,False,False,False,False
+substance swallowed by the patient.,False,False,False,False,False,False
+Attributes in Table I are abbreviated as follows: arteries use,False,False,False,False,False,True
+an acronym indicating their location in the heart whose value,False,False,False,False,False,False
+"represents artery narrowing (LM, LAD, LCX, RCA); the nine",False,False,False,False,False,False
+TABLE I,True,False,False,False,False,True
+M,True,False,False,True,False,False
+"EDICAL DATA SET ATTRIBUTES (CONSTRAINTS: 0=OFF, 1=ON)",True,False,False,True,False,False
+"heart muscle regions (AL, IS, SA, AP, AS, SI, LI, IL, LA) are",False,False,False,False,False,False
+abbreviated with two letters that can be interpreted as coordi-,False,False,False,False,False,False
+nates of their speciﬁc location on a two-dimensional (2-D) map,False,False,False,False,False,False
+"of the heart, whose attributes contain a perfusion measurement",False,False,False,False,False,False
+"in [−1, 1]; a value close to 1 indicates a severe defect and a",False,False,False,False,False,False
+"value close to −1 indicates no defect; ﬁnally, risk factors (AGE,",False,False,False,False,False,False
+"CHOL, HTA, FHCAD, ...) are binary variables to allow their",False,False,False,False,False,False
+easy manipulation as items. The last four columns in Table I,False,False,False,False,False,False
+"indicate how each constraint was set for each attribute, with",False,False,False,False,False,False
+1 being “on” and 0 being “off.” Constraints are explained in,False,False,False,False,False,False
+more detail as follows. Experiments have the goal of ﬁnding,False,False,False,False,False,False
+rules with perfusion measurements and risk factors in the an-,False,False,False,False,False,False
+tecedent and artery disease measurements in the consequent of,False,False,False,False,False,False
+a rule.,False,False,False,False,False,False
+B. Parameter Settings,False,False,False,False,False,False
+We explain settings for program parameters that were based,False,False,False,False,False,False
+both on medical opinion and experimental validation.,False,False,False,False,False,False
+1) Transformation Parameters: Refer to Table I to interpret,False,False,False,False,False,False
+"attribute names. The LAD, RCA, LCX, and LM attributes con-",False,False,False,False,False,False
+tain the percentage of vessel narrowing (or blockage) compared,False,False,False,False,False,False
+"to a healthy artery. Attributes LAD, LCX, and RCA were binned",False,False,False,False,False,False
+"at 50% and 70%. In cardiology, 70% or higher indicates signiﬁ-",False,False,False,False,False,False
+"cant coronary disease, and 50% indicates borderline disease. A",False,False,False,False,False,False
+value lower than 50% means the patient is healthy. The most,False,False,False,False,False,False
+common cutoff value used by the cardiology community to dis-,False,False,False,False,False,False
+tinguish healthy from sick patients is 50%. The LM artery is,False,False,False,False,False,False
+treated different because it poses higher risk than the other three,False,False,False,False,False,False
+arteries. LM was binned at 30% and 50%. The reason behind it,False,False,False,False,False,False
+is that both the LAD and the LCX arteries branch from the LM,False,False,False,False,False,False
+"artery, and thus a defect in LM is more likely to cause a larger",False,False,False,False,False,False
+"diseased heart region. That is, narrowing (blockage) in the LM",False,False,False,False,False,False
+artery is likely to produce more disease than blockages on the,False,False,False,False,False,False
+other arteries. That is why its cutoff values are set 20% lower,False,False,False,False,False,False
+"than the other vessels. The nine heart regions (AL, IL, IS, AS,",False,False,False,False,False,False
+"SI, SA, LI, LA, AP) were partitioned into two ranges at a cutoff",False,False,False,False,False,False
+"point of 0.2, meaning a perfusion measurement greater or equal",False,False,False,False,False,False
+than 0.2 indicated a s evere defect. CHOL was partitioned with,False,False,False,False,False,False
+cutoff points 200 (warning) and 250 (high). These values corre-,False,False,False,False,False,False
+spond to known medical settings. The training fraction was set,False,False,False,False,False,False
+"at τ =50%. Every time the algorithm is run, new samples are",False,False,False,False,False,False
+"created. Finally, only the four artery measurements had negation",False,False,False,False,False,False
+to ﬁnd rules referring to healthy patients and sick patients. The,False,False,False,False,False,False
+rest of attributes did not require negation. Since most risk factors,False,False,False,False,False,False
+were binary and perfusion measurements were divided into two,False,False,False,False,False,False
+"ranges, t his eliminated the need to use negation on them. Nega-",False,False,False,False,False,False
+tion was not considered useful for age and cholesterol level.,False,False,False,False,False,False
+"After transforming S into D, we ended with 68 items. There-",False,False,False,False,False,False
+"fore, n = 655 and m =68according to our deﬁnitions from",False,False,False,False,False,False
+Section II.,False,False,False,False,False,False
+2) Constraints: The ﬁrst parameter is the maximum asso-,False,False,False,False,False,False
+"ciation size κ.Weusedκ ∈{2,...,4} to study the individual",False,False,False,False,False,False
+"impact of constraints. In the second set of experiments, to get",False,False,False,False,False,False
+"simple rules, κ =4.Alowerκ produces fewer and simpler rules.",False,False,False,False,False,False
+"A higher κ signiﬁcantly increases the number of rules, and they",False,False,False,False,False,False
+become more complex.,False,False,False,False,False,False
+The training sample f raction was τ =50%. Association rule,False,False,False,False,False,False
+mining had the following thresholds for metrics. The minimum,False,False,False,False,False,False
+"training support was ﬁxed at ψ =1% ≈ 3. That is, rules in-",False,False,False,False,False,False
+volving two or one patient(s) were ﬁltered out. From a medical,False,False,False,False,False,False
+"point of view, rules with high conﬁdence are desirable but,",False,False,False,False,False,False
+"unfortunately, they are infrequent. Based on previous experi-",False,False,False,False,False,False
+"ments [4], [5] and the domain expert opinion, the minimum",False,False,False,False,False,False
+conﬁdence was set at α =70%. Rules with conﬁdence lower,False,False,False,False,False,False
+"than 70% are not medically reliable. In general, the lift threshold",False,False,False,False,False,False
+was λ =1.,False,False,False,False,False,False
+We will now explain attribute constraints. Table I summarizes,False,False,False,False,False,False
+attribute constraints with “1” indicating the constraint was on,False,False,False,False,False,False
+"and “0” indicating the constraint was off. Item ﬁltering, group",False,False,False,False,False,False
+"constraints, and antecedent/consequent constraints were set as",False,False,False,False,False,False
+"follows. AGE, SEX, and CHOL did not have item ﬁltering,",False,False,False,False,False,False
+meaning that any AGE and CHOL range or gender could appear,False,False,False,False,False,False
+"in any predictive rule. The remaining risk factors, all perfusion",False,False,False,False,False,False
+"measurements, and arteries had item ﬁltering. To predict absence",False,False,False,False,False,False
+"of disease (P =“N”) risk factors (“Y”), high perfusion measure-",False,False,False,False,False,False
+"ments, and high artery blockage were ﬁltered out. To predict ex-",False,False,False,False,False,False
+"istence of disease, (P =“Y”) risk factors (“N”), low perfusion",False,False,False,False,False,False
+"measurements, and low artery blockage were ﬁltered out. AGE,",False,False,False,False,False,False
+"arteries, SEX, SMOKE, and CHOL were not group-constrained.",False,False,False,False,False,False
+The nine perfusion measurements of the heart were constrained,False,False,False,False,False,False
+to be in the same group (group 1) to predict absence or existence,False,False,False,False,False,False
+"of disease. When predicting no disease, (P =“N”) HTA, DIAB,",False,False,False,False,False,False
+"HYPLPD, FHCAD, CLAUDI were in group 2, and PANGIO,",False,False,False,False,False,False
+"PSTROKE, PCARSUR were in group 3; these attributes were",False,False,False,False,False,False
+not constrained to predict existence of disease. Risk factors and,False,False,False,False,False,False
+perfusion measurements were constrained to appear in the an-,False,False,False,False,False,False
+tecedent (ac(A,False,False,False,False,False,False
+l,False,False,False,False,False,False
+)=1). Arteries were constrained to appear in,False,False,False,False,False,False
+the consequent (ac(A,False,False,False,False,False,False
+l,False,False,False,False,False,False
+)=2).,False,False,False,False,False,False
+TABLE II,True,False,False,False,False,True
+I,True,False,False,True,False,False
+TEM FILTERING CONSTRAINT:NUMBER OF ASSOCIATIONS,True,False,False,True,False,False
+"(0=OFF, 1=ON)",True,False,False,True,False,False
+TABLE III,True,False,False,False,False,True
+G,True,False,False,True,False,False
+ROUP CONSTRAINT:NUMBER OF ASSOCIATIONS,True,False,False,True,False,False
+"(0=OFF, 1=ON)",True,False,False,True,False,False
+C. Number of Association Rules With and Without Constraints,False,False,False,False,False,False
+We study each constraint individually to measure its relative,False,False,False,False,False,False
+importance with respect to number of patterns and time. Since,False,False,False,False,False,False
+"the number of patterns is large, we turn all constraints on by",False,False,False,False,False,False
+"default, turning one off at a time to see the i ncrease in output",False,False,False,False,False,False
+size. We concentrate on studying the impact on the training set,False,False,False,False,False,False
+D,True,False,False,True,False,False
+train,False,False,False,False,False,False
+since it is the one used to build the predictive association,False,False,False,False,False,False
+"rules, and it is the most time demanding. Each table indicates",False,False,False,False,False,False
+when the constraint is turned on or off. Recall that D,False,False,False,False,False,False
+train,False,False,False,False,False,False
+is built,False,False,False,False,False,False
+as a random sample from D every time. Each run generates a,False,False,False,False,False,False
+different set of rules. We repeated experiments ﬁve times and,False,False,False,False,False,False
+averages are reported.,False,False,False,False,False,False
+Table II summarizes the number of associations at dif-,False,False,False,False,False,True
+"ferent itemset sizes, turning item ﬁltering on and off (i.e.,",False,False,False,False,False,False
+"itemFilter =0 and itemFilter =1, respectively). Recall from",False,False,False,False,False,False
+Section IV-B that the prediction of absence and existence of,False,False,False,False,False,False
+heart disease have different settings. We can see that there is,False,False,False,False,False,False
+an important reduction in the number of patterns at κ =2and,False,False,False,False,False,False
+"κ =3, but there is an outstanding reduction in size at κ =4.Itis",False,False,False,False,False,False
+clear that more than 200 000 patterns are impossible to interpret.,False,False,False,False,False,False
+We can see that the reduction in size is similar for predicting,False,False,False,False,False,False
+the absence or existence of disease. We do not show the number,False,False,False,False,False,False
+"of rules, but without constraining there is potentially an expo-",False,False,False,False,False,False
+nential number of rules that can be derived from associations.,False,False,False,False,False,False
+These experimental results indicated it was necessary to split,False,False,False,False,False,False
+"experiments into two sets, one for predicting absence of disease",False,False,False,False,False,False
+(P =“N”) and another one to predict its existence (P =“Y”).,False,False,False,False,False,False
+"Item ﬁltering is a simple, but important constraint.",False,False,False,False,False,False
+We now study the impact of the group constraint. Results are,False,False,False,False,False,False
+"shown i n Table III, where “group =0” indicates the constraint",False,False,False,False,False,False
+"was off, and “group =1” indicates the constraint was on. There",False,False,False,False,False,False
+is a different setting for this constraint depending on the pre-,False,False,False,False,False,False
+diction goal. For absence of disease (P =“N”) there are three,False,False,False,False,False,False
+groups. For existence of disease (P =“Y”) only heart region,False,False,False,False,False,False
+"perfusion measurements are group-constrained. For κ =2,the",False,False,False,False,False,False
+"reduction in size is marginal. At κ =3, the reduction in size",False,False,False,False,False,False
+"becomes better, especially for predicting no disease. Finally, for",False,False,False,False,False,False
+"κ =4, the reduction in size is about 50% in both cases. At all",False,False,False,False,False,False
+"itemset sizes, when the constraint is turned on, the reduction in",False,False,False,False,False,False
+"size is bigger for predicting no disease, which is due to using",False,False,False,False,False,False
+three attribute groups instead of one.,False,False,False,False,False,False
+TABLE IV,True,False,False,False,False,True
+A,True,False,False,True,False,False
+NTECEDENT/CONSEQUENT CONSTRAINT:NUMBER OF,True,False,False,True,False,False
+"ASSOCIATION RULES (0=OFF, 1=ON)",True,False,False,True,False,False
+TABLE V,True,False,False,False,False,True
+N,True,False,False,True,False,False
+UMBER OF ASSOCIATIONS AND RULES IN D,True,False,False,True,False,False
+train,False,False,False,False,False,False
+AND D,True,False,False,True,False,False
+test,False,False,False,False,False,False
+VARYING κ TO,False,False,False,False,False,False
+PREDICT EXISTENCE OF DISEASE (P = “Y”),True,False,False,True,False,False
+Table IV shows the impact of applying the ac constraint. If,False,False,False,False,False,True
+"“ac =0,” the constraint was off; otherwise “ac =1.” The ac",False,False,False,False,False,False
+"settings are the same for both prediction goals, with the only",False,False,False,False,False,False
+difference being that item ﬁltering and group constraints are,False,False,False,False,False,False
+"different, as explained in Section IV-B. The impact of this con-",False,False,False,False,False,False
+"straint is signiﬁcant. In every case, there is an order of magnitude",False,False,False,False,False,False
+reduction in size. The number of rules goes beyond 1000 only,False,False,False,False,False,False
+in the case of trying to predict absence of disease at κ =4.,False,False,False,False,False,False
+The number of rules shown when the constraint is on will not,False,False,False,False,False,False
+"be the actual number, because rules will be ﬁltered validating",False,False,False,False,False,False
+them on D,False,False,False,False,False,False
+test,False,False,False,False,False,False
+", which is explained in the following section.",False,False,False,False,False,False
+We conclude that item ﬁltering and the antecedent/consequent,False,False,False,False,False,False
+constraint are essential to get a manageable number of rules.,False,False,False,False,False,False
+"Given the number of rules and running time, it is necessary",False,False,False,False,False,False
+"to have two sets of constraints, depending on the prediction",False,False,False,False,False,False
+"goal. The group constraint has an important impact, but not as",False,False,False,False,False,False
+signiﬁcant.,False,False,False,False,False,False
+D. Validating Rules Based on Training and Test Sets,False,False,False,False,False,False
+"In this section, we show the effect of ﬁltering association rules",False,False,False,False,False,False
+based on the test set. Recall t hat association rules are tested for,False,False,False,False,False,False
+generality and validity by partitioning the input data set into,False,False,False,False,False,False
+a training set and a test set. A valid rule must have minimum,False,False,False,False,False,False
+metrics on both sets. We would like to understand the extent,False,False,False,False,False,False
+to which the number of rules is reduced by varying κ or ψ.In,False,False,False,False,False,False
+"the following experiments, we focus on predicting existence of",False,False,False,False,False,False
+"disease (P =“Y”). As in the previous section, we repeated each",False,False,False,False,False,False
+experiment ﬁve times and averages are reported.,False,False,False,False,False,False
+The ﬁrst set of experiments shows the importance of ﬁlter-,False,False,False,False,False,False
+ing rules on the t est by varying κ. Table V summarizes results.,False,False,False,False,False,False
+"The reduction in the number of associations is small, with a re-",False,False,False,False,False,False
+duction of about 10%–15%. The reduction becomes much more,False,False,False,False,False,False
+"important for the number of rules. For κ =2, the impact is small",False,False,False,False,False,False
+"in most cases, which indicates most rules can be generalized.",False,False,False,False,False,False
+"For κ =3, the reduction is more than 50%, providing evidence",False,False,False,False,False,False
+"that many rules are particular to the training sample. At κ =4,",False,False,False,False,False,False
+"the number of rules in the test set is about 30% of the total,",False,False,False,False,False,False
+"with a reduction of about 70%, providing evidence that most",False,False,False,False,False,False
+rules may be particular to the training set. The trend indicates,False,False,False,False,False,False
+there will be a combinatorial explosion of rules that are valid,False,False,False,False,False,False
+only on the training set. Time grows fast as rule size κ grows.,False,False,False,False,False,False
+TABLE VI,True,False,False,False,False,True
+N,True,False,False,True,False,False
+UMBER OF RULES IN D,True,False,False,True,False,False
+train,False,False,False,False,False,False
+AND D,True,False,False,True,False,False
+test,False,False,False,False,False,False
+SETS VARYING MINIMUM SUPPORT,True,False,False,True,False,False
+ψ TO PREDICT EXISTENCE OF DISEASE (P =“Y”),False,False,False,False,False,False
+The difference in the relative number of patterns for associa-,False,False,False,False,False,False
+tions and rules can be explained by the fact that associations,False,False,False,False,False,False
+are ﬁltered on D,False,False,False,False,False,False
+train,False,False,False,False,False,False
+and D,False,False,False,False,False,False
+test,False,False,False,False,False,False
+"based only on support, but rules",False,False,False,False,False,False
+"require support, conﬁdence, and lift to be greater than or equal",False,False,False,False,False,False
+to the respective thresholds in D,False,False,False,False,False,False
+train,False,False,False,False,False,False
+and D,False,False,False,False,False,False
+test,False,False,False,False,False,False
+". Therefore, vali-",False,True,False,True,False,False
+dation is s tricter for rules than for associations. The last column,False,False,False,False,False,False
+in Table V contains elapsed times in seconds. These times in-,False,False,False,False,False,True
+"clude all steps in the algorithm, starting with transformation and",False,False,False,False,False,False
+"repeating the train/test cycle only once. As can be seen, time",False,False,False,False,False,False
+"grows fast as k increases, even with all the number, of patterns",False,False,False,False,False,False
+eliminated by constraints and the validation phase.,False,False,False,False,False,False
+The second set of experiments studies the growth of the num-,False,False,False,False,False,False
+"ber of patterns varying ψ, which is the main parameter to control",False,False,False,False,False,False
+the number of rules. Table VI contains a summary of results.,False,False,False,False,False,False
+"At high support levels, the reduction in the number of rules is",False,False,False,False,False,False
+"about 40%. For low support levels, the number of rules goes",False,False,False,False,False,False
+down to less than 35%. This indicates that as support is low-,False,False,False,False,False,False
+"ered, more rules become particular to the training set because",False,False,False,False,False,False
+they do not meet the minimum metrics in the test set. The last,False,False,False,False,False,False
+column in Table VI contains total elapsed times in seconds.,False,False,False,False,False,True
+"Time growth is not as fast compared to varying κ, because con-",False,False,False,False,False,False
+straints and test set validation signiﬁcantly reduce the number of,False,False,False,False,False,False
+patterns.,False,False,False,False,False,False
+E. Predicting Heart Disease With Association Rules,False,False,False,False,False,False
+This section presents medically signiﬁcant rules that predict,False,False,False,False,False,False
+artery disease based on perfusion measurements and risk factors.,False,False,False,False,False,False
+Rules are presented in two groups: 1) those which express that,False,False,False,False,False,False
+"if there is no risk factor and a l ow perfusion measurement,",False,False,False,False,False,False
+then there is absence of heart disease and 2) those that state,False,False,False,False,False,False
+that if there exists a risk factor or a high perfusion measurement,False,False,False,False,False,False
+then there exists heart disease. We sought rules involving at,False,False,False,False,False,False
+most κ =4attributes; the reason behind this setting was that we,False,False,False,False,False,False
+wanted to get fewer and simpler rules. The default program pa-,False,False,False,False,False,False
+rameter settings are described in Section IV-B. The rule metrics,False,False,False,False,False,False
+"thresholds were ψ =1%,α=70%, and λ =1. These metrics",False,False,False,False,False,False
+"allowed getting rules to appear in at least three patients, having",False,False,False,False,False,False
+"reasonable sensitivity, and ﬁltering out rules with unacceptable",False,False,False,False,False,False
+lift. We ran t =5train/test cycles to get ﬁve independent sets,False,False,False,False,False,False
+"of rules to compute the intersection of rule sets, where each rule",False,False,False,False,False,False
+"support, conﬁdence, and lift are computed as averages of rule",False,False,False,False,False,False
+metrics from all test rule sets [by (1)–(3)]. Given the small size,False,False,False,False,False,False
+"of our data set, t =5seemed reasonable to validate rules. Refer",False,False,False,False,False,False
+to Table I to understand the abbreviations of attribute names.,False,False,False,False,False,True
+Medical doctors use sensitivity and speciﬁcity as two basic,False,False,False,False,False,False
+statistics to validate results. Sensitivity is deﬁned as the proba-,False,False,False,False,False,False
+"bility of correctly identifying sick patients, whereas speciﬁcity",False,False,False,False,False,False
+is deﬁned as the probability of correctly identifying healthy indi-,False,False,False,False,False,False
+TABLE VII,True,False,False,False,False,True
+S,True,False,False,True,False,False
+UMMARY OF RULES IN R,True,False,False,True,False,False
+N,True,False,False,True,False,False
+AND R,True,False,False,True,False,False
+Y,True,False,False,True,False,False
+"viduals. In general, it is difﬁcult to get high sensitivity and high",False,False,False,False,False,False
+"speciﬁcity with the same predictive model. That is, increasing",False,False,False,False,False,False
+"sensitivity decreases speciﬁcity, and vice versa. In general, our",False,False,False,False,False,False
+experiments were optimized to increase sensitivity and decrease,False,False,False,False,False,False
+"speciﬁcity. That is, it was preferred to increase the number of",False,False,False,False,False,False
+patients predicted to have heart disease at the risk of including,False,False,False,False,False,False
+"other patients with borderline heart disease, that were perhaps",False,False,False,False,False,False
+healthy. Lift was used together with conﬁdence to understand,False,False,False,False,False,False
+sensitivity and speciﬁcity.,False,False,False,False,False,False
+1) Rule Summary: Table VII shows a summary of rules that,False,False,False,True,False,False
+remain valid on all test sets. The most s igniﬁcant or interest-,False,False,False,False,False,False
+"ing rules are marked with a + symbol, meaning rules with very",False,False,False,False,False,False
+high conﬁdence or high lift. The ﬁrst general observation is,False,False,False,False,False,False
+there are many more rules predicting absence of disease; un-,False,False,False,False,False,False
+"fortunately, most such rules had low lift. These results state",False,False,False,False,False,False
+that ﬁnding interesting rules to predict the existence of dis-,False,False,False,False,False,False
+ease are likely to appear mainly at low support levels. There,False,False,False,False,False,False
+were more rules predicting existence of disease with high lift,False,False,False,False,False,False
+(above 2). The proportion of high conﬁdence (≥90%) rules was,False,False,False,False,False,False
+"much higher for rules predicting absence of disease; in fact,",False,False,False,False,False,False
+more than half of the total number of rules. More than 60% of,False,False,False,False,False,False
+"rules predicting absence of disease had lift close to 1 (l<1.2),",False,False,False,False,False,False
+stressing the difﬁculty in isolating important risk factors or low,False,False,False,False,False,False
+perfusion measurements in predicting whether a speciﬁc artery,False,False,False,False,False,False
+is healthy. There were many more rules with high support or,False,False,False,False,False,False
+high conﬁdence predicting absence of disease compared to their,False,False,False,False,False,False
+counterpart.,False,False,False,False,False,False
+"Any rule with conﬁdence greater or equal than 90%, with",False,False,False,False,False,False
+"high lift (above 1.5), or with two arteries in the consequent can",False,False,False,False,False,False
+"enrich medical knowledge. In particular, rules with very high",False,False,False,False,False,False
+conﬁdence and high lift that are not currently part of an expert,False,False,False,False,False,False
+"system knowledge base, or which do not correspond to common",False,False,False,False,False,False
+"diagnostic patterns, represent valuable new medical knowledge.",False,False,False,False,False,False
+Getting rules with combinations of arteries in the consequent,False,False,False,False,False,False
+"was one of the reasons to use association rules. Unfortunately,",False,False,False,False,False,False
+there were no rules predicting the existence of disease having,False,False,False,False,False,False
+"two arteries in the consequent, but there were 23 for healthy",False,False,False,False,False,False
+"arteries. This is an important ﬁnding, because even though it is",False,False,False,False,False,False
+possible to identify a link between perfusion measurements/risk,False,False,False,False,False,False
+"factors and one diseased artery, there was not a single rule pre-",False,False,False,False,False,False
+dicting two diseased arteries. Manual inspection revealed there,False,False,False,False,False,False
+were some rules predicting the existence of disease in two arter-,False,False,False,False,False,False
+"ies on the training set, but unfortunately none passed validation",False,False,False,False,False,False
+"on all test sets. Simple rules, which are preferred because they",False,False,False,False,False,False
+Fig. 2. Association rules predicting absence of heart disease (P =“N”).,False,False,False,False,True,False
+tend to be easier to interpret by medical doctors and have higher,False,False,False,False,False,False
+"support, were scarce; there were only seven and four rules",False,False,False,False,False,False
+"predicting the absence and existence of disease, respectively.",False,False,False,False,False,False
+2) Predicting Absence of Heart Disease: Fig. 2 shows some,False,False,False,False,False,False
+selected rules with high quality metrics. For each numeric at-,False,False,False,False,False,False
+"tribute X, we use the notation X[a, b), meaning that a ≤ X and",False,False,False,False,False,False
+X<b; this provides a more concise notation. We have a group,False,False,False,False,False,False
+of rules with 100% conﬁdence; the important fact was that,False,False,False,False,False,False
+there was only one rule for RCA involving only risk factors and,False,False,False,False,False,False
+"no perfusion, and there was only one rule for LCX with a low",False,False,False,False,False,False
+"perfusion measurement. Rules for LM are abundant, combining",False,False,False,False,False,False
+low perfusion measurements in most regions and risk factors,False,False,False,False,False,False
+equal to “N.” When looking at the set with conﬁdence above,False,False,False,False,False,False
+"0.9 and below 1, there are a few more LCX rules involving",False,False,False,False,False,False
+"low perfusion measurements, but only one RCA rule involves",False,False,False,False,False,False
+perfusion and risk factors. Then we have the rule set with,False,False,False,False,False,False
+"high lift (l ≥ 1.5) that involved LAD, LCX, and RCA alone",False,False,False,False,False,False
+in the consequent and 11 rules combining LAD and LM. In,False,False,False,False,False,False
+"general, the support for those rules was low, and conﬁdence was",False,False,False,False,False,False
+below 90%.,False,False,False,False,False,False
+Many rules predicting no disease represent valuable new med-,False,False,False,False,False,False
+"ical knowledge. In particular, rules with borderline risk factors",False,False,False,False,False,False
+"reveal interesting relationships among risk factors, normal (low)",False,False,False,False,False,False
+"perfusion measurements, and healthy arteries. Those rules with",False,False,False,False,False,False
+warning cholesterol levels (200–250) show relationships to the,False,False,False,False,False,False
+LCX and RCA arteries. A rule with high cholesterol levels,False,False,False,False,False,False
+(250–500) implies a still-healthy LM artery. Rules with adult,False,False,False,False,False,False
+age (40–60) imply a healthy RCA artery. A rule about males,False,False,False,False,False,False
+"shows a healthy LM artery, but its lift is low.",False,False,False,False,False,False
+"Rules with high support in [0.2, 0.3] involved only the LM,",False,False,False,False,False,False
+"LCX, and RCA arteries. The rules with s ≥ 0.4 involved only",False,False,False,False,False,False
+LM. This conﬁrms the higher likelihood of having a healthy,False,False,False,False,False,False
+"LM artery, given the fact that the other arteries branch from it.",False,False,False,False,False,False
+Another observation is that LM rules have higher conﬁdence,False,False,False,False,False,False
+than rules with any of the other arteries. The rules with two,False,False,False,False,False,False
+items in the consequent are valuable since they were one of,False,False,False,False,False,False
+the main reasons to use association rules to predict multiple,False,False,False,False,False,False
+Fig. 3. Association rules predicting existence of heart d isease (P =“Y”).,False,False,False,False,True,False
+combinations of target variables. They involved all combination,False,False,False,False,False,False
+"between LM and the other three arteries, but there was not any",False,False,False,False,False,False
+combination among the branching arteries. This means it is un-,False,False,False,False,False,False
+likely two branching arteries are healthy in the same person. Fi-,False,False,False,False,False,False
+"nally, we show some rules with only one item in the antecedent;",False,False,False,False,False,False
+"these rules have high conﬁdence and high support, but low",False,False,False,False,False,False
+lift.,False,False,False,False,False,False
+3) Predicting Existence of Heart Disease: Fig. 3 shows,False,False,False,False,False,False
+some selected rules with high quality metrics. Rules with high,False,False,False,False,False,False
+conﬁdence and high lift are extremely valuable. For numeric at-,False,False,False,False,False,False
+"tributes X, we use the notation X(a, b), meaning that a ≤ X and",False,False,False,False,False,False
+"X<b. Most rules with 100% conﬁdence referred to the LAD,",False,False,False,False,False,False
+and only one referred to the RCA artery. We show the only rule,False,False,False,False,False,False
+that had c =1and l ≥ 2 involving the RCA artery; this rule has,False,False,False,False,False,False
+signiﬁcant medical value because it combines two risk factors,False,False,False,False,False,False
+and a speciﬁc perfusion defect with high quality metrics. The,False,False,False,False,False,False
+next group involves rules with c =1and l slightly below 2; all,False,False,False,False,False,False
+those rules involve the LAD artery and none of the other arteries;,False,False,False,False,False,False
+most rules involved warning cholesterol levels and older patients,False,False,False,False,False,False
+(above 60). The next rule group involves rules with c ≥ 0.9 and,False,False,False,False,False,False
+l ≥ 2; all seven rules involved LAD with warning cholesterol,False,False,False,False,False,False
+levels; most inv olved sex = M and perfusion defects in SA. The,False,False,False,False,False,False
+next rule group involves rules with c ≥ 0.9 and l<2; there were,False,False,False,False,False,False
+"only 22 rules involving only LAD. Curiously, some rules had",False,False,False,False,False,False
+sex = F and low cholesterol l evels; HTA and PSTROKE come,False,False,False,False,False,False
+out as important factors. Then we have 12 interesting rules with,False,False,False,False,False,False
+lower conﬁdence but high lift (c<9 and l ≥ 2); these rules in-,False,False,False,False,False,False
+"volve only LAD and RCA, with older age, high cholesterol, and",False,False,False,False,False,False
+perfusion defects in SA and AP. It is interesting that in rules with,False,False,False,False,False,False
+"high conﬁdence (c ≥ 0.9) or high lift (l ≥ 2), high cholesterol",False,False,False,False,False,False
+"levels, older age, hypertension (HTA), and smoking appear as",False,False,False,False,False,False
+"risk factors, but they do not appear combined without a perfusion",False,False,False,False,False,False
+defect.,False,False,False,False,False,False
+There were only two rules with support above 0.2 in-,False,False,False,False,False,False
+volving the LAD artery. There were only three rules with,False,False,False,False,False,False
+"only risk factors involving low cholesterol levels, sex = M or",False,False,False,False,False,False
+DIAB/SMOKE; all these rules had LAD in the consequent. We,False,False,False,False,False,False
+"found a few rules combining smoking with high cholesterol, a",False,False,False,False,False,False
+well-known risk combination that included perfusion defects.,False,False,False,False,False,False
+"Finally, there were only four simple rules with only two items",False,False,False,False,False,False
+"(one item in the antecedent), and we show two of them. These",False,False,False,False,False,False
+"rules have fairly high support, borderline conﬁdence, and small",False,False,False,False,False,False
+lift. These rules conﬁrm it is not possible to ﬁnd a single at-,False,False,False,False,False,False
+tribute predicting heart disease with high conﬁdence and high,False,False,False,False,False,False
+lift. Several rules predicting disease represent valuable new med-,False,False,False,False,False,False
+"ical knowledge. In particular, rules with highly narrowed arteries",False,False,False,False,False,False
+"(narrowing above 70%), with high cholesterol levels (250–500),",False,False,False,False,False,False
+"less signiﬁcant risk factors (like DIAB or FHCAD), or with",False,False,False,False,False,False
+sex = F show surprising relationships among well-known risk,False,False,False,False,False,False
+factors.,False,False,False,False,False,False
+V. R,True,True,False,True,False,False
+ELATED WORK,True,False,False,True,False,False
+We start by discussing research on data mining techniques,False,False,False,False,False,False
+used with medical and biological data. Important issues [13],False,False,False,False,False,False
+when using machine learning or data mining techniques in,False,False,False,False,False,False
+"the medical domain include fragmented data collection, strict",False,False,False,False,False,False
+"privacy regulations, rich data types (image, numeric, categori-",False,False,False,False,False,False
+"cal, missing information), complex taxonomies classifying at-",False,False,False,False,False,False
+"tributes, and an already rich and complex knowledge base. The",False,False,False,False,False,False
+HDP system to aid diagnosis of heart disease is presented,False,False,False,False,False,False
+"in [22], [23], and [24]. This body of work provides evidence",False,False,False,False,False,False
+that a computer program can improve differential diagnosis for,False,False,False,False,False,False
+cardiovascular disease made by medical doctors. Bayesian net-,False,False,False,False,False,False
+works are combined with AI inference mechanisms [23]. More,False,False,False,False,False,False
+general research using association rules in the medical commu-,False,False,False,False,False,False
+nity includes the following. Infection detection and monitoring,False,False,False,False,False,False
+"has been automated by association rules [25], [26]. Associa-",False,False,False,False,False,False
+tion rules describe what drugs are frequently coprescribed with,False,False,False,False,False,False
+antacids [27]. Frequent patterns in gene data have been dis-,False,False,False,False,False,False
+"covered with association r ules [28], [29]. Protein interaction",False,False,False,False,False,False
+within protein groups is an important topic [30]. Common risk,False,False,False,False,False,False
+factors in pediatric diseases are another important medical ap-,False,False,False,False,False,False
+plication [31]. Fuzzy sets have been used to extend association,False,False,False,False,False,False
+"rules [32]. To our knowledge, reducing the number of associ-",False,False,False,False,False,False
+ation rules with constraints and validating/ﬁltering rules on an,False,False,False,False,False,False
+independent set has not previously been studied in the medical,False,False,False,False,False,False
+domain.,False,False,False,False,False,False
+Association rules were introduced in a well-known arti-,False,False,False,False,False,False
+"cle [19]. In [33], there is a study of I/O complexity of early",False,False,False,False,False,False
+association rule algorithms as well as some statistical metrics.,False,False,False,False,False,False
+Both [12] and [34] use different approaches to automatically,False,False,False,False,False,False
+bin numeric attributes. Domain experts preferred to use stan-,False,False,False,False,False,False
+"dard cutoff numbers for binning numeric attributes, to improve",False,False,False,False,False,False
+result interpretation and validation with previous work. There,False,False,False,False,False,False
+is previous work on using constraints to reduce the number,False,False,False,False,False,False
+of rules. Our constraints exhibit similarities to those proposed,False,False,False,False,False,False
+"in [14], [15], [20]. Reference [20] proposes algorithms that can",False,False,False,False,False,False
+incorporate constraints to include or exclude certain items in the,False,False,False,False,False,False
+frequent itemset generation phase. Association rule constraints,False,False,False,False,False,False
+"are s tudied in depth in [15], where constraints are deﬁned as item",False,False,False,False,False,False
+"boolean expressions between two variables. Subsequently, [14]",False,False,False,False,False,False
+extended that approach by allowing more general expressions,False,False,False,False,False,False
+on items. It is well known that simple constraints on support can,False,False,False,False,False,False
+be used for pruning the search space in Phase 1 [17]. Several,False,False,False,False,False,False
+search constraints for association rules are studied in [16].,False,False,False,False,False,False
+VI. C,True,True,False,True,False,False
+ONCLUSION,True,False,False,True,False,False
+We used association r ules to predict the degree of narrowing,False,False,False,False,False,False
+in four arteries based on heart perfusion measurements and risk,False,False,False,False,False,False
+factors. We studied two complementary tasks: predicting the ab-,False,False,False,False,False,False
+sence and predicting the existence of heart disease. We focused,False,False,False,False,False,False
+on two main research issues. The ﬁrst issue is the large number,False,False,False,False,False,False
+of rules that are obtained by the standard association rule algo-,False,False,False,False,False,False
+rithm. The second issue is the validation of rules on an indepen-,False,False,False,False,False,False
+"dent set, which is required to eliminate unreliable rules, or rules",False,False,False,False,False,False
+that cannot be generalized. Four constraints were proposed in,False,False,False,False,False,False
+"this work to reduce the number of rules: item ﬁltering, attribute",False,False,False,False,False,False
+"grouping, maximum itemset size, and antecedent/consequent",False,False,False,False,False,False
+"rule ﬁltering. Contrasting with previous work, our constraints",False,False,False,False,False,False
+"are speciﬁed on raw attributes instead of items, item ﬁltering",False,False,False,False,False,False
+"is applied earlier before generating frequent itemsets, and the",False,False,False,False,False,False
+group constraint induces a partition on attributes allowing easier,False,False,False,False,False,False
+"manipulation. In order to validate rules, we used the train and",False,False,False,False,False,False
+test approach that uses two disjoint samples from a data set to,False,False,False,False,False,False
+search and validate rules. All features are assembled together,False,False,False,False,False,False
+in one algorithm that combines search constraints and train/test,False,False,False,False,False,False
+validation. The algorithm performs several train and test cy-,False,False,False,False,False,False
+cles to achieve basic cross-validation and reduce the number,False,False,False,False,False,False
+of rules with poor generalization potential. Experiments on a,False,False,False,False,False,False
+real data set studied the impact of constraints and the elimi-,False,False,False,False,False,False
+nation of unreliable rules with validation on the test set. The,False,False,False,False,False,False
+reduction in output size provided by constraints and validation,False,False,False,False,False,False
+"is signiﬁcant. In particular, the reduction provided by item ﬁl-",False,False,False,False,False,False
+tering and antecedent/consequent rule ﬁltering was about an,False,False,False,False,False,False
+order of magnitude. We presented medically signiﬁcant rules,False,False,False,False,False,False
+discovered on our medical data set that remain valid in sev-,False,False,False,False,False,False
+eral independent train/test cycles. Rules predicting absence of,False,False,False,False,False,False
+"disease are abundant, but have low lift metrics and therefore",False,False,False,False,False,False
+poor predictive quality. The set of rules predicting the existence,False,False,False,False,False,False
+"of disease is smaller and Tends to have higher lift, which is",False,False,False,False,False,False
+consistent with our medical goal. Rules predicting heart dis-,False,False,False,False,False,False
+ease provide accurate proﬁles of patients with localized heart,False,False,False,False,False,False
+"problems, speciﬁc risk factors, and the degree of disease in one",False,False,False,False,False,False
+artery.,False,False,False,False,False,False
+There are many interesting aspects for future research. Con-,False,False,False,False,False,False
+"straints for association search may be relaxed, given the high",False,False,False,False,False,False
+number of rules t hat are ﬁltered out in the validation phase.,False,False,False,False,False,False
+Some statistic or quality metric is needed to compare differ-,False,False,False,False,False,False
+ent sets of rules. We would like to know which attributes make,False,False,False,False,False,False
+rules fail the validation phase and which attributes tend to appear,False,False,False,False,False,False
+"more frequently after validation. Support, conﬁdence, and lift",False,False,False,False,False,False
+have different importance to ﬁlter rules on the test set; we con-,False,False,False,False,False,False
+jecture that conﬁdence is the most important metric to validate,False,False,False,False,False,False
+"rules. Given the small size of our data set, we could not ap-",False,False,False,False,False,False
+ply more rigorous techniques like train/validate/test or ten-fold,False,False,False,False,False,False
+cross validation; such techniques may be applied on larger data,False,False,False,False,False,False
+sets. Artery attributes may be helped with fuzzy discretization in,False,False,False,False,False,False
+order to get rules with higher conﬁdence or higher support. A hi-,False,False,False,False,False,False
+erarchy of perfusion measurements is required to control the rule,False,False,False,False,False,False
+"discovery process, in order to increase or decrease sensitivity",False,False,False,False,False,False
+to detect sick patients with high accuracy without signiﬁcantly,False,False,False,False,False,False
+losing sensitivity.,False,False,False,False,False,False
+ACKNOWLEDGMENT,True,False,False,True,False,False
+The author would like to thank the Emory University Radi-,False,False,False,False,False,False
+ology Department for providing the medical data set used in,False,False,False,False,False,False
+"this article. The author would also like to thank Dr. C. Santana,",False,False,False,False,False,False
+"from the Emory University Hospital, for sharing his expertise",False,False,False,False,False,False
+on cardiology.,False,False,False,False,False,False
+R,True,False,False,True,False,False
+EFERENCES,True,False,False,True,False,False
+"[1] D. Cooke, C. Ordonez, E. V. Garcia, E. Omiecinski, E. Krawczynska,",False,False,False,False,False,False
+"R. Folks, C. Santana, L. de Braal, and N. Ezquerra, “Data mining of",False,False,False,False,False,False
+large myocardial perfusion SPECT (MPS) databases to improve diagnostic,False,False,False,False,False,False
+"decision making,” J. Nucl. Med., vol. 40, no. 5, 1999.",False,False,False,False,False,False
+"[2] C. Ordonez and E. Omiecinski, “Discovering association rules based",False,False,False,False,False,False
+"on image content,” in Proc. IEEE Advances in Digital Libraries Conf.",False,False,False,False,False,False
+"(ADL’99), 1999, pp. 38–49.",False,False,False,False,False,False
+"[3] L. Braal, N. Ezquerra, E. Schwartz, and E. V. Garcia, “Analyzing and pre-",False,False,False,False,False,False
+"dicting images through a neural network approach,” in Proc. Visualization",False,False,False,False,False,False
+"in Biomedical Computing, 1996, pp. 253–258.",False,False,False,False,False,False
+"[4] C. Ordonez, E. Omiecinski, L. de Braal, C. Santana, and N. Ezquerra,",False,False,False,False,False,False
+"“Mining constrained association rules to predict heart disease,” in Proc.",False,False,False,False,False,False
+"IEEE ICDM Conf., 2001, pp. 433–440.",False,False,False,False,False,False
+"[5] C. Ordonez, C. A. Santana, and L. Braal, “Discovering interesting associ-",False,False,False,False,False,False
+"ation rules in medical data,” in Proc. ACM Data Mining and Knowledge",False,False,False,False,False,False
+"Discovery Workshop, 2000, pp. 78–85.",False,False,False,False,False,False
+"[6] N. Ezquerra and R. Mullick, “Perfex: An expert system for interpreting",False,False,False,False,False,False
+"myocardial perfusion,” Expert Syst. Appl., vol. 6, pp. 455–468, 1993.",False,False,False,False,False,False
+"[7] D. Cooke, C. Santana, T. Morris, L. de Braal, C. Ordonez, E. Omiecinski,",False,False,False,False,False,False
+"N. Ezquerra, and E. V. Garcia, “Validating expert system rule conﬁdences",False,False,False,False,False,False
+"using data mining of myocardial perfusion SPECT databases,” in Proc.",False,False,False,False,False,False
+"Computers in Cardiology Conf., 2000, pp. 116–119.",False,False,False,False,False,False
+"[8] P. Clark and T. Nisblett, “The CN2 induction algorithm,” Mach. Learn.,",False,False,False,False,False,False
+"vol. 3, pp. 261–283, 1989.",False,False,False,False,False,False
+"[9] J. R. Quinlan, “Induction of decision trees,” Mach. Learn., vol. 1, no. 1,",False,False,False,False,False,False
+"pp. 81–106, 1986.",False,False,False,False,False,False
+"[10] T. Hastie, R. Tibshirani, and J. H. Friedman, The Elements of Statistical",False,False,False,False,False,False
+"Learning, 1st ed., New York: Springer-Verlag, 2001.",False,False,False,False,False,False
+"[11] R. Bayardo and R. Agrawal, “Mining the most interesting rules,” in Proc.",False,False,False,False,False,False
+"ACM KDD Conf., 1999, pp. 145–154.",False,False,False,False,False,False
+"[12] R. Srikant and R. Agrawal, “Mining quantitative association rules in large",False,False,False,False,False,False
+"relational tables,” in Proc. ACM SIGMOD Conf., 1996, pp. 1–12.",False,False,False,False,False,False
+"[13] J. F. Roddick, P. Fule, and W. J. Graco, “Exploratory medical knowledge",False,False,False,False,False,False
+"discovery: Experiences and issues,” SIGKDD Explorations, vol. 5, no. 1,",False,False,False,False,False,False
+"pp. 94–99, 2003.",False,False,False,False,False,False
+"[14] L. V. S. Lakshmanan, R. Ng, J. Han, and A. Pang, “Optimization of",False,False,False,False,False,False
+"constrained frequent set queries with 2-variable constraints,” in Proc.",False,False,False,False,False,False
+"ACM SIGMOD Conf., 1999, pp. 157–168.",False,False,False,False,False,False
+"[15] R. Ng, L. Lakshmanan, and J. Han, “Exploratory mining and pruning",False,False,False,False,False,False
+"optimizations of constrained association rules,” in Proc. ACM SIGMOD",False,False,False,False,False,False
+"Conf., 1998, pp. 13–24.",False,False,False,False,False,False
+"[16] J. Pei and J. Han, “Constraints in data mining: Constrained frequent pattern",False,False,False,False,False,False
+"mining: A pattern-growth view,” SIGKDD Explorations, vol. 4, no. 1,",False,False,False,False,False,False
+"pp. 31–39, 2002.",False,False,False,False,False,False
+"[17] K. Wang, Y. He, and J. Han, “Pushing support constraints into association",False,False,False,False,False,False
+"rules mining,” IEEE Trans. Knowl. Data Eng., vol. 15, no. 3, pp. 642–658,",False,False,False,False,False,False
+May/Jun. 2003.,False,False,False,False,False,False
+"[18] T. M. Mitchell, Machine Learning. New York: McGraw-Hill, 1997.",False,False,False,False,False,False
+"[19] R. Agrawal, T. Imielinski, and A. Swami, “Mining association rules be-",False,False,False,False,False,False
+"tween sets of items in large databases,” in Proc. ACM SIGMOD Conf.,",False,False,False,False,False,False
+"1993, pp. 207–216.",False,False,False,False,False,False
+"[20] R. Srikant, Q. Vu, and R. Agrawal, “Mining association rules with item",False,False,False,False,False,False
+"constraints,” in Proc. ACM Knowledge Discovery and Data Mining Conf.,",False,False,False,False,False,False
+"1997, pp. 67–73.",False,False,False,False,False,False
+"[21] J. Han, J. Pei, and Y. Yin, “Mining frequent patterns without candidate",False,False,False,False,False,False
+"generation,” in Proc. ACM SIGMOD Conf., 2000, pp. 1–12.",False,False,False,False,False,False
+"[22] H. S. Fraser, W. J. Long, and S. Naimi, “Evaluation of a cardiac diag-",False,False,False,False,False,False
+"nostic program in a typical clinical setting,” J. Amer. Med. Inform. Assoc.",False,False,False,False,False,False
+"(JAMIA), vol. 10, no. 4, pp. 373–381, 2003.",False,False,False,False,False,False
+"[23] W. J. Long, “Medical reasoning using a probabilistic network,” Appl. Artif.",False,False,False,False,False,False
+"Intell., vol. 3, pp. 367–383, 1989.",False,False,False,False,False,False
+"[24] W. J. Long, H. S. Fraser, and S. Naimi, “Reasoning requirements for",False,False,False,False,False,False
+"diagnosis of heart disease,” Artif. Intell. Med., vol. 10, no. 1, pp. 5–24,",False,False,False,False,False,False
+1997.,False,False,False,False,False,False
+"[25] S. E. Brossette, A. P. Sprague, J. M. Hardin, K. B. Waites, W. T. Jones,",False,False,False,False,False,False
+"and S. A. Moser, “Association rules and data mining in hospital infection",False,False,False,False,False,False
+"control and public health surveillance,” J. Amer. Med. Inform. Assoc.",False,False,False,False,False,False
+"(JAMIA), vol. 5, no. 4, pp. 373–381, 1998.",False,False,False,False,False,False
+"[26] S. E. Brossette, A. P. Sprague, W. T. Jones, and S. A. Moser, “A data mining",False,False,False,False,False,False
+"system for infection control surveillance,” Meth. Inf. Med., vol. 39, no. 4,",False,False,False,False,False,False
+"pp. 303–310, 2000.",False,False,False,False,False,False
+"[27] T. J. Chen, L. F. Chou, and S. J. Hwang, “Application of a data mining",False,False,False,False,False,False
+"technique to analyze coprescription patterns for antacids in Taiwan,” Clin.",False,False,False,False,False,False
+"Ther., vol. 25, no. 9, pp. 2453–2463, 2003.",False,False,False,False,False,False
+"[28] C. Becquet, S. Blachon, B. Jeudy, J. F. Boulicaut, and O. Gandrillon,",False,False,False,False,False,False
+“Strong association-rule mining for large-scale gene-expression data anal-,False,False,False,False,False,False
+"ysis: A case study on human SAGE data,” Genom Biol., vol. 3, no. 12,",False,False,False,False,False,False
+2002.,False,False,False,False,False,False
+"[29] C. Creighton and S. Hanash, “Mining gene expression databases for asso-",False,False,False,False,False,False
+"ciation rules,” Bioinformatics, vol. 19, no. 1, pp. 79–86, 2003.",False,False,False,False,False,False
+"[30] T. Oyama, K. Kitano, T. Satou, and T. Ito, “Extraction of knowledge on",False,False,False,False,False,False
+"protein-protein interaction by association rule discovery,” Bioinformatics,",False,False,False,False,False,False
+"vol. 18, no. 5, pp. 705–714, 2002.",False,False,False,False,False,False
+"[31] S. M. Down and M. Y. Wallace, “Mining association rules from a pedi-",False,False,False,False,False,False
+"atric primary care decision support system,” in Proc. AMIA Symp., 2000,",False,False,False,False,False,False
+pp. 200–204.,False,False,False,False,False,False
+"[32] M. Delgado, D. Sanchez, M. J. Martin-Bautista, and M. A. Vila, “Mining",False,False,False,False,False,False
+"association rules with improved semantics in medical databases,” Artif.",False,False,False,False,False,False
+"Intell. Med., vol. 21, no. 1-3, pp. 241–245, 2001.",False,False,False,False,False,False
+"[33] J. L. Han, “Background for association rules and cost estimate of selected",False,False,False,False,False,False
+"mining algorithms,” in Proc. ACM Information and Knowledge Manage-",False,False,False,False,False,False
+"ment Conf., 1996, pp. 73–80.",False,False,False,False,False,False
+"[34] B. Lent, A. Swami, and J. Widom, “Clustering association rules,” in Proc.",False,False,False,False,False,False
+"IEEE ICDE Conf., 1997, pp. 220–231.",False,False,False,False,False,False
+Carlos Ordonez received the B.Sc. degree in applied,False,False,False,False,False,False
+mathematics and the M.S. degree in computer science,False,False,False,False,False,False
+"from the UNAM University, Mexico City, Mexico, in",False,False,False,False,False,False
+"1992 and 1996 respectively, and the Ph.D. degree",False,False,False,False,False,False
+in computer science from the Georgia Institute of,False,False,False,False,False,False
+"Technology, Atlanta, in 2000.",False,False,False,False,False,False
+"He is currently with Teradata (NCR), San Diego,",False,False,False,False,False,False
+"CA, conducting research on databases and machine",False,False,False,False,False,False
+learning. He has published more than 20 scientiﬁc,False,False,False,False,False,False
+articles in international conferences and journals.,False,False,False,False,False,False

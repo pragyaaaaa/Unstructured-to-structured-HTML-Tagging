@@ -1,0 +1,387 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+Classification of Heart Disease Using K- Nearest Neighbor and ,False,False,False,False,False,False
+Genetic Algorithm ,False,False,False,False,False,False
+M.Akhil jabbar* B.L Deekshatulu,False,False,False,False,False,False
+a  ,False,False,False,False,False,False
+Priti Chandra ,False,False,False,False,False,False
+b,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+*,False,False,False,False,False,False
+"Associate Professor,Aurora’s Engineering college,Bhongir,A.P,INDIA",False,False,False,False,False,False
+   ,False,False,False,False,False,False
+a,False,False,False,False,False,False
+"Distinguished Fellow IDRBT,INDIA ",False,False,False,False,False,False
+                b,False,False,False,False,False,False
+* Corresponding author. Tel.: +9912648686 ,False,False,False,False,False,False
+E-mail address:jabbar.meerja@gmail.com ,False,False,False,False,False,False
+"senior scientist,ASL,DRDO, INDIA ",False,False,False,False,False,False
+Abstract ,False,False,False,True,False,False
+Data  mining  techniques  have  been  widely  used  to  mine  knowledgeable  information  from  medical  data  bases.  In  data  mining ,False,False,False,False,False,False
+"classification is a supervised learning that can be used to design models describing important data classes, where class attribute is ",False,False,False,False,False,False
+"involved in the construction of the classifier. Nearest neighbor (KNN) is very simple, most popular, highly efficient and effective ",False,False,False,False,False,False
+"algorithm  for pattern recognition.KNN  is a straight forward classifier,  where samples are  classified based  on  the  class  of their ",False,False,False,False,False,False
+"nearest  neighbor.  Medical  data  bases  are  high  volume  in  nature.  If  the  data  set  contains  redundant  and  irrelevant  attributes, ",False,False,False,False,False,False
+classification  may produce  less  accurate result. Heart  disease  is  the  leading  cause  of  death in INDIA.  In  Andhra  Pradesh heart ,False,False,False,False,False,False
+"disease was the leading cause of mortality accounting for 32%of all deaths, a rate as high as Canada (35%) and USA.Hence there ",False,False,False,False,False,False
+is a need to define a decision support system that helps clinicians decide to take precautionary steps. In this paper we propose a ,False,False,False,False,False,False
+new  algorithm  which  combines  KNN  with  genetic  algorithm  for  effective  classification.  Genetic  algorithms  perform  global ,False,False,False,False,False,False
+search in complex large and multimodal landscapes and provide optimal solution. Experimental results shows that our algorithm ,False,False,False,False,False,False
+enhance the accuracy in diagnosis of heart disease.  ,False,False,False,False,False,False
+© 2013 The Authors. Published by Elsevier Ltd. ,False,False,False,False,False,False
+"Selection and peer-review under responsibility of the University of Kalyani, Department of Computer Science & Engineering. ",False,False,False,False,False,False
+"Keywords :Andhra pradesh,Data mining,Genetic algorithm,Heart disease,KNN algorithm ",False,False,False,False,False,False
+Available online at www.sciencedirect.com,False,False,False,False,False,False
+© 2013 The Authors. Published by Elsevier Ltd. Open access under CC BY-NC-ND license.,False,False,False,False,False,False
+"Selection and peer-review under responsibility of the University of Kalyani, Department of Computer Science & Engineering",False,False,False,False,False,False
+Data mining is the process of automatically extracting knowledgeable information from huge amounts of data. It has ,False,False,False,False,False,False
+"become increasingly important as real life data enormously increasing [1].Data mining is an integral part of KDD, ",False,False,False,False,False,False
+which consists of series of transformation steps from preprocessing of data to post processing of data mining results. ,False,False,False,False,False,False
+"The basic functionality of data mining involves classification, association and clustering. Classification is a ",False,False,False,False,False,False
+pervasive problem that encompasses many diverse applications. To improve medical decision making data mining ,False,False,False,False,False,False
+techniques have been applied to variety of medical domains. Many health care organizations are facing a major ,False,False,False,False,False,False
+challenge is the provision of quality services like diagnosing patients correctly and administering treatment at ,False,False,False,False,False,False
+reasonable costs. Data mining techniques answer several important and critical questions related to health care. ,False,False,False,False,False,False
+Nearest neighbor is one of the most popular classification technique introduced by Hodges and fix [2].Without any ,False,False,False,False,False,False
+"additional data, classification rules are generated by the training samples themselves. ",False,False,False,False,False,False
+Evolutionary algorithms are used for the problem that can’t be solved efficiently with traditional algorithms. Genetic ,False,False,False,False,False,False
+algorithms (GA) are computing methodologies constructed with the process of evolution [3].  GA Have played a ,False,False,False,False,False,False
+vital role in many engineering applications. Heart disease is the leading cause of death in developed countries and is ,False,False,False,False,False,False
+one of the main contributors to disease burden in developing countries like INDIA. Several studies in Andhra ,False,False,False,False,False,False
+"Pradesh reveal that heart disease was the leading cause of mortality accounting 32% deaths, as high as Canada and ",False,False,False,False,False,False
+USA.Hence there is a need to design and develop a clinical decision support for classification of heart disease. In ,False,False,False,False,False,False
+"this paper we propose a classification algorithm which combines KNN and genetic algorithm, to predict heart ",False,False,False,False,False,False
+disease of a patient for Andhra Pradesh population. ,False,False,False,False,False,False
+"This paper is structured as follows: section 2 we review the concepts of KNN, Genetic algorithm and heart disease. ",False,False,False,False,False,False
+Section 3 explains our proposed classifier. Results are discussed in section 4 and we conclude our remarks in section ,False,False,False,False,False,False
+5. ,False,False,True,True,False,False
+"In this section we review the concepts like KNN, Genetic algorithm and heart disease. ",False,False,False,False,False,False
+2.1. K nearest neighbor classifier ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"K nearest neighbor(KNN) is a simple algorithm, which stores all cases and classify new cases based on similarity ",False,False,False,False,False,False
+measure.KNN algorithm also called as 1) case based reasoning 2) k nearest neighbor 3)example based reasoning 4) ,False,False,False,False,False,False
+instance based learning 5) memory based reasoning 6) lazy learning [4].KNN algorithms have been used since ,False,False,False,False,False,False
+1970 in many applications like statistical estimation and pattern recognition etc.KNN is a non parametric ,False,False,False,False,False,False
+classification method which is broadly classified into two types1) structure less NN techniques 2) structure based ,False,False,False,False,False,False
+NN techniques. In structure less NN techniques whole data is classified into training and test sample data. From ,False,False,False,False,False,False
+"training point to sample point distance is evaluated, and the point with lowest distance is called nearest neighbor.  ",False,False,False,False,False,False
+"Structure based NN techniques are based on structures of data like orthogonal structure tree (OST), ball tree, k-d ",False,False,False,False,False,False
+"tree, axis tree, nearest future line and central line [5].Nearest neighbor classification is used mainly when all the ",False,False,False,False,False,False
+attributes are continuos.Simple K nearest neighbor algorithm is shown in figure 1 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+    Fig 1.K nearest neighbor algorithm ,False,False,False,False,True,False
+Steps 1) find the K training instances which are ,False,False,False,False,False,False
+closest to unknown instance ,False,False,False,False,False,False
+Step2) pick the most commonly occurring ,False,False,False,False,False,False
+classification for these K instances ,False,False,False,False,False,False
+ M. Akhil jabbar et al.  /  Procedia Technology  10  ( 2013 )  85 – 94 ,False,False,False,False,False,False
+There are various ways of measuring the similarity between two instances with n attribute values. Every measure ,False,False,False,False,False,False
+"has the following three requirements. Let dist (A, B) be the distance between two points A,B then ",False,False,False,False,False,False
+"1)  dist(A,B)DQGGLVW$% LII$ % ",False,False,False,False,False,False
+"2)  dist(A,B)= dist(B,A) ",False,False,False,False,False,False
+"3)  dist(A,C)GLVW$%GLVW%& ",False,False,False,False,False,False
+Property 3 is called as “Triangle in equality”. It states that the shortest distance between any two points is a straight ,False,False,False,False,False,False
+line. Most common distance measures used is Euclidean distance .For continuous variables Z score standardization ,False,False,False,False,False,False
+and min max normalization are used [6]. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+KNN is used in many applications such as 1) classification and interpretation2) problem solving3) function learning ,False,False,False,False,False,False
+and teaching and training.KNN suffers from the following drawbacks 1) low efficiency 2) dependency on the ,False,False,False,False,False,False
+selection of good values for k. ,False,False,False,False,False,False
+Further research is required to improve the accuracy of KNN with good values of K. ,False,False,False,False,False,False
+2.2. Genetic algorithm ,False,False,False,False,False,False
+Evolutionary computing started by lifting ideas from biological theory into computer science. Genetic algorithms ,False,False,False,False,False,False
+are most popular technique in evolutionary computing. Evolutionary algorithms are used in problems for ,False,False,False,False,False,False
+"optimization. To solve problems, evolutionary algorithms require a data structure to represent and evaluate solution ",False,False,False,False,False,False
+from old solutions. Fig 2 shows flowchart of an evolutionary algorithm [7]. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Fig 2. Flowchart of an evolutionary algorithm ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+Evolutionary algorithms are used in many applications such as ,False,False,False,False,False,False
+1)  Machine intelligence ,False,False,False,False,False,False
+2)  Travelling sales person problem ,False,False,False,False,False,False
+3)  Expert system ,False,False,False,False,False,False
+4)  Medicine ,False,False,False,False,False,False
+5)  Engineering application  ,False,False,False,False,False,False
+6)  Wired and wireless communication systems ,False,False,False,False,False,False
+Genetic algorithms (GA) was invented by john Holland in 1975.Genetic algorithms are useful for search and ,False,False,False,False,False,False
+optimization problems.GA uses genetics as it’s model as problem solving. Each solution in genetic algorithm is ,False,False,False,False,False,False
+"represented through chromosomes. Chromosomes are made up of genes, which are individual elements (alleles) that ",False,False,False,False,False,False
+Evaluates fitness ,False,False,False,False,False,False
+    Start  ,False,False,False,False,False,False
+  Initialize population ,False,False,False,False,False,False
+Randomly vary individuals ,False,False,False,False,False,False
+  Apply selection ,False,False,False,False,False,False
+Sto,False,False,False,False,False,False
+p,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+represent the problem. The collection of all chromosomes is called population. Generally there are three popular ,False,False,False,False,False,False
+operators are use in GA. ,False,False,False,False,False,False
+1)  Selection: ,False,False,False,False,False,False
+This operator is used in selecting individuals for reproduction. Various selection methods are ,False,False,False,False,False,False
+i)  Roulette wheel selection ,False,False,False,False,False,False
+ii)  Random selection ,False,False,False,False,False,False
+iii)  Rank selection ,False,False,False,False,False,False
+iv)  Tournament selection ,False,False,False,False,False,False
+v)  Boltzmann selection ,False,False,False,False,False,False
+2)  Crossover: This is the process of taking two parent chromosomes and producing a child from them. This ,False,False,False,False,False,False
+operator is applied to create better string ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Various types of cross over operators are ,False,False,False,False,False,False
+i)  Single point crossover ,False,False,False,False,False,False
+ii)  Two point cross over ,False,False,False,False,False,False
+iii)  N point crossover ,False,False,False,False,False,False
+iv)  Uniform crossover ,False,False,False,False,False,False
+v)  Three parent cross over ,False,False,False,False,False,False
+vi)  Cross over with reduced surrogate ,False,False,False,False,False,False
+vii)  Shuffle crossover ,False,False,False,False,False,False
+viii)  Precedence preservative crossover ,False,False,False,False,False,False
+ix)  Ordered crossover ,False,False,False,False,False,False
+x)  Partially matched crossover ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+3)  Mutation: This operator is used to alter the new solutions in the search for better solution. Mutation ,False,False,False,False,False,False
+prevents the GA to be trapped in a local minimum [8]. ,False,False,False,False,False,False
+4)  Fitness function: fitness function in GA is the value of an objective function for its phenotype. The ,False,False,False,False,False,False
+"chromosome has to be first decoded, for calculating the fitness function. ",False,False,False,False,False,False
+Figure 3 shows process of genetic algorithm ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+             Off spring           decoded string ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+               New generation         parents ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+                           Calculation    ,False,False,False,False,False,False
+              Mate              reproduction ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Fig. 3 working of genetic algorithm. ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Population ,False,False,False,False,False,False
+(chromosomes) ,False,False,False,False,False,False
+Evaluation (fitness ,False,False,False,False,False,False
+function) ,False,False,False,False,False,False
+Genetic ,False,False,False,False,False,False
+operators ,False,False,False,False,False,False
+Selection ,False,False,False,False,False,False
+ M. Akhil jabbar et al.  /  Procedia Technology  10  ( 2013 )  85 – 94 ,False,False,False,False,False,False
+There are many advantages with genetic algorithm. Few of them are listed below ,False,False,False,False,False,False
+1)  Solution space is wider ,False,False,False,False,False,False
+2)  Easy to discover global optimum ,False,False,False,False,False,False
+3)  Only uses function evaluations ,False,False,False,False,False,False
+4)  Handles noisy functions well ,False,False,False,False,False,False
+ Some limitations of GA are  ,False,False,False,False,False,False
+1)  Identifying suitable fitness function is difficult ,False,False,False,False,False,False
+2)  GA require more number of fitness evaluations ,False,False,False,False,False,False
+3)  These are not good to identify local optima ,False,False,False,False,False,False
+4)  No straight forward configuration. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+    Start  ,False,False,False,False,False,False
+Create random population ,False,False,False,False,False,False
+Evaluate fitness for each ,False,False,False,False,False,False
+population ,False,False,False,False,False,False
+Store base individual ,False,False,False,False,False,False
+Creating mating pool ,False,False,False,False,False,False
+Creating next generation by ,False,False,False,False,False,False
+appl ying crossover ,False,False,False,False,False,False
+Optional or ,False,False,False,False,False,False
+good solution ,False,False,False,False,False,False
+found ,False,False,False,False,False,False
+Reproduce and ignore few ,False,False,False,False,False,False
+populations ,False,False,False,False,False,False
+Perform Mutation ,False,False,False,False,False,False
+Stop ,False,False,False,False,False,False
+Yes ,False,False,False,False,False,False
+No ,False,False,False,False,False,False
+2.3. Heart Disease ,False,False,False,False,False,False
+Heart disease occurs when the arteries which normally provide oxygen and blood to the heart blocked completely ,False,False,False,False,False,False
+or narrowed. Heart problems acquired at birth or later in life. According to survey conducted by register general of ,False,False,False,False,False,False
+"India, heart disease is a major cause of death in India and Andhra Pradesh [9]. ",False,False,False,False,False,False
+Various types of heart diseases are ,False,False,False,False,False,False
+1)  Coronary heart disease ,False,False,False,False,False,False
+2)  Cardiomyopathy ,False,False,False,False,False,False
+3)  Cardiovascular disease ,False,False,False,False,False,False
+4)  Ischaemic heart disease ,False,False,False,False,False,False
+5)  Heart failure ,False,False,False,False,False,False
+6)  Hypertensive heart disease ,False,False,False,False,False,False
+7)  Inflammatory heart disease ,False,False,False,False,False,False
+8)  Valvular heart disease ,False,False,False,False,False,False
+Common risk factors of heart disease include ,False,False,False,False,False,False
+1)  High blood pressure ,False,False,False,False,False,False
+2)  Abnormal blood lipids ,False,False,False,False,False,False
+3)  Use of tobacco ,False,False,False,False,False,False
+4)  Obesity ,False,False,False,False,False,False
+5)  Physical inactivity ,False,False,False,False,False,False
+6)  Diabetes ,False,False,False,False,False,False
+7)  Age ,False,False,False,False,False,False
+8)  Gender ,False,False,False,False,False,False
+9)  Family history[10] ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"As per the survey conducted by WHO, out of 10 deaths in India, eight are caused by cardio vascular diseases and ",False,False,False,False,False,False
+diabetes. Heart disease mortality in Andhra Pradesh is recorded as 30% [11]. Preventive strategies to reduce risk ,False,False,False,False,False,False
+factors are essential and to reduce the alarmingly increasing burden of heart disease in our population. ,False,False,False,False,False,False
+Our proposed approach combines KNN and genetic algorithm to improve the classification accuracy of heart ,False,False,False,False,False,False
+"disease data set. We used genetic search as a goodness measure to prune redundant and irrelevant attributes, and to ",False,False,False,False,False,False
+"rank the attributes which contribute more towards classification. Least ranked attributes are removed, and ",False,False,False,False,False,False
+classification algorithm is built based on evaluated attributes. This classifier is trained to classify heart disease data ,False,False,False,False,False,False
+set as either healthy or sick. Our proposed algorithm consists of two parts. ,False,False,False,False,False,False
+1)  First part deals with evaluating attributes using genetic search ,False,False,False,False,False,False
+2)  Part two deals with building classifier and measuring accuracy of the classifier ,False,False,False,False,False,False
+Proposed algorithm is shown in fig 5 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Fig 5 our proposed algorithm ,False,False,False,False,True,False
+classifier to correctly classify unknown sample. ,False,False,False,False,False,False
+ M. Akhil jabbar et al.  /  Procedia Technology  10  ( 2013 )  85 – 94 ,False,False,False,False,False,False
+Step 1 to 4 comes under part 1 which deals with attributes and their ranking. ,False,False,False,False,False,False
+Step 5 is used to build the classifier and step 6 records the accuracy of the classifier. ,False,False,False,False,False,False
+Accuracy of the classifier is computed as ,False,False,False,False,False,False
+Accuracy =    no. Of samples correctly classified in test data ,False,False,False,False,False,False
+      --------------------------------------------------------- ,False,False,False,False,False,False
+        Total no.of samples in the test data ,False,False,False,False,False,False
+The performance of our proposed approach has been tested with 6 medical data sets and 1 non medical data set. Out ,False,False,False,False,False,False
+"of 7 data sets, 6 data sets were chosen from UCI Repository [12] and heart disease A.P was taken from various ",False,False,False,False,False,False
+"corporate hospitals in Andhra Pradesh, and attributes are selected based on opinion from expert doctor’s advice. ",False,False,False,False,False,False
+"Information about these attributes is listed in table 1.As a way to validate the proposed method, we have tested with ",False,False,False,False,False,False
+"emphasis on heart disease on A.P besides other machine learning data sets taken from UCI repository. In table 1, ",False,False,False,False,False,False
+"column 1 represents name of the attribute, column 2 no. of instances, and column 3 represents no. Of attributes in ",False,False,False,False,False,False
+each data set .The comparison of our proposed algorithm with 4 algorithms is listed in table 2.Accuracy of 5 data ,False,False,False,False,False,False
+sets is improved by our approach. Accuracy of various data sets using full training sets is represented in table 3.We ,False,False,False,False,False,False
+carried out experiments by assigning various values K.As the k value goes on increasing accuracy of data sets is ,False,False,False,False,False,False
+decreasing. Accuracy of various data sets using the cross validation with genetic algorithm is shown in table ,False,False,False,False,False,False
+4.accuracy of heart disease data decreases 32% using cross validation. We used 5 fold cross validation. Accuracy of ,False,False,False,False,False,False
+the data sets with and without GA is shown in table 5 and 6.Accuracy of the heart disease is increased by 5% using ,False,False,False,False,False,False
+and GA using full training data set and 15%improvement in accuracy for cross validation against KNN without GA. ,False,False,False,False,False,False
+Accuracy of hypothyroid has been improved 2.94% against classification accuracy of NN+PCA [13].Attributes of ,False,False,False,False,False,False
+heart disease and their corresponding data type is shown in table 7.Our method (KNN+GA) was not successful for ,False,False,False,False,False,False
+breast cancer and primary tumor .This may due to our proposed approach could not account for irrelevant and ,False,False,False,False,False,False
+redundant attributes present in above mentioned data sets. Cross over rate for GA should be high and 60% is ,False,False,False,False,False,False
+"preferable ,so we set the value at 60%.Mutation rate should be low and we set mutation value at 0.033.Population ",False,False,False,False,False,False
+"size should be good to improve the performance of GA,so popul ation size is fixed at 20. ",False,False,False,False,False,False
+The results acquired by KNN and GA reveals that by integrating GA with KNN will improve the classification ,False,False,False,False,False,False
+accuracy for many data sets and especially heart disease for A.P.  ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Table 1   Description of various data sets ,False,False,False,False,False,True
+   ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ M. Akhil jabbar et al.  /  Procedia Technology  10  ( 2013 )  85 – 94 ,False,False,False,False,False,False
+      ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+   Fig 9 Accuarcy comparision with and without GA     ,False,False,False,False,True,False
+         ,False,False,False,False,False,False
+Parameters of  KNN and genetic search are described figure 6 and figure 7. Figure 8 to figure 10 shows accuracy ,False,False,False,False,False,False
+comparision of various data set.Table 8 shows accuracy of various data sets with and without GA.Average accuracy ,False,False,False,False,False,False
+of our approach is higher than KNN approach with out GA.Accuracy of heart disease A.P is improved 5% over ,False,False,False,False,False,False
+classification algorithm with out GA.Accuracy of weather data set is 14.29% by our approach. From the results it is ,False,False,False,False,False,False
+also observed that integrating GA with KNN out performs the other methods with greater accuracy. ,False,False,False,False,False,False
+In this paper we have presented a novel approach for classifying heart disease. As a way to validate the proposed ,False,False,False,False,False,False
+"method, we have tested with emphasis on heart disease on A.P besides other machine learning data sets taken from ",False,False,False,False,False,False
+UCI repository. Experimental results carried out on 7 data sets show that our approach is a competitive method for ,False,False,False,False,False,False
+classification. This prediction model helps the doctors in efficient heart disease diagnosis process with fewer ,False,False,False,False,False,False
+attributes. Heart disease is the most common contributor of mortality in India and in Andhra Pradesh. Identification ,False,False,False,False,False,False
+"of major risk factors and developing decision support system, and effective control measures and health education ",False,False,False,False,False,False
+programs will decline in the heart disease mortality. ,False,False,False,False,False,False
+"[1]. Michael W.Berry et.al,”Lecture notes in data mining”,World Scientific(2006) ",False,False,False,False,False,False
+"[2].E.Fix and J.Hodges,”Dicriminatory analysis ,non parametric discrimination:consistency properties”.Technical report 4,USA,School of ",False,False,False,False,False,False
+   aviation medicine Randolph field texas(1951) ,False,False,False,False,False,False
+[3]. D.E Goldberg.”Genetic algorithm in search .optimization and machine learning”Addison wesley(1989) ,False,False,False,False,False,False
+"[4]. Dr saed sayad,”University of toronto http://chem-eng.utoronto.ca/~data mining ",False,False,False,False,False,False
+"[5].Nitin Bhatia ,vandana”Survey on nearest neighbor techniques”IJCSIS,Vol 80,no 2(2010) ",False,False,False,False,False,False
+"[6].Max bramer,”Principles of data mining”Springer(2007) ",False,False,False,False,False,False
+"[7].S.N Sivanandam,S.N Deepa,”Introduction to genetic algorithms”Springer(2008) ",False,False,False,True,False,False
+"[8].MA.Jabbar,B.L Deekshatulu,Priti chandra,”Heart disease prediction system using associative classification and genetic algorithm” ",False,False,False,False,False,False
+pp183-192  Elsevier (2012) ,False,False,False,False,False,False
+"[9]. MA.Jabbar,B.L Deekshatulu,Priti chandra.”An evolutionary algorithm for heart disease prediction”CCIS,PP 378-389 , Springer(2012) ",False,False,False,False,False,False
+"[10]. MA.Jabbar,B.L Deekshatulu,Priti chandra,”Prediction of Risk Score for Heart Disease using Associative classification and Hybrid  ",False,False,False,False,False,False
+"Feature Subset Selection”,In .Conf ISDA,pp 628-634,IEEE(2013) ",False,False,False,False,False,False
+"[11]. MA.Jabbar,B.L Deekshatulu,Priti chandra,”Knowledge discovery from mining association rules for heart disease prediction” ",False,False,False,False,False,False
+"pp45-53,vol 41,no 2 ,JATIT(2013) ",False,False,False,False,False,False
+[12].WWW.ics.uci.edu/~mlearn ,False,False,False,False,False,False
+"[13]. MA.Jabbar,B.L deekshatulu,priti chandra,”classification of heart disease using ANN and feature subset selection”GJCST, ",False,False,False,False,False,False
+"   VOL 13,issue 3,version1.0 pp15-25(2013)",False,False,False,False,False,False

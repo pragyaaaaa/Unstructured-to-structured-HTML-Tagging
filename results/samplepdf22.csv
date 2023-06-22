@@ -1,0 +1,505 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+a,False,False,False,False,False,False
+b,False,False,False,False,False,False
+c; ∗,False,False,False,False,False,False
+d,False,False,False,False,False,False
+c,False,False,False,False,False,False
+a,False,False,False,False,False,False
+"Ngee Ann Polytechnic, 535 Clementi Road, Singapore, 599 489, Singapore",False,False,False,False,False,False
+b,False,False,False,False,False,False
+"Karnataka Regional Engineering College, Surathkal, Srinivasnagar, India 574 157",False,False,False,False,False,False
+c,False,False,False,False,False,False
+"Department of Computer Science, Louisiana State University, 298 Coates Hall, Baton Rouge, LA 70808, USA",False,False,False,False,False,False
+d,False,False,False,False,False,False
+"CEDT, IISc, Bangalore, India",False,False,False,False,False,False
+Abstract,False,False,False,True,False,False
+The electrocardiogram is a representative signal containing information about the condition of the heart. The shape and size,False,False,False,False,False,False
+"of the P-QRS-T wave, the time intervals between its various peaks, etc. may contain useful information about the nature of",False,False,False,False,False,False
+"disease aicting the heart. However, these subtle details cannot be directly monitored by the human observer. Besides, since",False,False,False,False,False,False
+"bio-signals are highly subjective, the symptoms may appear at random in the time scale. Therefore, the signal parameters,",False,False,False,False,False,False
+"extracted and analysed using computers, are highly useful in diagnostics. This paper deals with the classication of certain",False,False,False,False,False,False
+diseases using articial neural network (ANN) and fuzzy equivalence relations. The heart rate variability is used as the base,False,False,False,False,False,False
+signal from which certain parameters are extracted and presented to the ANN for classication. The same data is also used for,False,False,False,False,False,False
+"fuzzy equivalence classier. The feedforward architecture ANN classier is seen to be correct in about 85% of the test cases,",False,False,False,False,False,False
+and the fuzzy classier yields correct classication in over 90% of the cases. ? 2002 Pattern Recognition Society. Published,False,False,False,False,False,False
+by Elsevier Science Ltd. All rights reserved.,False,False,False,False,False,False
+1. Introduction,False,False,True,True,False,False
+Electrocardiography deals with the electrical activity of,False,False,False,False,False,False
+the heart. Monitored by placing sensors at the limb extrem-,False,False,False,False,False,False
+"ities of the subject, electrocardiogram (ECG) is a record of",False,False,False,False,False,False
+the origin and propagation of the electric potential through,False,False,False,False,False,False
+cardiac muscles. It is considered a representative signal of,False,False,False,False,False,False
+"cardiac physiology, useful in diagnosing cardiac disorders.",False,False,False,False,False,False
+The state of cardiac health is generally reected in the,False,False,False,False,False,False
+shape of ECG waveform and heart rate. It may contain im-,False,False,False,False,False,False
+portant pointers to the nature of diseases aicting the heart.,False,False,False,False,False,False
+"However, bio-signals being non-stationary signals, this re-",False,False,False,False,False,False
+"ection may occur at random in the time scale. (That is,",False,False,False,False,False,False
+∗,False,False,False,False,False,False
+"the disease symptoms may not show up all the time, but",False,False,False,False,False,False
+would manifest at certain irregular intervals during the day.),False,False,False,False,False,False
+"Therefore, for eective diagnostics, the study of ECG pat-",False,False,False,False,False,False
+tern and heart rate variability signal (instantaneous heart rate,False,False,False,False,False,False
+against time axis) may have to be carried out over several,False,False,False,False,False,False
+"hours. Thus, the volume of the data being enormous, the",False,False,False,False,False,False
+"study is tedious and time consuming. Naturally, the possibil-",False,False,False,False,False,False
+ity of the analyst missing (or misreading) vital information,False,False,False,False,False,False
+"is high. Therefore, computer-based analysis and classica-",False,False,False,False,False,False
+tion of diseases can be very helpful in diagnostics.,False,False,False,False,False,False
+The present paper makes use of heart rate variability,False,False,False,False,False,False
+(HRV) as the base signal for analysis and classication of,False,False,False,False,False,False
+diseases. The heart rate is evaluated by measuring the time,False,False,False,False,False,False
+interval between the successive R-peaks (R–R interval) of,False,False,False,False,False,False
+the ECG waveform. It is known that almost all the useful,False,False,False,False,False,False
+"frequency components in ECG signal falls below 40 Hz [1],",False,False,False,False,False,False
+and therefore sampled at the rate of 200 samples=s. The heart,False,False,False,False,False,False
+"rate, plotted against the time scale provides the HRV signal,",False,False,False,False,False,False
+from which certain parameters are extracted for classica-,False,False,False,False,False,False
+"tion [2,3].",False,False,False,False,False,False
+2. Neural network classier,False,False,True,True,False,False
+Articial neural networks (ANN) are biologically in-,False,False,False,False,False,False
+spired networks—inspired by the human brain in its orga-,False,False,False,False,False,False
+nization of neurons and decision making process—which,False,False,False,False,False,False
+"are useful in application areas such as pattern recognition,",False,False,False,False,False,False
+"classication, etc. [4]. The decision making process of the",False,False,False,False,False,False
+"ANN is more holistic, based on the aggregate of entire",False,False,False,False,False,False
+"input patterns, whereas the conventional computer has to",False,False,False,False,False,False
+wade through the processing of individual data elements to,False,False,False,False,False,False
+arrive at a conclusion.,False,False,False,False,False,False
+The neural networks derive their power due to their mas-,False,False,False,False,False,False
+"sively parallel structure, and an ability to learn from expe-",False,False,False,False,False,False
+rience. They can be used for fairly accurate classication,False,False,False,False,False,False
+"of input data into categories, provided they are previously",False,False,False,False,False,False
+trained to do so. The accuracy of the classication depends,False,False,False,False,False,False
+"on the ecacy of training, which in turn depends upon the",False,False,False,False,False,False
+rigor and depth of the training. The knowledge gained by,False,False,False,False,False,False
+the learning experience is stored in the form of connection,False,False,False,False,False,False
+"weights, which are used to make decisions on fresh input.",False,False,False,False,False,False
+Three issues need to be settled in designing an ANN for a,False,False,False,False,False,False
+specic application: (i) topology of the network; (ii) train-,False,False,False,False,False,False
+ing algorithm and (iii) neuron activation function. A net-,False,False,False,False,False,False
+work may have several ‘layers’ of neurons and the overall,False,False,False,False,False,False
+architecture may either be feedback or feedforward struc-,False,False,False,False,False,False
+ture. If the task is merely to distinguish linearly separable,False,False,False,False,False,False
+"classes, a single layer perceptron classier is quite adequate.",False,False,False,False,False,False
+If the class separation boundaries can be piecewise linear,False,False,False,False,False,False
+"approximated, then a two layer perceptron classier needs",False,False,False,False,False,False
+"to be used. If the class boundaries are more complex, a three",False,False,False,False,False,False
+"layer feedforward neural network, with sigmoid activation",False,False,False,False,False,False
+"function is more suitable [5,6]. The most important reason in",False,False,False,False,False,False
+favour of such a network is that the sigmoid function f(x)is,False,False,False,False,False,False
+"dierentiable for all values of x, which allows the use of the",False,False,False,False,False,False
+powerful backpropogation learning algorithm (BPA) [7]. In,False,False,False,False,False,False
+"the present case, the nature of class boundaries is not clearly",False,False,False,False,False,False
+"known, and therefore, the three layer network with sigmoid",False,False,False,False,False,False
+activation function is being used as classier (Fig 1).,False,False,False,False,False,False
+"The BPA is a supervised learning algorithm, which aims",False,False,False,False,False,False
+at reducing the overall system error to a minimum. The con-,False,False,False,False,False,False
+nection weights are randomly assigned at the beginning; and,False,False,False,False,False,False
+progressively modied to reduce the overall mean square,False,False,False,False,False,False
+system error. The weight updating starts with the output,False,False,False,False,False,False
+"layer, and progresses backwards. The weight update aims at",False,False,False,False,False,False
+"maximizing the rate of error reduction, and hence it is termed",False,False,False,False,False,False
+as ‘gradient descent’ algorithm [8]. The weight increment is,False,False,False,False,False,False
+"done in ‘small’ steps; the step size is chosen heuristically,",False,False,False,False,False,False
+as there is no denite rule for its selection. In the present,False,False,False,False,False,False
+"case, a learning constant  =0:9 (which controls the step",False,False,False,False,False,False
+"size), is chosen by trial and error.",False,False,False,False,False,False
+"It is desirable that the training data set be large in size,",False,False,False,False,False,False
+and also uniformly spread throughout the class domains. In,False,False,False,False,False,False
+"the absence of a large training data set, the available data",False,False,False,False,False,False
+"may be used iteratively, until the error function is reduced",False,False,False,False,False,False
+"to an optimum level. For quick and eective training, data",False,False,False,False,False,False
+"is fed from all classes in a routine sequence, so that the right",False,False,False,False,False,False
+message about the class boundaries is communicated to the,False,False,False,False,False,False
+ANN.,True,False,False,True,False,False
+The ANN used for classication is shown in Fig. 2. The,False,False,False,False,False,False
+"input layer consists of nodes to accept data, and the subse-",False,False,False,False,False,False
+quent layers process the data using the activation function.,False,False,False,False,False,False
+"The output layer has four neurons, giving rise to an out-",False,False,False,False,False,False
+"put domain of 16 possible classes. However, the network is",False,False,False,False,False,False
+trained to identify only four classes given by decoded bi-,False,False,False,False,False,False
+"nary outputs [0001, 0010, 0100, 1000]. The outputs of the",False,False,False,False,False,False
+hidden layer (s,False,False,False,False,False,False
+h,False,False,False,False,False,False
+j,False,False,False,False,False,False
+) and output layer (b,False,False,False,False,False,False
+k,False,False,False,False,False,False
+) are evaluated using,False,False,False,False,False,False
+Eqs. (1) and (2),False,False,False,False,False,False
+s,False,False,False,False,False,False
+h,False,False,False,False,False,False
+j,False,False,False,False,False,False
+= f,False,False,False,False,False,False
+,False,False,False,False,False,False
+4,False,False,False,False,False,False
+,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+w,False,False,False,False,False,False
+h,False,False,False,False,False,False
+ji,False,False,False,False,False,False
+s,False,False,False,False,False,False
+i,False,False,False,False,False,False
+− ,False,False,False,False,False,False
+h,False,False,False,False,False,False
+j,False,False,False,False,False,False
+,False,False,False,False,False,False
+; (1),False,False,False,False,False,False
+b,False,False,False,False,False,False
+k,False,False,False,False,False,False
+= f,False,False,False,False,False,False
+,False,False,False,False,False,False
+4,False,False,False,False,False,False
+,False,False,False,False,False,False
+j=1,False,False,False,False,False,False
+w,False,False,False,False,False,False
+o,False,False,False,False,False,False
+kj,False,False,False,False,False,False
+s,False,False,False,False,False,False
+h,False,False,False,False,False,False
+j,False,False,False,False,False,False
+− ,False,False,False,False,False,False
+o,False,False,False,False,False,False
+k,False,False,False,False,False,False
+,False,False,False,False,False,False
+; (2),False,False,False,False,False,False
+where w,False,False,False,False,False,False
+h,False,False,False,False,False,False
+ji,False,False,False,False,False,False
+and w,False,False,False,False,False,False
+o,False,False,False,False,False,False
+kj,False,False,False,False,False,False
+are the connection weights and ,False,False,False,False,False,False
+h,False,False,False,False,False,False
+j,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+o,False,False,False,False,False,False
+k,False,False,False,False,False,False
+"are the bias terms, respectively.",False,False,False,False,False,False
+The error vectors of hidden layer (e,False,False,False,False,False,False
+j,False,False,False,False,False,False
+) and output layer,False,False,False,False,False,False
+(e,False,False,False,False,False,False
+k,False,False,False,False,False,False
+") are calculated using Eqs. (3) and (4), respectively:",False,False,False,False,False,False
+e,False,False,False,False,False,False
+k,False,False,False,False,False,False
+= b,False,False,False,False,False,False
+k,False,False,False,False,False,False
+(1 − b,False,False,False,False,False,False
+k,False,False,False,False,False,False
+)(d,False,False,False,False,False,False
+k,False,False,False,False,False,False
+− b,False,False,False,False,False,False
+k,False,False,False,False,False,False
+); (3),False,False,False,False,False,False
+e,False,False,False,False,False,False
+j,False,False,False,False,False,False
+= s,False,False,False,False,False,False
+h,False,False,False,False,False,False
+j,False,False,False,False,False,False
+(1 − s,False,False,False,False,False,False
+h,False,False,False,False,False,False
+j,False,False,False,False,False,False
+),False,False,False,False,False,False
+4,False,False,False,False,False,False
+,False,False,False,False,False,False
+k=1,False,False,False,False,False,False
+w,False,False,False,False,False,False
+kj,False,False,False,False,False,False
+e,False,False,False,False,False,False
+k,False,False,False,False,False,False
+; (4),False,False,False,False,False,False
+where d,False,False,False,False,False,False
+k,False,False,False,False,False,False
+is the desired output.,False,False,False,False,False,False
+The weight update equations of the output and hidden,False,False,False,False,False,False
+layers are given below:,False,False,False,False,False,False
+w,False,False,False,False,False,False
+kj,False,False,False,False,False,False
+(new)=w,False,False,False,False,False,False
+kj,False,False,False,False,False,False
++ s,False,False,False,False,False,False
+h,False,False,False,False,False,False
+j,False,False,False,False,False,False
+e,False,False,False,False,False,False
+k,False,False,False,False,False,False
+; (5),False,False,False,False,False,False
+w,False,False,False,False,False,False
+ji,False,False,False,False,False,False
+(new)=w,False,False,False,False,False,False
+ji,False,False,False,False,False,False
++ s,False,False,False,False,False,False
+i,False,False,False,False,False,False
+e,False,False,False,False,False,False
+j,False,False,False,False,False,False
+; (6),False,False,False,False,False,False
+,False,False,False,False,False,False
+o,False,False,False,False,False,False
+k,False,False,False,False,False,False
+(new)=,False,False,False,False,False,False
+o,False,False,False,False,False,False
+k,False,False,False,False,False,False
++ e,False,False,False,False,False,False
+k,False,False,False,False,False,False
+; (7),False,False,False,False,False,False
+,False,False,False,False,False,False
+h,False,False,False,False,False,False
+j,False,False,False,False,False,False
+(new)=,False,False,False,False,False,False
+h,False,False,False,False,False,False
+j,False,False,False,False,False,False
++ e,False,False,False,False,False,False
+j,False,False,False,False,False,False
+: (8),False,False,False,False,False,False
+3. Disease classication using ANN,False,False,True,True,False,False
+"For the purpose of this study, the cardiac disorders are",False,False,False,False,False,False
+classied into four categories namely:,False,False,False,False,False,False
+"(i) Ischemic=dilated cardiomyopathy,",False,False,False,False,False,False
+"(ii) Complete heart block,",False,False,False,False,False,False
+"(iii) Sick sinus syndrome, atrial brillation (AF), ectopics,",False,False,False,False,False,False
+(iv) Normal.,False,False,False,False,False,False
+The ANN classier is fed by four parameters derived from,False,False,False,False,False,False
+the heart rate signal:,False,False,False,False,False,False
+(1) Average heart rate: Though the heart rate is a,False,False,False,False,False,False
+"non-stationary signal, the range of heart rate for various",False,False,False,False,False,False
+"disease categories are seen to be dierent, the average",False,False,False,False,False,False
+heart rate can serve as a parameter of classication,False,False,False,False,False,False
+(Table 1). The average is evaluated for 10 min interval.,False,False,False,False,False,False
+"Secondly, the frequency of heart rate variation for var-",False,False,False,False,False,False
+ious diseases are seen to be dierent. The power spec-,False,False,False,False,False,False
+trum of heart rate variability signal shows a marked,False,False,False,False,False,False
+concentration of energy in dierent frequency bands [9,False,False,False,False,False,False
+"–11]. Therefore, the ratio of energy content in dierent",False,False,False,False,False,False
+frequency bands can be used as parameters of classi-,False,False,False,False,False,False
+"cation. In the present case, two input signals are de-",False,False,False,False,False,False
+rived by evaluating the ratio of energy content in two,False,False,False,False,False,False
+separate frequency bands:,False,False,False,False,False,False
+(2) Ener 1 = [energy content in the band (33.3–100 Hz)]=,False,False,False,False,False,False
+[energy content in the band (0–33:3Hz)],False,False,False,False,False,False
+(3) Ener 2 = [energy content in the band (66.7–100 Hz)]=,False,False,False,False,False,False
+[energy content in the band (0–66:7Hz)],False,False,False,False,False,False
+(4) Correlation dimension factor: Heart rate signal be-,False,False,False,False,False,False
+"ing a non-stationary signal, important insight can be",False,False,False,False,False,False
+gained from a phase-space plot obtained by represent-,False,False,False,False,False,False
+ing heartrate x(k)inX -axis and delayed heartrate,False,False,False,False,False,False
+x(k + m)inY -axis [12–14]. A technique for esti-,False,False,False,False,False,False
+mating the embedding dimension of the phase-space,False,False,False,False,False,False
+"pattern was proposed [15,16]. In the present work an",False,False,False,False,False,False
+embedding dimension of 5 was chosen.,False,False,False,False,False,False
+"When the heartrate is steady and unchanging, the",False,False,False,False,False,False
+"phase-space plot reduces to a point, but otherwise, the tra-",False,False,False,False,False,False
+jectory spreads out to give some patterns on the screen.,False,False,False,False,False,False
+An example of the phase-space plot of normal heart rate is,False,False,False,False,False,False
+shown in Fig. 3. The pattern that emerges can be interpreted,False,False,False,False,True,False
+"for ner details—such as whether the heart rate is periodic,",False,False,False,False,False,False
+"chaotic, or random, etc. A correlation dimension factor is",False,False,False,False,False,False
+dened to obtain a quantitative measure of the nature of,False,False,False,False,False,False
+"trajectory, and the ranges of CD factor for various heart",False,False,False,False,False,False
+diseases are identied. The CD factor is dened as,False,False,False,False,False,False
+CD = lim,False,False,False,False,False,False
+r→0,False,False,False,False,False,False
+log C(r),False,False,False,False,False,False
+log(r),False,False,False,False,False,False
+; (9),False,False,False,False,False,False
+where the correlation integral C(r) is given by,False,False,False,False,False,False
+C(r)=,False,False,False,False,False,False
+1,False,False,False,False,False,False
+N,True,False,False,True,False,False
+2,False,False,False,False,False,False
+N,True,False,False,True,False,False
+,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+N,True,False,False,True,False,False
+,False,False,False,False,False,False
+j=1;i=j,False,False,False,False,False,False
+(r −|x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+− x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+|); (10),False,False,False,False,False,False
+where x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+;x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+"is the points of the trajectory in the phase space,",False,False,False,False,False,False
+"N is the number of data points in phase space, r the radial",False,False,False,False,False,False
+distance around each reference point x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", and  is the Heav-",False,False,False,False,False,False
+iside function.,False,False,False,False,False,False
+The range of CD for dierent classes of diseases is shown,False,False,False,False,False,False
+in Table 1.,False,False,False,False,False,True
+"For the purpose of training and testing the classier, a",False,False,False,False,False,False
+data base of 342 patient samples is divided into two sets—a,False,False,False,False,False,False
+training set of 276 arbitrarily chosen samples and a test set,False,False,False,False,False,False
+"of 66 samples (Table 1). The training consisted of 10,000",False,False,False,False,False,False
+iterations.,False,False,False,False,False,False
+"During the training phase, each output of the ANN is an",False,False,False,False,False,False
+"analog value in the range 0 → 1:0, whereas the ‘desired’",False,False,False,False,False,False
+"output is either 0 or 1.0. During the recall phase, the output",False,False,False,False,False,False
+signal is approximated to binary levels by comparing it with,False,False,False,False,False,False
+threshold value of 0.5.,False,False,False,False,False,False
+4. Fuzzy equivalence relation classier,False,False,True,True,False,False
+A more ecient classier is developed using fuzzy equiv-,False,False,False,False,False,False
+alence relation. The process of classication involves ob-,False,False,False,False,False,False
+"taining a fuzzy relation matrix for each class of data, and",False,False,False,False,False,False
+then comparing a fresh input with each group for classica-,False,False,False,False,False,False
+tion [17].,False,False,False,False,False,False
+The fuzzy equivalence relation requires the properties,False,False,False,False,False,False
+"of reexivity, symmetry and transitivity, be satised. If it",False,False,False,False,False,False
+"satises only the rst two—that is, reexivity and sym-",False,False,False,False,False,False
+metry properties—it is termed as fuzzy compatible rela-,False,False,False,False,False,False
+tion. Though it is usually dicult to identify an equiva-,False,False,False,False,False,False
+"lence relation directly, it is possible to identify a compatible",False,False,False,False,False,False
+relation in terms of an appropriate ‘distance function’of,False,False,False,False,False,False
+the Minkowski class. The general expression used for the,False,False,False,False,False,False
+distance function (Minkowski class) is given below,False,False,False,False,False,False
+R(x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+;x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+)=1− ,False,False,False,False,False,False
+,False,False,False,False,False,False
+n,False,False,False,False,False,False
+,False,False,False,False,False,False
+l=1,False,False,False,False,False,False
+|x,False,False,False,False,False,False
+il,False,False,False,False,False,False
+− x,False,False,False,False,False,False
+jl,False,False,False,False,False,False
+|,False,False,False,False,False,False
+q,False,False,False,False,False,False
+,False,False,False,False,False,False
+1=q,False,False,False,False,False,False
+; (11),False,False,False,False,False,False
+"where n is the total dimensionality of the input data point,",False,False,False,False,False,False
+l the dimensionality index of the input data (1; 2;:::;n);p,False,False,False,False,False,False
+"the size of the input data set, i; j the input index i; j ∈ [1::p];",False,False,False,False,False,False
+"q the distance function parameter, and  the normalizing",False,False,False,False,False,False
+factor to ensure the resultant R(x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+;x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+) ∈ [0; 1].,False,False,False,False,False,False
+"n represents the total dimensions of the data, each of",False,False,False,False,False,False
+which dimension refer to the components of the input data.,False,False,False,False,False,False
+"For example, from Table 1, the input data (HRV signal)",False,False,False,False,False,False
+"is represented by four components [HR(Average), Ener 1,",False,False,False,False,False,False
+"Ener 2, CD], hence n = 4, here.",False,False,False,False,False,False
+The Minkowski relation can be evaluated for integer val-,False,False,False,False,False,False
+"ues of q; for q = 1, the ‘distance function’ happens to be the",False,False,False,False,False,False
+"Hamming distance; for q = 2, it is the Euclidean distance,",False,False,False,False,False,False
+etc. The normalizing factor  is taken as the inverse of the,False,False,False,False,False,False
+largest distance among the data pairs.,False,False,False,False,False,False
+"As indicated above, for our purposes, the input data (HRV",False,False,False,False,False,False
+signal) is represented using the four parameters used for,False,False,False,False,False,False
+ANN classication earlier (Table 1). Thus the data has four,False,False,False,False,False,False
+components (n=4). The size of the training data set (dened,False,False,False,False,False,False
+by p,False,False,False,False,False,False
+k,False,False,False,False,False,False
+k ∈ [1::4]) is dierent for each class i (second column,False,False,False,False,False,False
+of Table 2).,False,False,False,False,False,True
+"In the present case, the Euclidean distance function of",False,False,False,False,False,False
+Minkowski class (q=2) is used as the basis to dene mutual,False,False,False,False,False,False
+relation among the input data belonging to a particular class.,False,False,False,False,False,False
+"Thus, Eq. (11) reduces to",False,False,False,False,False,False
+R(x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+;x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+)=1− ,False,False,False,False,False,False
+,False,False,False,False,False,False
+4,False,False,False,False,False,False
+,False,False,False,False,False,False
+l=1,False,False,False,False,False,False
+|x,False,False,False,False,False,False
+il,False,False,False,False,False,False
+− x,False,False,False,False,False,False
+jl,False,False,False,False,False,False
+|,False,False,False,False,False,False
+2,False,False,False,False,False,False
+,False,False,False,False,False,False
+1=2,False,False,False,False,False,False
+;,False,False,False,False,False,False
+where the symbols have their usual meaning.,False,False,False,False,False,False
+The result of the above evaluation can be listed in the,False,False,False,False,False,False
+form of a symmetrical p,False,False,False,False,False,False
+k,False,False,False,False,False,False
+xp,False,False,False,False,False,False
+k,False,False,False,False,False,False
+"matrix, which satises both",False,False,False,False,False,False
+reexivity and symmetry conditions. Thus it denes a com-,False,False,False,False,False,False
+"patibility relation, but not necessarily the equivalence rela-",False,False,False,False,False,False
+"tion. Therefore, the relation matrix is further processed to",False,False,False,False,False,False
+"obtain a transitive closure (TC), equivalence relation. The",False,False,False,False,False,False
+processing algorithm is described in the following discus-,False,False,False,False,False,False
+"sion. Firstly, few denitions are in order.",False,False,False,False,False,False
+"For a relation R, we write R(u; v) if the pair u; v is a",False,False,False,False,False,False
+"member of the set. The TC of a relation R, often written",False,False,False,False,False,False
+R,True,False,False,True,False,False
+∗,False,False,False,False,False,False
+"is the smallest set such that if R(u; v) and R(v; w), then",False,False,False,False,False,False
+"R(u; w). For example, the ‘ancestor relation’ is the TC of the",False,False,False,False,False,False
+"‘parent relation’, ‘dominates’ is the TC of the ‘immediately",False,False,False,False,False,False
+"dominates’ relation, the ‘greater than’ relation u¿v is the",False,False,False,False,False,False
+TC of the ‘successor relation’ succ(u; v) (which relates,False,False,False,False,False,False
+integers to the next greater integer succ(u; v)).,False,False,False,False,False,False
+We also talk about the re;exive TC if R,False,False,False,False,False,False
+∗,False,False,False,False,False,False
+(u; u) holds,False,False,False,False,False,False
+generally.,False,False,False,False,False,False
+"Given a relation R, its TC R",False,False,False,False,False,False
+∗,False,False,False,False,False,False
+can be determined as fol-,False,False,False,False,False,False
+lows. R is transitive i (a; b) ∈ R(b; c) ∈ R(a; c) ∈ R.We,False,False,False,False,False,False
+may add elements to a relation R and create a new relation,False,False,False,False,False,False
+"that is the TC of R. However, the procedure requires an it-",False,False,False,False,False,False
+erative process. We nd the TC by examining every pair,False,False,False,False,False,False
+of elements of R where the second element of the rst pair,False,False,False,False,False,False
+matches the rst element of the second pair.,False,False,False,False,False,False
+That is (a; b) ∈ R and (b; c) ∈ R.,False,False,False,False,False,False
+a,False,False,False,False,False,False
+a,False,False,False,False,False,False
+Transitivity requires that (a; c) must also be an element,False,False,False,False,False,False
+"of R. If it is not, then we must add it to the new relation",False,False,False,False,False,False
+that we are building into the TC. Let us call the new rela-,False,False,False,False,False,False
+tion R,False,False,False,False,False,False
+,False,False,False,False,False,False
+. (Initially R,False,True,False,True,False,False
+,False,False,False,False,False,False
+= R and when the process of adding,False,False,False,False,False,False
+edges is over R,False,False,False,False,False,False
+,False,False,False,False,False,False
+= R,True,False,False,True,False,False
+∗,False,False,False,False,False,False
+.) After we have examined all such,False,True,False,True,False,False
+pairs of members of R and added the required edges to,False,False,False,False,False,False
+R,True,False,False,True,False,False
+,False,False,False,False,False,False
+where needed we must then begin the same process,False,False,False,False,False,False
+again.,False,False,False,False,False,False
+The resultant R,False,False,False,False,False,False
+∗,False,False,False,False,False,False
+is the TC of R.,False,False,False,False,False,False
+After computing the TC and having satised the prop-,False,False,False,False,False,False
+"erties of reexivity, symmetry and transitivity, the fuzzy",False,False,False,False,False,False
+equivalence relation matrix so obtained can now be used,False,False,False,False,False,False
+for classication of fresh data. The owdiagram to do so is,False,False,False,False,False,False
+depicted in Fig. 4.,False,False,False,False,True,False
+The formal algorithm is depicted in Fig. 5. The results of,False,False,False,False,False,False
+the classication are listed in Table 3.,False,False,False,False,False,False
+5. Conclusion,False,False,True,True,False,False
+Both the neural network classier and the fuzzy equiva-,False,False,False,False,False,False
+lence relation are developed as diagnostic tools to aid the,False,False,False,False,False,False
+physician. The tools do not yield results with 100% accu-,False,False,False,False,False,False
+"racy. The accuracy of the tools depend on several factors,",False,False,False,False,False,False
+"such as the size and quality of the training set, the rigor of",False,False,False,False,False,False
+"the training imparted, and also parameters chosen to repre-",False,False,False,False,False,False
+"sent the input. The results listed in Tables 2 and 3, indicate",False,False,False,False,False,False
+that the classiers are eective to the tune of about 85 –95%,False,False,False,False,False,False
+accuracy.,False,False,False,False,False,False
+Acknowledgements,False,False,False,False,False,False
+This project is in part supported by the LEOFS-Board of,False,False,False,False,False,False
+Regents funding on BCVC program.,False,False,False,False,False,False
+References,False,False,False,True,False,False

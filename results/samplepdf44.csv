@@ -1,0 +1,484 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+Conference Paper · December 2012,False,False,False,False,False,False
+DOI: 10.1109/ICDMW.2012.29,True,False,False,True,False,False
+CITATIONS,True,False,False,True,False,False
+8,False,False,False,False,False,False
+READS,True,False,False,True,False,False
+76,False,False,False,False,False,False
+"5 authors, including:",False,False,False,False,False,False
+Some of the authors of this publication are also working on these related projects:,False,False,False,False,False,False
+wart treatment methods View project,False,False,False,False,False,False
+Roohallah Alizadehsani,False,False,False,False,False,False
+Sharif University of Technology,False,False,False,False,False,False
+19 PUBLICATIONS98 CITATIONS,True,False,False,True,False,False
+SEE PROFILE,True,False,False,True,False,False
+Asma Ghandeharioun,False,False,False,False,False,False
+Massachusetts Institute of Technology,False,False,False,False,False,False
+15 PUBLICATIONS102 CITATIONS,True,False,False,True,False,False
+SEE PROFILE,True,False,False,True,False,False
+Reihane Boghrati,False,False,False,False,False,False
+University of Southern California,False,False,False,False,False,False
+16 PUBLICATIONS95 CITATIONS,True,False,False,True,False,False
+SEE PROFILE,True,False,False,True,False,False
+All content following this page was uploaded by Roohallah Alizadehsani on 08 September 2014.,False,False,False,False,False,False
+The user has requested enhancement of the downloaded ﬁle.,False,False,False,False,False,False
+Diagnosis of Coronary Artery Disease Using Cost-Sensitive Algorithms ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Roohallah Alizadehsani ,False,False,False,False,False,False
+Roohallah Alizadehsani ,False,False,False,False,False,False
+Department of Computer ,False,False,False,False,False,False
+Department of Computer ,False,False,False,False,False,False
+"Engineering, Sharif University of ",False,False,False,False,False,False
+"Engineering, Sharif University of ",False,False,False,False,False,False
+Technology e-mail: Alizadeh_roohallah@yahoo.com,False,False,False,False,False,False
+Technology ,False,False,False,False,False,False
+e-mail: ,False,False,False,False,False,False
+Alizadeh_roohallah@yahoo.com,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Mohammad Javad Hosseini  ,False,False,False,False,False,False
+Mohammad Javad Hosseini  ,False,False,False,False,False,False
+Department of Computer Engineer,False,False,False,False,False,False
+Department of Computer ,False,False,False,False,False,False
+Engineer,False,False,False,False,False,False
+"ing, Sharif University of ",False,False,False,False,False,False
+"ing, Sharif University of ",False,False,False,False,False,False
+Technology e-mail: mjhosseini@ce.sharif.edu ,False,False,False,False,False,False
+Technology ,False,False,False,False,False,False
+e-mail: ,False,False,False,False,False,False
+mjhosseini@ce.sharif.edu,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Corresponding author: ,False,False,False,False,False,False
+Corresponding author: ,False,False,False,False,False,False
+Zahra Alizadeh Sani  ,False,False,False,False,False,False
+Zahra Alizadeh Sani ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Tehran University of Medical ,False,False,False,False,False,False
+Tehran University of Medical ,False,False,False,False,False,False
+Science e-mail: d_zahra_alizadeh@yahoo.com,False,False,False,False,False,False
+Science ,False,False,False,False,False,False
+e-mail: ,False,False,False,False,False,False
+d_zahra_alizadeh@yahoo.com,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Asma Ghandeharioun Department of Computer ,False,False,False,False,False,False
+Asma Ghandeharioun ,False,False,False,False,False,False
+Department of Computer ,False,False,False,False,False,False
+"Engineering, Sharif ",False,False,False,False,False,False
+University of Technology,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+e-mail: ,False,False,False,False,False,False
+asma.ghandeharioun@gmail.com ,False,False,False,False,False,False
+asma.ghandeharioun@gmail.com ,False,False,False,False,False,False
+Reihane Boghrati ,False,False,False,False,False,False
+Department of Computer ,False,False,False,False,False,False
+"Engineering, Sharif ",False,False,False,False,False,False
+University of Technology ,False,False,False,False,False,False
+e-mail: ,False,False,False,False,False,False
+r.boghrati@gmail.com ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Abstract— One of the main causes of death the world over are ,False,False,False,True,False,False
+"cardiovascular diseases, of which coronary artery disease ",False,False,False,False,False,False
+(CAD) is a major type. This disease occurs when the diameter ,False,False,False,False,False,False
+"narrowing of one of the left anterior descending, left ",False,False,False,False,False,False
+"circumflex, or right coronary arteries is equal to or greater ",False,False,False,False,False,False
+than 50 percent. Angiography is the principal diagnostic ,False,False,False,False,False,False
+"modality for the stenosis of heart vessels; however, because of ",False,False,False,False,False,False
+"its complications and costs, researchers are looking for ",False,False,False,False,False,False
+alternative methods such as data mining. This study conducts ,False,False,False,False,False,False
+data mining algorithms on the Z-Alizadeh Sani dataset which ,False,False,False,False,False,False
+has been collected from 303 random visitors to Tehran’s ,False,False,False,False,False,False
+"Shaheed Rajaei Cardiovascular, Medical and Research Center. ",False,False,False,False,False,False
+"In this paper, the reason of effectiveness of a preprocessing ",False,False,False,False,False,False
+algorithm on the dataset is investigated. This algorithm which ,False,False,False,False,False,False
+"has been merely introduced in our previous works, extracts ",False,False,False,False,False,False
+three new features from the dataset. These features are then ,False,False,False,False,False,False
+used to enrich the primary dataset in order to achieve more ,False,False,False,False,False,False
+"accurate results. Moreover, despite the fact that ",False,False,False,False,False,False
+misclassification of diseased patients has more side effects than ,False,False,False,False,False,False
+"that of healthy ones, to the best of our knowledge cost-sensitive ",False,False,False,False,False,False
+"algorithms have yet to be used in this field. Therefore, in this ",False,False,False,False,False,False
+paper 10-fold cross validation on cost-sensitive algorithms ,False,False,False,False,False,False
+"along with base classifiers of Naïve Bayes, Sequential Minimal ",False,False,False,False,False,False
+"Optimization (SMO), K-Nearest Neighbors (KNN), Support ",False,False,False,False,False,False
+"Vector Machine (SVM), and C4.5 were employed. As a result, ",False,False,False,False,False,False
+the SMO algorithm has yield to very high sensitivity (97.22%) ,False,False,False,False,False,False
+"and accuracy (92.09%) rates, the likes of which have not been ",False,False,False,False,False,False
+reported simultaneously in the existing literature. ,False,False,False,False,False,False
+Keywords-component; Naïve Bayes algorithm; Data Mining; ,False,False,False,False,False,False
+Coronary Artery Disease; C4.5 algorithm; Cost Sensitive ,False,False,False,False,False,False
+Algorithms; Feature Extraction ,False,False,False,False,False,False
+I.   INTRODUCTION ,True,True,False,True,False,False
+The morality rates from diseases are much greater than ,False,False,False,False,False,False
+those of accidents and natural disasters. The World Health ,False,False,False,False,False,False
+Organization estimates that 17 million deaths worldwide ,False,False,False,False,False,False
+each year occur due to cardiovascular diseases [1]. A major ,False,False,False,False,False,False
+"type of such diseases is coronary artery disease (CAD), ",False,False,False,False,False,False
+which is reported to account for 7 million deaths over the ,False,False,False,False,False,False
+world per annum [1]. ,False,False,False,False,False,False
+Mining is the extraction of knowledge from a set of data. ,False,False,False,False,False,False
+"In other words, data mining is a process that uses intelligent ",False,False,False,False,False,False
+techniques whereby knowledge of a set of data can be ,False,False,False,False,False,False
+extracted [2].  ,False,False,False,False,False,False
+Angiography is the modality of choice for the diagnosis ,False,False,False,False,False,False
+of CAD. Angiography determines the location and extent of ,False,False,False,False,False,False
+"the stenotic arteries; nevertheless, its high costs and risks for ",False,False,False,False,False,False
+the patient have prompted researchers to seek less expensive ,False,False,False,False,False,False
+and more effective methods with the aid of data mining. ,False,False,False,False,False,False
+"Moreover, Cost-sensitive algorithms can be of huge value in ",False,False,False,False,False,False
+this field as misclassification of diseased or healthy patients ,False,False,False,False,False,False
+has different costs.  Pedreira et al. [3] using a neural network ,False,False,False,False,False,False
+"on UCI [4] datasets, attained an accuracy rate of 80% for ",False,False,False,False,False,False
+CAD diagnosis. Das et al .[5] applied Neural Network on the ,False,False,False,False,False,False
+datasets of Cleveland  and reported an accuracy rate of ,False,False,False,False,False,False
+89.01%. Babaoglu et al. [6] used the Support Vector ,False,False,False,False,False,False
+Machine (SVM) algorithm on an exercise test data and ,False,False,False,False,False,False
+achieved an accuracy rate of 79.17%. Tsipouras et al. [7] ,False,False,False,False,False,False
+used the Fuzzy Model to detect CAD. Itchhaporia et al. [8] ,False,False,False,False,False,False
+drew upon the Neural Network to analyze an exercise test ,False,False,False,False,False,False
+data for the diagnosis of CAD. ,False,False,False,False,False,False
+"The purpose of the present study is to use MetaCost, ",False,False,False,False,False,False
+"which is a cost-sensitive [9] algorithm, so as to distinguish ",False,False,False,False,False,False
+CAD patients from healthy individuals. The Sequential ,False,False,False,False,False,False
+"Minimal Optimization (SMO) [10], Naïve Bayes [11], C4.5 ",False,False,False,False,False,False
+2012 IEEE 12th International Conference on Data Mining Workshops,False,False,False,False,False,False
+978-0-7695-4925-5/12 $26.00 © 2012 IEEE,True,False,False,True,False,False
+DOI 10.1109/ICDMW.2012.29,True,False,False,True,False,False
+9,False,False,False,False,False,False
+2012 IEEE 12th International Conference on Data Mining Workshops,False,False,False,False,False,False
+978-0-7695-4925-5/12 $26.00 © 2012 IEEE,True,False,False,True,False,False
+DOI 10.1109/ICDMW.2012.29,True,False,False,True,False,False
+9,False,False,False,False,False,False
+"[12], and K-nearest Neighbors (KNN) [13] algorithms are ",False,False,False,False,False,False
+employed to analyze the Z-Alizadeh Sani dataset with no ,False,False,False,False,False,False
+feature normalization. The performance of all mentioned ,False,False,False,False,False,False
+algorithms was calculated using 10-fold cross validation. ,False,False,False,False,False,False
+This dataset contains information on 303 random visitors to ,False,False,False,False,False,False
+"Shaheed Rajaei hospital in Tehran, Iran. The dataset is ",False,False,False,False,False,False
+enriched with three created features which are extracted from ,False,False,False,False,False,False
+the other features prior to the applying the cost-sensitive ,False,False,False,False,False,False
+algorithms on the datasets. The effect of the created features ,False,False,False,False,False,False
+"is investigated both theoretically and practically. First, an ",False,False,False,False,False,False
+assumption is made about the created features. Then a ,False,False,False,False,False,False
+lemma is stated which provides a subset of sample which ,False,False,False,False,False,False
+"satisfy the assumption. Afterwards, another lemma is ",False,False,False,False,False,False
+"presented which using the assumption 1, discusses the ",False,False,False,False,False,False
+"effectiveness of the created features. In the experiments, the ",False,False,False,False,False,False
+correctness of assumption 1 and the effectiveness of the ,False,False,False,False,False,False
+"created features are studied. As a result, high rates of both ",False,False,False,False,False,False
+"accuracy and sensitivity are obtained which, to best of our ",False,False,False,False,False,False
+"knowledge, are superior to the existing studies in this area. ",False,False,False,False,False,False
+The rest of this paper is organized as follows: Section 2 ,False,False,False,False,False,False
+describes the medical dataset. The used data mining methods ,False,False,False,False,False,False
+are presented in section 3 and section 4 discusses the reason ,False,False,False,False,False,False
+of effectiveness of the proposed method. The methods are ,False,False,False,False,False,False
+"evaluated in section 5 and finally, section 6 concludes the ",False,False,False,False,False,False
+paper and discusses some future research directions. ,False,False,False,False,False,False
+II.  U,True,True,False,True,False,False
+SED MEDICAL DATASET ,True,False,False,True,False,False
+The Z-Alizadeh Sani dataset is collected from 303 ,False,False,False,False,False,False
+random visitors to ,False,False,False,False,False,False
+"Tehran’s Shaheed Rajaei Cardiovascular, ",False,False,False,False,False,False
+Medical and Research Center,False,False,False,False,False,False
+ and contains 54 features [14]. The ,False,False,False,False,False,False
+"features along with their valid ranges are given in Tables I, ",False,False,False,False,False,False
+"II, III, and IV. ",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+The details of the features of the tables and how much ,False,False,False,False,False,False
+they influence on CAD can be found in [14]. The ,False,False,False,False,False,False
+discretization ranges provided in Braunwald’s Heart Book ,False,False,False,False,False,False
+"[1] is used, and some additional features are added  to dataset ",False,False,False,False,False,False
+and they are introduced in Index 2. Some of these categories ,False,False,False,False,False,False
+are given in Table V. ,False,False,False,False,False,False
+III.  M,True,True,False,True,False,False
+ETHODS ,True,False,False,True,False,False
+"In this section, the data mining algorithms used to ",False,False,False,False,False,False
+analyze the dataset and also the definition of information ,False,False,False,False,False,False
+gain which is needed in the next sections are described. ,False,False,False,False,False,False
+MetaCost builds a classification model using cost values ,False,False,False,False,False,False
+from a given matrix. This operator uses a given cost matrix ,False,False,False,False,False,False
+to compute label predictions according to classification costs. ,False,False,False,False,False,False
+It is a wrapper method for making classifiers cost-sensitive ,False,False,False,False,False,False
+"[9]. In the experiments, RapidMiner [15] is used to apply this ",False,False,False,False,False,False
+"method and C4.5, Naïve Bayes, KNN and SMO classifiers ",False,False,False,False,False,False
+are used as the base classifier of this method. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+1010,False,False,False,False,False,False
+1111,False,False,False,False,False,False
+"are stenotic have higher values of LAD, LCX or RCA ",False,False,False,False,False,False
+"recognizers, respectively. Intuitively it is because the ",False,False,False,False,False,False
+recognizers are the weighted summations of the binomial ,False,False,False,False,False,False
+features with two properties: a) the value 1 for each feature ,False,False,False,False,False,False
+and vessel shows that the probability of the stenosis of the ,False,False,False,False,False,False
+"vessel may be higher than that of the value 0, and b) the ",False,False,False,False,False,False
+features which have more effect on the stenosis of the vessels ,False,False,False,False,False,False
+"are weighted more in the summation. Therefore, the higher ",False,False,False,False,False,False
+values of the created features show that the corresponding ,False,False,False,False,False,False
+vessels may be stenotic with more probability in general. ,False,False,False,False,False,False
+"Therefore, they may lead the classifiers to higher accuracies ",False,False,False,False,False,False
+"in CAD diagnosis, since the stenosis of each vessel means ",False,False,False,False,False,False
+that the patient has CAD. ,False,False,False,False,False,False
+The above discussion can be more clarified according to,False,False,False,False,False,False
+"Assumption  1,  lemma  1 and lemma  2 which are presented ",False,False,False,False,False,False
+below. ,False,False,False,False,False,False
+"Assumption 1.  If the LAD, LCX or RCA vessel of a ",False,False,False,False,False,False
+random patient is stenotic and the corresponding recognizer ,False,False,False,False,False,False
+"of the vessel has value x, then the same vessel of a patient ",False,False,False,False,False,False
+with value y>x  of recognizer is stenotic with high ,False,False,False,False,False,False
+probability. Similar arguments hold for vessels which are ,False,False,False,False,False,False
+"normal: If the LAD, LCX or RCA vessel of a random patient ",False,False,False,False,False,False
+is normal and the corresponding recognizer of the vessel has ,False,False,False,False,False,False
+"value x, then the same vessel of a patient with value y<x of ",False,False,False,False,False,False
+recognizer is normal with high probability. ,False,False,False,False,False,False
+This assumption is another statement of the positive ,False,False,False,False,False,False
+correlation between the probability of the stenosis of the ,False,False,False,False,False,False
+vessels and their recognizers which was stated before. ,False,False,False,False,False,False
+Lemma 1 introduces a set of instances which satisfy this ,False,False,False,False,False,False
+"assumption according to two simple rules. Afterwards, ",False,False,False,False,False,False
+lemma 2 uses the assumption and deduces that the ,False,False,False,False,False,False
+"information gains of the created features are high, so they ",False,False,False,False,False,False
+can increase the performance of the classifiers. ,False,False,False,False,False,False
+"Before stating lemma 1, two simple rules are presented ",False,False,False,False,False,False
+which can be considered valid in most circumstances. These ,False,False,False,False,False,False
+"rules are about the probability of the stenosis of the LAD, ",False,False,False,False,False,False
+LCX or RCA vessels of two patients p1 and p2 with the ,False,False,False,False,False,False
+selected features f,False,False,False,False,False,False
+ and f,False,False,False,False,False,False
+ for the ,False,False,False,False,False,False
+corresponding vessel. ,False,False,False,False,False,False
+rule 1.  If f,False,False,False,False,False,False
+ for all 1,False,False,False,False,False,False
+j; f,False,False,False,False,False,False
+=0; then ,False,False,False,False,False,False
+the probability of the stenosis of the corresponding vessel of ,False,False,False,False,False,False
+p1 is higher than that of p2. ,False,False,False,False,False,False
+rule 2. If f,False,False,False,False,False,False
+ for all 1,False,False,False,False,False,False
+l; f,False,False,False,False,False,False
+=0; ,False,False,False,False,False,False
+=1; w,False,False,False,False,False,False
+; then the probability of the stenosis of ,False,False,False,False,False,False
+the corresponding vessel of p1 is higher than that of p2. ,False,False,False,False,False,False
+These two rules are needed for validity of lemma 1. ,False,False,False,False,False,False
+lemma 1.  Consider two patients p1 and p2 with the ,False,False,False,False,False,False
+selected features f,False,False,False,False,False,False
+ and ,False,False,False,False,False,False
+ for the corresponding ,False,False,False,False,False,False
+"vessel, where we have: ",False,False,False,False,False,False
+   1) f,False,False,False,False,False,False
+ for all 1,False,False,False,False,False,False
+"m, ",False,False,False,False,False,False
+   2) f,False,False,False,False,False,False
+=0 and f,False,False,False,False,False,False
+=1 for all m+1,False,False,False,False,False,False
+"n, ",False,False,False,False,False,False
+   3) f,False,False,False,False,False,False
+=1 and f,False,False,False,False,False,False
+=0 for all n+1,False,False,False,False,False,False
+"p, ",False,False,False,False,False,False
+   4) (n-m),False,False,False,False,False,False
+ 5) w,False,False,False,False,False,False
+ for all 1,False,False,False,False,False,False
+(n-m); ,False,False,False,False,False,False
+then the probability of the stenosis of the corresponding ,False,False,False,False,False,False
+vessel of p1 is higher than that of p2 according to rule 1 and ,False,False,False,False,False,False
+rule 2. ,False,False,False,False,False,False
+proof.  Applying  rule 1 on the i,False,False,False,False,False,False
+ features where 2n-,False,False,False,False,False,False
+p and rule 2 on the (m+i),False,False,False,False,False,False
+  and (n+i),False,False,False,False,False,False
+ features ,False,False,False,False,False,False
+where 1,False,False,False,False,False,False
+(n-m) assures that the conclusion of lemma 1 is ,False,False,False,False,False,False
+valid.         ▀ ,False,False,False,False,False,False
+Considering that the features can be reordered before ,False,False,False,False,False,False
+applying the rules of lemma 1 and that the recognizer of the ,False,False,False,False,False,False
+corresponding vessel for p1 is higher than that of p2 ,False,False,False,False,False,False
+"according to the conditions of the lemma, a subset of the ",False,False,False,False,False,False
+samples which satisfy assumption 1 can be obtained. In ,False,False,False,False,False,False
+"addition, it can be seen that the assumption is valid for a ",False,False,False,False,False,False
+larger set of samples as it will be discussed in section 5. ,False,False,False,False,False,False
+lemma 2 is based on assumption 1 and discusses why the ,False,False,False,False,False,False
+created features can increase the performance of the ,False,False,False,False,False,False
+classifiers. ,False,False,False,False,False,False
+"lemma 2.  If assumption 1 is considered valid, the ",False,False,False,False,False,False
+"information gain of the LAD, LCX and RCA recognizers are ",False,False,False,False,False,False
+"high in determining the stenosis of the three vessels, ",False,False,False,False,False,False
+respectively. ,False,False,False,False,False,False
+proof. Consider the threshold on the recognizer which ,False,False,False,False,False,False
+leads to the highest value of information gain for the vessel ,False,False,False,False,False,False
+(any of the three vessels) is ,False,False,False,False,False,False
+the definition of information gain.   ▀ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+V.  T,True,True,False,True,False,False
+HE EXPERIMENTAL RESULTS ,True,False,False,True,False,False
+"In this section, first the RapidMiner and performance ",False,False,False,False,False,False
+measures are discussed in order to evaluate the algorithms ,False,False,False,False,False,False
+described above and thereafter the actual results are ,False,False,False,False,False,False
+presented. Finally the correctness of assumption 1 which is ,False,False,False,False,False,False
+the base of reasoning of effectiveness of the created features ,False,False,False,False,False,False
+is investigated. ,False,False,False,False,False,False
+RapidMiner [15] is a tool for experimenting with ,False,False,False,False,False,False
+machine learning and data mining algorithms. An ,False,False,False,False,False,False
+experiment is a set of operators that perform different tasks ,False,False,False,False,False,False
+in the data. The experiments can be described visually as a ,False,False,False,False,False,False
+process. ,False,False,False,False,False,False
+RapidMiner is an environment for machine learning and ,False,False,False,False,False,False
+data mining process. It follows a modular operator concept ,False,False,False,False,False,False
+1212,False,False,False,False,False,False
+which allows the design of complex nested operator chains ,False,False,False,False,False,False
+for a huge number of learning problems. It also allows for ,False,False,False,False,False,False
+the data handling being transparent to the operators. ,False,False,False,False,False,False
+RapidMiner introduces new concepts of transparent data ,False,False,False,False,False,False
+"handling and process modeling, which eases process ",False,False,False,False,False,False
+"configuration for the end users. Additionally, clear interfaces ",False,False,False,False,False,False
+and a sort of scripting language based on XML turns ,False,False,False,False,False,False
+RapidMiner into an integrated developer environment for ,False,False,False,False,False,False
+data mining and machine learning [15]. ,False,False,False,False,False,False
+"The accuracy, sensitivity, and specificity are of great ",False,False,False,False,False,False
+"significance in the medical field. Consequently, for ",False,False,False,False,False,False
+"measuring the performance of algorithms, accuracy, ",False,False,False,False,False,False
+"sensitivity, and specificity were used. ",False,False,False,False,False,False
+A confusion matrix contains information on actual and ,False,False,False,False,False,False
+predicted classifications done by a classification system. ,False,False,False,False,False,False
+In this table: ,False,False,False,False,False,False
+ is the number of correct predictions for positive ,False,False,False,False,False,False
+instances ,False,False,False,False,False,False
+ is the number of incorrect predictions for positive ,False,False,False,False,False,False
+instances ,False,False,False,False,False,False
+ is the number of incorrect of predictions for ,False,False,False,False,False,False
+negative instances ,False,False,False,False,False,False
+ is the number of correct predictions for negative ,False,False,False,False,False,False
+instances ,False,False,False,False,False,False
+1313,False,False,False,False,False,False
+Naïve Bayes achieved nearly the same accuracy as the KNN ,False,False,False,False,False,False
+algorithm. ,False,False,False,False,False,False
+"To illustrate the impact of the new features, the accuracy ",False,False,False,False,False,False
+rates of the algorithms after feature selection with the created ,False,False,False,False,False,False
+features are depicted in Table XI. ,False,False,False,False,False,False
+1414,False,False,False,False,False,False
+"In Table XVI, sensitivity is higher than specificity. ",False,False,False,False,False,True
+"Furthermore, when K increases, the algorithm tends to ",False,False,False,False,False,False
+"diagnose patients as CAD. For K=1 and K=2, accuracy with ",False,False,False,False,False,False
+the cost matrix in Table VIII is higher than that in the others; ,False,False,False,False,False,False
+"whereas for K=3, accuracy with the cost matrix in Table VII ",False,False,False,False,False,False
+is the highest. ,False,False,False,False,False,False
+"As Tables XIII-XVI demonstrate, the sensitivity of ",False,False,False,False,False,False
+almost all the algorithms with the cost matrix in Table IX is ,False,False,False,False,False,False
+higher than that of the other Cost Matrices. ,False,False,False,False,False,False
+"Thus, as is shown in Table XI, the highest performance ",False,False,False,False,False,False
+was related to the SMO algorithm. Naïve Bayes and C4.5 ,False,False,False,False,False,False
+nearly had the same performance.  ,False,False,False,False,False,False
+"Figure 1 shows sensitivity, specificity, and accuracy ",False,False,False,False,True,False
+changes of SMO algorithm with respect to cost of wrong ,False,False,False,False,False,False
+CAD diagnosis. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"For comparing measurement values, cost of wrong ",False,False,False,False,False,False
+normal diagnosis is considered constant as 1 and cost of ,False,False,False,False,False,False
+wrong CAD diagnosis has changed from 0.1 to 10. In this ,False,False,False,False,False,False
+"figure, x axis is the cost of wrong CAD diagnosis and y axis, ",False,False,False,False,False,False
+"shows sensitivity, specificity, and accuracy. As seen in the ",False,False,False,False,False,False
+"figure, the more the cost of CAD diagnosis is, the more the ",False,False,False,False,False,False
+algorithm is probable in correct diagnosing of CAD. ,False,False,False,False,False,False
+"Therefore, sensitivity increases and specificity decreases. But ",False,False,False,False,False,False
+accuracy is mildly constant. The highest accuracy is 92.74% ,False,False,False,False,False,False
+"which is achieved with x=1, meaning the same cost for ",False,False,False,False,False,False
+wrong CAD and normal diagnosis. The highest specificity is ,False,False,False,False,False,False
+"89.66% which is reached with x=0.1, and the highest ",False,False,False,False,False,False
+sensitivity is 98.61% which is reached with x=9. In x=0.25 ,False,False,False,False,False,False
+"sensitivity, specificity, and accuracy have the same value, ",False,False,False,False,False,False
+88.51%. ,False,False,False,False,False,False
+"In order to check the correctness of assumption 1, for ",False,False,False,False,False,False
+each vessel the probabilities discussed in this assumption ,False,False,False,False,False,False
+"were calculated, using the respective recognizer alone: 1) ",False,False,False,False,False,False
+"Pr1, i.e. the probability that a patient’s vessel is stenotic ",False,False,False,False,False,False
+given that its recognizer value is higher than that of a ,False,False,False,False,False,False
+"specific patient with stenotic vessel; 2) Pr2, i.e. the ",False,False,False,False,False,False
+probability that a patient’s vessel is normal given that its ,False,False,False,False,False,False
+recognizer value is less than that of a specific patient with ,False,False,False,False,False,False
+normal vessel. Parts (a) through (c) of Figure 2 show the ,False,False,False,False,False,False
+"probabilities for LAD, LCX and RCA vessels, respectively. ",False,False,False,False,False,False
+"If the vessel (LAD, LCX or RCA) of a patient is stenotic, ",False,False,False,False,False,False
+"Pr1 was calculated for him/her, otherwise Pr2 was ",False,False,False,False,False,False
+calculated. One of the 303 records of the dataset seemed to ,False,False,False,False,False,False
+be exception; therefore it was eliminated from the dataset ,False,False,False,False,False,False
+prior to this experiment. These probabilities were then ,False,False,False,False,False,False
+"plotted against the value of the recognizer. As expected, ",False,False,False,False,False,False
+probabilities Pr1 have positive correlation with the ,False,False,False,False,False,False
+recognizer values and probabilities Pr2 have negative ,False,False,False,False,False,False
+"correlation. These probabilities are almost high, especially ",False,False,False,False,False,False
+when the recognizer values are high or low for probabilities ,False,False,False,False,False,False
+"Pr1 and Pr2, respectively. Therefore, assumption 1 is valid to ",False,False,False,False,False,False
+"some extent, depending on the recognizer values. ",False,False,False,False,False,False
+"In this study, the MetaCost algorithm, which is a cost-",False,False,False,False,False,False
+"sensitive algorithm, was used. First, from a total of 54 ",False,False,False,False,False,False
+"features, 34 were selected using feature selection algorithm. ",False,False,False,False,False,False
+Then three created features were added to the dataset. The ,False,False,False,False,False,False
+"C4.5, KNN, Naïve Bayes, SVM and SMO algorithms were ",False,False,False,False,False,False
+"thereafter used in MetaCost. As Table XI shows, the ",False,False,False,False,False,False
+accuracy of the SMO algorithm was better than that of the ,False,False,False,False,False,False
+other Algorithms. The accuracy of the KNN is not as well as ,False,False,False,False,False,False
+the other algorithms since the number of patients who have ,False,False,False,False,False,False
+CAD is about 2.5 times more than the number of normal ,False,False,False,False,False,False
+ones and also comparison of Euclidean distance between ,False,False,False,False,False,False
+patients cannot accurately discriminate them so this ,False,False,False,False,False,False
+algorithm is more likely to diagnose patients as CAD. ,False,False,False,False,False,False
+"In order to study the cost sensitive algorithms, first the ",False,False,False,False,False,False
+cost matrix was set with no difference between the two ,False,False,False,False,False,False
+"classes. Next, taking two times and third times the cost for ",False,False,False,False,False,False
+"the wrong CAD diagnosis, it was seen that third case leaded ",False,False,False,False,False,False
+to the best sensitivity. ,False,False,False,False,False,False
+"In addition, the feature creation method was investigated. ",False,False,False,False,False,False
+This method increased the accuracy of some of the ,False,False,False,False,False,False
+"classification algorithms, substantially. The assumption 1 ",False,False,False,False,False,False
+was also shown to be almost valid. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+(a) The probabilities stated in assumption 1 for LAD ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+1515,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+(b) The probabilities stated in assumption 1 for LCX ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+(c) The probabilities stated in assumption 1 for RCA ,False,False,False,False,False,False
+VI.  CONCLUSTION AND FUTURE WORK ,True,True,False,True,False,False
+"In this paper, the MetaCost algorithm was run on the Z-",False,False,False,False,False,False
+Alizadeh Sani dataset to for CAD diagnosis and yielded the ,False,False,False,False,False,False
+highest accuracy rate when employed alongside the SMO ,False,False,False,False,False,False
+algorithm. The sensitivity was also high as the cost sensitive ,False,False,False,False,False,False
+algorithms were applied. A feature creation method which ,False,False,False,False,False,False
+"can be used to add three new features regarding LAD, LCX ",False,False,False,False,False,False
+and RCA vessels to the dataset was shown to be effective for ,False,False,False,False,False,False
+the task of classification. ,False,False,False,False,False,False
+The future goal is to add stress heart Magnetic Resonance ,False,False,False,False,False,False
+Imaging (MRI) and cardiac radionuclide imaging features to ,False,False,False,False,False,False
+"examine their effects on CAD. In addition, the validity of the ",False,False,False,False,False,False
+assumption and the effectiveness of the features can be ,False,False,False,False,False,False
+"investigated furthered, both theoretically and practically. ",False,False,False,False,False,False
+"Also, the algorithms can be applied on more datasets to ",False,False,False,False,False,False
+obtain more reliable and interesting results. More accurate ,False,False,False,False,False,False
+comparisons could also be obtained by applying existing ,False,False,False,False,False,False
+"state of the art methods on the introduced data set. Finally, ",False,False,False,False,False,False
+the proposed cost sensitive algorithm can be used on other ,False,False,False,False,False,False
+diseases such as cancer. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+R,True,False,False,True,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+1616,False,False,False,False,False,False

@@ -1,0 +1,1135 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+*,False,False,False,False,False,False
+a,False,False,False,False,False,False
+"Department of Information Management, National Kaohsiung First University of Science and Technology, 2, Juoyue Rd., Nantz District,",False,False,False,False,False,False
+"Kaohsiung 811, Taiwan, ROC",False,False,False,False,False,False
+b,False,False,False,False,False,False
+"Department of Information Management, Huafan University, 1, Huafan Rd., Shihtin Hsiang,",False,False,False,False,False,False
+"Taipei Hsien 223, Taiwan, ROC",False,False,False,False,False,False
+Abstract,False,False,False,True,False,False
+"Support Vector Machines, one of the new techniques for pattern classiﬁcation, have been widely used in many application areas. The kernel",False,False,False,False,False,False
+parameters setting for SVM in a training process impacts on the classiﬁcation accuracy. Feature selection is another factor that impacts,False,False,False,False,False,False
+classiﬁcation accuracy. The objective of this research is to simultaneously optimize the parameters and feature subset without degrading the SVM,False,False,False,False,False,False
+classiﬁcation accuracy. We present a genetic algorithm approach for feature selection and parameters optimization to solve this kind of problem.,False,False,False,False,False,False
+"We tried several real-world datasets using the proposed GA-based approach and the Grid algorithm, a traditional method of performing",False,False,False,False,False,False
+"parameters searching. Compared with the Grid algorithm, our proposed GA-based approach signiﬁcantly improves the classiﬁcation accuracy and",False,False,False,False,False,False
+has fewer input features for support vector machines.,False,False,False,False,False,False
+q 2005 Elsevier Ltd. All rights reserved.,False,False,False,False,False,False
+Keywords: Support vector machines; Classiﬁcation; Feature selection; Genetic algorithm; Data mining,False,False,False,False,False,False
+1. Introduction,False,False,True,True,False,False
+Support vector machines (SVM) were ﬁrst suggested by,False,False,False,False,False,False
+Vapnik (1995) and have recently been used in a range of,False,False,False,False,False,False
+"problems including pattern recognition (Pontil and Verri,",False,False,False,False,False,False
+"1998), bioinfo rmatics (Yu, Ostrouchov, Geist, & Samatova,",False,False,False,False,False,False
+"1999), and text categorization (Joachims, 1998). SVM",False,False,False,False,False,False
+classiﬁes data with different class labels by determining a set,False,False,False,False,False,False
+of support vectors that are members of the set of training inputs,False,False,False,False,False,False
+that outline a hyperplane in the feature space. SVM provides a,False,False,False,False,False,False
+generic mechanism that ﬁts the hyperplane surface to the,False,False,False,False,False,False
+training data using a kernel function. The user may select a,False,False,False,False,False,False
+"kernel function (e.g. linear, polynomial, or sigmoid) for the",False,False,False,False,False,False
+SVM during the training process that selects support vectors,False,False,False,False,False,False
+along the surface of this function.,False,False,False,False,False,False
+"When using SVM, two problems are confronted: how to",False,False,False,False,False,False
+"choose the optimal input feature subset for SVM , and how to set",False,False,False,False,False,False
+"the best kernel parameters. These two problems are crucial,",False,False,False,False,False,False
+because the feature subset choice inﬂuences the appropriate,False,False,False,False,False,False
+kernel parameters and vice versa (Fro,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"hlich and Cha pelle, 2003).",False,False,False,False,False,False
+"Therefore, obtaining the optimal feature subset and SVM",False,False,False,False,False,False
+parameters must occur simulta neously.,False,False,False,False,False,False
+Many practical pattern classiﬁcation tasks require learning,False,False,False,False,False,False
+an appropriate classiﬁcation function that assigns a given input,False,False,False,False,False,False
+"pattern, typically represented by a vector of attribute values to a",False,False,False,False,False,False
+ﬁnite set of classes. Feature selection is used to identify a,False,False,False,False,False,False
+powerfully predictive subset of ﬁelds within a database and,False,False,False,False,False,False
+reduce the number of ﬁelds presented to the mining process. By,False,False,False,False,False,False
+extracting as much information as possible from a given data,False,False,False,False,False,False
+"set while using the smallest number of features, we can save",False,False,False,False,False,False
+signiﬁcant computation time and build models that generalize,False,False,False,False,False,False
+better for unseen data points. According to Yan g and Honavar,False,False,False,False,False,False
+"(1998), the choice of features used to represent patterns that are",False,False,False,False,False,False
+presented to a classiﬁer affects several pattern classiﬁcation,False,False,False,False,False,False
+"aspects, including the accuracy of the learned classiﬁcation",False,False,False,False,False,False
+"algorithm, the time needed for learning a classiﬁcation",False,False,False,False,False,False
+"function, the number of examples needed for learning, and",False,False,False,False,False,False
+the cost associated with the features.,False,False,False,False,False,False
+"In addition to the feature selection, proper parameters",False,False,False,False,False,False
+setting can improve the SVM classiﬁcation accuracy. The,False,False,False,False,False,False
+parameters that should be optimized include penalty,False,False,False,False,False,False
+parameter C and the kernel function parameters such as,False,False,False,False,False,False
+the gamma (g) for the radial basis function (RBF) kernel.,False,False,False,False,False,False
+"To design a SVM, one must choose a kernel function, set",False,False,False,False,False,False
+the kernel parameters and determine a soft margin constant,False,False,False,False,False,False
+Expert Systems with Applications 31 (2006) 231–240,False,False,False,False,False,False
+www.elsevier.com/locate/eswa,False,False,False,False,False,False
+0957-4174/$ - see front matter q 2005 Elsevier Ltd. All rights reserved.,False,False,False,False,False,False
+doi:10.1016/j.eswa.2005.09.024,False,False,False,False,False,False
+*,False,False,False,False,False,False
+Corresponding author. Tel.: C1 2483 702 831; fax: C1 2483 704 275.,False,False,False,False,False,False
+E-mail address: clhuang@ccms.nkfust.edu.tw (C.-L. Huang).,False,False,False,False,False,False
+C (penalty parameter). The Grid algorithm is an alternative,False,False,False,False,False,False
+to ﬁnding the best C and gamma when using the RBF,False,False,False,False,False,False
+"kernel function. However, this method is time consuming",False,False,False,False,False,False
+"and does not perform well (Hsu and Lin, 2002; LaValle and",False,False,False,False,False,False
+"Branicky, 2002). Moreover, the Grid algorithm canno t",False,False,False,False,False,False
+perform the feature selection task.,False,False,False,False,False,False
+Genetic algorithms have the potential to generate both the,False,False,False,False,False,False
+optimal feature subset and SVM parameters at the same time.,False,False,False,False,False,False
+Our research objective is to optimize the parameters and,False,False,False,False,False,False
+"feature subset simultaneously, witho ut degrading the SVM",False,False,False,False,False,False
+classiﬁcation accuracy. The proposed method performs feature,False,False,False,False,False,False
+selection and parameters setting in an evolutionary way. Based,False,False,False,False,False,False
+on whether or not feature selection is performed independently,False,False,False,False,False,False
+"of the learning algorithm that constructs the classiﬁer, feature",False,False,False,False,False,False
+subset selection algorithms can be classiﬁed into two,False,False,False,False,False,False
+categories: the ﬁlter approach and the wrapper approach,False,False,False,False,False,False
+"(John, Kohavi, & Peger, 1994; Kohavi and John, 1997). The",False,False,False,False,False,False
+wrapper approach to feature subset selection is used in this,False,False,False,False,False,False
+paper because of the accuracy.,False,False,False,False,False,False
+"In the literature, only a few algorithms have been proposed",False,False,False,False,False,False
+"for SVM feature selection (Bradley, Mangasarian, & Street,",False,False,False,False,False,False
+"1998; Bradley and Mangasarian, 1998; Weston et al., 2001;",False,False,False,False,False,False
+"Guyon, Weston, Barnhill, & Bapnik, 2002; Mao, 2004). Some",False,False,False,False,False,False
+other GA-based feature selection methods were proposed,False,False,False,False,False,False
+"(Raymer, Punch, Goodman, Kuhn, & Jain, 2000; Yang and",False,False,False,False,False,False
+"Honavar, 1998; Salcedo-Sanz, Prado-Cumplido, Pe",False,False,False,False,False,False
+´,False,False,False,False,False,False
+"rez-Cruz,",False,False,False,False,False,False
+& Bouson,False,False,False,False,False,False
+˜,False,False,False,False,False,False
+o-Calzo,False,False,False,False,False,False
+´,False,False,False,False,False,False
+"n, 2002). However, these papers focused on",False,False,False,False,False,False
+feature selection and did not deal with parameters optimization,False,False,False,False,False,False
+for the SVM classiﬁer. Fro,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+hlich and Chapelle (2003) proposed,False,False,False,False,False,False
+a GA-based feature selection approach that used the theoretical,False,False,False,False,False,False
+bounds on the generalization error for SVMs. The SVM,False,False,False,False,False,False
+regularization parameter can also be optimized using GAs in,False,False,False,False,False,False
+Fro,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+hlich’s paper.,False,False,False,False,False,False
+This paper is organized as follow s: a brief introduction to,False,False,False,False,False,False
+the SVM is given in Section 2. Section 3 describes basic GA,False,False,False,False,False,False
+concepts. Section 4 describes the GA-based feature selection,False,False,False,False,False,False
+and parameter optimization. Section 5 present s the experimen-,False,False,False,False,False,False
+tal results from using the proposed method to classify several,False,False,False,False,False,False
+real world datasets. Section 6 summarizes the results and draws,False,False,False,False,False,False
+a general conclusion.,False,False,False,False,False,False
+2. Brief introduction of support vector machines,False,False,True,True,False,False
+2.1. The optimal hyperplane (linear SVM),False,False,False,False,False,False
+In this section we will brieﬂy describe the basic SVM,False,False,False,False,False,False
+concepts for typical two-clas s classiﬁcation problems. These,False,False,False,False,False,False
+"concepts can also be found in (Kecman, 2001; Scho",False,False,False,False,False,False
+˝,False,False,False,False,False,False
+lkopf,False,False,False,False,False,False
+"and Smola, 2000; Cristianini and Shawe-Taylor, 2000).",False,False,False,False,False,False
+Given a training set of instance-label pairs (x,False,False,False,False,False,False
+", y",False,False,False,False,False,False
+"), iZ1,",False,False,False,False,False,False
+"2,., m where x",False,False,False,False,False,False
+2R,True,False,False,True,False,False
+and y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"2{C1, K1}, for the linearly",False,False,False,False,False,False
+"separable case, the data points will be correctly classiﬁed by",False,False,False,False,False,False
+hw$x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i C bRC1 for y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Z C1 (1),True,False,False,True,False,False
+hw$x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i C b%K1 for y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ZK1 (2),True,False,False,True,False,False
+Eqs. (1) and (2) can be combined into one set of inequalities.,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ðhw$x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i C bÞK1R 0 c i Z 1; .; m (3),False,False,False,False,False,False
+The SVM ﬁnds an optimal separating hyperplane with the,False,False,False,False,False,False
+maximum margin by solving the following optimization,False,False,False,False,False,False
+problem:,False,False,False,False,False,False
+Min,False,False,False,False,False,False
+w;b,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+w,False,False,False,False,False,False
+w subject to : y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ðhw$x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i C bÞK1R 0 (4),False,False,False,False,False,False
+It is known that to solve this quadratic optimization problem one,False,False,False,False,False,False
+must ﬁnd the saddle point of the Lagrange function:,False,False,False,False,False,False
+L,True,False,False,True,False,False
+p,False,False,False,False,False,False
+ðw; b; aÞ Z,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+w,False,False,False,False,False,False
+m,False,False,False,False,False,False
+ða,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ðhw$x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i C bÞK1Þ (5),False,False,False,False,False,False
+where the a,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"denotes Lagrange multipliers, hence a",False,False,False,False,False,False
+R0. The,False,False,False,False,False,False
+search for an optimal saddle point is necessary because the L,False,False,False,False,False,False
+must be minimized with respect to the primal variables w and b,False,False,False,False,False,False
+and maximized with respect to the non-negative dual variable,False,False,False,False,False,False
+". By differentiating with respect to w and b, the following",False,True,False,True,False,False
+equations are obtained:,False,False,False,False,False,False
+L,True,False,False,True,False,False
+p,False,False,False,False,False,False
+Z 0; w Z,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+(6),False,False,False,False,False,False
+L,True,False,False,True,False,False
+p,False,False,False,False,False,False
+Z 0;,True,False,False,True,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Z 0 (7),True,False,False,True,False,False
+The Karush Kuhn–Tucker (KTT) conditions for the optimum,False,False,False,False,False,False
+constrained function are necessary and sufﬁcient for a maximum,False,False,False,False,False,False
+of Eq. (5). The corresponding KKT complementarity conditions,False,False,False,False,False,False
+are,False,False,False,False,False,False
+i,False,False,False,False,False,False
+½y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ðhw$x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i C bÞK1 Z 0 c i (8),False,False,False,False,False,False
+"Substitute Eq s. (6) and (7) into Eq. (5), then L",False,False,False,False,False,False
+is transformed to,False,False,False,False,False,False
+the dual Lagrangian L,False,False,False,False,False,False
+(a):,False,False,False,False,False,False
+Max,False,False,False,False,False,False
+L,True,False,False,True,False,False
+D,True,False,False,True,False,False
+ðaÞ Z,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+j,False,False,False,False,False,False
+hx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+i,False,False,False,False,False,False
+subject to : a,False,False,False,False,False,False
+i,False,False,False,False,False,False
+R 0 i Z 1; .; m and,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Z 0,True,False,False,True,False,False
+(9),False,False,False,False,False,False
+"To ﬁnd the optimal hyperplane, a dual Lagrangian L",False,False,False,False,False,False
+(a) must be,False,False,False,False,False,False
+maximized with respect to non-negat ive a,False,False,False,False,False,False
+. This is a standard,False,True,False,True,False,False
+quadratic optimization problem that can be solved by using,False,False,False,False,False,False
+some standard optimization programs. The solution a,False,False,False,False,False,False
+for the,False,False,False,False,False,False
+dual optimization problem determines the parameters w,False,False,False,False,False,False
+*,False,False,False,False,False,False
+and b,False,False,False,False,False,False
+*,False,False,False,False,False,False
+"of the optimal hyperplane. Thus, we obtain an optimal decision",False,False,False,False,False,False
+"hyperplane f(x,a",False,False,False,False,False,False
+*,False,False,False,False,False,False
+",b",False,False,False,False,False,False
+) (Eq. (10)) and an indi cator decision,False,False,False,False,False,False
+"function sign [f(x,a",False,False,False,False,False,False
+*,False,False,False,False,False,False
+",b",False,False,False,False,False,False
+)].,False,False,False,False,False,False
+f ðx; a,False,False,False,False,False,False
+; b,False,False,False,False,False,False
+Þ Z,True,False,False,True,False,False
+m,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+hx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; xi C b,False,False,False,False,False,False
+i2sv,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+hx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; xi C b,False,False,False,False,False,False
+(10),False,False,False,False,False,False
+"In a typical classiﬁcation task, only a small subset of the",False,False,False,False,False,False
+Lagrange multipliers a,False,False,False,False,False,False
+usually tend to be greater than zero.,False,False,False,False,False,False
+"Geometrically, these vectors are the closest to the optimal",False,False,False,False,False,False
+"C.-L. Huang, C.-J. Wang / Expert Systems with Applications 31 (2006) 231–240232",False,False,False,False,False,False
+hyperplane. The respective training vectors having nonzero a,False,False,False,False,False,False
+"are called support vectors, as the optimal decision hyperplane",False,False,False,False,False,False
+"f(x,a",False,False,False,False,False,False
+*,False,False,False,False,False,False
+",b",False,False,False,False,False,False
+) depends on them exclusively.,False,False,False,False,False,False
+2.2. The optimal hyperplane for nonseparable data (linear,False,False,False,False,False,False
+generalized SVM),False,False,False,False,False,False
+The above concepts can also be extended to the non-,False,False,False,False,False,False
+"separable case, i.e. when Eq. (3) there is no solution. The goal",False,False,False,False,False,False
+is to construct a hyperplane that makes the smallest numb er of,False,False,False,False,False,False
+errors. To get a formal setting of this problem we introduce the,False,False,False,False,False,False
+non-negative slack variables x,False,False,False,False,False,False
+"R0, iZ1,., m. Such that",False,False,False,False,False,False
+hw$x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i C bRC1Kx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+for y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Z C1 (11),True,False,False,True,False,False
+hw$x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i C b%K1 C x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+for y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ZK1 (12),True,False,False,True,False,False
+"In terms of these slack variables, the problem of ﬁnding the",False,False,False,False,False,False
+hyperplane that provides the minimum number of training,False,False,False,False,False,False
+"errors, i.e. to keep the constraint violation as small as possible,",False,False,False,False,False,False
+has the formal expression:,False,False,False,False,False,False
+Min,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+w,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+subject to : y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ðhw$x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i C bÞ C x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+K1R 0; x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+R 0,True,False,False,True,False,False
+(13),False,False,False,False,False,False
+This optimization model can be solved using the Lagrangian,False,False,False,False,False,False
+"method, which is almost equivalent to the method for solving",False,False,False,False,False,False
+the optimization problem in the separable case. One must,False,False,False,False,False,False
+maximize the same dual variables Lagrangian L,False,False,False,False,False,False
+(a) (Eq. (14)),False,False,False,False,False,False
+as in the separable case.,False,False,False,False,False,False
+Max,False,False,False,False,False,False
+L,True,False,False,True,False,False
+D,True,False,False,True,False,False
+ðaÞ Z,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+j,False,False,False,False,False,False
+hx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+i,False,False,False,False,False,False
+subject to : 0% a,False,False,False,False,False,False
+i,False,False,False,False,False,False
+% C; i Z 1; .; m and,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Z 0,True,False,False,True,False,False
+(14),False,False,False,False,False,False
+"To ﬁnd the optimal hyperplane, a dual Lagrangian L",False,False,False,False,False,False
+(a) must,False,False,False,False,False,False
+be maximized with respect to non-negative a,False,False,False,False,False,False
+under the,False,False,False,False,False,False
+constrains,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Z 0 and 0%a,False,False,False,False,False,False
+"%C, i Z1,.,m. The penalty",False,False,False,False,False,False
+"parameter C, which is now the upper bound on a",False,False,False,False,False,False
+",is",False,False,False,False,False,False
+"determined by the user. Finally, the optimal decision hyper-",False,False,False,False,False,False
+plane is the same as Eq. (10).,False,False,False,False,False,False
+2.3. Non-linear SVM,False,False,False,False,False,False
+The nonlinear SVM maps the training samples from the,False,False,False,False,False,False
+input space into a higher-dimensional feature space via a,False,False,False,False,False,False
+"mapping function F, which are also called kernel function. In",False,False,False,False,False,False
+"the dual Lagrange (9), the inner products are replaced by the",False,False,False,False,False,False
+"kernel function (15) , and the non-linear SVM dual Lagrangian",False,False,False,False,False,False
+L,True,False,False,True,False,False
+(a) (Eq. (16)) is similar with that in the linear generalized,False,False,False,False,False,False
+case.,False,False,False,False,False,False
+ðFðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Þ$Fðx,False,False,False,False,False,False
+j,False,False,False,False,False,False
+ÞÞ :Z kðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+Þ (15),True,False,False,True,False,False
+L,True,False,False,True,False,False
+D,True,False,False,True,False,False
+ðaÞ Z,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+j,False,False,False,False,False,False
+kðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+Þ,True,False,False,True,False,False
+subject to : 0% a,False,False,False,False,False,False
+i,False,False,False,False,False,False
+% C; i Z 1; .; m and,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Z 0,True,False,False,True,False,False
+(16),False,False,False,False,False,False
+This optimization model can be solved using the method for,False,False,False,False,False,False
+"solving the optimization in the separable case. Therefore, the",False,False,False,False,False,False
+optimal hyperplane has the form Eq. (17). Depending upon the,False,False,False,False,False,False
+"applied kernel, the bias b can be implicitly part of the kernel",False,False,False,False,False,False
+"function. Therefore, if a bias term can be accommodated within",False,False,False,False,False,False
+"the kernel function, the nonlinear SV classiﬁer can be shown as",False,False,False,False,False,False
+Eq. (18).,False,False,False,False,False,False
+f ðx; a,False,False,False,False,False,False
+; b,False,False,False,False,False,False
+Þ Z,True,False,False,True,False,False
+m,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+hFðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Þ; FðxÞi C b,False,False,False,False,False,False
+m,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+kðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; xÞ C b,False,False,False,False,False,False
+(17),False,False,False,False,False,False
+f ðx; a,False,False,False,False,False,False
+; b,False,False,False,False,False,False
+Þ Z,True,False,False,True,False,False
+i2sv,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+hFðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Þ; FðxÞi Z,False,False,False,False,False,False
+i2sv,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+kðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; xÞ (18),False,False,False,False,False,False
+"Some kernel functions include polynomial, radial basis",False,False,False,False,False,False
+"function (RBF) and sigmoid kernel (Burges, 1998), which",False,False,False,False,False,False
+"are shown as functions (19), (20), and (21). In order to improve",False,False,False,False,False,False
+"classiﬁcation accuracy, these kernel parame ters in the kernel",False,False,False,False,False,False
+functions should be properly set.,False,False,False,False,False,False
+Polynomial kernel:,False,False,False,False,False,False
+kðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+Þ Z ð1 C x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+Þ,True,False,False,True,False,False
+d,False,False,False,False,False,False
+(19),False,False,False,False,False,False
+Radial basis function kernel:,False,False,False,False,False,False
+kðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+Þ Z expðKgjjx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+jj,False,False,False,False,False,False
+Þ (20),True,False,False,True,False,False
+Sigmoid kernel:,False,False,False,False,False,False
+kðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+Þ Z tanhðkx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+KdÞ (21),False,False,False,False,False,False
+3. Genetic algorithm,False,False,True,True,False,False
+"Genetic algorithms (GA), a general adaptive optimization",False,False,False,False,False,False
+search methodology based on a direct analogy to Darwinian,False,False,False,False,False,False
+"natural selection and genetics in biologi cal systems, is a",False,False,False,False,False,False
+promising alternative to conventional heuristic methods. GA,False,False,False,False,False,False
+work with a set of candidate solutions called a population.,False,False,False,False,False,False
+"Based on the Darwinian principle of ‘survival of the ﬁttest’, the",False,False,False,False,False,False
+GA obtains the optimal solution after a series of iterative,False,False,False,False,False,False
+computations. GA generates successive populations of alter-,False,False,False,False,False,False
+"nate solutions that are represented by a chromosome, i.e. a",False,False,False,False,False,False
+"solution to the problem, until acceptable results are obtained.",False,False,False,False,False,False
+Associated wit h the characteristics of exploitation and,False,False,False,False,False,False
+"exploration search, GA can deal with large search spaces",False,False,False,False,False,False
+"efﬁciently, and hence has less chance to get local optimal",False,False,False,False,False,False
+solution than other algorithms.,False,False,False,False,False,False
+A ﬁtness function assesses the quality of a solution in the,False,False,False,False,False,False
+evaluation step. The crossover and mutation functions are,False,False,False,False,False,False
+"C.-L. Huang, C.-J. Wang / Expert Systems with Applications 31 (2006) 231–240 233",False,False,False,False,False,False
+the main operators that randomly impact the ﬁtness value.,False,False,False,False,False,False
+Chromosomes are selected for reproduction by evaluating the,False,False,False,False,False,False
+ﬁtness value. The ﬁtter chromosomes have higher probability,False,False,False,False,False,False
+to be selected into the recombination pool using the roulette,False,False,False,False,False,False
+wheel or the tournament selection methods.,False,False,False,False,False,False
+Fig. 1 illustrates the genetic operators of crossover and,False,False,False,False,True,False
+"mutation. Crossover, the critical genetic operator that allows",False,False,False,False,False,False
+"new solution regions in the search space to be explored, is a",False,False,False,False,False,False
+random mechanism for exchanging genes between two,False,False,False,False,False,False
+"chromosomes using the one point crossover, two point",False,False,False,False,False,False
+"crossover, or homologue crossover. In mutation the genes",False,False,False,False,False,False
+"may occasionally be altered, i.e. in binary code genes changing",False,False,False,False,False,False
+genes code from 0 to 1 or vice versa.,False,False,False,False,False,False
+Offspring replaces the old population using the elitism or,False,False,False,False,False,False
+diversity replacement strategy and forms a new population in,False,False,False,False,False,False
+the next generation.,False,False,False,False,False,False
+The evolutionary process operates many generations until,False,False,False,False,False,False
+termination condition satisfy. Fig. 2 depicts the GA evolution-,False,False,False,False,False,False
+"ary process mentioned above (Goldberg, 1989; Davis, 1991 ).",False,False,False,False,False,False
+4. GA-based feature selection and parameters optimization,False,False,True,True,False,False
+"The chromosome design, ﬁtness function, and system",False,False,False,False,False,False
+architecture for the proposed GA-based feature selection and,False,False,False,False,False,False
+parameter optimization are described as follows.,False,False,False,False,False,False
+4.1. Chromosome design,False,False,False,False,False,False
+"To implement our proposed approach, this research used the",False,False,False,False,False,False
+RBF kernel function for the SVM classiﬁer because the RBF,False,False,False,False,False,False
+kernel function can analysis higher-dimensional data and,False,False,False,False,False,False
+"requires that only two parameters, C and g be deﬁned (Hsu,",False,False,False,False,False,False
+"Chang, & Lin, 2003; Lin and Lin, 2003). When the RBF kernel",False,False,False,False,False,False
+"is selected, the parameters (C and g) and features used as input",False,False,False,False,False,False
+attributes must be optimized using our proposed GA-based,False,False,False,False,False,False
+"system. Therefore, the chromosome comprises three parts, C,",False,False,False,False,False,False
+"g, and the features mask. However, these chromosomes have",False,False,False,False,False,False
+different parameters when other types of kernel functions are,False,False,False,False,False,False
+selected. The binary coding system was used to represent the,False,False,False,False,False,False
+chromosome. Fig. 3 show s the binary chromosome represen-,False,False,False,False,True,False
+"tation of our design. In Fig. 3, g",False,False,False,False,False,False
+C,True,False,False,True,False,False
+wg,False,False,False,False,False,False
+n,False,False,False,False,False,False
+C,True,False,False,True,False,False
+represents the value of,False,False,False,False,False,False
+"parameter C, g",False,False,False,False,False,False
+wg,False,False,False,False,False,False
+n,False,False,False,False,False,False
+"represents the parameter value g, and",False,False,False,False,False,False
+g,False,False,False,False,False,False
+f,False,False,False,False,False,False
+wg,False,False,False,False,False,False
+n,False,False,False,False,False,False
+f,False,False,False,False,False,False
+represents the feature mask. n,False,False,False,False,False,False
+is the number of bits,False,False,False,False,False,False
+"representing parameter C, n",False,False,False,False,False,False
+is the numb er of bits representing,False,False,False,False,False,False
+"parameter g, and n",False,False,False,False,False,False
+is the number of bits representing the,False,False,False,False,False,False
+features. Note that we can choose n,False,False,False,False,False,False
+and n,False,False,False,False,False,False
+according to the,False,False,False,False,False,False
+"calculation precision required, and that n",False,False,False,False,False,False
+equals the number of,False,False,False,False,False,False
+features varying from the different datasets.,False,False,False,False,False,False
+"In Fig. 3, the bit strings representing the genotype of",False,False,False,False,True,False
+parameter C and g should be transformed into phenotype by,False,False,False,False,False,False
+Eq. (22). Note that the precision of representing parameter,False,False,False,False,False,False
+depends on the length of the bit string (n,False,False,False,False,False,False
+and n,False,False,False,False,False,False
+); and the,False,False,False,False,False,False
+minimum and maximum value of the parameter is determined,False,False,False,False,False,False
+"by the user . For chromosome representing the feature mask, the",False,False,False,False,False,False
+"bit with value ‘1’ represents the feature is selected, and ‘0’",False,False,False,False,False,False
+indicates feature is not selected.,False,False,False,False,False,False
+p Z min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+max,False,False,False,False,False,False
+p,False,False,False,False,False,False
+Kmin,False,False,False,False,False,False
+p,False,False,False,False,False,False
+2,False,False,False,False,False,False
+l,False,False,False,False,False,False
+K1,True,False,False,True,False,False
+!d (22),False,False,False,False,False,False
+P phenotype of bit string,False,False,False,False,False,False
+min,False,False,False,False,False,False
+minimum value of the parameter,False,False,False,False,False,False
+max,False,False,False,False,False,False
+maximum value of the parameter,False,False,False,False,False,False
+d decimal value of bit string,False,False,False,False,False,False
+l length of bit string,False,False,False,False,False,False
+4.2. Fitness function,False,False,False,False,False,False
+"Classiﬁcation accuracy, the number of selected features, and",False,False,False,False,False,False
+the feature cost are the three criteria used to design a ﬁtness,False,False,False,False,False,False
+"function. Thus, for the individual (chromosome) with high",False,False,False,False,False,False
+"classiﬁcation accuracy, a small number of features, and low",False,False,False,False,False,False
+total feature cost produce a high ﬁtness value. We solve the,False,False,False,False,False,False
+multiple criteria problem by creating a single objective ﬁtness,False,False,False,False,False,False
+function that combines the three goals into one. As deﬁned by,False,False,False,False,False,False
+"formula (23), the ﬁtness has two predeﬁned weights: (i) W",False,False,False,False,False,False
+for,False,False,False,False,False,False
+the classiﬁcation accuracy; (ii) W,False,False,False,False,False,False
+for the summation of the,False,False,False,False,False,False
+selected feature (with nonzero F,False,False,False,False,False,False
+) multiplying its cost.,False,False,False,False,False,False
+The weight accuracy can be adjusted to 100% if accuracy is,False,False,False,False,False,False
+"the most important. Generally, W",False,False,False,False,False,False
+can be set from 75 to 100%,False,False,False,False,False,False
+according to user’s requirements. Each feature has different,False,False,False,False,False,False
+feature cost in the dataset from the UCI. If we do not have the,False,False,False,False,False,False
+"feature cost information, the cost C",False,False,False,False,False,False
+can be set to the same,False,False,False,False,False,False
+"value, e.g. ‘1’ or another number. The chromosome with high",False,False,False,False,False,False
+ﬁtness value has high probability to be preserved to the next,False,False,False,False,False,False
+"generation, so user should appropriately deﬁne these settings",False,False,False,False,False,False
+according to his requirements.,False,False,False,False,False,False
+Fig. 1. Genetic crossover and mutation operation.,False,False,False,False,True,False
+Fig. 2. Evolutionary cycle.,False,False,False,False,True,False
+"Fig. 3. The chromosome comprises three parts, C, g, and the features mask.",False,False,False,False,True,False
+"C.-L. Huang, C.-J. Wang / Expert Systems with Applications 31 (2006) 231–240234",False,False,False,False,False,False
+fitnessZW,False,False,False,False,False,False
+A,True,False,False,True,False,False
+!SVM_accuracyCW,False,False,False,False,False,False
+F,True,False,False,True,False,False
+n,False,False,False,False,False,False
+C,True,False,False,True,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+(23),False,False,False,False,False,False
+W,True,False,False,True,False,False
+SVM classiﬁcation accuracy weight,False,False,False,False,False,False
+SVM_accuracy SVM classiﬁcation accuracy,False,False,False,False,False,False
+W,True,False,False,True,False,False
+weight for the number of features,False,False,False,False,False,False
+C,True,False,False,True,False,False
+cost of feature i,False,False,False,False,False,False
+F,True,False,False,True,False,False
+‘1’ represents that feature i is selected; ‘0’,False,False,False,False,False,False
+represents that feature i is not selected,False,False,False,False,False,False
+4.3. System architectures for the proposed GA-based approach,False,False,False,False,False,False
+To precisely establish a GA-based feature selection and,False,False,False,False,False,False
+"parameter optimization system, the followi ng main steps (as",False,False,False,False,False,False
+shown in Fig. 4) must be proceeded. The detailed explanation,False,False,False,False,True,False
+is as follows:,False,False,False,False,False,False
+(1) Data preprocess: scaling. The main advantage of scaling is,False,False,False,False,False,False
+to avoid attributes in greater numeric ranges dominating,False,False,False,False,False,False
+those in smaller numeric ranges. Another advantage is to,False,False,False,False,False,False
+avoid numerical difﬁculties during the calculation,False,False,False,False,False,False
+"(Hsu et al., 2003). Feature value scaling can help to",False,False,False,False,False,False
+increase SVM accuracy according to our experimental,False,False,False,False,False,False
+"results. Generally, each feature can be linearly scaled to the",False,False,False,False,False,False
+"range [K1, C1] or [0, 1] by formul a (24), where v is",False,False,False,False,False,False
+"original value, v",False,False,False,False,False,False
+"is scaled value, max",False,False,False,False,False,False
+is upper bound of,False,False,False,False,False,False
+"the feature value, and min",False,False,False,False,False,False
+is low bound of the feature,False,False,False,False,False,False
+value.,False,False,False,False,False,False
+v,False,False,False,False,False,False
+vKmin,False,False,False,False,False,False
+a,False,False,False,False,False,False
+max,False,False,False,False,False,False
+a,False,False,False,False,False,False
+Kmin,False,False,False,False,False,False
+a,False,False,False,False,False,False
+(24),False,False,False,False,False,False
+(2) Converting genotype to phenotype. This step will convert,False,False,False,False,False,False
+each parameter and feature chromosome from its genotype,False,False,False,False,False,False
+into a phenotype.,False,False,False,False,False,False
+(3) Feature subset. After the genetic operation and,False,False,False,False,False,False
+converting each feature subset chromosome from the,False,False,False,False,False,False
+"genotype into the phenotype, a feature subset can be",False,False,False,False,False,False
+determined.,False,False,False,False,False,False
+(4) Fitness evaluation. For each chromosome representing,False,False,False,False,False,False
+"C, g and selected features, training dataset is used to",False,False,False,False,False,False
+"train the SVM classiﬁer, while the testing dataset is",False,False,False,False,False,False
+used to calculate classiﬁcation accuracy. When the,False,False,False,False,False,False
+"classiﬁcation accuracy is obtained, each chromosome is",False,False,False,False,False,False
+evaluated by ﬁtness function— formula (23).,False,False,False,False,False,False
+Fig. 4. System architectures of the proposed GA-based feature selection and parameters optimization for support vector machines.,False,False,False,False,True,False
+"C.-L. Huang, C.-J. Wang / Expert Systems with Applications 31 (2006) 231–240 235",False,False,False,False,False,False
+(5) Termination criteria. When the termination criteria are,False,False,False,False,False,False
+"satisﬁed, the process ends; otherwise, we proceed with",False,False,False,False,False,False
+the next generation.,False,False,False,False,False,False
+"(6) Genetic operation. In this step, the system searches for",False,False,False,False,False,False
+"better solutions by genetic operations, including selec-",False,False,False,False,False,False
+"tion, crossover, mutation, and replacement.",False,False,False,False,False,False
+5. Numerical illustrations,False,False,True,True,False,False
+5.1. Experiment descriptions,False,False,False,False,False,False
+To evaluate the classiﬁcation accuracy of the proposed,False,False,False,False,False,False
+"system in different classiﬁcation tasks, we tried several real-",False,False,False,False,False,False
+"world datasets from the UCI database (Hettich, Blake, & Merz,",False,False,False,False,False,False
+1998). These data sets have been frequently used as bench-,False,False,False,False,False,False
+marks to compare the performance of different classiﬁcation,False,False,False,False,False,False
+methods in the literature. These datasets consist of numeric and,False,False,False,False,False,False
+nominal attributes. Table 1 summarizes the number of numeric,False,False,False,False,False,True
+"attributes, number of nominal attributes, number of classes, and",False,False,False,False,False,False
+number of instances for these datasets.,False,False,False,False,False,False
+To guarantee valid results for making predictions regarding,False,False,False,False,False,False
+"new data, the data set was further randomly partitioned into",False,False,False,False,False,False
+training sets and independent test sets via a k-fold cross,False,False,False,False,False,False
+validation. Each of the k subsets acted as an independent,False,False,False,False,False,False
+holdout test set for the model trained with the remainin g kK1,False,False,False,False,False,False
+subsets. The advantages of cross validation are that all of the,False,False,False,False,False,False
+test sets were independent and the reliability of the results,False,False,False,False,False,False
+could be improved. The data set is divided into k subsets for,False,False,False,False,False,False
+cross validation. A typical experiment uses kZ10. Other,False,False,False,False,False,False
+values may be used according to the data set size. For a small,False,False,False,False,False,False
+"data set, it may be better to set larger k, because this leaves",False,False,False,False,False,False
+"more examples in the training set (Salzberg, 1997). This study",False,False,False,False,False,False
+"used kZ10, meaning that all of the data will be divided into 10",False,False,False,False,False,False
+"parts, each of which will take turns at being the testing data set.",False,False,False,False,False,False
+The other nine data parts serve as the training data set for,False,False,False,False,False,False
+adjusting the model prediction parameters.,False,False,False,False,False,False
+Our implementation was carried out on the Matlab 6.5,False,False,False,False,False,False
+development environment by extending the Libsvm which is,False,False,False,False,False,False
+originally designed by Chang and Lin (2001). The empirical,False,False,False,False,False,False
+evaluation was performed on Intel Pentium IV CPU running at,False,False,False,False,False,False
+1.6 GHz and 256 MB RAM.,False,False,False,False,False,False
+The Grid search algorithm is a common method for searching,False,False,False,False,False,False
+for the best C and g. Fig. 5 shows the process of Grid algorithm,False,False,False,False,False,False
+"combined with SVM classiﬁer. In the Grid algorithm, pairs of (C,",False,False,False,False,False,False
+g) are tried and the one with the best cross-validation accuracy is,False,False,False,False,False,False
+"chosen. After identifying a ‘better’ region on the grid, a ﬁner grid",False,False,False,False,False,False
+"search on that region can be conducted (Hsu et al., 2003).",False,False,False,False,False,False
+This research conducted the experiments using the proposed,False,False,False,False,False,False
+GA-based approach and the Grid algorithm. The results from,False,False,False,False,False,False
+Table 1,False,False,False,False,False,True
+Datasets from the UCI repository,False,False,False,False,False,False
+No. Names No. of classes No. of instances Nominal features Numeric features Total features,False,False,False,False,False,False
+1 German (credit card) 2 1000 0 24 24,False,False,False,False,False,False
+2 Australian (credit card) 2 690 6 8 14,False,False,False,False,False,False
+3 Pima-Indian diabetes 2 760 0 8 8,False,False,False,False,False,False
+4 Heart disease (Statlog Project) 2 270 7 6 13,False,False,False,False,False,False
+5 Breast cancer(Wisconsin) 2 699 0 10 10,False,False,False,False,False,False
+6 Contraceptive Method Choice 3 1473 7 2 9,False,False,False,False,False,False
+7 Ionosphere 2 351 0 34 34,False,False,False,False,False,False
+8 Iris 3 150 0 4 4,False,False,False,False,False,False
+9 Sonar 2 208 0 60 60,False,False,False,False,False,False
+10 Statlog project: vehicle 4 940 0 18 18,False,False,False,False,False,False
+11 Vowel 11 990 3 10 13,False,False,False,False,False,False
+Fig. 5. Parameters setting using Grid algorithm.,False,False,False,False,True,False
+"C.-L. Huang, C.-J. Wang / Expert Systems with Applications 31 (2006) 231–240236",False,False,False,False,False,False
+the proposed method were compared with that from the Grid,False,False,False,False,False,False
+algorithm. In all of the experiments 10-fold cross validation,False,False,False,False,False,False
+was used to estimate the accuracy of each learned classiﬁer.,False,False,False,False,False,False
+Some empirical results are reported in the following sections.,False,False,False,False,False,False
+5.2. Accuracy calculation,False,False,False,False,False,False
+Accuracy using the binary target datasets can be demon-,False,False,False,False,False,False
+"strated by the positive hit rate (sensitivity), the negative hit rate",False,False,False,False,False,False
+"(speciﬁcity), and the overall hit rate. For the multiple class",False,False,False,False,False,False
+"datasets, the accuracy is demonstrated only by the average hit",False,False,False,False,False,False
+rate. A two by two table with the classiﬁcation results on the,False,False,False,False,False,False
+left side and the target status on top is as shown in Table 2.,False,False,False,False,False,False
+Some cases with the ‘positive’ class (with disease) correctly,False,False,False,False,False,False
+"classiﬁed as positive (TPZTrue Positive fraction), however,",False,False,False,False,False,False
+some cases with the ‘positive’ class will be classiﬁed negative,False,False,False,False,False,False
+"(FNZFalse Negative fraction). Conversely, some cases with",False,False,False,False,False,False
+the ‘negative’ class (without the disease) will be correctly,False,False,False,False,False,False
+"classiﬁed as negative (TNZTrue Negative fraction), while",False,False,False,False,False,False
+some cases with the ‘negative’ class will be classiﬁed as,False,False,False,False,False,False
+positive (FPZFalse Positive fraction). TP and FP are the two,False,False,False,False,False,False
+important evaluation performances for classiﬁers (Woods and,False,False,False,False,False,False
+"Bowyer, 1997). Sensitivity and speciﬁcity describe how well",False,False,False,False,False,False
+the classiﬁer discriminates between case with positive and with,False,False,False,False,False,False
+negative class (with and without disease).,False,False,False,False,False,False
+Sensitivity is the proportion of cases with positive class that,False,False,False,False,False,False
+"are classiﬁed as positive (true positive rate, expressed as a",False,False,False,False,False,False
+percentage). In probability notation for sensitivity:,False,False,False,False,False,False
+PðT,False,False,False,False,False,False
+jD,False,False,False,False,False,False
+ÞZ TP=ðTPC FNÞ. Speciﬁcity is the proportion of,False,False,False,False,False,False
+"cases with the negative class, classiﬁed as negative (true",False,False,False,False,False,False
+"negati ve rate, expressed as a percentage). In probability",False,False,False,False,False,False
+notation: PðT,False,False,False,False,False,False
+jD,False,False,False,False,False,False
+ÞZ TN=ðTNC FPÞ. The overall hit rate is,False,False,False,False,False,False
+the overall accuracy which is calculated by (TPCTN)/(TNC,False,False,False,False,False,False
+FPCFNCFP).,True,False,False,True,False,False
+The SVM_accuracy of the ﬁtness in function (23) is,False,False,False,False,False,False
+measured by sensitivity!speciﬁcity for the datasets with two,False,False,False,False,False,False
+"classes (positive or negative), and by the overall hit rate for the",False,False,False,False,False,False
+datasets with multiple classes.,False,False,False,False,False,False
+5.3. Experimental results and comparison,False,False,False,False,False,False
+The detail parameter setting for genet ic algorithm is as the,False,False,False,False,False,False
+"following: population size 500, crossover rate 0.7, mutation",False,False,False,False,False,False
+"rate 0.02, two-point crossover, roulette wheel selection, and",False,False,False,False,False,False
+elitism replacement. We set n,False,False,False,False,False,False
+Z20 and n,False,False,False,False,False,False
+Z20; the value of n,False,False,False,False,False,False
+depends on the experimental datasets stated in Section 5.1.,False,False,False,False,False,False
+"According to the ﬁtness function of Eq. (23) , W",False,False,False,False,False,False
+and W,False,False,False,False,False,False
+can,False,False,False,False,False,False
+inﬂuence the experiment result. The higher W,False,False,False,False,False,False
+is; the higher,False,False,False,False,False,False
+classiﬁcation accuracy is. The higher W,False,False,False,False,False,False
+is; the smaller the,False,False,False,False,False,False
+number of features is. We can compromise between weight W,False,False,False,False,False,False
+and W,False,False,False,False,False,False
+". Taking the German and Australia datasets, for",False,True,False,True,False,False
+"example, as shown in Figs. 6 and 7, the accuracy (measured",False,False,False,False,False,False
+by overall hit rate) is high with large numbers of features when,False,False,False,False,False,False
+high W,False,False,False,False,False,False
+and low W,False,False,False,False,False,False
+are deﬁned. We deﬁned W,False,False,False,False,False,False
+Z0.8 and,False,False,False,False,False,False
+W,True,False,False,True,False,False
+Z0.2 for all experiments. The user can choose different,False,False,False,False,False,False
+"weight values; however, the results could be different.",False,False,False,False,False,False
+The termination criteria are that the generation number,False,False,False,False,False,False
+reaches generation 600 or that the ﬁtnes s value does not,False,False,False,False,False,False
+improve during the last 100 generations. The best chromosome,False,False,False,False,False,False
+is obtained when the termination criteria satisfy. Taking the,False,False,False,False,False,False
+"German dataset, for example, the positive hit rate, negative hit",False,False,False,False,False,False
+"rate, overall hit rate, number of selected features, and the best",False,False,False,False,False,False
+"pairs of (C, g) for each fold using GA-based approach and Grid",False,False,False,False,False,False
+"algorithm are shown in Table 3. For GA-based approach, its",False,False,False,False,False,False
+"average positive hit rate is 89.6%, average negative hit rate is",False,False,False,False,False,False
+"76.6%, average overall hit rate is 85.6%, and average number",False,False,False,False,False,False
+"of features is 13. For Grid algorithm, its average positive hit",False,False,False,False,False,False
+"rate is 88.8%, average negative hit rate is 46.2%, average",False,False,False,False,False,False
+"overall hit rate is 76.0%, and all 24 features are used. Note that",False,False,False,False,False,False
+the weight W,False,False,False,False,False,False
+and W,False,False,False,False,False,False
+are 0.8 and 0.2 in all of our experiments.,False,False,False,False,False,False
+"Table 4 shows the summary results for the positive hit rate,",False,False,False,False,False,True
+"negative hit rate, overall hit rate, number of selected features,",False,False,False,False,False,False
+and running time for the 11 UCI datasets using the two,False,False,False,False,False,False
+"approaches. In Table 4, the accuracy and average number of",False,False,False,False,False,True
+features are illustrated with the form of ‘averageGstandard,False,False,False,False,False,False
+deviation.’ The GA-based approach generated small feature,False,False,False,False,False,False
+subsets while Grid algorithm uses all of the features.,False,False,False,False,False,False
+To compare the overall hit rate of the proposed GA-based,False,False,False,False,False,False
+"approach with the Grid algorithm, we used the nonparametric",False,False,False,False,False,False
+Wilconxon signed rank test for all of the datasets. As shown in,False,False,False,False,False,False
+"Table 4, the p-values for diabetes, breast cancer, and vehicle",False,False,False,False,False,True
+are larger than the prescribed statistical signiﬁcance level of,False,False,False,False,False,False
+"0.05, but other p-values are smaller than the signiﬁcance level",False,False,False,False,False,False
+"of 0.05. Generally, compared with the Grid algorithm, the",False,False,False,False,False,False
+Table 2,False,False,False,False,False,True
+A2!2 contingency table,False,False,False,False,False,True
+Target (or disease),False,False,False,False,False,False
+Predicted (or Test) C True Positive (TP) False Positive (FP),False,False,False,False,False,False
+K False Negative (FN) True Negative (TN),False,False,False,False,False,False
+"Fig. 6. Illustration of the classiﬁcation accuracy versus the accuracy weight, W",False,False,False,False,True,False
+", for fold #4 of German dataset.",False,False,False,False,False,False
+"C.-L. Huang, C.-J. Wang / Expert Systems with Applications 31 (2006) 231–240 237",False,False,False,False,False,False
+proposed GA-based approach has good accuracy performance,False,False,False,False,False,False
+with fewer features.,False,False,False,False,False,False
+The ability of a classiﬁer to discriminate between ‘positive ’,False,False,False,False,False,False
+cases (C) and ‘negative’ cases (K) is evaluated using Receiver,False,False,False,False,False,False
+Operating Characteristic (ROC) curve analysis. ROC curves,False,False,False,False,False,False
+can also be used to compare the diagnostic performance of two,False,False,False,False,False,False
+"or more diagnostic classiﬁers (DeLe o and Rosenfeld, 2001 ).",False,False,False,False,False,False
+For every possible cut-off point or criterion value we select to,False,False,False,False,False,False
+discriminate between the two populations (with positive or,False,False,False,False,False,False
+negative class value) there will generate a pair of sensitivity,False,False,False,False,False,False
+and speciﬁcity. An ROC curve shows the trade-off between,False,False,False,False,False,False
+"sensitivity and speciﬁcity, and demonstrates that the closer",False,False,False,False,False,False
+the curve follows the left-hand border and then the top border,False,False,False,False,False,False
+"of the ROC space, the more accurate the classiﬁer. The area",False,False,False,False,False,False
+under the curve (AUC) is the evaluation criteria for the,False,False,False,False,False,False
+classiﬁer.,False,False,False,False,False,False
+"Taking fold #4 of German dataset, for example, ROC",False,False,False,False,False,False
+curve of GA-based approach and Grid algorithm are shown,False,False,False,False,False,False
+"in Fig. 8, where AUC is 0.85, 0.82, respectively. For the",False,False,False,False,True,False
+ROC curve for the other nine folds can also be plotted in,False,False,False,False,False,False
+"the same manner. In short, the average AUC for the 10",False,False,False,False,False,False
+folds of testing data set of German dataset are 0.8424 for,False,False,False,False,False,False
+Table 3,False,False,False,False,False,True
+Experimental results for German dataset using GA-based approach and Grid algorithm,False,False,False,False,False,False
+Fold # GA-based approach Grid algorithm,False,False,False,False,False,False
+Positive,False,False,False,False,False,False
+hit rate,False,False,False,False,False,False
+Negative,False,False,False,False,False,False
+hit rate,False,False,False,False,False,False
+Overall hit,False,False,False,False,False,False
+rate%,False,False,False,False,False,False
+Optimized C Optimized g Selected,False,False,False,False,False,False
+features,False,False,False,False,False,False
+Positive,False,False,False,False,False,False
+hit rate,False,False,False,False,False,False
+Negative,False,False,False,False,False,False
+hit rate,False,False,False,False,False,False
+Overall hit,False,False,False,False,False,False
+rate%,False,False,False,False,False,False
+Optimized,False,False,False,False,False,False
+C,True,False,False,True,False,False
+Optimized,False,False,False,False,False,False
+1 0.863 0.7407 83 170.9992278 0.00491136 16 0.8493151 0.55555556 77 2048 0.000488,False,False,False,False,False,False
+2 0.8592 0.7931 84 9.29520704 0.5189297 13 0.8591549 0.44827586 74 8 0.007813,False,False,False,False,False,False
+3 0.9028 0.75 86 171.9769019 0.05343727 11 0.875 0.5 77 512 0.001953,False,False,False,False,False,False
+4 0.8919 0.8462 88 60.24731324 0.05299713 11 0.9324324 0.46153846 81 8192 0.000122,False,False,False,False,False,False
+5 0.9091 0.7059 84 174.4961022 0.02207236 13 0.9545455 0.32352941 74 512 0.000122,False,False,False,False,False,False
+6 0.8904 0.7778 86 20.99907683 0.04938617 15 0.890411 0.48148148 78 128 0.000488,False,False,False,False,False,False
+7 0.9041 0.7778 87 219.8157576 0.03912631 12 0.9452055 0.44444444 81 32768 0.000035,False,False,False,False,False,False
+8 0.9155 0.7931 88 95.16782536 0.12330259 11 0.8309859 0.44827586 72 8 0.007813,False,False,False,False,False,False
+9 0.871 0.7632 83 255.9134212 0.27580662 15 0.8225806 0.44736842 68 2048 0.000122,False,False,False,False,False,False
+10 0.9538 0.7143 87 174.313561 0.01230963 13 0.9230769 0.51428571 78 512 0.000122,False,False,False,False,False,False
+Average 0.89608 0.76621 85.6 13 0.8882708 0.46247552 76,False,False,False,False,False,False
+Table 4,False,False,False,False,False,True
+Experimental results summary of GA-based approach and Grid algorithm on the test sets,False,False,False,False,False,False
+Names GA-based approach Grid algorithm p-value for,False,False,False,False,False,False
+Wilcoxon,False,False,False,False,False,False
+testing,False,False,False,False,False,False
+Number of,False,False,False,False,False,False
+original,False,False,False,False,False,False
+features,False,False,False,False,False,False
+Number of,False,False,False,False,False,False
+selected,False,False,False,False,False,False
+features,False,False,False,False,False,False
+Average,False,False,False,False,False,False
+positive hit,False,False,False,False,False,False
+rate,False,False,False,False,False,False
+Average,False,False,False,False,False,False
+negative hit,False,False,False,False,False,False
+rate,False,False,False,False,False,False
+Average,False,False,False,False,False,False
+overall hit,False,False,False,False,False,False
+rate%,False,False,False,False,False,False
+Average,False,False,False,False,False,False
+positive hit,False,False,False,False,False,False
+rate,False,False,False,False,False,False
+Average,False,False,False,False,False,False
+negative hit,False,False,False,False,False,False
+rate,False,False,False,False,False,False
+Average,False,False,False,False,False,False
+overall hit,False,False,False,False,False,False
+rate%,False,False,False,False,False,False
+German 24 13G1.83 0.89608 0.76621 85.6G1.96 0.888271 0.462476 76G4.06 0.005,False,False,False,False,False,False
+*,False,False,False,False,False,False
+Australian 14 3G2.45 0.8472 0.92182 88.1G2.25 0.885714 0.823529 84.7G4.74 0.028,False,False,False,False,False,False
+*,False,False,False,False,False,False
+Diabetes 8 3.7G0.95 0.78346 0.87035 81.5G7.13 0.592593 0.88 77.3G3.03 0.139,False,False,False,False,False,False
+Heart disease 13 5.4G1.85 0.94467 0.95108 94.8G3.32 0.75 0.909091 83.7G6.34 0.005,False,False,False,False,False,False
+*,False,False,False,False,False,False
+breast cancer 10 1G0 0.9878 0.8996 96.19G1.24 0.98 0.944444 95.3G2.28 0.435,False,False,False,False,False,False
+Contraceptive 9 5.4G0.53 N/A N/A 71.22G4.15 N/A N/A 53.53G2.43 0.005*,False,False,False,False,False,False
+Ionosphere 34 6G0 0.9963 0.9876 98.56G2.03 0.94 0.9 89.44G3.58 0.005*,False,False,False,False,False,False
+Iris 4 1G0 N/A N/A 100G0 N/A N/A 97.37G3.46 0.046*,False,False,False,False,False,False
+Sonar 60 15G1.1 0.9863 0.9842 98G3.5 0.65555 0.9 87G4.22 0.004*,False,False,False,False,False,False
+Vehicle 18 9.2G1.4 N/A N/A 84.06G3.54 N/A N/A 83.33G2.74 0.944,False,False,False,False,False,False
+Vowel 13 7.8G1 N/A N/A 99.3G0.82 N/A N/A 95.95G2.91 0.02*,False,False,False,False,False,False
+"Fig. 7. Illustration of the classiﬁcation accuracy versus the accuracy weight, W",False,False,False,False,True,False
+", for fold #3 of Australia dataset.",False,False,False,False,False,False
+"C.-L. Huang, C.-J. Wang / Expert Systems with Applications 31 (2006) 231–240238",False,False,False,False,False,False
+GA-based approach and 0.7886 for Grid algorithm. We,False,False,False,False,False,False
+summarize the average AUC for other datasets with two,False,False,False,False,False,False
+classes in Table 5. The average AUC shows that GA-based,False,False,False,False,False,True
+approach outperforms the Grid algorithm.,False,False,False,False,False,False
+The average running time for GA-based approach is slightly,False,False,False,False,False,False
+"inferior to that of the Grid algorithm; however, the software",False,False,False,False,False,False
+environment for the t wo a pproaches and the predeﬁned,False,False,False,False,False,False
+searching precision of the Grid algorithm affect the running,False,False,False,False,False,False
+"time. The Grid algorithm is performed under the Python, while",False,False,False,False,False,False
+the proposed GA-based approach is implemented by using the,False,False,False,False,False,False
+"Matlab in our research. Generally, compared with other",False,False,False,False,False,False
+"systems, the running time is much longer when using the",False,False,False,False,False,False
+Matlab. Although the proposed approach performed under the,False,False,False,False,False,False
+"Matlab did not outperform the Grid algorithm, it signiﬁcantly",False,False,False,False,False,False
+improves the classiﬁcation accuracy and has fewer input,False,False,False,False,False,False
+features for support vector machines.,False,False,False,False,False,False
+6. Conclusion,False,False,True,True,False,False
+SVM parameters and feature subsets were optimized simul-,False,False,False,False,False,False
+taneously in this work because the selected feature subset has an,False,False,False,False,False,False
+inﬂuence on the appropriate kernel parameters and vice versa. We,False,False,False,False,False,False
+proposed a GA-based strategy to select the feature subset and set,False,False,False,False,False,False
+"the parameters for SVM classiﬁcation. As far as we know,",False,False,False,False,False,False
+previous researches did not perform simultaneous feature selection,False,False,False,False,False,False
+and parameters optimization for support vector machines.,False,False,False,False,False,False
+We conducted experiments to evaluate the classiﬁcation,False,False,False,False,False,False
+accuracy of the proposed GA-based approach with RBF kernel,False,False,False,False,False,False
+and the Grid algorithm on 11 real-world datasets from UCI,False,False,False,False,False,False
+"database. Generally, compared with the Grid algorithm, the",False,False,False,False,False,False
+proposed GA-based approach has good accuracy performance,False,False,False,False,False,False
+with fewer features.,False,False,False,False,False,False
+This study showed experimental results with the RBF,False,False,False,False,False,False
+"kernel. However, other kernel parameters can also be optimized",False,False,False,False,False,False
+using the same approach. The proposed approach can also be,False,False,False,False,False,False
+applied to support vector regression (SVR). Because the kernel,False,False,False,False,False,False
+parameters and input features heavily inﬂuence the predictive,False,False,False,False,False,False
+accuracy of the SVR with different kernel functions; we can use,False,False,False,False,False,False
+the same GA-based feature selection and parame ters optimiz-,False,False,False,False,False,False
+ation procedures to improve the SVR accuracy.,False,False,False,False,False,False
+Acknowledgements,False,False,False,False,False,False
+The author would like to thank Dr C.-J. Lin and C.-W. Hsu,False,False,False,False,False,False
+"(National Taiwan University, Taipei, ROC) that the support",False,False,False,False,False,False
+vector machines were constructed with LIBSVM (Version 2.8),False,False,False,False,False,False
+by them.,False,False,False,False,False,False
+References,False,False,False,True,False,False
+"Bradley, P. S., & Mangasarian, O. L. (1998). Feature selection via concave",False,False,False,False,False,False
+minimization and support vector machines. In Proceedings of the 13th,False,False,False,False,False,False
+"international conference on machine learning (pp. 82–90). San Francisco,",False,False,False,False,False,False
+CA.,True,False,False,True,False,False
+"Bradley, P. S., Mangasarian, O. L., & Street, W. N. (1998). Feature selection",False,False,False,False,False,False
+"via mathematical programming. INFORMS Journal on Computing, 10,",False,False,False,False,False,False
+209–217.,False,False,False,False,False,False
+"Burges, C. (1998). A tutorial on support vector machines for pattern",False,False,False,False,False,False
+"recognition. Data Mining and Knowledge Discovery, 2(2), 121–167.",False,False,False,False,False,False
+"Chang, C. C., & Lin, C.J. (2001). LIBSVM: A library for support vector",False,False,False,False,False,False
+machines. Available at: http://www.csie.ntu.edu.tw/~cjlin/libsvm.,False,False,False,False,False,False
+"Cristianini, N., & Shawe-Taylor, J. (2000). An introduction to support vector",False,False,False,False,False,False
+machines. Cambridge: Cambridge University Press.,False,False,False,False,False,False
+"Davis, L. (1991). Handbook of genetic algorithms. New York: Van Nostrand",False,False,False,False,False,False
+Reinhold.,False,False,False,False,False,False
+"DeLeo, J.M., & Rosenfeld, S.J. (2001). Essential roles for receiver operating",False,False,False,False,False,False
+characteristic (ROC) methodology in classiﬁer neural network applications.,False,False,False,False,False,False
+In Proceedings of the international joint conference on neural networks,False,False,False,False,False,False
+"(IJCNN’01) (pp. 2730–2731, Vol. 4). Washington, DC, USA.",False,False,False,False,False,False
+Fro,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"hlich, H., & Chapelle, O. (2003). Feature selection for support vector",False,False,False,False,False,False
+machines by means of genetic algorithms. Proceedings of the 15th IEEE,False,False,False,False,False,False
+"international conference on tools with artiﬁcial intelligence, Sacramento,",False,False,False,False,False,False
+"CA, USA pp. 142–148.",False,False,False,False,False,False
+"Goldberg, D. E. (1989). Genetic algorithms in search optimization and",False,False,False,False,False,False
+"machine learning. Reading, MA: Addison-Wesley.",False,False,False,False,False,False
+"Guyon, I., Weston, J., Barnhill, S., & Bapnik, V. (2002). Gene selection for",False,False,False,False,False,False
+"cancer classiﬁcation using support vector machines. Machine Learning,",False,False,False,False,False,False
+"46(1–3), 389–422.",False,False,False,False,False,False
+"Hettich, S., Blake, C. L., & Merz, C. J. (1998). UCI repository of machine",False,False,False,False,False,False
+"learning databases , Department of Information and Computer Science,",False,False,False,False,False,False
+"University of California, Irvine, CA. http//www.ics.uci.edu/~mlearn/",False,False,False,False,False,False
+MLRepository.html.,False,False,False,False,False,False
+"Hsu, C. W., Chang, C. C., & Lin, C. J. (2003). A practical guide to support",False,False,False,False,False,False
+vector classiﬁcation. Available at: http://www.csie.ntu.edu.tw/~cjlin/,False,False,False,False,False,False
+papers/guide/guide.pdf.,False,False,False,False,False,False
+Fig. 8. ROC curve for fold #4 of German Credit Dataset.,False,False,False,False,True,False
+Table 5,False,False,False,False,False,True
+Average AUC for datasets with two classes,False,False,False,False,False,False
+GA-based approach Grid algorithm,False,False,False,False,False,False
+German 0.8424 0.7886,False,False,False,False,False,False
+Australian 0.9019 0.8729,False,False,False,False,False,False
+Diabetes 0.8298 0.7647,False,False,False,False,False,False
+Heart disease 0.9458 0.8331,False,False,False,False,False,False
+breast cancer 0.9423 0.9078,False,False,False,False,False,False
+Contraceptive 0.7701 0.6078,False,False,False,False,False,False
+Ionosphere 0.9661 0.8709,False,False,False,False,False,False
+Iris 0.9756 0.9572,False,False,False,False,False,False
+Sonar 0.9522 0.8898,False,False,False,False,False,False
+Vehicle 0.8587 0.8311,False,False,False,False,False,False
+Vowel 0.9513 0.9205,False,False,False,False,False,False
+"C.-L. Huang, C.-J. Wang / Expert Systems with Applications 31 (2006) 231–240 239",False,False,False,False,False,False
+"Hsu, C. W., & Lin, C. J. (2002). A simple decomposition method for support",False,False,False,False,False,False
+"vector machine. Machine Learning, 46(1–3), 219–314.",False,False,False,False,False,False
+"Joachims, T. (1998). Text categorization with support vector machines. In",False,False,False,False,False,False
+Proceedings of European conference on machine learning (ECML) (pp.,False,False,False,False,False,False
+"137–142). Chemintz, DE.",False,False,False,False,False,False
+"John, G., Kohavi, R., & Peger, K. (1994). Irrelevant features and the subset",False,False,False,False,False,False
+selection problem. Proceedings of the 11th international conference on,False,False,False,False,False,False
+"machine learning, San Mateo, CA pp. 121–129.",False,False,False,False,False,False
+"Kecman, V. (2001). Learning and soft computing. Cambridge, MA: The MIT",False,False,False,False,False,False
+Press.,False,False,False,False,False,False
+"Kohavi, R., & John, G. (1997). Wrappers for feature subset selection. Artiﬁcial",False,False,False,False,False,False
+"Intelligence, 97(1–2), 273–324.",False,False,False,False,False,False
+"LaValle, S. M., & Branicky, M. S. (2002). On the relationship between classical",False,False,False,False,False,False
+grid search and probabilistic roadmaps. International Journal of Robotics,False,False,False,False,False,False
+"Research, 23(7–8), 673–692.",False,False,False,False,False,False
+"Lin, H. T., & Lin, C. J. (2003). A study on sigmoid kernels for SVM and the",False,False,False,False,False,False
+"training of non-PSD kernels by SMO-type methods. Technical report,",False,False,False,False,False,False
+"Department of Computer Science and Information Engineering, National",False,False,False,False,False,False
+Taiwan University. Available at: http://www.csie.ntu.edu.tw/~cjlin/papers/,False,False,False,False,False,False
+tanh.pdf.,False,False,False,False,False,False
+"Mao, K. Z. (2004). Feature subset selection for support vector machines",False,False,False,False,False,False
+through discriminative function pruning analysis. IEEE Transactions on,False,False,False,False,False,False
+"Systems, Man, and Cybernetics, 34(1), 60–67.",False,False,False,False,False,False
+"Pontil, M., & Verri, A. (1998). Support vector machines for 3D object",False,False,False,False,False,False
+recognition. IEEE Transactions on Pattern Analysis and Machine,False,False,False,False,False,False
+"Intelligence, 20(6), 637–646.",False,False,False,False,False,False
+"Raymer, M. L., Punch, W. F., Goodman, E. D., Kuhn, L. A., & Jain, A. K.",False,False,False,False,False,False
+(2000). Dimensionality reduction using genetic algorithms. IEEE Trans-,False,False,False,False,False,False
+"actions on Evolutionary Computation, 4(2), 164–171.",False,False,False,False,False,False
+"Salcedo-Sanz, S., Prado-Cumplido, M., Pe",False,False,False,False,False,False
+´,False,False,False,False,False,False
+"rez-Cruz, F., & Bouson",False,False,False,False,False,False
+˜,False,False,False,False,False,False
+o-Calzo,False,False,False,False,False,False
+´,False,False,False,False,False,False
+"n, C.",False,False,False,False,False,False
+(2002). Feature selection via genetic optimization Proceedings of the,False,False,False,False,False,False
+"ICANN international conference on artiﬁcial neural networks, Madrid,",False,False,False,False,False,False
+Span pp. 547–552.,False,False,False,False,False,False
+"Salzberg, S. L. (1997). On comparing classiﬁers: Pitfalls to avoid and a",False,False,False,False,False,False
+"recommended approach. Data Mining and Knowledge Discovery, 1, 317–",False,False,False,False,False,False
+327.,False,False,False,False,False,False
+Scho,False,False,False,False,False,False
+˝,False,False,False,False,False,False
+"lkopf, B., & Smola, A. J. (2000). Statistical learning and kernel methods.",False,False,False,False,False,False
+"Cambridge, MA: MIT Press.",False,False,False,False,False,False
+"Vapnik, V. N. (1995). The nature of statistical learning theory. New York:",False,False,False,False,False,False
+Springer.,False,False,False,False,False,False
+"Weston, J., Mukherjee, S., Chapelle, O., Pontil, M., Poggio, T., & Vapnik, V.",False,False,False,False,False,False
+"(2001). Feature selection for SVM. In S. A. Solla, T. K. Leen, & K.-R.",False,False,False,False,False,False
+"Muller, Advances in neural information processing systems (Vol. 13) (pp.",False,False,False,False,False,False
+"668–674). Cambridge, MA: MIT Press.",False,False,False,False,False,False
+"Woods, K., & Bowyer, K. W. (1997). Generating ROC curves for artiﬁcial",False,False,False,False,False,False
+"neural networks. IEEE Transactions on Medical Imaging, 16(3), 329–337.",False,False,False,False,False,False
+"Yang, J., & Honavar, V. (1998). Feature subset selection using a genetic",False,False,False,False,False,False
+"algorithm. IEEE Intelligent Systems, 13(2), 44–49.",False,False,False,False,False,False
+"Yu, G. X., Ostrouchov, G., Geist, A., & Samatova, N. F. (2003). An SVM-",False,False,False,False,False,False
+based algorithm for identiﬁcation of photosynthesis-speciﬁc genome,False,False,False,False,False,False
+"features. Second IEEE computer society bioinformatics conference, CA,",False,False,False,False,False,False
+USA pp. 235–243.,False,False,False,False,False,False
+"C.-L. Huang, C.-J. Wang / Expert Systems with Applications 31 (2006) 231–240240",False,False,False,False,False,False

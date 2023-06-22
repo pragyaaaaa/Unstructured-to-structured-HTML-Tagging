@@ -1,0 +1,551 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+"Bestmod, Institut Supérieur de Gestion",False,False,False,False,False,False
+"Tunis, Tunisia",False,False,False,False,False,False
+hanene.bouali@gmail.com,False,False,False,False,False,False
+"Bestmod, Institut Supérieur de Gestion",False,False,False,False,False,False
+"Tunis, Tunisia",False,False,False,False,False,False
+j.akaichi@gmail;com,False,False,False,False,False,False
+Abstract--Common stream mining tasks include ,False,False,False,True,False,False
+"classification, clustering and frequent pattern mining among ",False,False,False,False,False,False
+them; data stream classification has drawn particular ,False,False,False,False,False,False
+attention due to its vast real-time application. Through these ,False,False,False,False,False,False
+"applications, the main goal is to efficiently build classification ",False,False,False,False,False,False
+models from data streams for accurate prediction. The ,False,False,False,False,False,False
+development of such model has shown the need for machine ,False,False,False,False,False,False
+learning techniques to be applied to large scale data. A range ,False,False,False,False,False,False
+of machine learning techniques exists and the selection of the ,False,False,False,False,False,False
+accurate techniques is based on advantages and limits of each ,False,False,False,False,False,False
+one and how these latter well addresses important research ,False,False,False,False,False,False
+"techniques. In this paper, we present the comparison of ",False,False,False,False,False,False
+different classification techniques using WEKA in order to ,False,False,False,False,False,False
+investigate the performance of a collection of classification ,False,False,False,False,False,False
+algorithms. This comparison shows the support vector ,False,False,False,False,False,False
+machine performance with higher accuracy and better results ,False,False,False,False,False,False
+when classifying our dataset. ,False,False,False,False,False,False
+Keywords,False,False,False,False,False,False
+-- Dynamic System; Classification; Machine Learning ,False,False,False,False,False,False
+techniques; Heart Disease; WEKA ,False,False,False,False,False,False
+I. INTRODUCTION,True,True,False,True,False,False
+A major problem in bioinformatics analysis or medical ,False,False,False,False,False,False
+science is in attaining the correct diagnosis of certain ,False,False,False,False,False,False
+"important information. For the ultimate diagnosis, many ",False,False,False,False,False,False
+tests generally involve the classification of large dataset. ,False,False,False,False,False,False
+"However, too many tests may complicate the main diagnosis ",False,False,False,False,False,False
+process and lead to difficulty in obtaining and interpreting ,False,False,False,False,False,False
+end results. This kind of difficulty may be solved using the ,False,False,False,False,False,False
+machine learning.,False,False,False,False,False,False
+Machine learning techniques can extract flexible and ,False,False,False,False,False,False
+comprehensible knowledge from large dataset. They also ,False,False,False,False,False,False
+"require knowledge for their effective use, but are less ",False,False,False,False,False,False
+complicated to employ and their results are more ,False,False,False,False,False,False
+comprehensible to users. Machine learning techniques can ,False,False,False,False,False,False
+"deal with a mix of quantitative, qualitative, missing or noisy ",False,False,False,False,False,False
+data so common on engineering. ,False,False,False,False,False,False
+Machine learning algorithms are described as either ,False,False,False,False,False,False
+supervised or unsupervised. The distinction is drawn from ,False,False,False,False,False,False
+"how the learner classifies data. In supervised learning, which ",False,False,False,False,False,False
+"referred also to classification, the classes are predetermined. ",False,False,False,False,False,False
+"These classes can be conceived of as a finite set, previously ",False,False,False,False,False,False
+"arrived at by human. In practice, a certain segment of data ",False,False,False,False,False,False
+will be labeled with these classifications. The machine ,False,False,False,False,False,False
+learner’s task is to search for patterns and construct models. ,False,False,False,False,False,False
+These models then are evaluated on the basis of their  ,False,False,False,False,False,False
+predictive capacity in relation to measures of variance in the ,False,False,False,False,False,False
+data itself.  ,False,False,False,False,False,False
+Scientists use classification system to help them make ,False,False,False,False,False,False
+sense of the world around them. They use classification to ,False,False,False,False,False,False
+organize information and objects. When things are stored ,False,False,False,False,False,False
+"into groups, it makes them easier to understand and it makes ",False,False,False,False,False,False
+it easier to see the relationships between them.  ,False,False,False,False,False,False
+Classification’s algorithms have used several techniques ,False,False,False,False,False,False
+"among them we find artificial neural networks, support ",False,False,False,False,False,False
+"vector machine, Bayesian network, fuzzy pattern trees and ",False,False,False,False,False,False
+decision trees.  ,False,False,False,False,False,False
+"In this paper, we will discuss in details the techniques ",False,False,False,False,False,False
+used to cope with classification issues and provides a ,False,False,False,False,False,False
+comparative study based on the research issues. Besides the ,False,False,False,False,False,False
+"fundamental review on the selected techniques, we present ",False,False,False,False,False,False
+an experimental evaluation using WEKA. ,False,False,False,False,False,False
+The remainder of this article is organized as follows: ,False,False,False,False,False,False
+In section 2 we present the research issues that every ,False,False,False,False,False,False
+"algorithm must cope with. In section 3, we present a ",False,False,False,False,False,False
+literature review of algorithms handling classification ,False,False,False,False,False,False
+"problem while highlighting their objectives, features, ",False,False,False,False,False,False
+"complexity, and limits. In section 4, we provide a ",False,False,False,False,False,False
+comparative study between techniques mentioned before. In ,False,False,False,False,False,False
+"section 5, an experimental evaluation is made using WEKA ",False,False,False,False,False,False
+applied to dataset. We conclude in section 5 and provide ,False,False,False,False,False,False
+future works. ,False,False,False,False,False,False
+II. R,True,True,False,True,False,False
+ESEARCH ISSUES,True,False,False,True,False,False
+Data stream classification in such real world application ,False,False,False,False,False,False
+"is typically subject to some major challenges. In this section, ",False,False,False,False,False,False
+we will discuss research limits have been found in the ,False,False,False,False,False,False
+context of data stream classification. ,False,False,False,False,False,False
+x High speed nature of data streams: the algorithm ,False,False,False,False,False,False
+should be able to adapt to the high speed nature of,False,False,False,False,False,False
+"the information. Also, we have the constraint of the ",False,False,False,False,False,False
+one-pass; this refers to scan the data only once. ,False,False,False,False,False,False
+x Unbounded memory: to build the classification ,False,False,False,False,False,False
+"model, data need to be resident in memory. Hence, ",False,False,False,False,False,False
+the huge amounts of data streams generated daily ,False,False,False,False,False,False
+need an unbounded memory. ,False,False,False,False,False,False
+x Concept drifting: Concepts drifts change the ,False,False,False,False,False,False
+classifier results over time. It is also referred as data ,False,False,False,False,False,False
+"stream evolution. With this evolution, many temporal ",False,False,False,False,False,False
+"relations can be generated or new classes. Hence, ",False,False,False,False,False,False
+classifications algorithms must capture such change. ,False,False,False,False,False,False
+This is guaranteed by the use of an outdated mode. ,False,False,False,False,False,False
+The detection of such changes is in order to increase ,False,False,False,False,False,False
+the classification accuracy. ,False,False,False,False,False,False
+2014 13th International Conference on Machine Learning and Applications,False,False,False,False,False,False
+978-1-4799-7415-3/14 $31.00 © 2014 IEEE,True,False,False,True,False,False
+DOI 10.1109/ICMLA.2014.84,True,False,False,True,False,False
+481,False,False,False,False,False,False
+2014 13th International Conference on Machine Learning and Applications,False,False,False,False,False,False
+978-1-4799-7415-3/14 $31.00 © 2014 IEEE,True,False,False,True,False,False
+DOI 10.1109/ICMLA.2014.84,True,False,False,True,False,False
+482,False,False,False,False,False,False
+Figure 1 illustrates the concept drifting in data streams. ,False,False,False,False,True,False
+"In the three consecutive time stamps T1, T2 and T3, the ",False,False,False,False,False,False
+classification boundary gradually drifts from b1 to b2 and ,False,False,False,False,False,False
+finally to b3. ,False,False,False,False,False,False
+ Figure 1. An illustration of concept of drifting in data streams [1] ,False,False,False,False,True,False
+x Hardware evolution: advances in hardware ,False,False,False,False,False,False
+technology have allowed us to automatically record ,False,False,False,False,False,False
+transactions and other pieces of information of ,False,False,False,False,False,False
+everyday life at a rapid rate. Such process generates ,False,False,False,False,False,False
+huge amounts of data streams. ,False,False,False,False,False,False
+"x Partial labeling: due to large volume of stream data, ",False,False,False,False,False,False
+it is unfeasible to label all stream for building ,False,False,False,False,False,False
+"classification model. Thus, data stream contains both ",False,False,False,False,False,False
+labeled and unlabeled data. ,False,False,False,False,False,False
+"x Real time accuracy evolution: in some cases, the user ",False,False,False,False,False,False
+"is not interested in mining data stream results, but ",False,False,False,False,False,False
+how these results are changed over time. These ,False,False,False,False,False,False
+"changes can be in the number of initial classes, it ",False,False,False,False,False,False
+might represent some changes in the dynamics of the ,False,False,False,False,False,False
+arriving stream leading to changes in the knowledge ,False,False,False,False,False,False
+structure. This especially in applications based on ,False,False,False,False,False,False
+temporal analysis. ,False,False,False,False,False,False
+x The use of produced rules ,False,False,False,False,False,False
+x Disparate sources ,False,False,False,False,False,False
+III. CLASSIFICATION TECHNIQUES ,True,True,False,True,False,False
+There are several classification techniques for ,False,False,False,False,False,False
+classification of both multivariate and univariate dataset. ,False,False,False,False,False,False
+Some more recent approaches to classification are Artificial ,False,False,False,False,False,False
+"Neural Network (ANN), Support Vector Machine (SVM), ",False,False,False,False,False,False
+"Bayesian network (BN), Fuzzy Pattern Trees (FPT) and ",False,False,False,False,False,False
+"Decision Trees (DT). In this section, we present the before-",False,False,False,False,False,False
+mentioned techniques and provide some inconvenient and ,False,False,False,False,False,False
+advantages of those techniques. ,False,False,False,False,False,False
+A. Artificial neural Network ,False,False,False,False,False,False
+ANN has been used in many fields with positive results ,False,False,False,False,False,False
+ranging from pattern recognition to diagnostic classification ,False,False,False,False,False,False
+task from character recognition to speech identification and ,False,False,False,False,False,False
+from images processing to robotics. Managers and planners ,False,False,False,False,False,False
+have long sought decision making tools for detecting ,False,False,False,False,False,False
+changes in data streams over large spatial and temporal ,False,False,False,False,False,False
+scales. The ANN system architecture is sufficiently flexible ,False,False,False,False,False,False
+to allow for its continual update and refinement of new data. ,False,False,False,False,False,False
+Their use has potential to save time and resources between ,False,False,False,False,False,False
+input predictor and known output responses. Their ability to ,False,False,False,False,False,False
+adapt continuously to new data allows them to track changes ,False,False,False,False,False,False
+in a signal over time and their adaptability to learn from ,False,False,False,False,False,False
+"arbitrary, noise data permits to solve problems that cannot ",False,False,False,False,False,False
+be handled adequately with some of the conventional ,False,False,False,False,False,False
+statistical technique [2]. ,False,False,False,False,False,False
+"In addition to those characteristics, ANN are non-",False,False,False,False,False,False
+parametric classifiers so they are capable of classifying ,False,False,False,False,False,False
+multi source data. Authors in this research [3] take ,False,False,False,False,False,False
+advantages from these characteristics and apply this ,False,False,False,False,False,False
+technique to assimilate to assimilate large amounts of ,False,False,False,False,False,False
+disparate data types for use in fluvial hazard management ,False,False,False,False,False,False
+decision making. Two types of ANN are used (kohenen self-,False,False,False,False,False,False
+organizing map and a counter propagation algorithm) in ,False,False,False,False,False,False
+hierarchy to predict reach scale stream geomorphic ,False,False,False,False,False,False
+"condition, inherent vulnerability and sensitivity to ",False,False,False,False,False,False
+adjustments. The use of ANN allows for an adaptive ,False,False,False,False,False,False
+"watershed management approach, does not require the ",False,False,False,False,False,False
+"development of site specific, physical based, stream models ",False,False,False,False,False,False
+and provides a standardized approach for classifying river ,False,False,False,False,False,False
+network sensitivity in various context.  ,False,False,False,False,False,False
+This paper present modeling instable stream; such ,False,False,False,False,False,False
+instability is due to varying types of watershed stressor ,False,False,False,False,False,False
+"magnitude, duration and periodicity in surface water quality. ",False,False,False,False,False,False
+"Hence, ecosystem managers are faced with the challenge of ",False,False,False,False,False,False
+integrating data from disparate sources regarding their ,False,False,False,False,False,False
+features. ANN used in this work to predict channel ,False,False,False,False,False,False
+"conditions ( instability), offers many advantages including ",False,False,False,False,False,False
+the ability to accommodate both large amounts of spatial ,False,False,False,False,False,False
+and temporal data as well as multiple data types. It also ,False,False,False,False,False,False
+"provides a standardized, expert trained approach for ",False,False,False,False,False,False
+classifying the sensitivity of river networks in various ,False,False,False,False,False,False
+contexts. ,False,False,False,False,False,False
+Some characteristics of the neural network approach ,False,False,False,False,False,False
+have been tested and validated for the particular problem of ,False,False,False,False,False,False
+diagnostic classification in the field of computerized ,False,False,False,False,False,False
+electrocardiography (Possibilities of using neural networks ,False,False,False,False,False,False
+for ECG classification). Two different databases have been ,False,False,False,False,False,False
+"used for the evaluation process: CORDA, developed by the ",False,False,False,False,False,False
+Medical Informatics Department of the University of ,False,False,False,False,False,False
+"Leuven, and ECG-UCL, developed by the Cliniques ",False,False,False,False,False,False
+"Universitaires Saint-Luc, Université Catholique de Louvain. ",False,False,False,False,False,False
+Electrocardiographic signals classified on the basis of ,False,False,False,False,False,False
+"electrocardiographic independent clinical data, with a single ",False,False,False,False,False,False
+diagnosis and no conduction abnormalities have been ,False,False,False,False,False,False
+considered. Seven diagnostic classes have been taken into ,False,False,False,False,False,False
+"account, including the different locations of ventricular ",False,False,False,False,False,False
+hypertrophy and myocardial infarction. Two architectures of ,False,False,False,False,False,False
+neural networks have been analyzed in detail considering ,False,False,False,False,False,False
+"three aspects: the normalization process, pruning techniques, ",False,False,False,False,False,False
+and fuzzy preprocessing by the use of radial basis functions. ,False,False,False,False,False,False
+B. Support Vector Machine ,False,False,False,False,False,False
+"When using SVM, first transforming data into high ",False,False,False,False,False,False
+dimensional space may convert complex classification ,False,False,False,False,False,False
+problem into simpler problem that can use linear ,False,False,False,False,False,False
+"discriminant function. Secondly, SVM provides the most ",False,False,False,False,False,False
+useful information for classification. When applying the ,False,False,False,False,False,False
+"SVM to a linear classification algorithm, we have to ",False,False,False,False,False,False
+construct the SVM where the decision surface used to ,False,False,False,False,False,False
+classify a pattern as belonging to one of the two classes in ,False,False,False,False,False,False
+"the hyper plan. But, in real conditions, data observed are ",False,False,False,False,False,False
+"frequently affected by outliers, caused by noisy ",False,False,False,False,False,False
+"measurements. If outliers are taken into account, the margin ",False,False,False,False,False,False
+"of separation decreases and hence, the solution does not ",False,False,False,False,False,False
+generalize as well. ,False,False,False,False,False,False
+"To cope with this problem, authors introduce costs ",False,False,False,False,False,False
+functions to labeled points in order to have asymmetric soft ,False,False,False,False,False,False
+"margin [4]. On other side, SVM is faced to the problem of ",False,False,False,False,False,False
+binary classification unlike problems in real world. Seeing ,False,False,False,False,False,False
+"when the number of classes is a power of two, authors in ",False,False,False,False,False,False
+some researches adopts the binary tree with a SVM at each ,False,False,False,False,False,False
+node [5]. The performance of the SVM is mostly attributed ,False,False,False,False,False,False
+to the user’s ability to introduce knowledge about data ,False,False,False,False,False,False
+482483,False,False,False,False,False,False
+unbalance and class confusion. To cope also with the ,False,False,False,False,False,False
+"problem of binary classifications, a DAG multi classification ",False,False,False,False,False,False
+schema was chosen to extend SVM to the multi ,False,False,False,False,False,False
+classification problem. A 5-fold cross validation was applied ,False,False,False,False,False,False
+to find the optimal SVM hyper parameters.  ,False,False,False,False,False,False
+Hidden Markov Model (HMM) topologies are also ,False,False,False,False,False,False
+associated with SVM to explore the possibility of pre-,False,False,False,False,False,False
+segmenting the data [6] with a simple HMM before applying ,False,False,False,False,False,False
+the SVM. These topologies are introduced using k-variable ,False,False,False,False,False,False
+k-means algorithm. ,False,False,False,False,False,False
+"Comparing the two approaches, we observe that the ",False,False,False,False,False,False
+system based on SVM obtain better results than the system ,False,False,False,False,False,False
+based on the HMM technology. ,False,False,False,False,False,False
+C. Bayesian Network ,False,False,False,False,False,False
+Bayesian network (BN) are parametric classifiers and ,False,False,False,False,False,False
+have problems with multi source data. Sungbo et al. have ,False,False,False,False,False,False
+proposed a new classification models that exploit temporal ,False,False,False,False,False,False
+relations among features which within and across data ,False,False,False,False,False,False
+stream. [7]. The consideration of such new relations improve ,False,False,False,False,False,False
+significantly the classification accuracy. It also improves the ,False,False,False,False,False,False
+interpretability of the resulting models. Data streams are ,False,False,False,False,False,False
+collected using diverse sensors. These multiple diverse ,False,False,False,False,False,False
+sensors are used to monitor changes. Sensor readings are ,False,False,False,False,False,False
+"obviously dependent. Hence, changes detected in one sensor ",False,False,False,False,False,False
+"might affect readings in others. However, the ",False,False,False,False,False,False
+interdependency among sensor readings and their temporal ,False,False,False,False,False,False
+relations have not been treated impervious classifications ,False,False,False,False,False,False
+work. ,False,False,False,False,False,False
+"To handle the problem of temporal relations, authors ",False,False,False,False,False,False
+provide a monitoring scenario of mobile robots with many ,False,False,False,False,False,False
+sensors. The robot is engaged in various tasks and sends to a ,False,False,False,False,False,False
+central node.  ,False,False,False,False,False,False
+D. Fuzzy Pattern trees ,False,False,False,False,False,False
+Fuzzy Pattern Trees (FPT) have been introduced as a ,False,False,False,False,False,False
+novel approach class for machine learning [8]. Authors in ,False,False,False,False,False,False
+this paper consider the problem of learning fuzzy pattern ,False,False,False,False,False,False
+trees for binary classification from data streams. This ,False,False,False,False,False,False
+approach takes into account new data items as soon as they ,False,False,False,False,False,False
+arrive and develop a learning algorithm adaptive in the sense ,False,False,False,False,False,False
+that an up to date model is offered at any time. This is ,False,False,False,False,False,False
+ensured by anticipating possible local changes of the current ,False,False,False,False,False,False
+model and confirming these changes through statistical ,False,False,False,False,False,False
+"hypothesis testing. A FPT is a hierarchical, tree like ",False,False,False,False,False,False
+"structure, whose inner nodes are marked with generalized ",False,False,False,False,False,False
+"logical and arithmetic operators, whereas the leaf nodes are ",False,False,False,False,False,False
+associated with fuzzy predicates on input attributes. ,False,False,False,False,False,False
+Most existing works on classification of data streams,False,False,False,False,False,False
+assumes that all streaming data are labeled and the class ,False,False,False,False,False,False
+"labels are immediately available. However, in real world ",False,False,False,False,False,False
+"applications, this assumption is not always valid [9]. With ",False,False,False,False,False,False
+"this motivation, authors propose a semi-supervised ",False,False,False,False,False,False
+classification algorithm for data stream with concept drifts ,False,False,False,False,False,False
+"and unlabeled data. To cope with those issues, the algorithm ",False,False,False,False,False,False
+adopts the SVM techniques. ,False,False,False,False,False,False
+"First, they generate an incremental decision tree using ",False,False,False,False,False,False
+"the incoming streaming data. Meanwhile, they develop the ",False,False,False,False,False,False
+k-modes clustering algorithm to label unlabeled data. ,False,False,False,False,False,False
+E. Decision Trees ,False,False,False,False,False,False
+A decision tree (DT) is a supervised classifier that ,False,False,False,False,False,False
+recursively partitions a data set into smaller subdivisions ,False,False,False,False,False,False
+based on a set of simple tests at each internal node in the tree ,False,False,False,False,False,False
+[11]. The leaf nodes represent the class labels y,False,False,False,False,False,False
+,False,False,False,False,False,False
+. Training ,False,True,False,True,False,False
+data set is used to learn the split conditions at each internal ,False,False,False,False,False,False
+node and to construct a decision tree. For each new sample ,False,False,False,False,False,False
+"(i.e., feature vector x), the classification algorithm will ",False,False,False,False,False,False
+search for the region along a path of nodes of the tree to ,False,False,False,False,False,False
+"which the feature vector x will be assigned. That is, the ",False,False,False,False,False,False
+classification of a region is determined by a path from the ,False,False,False,False,False,False
+root node to a leaf node. ,False,False,False,False,False,False
+"Many extension of the DT exists. To learn a classifier, ",False,False,False,False,False,False
+the CVFDT algorithm requires input of precise and fully ,False,False,False,False,False,False
+"labeled samples, which is impractical in many real world ",False,False,False,False,False,False
+applications. The streaming data often contains uncertainty ,False,False,False,False,False,False
+"due to various reasons, such as imprecise measurement, ",False,False,False,False,False,False
+missing values and privacy protection; the problem of ,False,False,False,False,False,False
+classifying uncertain data streams with only positive and ,False,False,False,False,False,False
+unlabeled samples has not been studied by the research ,False,False,False,False,False,False
+community yet. ,False,False,False,False,False,False
+"To cope with this problem, authors in [10] transform ",False,False,False,False,False,False
+CVFDT and propose a novel algorithm namely puuCVFDT. ,False,False,False,False,False,False
+Experiments in real life world applications show that the ,False,False,False,False,False,False
+proposed algorithm has strong capabilities to learn from ,False,False,False,False,False,False
+uncertain data streams with positive and unlabeled samples ,False,False,False,False,False,False
+and tackle concept drifts. ,False,False,False,False,False,False
+IV. COMPARATIVE STUDY ,True,True,False,True,False,False
+"A variety of methods such as decisions trees (CART, ",False,False,False,False,False,False
+"C4.5…), artificial neural network, Bayesian network and ",False,False,False,False,False,False
+variant of the kernel methods (adaptive kernels…) are used ,False,False,False,False,False,False
+to cope with the classification problem. ,False,False,False,False,False,False
+A comparative study between techniques presented ,False,False,False,False,False,False
+previously is done based on the research issues mentioned ,False,False,False,False,False,False
+previously. This comparative study is summarized in the ,False,False,False,False,False,False
+table below: ,False,False,False,False,False,True
+V. EXPERIMENTAL EVALUATION ,True,True,False,True,False,False
+To gauge and investigate the performance on the ,False,False,False,False,False,False
+"selected classification methods or algorithms namely ANN, ",False,False,False,False,False,False
+"SVM, RB, DT, and FPT. The 75% data is used for training ",False,False,False,False,False,False
+and the remaining is for testing purposes. ,False,False,False,False,False,False
+A. Methods ,False,False,False,False,False,False
+"In WEKA, all data is considered as instances and ",False,False,False,False,False,False
+features in the data are known as attributes. The simulation ,False,False,False,False,False,False
+results are partitioned into several sub items for easier ,False,False,False,False,False,False
+"analysis and evaluation. On the first part, correctly and ",False,False,False,False,False,False
+incorrectly classified instances will be partitioned into ,False,False,False,False,False,False
+"numeric and percentage value subsequently Kappa static, ",False,False,False,False,False,False
+Techniques ,False,False,False,False,False,False
+Techniques ,False,False,False,False,False,False
+used,False,False,False,False,False,False
+BN,True,False,False,True,False,False
+BN,True,False,False,True,False,False
+SVM,True,False,False,True,False,False
+SVM,True,False,False,True,False,False
+ANN,True,False,False,True,False,False
+ANN,True,False,False,True,False,False
+FPT,True,False,False,True,False,False
+FPT,True,False,False,True,False,False
+DT,True,False,False,True,False,False
+DT,True,False,False,True,False,False
+Issues Handled,False,False,False,False,False,False
+Issues Handled,False,False,False,False,False,False
+Concept drifts,False,False,False,False,False,False
+Concept drifts,False,False,False,False,False,False
+*,False,False,False,False,False,False
+*,False,False,False,False,False,False
+*,False,False,False,False,False,False
+*,False,False,False,False,False,False
+*,False,False,False,False,False,False
+*,False,False,False,False,False,False
+*,False,False,False,False,False,False
+*,False,False,False,False,False,False
+High speed ,False,False,False,False,False,False
+nature of data ,False,False,False,False,False,False
+streams,False,False,False,False,False,False
+Real time ,False,False,False,False,False,False
+accuracy ,False,False,False,False,False,False
+changes,False,False,False,False,False,False
+Disparate ,False,False,False,False,False,False
+sources,False,False,False,False,False,False
+Hardware ,False,False,False,False,False,False
+evolution,False,False,False,False,False,False
+Unbounded ,False,False,False,False,False,False
+Memory,False,False,False,False,False,False
+483484,False,False,False,False,False,False
+mean absolute error and root mean squared error will be in ,False,False,False,False,False,False
+numeric value only. We also show the relative absolute error ,False,False,False,False,False,False
+and root relative squared error in percentage for references ,False,False,False,False,False,False
+and evaluation. ,False,False,False,False,False,False
+B. Data Set Information ,False,False,False,False,False,False
+The classification task in this database is to determine ,False,False,False,False,False,False
+the presence of heart disease in the patient [12].  It is integer ,False,False,False,False,False,False
+valued from 0 (no presence) to 4. The database contains 14 ,False,False,False,False,False,False
+attributes. All attributes are numeric valued ,False,False,False,False,False,False
+Attribute information: ,False,False,False,False,False,False
+1. Age: age in  years ,False,False,True,True,False,False
+2. Sex: 1= Male; 0=Female ,False,False,True,True,False,False
+3. cp: chest pain type ,False,False,True,True,False,False
+x Value 1: typical angina ,False,False,False,False,False,False
+x Value 2: atypical angina ,False,False,False,False,False,False
+x Value 3: non-anginal pain ,False,False,False,False,False,False
+x Value 4: asymptomatic ,False,False,False,False,False,False
+4. trestbps: resting blood pressure (in mm Hg on ,False,False,True,True,False,False
+admission to the hospital) ,False,False,False,False,False,False
+5. chol: serum cholestoral in mg/dl ,False,False,True,True,False,False
+6. fbs: (fasting blood sugar > 120 mg/dl)  (1 = true; 0 ,False,False,True,True,False,False
+= false) ,False,False,False,False,False,False
+7. restecg: resting electrocardiographic results ,False,False,True,True,False,False
+x Value 0: normal ,False,False,False,False,False,False
+x Value 1: having ST-T wave abnormality (T wave ,False,False,False,False,False,False
+inversions and/or ST elevation or depression of > ,False,False,False,False,False,False
+0.05 mV) ,False,False,False,False,False,False
+x Value 2: showing probable or definite left ,False,False,False,False,False,False
+ventricular hypertrophy by Estes' criteria     ,False,False,False,False,False,False
+8. thalach: maximum heart rate achieved ,False,False,True,True,False,False
+9. exang: exercise induced angina (1 = yes; 0 = no) ,False,False,True,True,False,False
+10. oldpeak = ST depression induced by exercise ,False,False,True,True,False,False
+relative to rest ,False,False,False,False,False,False
+11. slope: the slope of the peak exercise ST segment ,False,False,True,True,False,False
+x Value 1: upsloping ,False,False,False,False,False,False
+x Value 2: flat ,False,False,False,False,False,False
+x Value 3: downsloping ,False,False,False,False,False,False
+12. ca: number of major vessels (0-3) colored by ,False,False,True,True,False,False
+flourosopy ,False,False,False,False,False,False
+13. thal: 3 = normal; 6 = fixed defect; 7 = reversable ,False,False,True,True,False,False
+defect ,False,False,False,False,False,False
+14. num: diagnosis of heart disease (angiographic ,False,False,True,True,False,False
+disease status) ,False,False,False,False,False,False
+x Value 0: < 50% diameter narrowing ,False,False,False,False,False,False
+x Value 1: > 50% diameter narrowing(in any ,False,False,False,False,False,False
+major vessel: attributes 59 through 68 are ,False,False,False,False,False,False
+vessels) ,False,False,False,False,False,False
+C. Results and Discussion ,False,False,False,False,False,False
+The implementation in WEKA will be done by taking 5 ,False,False,False,False,False,False
+different algorithms mentioned before. To analyze and ,False,False,False,False,False,False
+"compare those algorithms, the following parameters are ",False,False,False,False,False,False
+used: ,False,False,False,False,False,False
+x Kappa statistic (KS) [13]: Kappa statistic is a ,False,False,False,False,False,False
+generic term for several similar measures of ,False,False,False,False,False,False
+agreement used with categorical data. Typically it is ,False,False,False,False,False,False
+used in assessing the degree to which two or more ,False,False,False,False,False,False
+"raters, examining the same data, agree when it ",False,False,False,False,False,False
+comes to assigning the data to categories. Kappa is a ,False,False,False,False,False,False
+measure standardized to lie on -1 and 1 scale where ,False,False,False,False,False,False
+"complete agreement corresponds to K = 1, and lack ",False,False,False,False,False,False
+of agreement corresponds to K = 0. A negative ,False,False,False,False,False,False
+value of kappa would mean negative agreement. ,False,False,False,False,False,False
+x Mean absolute error (MAE) [14]:  MAE is the ,False,False,False,False,False,False
+average over the verification sample of the absolute ,False,False,False,False,False,False
+values of the differences between forecast and the ,False,False,False,False,False,False
+corresponding observation. The MAE is a linear ,False,False,False,False,False,False
+score which means that all the individual differences ,False,False,False,False,False,False
+are weighted equally in the average i.e how close a ,False,False,False,False,False,False
+predicted model to actual model. ,False,False,False,False,False,False
+x Root mean squared error (RMSE) [14]: RMSE is ,False,False,False,False,False,False
+the difference between forecast and corresponding ,False,False,False,False,False,False
+observed values are each squared and then averaged ,False,False,False,False,False,False
+"over the sample. Finally, the square root of the ",False,False,False,False,False,False
+average is taken. Since the errors are squared before ,False,False,False,False,False,False
+"they are averaged, the RMSE gives a relatively high ",False,False,False,False,False,False
+weight to large errors. ,False,False,False,False,False,False
+x Relative absolute error (RAE) [15]: is relative to a ,False,False,False,False,False,False
+"simple predictor, which is just the average of the ",False,False,False,False,False,False
+"actual values. In this case, though, the error is just ",False,False,False,False,False,False
+the total absolute error instead of the total squared ,False,False,False,False,False,False
+"error. Thus, the relative absolute error takes the total ",False,False,False,False,False,False
+absolute error and normalizes it by dividing by the ,False,False,False,False,False,False
+total absolute error of the simple predictor. ,False,False,False,False,False,False
+x Root relative squared error   (RRSE) [15]: is relative ,False,False,False,False,False,False
+to what it would have been if a simple predictor had ,False,False,False,False,False,False
+"been used. More specifically, this simple predictor ",False,False,False,False,False,False
+"is just the average of the actual values. Thus, the ",False,False,False,False,False,False
+relative squared error takes the total squared error ,False,False,False,False,False,False
+and normalizes it by dividing by the total squared ,False,False,False,False,False,False
+error of the simple predictor. By taking the square ,False,False,False,False,False,False
+root of the relative squared error one reduces the ,False,False,False,False,False,False
+error to the same dimensions as the quantity being ,False,False,False,False,False,False
+predicted. ,False,False,False,False,False,False
+First we classify the dataset using two test options: using ,False,False,False,False,False,False
+training method and 10 cross fold method. The test values of ,False,False,False,False,False,False
+those parameters are given in table 1. ,False,False,False,False,False,False
+TABLE 1. ,True,False,False,False,False,True
+"From the table 1 statistics, it’s clear that the use of ",False,False,False,False,False,True
+training set methods has better performance than the use of ,False,False,False,False,False,False
+10 cross fold method. To better see the results we present ,False,False,False,False,False,False
+them graphical. ,False,False,False,False,False,False
+Figure 2. ,False,False,False,False,True,False
+Classifier,False,False,False,False,False,False
+Use 10 cross fold method,False,False,False,False,False,False
+KS,True,False,False,True,False,False
+MAE,True,False,False,True,False,False
+RMSE,True,False,False,True,False,False
+RAE,True,False,False,True,False,False
+RRSE,True,False,False,True,False,False
+0.4814,False,False,False,False,False,False
+0.2188,False,False,False,False,False,False
+0.3617,False,False,False,False,False,False
+0.5925,False,False,False,False,False,False
+0.8418,False,False,False,False,False,False
+0.7651,False,False,False,False,False,False
+0.1864,False,False,False,False,False,False
+0.2897,False,False,False,False,False,False
+0.4981,False,False,False,False,False,False
+0.7612,False,False,False,False,False,False
+0.3753,False,False,False,False,False,False
+0.281,False,False,False,False,False,False
+0.3919,False,False,False,False,False,False
+0.7611,False,False,False,False,False,False
+0.9121,False,False,False,False,False,False
+0.4917,False,False,False,False,False,False
+0.1946,False,False,False,False,False,False
+0.3858,False,False,False,False,False,False
+0.5270,False,False,False,False,False,False
+0.8980,False,False,False,False,False,False
+0.1777,False,False,False,False,False,False
+0.3295,False,False,False,False,False,False
+0.4105,False,False,False,False,False,False
+0.8923,False,False,False,False,False,False
+0.9554,False,False,False,False,False,False
+Using training set method,False,False,False,False,False,False
+KS,True,False,False,True,False,False
+MAE,True,False,False,True,False,False
+RMSE,True,False,False,True,False,False
+RAE,True,False,False,True,False,False
+RRSE,True,False,False,True,False,False
+0.5632,False,False,False,False,False,False
+0.1914,False,False,False,False,False,False
+0.3352,False,False,False,False,False,False
+0.5184,False,False,False,False,False,False
+0.7802 ,False,False,False,False,False,False
+0.801,False,False,False,False,False,False
+0.1541,False,False,False,False,False,False
+0.1976,False,False,False,False,False,False
+0.2317,False,False,False,False,False,False
+0.5586,False,False,False,False,False,False
+0.4467,False,False,False,False,False,False
+0.2711,False,False,False,False,False,False
+0.3682,False,False,False,False,False,False
+0.7343 ,False,False,False,False,False,False
+0.8571,False,False,False,False,False,False
+0.797,False,False,False,False,False,False
+0.1091,False,False,False,False,False,False
+0.2518,False,False,False,False,False,False
+0.2956 ,False,False,False,False,False,False
+0.5860 ,False,False,False,False,False,False
+0.1971,False,False,False,False,False,False
+0.3199,False,False,False,False,False,False
+0.3999,False,False,False,False,False,False
+0.8664,False,False,False,False,False,False
+0.9309 ,False,False,False,False,False,False
+484485,False,False,False,False,False,False
+Figure 3. ,False,False,False,False,True,False
+Figure 2 and 3 show that the comparison of classifiers ,False,False,False,False,True,False
+with the help of two test options. These figures also states ,False,False,False,False,False,False
+that use training set method has better performance than 10 ,False,False,False,False,False,False
+cross fold method under these observations: ,False,False,False,False,False,False
+x The value of KS comparing above discussed ,False,False,False,False,False,False
+"method, use training set method has better value ",False,False,False,False,False,False
+than 10 cross fold validation. ,False,False,False,False,False,False
+x Values of MAE and RMSE lower these values ,False,False,False,False,False,False
+better the prediction. So use training set method has ,False,False,False,False,False,False
+minimum values of AME and RMSE as compare to ,False,False,False,False,False,False
+10 cross fold validation. ,False,False,False,False,False,False
+"From above analysis, we can now only consider use ",False,False,False,False,False,False
+training set method to compare four algorithms. ,False,False,False,False,False,False
+485486,False,False,False,False,False,False

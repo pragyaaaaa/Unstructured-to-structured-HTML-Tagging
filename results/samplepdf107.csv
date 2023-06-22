@@ -1,0 +1,1792 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+ABSTRACT,True,False,False,True,False,False
+In this paper we address the issue of learning to rank for document,False,False,False,False,False,False
+"retrieval. In the task, a model is automatically created with some",False,False,False,False,False,False
+training data and then is utilized for ranking of documents. The,False,False,False,False,False,False
+goodness of a model is usually evaluated with performance mea-,False,False,False,False,False,False
+sures such as MAP (Mean Average Precision) and NDCG (Nor-,False,False,False,False,False,False
+malized Discounted Cumulative Gain). Ideally a learning algo-,False,False,False,False,False,False
+rithm would train a ranking model that could directly optimize the,False,False,False,False,False,False
+performance measures with respect to the training data. Existing,False,False,False,False,False,False
+"methods, however, are only able to train ranking models by mini-",False,False,False,False,False,False
+mizing loss functions loosely related to the performance measures.,False,False,False,False,False,False
+"For example, Ranking SVM and RankBoost train ranking mod-",False,False,False,False,False,False
+els by minimizing classiﬁcation errors on instance pairs. To deal,False,False,False,False,False,False
+"with the problem, we propose a novel learning algorithm within",False,False,False,False,False,False
+"the framework of boosting, which can minimize a loss function",False,False,False,False,False,False
+"directly deﬁned on the performance measures. Our algorithm, re-",False,False,False,False,False,False
+"ferred to as AdaRank, repeatedly constructs ‘weak rankers’ on the",False,False,False,False,False,False
+basis of re-weighted training data and ﬁnally linearly combines the,False,False,False,False,False,False
+weak rankers for making ranking predictions. We prove that the,False,False,False,False,False,False
+training process of AdaRank is exactly that of enhancing the per-,False,False,False,False,False,False
+formance measure used. Experimental results on four benchmark,False,False,False,False,False,False
+datasets show that AdaRank signiﬁcantly outperforms the baseline,False,False,False,False,False,False
+"methods of BM25, Ranking SVM, and RankBoost.",False,False,False,False,False,False
+Categories and Subject Descriptors,False,False,False,False,False,False
+H.3.3 [Information Search and Retrieval]: Retrieval models,False,False,False,False,False,False
+General Terms,False,False,False,False,False,False
+"Algorithms, Experimentation, Theory",False,False,False,False,False,False
+Keywords,False,False,False,False,False,False
+"Information retrieval, Learning to rank, Boosting",False,False,False,False,False,False
+1. INTRODUCTION,True,False,True,True,False,False
+Recently ‘learning to rank’ has gained increasing attention in,False,False,False,False,False,False
+both the ﬁelds of information retrieval and machine learning. When,False,False,False,False,False,False
+Permission to make digital or hard copies of all or part of this work for,False,False,False,False,False,False
+personal or classroom use is granted without fee provided that copies are,False,False,False,False,False,False
+not made or distributed for proﬁt or commercial advantage and that copies,False,False,False,False,False,False
+"bear this notice and the full citation on the ﬁrst page. To copy otherwise, to",False,False,False,False,False,False
+"republish, to post on servers or to redistribute to lists, requires prior speciﬁc",False,False,False,False,False,False
+permission and/or a fee.,False,False,False,False,False,False
+"SIGIR’07, July 23–27, 2007, Amsterdam, The Netherlands.",False,False,False,False,False,False
+Copyright 2007 ACM 978-1-59593-597-7/07/0007 ...$5.00.,False,False,False,False,False,False
+"applied to document retrieval, learning to rank becomes a task as",False,False,False,False,False,False
+"follows. In training, a ranking model is constructed with data con-",False,False,False,False,False,False
+"sisting of queries, their corresponding retrieved documents, and rel-",False,False,False,False,False,False
+"evance levels given by humans. In ranking, given a new query, the",False,False,False,False,False,False
+corresponding retrieved documents are sorted by using the trained,False,False,False,False,False,False
+"ranking model. In document retrieval, usually ranking results are",False,False,False,False,False,False
+evaluated in terms of performance measures such as MAP (Mean,False,False,False,False,False,False
+Average Precision) [1] and NDCG (Normalized Discounted Cumu-,False,False,False,False,False,False
+"lative Gain) [15]. Ideally, the ranking function is created so that the",False,False,False,False,False,False
+accuracy of ranking in terms of one of the measures with respect to,False,False,False,False,False,False
+the training data is maximized.,False,False,False,False,False,False
+Several methods for learning to rank have been developed and,False,False,False,False,False,False
+"applied to document retrieval. For example, Herbrich et al. [13]",False,False,False,False,False,False
+propose a learning algorithm for ranking on the basis of Support,False,False,False,False,False,False
+"Vector Machines, called Ranking SVM. Freund et al. [8] take a",False,False,False,False,False,False
+"similar approach and perform the learning by using boosting, re-",False,False,False,False,False,False
+ferred to as RankBoost. All the existing methods used for docu-,False,False,False,False,False,False
+"ment retrieval [2, 3, 8, 13, 16, 20] are designed to optimize loss",False,False,False,False,False,False
+"functions loosely related to the IR performance measures, not loss",False,False,False,False,False,False
+"functions directly based on the measures. For example, Ranking",False,False,False,False,False,False
+SVM and RankBoost train ranking models by minimizing classiﬁ-,False,False,False,False,False,False
+cation errors on instance pairs.,False,False,False,False,False,False
+"In this paper, we aim to develop a new learning algorithm that",False,False,False,False,False,False
+can directly optimize any performance measure used in document,False,False,False,False,False,False
+"retrieval. Inspired by the work of AdaBoost for classiﬁcation [9],",False,False,False,False,False,False
+we propose to develop a boosting algorithm for information re-,False,False,False,False,False,False
+"trieval, referred to as AdaRank. AdaRank utilizes a linear com-",False,False,False,False,False,False
+"bination of ‘weak rankers’ as its model. In learning, it repeats the",False,False,False,False,False,False
+"process of re-weighting the training sample, creating a weak ranker,",False,False,False,False,False,False
+and calculating a weight for the ranker.,False,False,False,False,False,False
+We show that AdaRank algorithm can iteratively optimize an ex-,False,False,False,False,False,False
+ponential loss function based on any of IR performance measures.,False,False,False,False,False,False
+"A lower bound of the performance on training data is given, which",False,False,False,False,False,False
+indicates that the ranking accuracy in terms of the performance,False,False,False,False,False,False
+measure can be continuously improved during the training process.,False,False,False,False,False,False
+"AdaRank oﬀers several advantages: ease in implementation, the-",False,False,False,False,False,False
+"oretical soundness, eﬃciency in training, and high accuracy in ranking.",False,False,False,False,False,False
+Experimental results indicate that AdaRank can outperform the base-,False,False,False,False,False,False
+"line methods of BM25, Ranking SVM, and RankBoost, on four",False,False,False,False,False,False
+"benchmark datasets including OHSUMED, WSJ, AP, and .Gov.",False,False,False,False,False,False
+Tuning ranking models using certain training data and a perfor-,False,False,False,False,False,False
+mance measure is a common practice in IR [1]. As the number of,False,False,False,False,False,False
+features in the ranking model gets larger and the amount of train-,False,False,False,False,False,False
+"ing data gets larger, the tuning becomes harder. From the viewpoint",False,False,False,False,False,False
+"of IR, AdaRank can be viewed as a machine learning method for",False,False,False,False,False,False
+ranking model tuning.,False,False,False,False,False,False
+"Recently, direct optimization of performance measures in learn-",False,False,False,False,False,False
+ing has become a hot research topic. Several methods for classiﬁ-,False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II391,False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II,False,False,False,False,False,False
+391,False,False,False,False,False,False
+"cation [17] and ranking [5, 19] have been proposed. AdaRank can",False,False,False,False,False,False
+be viewed as a machine learning method for direct optimization of,False,False,False,False,False,False
+"performance measures, based on a diﬀerent approach.",False,False,False,False,False,False
+The rest of the paper is organized as follows. After a summary,False,False,False,False,False,False
+"of related work in Section 2, we describe the proposed AdaRank",False,False,False,False,False,False
+algorithm in details in Section 3. Experimental results and discus-,False,False,False,False,False,False
+sions are given in Section 4. Section 5 concludes this paper and,False,False,False,False,False,False
+gives future work.,False,False,False,False,False,False
+2. RELATED WORK,True,False,True,True,False,False
+2.1 Information Retrieval,False,False,False,False,False,False
+"The key problem for document retrieval is ranking, speciﬁcally,",False,False,False,False,False,False
+how to create the ranking model (function) that can sort documents,False,False,False,False,False,False
+based on their relevance to the given query. It is a common practice,False,False,False,False,False,False
+in IR to tune the parameters of a ranking model using some labeled,False,False,False,False,False,False
+"data and one performance measure [1]. For example, the state-of-",False,False,False,False,False,False
+the-art methods of BM25 [24] and LMIR (Language Models for,False,False,False,False,False,False
+"Information Retrieval) [18, 22] all have parameters to tune. As",False,False,False,False,False,False
+the ranking models become more sophisticated (more features are,False,False,False,False,False,False
+"used) and more labeled data become available, how to tune or train",False,False,False,False,False,False
+ranking models turns out to be a challenging issue.,False,False,False,False,False,False
+Recently methods of ‘learning to rank’ have been applied to,False,False,False,False,False,False
+ranking model construction and some promising results have been,False,False,False,False,False,False
+"obtained. For example, Joachims [16] applies Ranking SVM to",False,False,False,False,False,False
+document retrieval. He utilizes click-through data to deduce train-,False,False,False,False,False,False
+ing data for the model creation. Cao et al. [4] adapt Ranking,False,False,False,False,False,False
+SVM to document retrieval by modifying the Hinge Loss function,False,False,False,False,False,False
+"to better meet the requirements of IR. Speciﬁcally, they introduce",False,False,False,False,False,False
+a Hinge Loss function that heavily penalizes errors on the tops of,False,False,False,False,False,False
+ranking lists and errors from queries with fewer retrieved docu-,False,False,False,False,False,False
+ments. Burges et al. [3] employ Relative Entropy as a loss function,False,False,False,False,False,False
+and Gradient Descent as an algorithm to train a Neural Network,False,False,False,False,False,False
+model for ranking in document retrieval. The method is referred to,False,False,False,False,False,False
+as ‘RankNet’.,False,False,False,False,False,False
+2.2 Machine Learning,False,False,False,False,False,False
+There are three topics in machine learning which are related to,False,False,False,False,False,False
+"our current work. They are ‘learning to rank’, boosting, and direct",False,False,False,False,False,False
+optimization of performance measures.,False,False,False,False,False,False
+Learning to rank is to automatically create a ranking function,False,False,False,False,False,False
+that assigns scores to instances and then rank the instances by us-,False,False,False,False,False,False
+ing the scores. Several approaches have been proposed to tackle,False,False,False,False,False,False
+the problem. One major approach to learning to rank is that of,False,False,False,False,False,False
+transforming it into binary classiﬁcation on instance pairs. This,False,False,False,False,False,False
+‘pair-wise’ approach ﬁts well with information retrieval and thus is,False,False,False,False,False,False
+widely used in IR. Typical methods of the approach include Rank-,False,False,False,False,False,False
+"ing SVM [13], RankBoost [8], and RankNet [3]. For other ap-",False,False,False,False,False,False
+"proaches to learning to rank, refer to [2, 11, 31].",False,False,False,False,False,False
+"In the pair-wise approach to ranking, the learning task is formal-",False,False,False,False,False,False
+ized as a problem of classifying instance pairs into two categories,False,False,False,False,False,False
+"(correctly ranked and incorrectly ranked). Actually, it is known",False,False,False,False,False,False
+that reducing classiﬁcation errors on instance pairs is equivalent to,False,False,False,False,False,False
+"maximizing a lower bound of MAP [16]. In that sense, the exist-",False,False,False,False,False,False
+"ing methods of Ranking SVM, RankBoost, and RankNet are only",False,False,False,False,False,False
+able to minimize loss functions that are loosely related to the IR,False,False,False,False,False,False
+performance measures.,False,False,False,False,False,False
+Boosting is a general technique for improving the accuracies of,False,False,False,False,False,False
+machine learning algorithms. The basic idea of boosting is to re-,False,False,False,False,False,False
+peatedly construct ‘weak learners’ by re-weighting training data,False,False,False,False,False,False
+and form an ensemble of weak learners such that the total perfor-,False,False,False,False,False,False
+mance of the ensemble is ‘boosted’. Freund and Schapire have,False,False,False,False,False,False
+proposed the ﬁrst well-known boosting algorithm called AdaBoost,False,False,False,False,False,False
+"(Adaptive Boosting) [9], which is designed for binary classiﬁca-",False,False,False,False,False,False
+"tion (0-1 prediction). Later, Schapire & Singer have introduced a",False,False,False,False,False,False
+generalized version of AdaBoost in which weak learners can give,False,False,False,False,False,False
+conﬁdence scores in their predictions rather than make 0-1 deci-,False,False,False,False,False,False
+sions [26]. Extensions have been made to deal with the problems,False,False,False,False,False,False
+"of multi-class classiﬁcation [10, 26], regression [7], and ranking",False,False,False,False,False,False
+"[8]. In fact, AdaBoost is an algorithm that ingeniously constructs",False,False,False,False,False,False
+a linear model by minimizing the ‘exponential loss function’ with,False,False,False,False,False,False
+respect to the training data [26]. Our work in this paper can be,False,False,False,False,False,False
+"viewed as a boosting method developed for ranking, particularly",False,False,False,False,False,False
+for ranking in IR.,False,False,False,False,False,False
+"Recently, a number of authors have proposed conducting direct",False,False,False,False,False,False
+optimization of multivariate performance measures in learning. For,False,False,False,False,False,False
+"instance, Joachims [17] presents an SVM method to directly opti-",False,False,False,False,False,False
+mize nonlinear multivariate performance measures like the F,False,False,False,False,False,False
+1,False,False,False,False,False,False
+mea-,False,False,False,False,False,False
+sure for classiﬁcation. Cossock & Zhang [5] ﬁnd a way to ap-,False,False,False,False,False,False
+proximately optimize the ranking performance measure DCG [15].,False,False,False,False,False,False
+Metzler et al. [19] also propose a method of directly maximizing,False,False,False,False,False,False
+rank-based metrics for ranking on the basis of manifold learning.,False,False,False,False,False,False
+AdaRank is also one that tries to directly optimize multivariate per-,False,False,False,False,False,False
+"formance measures, but is based on a diﬀerent approach. AdaRank",False,False,False,False,False,False
+is unique in that it employs an exponential loss function based on,False,False,False,False,False,False
+IR performance measures and a boosting technique.,False,False,False,False,False,False
+3. OUR METHOD: ADARANK,True,False,True,True,False,False
+3.1 General Framework,False,False,False,False,False,False
+We ﬁrst describe the general framework of learning to rank for,False,False,False,False,False,False
+"document retrieval. In retrieval (testing), given a query the system",False,False,False,False,False,False
+returns a ranking list of documents in descending order of the rel-,False,False,False,False,False,False
+evance scores. The relevance scores are calculated with a ranking,False,False,False,False,False,False
+"function (model). In learning (training), a number of queries and",False,False,False,False,False,False
+"their corresponding retrieved documents are given. Furthermore,",False,False,False,False,False,False
+the relevance levels of the documents with respect to the queries are,False,False,False,False,False,False
+"also provided. The relevance levels are represented as ranks (i.e.,",False,False,False,False,False,False
+categories in a total order). The objective of learning is to construct,False,False,False,False,False,False
+a ranking function which achieves the best results in ranking of the,False,False,False,False,False,False
+training data in the sense of minimization of a loss function. Ideally,False,False,False,False,False,False
+the loss function is deﬁned on the basis of the performance measure,False,False,False,False,False,False
+used in testing.,False,False,False,False,False,False
+Suppose that Y = {r,False,False,False,False,False,False
+1,False,False,False,False,False,False
+", r",False,False,False,False,False,False
+2,False,False,False,False,False,False
+", · · · , r",False,False,False,False,False,False
+`,False,False,False,False,False,False
+"} is a set of ranks, where ` denotes",False,False,False,False,False,False
+the number of ranks. There exists a total order between the ranks,False,False,False,False,False,False
+`,False,False,False,False,False,False
+ r,False,False,False,False,False,False
+`−1,False,False,False,False,False,False
+ · · ·  r,False,False,False,False,False,False
+1,False,False,False,False,False,False
+", where ‘’ denotes a preference relationship.",False,False,False,False,False,False
+"In training, a set of queries Q = {q",False,False,False,False,False,False
+1,False,False,False,False,False,False
+", q",False,False,False,False,False,False
+2,False,False,False,False,False,False
+", · · · , q",False,False,False,False,False,False
+m,False,False,False,False,False,False
+} is given. Each,False,False,False,False,False,False
+query q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+is associated with a list of retrieved documents d,False,False,False,False,False,False
+i,False,False,False,False,False,False
+= {d,False,False,False,False,False,False
+i1,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i2,False,False,False,False,False,False
+",",False,False,False,False,False,False
+"· · · , d",False,False,False,False,False,False
+"i,n(q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+} and a list of labels y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+= {y,False,False,False,False,False,False
+i1,False,False,False,False,False,False
+", y",False,False,False,False,False,False
+i2,False,False,False,False,False,False
+", · · · , y",False,False,False,False,False,False
+"i,n(q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+"}, where n(q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+denotes the sizes of lists d,False,False,False,False,False,False
+i,False,False,False,False,False,False
+and y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i j,False,False,False,False,False,False
+denotes the j,False,False,False,False,False,False
+th,False,False,False,False,False,False
+document in,False,False,False,False,False,False
+d,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", and y",False,False,False,False,False,False
+i j,False,False,False,False,False,False
+∈ Y denotes the rank of document d,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+. A feature vec-,False,True,False,True,False,False
+tor,False,False,False,False,False,False
+~,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+= Ψ(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i j,False,False,False,False,False,False
+) ∈ X is created from each query-document pair,False,False,False,False,False,False
+(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i j,False,False,False,False,False,False
+"), i = 1, 2, · · · , m; j = 1, 2, · · · , n(q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+"). Thus, the training set",False,False,False,False,False,False
+can be represented as S =,False,False,False,False,False,False
+{,False,False,False,False,False,False
+(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+},False,False,False,False,False,False
+m,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+.,False,True,False,True,False,False
+The objective of learning is to create a ranking function f : X 7→,False,False,False,False,False,False
+"<, such that for each query the elements in its corresponding doc-",False,False,False,False,False,False
+ument list can be assigned relevance scores using the function and,False,False,False,False,False,False
+"then be ranked according to the scores. Speciﬁcally, we create a",False,False,False,False,False,False
+permutation of integers π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f ) for query q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", the correspond-",False,False,False,False,False,False
+ing list of documents d,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", and the ranking function f . Let d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+{d,False,False,False,False,False,False
+i1,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i2,False,False,False,False,False,False
+", · · · , d",False,False,False,False,False,False
+"i,n(q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+"} be identiﬁed by the list of integers {1, 2, · · · , n(q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+")},",False,False,False,False,False,False
+then permutation π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f ) is deﬁned as a bijection from {1, 2, · · · ,",False,False,False,False,False,False
+n(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+")} to itself. We use π( j) to denote the position of item j (i.e.,",False,False,False,False,False,False
+i j,False,False,False,False,False,False
+). The learning process turns out to be that of minimizing the,False,False,False,False,False,False
+loss function which represents the disagreement between the per-,False,False,False,False,False,False
+mutation π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f ) and the list of ranks y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", for all of the queries.",False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II392,False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II,False,False,False,False,False,False
+392,False,False,False,False,False,False
+Table 1: Notations and explanations.,False,False,False,False,False,True
+Notations Explanations,False,False,False,False,False,False
+i,False,False,False,False,False,False
+∈ Q i,False,False,False,False,False,False
+th,False,False,False,False,False,False
+query,False,False,False,False,False,False
+d,False,False,False,False,False,False
+i,False,False,False,False,False,False
+= {d,False,False,False,False,False,False
+i1,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i2,False,False,False,False,False,False
+", · · · , d",False,False,False,False,False,False
+"i,n(q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+} List of documents for q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+∈ {r,False,False,False,False,False,False
+1,False,False,False,False,False,False
+", r",False,False,False,False,False,False
+2,False,False,False,False,False,False
+", · · · , r",False,False,False,False,False,False
+`,False,False,False,False,False,False
+} Rank of d,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+w.r.t. q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+= {y,False,False,False,False,False,False
+i1,False,False,False,False,False,False
+", y",False,False,False,False,False,False
+i2,False,False,False,False,False,False
+", · · · , y",False,False,False,False,False,False
+"i,n(q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+} List of ranks for q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+S = {(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+)},False,False,False,False,False,False
+m,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+Training set,False,False,False,False,False,False
+~,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+= Ψ(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i j,False,False,False,False,False,False
+) ∈ X Feature vector for (q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i j,False,False,False,False,False,False
+),False,False,False,False,False,False
+f (,False,False,False,False,False,False
+~,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+) ∈ < Ranking model,False,False,False,False,False,False
+π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f ) Permutation for q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", and f",False,False,False,False,False,False
+t,False,False,False,False,False,False
+(,False,False,False,False,False,False
+~,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+) ∈ < t,False,False,False,False,False,False
+th,False,False,False,False,False,False
+weak ranker,False,False,False,False,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f ), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+") ∈ [−1, +1] Performance measure function",False,False,False,False,False,False
+"In the paper, we deﬁne the rank model as a linear combination of",False,False,False,False,False,False
+weak rankers: f (,False,False,False,False,False,False
+~,False,False,False,False,False,False
+x) =,False,False,False,False,False,False
+P,True,False,False,True,False,False
+T,True,False,False,True,False,False
+t=1,False,False,False,False,False,False
+α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+t,False,False,False,False,False,False
+(,False,False,False,False,False,False
+~,False,False,False,False,False,False
+"x), where h",False,False,False,False,False,False
+t,False,False,False,False,False,False
+(,False,False,False,False,False,False
+~,False,False,False,False,False,False
+"x) is a weak ranker, α",False,False,False,False,False,False
+t,False,False,False,False,False,False
+"is its weight, and T is the number of weak rankers.",False,False,False,False,False,False
+"In information retrieval, query-based performance measures are",False,False,False,False,False,False
+used to evaluate the ‘goodness’ of a ranking function. By query,False,False,False,False,False,False
+"based measure, we mean a measure deﬁned over a ranking list",False,False,False,False,False,False
+of documents with respect to a query. These measures include,False,False,False,False,False,False
+"MAP, NDCG, MRR (Mean Reciprocal Rank), WTA (Winners Take",False,False,False,False,False,False
+"ALL), and Precision@n [1, 15]. We utilize a general function",False,False,False,False,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f ), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+") ∈ [−1, +1] to represent the performance mea-",False,False,False,False,False,False
+sures. The ﬁrst argument of E is the permutation π created using,False,False,False,False,False,False
+the ranking function f on d,False,False,False,False,False,False
+i,False,False,False,False,False,False
+. The second argument is the list of,False,True,False,True,False,False
+ranks y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+given by humans. E measures the agreement between π,False,False,False,False,False,False
+and y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+. Table 1 gives a summary of notations described above.,False,True,False,False,False,True
+"Next, as examples of performance measures, we present the def-",False,False,False,False,False,False
+initions of MAP and NDCG. Given a query q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", the corresponding",False,False,False,False,False,False
+list of ranks y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", and a permutation π",False,False,False,False,False,False
+i,False,False,False,False,False,False
+on d,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", average precision for q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+is deﬁned as:,False,False,False,False,False,False
+i,False,False,False,False,False,False
+P,True,False,False,True,False,False
+n(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+j=1,False,False,False,False,False,False
+i,False,False,False,False,False,False
+( j) · y,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+P,True,False,False,True,False,False
+n(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+j=1,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+", (1)",False,False,False,False,False,False
+where y,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+"takes on 1 and 0 as values, representing being relevant or",False,False,False,False,False,False
+irrelevant and P,False,False,False,False,False,False
+i,False,False,False,False,False,False
+( j) is deﬁned as precision at the position of d,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+:,False,False,False,False,False,False
+i,False,False,False,False,False,False
+( j) =,False,False,False,False,False,False
+P,True,False,False,True,False,False
+k:π,False,False,False,False,False,False
+i,False,False,False,False,False,False
+(k)≤π,False,False,False,False,False,False
+i,False,False,False,False,False,False
+( j),False,False,False,False,False,False
+ik,False,False,False,False,False,False
+π,False,False,False,False,False,False
+i,False,False,False,False,False,False
+( j),False,False,False,False,False,False
+", (2)",False,False,False,False,False,False
+where π,False,False,False,False,False,False
+i,False,False,False,False,False,False
+( j) denotes the position of d,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+.,False,True,False,True,False,False
+Given a query q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", the list of ranks y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", and a permutation π",False,False,False,False,False,False
+i,False,False,False,False,False,False
+on d,False,False,False,False,False,False
+i,False,False,False,False,False,False
+",",False,False,False,False,False,False
+NDCG at position m for q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+is deﬁned as:,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+·,False,False,False,False,False,False
+X,True,False,False,True,False,False
+j:π,False,False,False,False,False,False
+i,False,False,False,False,False,False
+2,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+− 1,False,False,False,False,False,False
+log(1 + π,False,False,False,False,False,False
+i,False,False,False,False,False,False
+( j)),False,False,False,False,False,False
+", (3)",False,False,False,False,False,False
+where y,False,False,False,False,False,False
+i j,False,False,False,False,False,False
+takes on ranks as values and n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+is a normalization con-,False,False,False,False,False,False
+stant. n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+is chosen so that a perfect ranking π,False,False,False,False,False,False
+i,False,False,False,False,False,False
+’s NDCG score at,False,False,False,False,False,False
+position m is 1.,False,False,False,False,False,False
+3.2 Algorithm,False,False,False,False,False,False
+"Inspired by the AdaBoost algorithm for classiﬁcation, we have",False,False,False,False,False,False
+devised a novel algorithm which can optimize a loss function based,False,False,False,False,False,False
+on the IR performance measures. The algorithm is referred to as,False,False,False,False,False,False
+‘AdaRank’ and is shown in Figure 1.,False,False,False,False,False,False
+AdaRank takes a training set S = {(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+)},False,False,False,False,False,False
+m,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+as input and,False,False,False,False,False,False
+takes the performance measure function E and the number of itera-,False,False,False,False,False,False
+tions T as parameters. AdaRank runs T rounds and at each round it,False,False,False,False,False,False
+creates a weak ranker h,False,False,False,False,False,False
+t,False,False,False,False,False,False
+"(t = 1, · · · , T ). Finally, it outputs a ranking",False,False,False,False,False,False
+model f by linearly combining the weak rankers.,False,False,False,False,False,False
+"At each round, AdaRank maintains a distribution of weights over",False,False,False,False,False,False
+the queries in the training data. We denote the distribution of weights,False,False,False,False,False,False
+Input: S = {(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+)},False,False,False,False,False,False
+m,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+", and parameters E and T",False,False,False,False,False,False
+Initialize P,False,False,False,False,False,False
+1,False,False,False,False,False,False
+(i) = 1/m.,False,False,False,False,False,False
+"For t = 1, · · · , T",False,False,False,False,False,False
+• Create weak ranker h,False,False,False,False,False,False
+t,False,False,False,False,False,False
+with weighted distribution P,False,False,False,False,False,False
+t,False,False,False,False,False,False
+on train-,False,False,False,False,False,False
+ing data S .,False,False,False,False,False,False
+• Choose α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+· ln,False,False,False,False,False,False
+P,True,False,False,True,False,False
+m,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+t,False,False,False,False,False,False
+(i){1 + E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+t,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+)},False,False,False,False,False,False
+P,True,False,False,True,False,False
+m,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+t,False,False,False,False,False,False
+(i){1 − E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+t,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+)},False,False,False,False,False,False
+.,False,True,False,True,False,False
+• Create f,False,False,False,False,False,False
+t,False,False,False,False,False,False
+t,False,False,False,False,False,False
+(,False,False,False,False,False,False
+~,False,False,False,False,False,False
+x) =,False,False,False,False,False,False
+t,False,False,False,False,False,False
+X,True,False,False,True,False,False
+k=1,False,False,False,False,False,False
+α,False,False,False,False,False,False
+k,False,False,False,False,False,False
+k,False,False,False,False,False,False
+(,False,False,False,False,False,False
+~,False,False,False,False,False,False
+x).,False,False,False,False,False,False
+• Update P,False,False,False,False,False,False
+t+1,False,False,False,False,False,False
+t+1,False,False,False,False,False,False
+(i) =,False,False,False,False,False,False
+exp{−E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
+t,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+)},False,False,False,False,False,False
+P,True,False,False,True,False,False
+m,False,False,False,False,False,False
+j=1,False,False,False,False,False,False
+exp{−E(π(q,False,False,False,False,False,False
+j,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+j,False,False,False,False,False,False
+", f",False,False,False,False,False,False
+t,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+j,False,False,False,False,False,False
+)},False,False,False,False,False,False
+.,False,True,False,True,False,False
+End For,False,False,False,False,False,False
+Output ranking model: f (,False,False,False,False,False,False
+~,False,False,False,False,False,False
+x) = f,False,False,False,False,False,False
+T,True,False,False,True,False,False
+(,False,False,False,False,False,False
+~,False,False,False,False,False,False
+x).,False,False,False,False,False,False
+Figure 1: The AdaRank algorithm.,False,False,False,False,True,False
+at round t as P,False,False,False,False,False,False
+t,False,False,False,False,False,False
+and the weight on the i,False,False,False,False,False,False
+th,False,False,False,False,False,False
+training query q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+at round,False,False,False,False,False,False
+t as P,False,False,False,False,False,False
+t,False,False,False,False,False,False
+"(i). Initially, AdaRank sets equal weights to the queries. At",False,False,False,False,False,False
+"each round, it increases the weights of those queries that are not",False,False,False,False,False,False
+ranked well by f,False,False,False,False,False,False
+t,False,False,False,False,False,False
+", the model created so far. As a result, the learning",False,False,False,False,False,False
+at the next round will be focused on the creation of a weak ranker,False,False,False,False,False,False
+that can work on the ranking of those ‘hard’ queries.,False,False,False,False,False,False
+"At each round, a weak ranker h",False,False,False,False,False,False
+t,False,False,False,False,False,False
+is constructed based on training,False,False,False,False,False,False
+data with weight distribution P,False,False,False,False,False,False
+t,False,False,False,False,False,False
+. The goodness of a weak ranker is,False,True,False,True,False,False
+measured by the performance measure E weighted by P,False,False,False,False,False,False
+t,False,False,False,False,False,False
+:,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+t,False,False,False,False,False,False
+(i)E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+t,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+).,False,False,False,False,False,False
+Several methods for weak ranker construction can be considered.,False,False,False,False,False,False
+"For example, a weak ranker can be created by using a subset of",False,False,False,False,False,False
+queries (together with their document list and label list) sampled,False,False,False,False,False,False
+according to the distribution P,False,False,False,False,False,False
+t,False,False,False,False,False,False
+". In this paper, we use single features",False,True,False,True,False,False
+"as weak rankers, as will be explained in Section 3.6.",False,False,False,False,False,False
+Once a weak ranker h,False,False,False,False,False,False
+t,False,False,False,False,False,False
+"is built, AdaRank chooses a weight α",False,False,False,False,False,False
+t,False,False,False,False,False,False
+> 0,False,False,False,False,False,False
+"for the weak ranker. Intuitively, α",False,False,False,False,False,False
+t,False,False,False,False,False,False
+measures the importance of h,False,False,False,False,False,False
+t,False,False,False,False,False,False
+.,False,True,False,True,False,False
+A ranking model f,False,False,False,False,False,False
+t,False,False,False,False,False,False
+is created at each round by linearly com-,False,False,False,False,False,False
+bining the weak rankers constructed so far h,False,False,False,False,False,False
+1,False,False,False,False,False,False
+", · · · , h",False,False,False,False,False,False
+t,False,False,False,False,False,False
+with weights,False,False,False,False,False,False
+α,False,False,False,False,False,False
+1,False,False,False,False,False,False
+", · · · , α",False,False,False,False,False,False
+t,False,False,False,False,False,False
+. f,False,True,False,True,False,False
+t,False,False,False,False,False,False
+is then used for updating the distribution P,False,False,False,False,False,False
+t+1,False,False,False,False,False,False
+.,False,True,False,True,False,False
+3.3 Theoretical Analysis,False,False,False,False,False,False
+The existing learning algorithms for ranking attempt to minimize,False,False,False,False,False,False
+a loss function based on instance pairs (document pairs). In con-,False,False,False,False,False,False
+"trast, AdaRank tries to optimize a loss function based on queries.",False,False,False,False,False,False
+"Furthermore, the loss function in AdaRank is deﬁned on the basis",False,False,False,False,False,False
+"of general IR performance measures. The measures can be MAP,",False,False,False,False,False,False
+"NDCG, WTA, MRR, or any other measures whose range is within",False,False,False,False,False,False
+"[−1, +1]. We next explain why this is the case.",False,False,False,False,False,False
+Ideally we want to maximize the ranking accuracy in terms of a,False,False,False,False,False,False
+performance measure on the training data:,False,False,False,False,False,False
+max,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f ), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+"), (4)",False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II393,False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II,False,False,False,False,False,False
+393,False,False,False,False,False,False
+where F is the set of possible ranking functions. This is equivalent,False,False,False,False,False,False
+to minimizing the loss on the training data,False,False,False,False,False,False
+min,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+(1 − E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f ), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+)). (5),False,False,False,False,False,False
+"It is diﬃcult to directly optimize the loss, because E is a non-",False,False,False,False,False,False
+continuous function and thus may be diﬃcult to handle. We instead,False,False,False,False,False,False
+attempt to minimize an upper bound of the loss in (5),False,False,False,False,False,False
+min,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+exp{−E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f ), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+")}, (6)",False,False,False,False,False,False
+because e,False,False,False,False,False,False
+≥ 1 − x holds for any x ∈ <. We consider the use of a,False,False,False,False,False,False
+linear combination of weak rankers as our ranking model:,False,False,False,False,False,False
+f (,False,False,False,False,False,False
+~,False,False,False,False,False,False
+x) =,False,False,False,False,False,False
+T,True,False,False,True,False,False
+X,True,False,False,True,False,False
+t=1,False,False,False,False,False,False
+α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+t,False,False,False,False,False,False
+(,False,False,False,False,False,False
+~,False,False,False,False,False,False
+x). (7),False,False,False,False,False,False
+The minimization in (6) then turns out to be,False,False,False,False,False,False
+min,False,False,False,False,False,False
+h,False,False,False,False,False,False
+t,False,False,False,False,False,False
+"∈H,α",False,False,False,False,False,False
+t,False,False,False,False,False,False
++,False,False,False,False,False,False
+L(h,False,False,False,False,False,False
+t,False,False,False,False,False,False
+", α",False,False,False,False,False,False
+t,False,False,False,False,False,False
+) =,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+exp{−E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
++ α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+t,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+")}, (8)",False,False,False,False,False,False
+"where H is the set of possible weak rankers, α",False,False,False,False,False,False
+t,False,False,False,False,False,False
+"is a positive weight,",False,False,False,False,False,False
+and ( f,False,False,False,False,False,False
++ α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+t,False,False,False,False,False,False
+)(,False,False,False,False,False,False
+~,False,False,False,False,False,False
+x) = f,False,False,False,False,False,False
+(,False,False,False,False,False,False
+~,False,False,False,False,False,False
+x) + α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+t,False,False,False,False,False,False
+(,False,False,False,False,False,False
+~,False,False,False,False,False,False
+x). Several ways of computing,False,False,False,False,False,False
+coeﬃcients α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+and weak rankers h,False,False,False,False,False,False
+t,False,False,False,False,False,False
+may be considered. Following,False,False,False,False,False,False
+"the idea of AdaBoost, in AdaRank we take the approach of ‘forward",False,False,False,False,False,False
+stage-wise additive modeling’ [12] and get the algorithm in Figure,False,False,False,False,False,False
+1. It can be proved that there exists a lower bound on the ranking,False,False,True,True,False,False
+"accuracy for AdaRank on training data, as presented in Theorem 1.",False,False,False,False,False,False
+T 1. The following bound holds on the ranking accu-,False,False,False,False,False,False
+1,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+) ≥ 1 −,False,False,False,False,False,False
+T,True,False,False,True,False,False
+Y,True,False,False,True,False,False
+t=1,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+1 − ϕ(t),False,False,False,False,False,False
+2,False,False,False,False,False,False
+",",False,False,False,False,False,False
+where ϕ(t) =,False,False,False,False,False,False
+P,True,False,False,True,False,False
+m,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+t,False,False,False,False,False,False
+(i)E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+t,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+"), δ",False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+= min,False,False,False,False,False,False
+"i=1,··· ,m",False,False,False,False,False,False
+δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+i,False,False,False,False,False,False
+δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+i,False,False,False,False,False,False
+= E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
++ α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+t,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+) − E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+−α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+t,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+"),",False,False,False,False,False,False
+"for all i = 1, 2, · · · , m and t = 1, 2, · · · , T .",False,False,False,False,False,False
+A proof of the theorem can be found in appendix. The theorem,False,False,False,False,False,False
+implies that the ranking accuracy in terms of the performance mea-,False,False,False,False,False,False
+"sure can be continuously improved, as long as e",False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+1 − ϕ(t),False,False,False,False,False,False
+2,False,False,False,False,False,False
+< 1,False,False,False,False,False,False
+holds.,False,False,False,False,False,False
+3.4 Advantages,False,False,False,False,False,False
+"AdaRank is a simple yet powerful method. More importantly, it",False,False,False,False,False,False
+"is a method that can be justiﬁed from the theoretical viewpoint, as",False,False,False,False,False,False
+discussed above. In addition AdaRank has several other advantages,False,False,False,False,False,False
+when compared with the existing learning to rank methods such as,False,False,False,False,False,False
+"Ranking SVM, RankBoost, and RankNet.",False,False,False,False,False,False
+"First, AdaRank can incorporate any performance measure, pro-",False,False,False,False,False,False
+"vided that the measure is query based and in the range of [−1, +1].",False,False,False,False,False,False
+Notice that the major IR measures meet this requirement. In con-,False,False,False,False,False,False
+trast the existing methods only minimize loss functions that are,False,False,False,False,False,False
+loosely related to the IR measures [16].,False,False,False,False,False,False
+"Second, the learning process of AdaRank is more eﬃcient than",False,False,False,False,False,False
+those of the existing learning algorithms. The time complexity of,False,False,False,False,False,False
+"AdaRank is of order O((k+T )·m·n log n), where k denotes the num-",False,False,False,False,False,False
+"ber of features, T the number of rounds, m the number of queries",False,False,False,False,False,False
+"in training data, and n is the maximum number of documents for",False,False,False,False,False,False
+"queries in training data. The time complexity of RankBoost, for",False,False,False,False,False,False
+"example, is of order O(T · m · n",False,False,False,False,False,False
+2,False,False,False,False,False,False
+) [8].,False,False,False,False,False,False
+"Third, AdaRank employs a more reasonable framework for per-",False,False,False,False,False,False
+forming the ranking task than the existing methods. Speciﬁcally in,False,False,False,False,False,False
+"AdaRank the instances correspond to queries, while in the existing",False,False,False,False,False,False
+"methods the instances correspond to document pairs. As a result,",False,False,False,False,False,False
+AdaRank does not have the following shortcomings that plague the,False,False,False,False,False,False
+existing methods. (a) The existing methods have to make a strong,False,False,False,False,False,False
+assumption that the document pairs from the same query are inde-,False,False,False,False,False,False
+"pendently distributed. In reality, this is clearly not the case and this",False,False,False,False,False,False
+problem does not exist for AdaRank. (b) Ranking the most relevant,False,False,False,False,False,False
+documents on the tops of document lists is crucial for document re-,False,False,False,False,False,False
+trieval. The existing methods cannot focus on the training on the,False,False,False,False,False,False
+"tops, as indicated in [4]. Several methods for rectifying the problem",False,False,False,False,False,False
+"have been proposed (e.g., [4]), however, they do not seem to fun-",False,False,False,False,False,False
+"damentally solve the problem. In contrast, AdaRank can naturally",False,False,False,False,False,False
+"focus on training on the tops of document lists, because the perfor-",False,False,False,False,False,False
+mance measures used favor rankings for which relevant documents,False,False,False,False,False,False
+"are on the tops. (c) In the existing methods, the numbers of docu-",False,False,False,False,False,False
+"ment pairs vary from query to query, resulting in creating models",False,False,False,False,False,False
+"biased toward queries with more document pairs, as pointed out in",False,False,False,False,False,False
+"[4]. AdaRank does not have this drawback, because it treats queries",False,False,False,False,False,False
+rather than document pairs as basic units in learning.,False,False,False,False,False,False
+3.5 Differences from AdaBoost,False,False,False,False,False,False
+"AdaRank is a boosting algorithm. In that sense, it is similar to",False,False,False,False,False,False
+"AdaBoost, but it also has several striking diﬀerences from AdaBoost.",False,False,False,False,False,False
+"First, the types of instances are diﬀerent. AdaRank makes use of",False,False,False,False,False,False
+queries and their corresponding document lists as instances. The la-,False,False,False,False,False,False
+bels in training data are lists of ranks (relevance levels). AdaBoost,False,False,False,False,False,False
+makes use of feature vectors as instances. The labels in training,False,False,False,False,False,False
+data are simply +1 and −1.,False,False,False,False,False,False
+"Second, the performance measures are diﬀerent. In AdaRank,",False,False,False,False,False,False
+"the performance measure is a generic measure, deﬁned on the doc-",False,False,False,False,False,False
+ument list and the rank list of a query. In AdaBoost the correspond-,False,False,False,False,False,False
+ing performance measure is a speciﬁc measure for binary classiﬁ-,False,False,False,False,False,False
+"cation, also referred to as ‘margin’ [25].",False,False,False,False,False,False
+"Third, the ways of updating weights are also diﬀerent. In Ad-",False,False,False,False,False,False
+"aBoost, the distribution of weights on training instances is calcu-",False,False,False,False,False,False
+lated according to the current distribution and the performance of,False,False,False,False,False,False
+"the current weak learner. In AdaRank, in contrast, it is calculated",False,False,False,False,False,False
+"according to the performance of the ranking model created so far,",False,False,False,False,False,False
+as shown in Figure 1. Note that AdaBoost can also adopt the weight,False,False,False,False,False,False
+updating method used in AdaRank. For AdaBoost they are equiva-,False,False,False,False,False,False
+"lent (cf., [12] page 305). However, this is not true for AdaRank.",False,False,False,False,False,False
+3.6 Construction of Weak Ranker,False,False,False,False,False,False
+We consider an eﬃcient implementation for weak ranker con-,False,False,False,False,False,False
+"struction, which is also used in our experiments. In the implemen-",False,False,False,False,False,False
+"tation, as weak ranker we choose the feature that has the optimal",False,False,False,False,False,False
+weighted performance among all of the features:,False,False,False,False,False,False
+max,False,False,False,False,False,False
+k,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+t,False,False,False,False,False,False
+(i)E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", x",False,False,False,False,False,False
+k,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+).,False,False,False,False,False,False
+"Creating weak rankers in this way, the learning process turns out",False,False,False,False,False,False
+to be that of repeatedly selecting features and linearly combining,False,False,False,False,False,False
+the selected features. Note that features which are not selected in,False,False,False,False,False,False
+the training phase will have a weight of zero.,False,False,False,False,False,False
+4. EXPERIMENTAL RESULTS,True,False,True,True,False,False
+We conducted experiments to test the performances of AdaRank,False,False,False,False,False,False
+"using four benchmark datasets: OHSUMED, WSJ, AP, and .Gov.",False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II394,False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II,False,False,False,False,False,False
+394,False,False,False,False,False,False
+"Table 2: Features used in the experiments on OHSUMED,",False,False,False,False,False,True
+"WSJ, and AP datasets. C(w, d) represents frequency of word",False,False,False,False,False,False
+w in document d; C represents the entire collection; n denotes,False,False,False,False,False,False
+number of terms in query; | · | denotes the size function; and,False,False,False,False,False,False
+id f (·) denotes inverse document frequency.,False,False,False,False,False,False
+1,False,False,False,False,False,False
+P,True,False,False,True,False,False
+w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+d,False,False,False,False,False,False
+ln(c(w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d) + 1) 2",False,False,False,False,False,False
+P,True,False,False,True,False,False
+w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+d,False,False,False,False,False,False
+ln(,False,False,False,False,False,False
+c(w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+",C)",True,False,False,True,False,False
++ 1),False,False,False,False,False,False
+3,False,False,False,False,False,False
+P,True,False,False,True,False,False
+w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+d,False,False,False,False,False,False
+ln(id f (w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+)) 4,False,False,False,False,False,False
+P,True,False,False,True,False,False
+w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+d,False,False,False,False,False,False
+ln(,False,False,False,False,False,False
+c(w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+",d)",False,False,False,False,False,False
++ 1),False,False,False,False,False,False
+5,False,False,False,False,False,False
+P,True,False,False,True,False,False
+w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+d,False,False,False,False,False,False
+ln(,False,False,False,False,False,False
+c(w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+",d)",False,False,False,False,False,False
+· id f (w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+) + 1) 6,False,False,False,False,False,False
+P,True,False,False,True,False,False
+w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+d,False,False,False,False,False,False
+ln(,False,False,False,False,False,False
+c(w,False,False,False,False,False,False
+i,False,False,False,False,False,False
+",d)·|C|",False,False,False,False,False,False
+i,False,False,False,False,False,False
+",C)",True,False,False,True,False,False
++ 1),False,False,False,False,False,False
+7 ln(BM25 score),False,False,False,False,False,False
+Figure 2: Ranking accuracies on OHSUMED data.,False,False,False,False,True,False
+4.1 Experiment Setting,False,False,False,False,False,False
+"Ranking SVM [13, 16] and RankBoost [8] were selected as base-",False,False,False,False,False,False
+"lines in the experiments, because they are the state-of-the-art learn-",False,False,False,False,False,False
+"ing to rank methods. Furthermore, BM25 [24] was used as a base-",False,False,False,False,False,False
+"line, representing the state-of-the-arts IR method (we actually used",False,False,False,False,False,False
+the tool Lemur,False,False,False,False,False,False
+1,False,False,False,False,False,False
+).,False,False,False,False,False,False
+"For AdaRank, the parameter T was determined automatically",False,False,False,False,False,False
+"during each experiment. Speciﬁcally, when there is no improve-",False,False,False,False,False,False
+"ment in ranking accuracy in terms of the performance measure, the",False,False,False,False,False,False
+"iteration stops (and T is determined). As the measure E, MAP and",False,False,False,False,False,False
+NDCG@5 were utilized. The results for AdaRank using MAP and,False,False,False,False,False,False
+NDCG@5 as measures in training are represented as AdaRank.MAP,False,False,False,False,False,False
+"and AdaRank.NDCG, respectively.",False,False,False,False,False,False
+4.2 Experiment with OHSUMED Data,False,False,False,False,False,False
+"In this experiment, we made use of the OHSUMED dataset [14]",False,False,False,False,False,False
+to test the performances of AdaRank. The OHSUMED dataset con-,False,False,False,False,False,False
+"sists of 348,566 documents and 106 queries. There are in total",False,False,False,False,False,False
+"16,140 query-document pairs upon which relevance judgments are",False,False,False,False,False,False
+"made. The relevance judgments are either ‘d’ (deﬁnitely relevant),",False,False,False,False,False,False
+"‘p’ (possibly relevant), or ‘n’(not relevant). The data have been",False,False,False,False,False,False
+"used in many experiments in IR, for example [4, 29].",False,False,False,False,False,False
+"As features, we adopted those used in document retrieval [4].",False,False,False,False,False,False
+"Table 2 shows the features. For example, tf (term frequency), idf",False,False,False,False,False,True
+"(inverse document frequency), dl (document length), and combina-",False,False,False,False,False,False
+tions of them are deﬁned as features. BM25 score itself is also a,False,False,False,False,False,False
+feature. Stop words were removed and stemming was conducted in,False,False,False,False,False,False
+the data.,False,False,False,False,False,False
+We randomly divided queries into four even subsets and con-,False,False,False,False,False,False
+ducted 4-fold cross-validation experiments. We tuned the parame-,False,False,False,False,False,False
+ters for BM25 during one of the trials and applied them to the other,False,False,False,False,False,False
+trials. The results reported in Figure 2 are those averaged over four,False,False,False,False,False,False
+"trials. In MAP calculation, we deﬁne the rank ‘d’ as relevant and",False,False,False,False,False,False
+1,False,False,False,False,False,False
+http://www.lemurproject.com,False,False,False,False,False,False
+Table 3: Statistics on WSJ and AP datasets.,False,False,False,False,False,True
+Dataset # queries # retrieved docs # docs per query,False,False,False,False,False,False
+"AP 116 24,727 213.16",True,False,False,True,False,False
+"WSJ 126 40,230 319.29",True,False,False,True,False,False
+Figure 3: Ranking accuracies on WSJ dataset.,False,False,False,False,True,False
+"the other two ranks as irrelevant. From Figure 2, we see that both",False,False,False,False,False,False
+"AdaRank.MAP and AdaRank.NDCG outperform BM25, Ranking",False,False,False,False,False,False
+"SVM, and RankBoost in terms of all measures. We conducted sig-",False,False,False,False,False,False
+niﬁcant tests (t-test) on the improvements of AdaRank.MAP over,False,False,False,False,False,False
+"BM25, Ranking SVM, and RankBoost in terms of MAP. The re-",False,False,False,False,False,False
+sults indicate that all the improvements are statistically signiﬁcant,False,False,False,False,False,False
+(p-value < 0.05). We also conducted t-test on the improvements,False,False,False,False,False,False
+"of AdaRank.NDCG over BM25, Ranking SVM, and RankBoost",False,False,False,False,False,False
+in terms of NDCG@5. The improvements are also statistically,False,False,False,False,False,False
+signiﬁcant.,False,False,False,False,False,False
+4.3 Experiment with WSJ and AP Data,False,False,False,False,False,False
+"In this experiment, we made use of the WSJ and AP datasets",False,False,False,False,False,False
+"from the TREC ad-hoc retrieval track, to test the performances of",False,False,False,False,False,False
+"AdaRank. WSJ contains 74,520 articles of Wall Street Journals",False,False,False,False,False,False
+"from 1990 to 1992, and AP contains 158,240 articles of Associ-",False,False,False,False,False,False
+ated Press in 1988 and 1990. 200 queries are selected from the,False,False,False,False,False,False
+TREC topics (No.101 ∼ No.300). Each query has a number of doc-,False,False,False,False,False,False
+uments associated and they are labeled as ‘relevant’ or ‘irrelevant’,False,False,False,False,False,False
+"(to the query). Following the practice in [28], the queries that have",False,False,False,False,False,False
+less than 10 relevant documents were discarded. Table 3 shows the,False,False,False,False,False,False
+statistics on the two datasets.,False,False,False,False,False,False
+"In the same way as in section 4.2, we adopted the features listed",False,False,False,False,False,False
+in Table 2 for ranking. We also conducted 4-fold cross-validation,False,False,False,False,False,True
+experiments. The results reported in Figure 3 and 4 are those aver-,False,False,False,False,False,False
+"aged over four trials on WSJ and AP datasets, respectively. From",False,False,False,False,False,False
+"Figure 3 and 4, we can see that AdaRank.MAP and AdaRank.NDCG",False,False,False,False,True,False
+"outperform BM25, Ranking SVM, and RankBoost in terms of all",False,False,False,False,False,False
+measures on both WSJ and AP. We conducted t-tests on the im-,False,False,False,False,False,False
+"provements of AdaRank.MAP and AdaRank.NDCG over BM25,",False,False,False,False,False,False
+"Ranking SVM, and RankBoost on WSJ and AP. The results indi-",False,False,False,False,False,False
+cate that all the improvements in terms of MAP are statistically sig-,False,False,False,False,False,False
+niﬁcant (p-value < 0.05). However only some of the improvements,False,False,False,False,False,False
+"in terms of NDCG@5 are statistically signiﬁcant, although overall",False,False,False,False,False,False
+the improvements on NDCG scores are quite high (1-2 points).,False,False,False,False,False,False
+4.4 Experiment with .Gov Data,False,False,False,False,False,False
+"In this experiment, we further made use of the TREC .Gov data",False,False,False,False,False,False
+to test the performance of AdaRank for the task of web retrieval.,False,False,False,False,False,False
+"The corpus is a crawl from the .gov domain in early 2002, and",False,False,False,False,False,False
+has been used at TREC Web Track since 2002. There are a total,False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II395,False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II,False,False,False,False,False,False
+395,False,False,False,False,False,False
+Figure 4: Ranking accuracies on AP dataset.,False,False,False,False,True,False
+Figure 5: Ranking accuracies on .Gov dataset.,False,False,False,False,True,False
+Table 4: Features used in the experiments on .Gov dataset.,False,False,False,False,False,True
+1 BM25 [24] 2 MSRA1000 [27],True,False,False,True,False,False
+3 PageRank [21] 4 HostRank [30],False,False,False,False,False,False
+5 Relevance Propagation [23] (10 features),False,False,False,False,False,False
+"of 1,053,110 web pages with 11,164,829 hyperlinks in the data.",False,False,False,False,False,False
+The 50 queries in the topic distillation task in the Web Track of,False,False,False,False,False,False
+TREC 2003 [6] were used. The ground truths for the queries are,False,False,False,False,False,False
+provided by the TREC committee with binary judgment: relevant,False,False,False,False,False,False
+or irrelevant. The number of relevant pages vary from query to,False,False,False,False,False,False
+query (from 1 to 86).,False,False,False,False,False,False
+We extracted 14 features from each query-document pair. Ta-,False,False,False,False,False,False
+ble 4 gives a list of the features. They are the outputs of some,False,False,False,False,False,False
+well-known algorithms (systems). These features are diﬀerent from,False,False,False,False,False,False
+"those in Table 2, because the task is diﬀerent.",False,False,False,False,False,True
+"Again, we conducted 4-fold cross-validation experiments. The",False,False,False,False,False,False
+results averaged over four trials are reported in Figure 5. From the,False,False,False,False,False,False
+"results, we can see that AdaRank.MAP and AdaRank.NDCG out-",False,False,False,False,False,False
+perform all the baselines in terms of all measures. We conducted t-,False,False,False,False,False,False
+tests on the improvements of AdaRank.MAP and AdaRank.NDCG,False,False,False,False,False,False
+"over BM25, Ranking SVM, and RankBoost. Some of the improve-",False,False,False,False,False,False
+ments are not statistically signiﬁcant. This is because we have only,False,False,False,False,False,False
+"50 queries used in the experiments, and the number of queries is",False,False,False,False,False,False
+too small.,False,False,False,False,False,False
+4.5 Discussions,False,False,False,False,False,False
+We investigated the reasons that AdaRank outperforms the base-,False,False,False,False,False,False
+"line methods, using the results of the OHSUMED dataset as examples.",False,False,False,False,False,False
+"First, we examined the reason that AdaRank has higher perfor-",False,False,False,False,False,False
+mances than Ranking SVM and RankBoost. Speciﬁcally we com-,False,False,False,False,False,False
+Figure 6: Accuracy on ranking document pairs with,False,False,False,False,True,False
+OHSUMED dataset.,False,False,False,False,False,False
+Figure 7: Distribution of queries with diﬀerent number of doc-,False,False,False,False,True,False
+ument pairs in training data of trial 1.,False,False,False,False,False,False
+pared the error rates between diﬀerent rank pairs made by Rank-,False,False,False,False,False,False
+"ing SVM, RankBoost, AdaRank.MAP, and AdaRank.NDCG on the",False,False,False,False,False,False
+test data. The results averaged over four trials in the 4-fold cross,False,False,False,False,False,False
+validation are shown in Figure 6. We use ‘d-n’ to stand for the pairs,False,False,False,False,False,False
+"between ‘deﬁnitely relevant’ and ‘not relevant’, ‘d-p’ the pairs be-",False,False,False,False,False,False
+"tween ‘deﬁnitely relevant’ and ‘partially relevant’, and ‘p-n’ the",False,False,False,False,False,False
+pairs between ‘partially relevant’ and ‘not relevant’. From Fig-,False,False,False,False,False,False
+"ure 6, we can see that AdaRank.MAP and AdaRank.NDCG make",False,False,False,False,False,False
+"fewer errors for ‘d-n’ and ‘d-p’, which are related to the tops of",False,False,False,False,False,False
+rankings and are important. This is because AdaRank.MAP and,False,False,False,False,False,False
+AdaRank.NDCG can naturally focus upon the training on the tops,False,False,False,False,False,False
+"by optimizing MAP and NDCG@5, respectively.",False,False,False,False,False,False
+We also made statistics on the number of document pairs per,False,False,False,False,False,False
+query in the training data (for trial 1). The queries are clustered into,False,False,False,False,False,False
+diﬀerent groups based on the the number of their associated docu-,False,False,False,False,False,False
+ment pairs. Figure 7 shows the distribution of the query groups. In,False,False,False,False,True,False
+"the ﬁgure, for example, ‘0-1k’ is the group of queries whose num-",False,False,False,False,False,False
+ber of document pairs are between 0 and 999. We can see that the,False,False,False,False,False,False
+numbers of document pairs really vary from query to query. Next,False,False,False,False,False,False
+we evaluated the accuracies of AdaRank.MAP and RankBoost in,False,False,False,False,False,False
+terms of MAP for each of the query group. The results are reported,False,False,False,False,False,False
+in Figure 8. We found that the average MAP of AdaRank.MAP,False,False,False,False,True,False
+"over the groups is two points higher than RankBoost. Furthermore,",False,False,False,False,False,False
+it is interesting to see that AdaRank.MAP performs particularly,False,False,False,False,False,False
+better than RankBoost for queries with small numbers of document,False,False,False,False,False,False
+"pairs (e.g., ‘0-1k’, ‘1k-2k’, and ‘2k-3k’). The results indicate that",False,False,False,False,False,False
+AdaRank.MAP can eﬀectively avoid creating a model biased to-,False,False,False,False,False,False
+"wards queries with more document pairs. For AdaRank.NDCG,",False,False,False,False,False,False
+similar results can be observed.,False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II396,False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II,False,False,False,False,False,False
+396,False,False,False,False,False,False
+Figure 8: Diﬀerences in MAP for diﬀerent query groups.,False,False,False,False,True,False
+Figure 9: MAP on training set when model is trained with MAP,False,False,False,False,True,False
+or NDCG@5.,False,False,False,False,False,False
+We further conducted an experiment to see whether AdaRank has,False,False,False,False,False,False
+the ability to improve the ranking accuracy in terms of a measure,False,False,False,False,False,False
+"by using the measure in training. Speciﬁcally, we trained ranking",False,False,False,False,False,False
+models using AdaRank.MAP and AdaRank.NDCG and evaluated,False,False,False,False,False,False
+their accuracies on the training dataset in terms of both MAP and,False,False,False,False,False,False
+NDCG@5. The experiment was conducted for each trial. Figure,False,False,False,False,False,False
+"9 and Figure 10 show the results in terms of MAP and NDCG@5,",False,False,False,False,True,False
+"respectively. We can see that, AdaRank.MAP trained with MAP",False,False,False,False,False,False
+performs better in terms of MAP while AdaRank.NDCG trained,False,False,False,False,False,False
+with NDCG@5 performs better in terms of NDCG@5. The results,False,False,False,False,False,False
+indicate that AdaRank can indeed enhance ranking performance in,False,False,False,False,False,False
+terms of a measure by using the measure in training.,False,False,False,False,False,False
+"Finally, we tried to verify the correctness of Theorem 1. That is,",False,False,False,False,False,False
+the ranking accuracy in terms of the performance measure can be,False,False,False,False,False,False
+"continuously improved, as long as e",False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+1 − ϕ(t),False,False,False,False,False,False
+2,False,False,False,False,False,False
+< 1 holds. As,False,False,False,False,False,False
+"an example, Figure 11 shows the learning curve of AdaRank.MAP",False,False,False,False,True,False
+in terms of MAP during the training phase in one trial of the cross,False,False,False,False,False,False
+"validation. From the ﬁgure, we can see that the ranking accuracy",False,False,False,False,False,False
+"of AdaRank.MAP steadily improves, as the training goes on, until",False,False,False,False,False,False
+it reaches to the peak. The result agrees well with Theorem 1.,False,False,False,False,False,False
+5. CONCLUSION AND FUTURE WORK,True,False,True,True,False,False
+In this paper we have proposed a novel algorithm for learning,False,False,False,False,False,False
+"ranking models in document retrieval, referred to as AdaRank. In",False,False,False,False,False,False
+"contrast to existing methods, AdaRank optimizes a loss function",False,False,False,False,False,False
+that is directly deﬁned on the performance measures. It employs,False,False,False,False,False,False
+a boosting technique in ranking model learning. AdaRank oﬀers,False,False,False,False,False,False
+"several advantages: ease of implementation, theoretical soundness,",False,False,False,False,False,False
+"eﬃciency in training, and high accuracy in ranking. Experimental",False,False,False,False,False,False
+results based on four benchmark datasets show that AdaRank can,False,False,False,False,False,False
+"signiﬁcantly outperform the baseline methods of BM25, Ranking",False,False,False,False,False,False
+"SVM, and RankBoost.",False,False,False,False,False,False
+Figure 10: NDCG@5 on training set when model is trained,False,False,False,False,True,False
+with MAP or NDCG@5.,False,False,False,False,False,False
+Figure 11: Learning curve of AdaRank.,False,False,False,False,True,False
+Future work includes theoretical analysis on the generalization,False,False,False,False,False,False
+"error and other properties of the AdaRank algorithm, and further",False,False,False,False,False,False
+empirical evaluations of the algorithm including comparisons with,False,False,False,False,False,False
+other algorithms that can directly optimize performance measures.,False,False,False,False,False,False
+6. ACKNOWLEDGMENTS,True,False,True,True,False,False
+"We thank Harry Shum, Wei-Ying Ma, Tie-Yan Liu, Gu Xu, Bin",False,False,False,False,False,False
+"Gao, Robert Schapire, and Andrew Arnold for their valuable com-",False,False,False,False,False,False
+ments and suggestions to this paper.,False,False,False,False,False,False
+7. REFERENCES,True,False,True,True,False,False
+[1] R. Baeza-Yates and B. Ribeiro-Neto. Modern Information,False,False,False,False,False,False
+"Retrieval. Addison Wesley, May 1999.",False,False,False,False,False,False
+"[2] C. Burges, R. Ragno, and Q. Le. Learning to rank with",False,False,False,False,False,False
+nonsmooth cost functions. In Advances in Neural,False,False,False,False,False,False
+"Information Processing Systems 18, pages 395–402. MIT",False,False,False,False,False,False
+"Press, Cambridge, MA, 2006.",False,False,False,False,False,False
+"[3] C. Burges, T. Shaked, E. Renshaw, A. Lazier, M. Deeds,",False,False,False,False,False,False
+"N. Hamilton, and G. Hullender. Learning to rank using",False,False,False,False,False,False
+"gradient descent. In ICML 22, pages 89–96, 2005.",False,False,False,False,False,False
+"[4] Y. Cao, J. Xu, T.-Y. Liu, H. Li, Y. Huang, and H.-W. Hon.",False,False,False,False,False,False
+"Adapting ranking SVM to document retrieval. In SIGIR 29,",False,False,False,False,False,False
+"pages 186–193, 2006.",False,False,False,False,False,False
+[5] D. Cossock and T. Zhang. Subset ranking using regression.,False,False,False,False,False,False
+"In COLT, pages 605–619, 2006.",False,False,False,False,False,False
+"[6] N. Craswell, D. Hawking, R. Wilkinson, and M. Wu.",False,False,False,False,False,False
+"Overview of the TREC 2003 web track. In TREC, pages",False,False,False,True,False,False
+"78–92, 2003.",False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II397,False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II,False,False,False,False,False,False
+397,False,False,False,False,False,False
+[7] N. Duﬀy and D. Helmbold. Boosting methods for regression.,False,False,False,False,False,False
+"Mach. Learn., 47(2-3):153–200, 2002.",False,False,False,False,False,False
+"[8] Y. Freund, R. D. Iyer, R. E. Schapire, and Y. Singer. An",False,False,False,False,False,False
+eﬃcient boosting algorithm for combining preferences.,False,False,False,False,False,False
+"Journal of Machine Learning Research, 4:933–969, 2003.",False,False,False,False,False,False
+[9] Y. Freund and R. E. Schapire. A decision-theoretic,False,False,False,False,False,False
+generalization of on-line learning and an application to,False,False,False,False,False,False
+"boosting. J. Comput. Syst. Sci., 55(1):119–139, 1997.",False,False,False,False,False,False
+"[10] J. Friedman, T. Hastie, and R. Tibshirani. Additive logistic",False,False,False,False,False,False
+regression: A statistical view of boosting. The Annals of,False,False,False,False,False,False
+"Statistics, 28(2):337–374, 2000.",False,False,False,False,False,False
+"[11] G. Fung, R. Rosales, and B. Krishnapuram. Learning",False,False,False,False,False,False
+rankings via convex hull separation. In Advances in Neural,False,False,False,False,False,False
+"Information Processing Systems 18, pages 395–402. MIT",False,False,False,False,False,False
+"Press, Cambridge, MA, 2006.",False,False,False,False,False,False
+"[12] T. Hastie, R. Tibshirani, and J. H. Friedman. The Elements of",False,False,False,False,False,False
+"Statistical Learning. Springer, August 2001.",False,False,False,False,False,False
+"[13] R. Herbrich, T. Graepel, and K. Obermayer. Large Margin",False,False,False,False,False,False
+"rank boundaries for ordinal regression. MIT Press,",False,False,False,False,False,False
+"Cambridge, MA, 2000.",False,False,False,False,False,False
+"[14] W. Hersh, C. Buckley, T. J. Leone, and D. Hickam.",False,False,False,False,False,False
+Ohsumed: an interactive retrieval evaluation and new large,False,False,False,False,False,False
+"test collection for research. In SIGIR, pages 192–201, 1994.",False,False,False,False,False,False
+[15] K. Jarvelin and J. Kekalainen. IR evaluation methods for,False,False,False,False,False,False
+"retrieving highly relevant documents. In SIGIR 23, pages",False,False,False,False,False,False
+"41–48, 2000.",False,False,False,False,False,False
+[16] T. Joachims. Optimizing search engines using clickthrough,False,False,False,False,False,False
+"data. In SIGKDD 8, pages 133–142, 2002.",False,False,False,False,False,False
+[17] T. Joachims. A support vector method for multivariate,False,False,False,False,False,False
+"performance measures. In ICML 22, pages 377–384, 2005.",False,False,False,False,False,False
+"[18] J. Laﬀerty and C. Zhai. Document language models, query",False,False,False,False,False,False
+"models, and risk minimization for information retrieval. In",False,False,False,False,False,False
+"SIGIR 24, pages 111–119, 2001.",False,False,False,False,False,False
+"[19] D. A. Metzler, W. B. Croft, and A. McCallum. Direct",False,False,False,False,False,False
+maximization of rank-based metrics for information,False,False,False,False,False,False
+"retrieval. Technical report, CIIR, 2005.",False,False,False,False,False,False
+[20] R. Nallapati. Discriminative models for information retrieval.,False,False,False,False,False,False
+"In SIGIR 27, pages 64–71, 2004.",False,False,False,False,False,False
+"[21] L. Page, S. Brin, R. Motwani, and T. Winograd. The",False,False,False,False,False,False
+pagerank citation ranking: Bringing order to the web.,False,False,False,False,False,False
+"Technical report, Stanford Digital Library Technologies",False,False,False,False,False,False
+"Project, 1998.",False,False,False,False,False,False
+[22] J. M. Ponte and W. B. Croft. A language modeling approach,False,False,False,False,False,False
+"to information retrieval. In SIGIR 21, pages 275–281, 1998.",False,False,False,False,False,False
+"[23] T. Qin, T.-Y. Liu, X.-D. Zhang, Z. Chen, and W.-Y. Ma. A",False,False,False,False,False,False
+"study of relevance propagation for web search. In SIGIR 28,",False,False,False,False,False,False
+"pages 408–415, 2005.",False,False,False,False,False,False
+[24] S. E. Robertson and D. A. Hull. The TREC-9 ﬁltering track,False,False,False,False,False,False
+"ﬁnal report. In TREC, pages 25–40, 2000.",False,False,False,False,False,False
+"[25] R. E. Schapire, Y. Freund, P. Barlett, and W. S. Lee. Boosting",False,False,False,False,False,False
+the margin: A new explanation for the eﬀectiveness of voting,False,False,False,False,False,False
+"methods. In ICML 14, pages 322–330, 1997.",False,False,False,False,False,False
+[26] R. E. Schapire and Y. Singer. Improved boosting algorithms,False,False,False,False,False,False
+"using conﬁdence-rated predictions. Mach. Learn.,",False,False,False,False,False,False
+"37(3):297–336, 1999.",False,False,False,False,False,False
+"[27] R. Song, J. Wen, S. Shi, G. Xin, T. yan Liu, T. Qin, X. Zheng,",False,False,False,False,False,False
+"J. Zhang, G. Xue, and W.-Y. Ma. Microsoft Research Asia at",False,False,False,False,False,False
+"web track and terabyte track of TREC 2004. In TREC, 2004.",False,False,False,False,False,False
+"[28] A. Trotman. Learning to rank. Inf. Retr., 8(3):359–381, 2005.",False,False,False,False,False,False
+"[29] J. Xu, Y. Cao, H. Li, and Y. Huang. Cost-sensitive learning",False,False,False,False,False,False
+"of SVM for ranking. In ECML, pages 833–840, 2006.",False,False,False,False,False,False
+"[30] G.-R. Xue, Q. Yang, H.-J. Zeng, Y. Yu, and Z. Chen.",False,False,False,False,False,False
+Exploiting the hierarchical structure for link analysis. In,False,False,False,False,False,False
+"SIGIR 28, pages 186–193, 2005.",False,False,False,False,False,False
+[31] H. Yu. SVM selective sampling for ranking with application,False,False,False,False,False,False
+"to data retrieval. In SIGKDD 11, pages 354–363, 2005.",False,False,False,False,False,False
+APPENDIX,True,False,False,True,False,False
+Here we give the proof of Theorem 1.,False,False,False,False,False,False
+P. Set Z,False,False,False,False,False,False
+T,True,False,False,True,False,False
+P,True,False,False,True,False,False
+m,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+exp,False,False,False,False,False,False
+{,False,False,False,False,False,False
+−E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+},False,False,False,False,False,False
+and φ(t) =,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+(1 +,False,False,False,False,False,False
+ϕ(t)). According to the deﬁnition of α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+", we know that e",False,False,False,False,False,False
+α,False,False,False,False,False,False
+t,False,False,False,False,False,False
+q,False,False,False,False,False,False
+φ(t),False,False,False,False,False,False
+1−φ(t),False,False,False,False,False,False
+.,False,True,False,True,False,False
+T,True,False,False,True,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+exp,False,False,False,False,False,False
+{,False,False,False,False,False,False
+−E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
++ α,False,False,False,False,False,False
+T,True,False,False,True,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+},False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+exp,False,False,False,False,False,False
+n,False,False,False,False,False,False
+−E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+) − α,False,False,False,False,False,False
+T,True,False,False,True,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+) − δ,False,False,False,False,False,False
+T,True,False,False,True,False,False
+i,False,False,False,False,False,False
+o,False,False,False,False,False,False
+≤,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+exp,False,False,False,False,False,False
+{,False,False,False,False,False,False
+−E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+},False,False,False,False,False,False
+exp,False,False,False,False,False,False
+{,False,False,False,False,False,False
+−α,False,False,False,False,False,False
+T,True,False,False,True,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+},False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+T,True,False,False,True,False,False
+min,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+T,True,False,False,True,False,False
+min,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+exp,False,False,False,False,False,False
+{,False,False,False,False,False,False
+−E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+},False,False,False,False,False,False
+exp{−α,False,False,False,False,False,False
+T,True,False,False,True,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+)},False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+T,True,False,False,True,False,False
+min,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+T,True,False,False,True,False,False
+(i) exp{−α,False,False,False,False,False,False
+T,True,False,False,True,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+)}.,False,False,False,False,False,False
+"Moreover, if E(π(q",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+") ∈ [−1, +1] then,",False,False,False,False,False,False
+T,True,False,False,True,False,False
+≤ e,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+T,True,False,False,True,False,False
+min,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+T,True,False,False,True,False,False
+(i),False,False,False,False,False,False
+ ,False,False,False,False,False,False
+1+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+2,False,False,False,False,False,False
+−α,False,False,False,False,False,False
+T,True,False,False,True,False,False
+1−E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+2,False,False,False,False,False,False
+α,False,False,False,False,False,False
+T,True,False,False,True,False,False
+!,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+T,True,False,False,True,False,False
+min,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+φ(T ),False,False,False,False,False,False
+s,False,False,False,False,False,False
+1 − φ(T ),False,False,False,False,False,False
+φ(T ),False,False,False,False,False,False
++ (1 − φ(T )),False,False,False,False,False,False
+s,False,False,False,False,False,False
+φ(T ),False,False,False,False,False,False
+1 − φ(T ),False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+T,True,False,False,True,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+4φ(T )(1 − φ(T )),False,False,False,False,False,False
+≤ Z,True,False,False,True,False,False
+T,True,False,False,True,False,False
+Y,True,False,False,True,False,False
+−δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+4φ(t)(1 − φ(t)),False,False,False,False,False,False
+≤ Z,True,False,False,True,False,False
+1,False,False,False,False,False,False
+T,True,False,False,True,False,False
+Y,True,False,False,True,False,False
+t=2,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+4φ(t)(1 − φ(t)),False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+1,False,False,False,False,False,False
+exp{−E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", α",False,False,False,False,False,False
+1,False,False,False,False,False,False
+1,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+)},False,False,False,False,False,False
+T,True,False,False,True,False,False
+Y,True,False,False,True,False,False
+t=2,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+4φ(t)(1 − φ(t)),False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+1,False,False,False,False,False,False
+exp{−α,False,False,False,False,False,False
+1,False,False,False,False,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+1,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+) − δ,False,False,False,False,False,False
+1,False,False,False,False,False,False
+i,False,False,False,False,False,False
+},False,False,False,False,False,False
+T,True,False,False,True,False,False
+Y,True,False,False,True,False,False
+t=2,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+4φ(t)(1 − φ(t)),False,False,False,False,False,False
+≤ me,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+min,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+1,False,False,False,False,False,False
+exp{−α,False,False,False,False,False,False
+1,False,False,False,False,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+1,False,False,False,False,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+)},False,False,False,False,False,False
+T,True,False,False,True,False,False
+Y,True,False,False,True,False,False
+t=2,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+4φ(t)(1 − φ(t)),False,False,False,False,False,False
+≤ m,False,False,False,False,False,False
+n,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+4φ(1)(1 − φ(1)),False,False,False,False,False,False
+o,False,False,False,False,False,False
+T,True,False,False,True,False,False
+Y,True,False,False,True,False,False
+t=2,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+4φ(t)(1 − φ(t)),False,False,False,False,False,False
+T,True,False,False,True,False,False
+Y,True,False,False,True,False,False
+t=1,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+1 − ϕ(t),False,False,False,False,False,False
+2,False,False,False,False,False,False
+.,False,True,False,True,False,False
+1,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+) ≥,False,False,False,False,False,False
+1,False,False,False,False,False,False
+m,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+{1 − exp(−E(π(q,False,False,False,False,False,False
+i,False,False,False,False,False,False
+", d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", f",False,False,False,False,False,False
+T,True,False,False,True,False,False
+"), y",False,False,False,False,False,False
+i,False,False,False,False,False,False
+))},False,False,False,False,False,False
+≥ 1 −,False,False,False,False,False,False
+T,True,False,False,True,False,False
+Y,True,False,False,True,False,False
+t=1,False,False,False,False,False,False
+−δ,False,False,False,False,False,False
+t,False,False,False,False,False,False
+min,False,False,False,False,False,False
+p,False,False,False,False,False,False
+1 − ϕ(t),False,False,False,False,False,False
+2,False,False,False,False,False,False
+.,False,True,False,True,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II398,False,False,False,False,False,False
+SIGIR 2007 Proceedings Session 16: Learning to Rank II,False,False,False,False,False,False
+398,False,False,False,False,False,False

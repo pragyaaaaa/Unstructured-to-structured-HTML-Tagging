@@ -1,0 +1,540 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+A novel clustering approach: Artiﬁcial Bee Colony (ABC) algorithm,False,False,False,False,False,False
+"Dervis Karaboga, Celal Ozturk",False,False,False,False,False,False
+∗,False,False,False,False,False,False
+"Erciyes University, Intelligent Systems Research Group, Department of Computer Engineering, Kayseri, Turkey",False,False,False,False,False,False
+article info,False,False,False,False,False,False
+Article history:,False,False,False,False,False,False
+Keywords:,False,False,False,False,False,False
+abstract,False,False,False,False,False,False
+Artiﬁcial Bee Colony (ABC) algorithm which is one of the most recently introduced optimization algo-,False,False,False,False,False,False
+"rithms, simulates the intelligent foraging behavior of a honey bee swarm. Clustering analysis, used in",False,False,False,False,False,False
+"many disciplines and applications, is an important tool and a descriptive task seeking to identify homo-",False,False,False,False,False,False
+"geneous groups of objects based on the values of their attributes. In this work, ABC is used for data",False,False,False,False,False,False
+clustering on benchmark problems and the performance of ABC algorithm is compared with Particle,False,False,False,False,False,False
+Swarm Optimization (PSO) algorithm and other nine classiﬁcation techniques from the literature. Thir-,False,False,False,False,False,False
+teen of typical test data sets from the UCI Machine Learning Repository are used to demonstrate the,False,False,False,False,False,False
+results of the techniques. The simulation results indicate that ABC algorithm can efﬁciently be used for,False,False,False,False,False,False
+multivariate data clustering.,False,False,False,False,False,False
+© 2009 Elsevier B.V. All rights reserved.,False,False,False,False,False,False
+1. Introduction,False,False,True,True,False,False
+"Clustering, which is an important tool for a variety of applica-",False,False,False,False,False,False
+"tions in data mining, statistical data analysis, data compression, and",False,False,False,False,False,False
+"vector quantization, aims gathering data into clusters (or groups)",False,False,False,False,False,False
+such that the data in each cluster shares a high degree of similarity,False,False,False,False,False,False
+while being very dissimilar to data from other clusters [1–3]. The,False,False,False,False,False,False
+goal of clustering is to group data into clusters such that the simi-,False,False,False,False,False,False
+larities among data members within the same cluster are maximal,False,False,False,False,False,False
+while similarities among data members from different clusters are,False,False,False,False,False,False
+minimal.,False,False,False,False,False,False
+Clustering algorithms are generally classiﬁed as hierarchical,False,False,False,False,False,False
+clustering and partitional clustering [3–5]. Hierarchical clustering,False,False,False,False,False,False
+"groups data objects with a sequence of partitions, either from",False,False,False,False,False,False
+singleton clusters to a cluster including all individuals or vice versa.,False,False,False,False,False,False
+Hierarchical procedures can be either agglomerative or divisive:,False,False,False,False,False,False
+agglomerative algorithms begin with each element as a separate,False,False,False,False,False,False
+cluster and merge them in successively larger clusters; divisive,False,False,False,False,False,False
+algorithms begin with the whole set and proceed to divide it into,False,False,False,False,False,False
+"successively smaller clusters [6,7]. Partitional procedures that we",False,False,False,False,False,False
+"concerned in this paper, attempt to divide the data set into a set",False,False,False,False,False,False
+of disjoint clusters without the hierarchical structure. The most,False,False,False,False,False,False
+popular partitional clustering algorithms are the prototype-based,False,False,False,False,False,False
+clustering algorithms where each cluster is represented by the,False,False,False,False,False,False
+center of the cluster and the used objective function (a square-,False,False,False,False,False,False
+∗,False,False,False,False,False,False
+error function) is the sum of the distance from the pattern to the,False,False,False,False,False,False
+center [8].,False,False,False,False,False,False
+The most popular class of clustering algorithms is K-means,False,False,False,False,False,False
+"algorithm which is a center based, simple and fast algorithm [9].",False,False,False,False,False,False
+"However, K-means algorithm highly depends on the initial states",False,False,False,False,False,False
+and always converges to the nearest local optimum from the start-,False,False,False,False,False,False
+ing position of the search. In order to overcome local optima,False,False,False,False,False,False
+"problem, the researchers from diverse ﬁelds are applying hierarchi-",False,False,False,False,False,False
+"cal clustering, partition-based clustering, density-based clustering,",False,False,False,False,False,False
+"and artiﬁcial intelligence based clustering methods, such as: statis-",False,False,False,False,False,False
+"tics [10], graph theory [11], expectation-maximization algorithms",False,False,False,False,False,False
+"[12], artiﬁcial neural networks [13–16], evolutionary algorithms",False,False,False,False,False,False
+"[17,18], swarm intelligence algorithms [19–24] and so on.",False,False,False,False,False,False
+"In this paper, Artiﬁcial Bee Colony (ABC) optimization algorithm,",False,False,False,False,False,False
+which is described by Karaboga based on the foraging behavior of,False,False,False,False,False,False
+"honey bees for numerical optimization problems [25], is applied",False,False,False,False,False,False
+to classiﬁcation benchmark problems (13 typical test databases).,False,False,False,False,False,False
+The performance of the ABC algorithm on clustering is compared,False,False,False,False,False,False
+with the results of the Particle Swarm Optimization (PSO) algo-,False,False,False,False,False,False
+rithm on the same data sets that are presented in [26]. ABC and,False,False,False,False,False,False
+PSO algorithms drop in the same class of artiﬁcial intelligence opti-,False,False,False,False,False,False
+"mization algorithms, population-based algorithms and they are",False,False,False,False,False,False
+proposed by inspiration of swarm intelligence. Besides compar-,False,False,False,False,False,False
+"ing the ABC algorithm and PSO algorithm, the performance of ABC",False,False,False,False,False,False
+algorithm is also compared with a wide set of classiﬁcation tech-,False,False,False,False,False,False
+niques that are also given in [26]. The paper is organized as the,False,False,False,False,False,False
+"clustering problem in Section 2, implementation of the ABC algo-",False,False,False,False,False,False
+"rithm introduced in Section 3, and then experiments and results",False,False,False,False,False,False
+presented and discussed in Section 4. We conclude the paper in Sec-,False,False,False,False,False,False
+tion 5 by summarizing the observations and remarking the future,False,False,False,False,False,False
+works.,False,False,False,False,False,False
+2. The Clustering problem,False,False,True,True,False,False
+Clustering is the process of recognizing natural groupings or,False,False,False,False,False,False
+clusters in multidimensional data based on some similarity mea-,False,False,False,False,False,False
+sures [6]. Distance measurement is generally used for evaluating,False,False,False,False,False,False
+similarities between patterns. In particular the problem is stated as,False,False,False,False,False,False
+"follows: given N objects, allocate each object to one of K clusters and",False,False,False,False,False,False
+minimize the sum of squared Euclidean distances between each,False,False,False,False,False,False
+object and the center of the cluster belonging to every such allo-,False,False,False,False,False,False
+cated object. The clustering problem minimizing Eq. (1) is described,False,False,False,False,False,False
+as in [27]:,False,False,False,False,False,False
+"J(w, z) =",False,False,False,False,False,False
+N,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+K,True,False,False,True,False,False
+j=1,False,False,False,False,False,False
+w,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+− z,False,False,False,False,False,False
+j,False,False,False,False,False,False
+,False,False,False,False,False,False
+2,False,False,False,False,False,False
+(1),False,False,False,False,False,False
+"where K is the number of clusters, N the number of patterns, x",False,False,False,False,False,False
+i,False,False,False,False,False,False
+(i =,False,False,False,False,False,False
+"1,...,N) the location of the ith pattern and z",False,False,False,False,False,False
+j,False,False,False,False,False,False
+"(j = 1,...,K)isthe",False,False,False,False,False,False
+"center of the jth cluster, to be found by Eq. (2):",False,False,False,False,False,False
+z,False,False,False,False,False,False
+j,False,False,False,False,False,False
+=,False,False,False,False,False,False
+1,False,False,False,False,False,False
+N,True,False,False,True,False,False
+j,False,False,False,False,False,False
+N,True,False,False,True,False,False
+i=1,False,False,False,False,False,False
+w,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+(2),False,False,False,False,False,False
+where N,False,False,False,False,False,False
+j,False,False,False,False,False,False
+"is the number of patterns in the jth cluster, w",False,False,False,False,False,False
+ij,False,False,False,False,False,False
+the asso-,False,False,False,False,False,False
+ciation weight of pattern x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"with cluster j, which will be either 1 or",False,False,False,False,False,False
+0 (if pattern i is allocated to cluster j; w,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+"is 1, otherwise 0).",False,False,False,False,False,False
+"The clustering process, separating the objects into the groups",False,False,False,False,False,False
+"(classes), is realized by unsupervised or supervised learning. In",False,False,False,False,False,False
+unsupervised clustering which can also be named automatic clus-,False,False,False,False,False,False
+"tering, the training data does not need to specify the number of",False,False,False,False,False,False
+"classes. However, in supervised clustering the training data does",False,False,False,False,False,False
+have to specify what to be learned; the number of classes. The data,False,False,False,False,False,False
+"sets that we tackled contains the information of classes. Therefore,",False,False,False,False,False,False
+the optimization goal is to ﬁnd the centers of the clusters by mini-,False,False,False,False,False,False
+"mizing the objective function, the sum of distances of the patterns",False,False,False,False,False,False
+to their centers.,False,False,False,False,False,False
+"In this paper, the adaptation is carried out by minimizing (opti-",False,False,False,False,False,False
+mizing) the sum on all training set instances of Euclidean distance,False,False,False,False,False,False
+in N-dimensional space between generic instance x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+and the center,False,False,False,False,False,False
+of the cluster z,False,False,False,False,False,False
+j,False,False,False,False,False,False
+. The cost function for the pattern i is given by Eq.,False,True,False,True,False,False
+"(3),asin[26]:",False,False,False,False,False,False
+f,False,False,False,False,False,False
+i,False,False,False,False,False,False
+=,False,False,False,False,False,False
+1,False,False,False,False,False,False
+D,True,False,False,True,False,False
+Train,False,False,False,False,False,False
+D,True,False,False,True,False,False
+Train,False,False,False,False,False,False
+j=1,False,False,False,False,False,False
+d(x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+",p",False,False,False,False,False,False
+CL,True,False,False,True,False,False
+known,False,False,False,False,False,False
+(x,False,False,False,False,False,False
+),False,False,False,False,False,False
+i,False,False,False,False,False,False
+) (3),False,False,False,False,False,False
+where D,False,False,False,False,False,False
+Train,False,False,False,False,False,False
+is the number of training patterns which is used to,False,False,False,False,False,False
+"normalize the sum that will range any distance within [0.0, 1.0] and",False,False,False,False,False,False
+(p,False,False,False,False,False,False
+CL,True,False,False,True,False,False
+known,False,False,False,False,False,False
+(x,False,False,False,False,False,False
+),False,False,False,False,False,False
+i,False,False,False,False,False,False
+) deﬁnes the class that instance belongs to according to,False,False,False,False,False,False
+database.,False,False,False,False,False,False
+3. Artiﬁcial Bee Colony algorithm,False,False,True,True,False,False
+Artiﬁcial Bee Colony (ABC) algorithm was proposed by Karaboga,False,False,False,False,False,False
+for optimizing numerical problems in [25]. The algorithm simulates,False,False,False,False,False,False
+the intelligent foraging behavior of honey bee swarms. It is a very,False,False,False,False,False,False
+"simple, robust and population based stochastic optimization algo-",False,False,False,False,False,False
+rithm. The performance of the ABC algorithm is compared with,False,False,False,False,False,False
+those of other well-known modern heuristic algorithms such as,False,False,False,False,False,False
+"Genetic Algorithm (GA), Differential Evolution (DE), Particle Swarm",False,False,False,False,False,False
+Optimization (PSO) on constrained and unconstrained problems,False,False,False,False,False,False
+[28–30]. The performance of ABC algorithm on training neural net-,False,False,False,False,False,False
+"works is examined by [31] tested on XOR, Decoder–Encoder and",False,False,False,False,False,False
+3-Bit Parity benchmark problems and by [32] tested on pattern,False,False,False,False,False,False
+classiﬁcation against widely used gradient-based and population-,False,False,False,False,False,False
+based optimization algorithms.,False,False,False,False,False,False
+Pseudo-code of the ABC algorithm is:,False,False,False,False,False,False
+"In ABC algorithm, the colony of artiﬁcial bees contains three",False,False,False,False,False,False
+"groups of bees: employed bees, onlookers and scouts. A bee waiting",False,False,False,False,False,False
+on the dance area for making a decision to choose a food source is,False,False,False,False,False,False
+called onlooker and one going to the food source visited by it before,False,False,False,False,False,False
+is named employed bee. The other kind of bee is scout bee that car-,False,False,False,False,False,False
+ries out random search for discovering new sources. The position,False,False,False,False,False,False
+of a food source represents a possible solution to the optimization,False,False,False,False,False,False
+problem and the nectar amount of a food source corresponds to the,False,False,False,False,False,False
+"quality (ﬁtness) of the associated solution, calculated by:",False,False,False,False,False,False
+ﬁt,False,False,False,False,False,False
+i,False,False,False,False,False,False
+=,False,False,False,False,False,False
+1,False,False,False,False,False,False
+1 + f,False,False,False,False,False,False
+i,False,False,False,False,False,False
+(4),False,False,False,False,False,False
+"In the algorithm, the ﬁrst half of the colony consists of employed",False,False,False,False,False,False
+artiﬁcial bees and the second half constitutes the onlookers. The,False,False,False,False,False,False
+number of the employed bees or the onlooker bees is equal to,False,False,False,False,False,False
+the number of solutions (the cluster centers) in the population.,False,False,False,False,False,False
+"At the ﬁrst step, the ABC generates a randomly distributed ini-",False,False,False,False,False,False
+"tial population P(C = 0) of SN solutions (food source positions),",False,False,False,False,False,False
+where SN denotes the size of population. Each solution z,False,False,False,False,False,False
+i,False,False,False,False,False,False
+where,False,False,False,False,False,False
+"i = 1, 2,...,SN is a D-dimensional vector. Here, D is the number",False,False,False,False,False,False
+"of product of input size and cluster size for each data set, i.e. the",False,False,False,False,False,False
+"number of optimization parameters. After initialization, the popu-",False,False,False,False,False,False
+"lation of the positions (solutions) is subjected to repeated cycles,",False,False,False,False,False,False
+"C = 1, 2,...,MCN, of the search processes of the employed bees,",False,False,False,False,False,False
+the onlooker bees and scout bees. An employed bee produces a,False,False,False,False,False,False
+modiﬁcation on the position (solution) in her memory depending,False,False,False,False,False,False
+on the local information (visual information) and tests the nectar,False,False,False,False,False,False
+amount (ﬁtness value) of the new source (new solution). Provided,False,False,False,False,False,False
+that the nectar amount of the new one is higher than that of the,False,False,False,False,False,False
+"previous one, the bee memorizes the new position and forgets the",False,False,False,False,False,False
+old one. Otherwise she keeps the position of the previous one in her,False,False,False,False,False,False
+"memory. After all employed bees complete the search process, they",False,False,False,False,False,False
+share the nectar information of the food sources and their position,False,False,False,False,False,False
+information with the onlooker bees on the dance area. An onlooker,False,False,False,False,False,False
+bee evaluates the nectar information taken from all employed bees,False,False,False,False,False,False
+and chooses a food source with a probability related to its nec-,False,False,False,False,False,False
+"tar amount. As in the case of the employed bee, she produces a",False,False,False,False,False,False
+modiﬁcation on the position in her memory and checks the nectar,False,False,False,False,False,False
+amount of the candidate source. Providing that its nectar is higher,False,False,False,False,False,False
+"than that of the previous one, the bee memorizes the new position",False,False,False,False,False,False
+and forgets the old one.,False,False,False,False,False,False
+An artiﬁcial onlooker bee chooses a food source depending on,False,False,False,False,False,False
+"the probability value associated with that food source, p",False,False,False,False,False,False
+i,False,False,False,False,False,False
+", calculated",False,False,False,False,False,False
+by the following expression (5):,False,False,False,False,False,False
+p,False,False,False,False,False,False
+i,False,False,False,False,False,False
+=,False,False,False,False,False,False
+ﬁt,False,False,False,False,False,False
+i,False,False,False,False,False,False
+SN,True,False,False,True,False,False
+n=1,False,False,False,False,False,False
+ﬁt,False,False,False,False,False,False
+n,False,False,False,False,False,False
+(5),False,False,False,False,False,False
+where SN is the number of food sources equal to the number of,False,False,False,False,False,False
+"employed bees, and ﬁt",False,False,False,False,False,False
+i,False,False,False,False,False,False
+is the ﬁtness of the solution given in Eq. (4),False,False,False,False,False,False
+which is inversely proportional to the f,False,False,False,False,False,False
+i,False,False,False,False,False,False
+given in Eq. (3) where f,False,False,False,False,False,False
+i,False,False,False,False,False,False
+is,False,False,False,False,False,False
+the cost function of the clustering problem.,False,False,False,False,False,False
+In order to produce a candidate food position from the old one,False,False,False,False,False,False
+"in memory, the ABC uses the following expression (6):",False,False,False,False,False,False
+ij,False,False,False,False,False,False
+= z,False,False,False,False,False,False
+ij,False,False,False,False,False,False
++ ,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+(z,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+− z,False,False,False,False,False,False
+kj,False,False,False,False,False,False
+) (6),False,False,False,False,False,False
+"where k ∈{1, 2,...,SN} and j ∈{1, 2,...,D} are randomly chosen",False,False,False,False,False,False
+"indexes. Although k is determined randomly, it has to be different",False,False,False,False,False,False
+from i. ,False,False,False,False,False,False
+"i,j",False,False,False,False,False,False
+"is a random number between [−1, 1]. It controls the",False,False,False,False,False,False
+production of neighbor food sources around z,False,False,False,False,False,False
+"i,j",False,False,False,False,False,False
+and represents the,False,False,False,False,False,False
+comparison of two food positions visible to a bee. As can be seen,False,False,False,False,False,False
+"from (6), as the difference between the parameters of the z",False,False,False,False,False,False
+"i,j",False,False,False,False,False,False
+and z,False,False,False,False,False,False
+"k,j",False,False,False,False,False,False
+"decreases, the perturbation on the position z",False,False,False,False,False,False
+"i,j",False,False,False,False,False,False
+"decreases, too. Thus,",False,False,False,False,False,False
+as the search approaches to the optimum solution in the search,False,False,False,False,False,False
+"space, the step length is adaptively reduced.",False,False,False,False,False,False
+The food source of which the nectar is abandoned by the bees,False,False,False,False,False,False
+"is replaced with a new food source by the scouts. In ABC, this is",False,False,False,False,False,False
+simulated by producing a position randomly and replacing it with,False,False,False,False,False,False
+"the abandoned one. In ABC, providing that a position cannot be",False,False,False,False,False,False
+"improved further through a predetermined number of cycles, then",False,False,False,False,False,False
+that food source is assumed to be abandoned. The value of predeter-,False,False,False,False,False,False
+mined number of cycles is an important control parameter of the,False,False,False,False,False,False
+"ABC algorithm, which is called “limit” for abandonment. Assume",False,False,False,False,False,False
+that the abandoned source is z,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"and j ∈{1, 2,...,D}, then the scout",False,False,False,False,False,False
+discovers a new food source to be replaced with z,False,False,False,False,False,False
+i,False,False,False,False,False,False
+. This operation,False,True,False,True,False,False
+can be deﬁned as in (7),False,False,False,False,False,False
+z,False,False,False,False,False,False
+j,False,False,False,False,False,False
+i,False,False,False,False,False,False
+= z,False,False,False,False,False,False
+j,False,False,False,False,False,False
+min,False,False,False,False,False,False
+"+ rand(0, 1)(z",False,False,False,False,False,False
+j,False,False,False,False,False,False
+max,False,False,False,False,False,False
+− z,False,False,False,False,False,False
+j,False,False,False,False,False,False
+min,False,False,False,False,False,False
+) (7),False,False,False,False,False,False
+After each candidate source position,False,False,False,False,False,False
+"i,j",False,False,False,False,False,False
+is produced and then,False,False,False,False,False,False
+"evaluated by the artiﬁcial bee, its performance is compared with",False,False,False,False,False,False
+that of its old one. If the new food source has an equal or better,False,False,False,False,False,False
+"nectar than the old source, it is replaced with the old one in the",False,False,False,False,False,False
+"memory. Otherwise, the old one is retained in the memory. In other",False,False,False,False,False,False
+"words, a greedy selection mechanism is employed as the selection",False,False,False,False,False,False
+operation between the old and the candidate one. There are three,False,False,False,False,False,False
+control parameters in the ABC: the number of food sources which,False,False,False,False,False,False
+"is equal to the number of employed or onlooker bees (SN), the value",False,False,False,False,False,False
+"of limit, the maximum cycle number (MCN).",False,False,False,False,False,False
+"In a robust search process, exploration and exploitation pro-",False,False,False,False,False,False
+"cesses must be carried out together. In the ABC algorithm, while",False,False,False,False,False,False
+onlookers and employed bees carry out the exploitation process,False,False,False,False,False,False
+"in the search space, the scouts control the exploration process.",False,False,False,False,False,False
+The local search performance of ABC algorithm depends on neigh-,False,False,False,False,False,False
+borhood search and greedy selection mechanisms performed by,False,False,False,False,False,False
+employed and onlooker bees. The global search performance of,False,False,False,False,False,False
+the algorithm depends on random search process performed by,False,False,False,False,False,False
+scouts and neighbor solution production mechanism performed by,False,False,False,False,False,False
+employed and onlooker bees.,False,False,False,False,False,False
+4. Experimental study,False,False,True,True,False,False
+"In this work, 13 classiﬁcation problems from the UCI database",False,False,False,False,False,False
+"[33] which is a well-known database repository, are used to evalu-",False,False,False,False,False,False
+ate the performance of the Artiﬁcial Bee Colony algorithm. The data,False,False,False,False,False,False
+"sets and their features: the # of patterns, the # of inputs and the # of",False,False,False,False,False,False
+classes are presented in Table 1. These 13 benchmark problems are,False,False,False,False,False,False
+"chosen exactly the same as in [26], to make a reliable comparison.",False,False,False,False,False,False
+"From the database, the ﬁrst 75% of data is used in training process as",False,False,False,False,False,False
+"a train set, and the remaining 25% of data is used in testing process",False,False,False,False,False,False
+"as a test set. Although, some data sets’ (glass, thyroid, and wine)",False,False,False,False,False,False
+"classes are given in sequential list, they are shufﬂed to represent",False,False,False,False,False,False
+every class both in training and in testing as in [26]. The sizes of the,False,False,False,False,False,False
+train and test sets can be found in Table 1.,False,False,False,False,False,False
+4.1. Test problems,False,False,False,False,False,False
+The problems considered in this work can be described brieﬂy,False,False,False,False,False,False
+as follows. Balance data set was generated to model psychological,False,False,False,False,False,False
+experimental results. Each example is classiﬁed as having the bal-,False,False,False,False,False,False
+"ance scale tip to the right, tip to the left, or be balanced. The data",False,False,False,False,False,False
+"set includes 4 inputs, 3 classes and there are 625 examples which",False,False,False,False,False,False
+is split into 469 for training and 156 for testing.,False,False,False,False,False,False
+Cancer and Cancer-Int data sets are based on the “breast cancer,False,False,False,False,False,False
+Wisconsin - Diagnostic” and “breast cancer Wisconsin - Original”,False,False,False,False,False,False
+"data sets, respectively. They are diagnosis of breast cancer, with 2",False,False,False,False,False,False
+outputs (classify a tumor as either benign or malignant). The former,False,False,False,False,False,False
+"one contains 569 patterns, 30 inputs and the latter one contains 699",False,False,False,False,False,False
+"patterns, 9 inputs.",False,False,False,False,False,False
+Credit (the Australian credit card) data set is to assess applica-,False,False,False,False,False,False
+tions for credit cards based on a number of attributes. There are 690,False,False,False,False,False,False
+"applicants in total and the output has two classes. The 14 attributes,",False,False,False,False,False,False
+including 6 numeric values and 8 discrete ones which have 2–14,False,False,False,False,False,False
+"possible values, are formed into 51 input values.",False,False,False,False,False,False
+Dermatology data set contains one of the biggest number of,False,False,False,False,False,False
+"classes; 6 of which are psoriasis, seboreic dermatitis, lichen planus,",False,False,False,False,False,False
+"pityriasis rosea, chronic dermatitis, and pityriasis rubra pilaris.",False,False,False,False,False,False
+"There are 366 samples, including 34 inputs.",False,False,False,False,False,False
+"The diabetes data set, a two class problem which is the diagnosis",False,False,False,False,False,False
+"of diabetes (whether an individual is diabetes positive or not), has",False,False,False,False,False,False
+768 patterns. We used the ﬁrst 576 patterns as training set and the,False,False,False,False,False,False
+remaining 192 as test set. There are 8 inputs for each pattern.,False,False,False,False,False,False
+"For the problem of Escherichia coli, the original data set has 336",False,False,False,False,False,False
+"examples formed of eight classes, but three classes are represented",False,False,False,False,False,False
+"with only 2, 2, 5 examples. Therefore, these 9 examples are omitted",False,False,False,False,False,False
+"and 327 of total, ﬁrst 245 of them in training and the remaining 82",False,False,False,False,False,False
+"examples in testing, are used. The data set contains 327 examples",False,False,False,False,False,False
+with 7 inputs and 5 classes.,False,False,False,False,False,False
+Glass data set is the another biggest number of classes (6 classes),False,False,False,False,False,False
+in the problems that we tackle. It is used to classify glass types,False,False,False,False,False,False
+Table 1,False,False,False,False,False,True
+"as ﬂoat processed building windows, non-ﬂoat processed building",False,False,False,False,False,False
+"windows, vehicle windows, containers, tableware, or head lamps.",False,False,False,False,False,False
+Nine inputs are based on 9 chemical measurements with one of 6,False,False,False,False,False,False
+"types of glass which are continuous with 70, 76, 17, 13, 9, and 29",False,False,False,False,False,False
+"instances of each class, respectively. Total 214 instances are split",False,False,False,False,False,False
+with 161 for training and 53 for testing.,False,False,False,False,False,False
+Heart database that is a diagnosis of heart disease decides to,False,False,False,False,False,False
+whether at least one of four major vessels is reduced in diameter,False,False,False,False,False,False
+"by more than 50% or not. It contains 76 attributes for each pattern,",False,False,False,False,False,False
+35 of which are used as input values. The data is based on Cleveland,False,False,False,False,False,False
+Heart data from the repository with 303 patterns.,False,False,False,False,False,False
+Horse data set is used to predict the fate of a horse with a colic,False,False,False,False,False,False
+"and to classify whether the horse will survive, will die, or will be",False,False,False,False,False,False
+euthanized. The data set is created based on Horse Colic data with,False,False,False,False,False,False
+"364 patterns, each of which has 58 inputs from 27 attributes and 3",False,False,False,False,False,False
+outputs.,False,False,False,False,False,False
+Iris data set includes 150 objects of ﬂowers from the Iris species:,False,False,False,False,False,False
+"Setosa, Versicolor, Virginica. Each of 50 objects in each of three",False,False,False,False,False,False
+"classes have 4 variables; sepal length, sepal width, petal length,",False,False,False,False,False,False
+and petal width.,False,False,False,False,False,False
+Thyroid is the diagnosis of thyroid whether it is hyper or hypo-,False,False,False,False,False,False
+function. 5 inputs are used to classify 3 classes of thyroid function,False,False,False,False,False,False
+"as being overfunction, normal function, or underfunction. The data",False,False,False,False,False,False
+set is based on new-thyroid data and contains 215 patterns.,False,False,False,False,False,False
+Wine data which was obtained from a chemical analysis of,False,False,False,False,False,False
+"wines were derived from three different cultivators. Therefore, the",False,False,False,False,False,False
+data analysis determines the three types of wines. There are 178,False,False,False,False,False,False
+instances of wine samples with 13 inputs.,False,False,False,False,False,False
+4.2. Algorithms and settings,False,False,False,False,False,False
+The Particle Swarm Optimization algorithm is a population-,False,False,False,False,False,False
+based and swarm intelligence based evolutionary algorithm for,False,False,False,False,False,False
+problem solving. In the PSO algorithm which simulates the social,False,False,False,False,False,False
+"behavior of a ﬂock of birds ﬂying to resources, the particles itera-",False,False,False,False,False,False
+tively evaluate the ﬁtness of the candidate solutions and remember,False,False,False,False,False,False
+the location which is the best. The parameters of PSO algorithm,False,False,False,False,False,False
+"are (as in [26]): n = 50, T",False,False,False,False,False,False
+max,False,False,False,False,False,False
+"= 1000, v",False,False,False,False,False,False
+max,False,False,False,False,False,False
+"= 0.05, v",False,False,False,False,False,False
+min,False,False,False,False,False,False
+"=−0.05,",False,False,False,False,False,False
+c,False,False,False,False,False,False
+1,False,False,False,False,False,False
+"= 2.0, c",False,False,False,False,False,False
+2,False,False,False,False,False,False
+"= 2.0, w",False,False,False,False,False,False
+max,False,False,False,False,False,False
+"= 0.9, w",False,False,False,False,False,False
+min,False,False,False,False,False,False
+= 0.4. In order to make a fair,False,False,False,False,False,False
+"comparison, the values of colony size and maximum cycle number",False,False,False,False,False,False
+of the ABC algorithm are chosen same as or less than the values,False,False,False,False,False,False
+"of swarm size and maximum iteration number used in PSO case,",False,False,False,False,False,False
+"respectively. Such as we selected the colony size 20, maximum",False,False,False,False,False,False
+"cycle/generation number (MCN) 1000, and limit value 1000. Thus,",False,False,False,False,False,False
+"total evaluation # of ABC algorithm is 20,000 where it is 50,000 for",False,False,False,False,False,False
+PSO algorithm. We observed that in all runs of the algorithms the,False,False,False,False,False,False
+"results do not differ much, so that the experiments are cut after 5",False,False,False,False,False,False
+runs since they have the same results.,False,False,False,False,False,False
+"In [26], besides the PSO algorithm other classiﬁcation tech-",False,False,False,False,False,False
+"niques that drop into groups of Bayesian, based on functions, lazy,",False,False,False,False,False,False
+Table 2,False,False,False,False,False,True
+"meta-techniques, tree-based, and rule-based techniques are given.",False,False,False,False,False,False
+"For each of those groups, the selected techniques are: the Bayes",False,False,False,False,False,False
+Net [34] from the Bayesian; the MultiLayer Perceptron Artiﬁcial,False,False,False,False,False,False
+Neural Network (MLP) [35] and the Radial Basis Function Artiﬁcial,False,False,False,False,False,False
+Neural Network (RBF) [36] from the function-based; the KStar [37],False,False,False,False,False,False
+from the lazy; the Bagging [38] and the MultiBoostAB [39] from,False,False,False,False,False,False
+the meta-techniques; the Naive Bayes Tree (NBTree) [40] from the,False,False,False,False,False,False
+tree-based ones; the Ripple Down Rule (Ridor) [41] from the rule-,False,False,False,False,False,False
+"based ones; and for the others the Voting Feature Interval (VFI) [42],",False,False,False,False,False,False
+respectively.,False,False,False,False,False,False
+4.3. Results and discussion,False,False,False,False,False,False
+"For each problem, we report the Classiﬁcation Error Percentage",False,False,False,False,False,False
+(CEP) which is the percentage of incorrectly classiﬁed patterns of,False,False,False,False,False,False
+the test data sets. We classiﬁed each pattern by assigning it to the,False,False,False,False,False,False
+"class whose center is closest, using the Euclidean distances, to the",False,False,False,False,False,False
+center of the clusters. This assigned output (class) is compared with,False,False,False,False,False,False
+"the desired output and if they are not exactly the same, the pattern",False,False,False,False,False,False
+is separated as incorrectly classiﬁed. It is calculated for all test data,False,False,False,False,False,False
+and the total incorrectly classiﬁed pattern number is percentaged,False,False,False,False,False,False
+"to the size of test data set, which is given by Eq. (8).",False,False,False,False,False,False
+CEP = 100 ×,True,False,False,True,False,False
+# of misclassiﬁed examples,False,False,False,False,False,False
+size of test data set,False,False,False,False,False,False
+(8),False,False,False,False,False,False
+"As described above, the data is given in two pieces: the training",False,False,False,False,False,False
+set (the ﬁrst 75%) and the test set (the last 25%). The results of the,False,False,False,False,False,False
+algorithms ABC and PSO for the problems are given in Table 2 where,False,False,False,False,False,False
+classiﬁcation error percentages (CEP values) are presented. ABC,False,False,False,False,False,False
+"algorithm outperforms PSO algorithm in 12 problems, whereas PSO",False,False,False,False,False,False
+algorithm’s result is better than that of ABC algorithm only for one,False,False,False,False,False,False
+problem (the glass problem) in terms of classiﬁcation error. More-,False,False,False,False,False,False
+"over, the average classiﬁcation error percentages for all problems",False,False,False,False,False,False
+are 13.13% for ABC and 15.99% for PSO.,False,False,False,False,False,False
+Table 3,False,False,False,False,False,True
+Table 4,False,False,False,False,False,True
+Table 5,False,False,False,False,False,True
+"In Table 3, the classiﬁcation error percentages of ABC algorithm",False,False,False,False,False,True
+"and 10 techniques that are given in [26] are presented, and the",False,False,False,False,False,False
+rankings of the techniques on each problem are also given in the,False,False,False,False,False,False
+"parenthesis. At a glance, one can easily see that the ABC algorithm",False,False,False,False,False,False
+gets the best solution in 6 of the problems and the second solutions,False,False,False,False,False,False
+in 2 of the problems. To be able to make a good comparison of the,False,False,False,False,False,False
+"all algorithms, Tables 4 and 5 are reported. The former one shows",False,False,False,False,False,False
+the average classiﬁcation errors of all problems and the general,False,False,False,False,False,False
+ranking based on the average values and the latter one is the sum,False,False,False,False,False,False
+of the algorithms’ rankings of each problem and arranges the totals,False,False,False,False,False,False
+from minimum value to maximum value. The execution times of,False,False,False,False,False,False
+"the techniques are not considered, since execution times range less",False,False,False,False,False,False
+than 1 min on a PC with 2.6 GHz Core 2 Duo processor and 2.0 GB-,False,False,False,False,False,False
+RAM.,True,False,False,True,False,False
+"The MLP artiﬁcial neural network technique is best, ABC is the",False,False,False,False,False,False
+"second best, and BayesNet is the third best technique when mean",False,False,False,False,False,False
+"CEP values from Table 4 are considered. However, even if the results",False,False,False,False,False,False
+"in the table are comparable, we believe that it may cause some sig-",False,False,False,False,False,True
+niﬁcant points to be disregarded since the distribution of the error,False,False,False,False,False,False
+"rates are not proportional. Furthermore, while the error rate differ-",False,False,False,False,False,False
+"ence is around 5% in some problems, it is more than 30% in some",False,False,False,False,False,False
+"other cases. Therefore, the general ranking of the techniques in",False,False,False,False,False,False
+Table 5 is realized by calculating the sum of the ranks of each prob-,False,False,False,False,False,True
+"lem from Table 3. From this ranking, the ﬁrst three degree is ABC",False,False,False,False,False,True
+"algorithm as ﬁrst, BayesNet technique as second, and MLP artiﬁcial",False,False,False,False,False,False
+neural network technique as third. Test error rates (classiﬁcation,False,False,False,False,False,False
+error) and rankings from the tables show that clustering with the,False,False,False,False,False,False
+ABC algorithm offers superior generalization capability. We can,False,False,False,False,False,False
+"claim that by looking at the good performance of ABC algorithm,",False,False,False,False,False,False
+it can be used for clustering of classiﬁcation problems studied in,False,False,False,False,False,False
+this paper.,False,False,False,False,False,False
+5. Conclusion,False,False,True,True,False,False
+"In this work, Artiﬁcial Bee Colony algorithm, which is a new,",False,False,False,False,False,False
+"simple and robust optimization technique, is used in clustering of",False,False,False,False,False,False
+the benchmark classiﬁcation problems for classiﬁcation purpose.,False,False,False,False,False,False
+Clustering is an important classiﬁcation technique that gathers data,False,False,False,False,False,False
+into classes (or clusters) such that the data in each cluster shares a,False,False,False,False,False,False
+high degree of similarity while being very dissimilar from data of,False,False,False,False,False,False
+other clusters. The performance of the ABC algorithm is compared,False,False,False,False,False,False
+with Particle Swarm Optimization algorithm and other nine tech-,False,False,False,False,False,False
+niques which are widely used by the researchers. The results of the,False,False,False,False,False,False
+experiments show that the Artiﬁcial Bee Colony algorithm can suc-,False,False,False,False,False,False
+cessfully be applied to clustering for the purpose of classiﬁcation.,False,False,False,False,False,False
+There are several issues remaining as the scopes for future studies,False,False,False,False,False,False
+such as using different algorithms in clustering and comparing the,False,False,False,False,False,False
+results of ABC algorithm to the result of those algorithms.,False,False,False,False,False,False
+References,False,False,False,True,False,False

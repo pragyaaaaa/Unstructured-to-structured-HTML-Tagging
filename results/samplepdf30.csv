@@ -1,0 +1,1395 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+Abstract—A fuzzy rule-based decision support system (DSS),False,False,False,True,False,False
+is presented for the diagnosis of coronary artery disease (CAD).,False,False,False,False,False,False
+The system is automatically generated from an initial annotated,False,False,False,False,False,False
+"dataset, using a four stage methodology: 1) induction of a decision",False,False,False,False,False,False
+tree from the data; 2) extraction of a set of rules from the decision,False,False,False,False,False,False
+"tree, in disjunctive normal form and formulation of a crisp model;",False,False,False,False,False,False
+3) transformation of the crisp set of rules into a fuzzy model; and,False,False,False,False,False,False
+4) optimization of the parameters of the fuzzy model. The dataset,False,False,False,False,False,False
+"used for the DSS generation and evaluation consists of 199 subjects,",False,False,False,False,False,False
+"each one characterized by 19 features, including demographic and",False,False,False,False,False,False
+"history data, as well as laboratory examinations. Tenfold cross",False,False,False,False,False,False
+"validation is employed, and the average sensitivity and speciﬁcity",False,False,False,False,False,False
+"obtained is 62% and 54%, respectively, using the set of rules ex-",False,False,False,False,False,False
+"tracted from the decision tree (ﬁrst and second stages), while the",False,False,False,False,False,False
+"average sensitivity and speciﬁcity increase to 80% and 65%, re-",False,False,False,False,False,False
+"spectively, when the fuzziﬁcation and optimization stages are used.",False,False,False,False,False,False
+The system offers several advantages since it is automatically gen-,False,False,False,False,False,False
+"erated, it provides CAD diagnosis based on easily and noninva-",False,False,False,False,False,False
+"sively acquired features, and is abletoprovideinterpretation for",False,False,False,False,False,False
+the decisions made.,False,False,False,False,False,False
+"Index Terms—Coronary artery disease (CAD), data mining,",False,False,False,False,False,False
+"decision trees, fuzzy modeling, optimization.",False,False,False,False,False,False
+I. INTRODUCTION,True,True,False,True,False,False
+C,True,False,False,True,False,False
+ORONARY artery disease (CAD) is the development of,False,False,False,False,False,False
+"atherosclerotic plaques in coronary arteries, resulting in",False,False,False,False,False,False
+"coronary luminal narrowing, and subsequently, occlusion, and",False,False,False,False,False,False
+thus leading to myocardial infarction (MI) or sudden cardiac,False,False,False,False,False,False
+death. The CAD is the leading cause of death in western coun-,False,False,False,False,False,False
+"tries. The understanding of the pathophysiology of CAD, the",False,False,False,False,False,False
+"prevention of its development, the identiﬁcation and effective",False,False,False,False,False,False
+"modiﬁcation of cardiovascular risk factors, its diagnosis and",False,False,False,False,False,False
+"Manuscript received September 20, 2006. This work was supported by the",False,False,False,False,False,False
+European Commission as part of the project NOESIS: Platform for wide scale,False,False,False,False,False,False
+integration and visual representation of medical intelligence under Grant IST-,False,False,False,False,False,False
+2002-507960.,False,False,False,False,False,False
+M. G. Tsipouras and D. I. Fotiadis are with the Unit of Medical Technology,False,False,False,False,False,False
+"and Intelligent Information Systems, Department of Computer Science, Uni-",False,False,False,False,False,False
+"versity of Ioannina, Ioannina GR 45110, Greece (e-mail: markos@cs.uoi.gr;",False,False,False,False,False,False
+fotiadis@cs.uoi.gr).,False,False,False,False,False,False
+T. P. Exarchos is with the Unit of Medical Technology and Intelligent In-,False,False,False,False,False,False
+"formation Systems, Department of Computer Science, University of Ioannina,",False,False,False,False,False,False
+"Ioannina GR 45110, Greece, and also with the Department of Medical Physics,",False,False,False,False,False,False
+"Medical School, University of Ioannina, Ioannina GR 45110, Greece (e-mail:",False,False,False,False,False,False
+exarchos@cc.uoi.gr).,False,False,False,False,False,False
+"A. P. Kotsia, K. V. Vakalis, K. K. Naka, and L. K. Michalis are with the",False,False,False,False,False,False
+"Department of Cardiology, Medical School, University of Ioannina, Ioannina,",False,False,False,False,False,False
+"GR 45110, Greece, and also with the Michaelidion Cardiology Centre, Uni-",False,False,False,False,False,False
+"versity of Ioannina, Ioannina, GR 45110, Greece (email: hcsanna@cc.uoi.gr;",False,False,False,False,False,False
+me01970@cc.uoi.gr; anaka@cc.uoi.gr; lmihalis@cc.uoi.gr).,False,False,False,False,False,False
+Digital Object Identiﬁer 10.1109/TITB.2007.907985,False,False,False,False,False,False
+"treatment in early, and reversible stages are of great impor-",False,False,False,False,False,False
+tance [1]. Coronary angiography (CA) is considered to be the,False,False,False,False,False,False
+“gold standard” method for the diagnosis of CAD and it is,False,False,False,False,False,False
+"widely used. However, CA is an invasive and costly proce-",False,False,False,False,False,False
+dure that needs high-level technical experience and technol-,False,False,False,False,False,False
+ogy and cannot be used for screening of large populations or,False,False,False,False,False,False
+"close follow-up of treatment [2]. Therefore, other noninvasive",False,False,False,False,False,False
+methods are being used in the clinical setting for the diag-,False,False,False,False,False,False
+nosis of CAD. The most popular of those include exercise,False,False,False,False,False,False
+"electrocardiogram (ECG) [3] testing, stress echocardiography",False,False,False,False,False,False
+"(ECHO), and single photon emission computed tomography",False,False,False,False,False,False
+"(SPECT or scintigraphy) [4], while electron-beam computerized",False,False,False,False,False,False
+tomography (EBCT) or multislice spiral computerized tomog-,False,False,False,False,False,False
+raphy (MSCT) and coronary magnetic resonance angiography,False,False,False,False,False,False
+(CMRA) are also being currently used [2].,False,False,False,False,False,False
+Computer-aided diagnosis methodologies have also been pro-,False,False,False,False,False,False
+"posed in the literature; in this case, the data obtained by some of",False,False,False,False,False,False
+"the aforementioned methods or other sources (i.e., laboratory ex-",False,False,False,False,False,False
+"aminations, demographic and/or history data, etc.) are evaluated",False,False,False,False,False,False
+"from a computer-based application, leading to a CAD diagno-",False,False,False,False,False,False
+"sis. These methodologies can be divided into various categories,",False,False,False,False,False,False
+based on the type of data they use for subject characterization: 1),False,False,False,False,False,False
+"methods that employ the resting or exercise ECG of the patient,",False,False,False,False,False,False
+"extracting features from it, such as the ST segment [5], [6], the",False,False,False,False,False,False
+"QT interval [7], the T wave amplitude [8], the R wave [9], and",False,False,False,False,False,False
+the heart rate variability (HRV) [10]; 2) methods using medical,False,False,False,False,False,False
+images such as SPECT [11]–[14]; 3) methods based on heart,False,False,False,False,False,False
+sounds associated with coronary occlusions [15]–[18]; 4) meth-,False,False,False,False,False,False
+ods based on arterio-scillography [19]; 5) methods based on,False,False,False,False,False,False
+Doppler ultrasound signals [20]; 6) methods employing demo-,False,False,False,False,False,False
+"graphic, history, and laboratory data (subject’s data) [21]–[24];",False,False,False,False,False,False
+and 7) methods combining more than one type of data such as,False,False,False,False,False,False
+"ECG, scintigraphy, and subject’s data [25], [26].",False,False,False,False,False,False
+"Some of the noninvasive methods, such as computerized to-",False,False,False,False,False,False
+"mography or magnetic resonance imaging, suffer from similar",False,False,False,False,False,False
+"problems as CA, i.e., being costly and requiring specialized tech-",False,False,False,False,False,False
+"nology and expertise, while they are not widely available [2].",False,False,False,False,False,False
+Most of the computer-based methods are based on the analy-,False,False,False,False,False,False
+"sis of data obtained by examinations, such as stress ECHO and",False,False,False,False,False,False
+"SPECT, which are also expensive and not widely available, but,",False,False,False,False,False,False
+"furthermore, they suffer from technical limitations [27]. Exer-",False,False,False,False,False,False
+"cise stress testing is inexpensive and widely available, but cannot",False,False,False,False,False,False
+be applied to all patients and has low sensitivity and speciﬁcity,False,False,False,False,False,False
+in the diagnosis of CAD. Cardiovascular risk factor assessment,False,False,False,False,False,False
+during history acquisition combined with demographic data and,False,False,False,False,False,False
+simple laboratory examinations may provide a measure for the,False,False,False,False,False,False
+1089-7771/$25.00 © 2008 IEEE,True,False,False,True,False,False
+Fig. 1. Four-stage methodology used to create the DSS.,False,False,False,False,True,False
+"estimation of CAD risk [2]. Furthermore, the usage of arterial",False,False,False,False,False,False
+"stiffness indices, recently proved to be related with the develop-",False,False,False,False,False,False
+"ment of atherosclerosis [28], may improve the diagnostic pro-",False,False,False,False,False,False
+cedure. Only few of the proposed computer-based methods use,False,False,False,False,False,False
+"this type of data, i.e., subject’s data that can be noninvasively",False,False,False,False,False,False
+"and easily obtained, for the analysis. Concerning the methods",False,False,False,False,False,False
+"used for data analysis, most of the proposed approaches are",False,False,False,False,False,False
+based on neural networks that cannot provide clear and direct,False,False,False,False,False,False
+"interpretation for the decisions made. Therefore, a method able",False,False,False,False,False,False
+to predict noninvasively the presence of CAD using easily ob-,False,False,False,False,False,False
+tained features and providing interpretation for the decisions,False,False,False,False,False,False
+made would be of great clinical value.,False,False,False,False,False,False
+"In this paper, we propose a decision support system (DSS)",False,False,False,False,False,False
+[29] for the diagnosis of CAD. The DSS is automatically gener-,False,False,False,False,False,False
+"ated using a data-driven innovative methodology, which is im-",False,False,False,False,False,False
+"plemented in four stages (see Fig 1). In the ﬁrst stage, a decision",False,False,False,False,False,False
+"tree is induced from the dataset using the C4.5 algorithm [30],",False,False,False,False,False,False
+"while in the second stage, a set of rules is extracted from it.",False,False,False,False,False,False
+"This set of rules is in disjunctive normal form (DNF) [31], and",False,False,False,False,False,False
+"it formulates a crisp rule-based classiﬁer. In the third stage, the",False,False,False,False,False,False
+"crisp model is fuzzyﬁed, i.e., the crisp rules are transformed into",False,False,False,False,False,False
+"fuzzy ones, using a fuzzy membership function instead of the",False,False,False,False,False,False
+"crisp and S and T norms deﬁnitions, which are fuzzy equivalents",False,False,False,False,False,False
+of the binary,False,False,False,False,False,False
+"OR and AND operators [32]. Finally, in the fourth",False,False,False,False,False,False
+"stage, the parameters entering the fuzzy model are optimized",False,False,False,False,False,False
+using a global optimization technique [33]. The methodology is,False,False,False,False,False,False
+fully automated and starting from the initial annotated dataset,False,False,False,False,False,False
+"generates a DSS, which is actually a fuzzy model with its param-",False,False,False,False,False,False
+eters optimized subject to a speciﬁc dataset. The features that,False,False,False,False,False,False
+are used in the dataset are demographic and history data along,False,False,False,False,False,False
+with some basic laboratory examinations and indices of arterial,False,False,False,False,False,False
+"stiffness, thus being very easily obtained. Furthermore, CA was",False,False,False,False,False,False
+"conducted to all subjects, and their clinical statuses (presence",False,False,False,False,False,False
+or absence of CAD) were determined by two experienced car-,False,False,False,False,False,False
+diologists. The employment of fuzzy modeling is able to deal,False,False,False,False,False,False
+"with the fuzziness, which is inherent in biomedical problems,",False,False,False,False,False,False
+while its combination with data mining provides the desired,False,False,False,False,False,False
+interpretation for the obtained decisions.,False,False,False,False,False,False
+II. M,True,True,False,True,False,False
+ATERIALS AND METHODS,True,False,False,True,False,False
+The four-stage methodology that is proposed for the auto-,False,False,False,False,False,False
+mated creation of the DSS is presented in Fig. 1. An unknown,False,False,False,False,False,False
+case can be fed into the generated DSS to produce a diagnosis.,False,False,False,False,False,False
+The dataset and the stages of the methodology are described in,False,False,False,False,False,False
+detail later.,False,False,False,False,False,False
+A. Dataset,False,False,False,False,False,False
+The clinical data were collected in the Invasive Cardiology,False,False,False,False,False,False
+Department of the University Hospital of Ioannina. We included,False,False,False,False,False,False
+199 subjects referred for their ﬁrst CA because of suspected,False,False,False,False,False,False
+"CAD. Patients with acute coronary syndrome, known CAD, or",False,False,False,False,False,False
+more than mild valvular heart disease were excluded from the,False,False,False,False,False,False
+"study. In order to diagnose the presence or absence of CAD,",False,False,False,False,False,False
+CA was performed using Judkins technique. All coronary an-,False,False,False,False,False,False
+giograms were visually assessed by two experienced angiog-,False,False,False,False,False,False
+raphers and a consensus was reached. Signiﬁcant CAD was,False,False,False,False,False,False
+deﬁned as at least one 50% or greater diameter stenosis in at,False,False,False,False,False,False
+least one coronary artery vessel. The absence of CAD was de-,False,False,False,False,False,False
+ﬁned as completely smooth epicardial coronary arteries without,False,False,False,False,False,False
+"any narrowing visible in CA. For the total 199 subjects, 89 were",False,False,False,False,False,False
+normal and CAD was present in the other 110 subjects. Demo-,False,False,False,False,False,False
+"graphic, clinical, and vascular data were also acquired from all",False,False,False,False,False,False
+"subjects prior to CA, while laboratory investigations from a fast-",False,False,False,False,False,False
+ing blood sample were also performed. Table I presents the 19,False,False,False,False,False,False
+features selected. All patients were studied while taking regular,False,False,False,False,False,False
+medication (drugs were not withheld before measurements) and,False,False,False,False,False,False
+gave written informed consent. The study was approved by our,False,False,False,False,False,False
+local ethics committee.,False,False,False,False,False,False
+Two demographic features were recorded: the age and sex,False,False,False,False,False,False
+"of the patient. From the subject’s history, the family history of",False,False,False,False,False,False
+"CAD (FH), smoking history (Smok), history of diabetes mel-",False,False,False,False,False,False
+"litus (DM), and hypertension (HT) or hyperlipidaemia were",False,False,False,False,False,False
+used. Family history of CAD was deﬁned as the presence of,False,False,False,False,False,False
+CAD in the father or brother aged <55 years or mother or sis-,False,False,False,False,False,False
+ter aged <65 years. Current and ex-smokers were deﬁned as,False,False,False,False,False,False
+having smoked the last cigarette less than a week and less than,False,False,False,False,False,False
+"a year before CA, respectively. Diabetes mellitus was deﬁned",False,False,False,False,False,False
+as a fasting blood glucose concentration (FBGC) ≥126 mg/dl,False,False,False,False,False,False
+"or antihyperglycemic drug treatment, hypertension as systolic",False,False,False,False,False,False
+"blood pressure (SBP) >140 mmHg, and/or diastolic blood pres-",False,False,False,False,False,False
+"sure (DBP) >90 mmHg or use of antihypertensive agents,",False,False,False,False,False,False
+and hyperlipidemia as fasting total cholesterol >220 mg/dl or,False,False,False,False,False,False
+use of lipid-lowering agents (statins or ﬁbrates). Other clinical,False,False,False,False,False,False
+"data were also recorded; body mass index (BMI), calculated",False,False,False,False,False,False
+as weight (kg) divided by the s quare of height (square me-,False,False,False,False,False,False
+"ter), waist perimeter measured in centimeter, resting heart rate",False,False,False,False,False,False
+"(HR), measured in beats per minute (b/min), resting SBP and",False,False,False,False,False,False
+DBP measured in mmHg. The laboratory investigations also,False,False,False,False,False,False
+"incorporated were creatinine (Cre), glucose (Glu), total choles-",False,False,False,False,False,False
+"terol (Tchol), high-density lipoprotein (HDL), and triglycerides",False,False,False,False,False,False
+(TRG) measured in milligrams per deciliter (mg/dL). All the,False,False,False,False,False,False
+aforementioned features are considered to be traditional cardio-,False,False,False,False,False,False
+vascular risk factors widely used to assess the risk of CAD.,False,False,False,False,False,False
+"In addition, carotid–femoral pulse wave velocity (PWVcf) and",False,False,False,False,False,False
+augmentation index (AIx) expressed in meter per second and,False,False,False,False,False,False
+"percentage, respectively, were also used as noninvasive indices",False,False,False,False,False,False
+"of arterial stiffness [34], [35].",False,False,False,False,False,False
+The assessment of arterial stiffness was performed noninva-,False,False,False,False,False,False
+"sively, using the Sphygmocor system [35]. Pressure waveforms",False,False,False,False,False,False
+TABLE I,True,False,False,False,False,True
+D,True,False,False,True,False,False
+ATA S E T ’S FEATURES,True,False,False,True,False,False
+"were recorded from the radial, carotid, and femoral arteries using",False,False,False,False,False,False
+applanation tonometry. Pulse wave velocity (PWV) was calcu-,False,False,False,False,False,False
+lated as distance/transit time and was assessed by measuring,False,False,False,False,False,False
+both carotid–femoral arteries and carotid–radial arteries. Anal-,False,False,False,False,False,False
+ysis of the central waveform allows systemic arterial stiffness to,False,False,False,False,False,False
+be assessed by calculating the AIx [36]. The AIx was deﬁned as,False,False,False,False,False,False
+the aortic pressure divided by the pulse pressure and expressed,False,False,False,False,False,False
+"as a percentage. The AIx is inﬂuenced by the HR [37]; therefore,",False,False,False,False,False,False
+"an index, which normalized the AIx for 75 b/min (derived by",False,False,False,False,False,False
+the Sphygmocor software) was used.,False,False,False,False,False,False
+B. Decision Tree Induction,False,False,False,False,False,False
+The construction of the decision tree is implemented using the,False,False,False,False,False,False
+"C4.5 inductive algorithm [30], which generates a decision tree",False,False,False,False,False,False
+from the training data that minimizes the expected value of the,False,False,False,False,False,False
+number of tests for data classiﬁcation. Each internal node of the,False,False,False,False,False,False
+"tree corresponds to a principal component, while each outgoing",False,False,False,False,False,False
+branch corresponds to a possible range of that component. The,False,False,False,False,False,False
+leaf nodes represent the class to be assigned to a sample.,False,False,False,False,False,False
+The most important factor in the C4.5 algorithm is its ability,False,False,False,False,False,False
+"to automatically select the feature, which is appropriate at each",False,False,False,False,False,False
+node. The feature of each node is selected in order to divide,False,False,False,False,False,False
+input samples effectively. The information gain [30] is used as,False,False,False,False,False,False
+ameasure of effectiveness. After the induction of the decision,False,False,False,False,False,False
+"tree, we apply a pruning method to reduce the tree’s size and",False,False,False,False,False,False
+complexity. The two pruning methods that are often used are,False,False,False,False,False,False
+"prepruning and postpruning [30]. In our problem, we followed",False,False,False,False,False,False
+the postpruning method. The postpruning tends to give better,False,False,False,False,False,False
+results than the prepruning since it makes pruning decisions,False,False,False,False,False,False
+"based on a fully grown tree, unlike prepruning, which can suffer",False,False,False,False,False,False
+"from early termination of the tree growing process. In our case,",False,False,False,False,False,False
+postpruning is performed by replacing a subtree with a new,False,False,False,False,False,False
+leaf node whose class label is determined from the majority,False,False,False,False,False,False
+class of records associated with the s ubtree (subtree replace-,False,False,False,False,False,False
+ment). The subtree replacement was performed by calculating,False,False,False,False,False,False
+the pessimistic error.,False,False,False,False,False,False
+C. Creation of a Rule-Based Classiﬁer,False,False,False,False,False,False
+"In this stage, we construct a rule-based classiﬁer. A rule based",False,False,False,False,False,False
+classiﬁer is a technique for classifying records using a collection,False,False,False,False,False,False
+of “if ...then ...”rules. The rules for the model are crisp and,False,False,False,False,False,False
+"form the set of rules, which is represented in a DNF, (r",False,False,False,False,False,False
+1,False,False,False,False,False,False
+∨ r,False,False,False,False,False,False
+2,False,False,False,False,False,False
+∨,False,False,False,False,False,False
+···r,False,False,False,False,False,False
+k,False,False,False,False,False,False
+"),where r",False,False,False,False,False,False
+i,False,False,False,False,False,False
+are the classiﬁcation rules or disjuncts. Each,False,False,False,False,False,False
+classiﬁcation rule is expressed as: r,False,False,False,False,False,False
+i,False,False,False,False,False,False
+:(Cond,False,False,False,False,False,False
+i,False,False,False,False,False,False
+") → y,where y",False,False,False,False,False,False
+is the predicted class. The left-hand side of the rule is the rule,False,False,False,False,False,False
+antecedent or precondition. It contains a conjunction of fea-,False,False,False,False,False,False
+ture tests Cond,False,False,False,False,False,False
+i,False,False,False,False,False,False
+=(a,False,False,False,False,False,False
+1,False,False,False,False,False,False
+op θ,False,False,False,False,False,False
+1,False,False,False,False,False,False
+) ∧ (a,False,False,False,False,False,False
+2,False,False,False,False,False,False
+op θ,False,False,False,False,False,False
+2,False,False,False,False,False,False
+) ∧ ···∧(a,False,False,False,False,False,False
+m,False,False,False,False,False,False
+op θ,False,False,False,False,False,False
+m,False,False,False,False,False,False
+"),",False,False,False,False,False,False
+where (a,False,False,False,False,False,False
+j,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+j,False,False,False,False,False,False
+) is a feature-value (threshold) pair and op is a com-,False,False,False,False,False,False
+"parison operator chosen from the set (=, =,<,>,≤, ≥).",False,False,False,False,False,False
+Each feature test a,False,False,False,False,False,False
+j,False,False,False,False,False,False
+op θ,False,False,False,False,False,False
+j,False,False,False,False,False,False
+is a conjunct. The right-hand side of,False,False,False,False,False,False
+"the rule is the rule consequent, which contains the predicted",False,False,False,False,False,False
+class y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+.Arulercovers a record A if the precondition of,False,True,False,True,False,False
+"rmatches the features of A,where A = {a",False,False,False,False,False,False
+1,False,False,False,False,False,False
+",a",False,False,False,False,False,False
+2,False,False,False,False,False,False
+",...,a",False,False,False,False,False,False
+n,False,False,False,False,False,False
+f,False,False,False,False,False,False
+} is,False,False,False,False,False,False
+the feature vector and n,False,False,False,False,False,False
+f,False,False,False,False,False,False
+is the number of features character-,False,False,False,False,False,False
+izing a record. r is also said to be ﬁred or triggered when-,False,False,False,False,False,False
+ever it covers a given record. The quality of a classiﬁcation,False,False,False,False,False,False
+rule can be evaluated using measures such as coverage and,False,False,False,False,False,False
+accuracy.,False,False,False,False,False,False
+There are two important aspects to consider when construct-,False,False,False,False,False,False
+"ing the set of rules of a rule-based classiﬁer. First, the set of rules",False,False,False,False,False,False
+should be composed by mutually exclusive rules. The rules in,False,False,False,False,False,False
+aset are mutually exclusive if a record triggers only one rule.,False,False,False,False,False,False
+This property ensures that every record is covered by at most,False,False,False,False,False,False
+"one rule in the set. Second, the set of rules should be exhaustive.",False,False,False,False,False,False
+Aset of rules has exhaustive coverage if there is a rule for each,False,False,False,False,False,False
+combination of feature values. This property ensures that every,False,False,False,False,False,False
+"record is covered by at least one rule in the set. Together, these",False,False,False,False,False,False
+properties ensure that every record is covered by exactly one,False,False,False,False,False,False
+rule. A well-known method to construct a set of rules satisfying,False,False,False,False,False,False
+the earlier two aspects is to extract rules from a decision tree.,False,False,False,False,False,False
+The crisp set of rules is created from the ﬁnal decision tree as,False,False,False,False,False,False
+follows.,False,False,False,False,False,False
+1) One condition is created for every leaf of the tree by pars-,False,False,False,False,False,False
+ing the tree from the root node to the leaf. The tests encoun-,False,False,False,False,False,False
+"tered along the path form the conjuncts of the condition,",False,False,False,False,False,False
+while the class label at the leaf node is assigned to the rule,False,False,False,False,False,False
+consequent,False,False,False,False,False,False
+Cond,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"(A, Θ) = c",False,False,False,False,False,False
+root,False,False,False,False,False,False
+(a,False,False,False,False,False,False
+root,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+root,False,False,False,False,False,False
+),False,False,False,False,False,False
+∧ c,False,False,False,False,False,False
+j,False,False,False,False,False,False
+(a,False,False,False,False,False,False
+j,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+j,False,False,False,False,False,False
+) ∧ ···∧c,False,False,False,False,False,False
+k,False,False,False,False,False,False
+(a,False,False,False,False,False,False
+k,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+k,False,False,False,False,False,False
+) (1),False,False,False,False,False,False
+where Cond,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"is a condition, Θ={θ",False,False,False,False,False,False
+root,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+1,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+2,False,False,False,False,False,False
+",...,θ",False,False,False,False,False,False
+n,False,False,False,False,False,False
+t,False,False,False,False,False,False
+},False,False,False,False,False,False
+"is a vector containing all thresholds, n",False,False,False,False,False,False
+t,False,False,False,False,False,False
+is the total number,False,False,False,False,False,False
+"of thresholds, a",False,False,False,False,False,False
+j,False,False,False,False,False,False
+and θ,False,False,False,False,False,False
+j,False,False,False,False,False,False
+are the feature and the threshold,False,False,False,False,False,False
+"used in the conjunct j, and c",False,False,False,False,False,False
+j,False,False,False,False,False,False
+(a,False,False,False,False,False,False
+j,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+j,False,False,False,False,False,False
+) is the respective,False,False,False,False,False,False
+"conjunct, expressed as c",False,False,False,False,False,False
+j,False,False,False,False,False,False
+(a,False,False,False,False,False,False
+j,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+j,False,False,False,False,False,False
+)=g,False,False,False,False,False,False
+c,False,False,False,False,False,False
+(a,False,False,False,False,False,False
+j,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+j,False,False,False,False,False,False
+"),where g",False,False,False,False,False,False
+c,False,False,False,False,False,False
+"is the crisp membership function, deﬁned as",False,False,False,False,False,False
+g,False,False,False,False,False,False
+inc,False,False,False,False,False,False
+c,False,False,False,False,False,False
+"(a, θ)=",False,False,False,False,False,False
+,False,False,False,False,False,False
+"0,a≤ θ",False,False,False,False,False,False
+"1,a>θ",False,False,False,False,False,False
+(increasing) or,False,False,False,False,False,False
+g,False,False,False,False,False,False
+dec,False,False,False,False,False,False
+c,False,False,False,False,False,False
+"(a, θ)=",False,False,False,False,False,False
+,False,False,False,False,False,False
+"1,a≤ θ",False,False,False,False,False,False
+"0,a>θ",False,False,False,False,False,False
+(decreasing). (2),False,False,False,False,False,False
+It should be mentioned that the number of conjuncts c,False,False,False,False,False,False
+j,False,False,False,False,False,False
+",",False,False,False,False,False,False
+"the features, and the thresholds that are used are different",False,False,False,False,False,False
+in every condition Cond,False,False,False,False,False,False
+i,False,False,False,False,False,False
+and depend on the depth of the,False,False,False,False,False,False
+corresponding leaf and the tests that are encountered along,False,False,False,False,False,False
+the path from the root to this leaf.,False,False,False,False,False,False
+2) A general rule (R,False,False,False,False,False,False
+y,False,False,False,False,False,False
+")iscreated for each class (y), using all",False,False,False,False,False,False
+the conditions Cond,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"(A, ) having as consequent this class",False,False,False,False,False,False
+R,True,False,False,True,False,False
+y,False,False,False,False,False,False
+"(A, Θ) = Cond",False,False,False,False,False,False
+i,False,False,False,False,False,False
+1,False,False,False,False,False,False
+"(A, Θ) ∨ Cond",False,False,False,False,False,False
+i,False,False,False,False,False,False
+2,False,False,False,False,False,False
+"(A, Θ)",True,False,False,True,False,False
+∨ ...Cond,False,False,False,False,False,False
+i,False,False,False,False,False,False
+n,False,False,False,False,False,False
+"(A, Θ) (3)",True,False,False,True,False,False
+"where y is the class. Therefore, the number of the general",False,False,False,False,False,False
+rules is the same with the number of the classes. These,False,False,False,False,False,False
+"general rules comprise the crisp set of rules, which is",False,False,False,False,False,False
+"exhaustive and mutually exclusive. Thus, for each feature",False,False,False,False,False,False
+"vector A, one and only one of the general rules is true,",False,False,False,False,False,False
+deﬁning its class. An example of the transformation of,False,False,False,False,False,False
+the decision tree to a set of crisp rules is presented in,False,False,False,False,False,False
+Fig. 2. The application of the ﬁrst two stages (decision,False,False,False,False,True,False
+tree induction and creation of a rule-based classiﬁer) to,False,False,False,False,False,False
+the aforementioned dataset generates a crisp set of rules.,False,False,False,False,False,False
+Indicative rules are shown in Fig. 3.,False,False,False,False,False,False
+Fig. 2. Extraction of a set of crisp rules from a decision tree.,False,False,False,False,True,False
+D. Development of a Fuzzy Model,False,False,False,False,False,False
+The crisp set of rules is transformed into a fuzzy model us-,False,False,False,False,False,False
+"ing a fuzzy membership function instead of the crisp one, and",False,False,False,False,False,False
+fuzzy equivalents of the binary,False,False,False,False,False,False
+"AND (∧) and OR (∨) operators,",False,False,False,False,False,False
+"which are the T and S norms [32]. In our approach, the sigmoid",False,False,False,False,False,False
+"function, deﬁned as",False,False,False,False,False,False
+g,False,False,False,False,False,False
+inc,False,False,False,False,False,False
+s,False,False,False,False,False,False
+"(a, θ",False,False,False,False,False,False
+1,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+2,False,False,False,False,False,False
+)=,False,False,False,False,False,False
+1,False,False,False,False,False,False
+1+e,False,False,False,False,False,False
+θ,False,False,False,False,False,False
+1,False,False,False,False,False,False
+(θ,False,False,False,False,False,False
+2,False,False,False,False,False,False
+−a),False,False,False,False,False,False
+(increasing) or,False,False,False,False,False,False
+g,False,False,False,False,False,False
+dec,False,False,False,False,False,False
+s,False,False,False,False,False,False
+"(a, θ",False,False,False,False,False,False
+1,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+2,False,False,False,False,False,False
+)=,False,False,False,False,False,False
+1,False,False,False,False,False,False
+1+e,False,False,False,False,False,False
+θ,False,False,False,False,False,False
+1,False,False,False,False,False,False
+(a−θ,False,False,False,False,False,False
+2,False,False,False,False,False,False
+),False,False,False,False,False,False
+(decreasing) (4),False,False,False,False,False,False
+"is used as fuzzy membership function, while the T and S norms",False,False,False,False,False,False
+"are deﬁned as the minimum and maximum operators, respec-",False,False,False,False,False,False
+tively. Among several alternative functions that can be used,False,False,False,False,False,False
+"for monotonic fuzzy membership function, we selected the sig-",False,False,False,False,False,False
+moid function since it uses only two parameters (θ,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+2,False,False,False,False,False,False
+) and,False,False,False,False,False,False
+performs better as compared to the linear membership function,False,False,False,False,False,False
+(also using only two parameters) [38].,False,False,False,False,False,False
+"According to these, each crisp conjunct (c",False,False,False,False,False,False
+j,False,False,False,False,False,False
+)istransformed to,False,False,False,False,False,False
+afuzzy one (c,False,False,False,False,False,False
+f,False,False,False,False,False,False
+j,False,False,False,False,False,False
+)asfollows:c,False,False,False,False,False,False
+f,False,False,False,False,False,False
+j,False,False,False,False,False,False
+(a,False,False,False,False,False,False
+j,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"1,j",False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"2,j",False,False,False,False,False,False
+)=g,False,False,False,False,False,False
+s,False,False,False,False,False,False
+(a,False,False,False,False,False,False
+j,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"1,j",False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"2,j",False,False,False,False,False,False
+"),",False,False,False,False,False,False
+and the crisp conditions are transformed to fuzzy ones as,False,False,False,False,False,False
+Cond,False,False,False,False,False,False
+f,False,False,False,False,False,False
+i,False,False,False,False,False,False
+,False,False,False,False,False,False
+"A, Θ",True,False,False,True,False,False
+f,False,False,False,False,False,False
+,False,False,False,False,False,False
+= min,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+c,False,False,False,False,False,False
+f,False,False,False,False,False,False
+root,False,False,False,False,False,False
+(a,False,False,False,False,False,False
+root,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"1,root",False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"2,root",False,False,False,False,False,False
+),False,False,False,False,False,False
+c,False,False,False,False,False,False
+f,False,False,False,False,False,False
+j,False,False,False,False,False,False
+(a,False,False,False,False,False,False
+j,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"1,j",False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"2,j",False,False,False,False,False,False
+") , ...",False,False,False,False,False,False
+c,False,False,False,False,False,False
+f,False,False,False,False,False,False
+k,False,False,False,False,False,False
+(a,False,False,False,False,False,False
+k,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"1,k",False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"2,k",False,False,False,False,False,False
+),False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+(5),False,False,False,False,False,False
+where Θ,False,False,False,False,False,False
+f,False,False,False,False,False,False
+= {θ,False,False,False,False,False,False
+"1,root",False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"2,root",False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"1,1",False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"2,1",False,False,False,False,False,False
+",...,θ",False,False,False,False,False,False
+"1,n",False,False,False,False,False,False
+t,False,False,False,False,False,False
+",θ",False,False,False,False,False,False
+"2,n",False,False,False,False,False,False
+t,False,False,False,False,False,False
+} is a,False,False,False,False,False,False
+"vector containing all parameters used in the fuzzy model. Also,",False,False,False,False,False,False
+"we deﬁne a rule evaluation metric, based on the coverage and",False,False,False,False,False,False
+"the accuracy of the rules, in order to introduce a bias to the",False,False,False,False,False,False
+"“stronger” rules. For this reason, the likelihood ratio is used:",False,False,False,False,False,False
+p,False,False,False,False,False,False
+i,False,False,False,False,False,False
+=2,False,False,False,False,False,False
+n,False,False,False,False,False,False
+y,False,False,False,False,False,False
+,False,False,False,False,False,False
+y =1,False,False,False,False,False,False
+fr,False,False,False,False,False,False
+"i,y",False,False,False,False,False,False
+log,False,False,False,False,False,False
+,False,False,False,False,False,False
+fr,False,False,False,False,False,False
+"i,y",False,False,False,False,False,False
+e,False,False,False,False,False,False
+"i,y",False,False,False,False,False,False
+,False,False,False,False,False,False
+(6),False,False,False,False,False,False
+where n,False,False,False,False,False,False
+y,False,False,False,False,False,False
+"is the number of classes, fr",False,False,False,False,False,False
+"i,y",False,False,False,False,False,False
+is the observed frequency,False,False,False,False,False,False
+of class y records that are covered by a rule Cond,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"(A, Θ) → y,",False,False,False,False,False,False
+and e,False,False,False,False,False,False
+"i,y",False,False,False,False,False,False
+is the expected frequency of a rule that makes ran-,False,False,False,False,False,False
+dom predictions. A large p,False,False,False,False,False,False
+i,False,False,False,False,False,False
+suggests that the number of correct,False,False,False,False,False,False
+predictions made by the rule is signiﬁcantly larger than that,False,False,False,False,False,False
+expected by random guessing. Other metrics for rule evalua-,False,False,False,False,False,False
+"tion could be considered; however, the metric s hown in (6) was",False,False,False,False,False,False
+preferred since it takes into account both the accuracy and the,False,False,False,False,False,False
+Fig. 3. Indicative crisp rules.,False,False,False,False,True,False
+Fig. 4. Optimization parameters for the fuzzy membership function,False,False,False,False,True,False
+(sigmoid—increasing).,False,False,False,False,False,False
+coverage of the rules. This metric is applied to each Cond,False,False,False,False,False,False
+f,False,False,False,False,False,False
+i,False,False,False,False,False,False
+.,False,True,False,True,False,False
+The general crisp rules are transformed to fuzzy ones as,False,False,False,False,False,False
+R,True,False,False,True,False,False
+f,False,False,False,False,False,False
+y,False,False,False,False,False,False
+"(A, Θ",True,False,False,True,False,False
+f,False,False,False,False,False,False
+)=max,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+p,False,False,False,False,False,False
+i,False,False,False,False,False,False
+1,False,False,False,False,False,False
+× Cond,False,False,False,False,False,False
+f,False,False,False,False,False,False
+i,False,False,False,False,False,False
+1,False,False,False,False,False,False
+"(A, Θ",True,False,False,True,False,False
+f,False,False,False,False,False,False
+),False,False,False,False,False,False
+p,False,False,False,False,False,False
+i,False,False,False,False,False,False
+2,False,False,False,False,False,False
+× Cond,False,False,False,False,False,False
+f,False,False,False,False,False,False
+i,False,False,False,False,False,False
+2,False,False,False,False,False,False
+"(A, Θ",True,False,False,True,False,False
+f,False,False,False,False,False,False
+"), ...",False,False,False,False,False,False
+p,False,False,False,False,False,False
+i,False,False,False,False,False,False
+n,False,False,False,False,False,False
+× Cond,False,False,False,False,False,False
+f,False,False,False,False,False,False
+i,False,False,False,False,False,False
+n,False,False,False,False,False,False
+"(A, Θ",True,False,False,True,False,False
+f,False,False,False,False,False,False
+),False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+. (7),False,True,False,True,False,False
+These fuzzy general rules comprise the fuzzy model:,False,False,False,False,False,False
+M,True,False,False,True,False,False
+f,False,False,False,False,False,False
+,False,False,False,False,False,False
+"A, Θ",True,False,False,True,False,False
+f,False,False,False,False,False,False
+,False,False,False,False,False,False
+= arg max,False,False,False,False,False,False
+"y =1,...,n",False,False,False,False,False,False
+y,False,False,False,False,False,False
+,False,False,False,False,False,False
+R,True,False,False,True,False,False
+f,False,False,False,False,False,False
+y,False,False,False,False,False,False
+"(A, Θ",True,False,False,True,False,False
+f,False,False,False,False,False,False
+),False,False,False,False,False,False
+,False,False,False,False,False,False
+. (8),False,True,False,True,False,False
+"As shown in (8), for each feature vector A, the fuzzy general",False,False,False,False,False,False
+rule with the higher value deﬁnes its class.,False,False,False,False,False,False
+E. Fuzzy Model’s Parameter Optimization,False,False,False,False,False,False
+The fuzzy model M,False,False,False,False,False,False
+f,False,False,False,False,False,False
+,False,False,False,False,False,False
+"A, Θ",True,False,False,True,False,False
+f,False,False,False,False,False,False
+,False,False,False,False,False,False
+is optimized with respect to its,False,False,False,False,False,False
+parameters Θ,False,False,False,False,False,False
+f,False,False,False,False,False,False
+",usingatraining dataset (D",False,False,False,False,False,False
+train,False,False,False,False,False,False
+). For every con-,False,False,False,False,False,False
+"junct, a parameter θ",False,False,False,False,False,False
+1,False,False,False,False,False,False
+(analogous to the slope ϕ) and the center,False,False,False,False,False,False
+θ,False,False,False,False,False,False
+2,False,False,False,False,False,False
+of the fuzzy membership function (sigmoid) are optimized,False,False,False,False,False,False
+(see Fig. 4). If X is the normalized confusion matrix,False,False,False,False,True,False
+X,True,False,False,True,False,False
+M,True,False,False,True,False,False
+f,False,False,False,False,False,False
+"(A,Θ",True,False,False,True,False,False
+f,False,False,False,False,False,False
+"),y",False,False,False,False,False,False
+=,False,False,False,False,False,False
+# of patterns in y classiﬁed to M,False,False,False,False,False,False
+f,False,False,False,False,False,False
+"(A, Θ",True,False,False,True,False,False
+f,False,False,False,False,False,False
+),False,False,False,False,False,False
+total # of patterns in y,False,False,False,False,False,False
+(9),False,False,False,False,False,False
+"then the cost function, used for this purpose, is deﬁned as",False,False,False,False,False,False
+"F (Θ,D",True,False,False,True,False,False
+train,False,False,False,False,False,False
+)=,False,False,False,False,False,False
+trace(X),False,False,False,False,False,False
+|D,True,False,False,True,False,False
+train,False,False,False,False,False,False
+|,False,False,False,False,False,False
+(10),False,False,False,False,False,False
+The optimization method used is the healed topographical,False,False,False,False,False,False
+"multilevel single linkage (HTMLSL) [33], a stochastic algo-",False,False,False,False,False,False
+rithm based on multilevel single linkage (MLSL). The algo-,False,False,False,False,False,False
+rithm attempts iteratively to ﬁnd all local minima of an objective,False,False,False,False,False,False
+function F (x) inside a bounded set S ⊂ R,False,False,False,False,False,False
+n,False,False,False,False,False,False
+",which are poten-",False,False,False,False,False,False
+tially global. These local minima are obtained by a local-search,False,False,False,False,False,False
+"procedure, starting from suitably chosen points in a properly",False,False,False,False,False,False
+maintained sample. Stochastic algorithms in the framework of,False,False,False,False,False,False
+multistart suffer from the problem of recovering the same local,False,False,False,False,False,False
+"minima repeatedly, a fact that diminishes their efﬁciency. The",False,False,False,False,False,False
+HTMLSL is constructed in such a way so as to avoid this unde-,False,False,False,False,False,False
+"sirable repetition. The HTMLSL algorithm, at the kth iteration:",False,False,False,False,False,False
+1) constructs a sample of points by selecting N random,False,False,False,False,False,False
+points from the bounded set S and evaluates at each point,False,False,False,False,False,False
+the objective function;,False,False,False,False,False,False
+2) chooses a subset of points to be used as starting points for,False,False,False,False,False,False
+local searches from the earlier sample;,False,False,False,False,False,False
+3) performs a local search from each starting point. If a new,False,False,False,False,False,False
+"minimum is discovered, the algorithm stores it;",False,False,False,False,False,False
+"4) determines whether to stop or not, using suitable stopping",False,False,False,False,False,False
+"criteria. If not, repeats starting from step (1);",False,False,False,False,False,False
+"5) from the stored local minima, t he one with the lowest value",False,False,False,False,False,False
+is considered to be the global minimum.,False,False,False,False,False,False
+III. R,True,True,False,True,False,False
+ESULTS,True,False,False,True,False,False
+The tenfold stratiﬁed cross validation method [39] was used,False,False,False,False,False,False
+for evaluation. The stratiﬁcation was implemented by dividing,False,False,False,False,False,False
+the subjects into two subsets: those with CAD and those with,False,False,False,False,False,False
+"no CAD. The procedure was applied to each fold, generating",False,False,False,False,False,False
+ten different sets of crisp rules (the result after stages 1 and 2),False,False,False,False,False,False
+and fuzzy models (the result after all stages). Both the crisp set,False,False,False,False,False,False
+of rules and the optimized fuzzy models have been evaluated.,False,False,False,False,False,False
+"Table II presents the true positive (TP), true negative (TN),",False,False,False,False,False,True
+"false positive (FP), and false negative (FN) results for each fold.",False,False,False,False,False,False
+"In addition, the sensitivity (Se), speciﬁcity (Sp), and accuracy",False,False,False,False,False,False
+"(Acc) of each fold and in overall, using gross statistics, are",False,False,False,False,False,False
+provided.,False,False,False,False,False,False
+"From the obtained results, it is clear that the last two stages",False,False,False,False,False,False
+"(i.e., fuzziﬁcation and optimization) of the proposed methodol-",False,False,False,False,False,False
+ogy improved the efﬁciency of the crisp model generated using,False,False,False,False,False,False
+only the ﬁrst two stages (decision tree induction and crisp model,False,False,False,False,False,False
+formulation). The optimized fuzzy model results to 73.4%,False,False,False,False,False,False
+TABLE II,True,False,False,False,False,True
+R,True,False,False,True,False,False
+"ESULTS FOR THE CRISP RULE BASED CLASSIFIER, THE PROPOSED DSS, THE ANNS, AND THE ANFIS",True,False,False,True,False,False
+"accuracy, improving by 15.1% the corresponding accuracy of the",False,False,False,False,False,False
+crisp model (58.3%). The error rates for each fold are deﬁned as,False,False,False,False,False,False
+e,False,False,False,False,False,False
+"m,i",False,False,False,False,False,False
+=1− acc,False,False,False,False,False,False
+"m,i",False,False,False,False,False,False
+",where acc",False,False,False,False,False,False
+"m,i",False,False,False,False,False,False
+is the accuracy of the model,False,False,False,False,False,False
+m (crisp or fuzzy) using fold i and can be approximated us-,False,False,False,False,False,False
+ing normal distributions [39]. Deﬁning d,False,False,False,False,False,False
+i,False,False,False,False,False,False
+= |e,False,False,False,False,False,False
+fuzzy,False,False,False,False,False,False
+",i",False,False,False,False,False,False
+− e,False,False,False,False,False,False
+"crisp,i",False,False,False,False,False,False
+|,False,False,False,False,False,False
+as the difference between the error rates of the two mod-,False,False,False,False,False,False
+"els during the ith fold, then d",False,False,False,False,False,False
+i,False,False,False,False,False,False
+"is also normally distributed,",False,False,False,False,False,False
+with mean value d,False,False,False,False,False,False
+t,False,False,False,False,False,False
+",which is the true difference of the error",False,False,False,False,False,False
+"rates, and variance ˆ℘",False,False,False,False,False,False
+2,False,False,False,False,False,False
+d,False,False,False,False,False,False
+t,False,False,False,False,False,False
+=,False,False,False,False,False,False
+,False,False,False,False,False,False
+k,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+(d,False,False,False,False,False,False
+i,False,False,False,False,False,False
+−,False,False,False,False,False,False
+¯,False,False,False,False,False,False
+d),False,False,False,False,False,False
+2,False,False,False,False,False,False
+/(k,False,False,False,False,False,False
+2,False,False,False,False,False,False
+"− k),where k",False,False,False,False,False,False
+"is the number of degrees of freedom (i.e., number of folds)",False,False,False,False,False,False
+and,False,False,False,False,False,False
+¯,False,False,False,False,False,False
+d =1/k,False,False,False,False,False,False
+,False,False,False,False,False,False
+k,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+d,False,False,False,False,False,False
+i,False,False,False,False,False,False
+".Inthis case, the conﬁdence interval of",False,True,False,True,False,False
+d,False,False,False,False,False,False
+t,False,False,False,False,False,False
+is deﬁned as d,False,False,False,False,False,False
+t,False,False,False,False,False,False
+=,False,False,False,False,False,False
+¯,False,False,False,False,False,False
+d ± t,False,False,False,False,False,False
+"cl,k−1",False,False,False,False,False,False
+ˆ℘,False,False,False,False,False,False
+2,False,False,False,False,False,False
+d,False,False,False,False,False,False
+t,False,False,False,False,False,False
+",where t",False,False,False,False,False,False
+"cl,k−1",False,False,False,False,False,False
+is the t-,False,False,False,False,False,False
+distribution at conﬁdence level cl and with the number of de-,False,False,False,False,False,False
+grees of freedom k.At95% conﬁdence level and using ten,False,False,False,False,False,False
+"folds, t",False,False,False,False,False,False
+"0.95,9",False,False,False,False,False,False
+"= 2.26 [39], and thus, the conﬁdence interval for",False,False,False,False,False,False
+the difference d,False,False,False,False,False,False
+t,False,False,False,False,False,False
+is given as d,False,False,False,False,False,False
+t,False,False,False,False,False,False
+=,False,False,False,False,False,False
+¯,False,False,False,False,False,False
+d ± 2.26 ˆ℘,False,False,False,False,False,False
+d,False,False,False,False,False,False
+.Comparing the,False,True,False,True,False,False
+"crisp model with the fuzzy optimized model, the conﬁdence",False,False,False,False,False,False
+interval for d,False,False,False,False,False,False
+t,False,False,False,False,False,False
+"at 95% conﬁdence level is 0.15 ± 0.075, which",False,False,False,False,False,False
+"does not span the zero value, and thus, the observed difference",False,False,False,False,False,False
+is statistically signiﬁcant.,False,False,False,False,False,False
+"To compare the proposed method, we also employed two",False,False,False,False,False,False
+widely used classiﬁcation methodologies: feed-forward artiﬁ-,False,False,False,False,False,False
+cial neural networks (ANNs) and adaptive neuro-fuzzy infer-,False,False,False,False,False,False
+ence system (ANFIS) [40]. The ANNs are well known and,False,False,False,False,False,False
+widely used classiﬁers. They have proven to be very effective,False,False,False,False,False,False
+"in many applications. On the other hand, the neuro-fuzzy tech-",False,False,False,False,False,False
+"niques, such as ANFIS, have emerged from the fusion of arti-",False,False,False,False,False,False
+ﬁcial neural networks and fuzzy inference systems and form a,False,False,False,False,False,False
+popular framework for solving real-world problems. They com-,False,False,False,False,False,False
+bine the effectiveness and the optimization framework of the,False,False,False,False,False,False
+ANNs with interpretability of fuzzy inference systems. Both,False,False,False,False,False,False
+the ANNs and ANFIS classiﬁcation methodologies were cre-,False,False,False,False,False,False
+ated and evaluated using the same tenfold training and test sets.,False,False,False,False,False,False
+The ANNs architecture was an input layer consisting of 19,False,False,False,False,False,False
+"neurons (one for each of the 19 features shown in Table II), one",False,False,False,False,False,False
+"hidden layer with 10 hidden neurons, and one output layer with a",False,False,False,False,False,False
+Fig. 5. Graphical representation of the obtained results presented in Table II.,False,False,False,False,True,False
+single neuron. The activation functions were sigmoid functions,False,False,False,False,False,False
+"except for the output layer, which was a linear function. The",False,False,False,False,False,False
+"number of training epochs was set to 100, and the mean square",False,False,False,False,False,False
+"error was used as cost function. For every fold, ten different",False,False,False,False,False,False
+"initializations of the weights were made, and the one with the",False,False,False,False,False,False
+best results is reported i n Table II. The ANFIS is based on a,False,False,False,False,False,False
+"Sugeno type fuzzy system. The 19 features, described before,",False,False,False,False,False,False
+"are used as inputs, and the fuzzy inference system is created",False,False,False,False,False,False
+"using subtractive clustering. For optimization, the back propa-",False,False,False,False,False,False
+"gation algorithm was employed, with 100 epochs. The results",False,False,False,False,False,False
+"are presented in Table II, while a graphical representation of",False,False,False,False,False,False
+them is shown in Fig. 5. The results obtained from the crisp rule,False,False,False,False,False,False
+"based classiﬁer and the ANFIS are similar (58.3% and 56.8%,",False,False,False,False,False,False
+"respectively), while the ANNs and the proposed DSS presented",False,False,False,False,False,False
+"signiﬁcantly better results (73.9% and 73.4%, respectively).",False,False,False,False,False,False
+IV. D,True,True,False,True,False,False
+ISCUSSION,True,False,False,True,False,False
+"In this paper, we introduced a DSS for the diagnosis of CAD,",False,False,False,False,False,False
+which is automatically generated from a novel data-driven four-,False,False,False,False,False,False
+"stage methodology. Initially, a set of rules is constructed from a",False,False,False,False,False,False
+"decision tree induced by the training records, and crisp r ules are",False,False,False,False,False,False
+"extracted from this tree, forming a crisp model. Then, the crisp",False,False,False,False,False,False
+"model is transformed to fuzzy, and, ﬁnally, the parameters of",False,False,False,False,False,False
+this fuzzy model are optimized. The classiﬁcation results of the,False,False,False,False,False,False
+crisp rule-based classiﬁer are signiﬁcantly improved when it is,False,False,False,False,False,False
+transformed to a fuzzy model and its parameters are optimized.,False,False,False,False,False,False
+The improvement in accuracy ranges from 5% to 35% (see,False,False,False,False,False,False
+"Table II) when considering each fold separately, while the over-",False,False,False,False,False,True
+"all improvement in accuracy is 15%. Furthermore, the proposed",False,False,False,False,False,False
+methodology reported comparable performance with the ANNs,False,False,False,False,False,False
+"(73.4% vs. 73.9%, respectively) and signiﬁcantly better results",False,False,False,False,False,False
+than the ANFIS.,False,False,False,False,False,False
+The crisp model is based on axis-parallel decision boundaries.,False,False,False,False,False,False
+This is a limitation that can be treated with the fuzzyﬁcation,False,False,False,False,False,False
+"of the crisp rules, which introduces ﬂexibility in the decision",False,False,False,False,False,False
+boundaries [41]. The fuzzy model is a generalization of the,False,False,False,False,False,False
+crisp model (since the parameters of the fuzzy model can be set,False,False,False,False,False,False
+so as to resemble the crisp model) having a larger number of,False,False,False,False,False,False
+parameters that can be tuned in order to create non-axis-parallel,False,False,False,False,False,False
+"decision boundaries, which reﬂect the underline properties of",False,False,False,False,False,False
+agiven dataset more accurately. The ANNs have proven to be,False,False,False,False,False,False
+"very efﬁcient and effective classiﬁers; in our problem, slightly",False,False,False,False,False,False
+outperformed the proposed optimized fuzzy model by 0.5%.,False,False,False,False,False,False
+"However, the proposed approach is able to provide interpretation",False,False,False,False,False,False
+"for its decisions, while the ANNs cannot provide clear and direct",False,False,False,False,False,False
+interpretation [42]. The incorporation of decision trees in the,False,False,False,False,False,False
+ﬁrst stage of the proposed methodology bestows an advantage as,False,False,False,False,False,False
+compared to the ANFIS (which is a methodology having several,False,False,False,False,False,False
+"similarities with our approach), since it provides an initialization",False,False,False,False,False,False
+"of the fuzzy model [41]; this feature is not present in the ANFIS,",False,False,False,False,False,False
+thus requiring high-complexity fuzzy models in order to achieve,False,False,False,False,False,False
+high classiﬁcation accuracy.,False,False,False,False,False,False
+"The proposed DSS requires only easily obtained data, such",False,False,False,False,False,False
+"as patient’s demographic and clinical data, that may derive from",False,False,False,False,False,False
+"the patient’s medical history, routine blood tests, physical ex-",False,False,False,False,False,False
+"amination, and noninvasive simple investigations to determine",False,False,False,False,False,False
+arterial stiffness. All these variables may be obtained very fast,False,False,False,False,False,False
+"and at a low cost in an out-patient clinic, do not require special",False,False,False,False,False,False
+"training or expertise, and, most importantly, do not expose the",False,False,False,False,False,False
+patient to any potential harm. All of them constitute a major,False,False,False,False,False,False
+advantage of the proposed DSS for CAD diagnosis. Another,False,False,False,False,False,False
+very important issue is the quality of the dataset. The proposed,False,False,False,False,False,False
+DSS is generated using a high-quality initial dataset; CA was,False,False,False,False,False,False
+"performed to all subjects, ensuring, thus, the correctness of the",False,False,False,False,False,False
+ﬁnal diagnosis (normal or CAD) since CA is considered to be,False,False,False,False,False,False
+the “gold standard” for the diagnosis of CAD.,False,False,False,False,False,False
+Arterial stiffness that can be assessed noninvasively using,False,False,False,False,False,False
+"PWVcf (i.e., PWV along the aorta) and AIx has been strongly",False,False,False,False,False,False
+related to atherosclerosis at various sites in the vascular tree [26],False,False,False,False,False,False
+and future cardiovascular events in several patient groups [43]–,False,False,False,False,False,False
+"[45]. The PWVcf is a simple reproducible, noninvasive mea-",False,False,False,False,False,False
+"surement, which has been shown to be a reliable predictor of",False,False,False,False,False,False
+"cardiovascular risk in end-stage renal disease [43], essential",False,False,False,False,False,False
+"hypertension [44], diabetes, and glucose intolerance [45]. A",False,False,False,False,False,False
+correlation of the PWV with the extent of CAD in patients un-,False,False,False,False,False,False
+"dergoing diagnostic CA has also been shown [46], [47]. The",False,False,False,False,False,False
+"AIx is an independent predictor of all-cause, including cardio-",False,False,False,False,False,False
+"vascular, mortality in end-stage renal disease patients [48], and",False,False,False,False,False,False
+is also strongly and independently correlated with the pres-,False,False,False,False,False,False
+"ence and the extent of CAD in males, especially in younger",False,False,False,False,False,False
+"populations [49]. However, in our dataset, these indices have",False,False,False,False,False,False
+not been valuable contributors in the diagnostic process. They,False,False,False,False,False,False
+have not been included in any of the rules derived to diagnose,False,False,False,False,False,False
+"CAD in males, and they are only used to a limited extent in",False,False,False,False,False,False
+females.,False,False,False,False,False,False
+Gender is the most important feature in the produced set of,False,False,False,False,False,False
+"rules; it is used in all induced trees in the root. However, this is",False,False,False,False,False,False
+partially driven from the dataset since 64% of our male popula-,False,False,False,False,False,False
+tion (98/152) was diagnosed with CAD as compared with 25%,False,False,False,False,False,False
+(12/47) in the female population. Smoking has also been proven,False,False,False,False,False,False
+to be an important marker for CAD prediction in women; 77%,False,False,False,False,False,False
+of nonsmoking women did not suffer from CAD (33/42). In,False,False,False,False,False,False
+TABLE III,True,False,False,False,False,True
+T,True,False,False,True,False,False
+RADITIONAL METHODS USED IN THE CLINICAL SETTING FOR THE DIAGNOSIS OF CAD,True,False,False,True,False,False
+"general, the smoking history was included in almost all induced",False,False,False,False,False,False
+"trees (excluded in only one tree). In the male population, low",False,False,False,False,False,False
+"HR (i.e., <=49 beats per minute) was found to be an impor-",False,False,False,False,False,False
+tant predictor of CAD; this might be explained by the use of,False,False,False,False,False,False
+β-blockers (antianginal medications that lower HR) in subjects,False,False,False,False,False,False
+"with very high clinical suspicion of CAD. Also, it appears that",False,False,False,False,False,False
+"elderly males (i.e., age >69 years) with symptoms and signs of",False,False,False,False,False,False
+"CAD have high probability to be diagnosed with CAD, since",False,False,False,False,False,False
+CAD was found in 92% (24/26) of our elderly male population.,False,False,False,False,False,False
+"In males aged less than 69 years, family history of CAD appears",False,False,False,False,False,False
+to be a relatively important diagnostic feature for CAD (76%,False,False,False,False,False,False
+"of those with positive family history had CAD, i.e., 26/34).",False,False,False,False,False,False
+"However, some of the derived rules cannot be fully explained",False,False,False,False,False,False
+"based on standard medical knowledge, mainly due to the data-",False,False,False,False,False,False
+"driven nature of the proposed method, which can also discover",False,False,False,False,False,False
+unimportant and spurious rules.,False,False,False,False,False,False
+"In Table III, noninvasive methods used in the clinical set-",False,False,False,False,False,True
+ting for the diagnosis of CAD are presented. Exercise ECG,False,False,False,False,False,False
+testing is the most commonly used method for the diagnosis,False,False,False,False,False,False
+of CAD mainly because of its low cost and wide availability.,False,False,False,False,False,False
+"However, it cannot be applied to all patients with suspected",False,False,False,False,False,False
+"CAD (e.g., patients with disabilities) and has a relatively low",False,False,False,False,False,False
+"sensitivity and speciﬁcity [50], [51]. Stress ECHO and scintig-",False,False,False,False,False,False
+raphy (using exercise or pharmacological stimuli) are methods,False,False,False,False,False,False
+"of low-to-moderate cost, as they use special technical equip-",False,False,False,False,False,False
+"ment that is available in cardiological centers, and therefore,",False,False,False,False,False,False
+are used widely for the diagnosis of CAD and at low risk for,False,False,False,False,False,False
+"the patient, except for scintigraphy that involves radiation and",False,False,False,False,False,False
+"cannot be used very frequently. However, the sensitivity and",False,False,False,False,False,False
+"speciﬁcity reported in several studies vary largely among them,",False,False,False,False,False,False
+explained partially by differences in stress protocols used and,False,False,False,False,False,False
+expertise in results’ interpretation [52]–[54]. The EBCT is a,False,False,False,False,False,False
+"method that needs highly specialized equipment, confers high",False,False,False,False,False,False
+"radiation doses, and reveals the calcium burden of the coronary",False,False,False,False,False,False
+"tree, thus limiting its value mainly for risk stratiﬁcation and not",False,False,False,False,False,False
+"for diagnostic purposes [55]. Finally, the MSCT and CMRA are",False,False,False,False,False,False
+"both rapidly evolving, promising methods for the diagnosis of",False,False,False,False,False,False
+"CAD. Despite their effectiveness, the CMRA and MSCT are",False,False,False,False,False,False
+methods of very high cost that require specialized equipment,False,False,False,False,False,False
+"and highly trained personnel, and thus, with very low avail-",False,False,False,False,False,False
+"ability. Furthermore, they cannot be applied to a considerable",False,False,False,False,False,False
+"percentage of patients due to several technical limitations (e.g.,",False,False,False,False,False,False
+"motion and respiratory artifacts, claustrophobia and metallic",False,False,False,False,False,False
+"devices for the CMRA), while the MSCT involves signiﬁcant",False,False,False,False,False,False
+radiation exposure [56]–[59],False,False,False,False,False,False
+"In Table IV, we present a comparison of several computer-",False,False,False,False,False,True
+"aided diagnosis methodologies for CAD. Again, direct compar-",False,False,False,False,False,False
+ison cannot be derived since different features and datasets have,False,False,False,False,False,False
+been used and also the populations vary signiﬁcantly. In some of,False,False,False,False,False,False
+"the studies, only male subjects were included [5], [6], [21], [24],",False,False,False,False,False,False
+while the mean age and age range of subjects that could ex-,False,False,False,False,False,False
+plain differences in results is not mentioned in most of them.,False,False,False,False,False,False
+Our study population included patients without known CAD,False,False,False,False,False,False
+"referred for angiography, while in some studies, subjects with",False,False,False,False,False,False
+previous MI or coronary artery bypass grafting (CABG) were,False,False,False,False,False,False
+"also included [21], [23], [26]. The parameters collected and an-",False,False,False,False,False,False
+"alyzed also differ among studies. In our approach, only demo-",False,False,False,False,False,False
+"graphic data, laboratory investigations, and indices of arterial",False,False,False,False,False,False
+"stiffness are used; these are of low cost, easily, rapidly, and",False,False,False,False,False,False
+"safely obtained in an out-patient basis, without the need of spe-",False,False,False,False,False,False
+"cially trained personnel. In [22], a subset of our dataset has",False,False,False,False,False,False
+"been used and comparable performance has been reported, us-",False,False,False,False,False,False
+"ing neural networks and support vector machines. However, the",False,False,False,False,False,False
+employment of exercise ECG imposes a limitation to use it to,False,False,False,False,False,False
+patients with disabilities. The work presented in [20] attained,False,False,False,False,False,False
+higher sensitivity and speciﬁcity in predicting artery disease in,False,False,False,False,False,False
+ophthalmic or internal carotid artery by using a number of pa-,False,False,False,False,False,False
+"rameters obtained from the speciﬁc artery. On the contrary, we",False,False,False,False,False,False
+"do not use only vascular data acquired from the radial, carotid,",False,False,False,False,False,False
+"and femoral arteries, but also demographic and clinical ones, to",False,False,False,False,False,False
+address CAD diagnosis. It should be mentioned that most of the,False,False,False,False,False,False
+"methods reported in Table IV are based on neural networks [13],",False,False,False,False,False,False
+"[14], [17], [20]–[24], [26]. These methods are not able to pro-",False,False,False,False,False,False
+"vide clear interpretation for their decisions. On the other hand,",False,False,False,False,False,False
+our DSS is able to provide the desired comprehensibility since,False,False,False,False,False,False
+it is based on a set of rules.,False,False,False,False,False,False
+"However, the proposed methodology presents some limita-",False,False,False,False,False,False
+"tions. The studied population was of high risk for CAD, and",False,False,False,False,False,False
+TABLE IV,True,False,False,False,False,True
+C,True,False,False,True,False,False
+OMPARISON OF SEVERAL COMPUTER-AIDED DIAGNOSIS-BASED METHODOLOGIES FOR CAD DIAGNOSIS,True,False,False,True,False,False
+"thus, the results are not representative for the general population.",False,False,False,False,False,False
+"However, the percentage of subjects with normal vessels was",False,False,False,False,False,False
+"rather high for high-risk population; 35,53% in males and",False,False,False,False,False,False
+"74,47% in females, especially as compared to other studies that",False,False,False,False,False,False
+report a percentage incidence of normal vessels among subjects,False,False,False,False,False,False
+without known CAD r eferred on an elective basis for their ﬁrst,False,False,False,False,False,False
+CA. Further studies need to be performed in order to create a,False,False,False,False,False,False
+DSS that could accurately diagnose CAD in the general popu-,False,False,False,False,False,False
+"lation. Also, the extension of the DSS to the determination of",False,False,False,False,False,False
+CAD’s severity is of great interest.,False,False,False,False,False,False
+V. C,True,True,False,True,False,False
+ONCLUSION,True,False,False,True,False,False
+We have presented a novel DSS for the diagnosis of CAD. The,False,False,False,False,False,False
+employment of easily obtained features with the interpretation,False,False,False,False,False,False
+ability proves the efﬁciency and the reliability of the method.,False,False,False,False,False,False
+The obtained results indicate that the proposed optimized fuzzy,False,False,False,False,False,False
+model DSS improves by 15% in terms of accuracy the results,False,False,False,False,False,False
+"of the crisp rule-based classiﬁer, while it compares well with",False,False,False,False,False,False
+other widely used classiﬁcation schemes such as the ANFIS,False,False,False,False,False,False
+"and ANNs. Furthermore, the proposed DSS is automatically",False,False,False,False,False,False
+generated using the proposed data-driven methodology; only an,False,False,False,False,False,False
+initial annotated dataset is needed in order to create a DSS for a,False,False,False,False,False,False
+speciﬁc domain of application. This allows our methodology to,False,False,False,False,False,False
+"be easily applied to other domains, medical or not.",False,False,False,False,False,False
+A,True,False,False,True,False,False
+CKNOWLEDGMENT,True,False,False,True,False,False
+The authors would like to thank Prof. M. Akay for his support,False,False,False,False,False,False
+during this research.,False,False,False,False,False,False
+R,True,False,False,True,False,False
+EFERENCES,True,False,False,True,False,False
+"[1] G. De Backerxs, E. Ambrosioni, K. Borch-Johnsen, C. Brotons,",False,False,False,False,False,False
+"R. Cifkova, J. Dallongeville, S. Ebrahim, O. Faergeman, I. Graham,",False,False,False,False,False,False
+"G. Mancia, V. M. Cats, K. Orth-Gomer, J. Perk, K. Pyorala, J. L. Rodicio,",False,False,False,False,False,False
+"S. Sans, V. Sansoy, U. Sechtem, S. Silber, T. Thomsen, and D. Wood, “Eu-",False,False,False,False,False,False
+ropean guidelines on cardiovascular disease prevention in clinical practice:,False,False,False,False,False,False
+Third joint task force of European and other societies on cardiovascular,False,False,False,False,False,False
+disease prevention in clinical practice (constituted by representatives of,False,False,False,False,False,False
+"eight societies and by invited experts),” Eur. J. Cardiovasc. Prev. Reha-",False,False,False,False,False,False
+"bil.,vol. 10, no. 4, pp. S1–S10, 2003, European Society of Cardiology",False,False,False,False,False,False
+Committee for Practice Guidelines.,False,False,False,False,False,False
+"[2] E. Escolar, G. Weigold, A. Fuisz, and N. J. Weissman, “New imaging",False,False,False,False,False,False
+"techniques for diagnosing coronary artery disease,” CMAJ,vol. 174,",False,False,False,False,False,False
+"no. 4, pp. 487–495, 2006.",False,False,False,False,False,False
+"[3] L. Goldberger and E. Goldberger, Clinical Electrocardiography.Saint",False,False,False,False,False,False
+"Louis, MO: Mosby Company, 1977.",False,False,False,False,False,False
+"[4] R. J. Gibbons, G. J. Balady, J. T. Bricker, B. R. Chaitman, G. F. Fletcher,",False,False,False,False,False,False
+"V. F. Froelicher, D. B. Mark, B. D. McCallister, A. N. Mooss,",False,True,False,True,False,False
+"M. G. O’Reilly, W. L. Winters, Jr, R. J. Gibbons, E. M. Antman,",False,False,False,False,False,False
+"J. S. Alpert, D. P. Faxon, V. Fuster, G. Gregoratos, L. F. Hiratzka,",False,False,False,False,False,False
+"A. K. Jacobs, R. O. R ussell, and S. C. Smith, Jr, “ACC/AHA 2002 guide-",False,False,False,False,False,False
+line update for exercise testing: Summary article: A report of the American,False,False,False,True,False,False
+college of cardiology/American heart association task force on practice,False,False,False,False,False,False
+"guidelines (committee to update the 1997 exercise testing guidelines),”",False,False,False,False,False,False
+"Circulation,vol. 106, no. 14, pp. 1883–1892, 2002, American College of",False,False,False,False,False,False
+Cardiology/American Heart Association Task Force on Practice Guide-,False,False,False,False,False,False
+lines (Committee to Update the 1997 Exercise Testing Guidlines).,False,False,False,False,False,False
+"[5] J. W. Deckers, B. J. Rensing, R. V. H. Vinke, and M. L. Simoons, “Com-",False,False,False,False,False,False
+"parison of exercise algorithms for diagnosis of coronary artery disease,”",False,False,False,False,False,False
+"in Proc. Comput. Cardiology, 1988, pp. 231–234.",False,False,False,False,False,False
+"[6] K. Lewenstein, “Radial basis function neural network approach for the",False,False,False,False,False,False
+diagnosis of coronary artery disease based on the standard electrocardio-,False,False,False,False,False,False
+"gram exercise test,” Med. Biol. Eng. Comput.,vol. 39, pp. 1–6, 2001.",False,False,False,False,False,False
+"[7] F. Ng, S. Wong, F. Mora, G. Passariello, and D. Almeida, “Diagnostic",False,False,False,False,False,False
+"value of QT interval hysteresis loop in coronary artery disease,” in Proc.",False,False,False,False,False,False
+"Comput. Cardiol., 1998, pp. 417–420.",False,False,False,False,False,False
+"[8] M. Sabry-Rizk, S. El-Khaﬁf, E. Carson, W. Zgallai, K. Grattan, C. Morgan,",False,False,False,False,False,False
+"and P. Hardiman, “Suspicious polyphase patterns of normal looking ECGs",False,False,False,False,False,False
+"provide fast early diagnoses of a coronary artery disease,” in Proc. IEEE",False,False,False,False,False,False
+"Eng. Med. Biol.,Oct. 1999, vol. 2, pp. 1391–1393.",False,False,False,False,False,False
+"[9] S. M. Szildgyi, L. Szildgyi, and L. David, “Assessment of R wave ampli-",False,False,False,False,False,False
+"tude changes in coronary artery disease,” in Proc. IEEE Eng. Med. Biol.,",False,False,False,False,False,False
+"Oct.–Nov. 1997, vol. 1, pp. 272–274.",False,False,False,False,False,False
+"[10] E. J. Tkacz and P. Kostka, “An application of wavelet neural network",False,False,False,False,False,False
+for classiﬁcation of patients with coronary artery disease based on HRV,False,False,False,False,False,False
+"analysis,” in Proc. IEEE Eng. Med. Biol., 2000, vol. 2, pp. 1391–",False,False,False,False,False,False
+1393.,False,False,False,False,False,False
+"[11] L. S. Goodenday, K. J. Cios, and I. Shin, “Identifying coronary stenosis",False,False,False,False,False,False
+"using an image recognition neural network,” IEEE Eng. Med. Biol. Mag.,",False,False,False,False,False,False
+"vol. 16, no. 5, pp. 139–144, Sep./Oct. 1997.",False,False,False,False,False,False
+"[12] M. Haddad, K. P. Adlassnig, and G. Porenta, “Feasibility analysis of a",False,False,False,False,False,False
+case-based reasoning system for automated detection of coronary heart,False,False,False,False,False,False
+"disease from myocardial scintigrams,” Artif. Intell. Med.,vol.9,pp. 61–",False,False,False,False,False,False
+"78, 1997.",False,False,False,False,False,False
+"[13] H. B. Ebadian, H. S. Zadeh, S. Setayeshi, and S. T. Smith, “Neural network",False,False,False,False,False,False
+and fuzzy clustering approach for automatic diagnosis of coronary artery,False,False,False,False,False,False
+"disease in nuclear medicine,” IEEE Trans. Nucl. Sci.,vol.51, no. 1,",False,False,False,False,False,False
+"pp. 184–192, Feb. 2004.",False,False,False,False,False,False
+"[14] J. A. Scott, K. Aziz, T. Yasuda, and H. Gewirtz, “Integration of clinical and",False,False,False,False,False,False
+imaging data to predict the presence of coronary artery disease with the,False,False,False,False,False,False
+"use of neural networks,” Coron. Artery Dis.,vol. 15, no. 7, pp. 427–434,",False,False,False,False,False,False
+2004.,False,False,False,False,False,False
+"[15] M. Akay, W. Welkowitz, J. L. Semmlow, and J. Kostis, “Application of the",False,False,False,False,False,False
+"ARMA method to acoustic detection of coronary artery disease,” Med.",False,False,False,False,False,False
+"Biol. Eng. Comput.,vol. 37, no. 11, pp. 1095–1104, 1991.",False,False,False,False,False,False
+"[16] M. Akay, W. Welkowitz, J. L. Semmlow, Y. M. Akay, and J. Kostis, “Non-",False,False,False,False,False,False
+invasive acoustical detection of coronary artery disease using the adaptive,False,False,False,False,False,False
+"line enhancer method,” Med. Biol. Eng. Comput.,vol. 30, pp. 147–154,",False,False,False,False,False,False
+1992.,False,False,False,False,False,False
+"[17] M. Akay and W. Welkowitz, “Acoustical detection of coronary occlusions",False,False,False,False,False,False
+"using neural networks,” J. Biomed.Eng.,vol. 15, pp. 469–473, 1993.",False,False,False,False,False,False
+"[18] Y. M. Akay, M. Akay, W. Welkowitz, J. L. Semmlow, and J. Kostis,",False,False,False,False,False,False
+“Noninvasive acoustical detection of coronary artery disease: A compar-,False,False,False,False,False,False
+"ative study of signal processing methods,” IEEE Trans. Biomed. Eng.,",False,False,False,False,False,False
+"vol. 40, no. 6, pp. 571–578, Jun. 1993.",False,False,False,False,False,False
+"[19] M. Pouladian, M. R. H. Golpayegani, A. A. Tehrani-Fard, and M. Bubvay-",False,False,False,False,False,False
+"Nejad, “Noninvasive detection of coronary artery disease by arterio-",False,False,False,False,False,False
+"oscillography,” IEEE Trans. Biomed. Eng.,vol. 52, no. 4, pp. 743–747,",False,False,False,False,False,False
+Apr. 2005.,False,False,False,False,False,False
+[20] I. G,True,False,False,True,False,False
+¨,False,False,False,False,False,False
+uler and E. D.,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"Ubeyli, “Automated diagnostic systems with diverse",False,False,False,False,False,False
+"and composite features for Doppler ultrasound signals,” IEEE Trans.",False,False,False,False,False,False
+"Biomed. Eng.,vol. 53, no. 10, pp. 1934–1942, Oct. 2006.",False,False,False,False,False,False
+"[21] P. Lapuerta, S. P. Azen, and L. Labree, “Use of neural networks in predict-",False,False,False,False,False,False
+"ing the risk of coronary artery disease,” Comput. Biomed. Res.,vol.28,",False,False,False,False,False,False
+"pp. 38–52, 1995.",False,False,False,False,False,False
+"[22] D. Frossyniotis, S. Vrettos, D. Vogiatzis, A. Stafulopatis, C.",False,False,False,False,False,False
+"Konstantinopoulos, D. I. Fotiadis, A. Likas, G. Potamias, A. Naka,",False,False,False,False,False,False
+"T. Tzimas, and L. K. Michalis, “An intelligent system for the early diag-",False,False,False,False,False,False
+"nosis of coronary artery disease,” presented at the Int. Conf. NNESMED,",False,False,False,False,False,False
+"2001, Milos Island, Greece.",False,False,False,False,False,False
+"[23] B. A. Mobley, E. Schechter, W. E. Moore, P. A. McKee, and J. E. Eichner,",False,False,False,False,False,False
+"“Predictions of coronary artery stenosis by artiﬁcial neural network,” Artif.",False,False,False,False,False,False
+"Intell. Med.,vol. 18, pp. 187–203, 2000.",False,False,False,False,False,False
+"[24] B. A. Mobley, E. Schechter, W. E. Moore, P. A. McKee, and J. E. Eichner,",False,False,False,False,False,False
+“Neural network predictions of signiﬁcant coronary artery stenosis in,False,False,False,False,False,False
+"men,” Artif. Intell. Med.,vol. 34, pp. 151–161, 2005.",False,False,False,False,False,False
+"[25] M. Kukar and C. Groselj, “Reliable diagnostics for coronary artery dis-",False,False,False,False,False,False
+"ease,” in Proc. IEEE Comput. Based Med. Syst., 2002, pp. 7–12.",False,False,False,False,False,False
+"[26] M. Kukar, I. Kononenko, C. Groselj, K. Kralj, and J. Fettich, “Analysing",False,False,False,False,False,False
+and improving the diagnosis of ischaemic heart disease with machine,False,False,False,False,False,False
+"learning,” Artif. Intell. Med.,vol. 16, pp. 25–50, 1999.",False,False,False,False,False,False
+"[27] N. B. Merz, “Assessment of patients at intermediate cardiac risk,” Amer.",False,False,False,False,False,False
+"J. Cardiol.,vol. 96, (Suppl.), pp. 2J–10J, 2005.",False,False,False,False,False,False
+"[28] N. M. van Popele, D. E. Grobee, M. L. Bots, R. Asmar, J. Topouchian,",False,False,False,False,False,False
+"R. S. Reneman, A. P. G. Hoeks, A. M. van der Kuip, A. Hofman, and",False,False,False,False,False,False
+"J. C. M. Witteman, “Association between arterial stiffness and atheroscle-",False,False,False,False,False,False
+"rosis: The Rotterdam study,” Stroke,vol. 32, pp. 454–460, 2001.",False,False,False,False,False,False
+"[29] D. I. Fotiadis, Y. Goletsis, A. Likas, and A. Papadopoulos, Clinical De-",False,False,False,False,False,False
+cision Support Systems.New Yo rk: Encyclopedia of Biomedical Engi-,False,False,False,False,False,False
+"neering, Wiley, 2006.",False,False,False,False,False,False
+"[30] J. R. Quinlan, C4.5: Programs for Machine Learning.San Mateo, CA:",False,False,False,False,False,False
+"Morgan Kauffman, 1993.",False,False,False,False,False,False
+"[31] F. M. Brown, Boolean Reasoning: The Logic of Boolean Equations, 2nd",False,False,False,False,False,False
+"ed. New York: Dover Publications, 2003.",False,False,False,False,False,False
+"[32] L. X. Wang, ACourse in Fuzzy Systems and Control.Englewood Cliffs,",False,False,False,False,False,False
+"NJ: Prentice-Hall, 1986.",False,False,False,False,False,False
+"[33] F. V. Theos, I. E. Lagaris, and D. G. Papageorgiou, “PANMIN: Sequential",False,False,False,False,False,False
+and parallel global optimization procedures with a variety of options for,False,False,False,False,False,False
+"the local search strategy,” Comput. Phys. Commun,vol. 159, pp. 63–69,",False,False,False,False,False,False
+2004.,False,False,False,False,False,False
+"[34] R. J. Woodman and G. F. Watts, “Measurement and application of arterial",False,False,False,False,False,False
+stiffness in clinical research: Focus on new methodologies and diabetes,False,False,False,False,False,False
+"mellitus,” Med. Sci. Monit.,vol. 9, pp. RA101–RA109, 2003.",False,False,False,False,False,False
+"[35] L. M. van Bortel, D. Duprez, M. J. Starmans-Kool, M. E. Safar,",False,False,False,False,False,False
+"C. Giannattasio, J. Cockroft, D. R. Kaiser, and C. Thuillez, “Clinical",False,False,False,False,False,False
+"applications of arterial stiffness, task force III: Recommendations for user",False,False,False,False,False,False
+"procedures,” Amer. J. Hypertens.,vol. 15, pp. 445–452, 2002.",False,False,False,False,False,False
+"[36] M. F. O’Rourke and D. E. Gallagher, “Pulse wave analysis,” J. Hypertens.,",False,False,False,False,False,False
+"vol. 14, pp. 147–157, 1996.",False,False,False,False,False,False
+"[37] I. B. Wilkinson, H. M. Callum, L. Flint, J. R. Cockcroft, D. E. Newby,",False,False,False,False,False,False
+"and D. J. Webb, “The inﬂuence of heart rate on augmentation index and",False,False,False,False,False,False
+"central arterial pressure in humans,” J. Physiol.,vol. 525.1, pp. 263–270,",False,False,False,False,False,False
+2000.,False,False,False,False,False,False
+"[38] M. G. Tsipouras, C. Voglis, and D. I. Fotiadis, “A framework for fuzzy",False,False,False,False,False,False
+"expert system creation—Application to cardiovascular diseases,” IEEE",False,False,False,False,False,False
+"Trans. Biomed. Eng.,vol. 54, no. 11, pp. 2089–2105, 2007.",False,False,False,False,False,False
+"[39] P. N. Tan, M. Steinbach, and V. Kumar, Introduction to Data Mining.",False,False,False,True,False,False
+"Reading, MA: Addison-Wesley, 2005.",False,False,False,False,False,False
+"[40] J.-S. R. Jang and C.-T. Sun, “Neuro-fuzzy modeling and control,” Proc.",False,False,False,False,False,False
+"IEEE,vol. 83, pp. 378–406, 1995.",False,False,False,False,False,False
+"[41] J. Abonyi, H. Roubos, and F. Szeifert, “Data-driven generation of compact,",False,False,False,False,False,False
+"accurate, and linguistically sound fuzzy classiﬁers based on a decision",False,False,False,False,False,False
+"tree initialization,” Int. J. Approx. Reason.,vol. 31, no. 1, pp. 1–21,",False,False,False,False,False,False
+2003.,False,False,False,False,False,False
+"[42] V. Kecman, Learning and Soft Computing: Support Vector Machines,",False,False,False,False,False,False
+"Neural Networks and Fuzzy Logic Models.Cambridge, MA: MIT Press,",False,False,False,False,False,False
+2000.,False,False,False,False,False,False
+"[43] J. Blacher, A. P. Guerin, B. Dannier, S. J. Marchais, M. E. Safar, and",False,False,False,False,False,False
+"G. M. London, “Impact of aortic stiffness on survival in end-stage renal",False,False,False,False,False,False
+"disease,” Circulation,vol. 99, pp. 2434–2439, 1999.",False,False,False,False,False,False
+"[44] S. Laurent, P. Boutouyrie, R. Asmar, I. Gautier, B. Laloux, L. Guize,",False,False,False,False,False,False
+"P. Ducimetiere, and A. Benetos, “Aortic stiffness is an independent pre-",False,False,False,False,False,False
+"dictor of all-cause and cardiovascular mortality in hypertensive patients,”",False,False,False,False,False,False
+"Hypertension,vol. 37, pp. 1236–1241, 2001.",False,False,False,False,False,False
+"[45] K. Cruickshank, L. Riste, S. E. Anderson, J. S. Wright, G. Dunn, and",False,False,False,False,False,False
+"R. E. Gosling, “Aortic PWV and its relationship to mortality in diabetes",False,False,False,False,False,False
+"and glucose intolerance: An integrated index of vascular function?,” Cir-",False,False,False,False,False,False
+"culation,vol. 106, pp. 2085–2090, 2002.",False,False,False,False,False,False
+"[46] Y. Koji, H. Tomiyama, H. Ischihashi, T. Nagae, N. Tanaka, K. Takazawa,",False,False,False,False,False,False
+"S. Ishimaru, and A. Yamashima, “Comparison of ankle-brachial pressure",False,False,False,False,False,False
+index and pulse wave velocity as markers of the presence of CAD in,False,False,False,False,False,False
+"subjects with a high-risk of atherosclerosic cardiovascular disease,” Amer.",False,False,False,False,False,False
+"J. Cardiol.,vol. 94, pp. 868–872, 2004.",False,False,False,False,False,False
+"[47] Y. Oushi, K. Terashita, T. Nakamura, K. Yamaoki, Y. Yazaki, E. Toda,",False,False,False,False,False,False
+"T. Ya manushi, and H. Orimo, “Aortic PWV in patients with coronary",False,False,False,False,False,False
+"atherosclerosis—A comparison with coronary angiographic ﬁndings,”",False,False,False,False,False,False
+"Nippon Igakkai Zasshi,vol. 28, pp. 40–45, 1991.",False,False,False,False,False,False
+"[48] G. M. London, J. Blacher, B. Pannier, A. P. Guerin, S. J. Marchais, and",False,False,False,False,False,False
+"M. E. Safar, “Arterial wave reﬂections and survival in end-stage renal",False,False,False,False,False,False
+"failure,” Hypertension,vol. 38, pp. 434–438, 2001.",False,False,False,False,False,False
+"[49] T. Weber, J. Auer, M. F. O’Rourke, E. Kvas, E. Lassnig, R. Berent, and",False,False,False,False,False,False
+"B. Eber, “Arterial stiffness, wave reﬂections, and the risk of coronary",False,False,False,False,False,False
+"artery disease,” Circulation,vol. 109, pp. 184–189, 2004.",False,False,False,False,False,False
+"[50] R. Gianrossi, R. Detrano, D. Mulvihill, K. Lehmann, P. Dubach,",False,False,False,False,False,False
+"A. Colombo, D. MacArthur, and V. Froelicher, “Exercise-induced ST",False,False,False,False,False,False
+"depression in the diagnosis of coronary artery disease. A meta-analysis,”",False,False,False,False,False,False
+"Circulation,vol. 80, pp. 87–98, 1989.",False,False,False,False,False,False
+"[51] V. Froelicher, K. Lehmann, R. Thomas, S. Goldman, D. Morrison,",False,False,False,False,False,False
+"R. Edson, P. Lavori, J. Myers, C. Dennis, R. Shabetai, D. Do, and",False,False,False,False,False,False
+"J. Froning, “The electrocardiogrphic exercise test in a population with",False,False,False,False,False,False
+"reduced workup bias: Diagnostic performance, computerized interpre-",False,False,False,False,False,False
+"tation, and multivariate prediction,” Ann. Int. Med.,vol. 128, no. 12,",False,False,False,False,False,False
+"pt. 1, pp. 965–974, 1998, The Veterans Affairs Cooperative Study In",False,False,False,False,False,False
+Health Services #016 (QUEXTA) Study Group.,False,False,False,False,False,False
+"[52] K. E. Fleischmann, M. G. Hunink, K. M. Kuntz, and P. S. Douglas,",False,False,False,False,False,False
+“Exercise echocardiography or exercise SPECT imaging? A meta-analysis,False,False,False,False,False,False
+"of diagnostic test performance,” JAMA,vol. 280, no. 10, pp. 913–920,",False,False,False,False,False,False
+1998.,False,False,False,False,False,False
+"[53] C. Kim, Y. S. Kwok, P. Heagerty, and R. Redberg, “Pharmacologic stress",False,False,False,False,False,False
+"testing for coronary disease diagnosis: A meta-analysis,” Amer. Heart J.,",False,False,False,False,False,False
+"vol. 142, no. 6, pp. 934–44, 2001.",False,False,False,False,False,False
+"[54] M. B. Imran, A. Palinkas, and E. Picano, “Head-to-head comparison of",False,False,False,False,False,False
+dipyridamole echocardiography and stress perfusion scintigraphy for the,False,False,False,False,False,False
+detection of coronary artery disease: A meta-analysis. Comparison be-,False,False,False,False,False,False
+"tween stress echo and scintigraphy,” Int. J. Cardiovasc. Imag.,vol.19,",False,False,False,False,False,False
+"no. 1, pp. 23–28, 2003.",False,False,False,False,False,False
+"[55] B. K. Nallamothu, S. Saint, L. F. Bielak, S. S. Sonnad, P. A. Peyser,",False,False,False,False,False,False
+"M. Rubenﬁre, and A. M. Fendrick, “Electron-beam computed tomography",False,False,False,False,False,False
+"in the diagnosis of coronary artery disease: A meta-analysis,” Arch. Int.",False,False,False,False,False,False
+"Med.,vol. 161, no. 6, pp. 833–838, 2001.",False,False,False,False,False,False
+"[56] A. W. Leber, A. Knez, F. von Ziegler, A. Becker, K. Nikolaou,",False,False,False,False,False,False
+"S. Paul, B. Wintersperger, M. Reiser, C. R. Becker, G. Steinbeck, and",False,False,False,False,False,False
+"P. Boekstegers, “Quantiﬁcation of obstructive and nonobstructive coro-",False,False,False,False,False,False
+nary lesions by 64-slice computed tomography: A comparative study with,False,False,False,False,False,False
+"quantitative coronary angiography and intravascular ultrasound,” J. Amer.",False,False,False,False,False,False
+"Coll. Cardiol.,vol. 46, no. 1, pp. 147–54, 2005.",False,False,False,False,False,False
+"[57] G. L. Raff, M. J. Gallagher, W. W. O’Neill, and J. A. Goldstein, “Di-",False,False,False,False,False,False
+agnostic accuracy of noninvasive coronary angiography using 64-slice,False,False,False,False,False,False
+"spiral computed tomography,” J. Amer. Coll. Cardiol.,vol.46, no. 3,",False,False,False,False,False,False
+"pp. 552–557, 2005.",False,False,False,False,False,False
+"[58] P. G. Danias, A. Roussakis, and J. P. Ioannidis, “Diagnostic performance",False,False,False,False,False,False
+of coronary magnetic resonance angiography as compared against con-,False,False,False,False,False,False
+"ventional X-ray angiography: A meta-analysis,” J. Amer. Coll. Cardiol.,",False,False,False,False,False,False
+"vol. 44, no. 9, pp. 1867–1876, 2004.",False,False,False,False,False,False
+"[59] S. Plein, A. Radjenovic, J. P. Ridgway, D. Barmby, J. P. Greenwood,",False,False,False,False,False,False
+"S. G. Ball, and M. U. Sivananthan, “Coronary artery disease: Myocar-",False,False,False,False,False,False
+dial perfusion MR imaging with sensitivity encoding versus conventional,False,False,False,False,False,False
+"angiography,” Radiology,vol. 235, no. 2, pp. 423–430, 2005.",False,False,False,False,False,False
+"Markos G. Tsipouras (S’07) was born in Athens,",False,False,False,False,False,False
+"Greece, in 1977. He received the Diploma, M.Sc.,",False,False,False,False,False,False
+and Ph.D. degrees in computer science from the De-,False,False,False,False,False,False
+"partment of Computer Science, University of Ioan-",False,False,False,False,False,False
+"nina, Ioannina, Greece, in 1999, 2002, and 2008,",False,False,False,False,False,False
+respectively.,False,False,False,False,False,False
+He is currently a Researcher at the Unit of Medi-,False,False,False,False,False,False
+"cal Technology and Intelligent Information Systems,",False,False,False,False,False,False
+University of Ioannia. His research interests include,False,False,False,False,False,False
+"biomedical engineering, decision support and medi-",False,False,False,False,False,False
+"cal expert systems, and biomedical applications.",False,False,False,False,False,False
+"Themis P. Exarchos (S’07) was born in Ioannina,",False,False,False,False,False,False
+"Greece, in 1980. He received the Diploma degree",False,False,False,False,False,False
+in computer engineering and informatics from the,False,False,False,False,False,False
+"University of Patras, Patras, Greece, in 2003. He is",False,False,False,False,False,False
+currently working toward the Ph.D. degree in med-,False,False,False,False,False,False
+"ical physics at the Department of Medical Physics,",False,False,False,False,False,False
+"Medical School, University of Ioannina, Ioannina.",False,False,False,False,False,False
+He is with the Unit of Medical Technology and,False,False,False,False,False,False
+"Intelligent Information Systems, Department of",False,False,False,False,False,False
+"Computer Science, University of Ioanniana. His cur-",False,False,False,False,False,False
+rent research interests include medical data min-,False,False,False,False,False,False
+"ing, decision support systems in healthcare, and biomedical applications and",False,False,False,False,False,False
+bioinformatics.,False,False,False,False,False,False
+Dimitrios I. Fotiadis (M’01–SM’06) was born in,False,False,False,False,False,False
+"Ioannina, Greece, in 1961. He received the Diploma",False,False,False,False,False,False
+degree in chemical engineering from the National,False,False,False,False,False,False
+"Technical University of Athens, Athens, Greece, and",False,False,False,False,False,False
+the Ph.D. degree in chemical engineering from the,False,False,False,False,False,False
+"University of Minnesota, Twin Cities.",False,False,False,False,False,False
+"Since 1995, he has been with the Unit of Medi-",False,False,False,False,False,False
+"cal Technology and Intelligent Information Systems,",False,False,False,False,False,False
+"Department of Computer Science, University of Ioan-",False,False,False,False,False,False
+"nina, Ioannina, where he is currently the Director and",False,False,False,False,False,False
+an Associate Professor. His current research interests,False,False,False,False,False,False
+"include biomedical technology, biomechanics, scientiﬁc computing, and intel-",False,False,False,False,False,False
+ligent information systems.,False,False,False,False,False,False
+"Anna P. Kotsia was born in Ioannina, Greece, in",False,False,False,False,False,False
+1977. She received the Graduate degree (with distinc-,False,False,True,True,False,False
+"tion) in 2002 from the Medical School, University of",False,False,False,False,False,False
+"Ioannina, Ioannina, where she is currently working",False,False,False,False,False,False
+toward the Ph.D. degree in cardiology.,False,False,False,False,False,False
+She was a Trainee in internal medicine. Her cur-,False,False,False,False,False,False
+rent research interests include interventional cardiol-,False,False,False,False,False,False
+ogy and vascular endothelial function.,False,False,False,False,False,False
+"Konstantinos V. Vakalis was born in Ioannina,",False,False,False,False,False,False
+"Greece, in 1979. He received the Graduate degree",False,False,False,False,False,False
+"in 2004 from the Medical School, University of",False,False,False,False,False,False
+"Ioannina, Ioannina, where he is currently working",False,False,False,False,False,False
+toward the Ph.D. degree in cardiology.,False,False,False,False,False,False
+"He is with the Michaelidion Cardiology Centre,",False,False,False,False,False,False
+University of Ioannina. His current research interests,False,False,False,False,False,False
+include arterial stiffness and coronary artery disease.,False,False,False,False,False,False
+"Katerina K. Naka was born in Ioannina, Greece,",False,False,False,False,False,False
+in 1971. She received the M.D. degree (with dis-,False,False,False,False,False,False
+"tinction) from the Medical School, University of",False,False,False,False,False,False
+"Ioannina, Ioannina, in 1994, and the Ph.D. degree",False,False,False,False,False,False
+in cardiology from the University of Wales College,False,False,False,False,False,False
+"of Medicine, Cardiff, Wales, U.K., in 2003.",False,False,False,False,False,False
+She was a Trainee in Cardiology. She is currently,False,False,False,False,False,False
+"with the Medical School, University of Ioannina, as a",False,False,False,False,False,False
+Lecturer in Cardiology. Her current research interests,False,False,False,False,False,False
+"include vascular endothelial function, large arterial",False,False,False,False,False,False
+"mechanics, heart failure, and bioengineering.",False,False,False,False,False,False
+"Lampros K. Michalis was born in Arta, Greece, in",False,False,False,False,False,False
+1960. He received the M.D. (with distinction) and,False,False,True,True,False,False
+Ph.D. degrees (with distinction) in cardiology from,False,False,False,False,False,False
+"the Medical School, University of Athens, Athens,",False,False,False,False,False,False
+"Greece, in 1984 and 1989, respectively.",False,False,False,False,False,False
+"Since 1995, he has been with the Medical School,",False,False,False,False,False,False
+"University of Ioannina, Ioannina, Greece, where he",False,False,False,False,False,False
+is currently a Professor of Cardiology. He is the In-,False,False,False,False,False,False
+charge of the Coronary Care Unit and the Catheter,False,False,False,False,False,False
+"Laboratory, University Hospital, Medical School,",False,False,False,False,False,False
+University of Ioannina. His current research inter-,False,False,False,False,False,False
+ests include bioengineering and interventional cardiology.,False,False,False,False,False,False

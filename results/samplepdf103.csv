@@ -1,0 +1,420 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+Accuracy Performance Analysis ,False,False,False,False,False,False
+of ,False,False,False,False,False,False
+Multimodal Biometrics ,False,False,False,False,False,False
+S. ,True,False,False,True,False,False
+K. ,True,False,False,True,False,False
+Dahel ,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+Q. ,True,False,False,True,False,False
+Xiao ,False,False,False,False,False,False
+Abstract-Since  biometrics may used to ensure that a per- ,False,False,False,True,False,False
+son  accessing  information  is  authorized  to do ,False,False,False,False,False,False
+"so, ",False,False,False,False,False,False
+interest ,False,False,False,False,False,False
+in  biometrics ,False,False,False,False,False,False
+for ,False,False,False,False,False,False
+information  assurance  has  increased  re- ,False,False,False,False,False,False
+cently.  New biometric applications are constantly being an- ,False,False,False,False,False,False
+nounced  while  at the same  time  new  spoofing  technology ,False,False,False,False,False,False
+is being  developed to defeat  them.  One approach to over- ,False,False,False,False,False,False
+coming  the  problem  of  spoofing  is  the  use ,False,False,False,False,False,False
+multimodal ,False,False,False,False,False,False
+biometric fusion.  Most  current research is focused on over- ,False,False,False,False,False,False
+coming the deficiencies ,False,False,False,False,False,False
+of ,False,False,False,False,False,False
+a single biometric  trait ,False,False,False,False,False,False
+or ,False,False,False,False,False,False
+reduc- ,False,False,False,False,False,False
+"ing  the false  acceptance  rate,  both without  any emphasis ",False,False,False,False,False,False
+on the  false  rejection  rate.  Multimodal  biometric  fusion ,False,False,False,False,False,False
+combines  measurements  from  different biometric  traits to ,False,False,False,False,False,False
+enhance  the strengths and  diminish the weaknesses  of the ,False,False,False,False,False,False
+individual measurements. ,False,False,False,False,False,False
+This paper investigates two types ,False,False,False,False,False,False
+of ,False,False,False,False,False,False
+errors associated with ,False,False,False,False,False,False
+biometrics.  The accuracy  is  analyzed for  multimodal bio- ,False,False,False,False,False,False
+metric  systems utilizing  two  commonly  used  fusion  rules. ,False,False,False,False,False,False
+The purpose of this study is to provide a theoretical evalua- ,False,False,False,False,False,False
+tion for the false acceptance and the false rejection  rates to ,False,False,False,False,False,False
+improve the accuracy as well as the convenience of biometric ,False,False,False,False,False,False
+applications. ,False,False,False,False,False,False
+INTRODUCTION ,True,False,False,True,False,False
+Information  assurance  addresses  issues  related  to au- ,False,False,False,False,False,False
+"thentication, availability, confidentiality, integrity and non- ",False,False,False,False,False,False
+"repudiation in information systems.  Consequently, there is ",False,False,False,False,False,False
+a ,False,False,False,False,False,False
+need to assure that only authenticated users have access ,False,False,False,False,False,False
+to the system.  Interest in biometrics for information assur- ,False,False,False,False,False,False
+"ance has never been greater than it is today.  Increasingly, ",False,False,False,False,False,False
+both the public and private sectors are choosing biometrics ,False,False,False,False,False,False
+"to secure their physical facilities, electronic data, and com- ",False,False,False,False,False,False
+puter  networks.  Biometric  technology  is being  used  in ,False,False,False,False,False,False
+a ,False,False,False,False,False,False
+"varied array of  applications including access control, foren- ",False,False,False,False,False,False
+"sic investigation,  identity verification, information  protec- ",False,False,False,False,False,False
+"tion, and security monitoring. ",False,False,False,False,False,False
+Biometric  solutions  identify  or  verify  an  individual’s ,False,False,False,False,False,False
+identity by  measuring  either physiological or  behavioural ,False,False,False,False,False,False
+characteristics.  Common physiological biometric measure- ,False,False,False,False,False,False
+"ments include fingerprints, hand geometry, and retina, iris, ",False,False,False,False,False,False
+"and facial images, while common behavioral biometric mea- ",False,False,False,False,False,False
+"surements include signatures, voice recordings  (which also ",False,False,False,False,False,False
+"has a  physiological  component), and  keystroke  rhythms. ",False,False,False,False,False,False
+Any  one ,False,False,False,False,False,False
+these  biometric  measurements  can  positively ,False,False,False,False,False,False
+identify ,False,False,False,False,False,False
+person  from  among hundreds  of  others.  How- ,False,False,False,False,False,False
+"ever, biomet,ric measurements are inherently varied because ",False,False,False,False,False,False
+the existence ,False,False,False,False,False,False
+"background noise, signal distortion, bio- ",False,False,False,False,False,False
+"metric feature changes,  and environment variations. ",False,False,False,False,False,False
+For ,False,False,False,False,False,False
+"instance, facial biometrics can vary with changes in facial ",False,False,False,False,False,False
+"expressions  and ambient  light,  and fingerprint  biometrics ",False,False,False,False,False,False
+can  vary  with press  pressure  and moisture. ,False,False,False,False,False,False
+a ,False,False,False,False,False,False
+"result, ",False,False,False,False,False,False
+recognition  based  on  a single biometric  trait  may not  be ,False,False,False,False,False,False
+sufficiently robust and it has a limited ability to overcome ,False,False,False,False,False,False
+spoofing. Many researchers have proposed multimodal bio- ,False,False,False,False,False,False
+metric fusion ,False,False,False,False,False,False
+a solution to this problem ,False,False,False,False,False,False
+Multi- ,False,False,False,False,False,False
+ple samples are taken from multiple biometric traits using ,False,False,False,False,False,False
+multiple sensor technologies and are combined using fusion ,False,False,False,False,False,False
+technology to obtain a more reliable and accurate result. ,False,False,False,False,False,False
+Biometric systems are designed to make binary decisions- ,False,False,False,False,False,False
+accepting  the authorized  personnel  and rejecting the im- ,False,False,False,False,False,False
+postors.  Two types of  errors accompany biometric systems: ,False,False,False,False,False,False
+false acceptance ,False,False,False,False,False,False
+(FA) ,True,False,False,True,False,False
+"errors, letting the impostor in, and ",False,False,False,False,False,False
+false rejection ,False,False,False,False,False,False
+"errors, keeping the authorized person- ",False,False,False,False,False,False
+"nel out.  In this paper, we  evaluate and compare the false ",False,False,False,False,False,False
+acceptance rate ,False,False,False,False,False,False
+and the false rejection rate ,False,False,False,False,False,False
+of  multimodal biometric prototypes. The system error of ,False,False,False,False,False,False
+a ,False,False,False,False,False,False
+multimodal biometric system is a combination of  the ,False,False,False,False,False,False
+and the ,False,False,False,False,False,False
+from different biometric technologies. ,False,False,False,False,False,False
+in the ,False,False,False,False,False,False
+"a single biometric measurement, the combi- ",False,False,False,False,False,False
+nation ,False,False,False,False,False,False
+several measurements makes it harder to analyze ,False,False,False,False,False,False
+the accuracy of ,False,False,False,False,False,False
+a ,False,False,False,False,False,False
+multimodal biometric  system. ,False,False,False,False,False,False
+Section ,False,False,False,False,False,False
+is ,False,False,False,False,False,False
+a ,False,False,False,False,False,False
+brief introduction to biometric fusion.  Sec- ,False,False,False,False,False,False
+tion I11 explains ,False,False,False,False,False,False
+and their interdependencies ,False,False,False,False,False,False
+and  section  IV  focuses on  their  probabilistic representa- ,False,False,False,False,False,False
+tions  in ,False,False,False,False,False,False
+a ,False,False,False,False,False,False
+multimodal  setting.  Section V derives an eval- ,False,False,False,False,False,False
+uation ,False,False,False,False,False,False
+the false acceptance/rejection  rates in a bimodal ,False,False,False,False,False,False
+"biometric fusion and shows that, under certain conditions, ",False,False,False,False,False,False
+"bimodal biometric fusion have better performance.  Finally, ",False,False,False,False,False,False
+a summary and conclusions are presented in section VI. ,False,False,False,False,False,False
+11. ,False,False,True,True,False,False
+FUSION ,True,False,False,True,False,False
+BIOMETRICS ,True,False,False,True,False,False
+"In  recent  years, multimodal  biometrics  has become  an ",False,False,False,False,False,False
+important research  trend in improving biometric accuracy ,False,False,False,False,False,False
+"For example, multiple biometric traits can be cap- ",False,False,False,False,False,False
+tured by  different  sensors; ,False,False,False,False,False,False
+a ,False,False,False,False,False,False
+number of  biometric  proce- ,False,False,False,False,False,False
+dures can be applied  to provide a variety of  information; ,False,False,False,False,False,False
+different matching  algorithms  can  be developed  to yield ,False,False,False,False,False,False
+independent match scores;  and  several rules  can be used ,False,False,False,False,False,False
+to make decisions on  multimodal  biometric  outputs.  The ,False,False,False,False,False,False
+challenge ,False,False,False,False,False,False
+in combining separate biometric  technologies ,False,False,False,False,False,False
+systematically. ,False,False,False,False,False,False
+enable a decision based on multimodal ,False,False,False,False,False,False
+biometrics  to be  superior  to that based  on  a  single  bio- ,False,False,False,False,False,False
+2003 ,False,False,False,False,False,False
+"metric technology, information ftision technology has been ",False,False,False,False,False,False
+introduced to integrate multiple biometrics to achieve bet- ,False,False,False,False,False,False
+ter performance ,False,False,False,False,False,False
+[2]-[4]. ,False,False,False,False,False,False
+Information  fusion is ,False,False,False,False,False,False
+method for  merging  the predic- ,False,False,False,False,False,False
+tions ,False,False,False,False,False,False
+various  sources ,False,False,False,False,False,False
+of ,False,False,False,False,False,False
+information ,False,False,False,False,False,False
+to ,False,False,False,False,False,False
+either ,False,False,False,False,False,False
+"one presentational format, or to reach ",False,False,False,False,False,False
+decision.  Humans ,False,False,False,False,False,False
+perform  acts of  information fusion every day:  using  both ,False,False,False,False,False,False
+eyes; listening to and watching ,False,False,False,False,False,False
+"seeing, smelling,  and ",False,False,False,False,False,False
+tasting food; etc.  All  are examples of  information  fusion. ,False,False,False,False,False,False
+Commonly  used  decision-making  rules  in information  fu- ,False,False,False,False,False,False
+"sion include the weighted product rule, weighted sum rule, ",False,False,False,False,False,False
+"sum rule, min  rule, max rule, median  rule, and majority ",False,False,False,False,False,False
+voting rule.  Information fusion can be applied at different ,False,False,False,False,False,False
+"levels of  biometrics,  such as the sensor,  feature, classifi- ",False,False,False,False,False,False
+"cation, or  decision  levels,  and can be treated  in  different ",False,False,False,False,False,False
+"ways,  such  as  equal, weighted,  or  dynamic, as shown  in ",False,False,False,False,False,False
+Fig. ,False,False,False,False,True,False
+1. ,False,False,True,True,False,False
+Recently Sanderson ,False,False,False,False,False,False
+reviewed the common infor- ,False,False,False,False,False,False
+mation fusion approaches for personal verification based on ,False,False,False,False,False,False
+"speech and facial biometrics.  He concluded  that, in clean ",False,False,False,False,False,False
+"conditions, all the non-adaptive approaches provide similar ",False,False,False,False,False,False
+"performance, and that the weighted  summation method is ",False,False,False,False,False,False
+the most flexible fusion technique. ,False,False,False,False,False,False
+ACCEPTANCE ,True,False,False,True,False,False
+RATES ,True,False,False,True,False,False
+"In a real application, ",False,False,False,False,False,False
+biometric system essentially clas- ,False,False,False,False,False,False
+sifies an individual  as either a genuine user  (called an en- ,False,False,False,False,False,False
+"rollee)  or  an impostor.  Thus, the system  may  make  two ",False,False,False,False,False,False
+types of  recognition errors: it either falsely accepts an ini- ,False,False,False,False,False,False
+postor or  falsely rejects  an enrollee.  We  prefer ,False,False,False,False,False,False
+to ,False,False,False,False,False,False
+use  the ,False,False,False,False,False,False
+following terms to measure these two types ,False,False,False,False,False,False
+The ,False,False,False,False,False,False
+false acceptance rate is  the probability that an unautho- ,False,False,False,False,False,False
+rized  individual is  authenticated.  The false rejection  rate ,False,False,False,False,False,False
+the probability that an authorized individual is inappro- ,False,False,False,False,False,False
+priately rejected. The false match rate (FMR) is the prob- ,False,False,False,False,False,False
+ability that an enrollee is incorrectly matched to a different ,False,False,False,False,False,False
+user's template.  The false non-match rate (FNMR) is the ,False,False,False,False,False,False
+probability that an enrollee  is incorrectly judged  not  to ,False,False,False,False,False,False
+match with hisjher own enrollment  template.  When mul- ,False,False,False,False,False,False
+"tiple  attempts are combined  to decide  acceptance, ",False,False,False,False,False,False
+and ,False,False,False,False,False,False
+are more  meaningful ,False,False,False,False,False,False
+the system level  than ,False,False,False,False,False,False
+FMR and FNMR. In practice the true ,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+are ,False,False,False,False,False,False
+seldom  known  but may be estimated by ,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+"respectively, ",False,False,False,False,False,False
+given by equations ,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+(1) ,False,False,False,False,False,False
+number of  false acceptances ,False,False,False,False,False,False
+number of  impostor attempts ,False,False,False,False,False,False
+number of  false rejections ,False,False,False,False,False,False
+number  of  enrollee attempts ,False,False,False,False,False,False
+A false acceptance allows an impostor to access high se- ,False,False,False,False,False,False
+curity resources. ,False,False,False,False,False,False
+false rejection  denies  an enrollee  the ,False,False,False,False,False,False
+ability to use the same resources. ,False,False,False,False,False,False
+matching threshold ,False,False,False,False,False,False
+is used to decide between  a genuine user  and an impostor. ,False,False,False,False,False,False
+In Fig. ,False,False,False,False,True,False
+the ,False,False,False,False,False,False
+is the area under the genuine density ,False,False,False,False,False,False
+function  to the left ,False,False,False,False,False,False
+the threshold  and the ,False,False,False,False,False,False
+is the ,False,False,False,False,False,False
+area under  the impostor  density function to the right  of ,False,False,False,False,False,False
+the threshold. ,False,False,False,False,False,False
+The figure illustrates that changing the threshold  to de- ,False,False,False,False,True,False
+crease ,False,False,False,False,False,False
+increases the ,False,False,False,False,False,False
+"Therefore, if  the threshold ",False,False,False,False,False,False
+"setting is increased to make the access harder for impostors, ",False,False,False,False,False,False
+some enrollees may find it more difficult  to gain access. ,False,False,False,False,False,False
+IV.  MULTIMODAL ,True,True,False,True,False,False
+The error rates of  combining different biometrics can be ,False,False,False,False,False,False
+"estimated as follows.  Let's assume  that, for each biomet- ",False,False,False,False,False,False
+"ric, a decision is based on a score ",False,False,False,False,False,False
+computed from some ,False,False,False,False,False,False
+user's  characteristic and that ,False,False,False,False,False,False
+are independent random ,False,False,False,False,False,False
+measurements. Since the decision is either to accept or re- ,False,False,False,False,False,False
+"ject  a claimed  identity, the null  and alternate hypotheses ",False,False,False,False,False,False
+are ,False,False,False,False,False,False
+ahd ,False,False,False,False,False,False
+"Then, the accuracy  performance  of  a  biometric  system ",False,False,False,False,False,False
+"can be represented  with  a confusion  matrix, in which  the ",False,False,False,False,False,False
+probabilities  of  all possible situations are as follows: ,False,False,False,False,False,False
+where ,False,False,False,False,False,False
+is ,False,False,False,False,False,False
+"the true  impostor  class, ",False,False,False,False,False,False
+is  the true en- ,False,False,False,False,False,False
+"rollee class,  and ",False,False,False,False,False,False
+represent the corresponding assigned ,False,False,False,False,False,False
+"classes, ",False,False,False,False,False,False
+"is the true acceptance rate, and ",False,False,False,False,False,False
+is the ,False,False,False,False,False,False
+true rejection  rate.  For  a test based  on biometric ,False,False,False,False,False,False
+It is ,False,False,False,False,False,False
+0-7803-7808-3/03/$17.00 ,False,False,False,False,False,False
+2003 ,False,False,False,False,False,False
+IEEE ,True,False,False,True,False,False
+171 ,False,False,False,False,False,False
+This probability is lower than that of  any single biometric ,False,False,False,False,False,False
+"test.  However,  the probability  of  false  rejection  will  be ",False,False,False,False,False,False
+calculated ,False,False,False,False,False,False
+"Unfortunately, this probability is higher than that of  any ",False,False,False,False,False,False
+individual  biometric test. ,False,False,False,False,False,False
+meaningful  operating range ,False,False,False,False,False,False
+needs  to be  found  to balance  accuracy  with  user  conve- ,False,False,False,False,False,False
+nience. ,False,False,False,False,False,False
+EVALUATION ,True,False,False,True,False,False
+"In this  section,  we  will  compare  the ",False,False,False,False,False,False
+and ,False,False,False,False,False,False
+"for two bimodal biometrics  systems.  The first  system, ",False,False,False,False,False,False
+is ,False,False,False,False,False,False
+based  on  the conjunction ,False,False,False,False,False,False
+of ,False,False,False,False,False,False
+two  single  biometric  sys- ,False,False,False,False,False,False
+"tems  while  the second  systLm, ",False,False,False,False,False,False
+is  based  on  the sum ,False,False,False,False,False,False
+rule.  More ,False,False,False,False,False,False
+"specifically, let ",False,False,False,False,False,False
+and ,False,False,False,False,False,False
+Under  conditions  stated ,False,False,False,False,False,False
+in  Theorem ,False,False,False,False,False,False
+it ,False,False,False,False,False,False
+shown  that  for  a  same ,False,False,False,False,False,False
+i.e. ,False,False,False,False,False,False
+the system ,False,False,False,False,False,False
+offers ,False,False,False,False,False,False
+better ,False,False,False,False,False,False
+When ,False,False,False,False,False,False
+"is the true situation, we  assume that ",False,False,False,False,False,False
+"each  biometric  score, ",False,False,False,False,False,False
+has  a  Gaussian p.d.f ,False,False,False,False,False,False
+(without loss of  generality ,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+can then be shown that ,False,False,False,False,False,False
+assumed  (without loss ,False,False,False,False,False,False
+generality) that ,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+"The false  acceptance/rejection  probabilities, ",False,False,False,False,False,False
+and ,False,False,False,False,False,False
+be  computed ,False,False,False,False,False,False
+the integral ,False,False,False,False,False,False
+the ,False,False,False,False,False,False
+distribution density  functions ,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+respectively ,False,False,False,False,False,False
+follows: ,False,False,False,False,False,False
+The probabilities ,False,False,False,False,False,False
+false acceptance  and false rejection ,False,False,False,False,False,False
+for multimodal biometrics can be defined as ,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+for ,False,False,False,False,False,False
+where ,False,False,False,False,False,False
+represents  the number ,False,False,False,False,False,False
+of  biometric traits. The multimodal biometrics test will be ,False,False,False,False,False,False
+based  on ,False,False,False,False,False,False
+the purpose of  using niul- ,False,False,False,False,False,False
+timodal biometrics  is .to enhance the security  level ,False,False,False,False,False,False
+that ,False,False,False,False,False,False
+is lower the ,False,False,False,False,False,False
+all the biometric traits must ,False,False,False,False,False,False
+their ,False,False,False,False,False,False
+"own test, ",False,False,False,False,False,False
+that the decision rule will be the conjunction ,False,False,False,False,False,False
+of  the individual rules from each biometric  test. ,False,False,False,False,False,False
+Let us take bimodal ,False,False,False,False,False,False
+biometrics ,False,False,False,False,False,False
+an example. ,False,False,False,False,False,False
+The joint probability  of  false acceptance  can then ,False,False,False,False,False,False
+cal- ,False,False,False,False,False,False
+culated ,False,False,False,False,False,False
+If  we assume that the ,False,False,False,False,False,False
+is the same for both individual ,False,False,False,False,False,False
+"biometric, we then have to find ",False,False,False,False,False,False
+and ,False,False,False,False,False,False
+that satisfy a ,False,False,False,False,False,False
+given overall given ,False,False,False,False,False,False
+(say ,False,False,False,False,False,False
+by solving ,False,False,False,False,False,False
+From ,False,False,False,False,False,False
+we have ,False,False,False,False,False,False
+@(tl ,False,False,False,False,False,False
+Let ,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+be the false rejection rate for system ,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+"respectively,  then ",False,False,False,False,False,False
+The following theorem shows that it ,False,False,False,False,False,False
+possible to keep the ,False,False,False,False,False,False
+same ,False,False,False,False,False,False
+and yet  have lower ,False,False,False,False,False,False
+ISBN ,True,False,False,True,False,False
+0-7803-7808-3/03/$17.00 ,False,False,False,False,False,False
+2003 ,False,False,False,False,False,False
+172 ,False,False,False,False,False,False
+2003 ,False,False,False,False,False,False
+When ,False,False,False,False,False,False
+",j ",False,False,False,False,False,False
+"is true, if  the individual ",False,False,False,False,False,False
+biometric score ,False,False,False,False,False,False
+"1,2, ",False,False,False,False,False,False
+has ,False,False,False,False,False,False
+Gaussian p.d.f ,False,False,False,False,False,False
+and the overall ,False,False,False,False,False,False
+then system ,False,False,False,False,False,False
+has ,False,False,False,False,False,False
+lower ,False,False,False,False,False,False
+than that of  system ,False,False,False,False,False,False
+If ,False,False,False,False,False,False
+suffices to show that the difference ,False,False,False,False,False,False
+Using equations ,False,False,False,False,False,False
+and ,False,False,False,False,False,False
+we have. ,False,False,False,False,False,False
+Hence ,False,False,False,False,False,False
+if ,False,False,False,False,False,False
+@-l(1 ,False,False,False,False,False,False
+Using ,False,False,False,False,False,False
+and since ,False,False,False,False,False,False
+(1 ,False,False,False,False,False,False
+the last in- ,False,False,False,False,False,False
+equality holds ,False,False,False,False,False,False
+(1 ,False,False,False,False,False,False
+"Again, since ",False,False,False,False,False,False
+the last inequality is valid  if ,False,False,False,False,False,False
+1 ,False,False,False,False,False,False
+should be noted that practical values of ,False,False,False,False,False,False
+fall well within ,False,False,False,False,False,False
+this range. ,False,False,False,False,False,False
+CONCLUSION ,True,False,False,True,False,False
+Multimodal biometrics has the potential to overcome the ,False,False,False,False,False,False
+limitations of  any individual biometric  technology  in  im- ,False,False,False,False,False,False
+proving system security level and anti-spoofing.  Informa- ,False,False,False,False,False,False
+tion fusion technology can be applied at different levels and ,False,False,False,False,False,False
+in different ways  to in multimodal biometric  applications. ,False,False,False,False,False,False
+The challenge lies in finding a meaningful operation range ,False,False,False,False,False,False
+to ndt lower the user  convenience while  increasing the ac- ,False,False,False,False,False,False
+curacy. ,False,False,False,False,False,False
+The error rates of ,False,False,False,False,False,False
+bimodal biometric fusion  have been ,False,False,False,False,False,False
+evaluated. The results show that the performance  of  sum- ,False,False,False,False,False,False
+mation approach is superior ,False,False,False,False,False,False
+to ,False,False,False,False,False,False
+a conjunction method that ,False,False,False,False,False,False
+treats the two modalities independently.  Further research ,False,False,False,False,False,False
+needs‘to be undertaken to extend the result to various ap- ,False,False,False,False,False,False
+proaches ,False,False,False,False,False,False
+multimodal biometric fusion ,False,False,False,False,False,False
+that users may ,False,False,False,False,False,False
+evaluate the error rates before  integrating  different fusion ,False,False,False,False,False,False
+technologies in biometric applications. ,False,False,False,False,False,False
+REFERENCES ,True,False,False,True,False,False
+L. ,True,False,False,True,False,False
+W. ,True,False,False,True,False,False
+U. ,True,False,False,True,False,False
+“A ,True,False,False,True,False,False

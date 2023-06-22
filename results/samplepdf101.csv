@@ -1,0 +1,88 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+Abstract – In this paper we present the architecture and,False,False,False,True,False,False
+implementation issues of a dictation machine prototype for,False,False,False,False,False,False
+medical reports. This machine features a voice recognition,False,False,False,False,False,False
+input and a voice synthesis output. The physician dictates the,False,False,False,False,False,False
+"results of a medical analysis to the system, controls the",False,False,False,False,False,False
+construction of the report as well as the system operation by,False,False,False,False,False,False
+an oral dialogue in natural language. At the end of the,False,False,False,False,False,False
+"dictation, the system generates a written report.",False,False,False,False,False,False
+"In addition to signal processing, voice recognition and",False,False,False,False,False,False
+"synthesis hardware, this prototype has a knowledge-based",False,False,False,False,False,False
+"architecture whose Knowledge Sources perform the dialogue,",False,False,False,False,False,False
+the syntactic analysis and the semantic analysis of sentences.,False,False,False,False,False,False
+The entities handled by the system are represented in an,False,False,False,False,False,False
+object oriented form.,False,False,False,False,False,False
+I,True,False,False,True,False,False
+NTRODUCTION,True,False,False,True,False,False
+DESCRIPTION OF THE,True,False,False,True,False,False
+S,True,False,False,True,False,False
+YSTEM,True,False,False,True,False,False
+T,True,False,False,True,False,False
+HE,True,False,False,True,False,False
+K,True,False,False,True,False,False
+NOWLEDGE SOURCES,True,False,False,True,False,False
+A,True,False,False,True,False,False
+RCHITECTURE,True,False,False,True,False,False
+K,True,False,False,True,False,False
+NOWLEDGE,True,False,False,True,False,False
+R,True,False,False,True,False,False
+EPRESENTATION,True,False,False,True,False,False
+Syntax,False,False,False,False,False,False
+KS,True,False,False,True,False,False
+Words,False,False,False,False,False,False
+Dialogue,False,False,False,False,False,False
+KS,True,False,False,True,False,False
+Semantics,False,False,False,False,False,False
+KS,True,False,False,True,False,False
+Voice,False,False,False,False,False,False
+recognition,False,False,False,False,False,False
+circuit,False,False,False,False,False,False
+Words,False,False,False,False,False,False
+Voice,False,False,False,False,False,False
+synthesis,False,False,False,False,False,False
+circuit,False,False,False,False,False,False
+Lexicon,False,False,False,False,False,False
+Grammar,False,False,False,False,False,False
+Object,False,False,False,False,False,False
+Classe,False,False,False,False,False,False
+s,False,False,False,False,False,False
+s,False,False,False,False,False,False
+Rule,False,False,False,False,False,False
+Base,False,False,False,False,False,False
+Objec,False,False,False,False,False,False
+t,False,False,False,False,False,False
+t,False,False,False,False,False,False
+Agend,False,False,False,False,False,False
+a,False,False,False,False,False,False
+a,False,False,False,False,False,False
+Fig. 1,False,False,False,False,True,False
+. The Knowledge Sources Architecture,False,True,False,True,False,False
+T,True,False,False,True,False,False
+HE,True,False,False,True,False,False
+D,True,False,False,True,False,False
+IALOGUE,True,False,False,True,False,False
+K,True,False,False,True,False,False
+NOWLEDGE SOURCE,True,False,False,True,False,False
+TH,True,False,False,True,False,False
+E,True,False,False,True,False,False
+S,True,False,False,True,False,False
+YNTAX,True,False,False,True,False,False
+K,True,False,False,True,False,False
+NOWLEDGE,True,False,False,True,False,False
+S,True,False,False,True,False,False
+OURCE,True,False,False,True,False,False
+T,True,False,False,True,False,False
+HE,True,False,False,True,False,False
+S,True,False,False,True,False,False
+EMANTICS,True,False,False,True,False,False
+K,True,False,False,True,False,False
+NOWLEDGE,True,False,False,True,False,False
+S,True,False,False,True,False,False
+OURCE,True,False,False,True,False,False
+I,True,False,False,True,False,False
+MPLEMENTATION AND RESULTS,True,False,False,True,False,False
+C,True,False,False,True,False,False
+ONCLUSION,True,False,False,True,False,False
+R,True,False,False,True,False,False
+EFERENCES,True,False,False,True,False,False

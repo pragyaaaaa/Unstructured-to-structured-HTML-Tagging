@@ -1,0 +1,1261 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+a,False,False,False,False,False,False
+"Biointelligence Laboratory, School of Computer Science and Engineering, Seoul National University, Seoul 151-744, Republic of Korea",False,False,False,False,False,False
+b,False,False,False,False,False,False
+"GenoProt Co. Ltd., 2FL Saeseoul Bldg., 94-1, Guro 6-dong, Guro-gu, Seoul 152-841, Republic of Korea",False,False,False,False,False,False
+Abstract,False,False,False,True,False,False
+"Conventional clinical decision support systems are generally based on a single classiﬁer or a simple combination of these models,",False,False,False,False,False,False
+"showing moderate performance. In this paper, we propose a classiﬁer ensemble-based method for supporting the diagnosis of cardiovas-",False,False,False,False,False,False
+cular disease (CVD) based on aptamer chips. This AptaCDSS-E system overcomes conventional performance limitations by utilizing,False,False,False,False,False,False
+ensembles of diﬀerent classiﬁers. Recent surveys show that CVD is one of the leading causes of death and that signiﬁcant life savings,False,False,False,False,False,False
+"can be achieved if precise diagnosis can be made. For CVD diagnosis, our system combines a set of four diﬀerent classiﬁers with ensem-",False,False,False,False,False,False
+bles. Support vector machines and neural networks are adopted as base classiﬁers. Decision trees and Bayesian networks are also,False,False,False,False,False,False
+adopted to augment the system. Four aptamer-based biochip data sets including CVD data containing 66 samples were used to train,False,False,False,False,False,False
+and test the system. Three other supplementary data sets are used to alleviate data insuﬃciency. We investigated the eﬀectiveness of,False,False,False,False,False,False
+the ensemble-based system with several diﬀerent aggregation approaches by comparing the results with single classiﬁer-based models.,False,False,False,False,False,False
+The prediction performance of the AptaCDSS-E system was assessed with a cross-validation test. The experimental results show that,False,False,False,False,False,False
+"our system achieves high diagnosis accuracy (>94%) and comparably small prediction diﬀerence intervals (<6%), proving its usefulness",False,False,False,False,False,False
+"in the clinical decision process of disease diagnosis. Additionally, 10 possible biomarkers are found for further investigation.",False,False,False,False,False,False
+ 2007 Elsevier Ltd. All rights reserved.,False,False,False,False,False,False
+Keywords: Clinical decision support system (CDSS); Cardiovascular disease; Classiﬁer ensemble; Support vector machines; Neural networks; Decision,False,False,False,False,False,False
+trees; Bayesian networks; Machine learning,False,False,False,False,False,False
+1. Introduction,False,False,True,True,False,False
+1.1. Background and motivation,False,False,False,False,False,False
+"Recent surveys show that cardiovascular disease (CVD),",False,False,False,False,False,False
+"which includes heart disease and stroke, is one of the lead-",False,False,False,False,False,False
+ing causes of death regardless of sex in the United States,False,False,False,False,False,False
+"and all over the world (CDC’s Report 1 ). From the report,",False,False,False,False,False,False
+CVD accounts for nearly 40% of all deaths in the US annu-,False,False,False,False,False,False
+ally. While these largely preventable diseases are more pre-,False,False,False,False,False,False
+"valent among people aged more than 65, the number of",False,False,False,False,False,False
+sudden deaths from heart disease among people aged 15–,False,False,False,False,False,False
+34 has also increased substantially (CDC’s Report 2).,False,False,False,False,False,False
+"Therefore, signiﬁcant life savings can be achieved if a pre-",False,False,False,False,False,False
+cise diagnosis can be made to CVD patients. Correct diag-,False,False,False,False,False,False
+"nosis, however, is not easy to make and is often delayed",False,False,False,False,False,False
+due to the many factors complicating disease diagnosis.,False,False,False,False,False,False
+"For example, clinical symptoms, functional, and patho-",False,False,False,False,False,False
+logic manifestations of heart disease are often associated,False,False,False,False,False,False
+"with many other human organs besides the heart itself,",False,False,False,False,False,False
+and often heart disease may show diverse syndromes. Fur-,False,False,False,False,False,False
+"thermore, diﬀerent types of heart disease can have similar",False,False,False,False,False,False
+"symptoms, further complicating diagnosis (Yan, Jiang,",False,False,False,False,False,False
+"Zheng, Peng, & Li, 2006).",False,False,False,False,False,False
+To reduce the time of intensive diagnosis and to improve,False,False,False,False,False,False
+"diagnosis accuracy, the development of reliable and power-",False,False,False,False,False,False
+ful clinical decision support systems (CDSSs) that support,False,False,False,False,False,False
+the aforementioned increasingly complicated diagnosis,False,False,False,False,False,False
+decision processes in the medical diagnosis is crucial (Yan,False,False,False,False,False,False
+0957-4174/$ - see front matter  2007 Elsevier Ltd. All rights reserved.,False,False,False,False,False,False
+doi:10.1016/j.eswa.2007.04.015,False,False,False,False,False,False
+*,False,False,False,False,False,False
+Corresponding author. Tel.: +82 2 880 1847; fax: +82 2 875 2240.,False,False,False,False,False,False
+E-mail address: btzhang@bi.snu.ac.kr (B.-T. Zhang).,False,False,False,False,False,False
+www.elsevier.com/locate/eswa,False,False,False,False,False,False
+Expert Systems with Applications 34 (2008) 2465–2479,False,False,False,False,False,False
+Expert Systems,False,False,False,False,False,False
+with Applications,False,False,False,False,False,False
+"et al., 2006). Recently, many medical institutions are",False,False,False,False,False,False
+increasingly adopting tools that oﬀer decision support to,False,False,False,False,False,False
+improve patient outcomes and reduce clinical diagnosis,False,False,False,False,False,False
+errors and costs.,False,False,False,False,False,False
+1.2. Related work,False,False,False,False,False,False
+"In the last two decades, the use of artiﬁcial intelligence",False,False,False,False,False,False
+tools has become widely accepted in medical applications,False,False,False,False,False,False
+"to support patient diagnosis more eﬀectively. Especially,",False,False,False,False,False,False
+the application of various machine learning approaches,False,False,False,False,False,False
+"such as decision trees (DTs), artiﬁcial neural networks",False,False,False,False,False,False
+"(ANNs), Bayesian networks (BNs), and support vector",False,False,False,False,False,False
+machines (SVMs) have been actively tried for meeting,False,False,False,False,False,False
+"clinical support requirements. Consequently, CDSS or",False,False,False,False,False,False
+medical diagnosis systems using diﬀerent machine learning,False,False,False,False,False,False
+"approaches have shown great potential, and many machine",False,False,False,False,False,False
+learning methods have been tried for a wide variety of clin-,False,False,False,False,False,False
+ical and medical applica tions. Here we brieﬂy review some,False,False,False,False,False,False
+part of the previous work in this area before presenting,False,False,False,False,False,False
+our own machine-learning-based approach.,False,False,False,False,False,False
+The use of decision trees is one of the most popularly,False,False,False,False,False,False
+applied methods for CDSS due to its simplicity and capac-,False,False,False,False,False,False
+ity for humanly understandable inductive rules. Many,False,False,False,False,False,False
+researchers have employed DT to resolve various biological,False,False,False,False,False,False
+"problems, including diagnostic error analysis (Murphy,",False,False,False,False,False,False
+"2001), potential biomarker ﬁnding (Qu et al., 2002; Won",False,False,False,False,False,False
+"et al., 2003), and pro teomic mass spectra classiﬁcation",False,False,False,False,False,False
+"(Geurts et al., 2005).",False,False,False,False,False,False
+Bayesian networks are a probability-b ased inference,False,False,False,False,False,False
+"model, increasingly used in the medical domain as a method",False,False,False,False,False,False
+of knowledge representation for reasoning under uncer-,False,False,False,False,False,False
+"tainty for a wide range of applications, including disease",False,False,False,False,False,False
+"diagnosis ( Balla, Iansek, & Elstein, 1985), genetic counsel-",False,False,False,False,False,False
+"ing (Harris, 1990), expert system development (Stockwell,",False,False,False,False,False,False
+"1993), gene network modeling (Liu, Sung, & Mittal,",False,False,False,False,False,False
+"2006), and emergency medical decision support system",False,False,False,False,False,False
+"(MDSS) design (Sadeghi, Barzi, Sadeghi, & King, 2006).",False,False,False,False,False,False
+Neural networks have also been applied to the medical,False,False,False,False,False,False
+"and diagnosis ﬁelds, most actively as the basis of a soft",False,False,False,False,False,False
+computing method to render the complex and fuzzy cogni-,False,False,False,False,False,False
+"tive process of diagnosis. Many applications, for example,",False,False,False,False,False,False
+have shown the suitability of neural networks in CDSS,False,False,False,False,False,False
+"design and other biomedical application, including diagno-",False,False,False,False,False,False
+"sis of myocardial infarction (Baxt, 1990, 1995), diﬀerentia-",False,False,False,False,False,False
+"tion of assorted pathological data (Dybowski & Gant,",False,False,False,False,False,False
+"1995), MDSS for leukemia management (Chae, Park,",False,False,False,False,False,False
+"Park, & Bae, 1998) and surgical decision support (Li,",False,False,False,False,False,False
+"Liu, Chiu, & Jian, 2000), MDSS for cancer detection (West",False,False,False,False,False,False
+"& West, 2000), assessment of chest-pain patients (Ellenius",False,False,False,False,False,False
+"& Groth, 2000), decision making for birth mode (MacDo-",False,False,False,False,False,False
+"well et al., 2001), heart disease diagnosis (Tu",False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"rkoglu,",False,False,False,False,False,False
+"Arslan, & Ilkay, 2002), CDSS for pharmaceutical applica-",False,False,False,False,False,False
+"tions (Mendyk & Jachowicz, 2005), CDSS development for",False,False,False,False,False,False
+"gynecological diagnosis (Mangalampalli, Mangalampalli,",False,False,False,False,False,False
+"Chakravarthy, & Jain, 2006), and biological signal classiﬁ-",False,False,False,False,False,False
+cation (Gu,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ven & Kara, 2006). Recently, multilayer percep-",False,False,False,False,False,False
+"trons (MLP), one of the most popular ANN models, has",False,False,False,False,False,False
+been applied to build an MDSS for ﬁve diﬀerent heart,False,False,False,False,False,False
+"diseases diagnoses (Yan et al., 2006). The three-layered",False,False,False,False,False,False
+MLP with 40 categorical input variables and modiﬁed,False,False,False,False,False,False
+learning method achieved a diagnosis accuracy of over,False,False,False,False,False,False
+90%.,False,False,False,False,False,False
+Support vector machines are a new and promising classi-,False,False,False,False,False,False
+ﬁcation and regression technique proposed by Vapnik and,False,False,False,False,False,False
+"his co-workers (Cortes & Vapnik, 1995; Vapnik, 1995).",False,False,False,False,False,False
+"SVMs, developed in statistical learning theory, are recently",False,False,False,False,False,False
+of increasing interest to biomedical researchers. They are,False,False,False,False,False,False
+"not only theoretically well-founded, but are also superior",False,False,False,False,False,False
+"in practical applications. For medical, clinical decision sup-",False,False,False,False,False,False
+"port and biological domains, SVMs have been successfully",False,False,False,False,False,False
+"applied to a wide variety of application domains, includi ng",False,False,False,False,False,False
+MDSS for the diagnosis of tuberculosis infection (Veropo-,False,False,False,False,False,False
+"ulos, Cristianini, & Campbell, 1999), tumor classiﬁcation",False,False,False,False,False,False
+(,False,False,False,False,False,False
+"Schubert, Mu",False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ller, Fritz, Lichter, & Eils, 2003), myocardial",False,False,False,False,False,False
+"infarction detection (Confo rti & Guido, 2005), biomarker",False,False,False,False,False,False
+"discovery (Prados et al., 2004), and cancer diagnosis",False,False,False,False,False,False
+"(Majumder, Ghosh, & Gupta, 2005).",False,False,False,False,False,False
+"Hybrid models. Besides single mod el-based approaches,",False,False,False,False,False,False
+hybrid machine learning approaches have also been tried,False,False,False,False,False,False
+to boos t the performance of conventional single model,False,False,False,False,False,False
+methods and to overcome the inherent weaknesses in any,False,False,False,False,False,False
+single method. Many hybrid model approaches have been,False,False,False,False,False,False
+"proposed, including a hybrid expert system for epileptic cri-",False,False,False,False,False,False
+"sis decision using an ANN an d a fuzzy method (Brasil, de",False,False,False,False,False,False
+"Azevedo, & Barreto, 2001), an ANN with a DT for the",False,False,False,False,False,False
+development of an intelligent decision support system,False,False,False,False,False,False
+"(Tung, Huang, Chen, & Shih, 2005), and an SVM with",False,False,False,False,False,False
+an ANN for electromyogram classiﬁcation (Gu,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ler &,False,False,False,False,False,False
+"Koc¸er, 2005). Recently, a novel SVM method in combina-",False,False,False,False,False,False
+tion with DT to generate human-understandable rules was,False,False,False,False,False,False
+proposed to alleviate the diﬃculty of understanding that,False,False,False,False,False,False
+arises from the black box characteristic of SVMs in trans-,False,False,False,False,False,False
+"membrane segments prediction (He, Hu, Harrison, Tai, &",False,False,False,False,False,False
+"Pan, 2006). Their approach achieved prediction accuracy",False,False,False,False,False,False
+of 93% with understandable prediction rules and with con-,False,False,False,False,False,False
+ﬁdence values over 90%.,False,False,False,False,False,False
+Ensemble models. To overcome the limited generaliza-,False,False,False,False,False,False
+tion performance of single models and simple model com-,False,False,False,False,False,False
+"bination approaches, more precise model combination",False,False,False,False,False,False
+"methods, called ‘‘ensemble methods’’, have been suggested.",False,False,False,False,False,False
+This multiple classiﬁer combination is a technique that,False,False,False,False,False,False
+combines the decisions of diﬀerent classiﬁers that are,False,False,False,False,False,False
+trained to solve the same problem but make diﬀerent,False,False,False,False,False,False
+errors. Ensembles can reduce the variance of estimation,False,False,False,False,False,False
+errors and improve the overall classiﬁcation accuracy.,False,False,False,False,False,False
+Many ensemble-based approaches have been proposed in,False,False,False,False,False,False
+"recent research, including an ANN ensemble for decision",False,False,False,False,False,False
+"support system (Ohlsson, 2004), an ensemble of ANNs",False,False,False,False,False,False
+for breast cancer and liver disorder prediction (Yang &,False,False,False,False,False,False
+"Browne, 2004), MDSS with an ensemble of several diﬀerent",False,False,False,False,False,False
+"classiﬁers for breast diagnosis (West, Mangiameli, Rampal,",False,False,False,False,False,False
+"& West, 2005), and multiple classiﬁer combinations with an",False,False,False,False,False,False
+"evolutionary approach (Kim, Min, & Han, 2006).",False,False,False,False,False,False
+2466 J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479,False,False,False,False,False,False
+1.3. Objective and scope of the present work,False,False,False,False,False,False
+The majority of conventional CDSSs for disease diagno-,False,False,False,False,False,False
+sis are generally based on the symptoms of the patient or,False,False,False,False,False,False
+data from simple med ical questionnaires. To our knowl-,False,False,False,False,False,False
+"edge, a CDSS for CVD diagnosis using an ensemble of",False,False,False,False,False,False
+multiple classiﬁers for comprehensive diagnosis and possi-,False,False,False,False,False,False
+ble biomarker mining does not currently exist. The aim of,False,False,False,False,False,False
+this project is to develop a CDSS utilizing the expression,False,False,False,False,False,False
+information of physiological functional proteins with clas-,False,False,False,False,False,False
+siﬁer ensembles for patient diagnosis. The patient’s serum,False,False,False,False,False,False
+microarray chip data are analyzed wi th several diﬀerent,False,False,False,False,False,False
+"classiﬁers in the ensemble. The de veloped system, Apta-",False,False,False,False,False,False
+CDSS-E (Aptamer biochip- based CDSS – ensemble ver-,False,False,False,False,False,False
+"sion), supports physicians by providi ng supplementary",False,False,False,False,False,False
+diagnosis information and clinicians by providing a possi-,False,False,False,False,False,False
+ble set of biomarker candidates which can be used eﬀec-,False,False,False,False,False,False
+tively for practical CVD diagnosis after some further,False,False,False,False,False,False
+experimental veriﬁcations.,False,False,False,False,False,False
+The rest of the paper is organized as follows: In Section,False,False,False,False,False,False
+"2 we outline the system architecture, describe several key",False,False,False,False,False,False
+"components of the system, and review the four basis classi-",False,False,False,False,False,False
+ﬁers used in our proposed system for disease level classiﬁ-,False,False,False,False,False,False
+"cation. In Secti on 3, the framework for constructing",False,False,False,False,False,False
+classiﬁer ensembles is presented. Experimental results are,False,False,False,False,False,False
+"reported in Section 4, including data description, prepro-",False,False,False,False,False,False
+"cessing and feature selection, quality analysis of data, the",False,False,False,False,False,False
+"possible marker protein s discovered by the system, and dis-",False,False,False,False,False,False
+cussions of the results. Section 5 draws conclusions from,False,False,False,False,False,False
+this study.,False,False,False,False,False,False
+2. The system architecture of AptaCDSS-E,False,False,True,True,False,False
+The reviews of CDSS in literat ure show that very few,False,False,False,False,False,False
+studies involve ﬁeld tests of a CDSS and almost none use,False,False,False,False,False,False
+a naturalistic design in routine clinical settings with real,False,False,False,False,False,False
+"patients. Moreover, the studies mostly concern physicians",False,False,False,False,False,False
+"rather than other clinicians (Kaplan, 2001). On this poi nt,",False,False,False,False,False,False
+in the development of AptaCDSS-E we considered both,False,False,False,False,False,False
+clinicians and physicians equally by providing diagnosis,False,False,False,False,False,False
+support information to physicians and by providing the,False,False,False,False,False,False
+information about possible biomarker candidates of dis-,False,False,False,False,False,False
+ease diagnosis to clinicians. The system can be used for,False,False,False,False,False,False
+CVD diagnosis in various ways such as a supplementary,False,False,False,False,False,False
+system for a periodic medical checkup or as a component,False,False,False,False,False,False
+of a hospital information system.,False,False,False,False,False,False
+"In AptaCDSSS-E, the patient diagnosis process starts",False,False,False,False,False,False
+from the doctor’s medical examination of a new patient,False,False,False,False,False,False
+by collecting blood samples when they need these blood,False,False,False,False,False,False
+"analysis processes. Then, an aptamer biochip is creat ed",False,False,False,False,False,False
+with the serum separated from the patient blood and pro-,False,False,False,False,False,False
+"tein expression levels are scanned. Next, a new work list is",False,False,False,False,False,False
+created by the scanner interface and analyzed by the deci-,False,False,False,False,False,False
+sion engine of AptaCDSS-E trained with prior sample sets.,False,False,False,False,False,False
+The system provides integrated analysis results to the phy-,False,False,False,False,False,False
+"sician, including clinical analysis facts. After the physi-",False,False,False,False,False,False
+"cian’s ﬁnal decisions for a new patient, decision results",False,False,False,False,False,False
+are saved into the system databas e as a feedback informa-,False,False,False,False,False,False
+tion for future model updates and reﬁnements.,False,False,False,False,False,False
+The system was implemented on the Microsoft Windows,False,False,False,False,False,False
+platform and has four major components. Fig. 1 shows the,False,False,False,False,False,False
+"Fig. 1. The overall process ﬂow of the AptaCDSS-E. The system has four major components: ‘‘Scanner interface’’, ‘‘Protocol manager’’, ‘‘AptaCDSS",False,False,False,False,True,False
+"conﬁguration sever (ACS)’’, and ‘‘Diagnosis support client’’. The ACS includes four classiﬁer ensembles of four diﬀerent classiﬁcation models for accurate",False,False,False,False,False,False
+clinical decision making. The solid lines indicate the ﬂow of data or system events and the dotted lines specify the ﬂow of diagnosis results or feedback,False,False,False,False,False,False
+information. The clinician’s analysis results can be delivered to the physician either directly or indirectly through the diagnosis support client.,False,False,False,False,False,False
+J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479 2467,False,False,False,False,False,False
+overall process of diagnosis with the system and Fig. 2,False,False,False,False,False,False
+shows the interface examples of several components of,False,False,False,False,False,False
+the system.,False,False,False,False,False,False
+2.1. Scanner interface,False,False,False,False,False,False
+The scanner interface (SI) reads the or iginal raw scanner,False,False,False,False,False,False
+"generated data, composes patient chip sample data for each",False,False,False,False,False,False
+"patient, and saves patient samples into the system database",False,False,False,False,False,False
+"creating a new work list. In the SI, one can select speciﬁc",False,False,False,False,False,False
+ﬁelds of raw data to construct the patent sample. Users,False,False,False,False,False,False
+can also check and compare the status of the current chip,False,False,False,False,False,False
+expression image with standard sampl e imag es of cardio-,False,False,False,False,False,False
+"vascular patients. For the development of AptaCDSS-E,",False,False,False,False,False,False
+the ‘‘ratio of median’’ ﬁeld of the original scanner data,False,False,False,False,False,False
+was selected to reduce negative eﬀects of outlier data,False,False,False,False,False,False
+points. Fig. 2a shows a screenshot of the SI.,False,False,False,False,True,False
+2.2. Protocol manager,False,False,False,False,False,False
+"The protocol manager (PM), running in background,",False,False,False,False,False,False
+controls and meditates overall communications among,False,False,False,False,False,False
+the components by performing event scheduling and mes-,False,False,False,False,False,False
+sage delivery. The communication part of the PM was,False,False,False,False,False,False
+"implemented as a component (i.e., ActiveX) and combined",False,False,False,False,False,False
+with other elements of AptaCDSS-E. Each system compo-,False,False,False,False,False,False
+nent communicates by sending appropriate events to the,False,False,False,False,False,False
+server part of the PM. The server component also provides,False,False,False,False,False,False
+several monitoring functions of the component’s activity,False,False,False,False,False,False
+for system management.,False,False,False,False,False,False
+2.3. AptaCDSS conﬁguration server,False,False,False,False,False,False
+The AptaCDSS Conﬁguration Server (ACS) is the key,False,False,False,False,False,False
+part of AptaCDSS-E. The ACS performs diagnosis deci-,False,False,False,False,False,False
+"sion making with pretrained classiﬁer ensembles of SVM,",False,False,False,False,False,False
+"ANN, DT, and BN models. It also generates visualization",False,False,False,False,False,False
+information for the diagnosis support client. The ACS pro-,False,False,False,False,False,False
+vides a preprocessing function of patient samples to nor-,False,False,False,False,False,False
+malize an unprocessed initial sample dataset. Through,False,False,False,False,False,False
+"the ACS, one can create basic decision models by setting",False,False,False,False,False,False
+model-speciﬁc pa rameters along with the proper conﬁgura-,False,False,False,False,False,False
+"tion of ensemble constitution (Fig. 2c and d), train classiﬁer",False,False,False,False,False,False
+"models with particular chip samples, test classiﬁer perfor-",False,False,False,False,False,False
+"mance with diﬀerent data, and conﬁgure various settings",False,False,False,False,False,False
+for diagnosis and system logging.,False,False,False,False,False,False
+Fig. 2. The screenshots of AptaCDSS-E components. The scanner interface (a) reads raw scanner data ﬁles generated by chip scanner and converts it to a,False,False,False,False,True,False
+"proper sample format. In the diagnosis support client (b), the Total tab combines the decision result of each classiﬁer and provides a simpliﬁed description",False,False,False,False,False,False
+of the current disease level of the patient. Each classiﬁer tab provides more detailed classiﬁer-speciﬁc or causal information to support the classiﬁer’s,False,False,False,False,False,False
+"decisions. In the classiﬁer model creation interface (c), basic model parameters can be set. In the ensemble conﬁguration interface (d), the ensemble",False,False,False,False,False,False
+"aggregation approach for each model can be conﬁgured. For ﬁnal decision aggregation, weighted voting of the ensemble’s output in terms of their",False,False,False,False,False,False
+"prediction accuracies is provided. In this ﬁgure, several ﬁelds of conﬁdential patient information of scanner interface and diagnosis support client has been",False,False,False,False,False,False
+blurred for privacy.,False,False,False,False,False,False
+2468 J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479,False,False,False,False,False,False
+2.4. Diagnosis support client,False,False,False,False,False,False
+The diagnosis support client (DSC) provides integrated,False,False,False,False,False,False
+information to both physician and clinician. The disease,False,False,False,False,False,False
+progress levels of patient are classiﬁed into a total of four,False,False,False,False,False,False
+"classes: ‘‘normal (NM)’’, ‘‘stable angina (SA)’’, ‘‘unstable",False,False,False,False,False,False
+"angina (UA)’’, and 14 ‘‘myocardial infarction (MI)’’. By",False,False,False,False,False,False
+"using the DSC, clinicians can analyze and select a set of",False,False,False,False,False,False
+possible biomarker candidates for further detailed experi-,False,False,False,False,False,False
+"mental validation, and physicians can make use of clini-",False,False,False,False,False,False
+cally analyzed information as supplementary diagnosis,False,False,False,False,False,False
+information. In addition to the supplementary information,False,False,False,False,False,False
+"provided by clinicians, physicians can aided by the predic-",False,False,False,False,False,False
+tion results based on the set of prior patient samples. After,False,False,False,False,False,False
+"the ﬁnal diagnosis is made by the physician, the physician",False,False,False,False,False,False
+can create and reﬂect feedback information to the system,False,False,False,False,False,False
+about unusual or exceptional cases for future reference,False,False,False,False,False,False
+by summarizing their opinions.,False,False,False,False,False,False
+2.5. Base classiﬁers,False,False,False,False,False,False
+2.5.1. Decision tree,False,False,False,False,False,False
+Decision tree induction is one of the most popular classi-,False,False,False,False,False,False
+ﬁcation methods. It builds a decision tree and classiﬁes the,False,False,False,False,False,False
+given data and has been successfully applied to a broad,False,False,False,False,False,False
+range of tasks. A decision tree is a tree in which each non-,False,False,False,False,False,False
+"leaf node denotes a test on an attribute of cases, each branch",False,False,False,False,False,False
+"corresponds to an outcome of the test, and each leaf node",False,False,False,False,False,False
+denotes a class prediction (see Fig. 3). To improve human,False,False,False,False,False,False
+"readability, learned trees can also be re-represented as sets",False,False,False,False,False,False
+of if–then rules.,False,False,False,False,False,False
+Decision trees select the most discriminant features,False,False,False,False,False,False
+based on the information gain at each stage when growing,False,False,False,False,False,False
+"the tree structure. Conse quently, a set of ordered features",False,False,False,False,False,False
+that make the largest contributions to successful classiﬁca-,False,False,False,False,False,False
+tion are obtained when classiﬁer training is ﬁnished. The,False,False,False,False,False,False
+information gain is calculated with respect to entropy of,False,False,False,False,False,False
+"each attributes, which deﬁned as",False,False,False,False,False,False
+EntropyðSÞ,False,False,False,False,False,False
+X,True,False,False,True,False,False
+c,False,False,False,False,False,False
+i¼1,False,False,False,False,False,False
+i,False,False,False,False,False,False
+log,False,False,False,False,False,False
+2,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; ð1Þ,False,False,False,False,False,False
+GainðS; AÞ¼EntropyðSÞ,False,False,False,False,False,False
+X,True,False,False,True,False,False
+m2ValuesðAÞ,False,False,False,False,False,False
+EntropyðS,False,False,False,False,False,False
+Þ; ð2Þ,False,False,False,False,False,False
+where p,False,False,False,False,False,False
+"is the proportion of outcomes belonging to class i,",False,False,False,False,False,False
+"Values(A) is the set of all possible values for attribute A,",False,False,False,False,False,False
+and S,False,False,False,False,False,False
+is the subset of for which attribute A has value m,False,False,False,False,False,False
+"(i.e., S",False,False,False,False,False,False
+"={s 2 SjA(s)=m}). In AptaCDSS-E, expression",False,False,False,False,False,False
+levels of protei ns are discretized into one of four classes be-,False,False,False,False,False,False
+fore entropy calcul ation by applying k-means clustering-,False,False,False,False,False,False
+based preproces sing (k = 4) to generate comprehensible,False,False,False,False,False,False
+decision trees.,False,False,False,False,False,False
+"In this project, AptaCDSS-E utilized the C4.5 (Quinlan,",False,False,False,False,False,False
+1993) approach from among well-known decision tree,False,False,False,False,False,False
+induction algorithms for classifying CVD levels of interest,False,False,False,False,False,False
+and the values of protein expression as the attribute sets.,False,False,False,False,False,False
+2.5.2. Neural network,False,False,False,False,False,False
+An ANN is a mathematical model consisting of a num-,False,False,False,False,False,False
+ber of highly interconnected processing elements organized,False,False,False,False,False,False
+"into layers, the geometry and functionality of which have",False,False,False,False,False,False
+been inspired by that of the human brain. An ANN is,False,False,False,False,False,False
+trained with the available data samples to explore the rela-,False,False,False,False,False,False
+"tion between inputs and outputs, so that one can reach the",False,False,False,False,False,False
+proper and accurate outputs when new data are added,False,False,False,False,False,False
+"(Simpson, 1990 ). Multilayer perceptrons, a class of super-",False,False,False,False,False,False
+"vised neural networks, is one of the most popular neural",False,False,False,False,False,False
+network models due to its clear architecture and compara-,False,False,False,False,False,False
+"bly sim ple learning algori thm, and it is frequently used in",False,False,False,False,False,False
+"MDSS (Bishop, 1995; Ripley, 1996; Yan et al., 2006).",False,False,False,False,False,False
+"For AptaCDSS-E, an MLP with a sigmoid function",False,False,False,False,False,False
+for node activation and standard back-propagation (BP),False,False,False,False,False,False
+"Fig. 3. A decision tree example for cardiovascular disease diagnosis. In this DT example, patient samples are classiﬁed into one of the four target classes",False,False,False,False,True,False
+by testing the expression value of seven marker proteins. The DT structure and checking markers for classiﬁcation of patient are obtained by training,False,False,False,False,False,False
+"initial random structured DT with given training set. The marker proteins, such as P1251, are tested in which expression level they belong at each tree level",False,False,False,False,False,False
+"(in this example, the proteins are classiﬁed into one of the four expression levels, 0, 1, 2, and 3) for patient diagnosis (classiﬁcation).",False,False,False,False,False,False
+J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479 2469,False,False,False,False,False,False
+weight learning method were used. The BP algorithm is a,False,False,False,False,False,False
+widely used training procedure that adjusts the connection,False,False,False,False,False,False
+"weights of the MLP (Rumelhart, Hilton, & Williams,",False,False,False,False,False,False
+"1986). In BP, the error terms d",False,False,False,False,False,False
+for each network output,False,False,False,False,False,False
+"unit k, o",False,False,False,False,False,False
+", and d",False,False,False,False,False,False
+"for each hidden unit h, o",False,False,False,False,False,False
+", are calculated",False,False,False,False,False,False
+by,False,False,False,False,False,False
+k,False,False,False,False,False,False
+k,False,False,False,False,False,False
+ð1  o,False,False,False,False,False,False
+k,False,False,False,False,False,False
+k,False,False,False,False,False,False
+k,False,False,False,False,False,False
+Þ and d,False,False,False,False,False,False
+h,False,False,False,False,False,False
+h,False,False,False,False,False,False
+ð1  o,False,False,False,False,False,False
+h,False,False,False,False,False,False
+X,True,False,False,True,False,False
+k2outputs,False,False,False,False,False,False
+kh,False,False,False,False,False,False
+k,False,False,False,False,False,False
+ð3Þ,False,False,False,False,False,False
+where t,False,False,False,False,False,False
+"is the target value of unit k, w",False,False,False,False,False,False
+is the weight of,False,False,False,False,False,False
+connection between the kth output unit and hth hidden,False,False,False,False,False,False
+unit. The network weights are updated by,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+; ð4Þ,False,False,False,False,False,False
+where Dw,False,False,False,False,False,False
+= gd,False,False,False,False,False,False
+x,False,False,False,False,False,False
+. The output layer of MLP comprises of,False,True,False,True,False,False
+four nodes and each node corresponds to one cardiovascu-,False,False,False,False,False,False
+lar disease level of interest for prediction. The number of,False,False,False,False,False,False
+nodes in the input layer varies according to the size of input,False,False,False,False,False,False
+feature vector determined by feature selection and the,False,False,False,False,False,False
+number of nodes in hidden layer is determined by user in-,False,False,False,False,False,False
+"put (for AptaCDSS-E, we used 16 hidden nodes for three-",False,False,False,False,False,False
+layered MLP). The architecture of the overall neural net-,False,False,False,False,False,False
+work classiﬁer is illustrated in Fig. 4.,False,False,False,False,False,False
+2.5.3. Support vector machine,False,False,False,False,False,False
+Support vector machines are an eﬀective binary data,False,False,False,False,False,False
+"classiﬁcation method (Vapnik, 1995). The key idea of",False,False,False,False,False,False
+SVMs is the use of a mapping function which projects,False,False,False,False,False,False
+the given input feature space into a high dimensional fea-,False,False,False,False,False,False
+ture space to ﬁnd an optimal hyperplane having the largest,False,False,False,False,False,False
+margin of separation between diﬀerent classes with mini-,False,False,False,False,False,False
+mum error rate as shown in Fig. 5.,False,False,False,False,False,False
+SVMs use a portion of the data to train the system and,False,False,False,False,False,False
+ﬁnd several support vectors that represent the training,False,False,False,False,False,False
+data. These support vector s will be formed into a model,False,False,False,False,False,False
+"by the SVM, representing each category. For a linearly sep-",False,False,False,False,False,False
+arable binary classiﬁcation with an n-dimensional vector x,False,False,False,False,False,False
+and the label of the class that vector y,False,False,False,False,False,False
+", i.e., fðx",False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+N,True,False,False,True,False,False
+i¼1,False,False,False,False,False,False
+and,False,False,False,False,False,False
+y,False,False,False,False,False,False
+"= {+1,1}, the SVM separates the two classes of points",False,False,False,False,False,False
+using the classiﬁcation decision function f,False,False,False,False,False,False
+= sign,False,False,False,False,False,False
+"(w Æ x + b), where w is an input vector, x is an adaptive",False,False,False,False,False,False
+"weight vector, and b is a bias. SVM ﬁnds the parameters",False,False,False,False,False,False
+w and b for the optimal hyperplane to maximize the geo-,False,False,False,False,False,False
+"metric margin,",False,False,False,False,False,False
+2,False,False,False,False,False,False
+; subject to min,False,False,False,False,False,False
+w,False,False,False,False,False,False
+T,True,False,False,True,False,False
+w,False,False,False,False,False,False
+2,False,False,False,False,False,False
+,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+þ bðÞP þ1: ð5Þ,False,False,False,False,False,False
+"For the linearly non-separable case, the minimization",False,False,False,False,False,False
+problem needs to be modiﬁed to allow for the misclassiﬁ-,False,False,False,False,False,False
+cation of data points. A soft margin classiﬁer that allows,False,False,False,False,False,False
+but penalizes errors by introducing slack variables n,False,False,False,False,False,False
+l,False,False,False,False,False,False
+i¼1,False,False,False,False,False,False
+as,False,False,False,False,False,False
+the measurement of violation of the constraints is repre-,False,False,False,False,False,False
+sented by,False,False,False,False,False,False
+min,False,False,False,False,False,False
+w,False,False,False,False,False,False
+T,True,False,False,True,False,False
+w,False,False,False,False,False,False
+2,False,False,False,False,False,False
+,False,False,False,False,False,False
+X,True,False,False,True,False,False
+N,True,False,False,True,False,False
+i¼1,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ !,False,False,False,False,False,False
+k,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ÞþbÞ P 1  n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; ð6Þ,False,False,False,False,False,False
+where C and k are used to weight the penalizing variables n,False,False,False,False,False,False
+",",False,False,False,False,False,False
+/(x,False,False,False,False,False,False
+) is a non-linear function which maps the input space,False,False,False,False,False,False
+"into a higher dimensional space (i.e., into a Hilbert space).",False,False,False,False,False,False
+This mapping can be represented as x,False,False,False,False,False,False
+Æ x,False,False,False,False,False,False
+! /(x,False,False,False,False,False,False
+) Æ /,True,False,False,True,False,False
+(x,False,False,False,False,False,False
+)=K(x,False,False,False,False,False,False
+",x",False,False,False,False,False,False
+"), where K (Æ) is a kernel function. Minimizing",False,False,False,False,False,False
+the ﬁrst term of Eq. (6) corresponds to minimizing the VC-,False,False,False,False,False,False
+dimension of the learning machine and minimizing the sec-,False,False,False,False,False,False
+ond term in Eq. (6) controls the empirical risk. The solution,False,False,False,False,False,False
+of this minimization problem can be found through a Wolfe,False,False,False,False,False,False
+dual problem with the Lagrangi an method.,False,False,False,False,False,False
+The SVM has several kernel functions that users can,False,False,False,False,False,False
+apply to solve diﬀerent problems. A proper inner product,False,False,False,False,False,False
+kernel functio n K(x,False,False,False,False,False,False
+Æ x,False,False,False,False,False,False
+) can solve certain linear insepara-,False,False,False,False,False,False
+ble problems without increasing the complexity of the,False,False,False,False,False,False
+"Fig. 4. The architecture of the three-layered MLP network as a base disease classiﬁer of AptaCDSS-E. For a given patient sample to diagnose, a vector of",False,False,False,False,True,False
+expression values of selected proteins is fed into the input layer. Each node of output layer corresponds to one target class of diagnosis and the class of the,False,False,False,False,False,False
+output node with maximum value is selected as a ﬁnal decision.,False,False,False,False,False,False
+2470 J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479,False,False,False,False,False,False
+calculation and diﬀerent kernel functions are suited to,False,False,False,False,False,False
+diﬀerent problem types. The kernel function can be any,False,False,False,False,False,False
+"function that satisﬁes Mercer’s theorem (Mercer, 1909);",False,False,False,False,False,False
+"however, the most popularly used kernel functions are",False,False,False,False,False,False
+"the linear, polynomial, and radial basis functions, and",False,False,False,False,False,False
+"sigmoid kernels . For AptaCDSS-E, we have chosen the",False,False,False,False,False,False
+polynomial kernel.,False,False,False,False,False,False
+2.5.4. Bayesian network,False,False,False,False,False,False
+"A Bayesian network (Cooper & Herskovits, 1992; Heck-",False,False,False,False,False,False
+"erman, Geiger, & Chickering, 199 5 ) is a graphical model",False,False,False,False,False,False
+that represents dependency relationships among variables,False,False,False,False,False,False
+of interest . It is represented as an annotated directed acy-,False,False,False,False,False,False
+clic graph (DAG) encoding probabilistic relationships,False,False,False,False,False,False
+among distinctions of concern in an uncertain-reasoning,False,False,False,False,False,False
+problem. The nodes or the vertices of the DAG represent,False,False,False,False,False,False
+the random variables in the network while the edges con-,False,False,False,False,False,False
+necting the vertices represent the causal inﬂuence of one,False,False,False,False,False,False
+node on the other. Each node of graph has a probability,False,False,False,False,False,False
+table representing probabilistic relations with other con-,False,False,False,False,False,True
+"nected nodes. By using the given network structure, prob-",False,False,False,False,False,False
+"ability table, and some observations of partial variables,",False,False,False,False,False,False
+an inference for other unobserved variables can be made.,False,False,False,False,False,False
+"Formally, a BN for a given ﬁnite set U ={X",False,False,False,False,False,False
+",...,X",True,False,False,True,False,False
+}of,False,False,False,False,False,False
+discrete random variables where each X,False,False,False,False,False,False
+may take on val-,False,False,False,False,False,False
+"ues from a ﬁnite domain is the pair B = hG, Li. The G is",False,False,False,False,False,False
+a DAG whose nodes correspond to the random variables,False,False,False,False,False,False
+",...,X",True,False,False,True,False,False
+", and whose edges represent direct dependencies",False,False,False,False,False,False
+between the variables. The graph structure G encodes the,False,False,False,False,False,False
+following set of independence statements: each variable,False,False,False,False,False,False
+"is independent of its non-descendents, given its parent",False,False,False,False,False,False
+"in G. Standard arguments (Pearl, 1988) shows that any dis-",False,False,False,False,False,False
+tribution P that satisﬁes the independence statements,False,False,False,False,False,False
+encoded in the graph G can be factored as,False,False,False,False,False,False
+1,False,False,False,False,False,False
+n,False,False,False,False,False,False
+Y,True,False,False,True,False,False
+n,False,False,False,False,False,False
+i¼1,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Þ; ð7Þ,False,False,False,False,False,False
+where Pa,False,False,False,False,False,False
+denotes the parents of X,False,False,False,False,False,False
+in G.,False,False,False,False,False,False
+"The second component of the BN, L, is a set of condi-",False,False,False,False,False,False
+tional probabilities between the variables in G. The prob-,False,False,False,False,False,False
+lem of training a BN can be stated as a task of ﬁnding,False,False,False,False,False,False
+an optimal network B,False,False,False,False,False,False
+that best matches the given training,False,False,False,False,False,False
+set D ={u,False,False,False,False,False,False
+",...,u",False,False,False,False,False,False
+"} i.e., to ﬁnd a network that maximizes",False,False,False,False,False,False
+P(B,True,False,False,True,False,False
+jD)=P(B,False,False,False,False,False,False
+",D)jP(D).",False,False,False,False,False,False
+The learning processes of a BN include structure learn-,False,False,False,False,False,False
+ing of G and parameter learning of L. The structure learn-,False,False,False,False,False,False
+"ing, the optimization problem in the space of the DAGs,",False,False,False,False,False,False
+ﬁnds an appropriate graph structure for the given data,False,False,False,False,False,False
+Fig. 5. The hyperplane-based linear separation of binary class data of SVM by feature space mapping. The SVM maximizes its margin of hyperplane in,False,False,False,False,True,False
+"high dimensional feature space by ﬁnding the optimal hyperplane using support vectors. For one SVM, a total of six sub-SVMs are used in the manner of",False,False,False,False,False,False
+‘‘1 to all’’ to perform four-class CVD patient classiﬁcation.,False,False,False,False,False,False
+Fig. 6. The structure of a naı,False,False,False,False,True,False
+¨,False,False,False,False,False,False
+ve Bayes model as an initial BN and the example structure result of BN structure learning. The BN of the system starts,False,False,False,False,False,False
+network structure learning from this naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bayes model structure which has n edges connecting target class variable and feature (protein) variables to learn,False,False,False,False,False,False
+"variable dependency for a given data set (a). After structure and parameter learning, the learned BN model is used to diagnose given test samples by",False,False,False,False,False,False
+"deciding one class of the target classes of target class variable (b). In the resulting BN, each edge represents causality between nodes by representing",False,False,False,False,False,False
+‘‘underexpression’’ (the expression value of a node < threshold t) or ‘‘overexpression’’ (the expression value of a node P threshold t).,False,False,False,False,False,False
+J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479 2471,False,False,False,False,False,False
+from all possible graph constitutions. Since network struc-,False,False,False,False,False,False
+ture ﬁnding is known to be an NP-hard problem (Hecker-,False,False,False,False,False,False
+"man et al., 1995), various heuristics have been applied in",False,False,False,False,False,False
+"structure learning such as greedy search, greedy search with",False,False,False,False,False,False
+"restart, best-ﬁrst search, and simulated annealing, etc. In",False,False,False,False,False,False
+"our study, ‘‘greedy search with random restart’’ method",False,False,False,False,False,False
+which is a simple but robust heuristic approach was used,False,False,False,False,False,False
+to resolve the problem of local optimum convergence.,False,False,False,False,False,False
+We used the naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bay es classiﬁer structure of Fig. 6aas,False,False,False,False,False,False
+an initial network structure of network learning with this,False,False,False,False,False,False
+search strategy. This approach modiﬁes its initial simple,False,False,False,False,False,False
+"BN structure by adding, deleting, and switching the direc-",False,False,False,False,False,False
+tions of the edge in consecutive order and selects a network,False,False,False,False,False,False
+with highest score among networks obtained by several,False,False,False,False,False,False
+repeated trials. The ﬁtness of a network structure was eval-,False,False,False,False,False,False
+uated by ‘‘Bayesian Dirichlet and likelihood equivalence’’,False,False,False,False,False,False
+"(BDe) score metric (Heckerman et al., 1995).",False,False,False,False,False,False
+"After the network structure learning, conditional proba-",False,False,False,False,False,False
+bilities of each variable of the obtained network for given,False,False,False,False,False,False
+parent nodes are calculated in the extended framework of,False,False,False,False,False,False
+BDe by calculating suﬃcient statistics from given data with,False,False,False,False,False,False
+ﬁxed priors.,False,False,False,False,False,False
+3. Ensemble of classiﬁers,False,False,True,True,False,False
+3.1. Need for a classiﬁer ensemble,False,False,False,False,False,False
+The complexity and subtlety of microarray expression,False,False,False,False,False,False
+patterns between CVD patients and normal samples may,False,False,False,False,False,False
+increase the chance of misclassiﬁcation when a single clas-,False,False,False,False,False,False
+siﬁer is used because a single classiﬁer tends to cover pat-,False,False,False,False,False,False
+terns originating from only part of the sample space.,False,False,False,False,False,False
+"Therefore, it would be beneﬁcial if multiple classiﬁers could",False,False,False,False,False,False
+be trained in such a way that each of the classiﬁers covers a,False,False,False,False,False,False
+diﬀerent part of the sample space and their classiﬁcation,False,False,False,False,False,False
+results were integrated to produce the ﬁnal classiﬁcation.,False,False,False,False,False,False
+"Moreover, this combination can reduce the variance of",False,False,False,False,False,False
+estimation errors and improve the overall classiﬁcation,False,False,False,False,False,False
+"accuracy (Shin & Markey, 2006).",False,False,False,False,False,False
+"Ensemble algorithms such as bagging, boosting, or ran-",False,False,False,False,False,False
+dom forests improve the classiﬁcation performance by,False,False,False,False,False,False
+associating multiple base classiﬁers to work as a ‘‘commit-,False,False,False,False,False,False
+tee’’ for decision-making and any supervised learning algo-,False,False,False,False,False,False
+rithm can be used as a base classiﬁer of ensemble (Bauer &,False,False,False,False,False,False
+"Kohavi, 1999). Ensemble algorithms not only increase the",False,False,False,False,False,False
+"classiﬁcation accuracy, but also reduce the chances of over-",False,False,False,False,False,False
+training since the committee avoids a biased decision by,False,False,False,False,False,False
+integrating the diﬀerent predictions from the individual,False,False,False,False,False,False
+base classiﬁers. The concept of combining classiﬁers into,False,False,False,False,False,False
+ensembles ﬁrst appeared in work by Nilson (1965) (further,False,False,False,False,False,False
+"described in Sharkey, 1999), and then extensive studies",False,False,False,False,False,False
+started in the 1990s.,False,False,False,False,False,False
+"For this reason, AptaCDSS-E adopted the ensemble",False,False,False,False,False,False
+approach to generate enhanced results by grouping a set,False,False,False,False,False,False
+"of classiﬁers of each SVM, ANN, DT, and BN. In this sec-",False,False,False,False,False,False
+"tion, we will describe the classiﬁer combination approaches",False,False,False,False,False,False
+adopted by AptaCDSS-E.,False,False,False,False,False,False
+3.2. Why ensemble works better,False,False,False,False,False,False
+An ensemble of classiﬁers is a set of classiﬁers whose,False,False,False,False,False,False
+individual decisions are combined in some way (typically,False,False,False,False,False,False
+weighted or unweighted voting) to classify new examples.,False,False,False,False,False,False
+It is known that ensembles are often much more accurate,False,False,False,False,False,False
+than the individual classiﬁers that make them up. An,False,False,False,False,False,False
+ensemble can be more accurate than its component classi-,False,False,False,False,False,False
+ﬁers only if individual classiﬁers disagree with one another,False,False,False,False,False,False
+"(Hansen & Salamon, 1990).",False,False,False,False,False,False
+"For example, for an ensemble of three classiﬁers:",False,False,False,False,False,False
+{h,False,False,False,False,False,False
+",h",False,False,False,False,False,False
+",h",False,False,False,False,False,False
+} and we consider a new case x. If the three clas-,False,False,False,False,False,False
+"siﬁers are identical, then when h",False,False,False,False,False,False
+"(x) is wrong, h",False,False,False,False,False,False
+(x)and,False,False,False,False,False,False
+h,False,False,False,False,False,False
+"(x) are also wrong. However, if the errors made by the",False,False,False,False,False,False
+"classiﬁers are uncorrelated, then when h",False,False,False,False,False,False
+"(x) is wrong,",False,False,False,False,False,False
+h,False,False,False,False,False,False
+(x)andh,False,False,False,False,False,False
+"(x) might be correct, so that a majority vote",False,False,False,False,False,False
+"correctly classiﬁes x. More precisely, if the error rates of",False,False,False,False,False,False
+L hypotheses h,False,False,False,False,False,False
+are all equal to p < 1/2 and if the errors,False,False,False,False,False,False
+"are independent, then the probability that the majority vote",False,False,False,False,False,False
+is wrong is the area under the binomial distribution where,False,False,False,False,False,False
+"more than L/2 hypotheses are wrong. Of course, if the indi-",False,False,False,False,False,False
+vidual hypotheses make uncorrelated errors at rates,False,False,False,False,False,False
+"exceeding 0.5, then the error rate of the voted ensemble",False,False,False,False,False,False
+"increases as a result of the voting. Hence, the key to suc-",False,False,False,False,False,False
+cessful en semble methods is to construct individual classiﬁ-,False,False,False,False,False,False
+ers with error rates below 0.5 whose errors are at least,False,False,False,False,False,False
+somewhat uncorrelated.,False,False,False,False,False,False
+3.3. Construction of classiﬁer ensemble,False,False,False,False,False,False
+Many approaches for constructing an ensemble of clas-,False,False,False,False,False,False
+siﬁers have been proposed. The most important thing in,False,False,False,False,False,False
+constructing a classiﬁer ensemble is to make each individ-,False,False,False,False,False,False
+ual classiﬁer diﬀerent from the other classiﬁers as possible.,False,False,False,False,False,False
+This requirement can be met by using diﬀerent training sets,False,False,False,False,False,False
+"for diﬀerent classiﬁers. In AptaDSS-E, one of the represen-",False,False,False,False,False,False
+"tative methods, bagging (Breiman, 1996), is used to satisfy",False,False,False,False,False,False
+this requirement of classiﬁer diversity.,False,False,False,False,False,False
+"In a bagging, classiﬁers are trained independently via a",False,False,False,False,False,False
+bootstrap method and then they are aggregated by an,False,False,False,False,False,False
+appropriate combination strategy. Bootstrapping gener-,False,False,False,False,False,False
+ates K replicas {T,False,False,False,False,False,False
+"(X)jk =1,...,K} of training data by",False,False,False,False,False,False
+repeated random re-sampling with replacement from the,False,False,False,False,False,False
+given training data T(X)={(x,False,False,False,False,False,False
+; y,False,False,False,False,False,False
+")ji =1,..., N}. As a",False,False,False,False,False,False
+"result, each example in the given training set may appear",False,False,False,False,False,False
+repeatedly or not at all in any particular replica training,False,False,False,False,False,False
+"set. Then, each replicated training set is used to train a",False,False,False,False,False,False
+certain classiﬁer of an ensemble.,False,False,False,False,False,False
+"To achieve maximal diversity of ensembles, we can con-",False,False,False,False,False,False
+struct ensembles with diﬀerent classiﬁcation models. But in,False,False,False,False,False,False
+"this case, it is not easy to compare diﬀerent classiﬁer mod-",False,False,False,False,False,False
+els because the diﬀerence comes from model-speciﬁc char-,False,False,False,False,False,False
+"acteristics of the models in the ensemble. Furthermore,",False,False,False,False,False,False
+we need a well-deﬁned objective measure to compare fairly,False,False,False,False,False,False
+"a set of diﬀerent kind of models. Hence, we construct an",False,False,False,False,False,False
+ensemble for each classiﬁcation method with k homoge-,False,False,False,False,False,False
+"neous classiﬁers, but make them diﬀerent as much as",False,False,False,False,False,False
+2472 J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479,False,False,False,False,False,False
+"possible by setting initial factors randomly such as weights,",False,False,False,False,False,False
+"structures, and probabilities.",False,False,False,False,False,False
+3.4. Classiﬁer aggregation,False,False,False,False,False,False
+"After training the classiﬁers of each model group, we",False,False,False,False,False,False
+need to aggregate independently trained classiﬁers of each,False,False,False,False,False,False
+group into an appropriate combination method. We con-,False,False,False,False,False,False
+sidered two types of model combination approaches such,False,False,False,False,False,False
+as linear (the majority voting and LSE-based weighting),False,False,False,False,False,False
+and non-li near (the double-layer hierar chical grouping),False,False,False,False,False,False
+"combination method (Kim, Pang, Je, Kim, & Bang, 2003).",False,False,False,False,False,False
+3.4.1. Majority voting,False,False,False,False,False,False
+One simplest method of classiﬁer combination is major-,False,False,False,False,False,False
+ity voting. For f,False,False,False,False,False,False
+"(k =1,...,K), a decision function of the",False,False,False,False,False,False
+"kth classiﬁer in the classiﬁer ensemble, and c",False,False,False,False,False,False
+"(j =1,..., C),",False,False,False,False,False,False
+"a label of jth class, the ﬁnal decision of an ensemble f",False,False,False,False,False,False
+(x),False,False,False,False,False,False
+for a given test data x with majority voting is decided by,False,False,False,False,False,False
+vote,False,False,False,False,False,False
+ðxÞ¼arg max,False,False,False,False,False,False
+j,False,False,False,False,False,False
+j,False,False,False,False,False,False
+; ð8Þ,False,False,False,False,False,False
+where t,False,False,False,False,False,False
+is the number of classiﬁers whose decisions are,False,False,False,False,False,False
+known to jth class and deﬁned by t,False,False,False,False,False,False
+=,False,False,False,False,False,False
+P,True,False,False,True,False,False
+"c(k,j), where",False,False,False,False,False,False
+"c(k,j)is1iff",False,False,False,False,False,False
+(x)=c,False,False,False,False,False,False
+"and 0, otherwise.",False,False,False,False,False,False
+3.4.2. Least squared error (LSE)-based classiﬁer,False,False,False,False,False,False
+weighting,False,False,False,False,False,False
+The LSE-based weighting of classiﬁers treats several,False,False,False,False,False,False
+classiﬁers in the classiﬁer ensemble with diﬀerent weights.,False,False,False,False,False,False
+The weights of diﬀerent classiﬁers are assigned in propor-,False,False,False,False,False,False
+tional to their classiﬁcation accuracies. For f,False,False,False,False,False,False
+"(k =1,...,K),",False,False,False,False,False,False
+a decision function of the kth classiﬁer in the classiﬁer,False,False,False,False,False,False
+ensemble which trained with a replica of training data,False,False,False,False,False,False
+k,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"Þji ¼ 1; ...; Ng, the weight vector w can be",False,False,False,False,False,False
+obtained by w,False,False,False,False,False,False
+= A,True,False,False,True,False,False
+"y, where A =(f",False,False,False,False,False,False
+(x,False,False,False,False,False,False
+)),False,False,False,False,False,False
+", and y =",False,False,False,False,False,False
+(y,False,False,False,False,False,False
+),False,False,False,False,False,False
+". Then, the ﬁnal decision of the classiﬁer ensemble",False,True,False,True,False,False
+Fig. 7. The overall architecture of the decision making part of AptaCDSS-E with multiple classiﬁer ensembles (here we used a total of four ensembles of,False,False,False,False,True,False
+four diﬀerent classiﬁcation models). Each ensemble is constituted with several classiﬁer models of each classiﬁcation method. The training data are,False,False,False,False,False,False
+augmented by bagging and fed to each classiﬁer member of ensembles. Final decision is decided by weighted majority vote of each ensemble’s decision with,False,False,False,False,False,False
+respect to their training accuracies.,False,False,False,False,False,False
+Fig. 8. Hierarchical combination of classiﬁers. The classiﬁer’s decision,False,False,False,False,True,False
+outputs in the lower layer are fed into aggregation classiﬁer in the upper,False,False,False,False,False,False
+layer and ﬁnal decision of the ensemble is made by this classiﬁer.,False,False,False,False,False,False
+J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479 2473,False,False,False,False,False,False
+for a given test data vector x with LSE-based weighting is,False,False,False,False,False,False
+decided by,False,False,False,False,False,False
+LSE,True,False,False,True,False,False
+ðxÞ¼signðw ½ðf,False,False,False,False,False,False
+i,False,False,False,False,False,False
+k1,False,False,False,False,False,False
+Þ: ð9Þ,False,False,False,False,False,False
+This weight-based linear combination is also used to,False,False,False,False,False,False
+combine the decision results of each classiﬁer ensemble,False,False,False,False,False,False
+with respect to their accuracy on the training data to make,False,False,False,False,False,False
+the ﬁnal decision as shown in Fig. 7 .,False,False,False,False,False,False
+3.4.3. Hierarchical combination,False,False,False,False,False,False
+"In hierarchical combination, an additional classiﬁer is",False,False,False,False,False,False
+used to aggregate the outputs of class iﬁers of the ensemble.,False,False,False,False,False,False
+"So, this combination consists of a double-layer of classiﬁers",False,False,False,False,False,False
+where the outputs of several classiﬁers in the lower layer,False,False,False,False,False,False
+feed into an aggregation classiﬁer in the upper layer,False,False,False,False,False,False
+(Fig. 8).,False,False,False,False,False,False
+For f,False,False,False,False,False,False
+"(k =1,..., K), a decision function of the kth clas-",False,False,False,False,False,False
+"siﬁer in the classiﬁer ensemble, and a decision function of",False,False,False,False,False,False
+"the aggregating classiﬁer F, the ﬁnal decision function",False,False,False,False,False,False
+of the classiﬁer ensemble f,False,False,False,False,False,False
+(x) for given test data x with,False,False,False,False,False,False
+the double-layer hierarchical combination is given by,False,False,False,False,False,False
+HC,True,False,False,True,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+k,False,False,False,False,False,False
+ðxÞÞ; ð10Þ,False,False,False,False,False,False
+where k is the number of classiﬁers in the ensemble.,False,False,False,False,False,False
+3.5. Making the ﬁnal decision,False,False,False,False,False,False
+The ﬁnal decision in Fig. 7 is decided by combining out-,False,False,False,False,False,False
+puts of all ensembles taking accuracy-based weighted,False,False,False,False,False,False
+"majority vote (i.e., use their training accuracies as their",False,False,False,False,False,False
+"weights). Then, the ﬁnal class c",False,False,False,False,False,False
+among the possible tar-,False,False,False,False,False,False
+"get classes (C, C = 0: Normal, 1: SA, 2: UA, 3: MI) is",False,False,False,False,False,False
+decided by,False,False,False,False,False,False
+final,False,False,False,False,False,False
+¼ arg max,False,False,False,False,False,False
+X,True,False,False,True,False,False
+n,False,False,False,False,False,False
+i¼1,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Þ; ð11Þ,False,False,False,False,False,False
+"where n is the number of classiﬁer ensembles, w",False,False,False,False,False,False
+is the,False,False,False,False,False,False
+"weight of ith ensemble, and I",False,False,False,False,False,False
+is the indicator of ith ensem-,False,False,False,False,False,False
+"ble, which has 1 if the output class of ensemble is equal to c",False,False,False,False,False,False
+"and 0, otherwise. The c",False,False,False,False,False,False
+in Eq. (11) is an advantage vari-,False,False,False,False,False,False
+"able, predetermined variable by the user, preventing a draw",False,False,False,False,False,False
+in the vote by giving some advantage to ensembles with re-,False,False,False,False,False,False
+spect to the preference of each classiﬁcation method.,False,False,False,False,False,False
+4. Experimental results and discussion,False,False,True,True,False,False
+The experimental steps of aptamer chip-based disease,False,False,False,False,False,False
+level classiﬁcation with multiple classiﬁers are summarized,False,False,False,False,False,False
+in Fig. 9. The steps in categor y A were performed by the,False,False,False,False,True,False
+"data supplier, and in this research we performed the steps",False,False,False,False,False,False
+with solid border in category B and C with the Apta-,False,False,False,False,False,False
+CDSS-E. The ﬁnal experimental veriﬁcation of discovered,False,False,False,False,False,False
+possible biomarkers will be conducted in future work.,False,False,False,False,False,False
+4.1. Data sets,False,False,False,False,False,False
+The AptaCDSS-E performs clinical decision support,False,False,False,False,False,False
+task of cardiovascular disease by analyzing aptamer chip,False,False,False,False,False,False
+"data, which were produced from the patient’s blood sam-",False,False,False,False,False,False
+ples. The advantages of using blood samples include: blood,False,False,False,False,False,False
+is readily accessible and less expensive to obtain than many,False,False,False,False,False,False
+other procedures. The diseas e analysis of AptaCDSS-E is,False,False,False,False,False,False
+"performed on blood-derived products, particularly on",False,False,False,False,False,False
+serum which is the ﬂuid that remains after clothing proteins,False,False,False,False,False,False
+are removed from plasma.,False,False,False,False,False,False
+"Besides the CVD data, we used three additional disease",False,False,False,False,False,False
+"data sets, which include pulmonary complaints, tuberculo-",False,False,False,False,False,False
+"sis disease, and general cancer collections to overcome the",False,False,False,False,False,False
+data insuﬃciency problem and evaluate the generalized,False,False,False,False,False,False
+classiﬁcation accuracy of the system for other diseases.,False,False,False,False,False,False
+Table 1 shows the statistics of CVD and other disease sam-,False,False,False,False,False,True
+ples used in this study.,False,False,False,False,False,False
+Fig. 9. The whole experimental steps of the aptamer chip-based disease level classiﬁcation process.,False,False,False,False,True,False
+Table 1,False,False,False,False,False,True
+The statistics of four data sets,False,False,False,False,False,False
+Disease Feature,False,False,False,False,False,False
+dimension,False,False,False,False,False,False
+Sample,False,False,False,False,False,False
+size,False,False,False,False,False,False
+Number of target,False,False,False,False,False,False
+class,False,False,False,False,False,False
+Cardiovascular disease,False,False,False,False,False,False
+(CVD),True,False,False,True,False,False
+"3000 66 4 (normal, SA,",False,False,False,False,False,False
+"UA, MI)",True,False,False,True,False,False
+Pulmonary complaints,False,False,False,False,False,False
+(PC),True,False,False,True,False,False
+"3000 95 2 (normal,",False,False,False,False,False,False
+complaints),False,False,False,False,False,False
+Tuberculosis disease,False,False,False,False,False,False
+(TBD),True,False,False,True,False,False
+"1000 27 2 (normal,",False,False,False,False,False,False
+tuberculosis),False,False,False,False,False,False
+"General cancer (GC) 1000 54 2 (normal, cancer)",False,False,False,False,False,False
+2474 J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479,False,False,False,False,False,False
+4.2. Preprocessing,False,False,False,False,False,False
+We constructed chip data using the ‘‘ratio of median’’,False,False,False,False,False,False
+ﬁeld of the original scanner generated ﬁle to minimize the,False,False,False,False,False,False
+"negative properties of outlier data points. Also, the set of",False,False,False,False,False,False
+control spots for each chip sample were removed and the,False,False,False,False,False,False
+missing values are ﬁlled with the median value of the sam-,False,False,False,False,False,False
+"ple. Next, the data were transformed by applying logarithm",False,False,False,False,False,False
+base 2 and a ratio-based normalization method is applied,False,False,False,False,False,False
+to adjust the means of the samples to zero. By applying this,False,False,False,False,False,False
+Fig. 10. The quality of the four data sets with respect to their correlation and hierarchical clustering results without feature selection. In the correlation,False,False,False,False,True,False
+"matrix, the red dots indicate ‘‘positive correlation’’, the green dots indicate ‘‘negative correlation’’, and the black ones indicate ‘‘no-correlation’’ between",False,False,False,False,False,False
+samples. The samples of each data set are clustered moderately by hierarchical clustering with average linkage. The ‘‘general cancer’’ data set includes,False,False,False,False,False,False
+"cancer samples of liver, lung, intestine, breast, stomach, and nine normal CVD samples for binary class classiﬁcation (for ‘‘normal vs. cancer’’",False,False,False,False,False,False
+"comparison). a: Cardiovascular disease, b: Pulmonary disease, c: Tuberculosis, d: General cancer.",False,False,False,False,False,False
+J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479 2475,False,False,False,False,False,False
+ratio-based normalizat ion we removed the laser channel,False,False,False,False,False,False
+diﬀerence which may occur in chip scanning process.,False,False,False,False,False,False
+4.3. Feature selection,False,False,False,False,False,False
+"For the feature selection, the dimension of each disease",False,False,False,False,False,False
+data set is reduced by applying analysis of variance,False,False,False,False,False,False
+(ANOVA) and we selected the top 250 proteins according,False,False,False,False,False,False
+to their signiﬁcance score (p-value) to build a ﬁnal classiﬁer,False,False,False,False,False,False
+inputs. Fig. 10 shows the qua lity of four disease data sets,False,False,False,False,True,False
+with respect to their correlation analysis (Pearson correla-,False,False,False,False,False,False
+tion) and hierarchical sample clustering results with their,False,False,False,False,False,False
+full features. The quality of these data sets is reﬁned by dis-,False,False,False,False,False,False
+carding non-informative features according to their signif-,False,False,False,False,False,False
+"icance (p-value). By applying this feature selection, we",False,False,False,False,False,False
+could also reduce the complexities of data pro cessing in,False,False,False,False,False,False
+each classiﬁcation model.,False,False,False,False,False,False
+4.4. Results,False,False,False,False,False,False
+Table 2 shows the classiﬁcation accuracy of each classi-,False,False,False,False,False,True
+ﬁer and of each classiﬁer ensemble for diﬀerent ensemble,False,False,False,False,False,False
+constitution methods for each data set. The classiﬁcation,False,False,False,False,False,False
+(prediction) performance was measured by k-fold cross-val-,False,False,False,False,False,False
+idation with k = 10 to alleviate the insuﬃciency of samples.,False,False,False,False,False,False
+"For ensemble-based model, each ensemble is trained with",False,False,False,False,False,False
+the data set augmented by bagging described in Section 3.3.,False,False,False,False,False,False
+"In the case of the single classiﬁer-based prediction, the",False,False,False,False,False,False
+SVM perfor med best for all data sets and the ANN ranked,False,False,False,False,False,False
+second among the four diﬀerent classiﬁers. The prediction,False,False,False,False,False,False
+intervals of the classiﬁers were about 6.8% at least and,False,False,False,False,False,False
+"12.2% at most. Presumably, the prediction accuracy for",False,False,False,False,False,False
+‘‘Tuberculosis disease’’ data was relatively low due to the,False,False,False,False,False,False
+small sample size and poor quality of data.,False,False,False,False,False,False
+"For the ensemble classiﬁer-based prediction, the SVM",False,False,False,False,False,False
+and ANN performed very well for all data sets similar to,False,False,False,False,False,False
+"the single classiﬁer case. Especially, the ANN achieve d",False,False,False,False,False,False
+the best prediction accuracy for ‘‘Pulmonary complaints’’,False,False,False,False,False,False
+data for all ensemble aggregations and SVM achieve d the,False,False,False,False,False,False
+best prediction accuracy for ‘‘General cancer’’ data. Inter-,False,False,False,False,False,False
+"estingly, the BN ensemble with LSE-based weighti ng",False,False,False,False,False,False
+aggregation method was the best classiﬁer for ‘‘Tuberculo-,False,False,False,False,False,False
+sis diseases’’. The maximum prediction interval of overall,False,False,False,False,False,False
+"ensemble method was about 7% ([86.39, 93.42], for the",False,False,False,False,False,False
+ensemble with LSE-based weighing for ‘‘GC’’ data) and,False,False,False,False,False,False
+"the minimum was about 2.1% ([89.53, 91.64], for the",False,False,False,False,False,False
+ensemble with majority vote for ‘‘TBD’’ data). The hierar-,False,False,False,False,False,False
+chical classiﬁer combination showed the best performance,False,False,False,False,False,False
+among the three aggregation methods showing prediction,False,False,False,False,False,False
+"accuracy intervals between about 5.5% ([90.36, 95.87],",False,False,False,False,False,False
+"for ‘‘CVD’’ data) and 2.4% ([90.97, 93.38], for ‘‘TBD’’",False,False,False,False,False,False
+data).,False,False,False,False,False,False
+"By utilizing DT and BN, we obtained de cision support",False,False,False,False,False,False
+"information, including causalities among sample features,",False,False,False,False,False,False
+which can be represented in a human readable and easy,False,False,False,False,False,False
+to understand structure such as rules or causality networks.,False,False,False,False,False,False
+Fig. 11 shows a simple BN example with 10 nodes for car-,False,False,False,False,True,False
+diovascular disease diagnosi s trained with CVD data of,False,False,False,False,False,False
+Table 1.,False,False,False,False,False,True
+"In Fig. 11, the ﬁnal decision probab ilities of four classes",False,False,False,False,True,False
+"in the class node (four classes; 0, 1, 2, and 3 for NM, SA,",False,False,False,False,False,False
+"UA, and MI, respectively) are decided by setting the pro-",False,False,False,False,False,False
+tein node’s expression value to a binary value according,False,False,False,False,False,False
+to whether the measures expression is greater or less than,False,False,False,False,False,False
+"the sample’s median. For the given sample data (i.e., each",False,False,False,False,False,False
+"protein’s binary expression level), the exampl e BN diagno-",False,False,False,False,False,False
+ses the current sample as ‘‘Normal (NM)’’ class (see the,False,False,False,False,False,False
+probability bar chart of class node in Fig. 11).,False,False,False,False,False,False
+"In the BN of Fig. 11, the ﬁnal diagnosis decision is made",False,False,False,False,False,False
+by choosing the class of maximum probability value in the,False,False,False,False,False,False
+class node. The probabilities of each target class in the class,False,False,False,False,False,False
+node are calculated by multiplying the highest conditional,False,False,False,False,False,False
+Table 2,False,False,False,False,False,True
+The classiﬁcation accuracy of single and ensemble-based classiﬁers with diﬀerent classiﬁer aggregation method for four diﬀerent data sets,False,False,False,False,False,False
+Classiﬁer composition Classiﬁer aggregation Classiﬁer Accuracies for each data set,False,False,False,False,False,False
+CVD PC TBD GC,True,False,False,True,False,False
+Single classiﬁer – SVM 84.31 ± 1.2 82.92 ± 1.5 76.32 ± 1.3 81.64 ± 1.6,False,False,False,False,False,False
+ANN 80.82 ± 1.1 81.64 ± 0.9 73.94 ± 1.2 80.21 ± 1.4,True,False,False,True,False,False
+DT 72.69 ± 1.6 70.68 ± 1.3 69.54 ± 1.7 70.01 ± 1.1,True,False,False,True,False,False
+BN 78.95 ± 2.1 77.51 ± 1.2 71.43 ± 2.6 70.39 ± 1.5,True,False,False,True,False,False
+Ensemble-based classiﬁer Majority voting SVM 92.82 ± 1.0 94.31 ± 0.0 91.64 ± 1.3 93.11 ± 1.1,False,False,False,False,False,False
+ANN 93.49 ± 0.9 94.55 ± 0.9 90.21 ± 0.5 91.01 ± 0.7,True,False,False,True,False,False
+DT 91.03 ± 1.0 90.66 ± 0.7 89.53 ± 1.4 87.41 ± 1.1,True,False,False,True,False,False
+BN 92.01 ± 0.7 92.34 ± 1.1 90.08 ± 0.9 89.96 ± 0.8,True,False,False,True,False,False
+LSE-based weighting SVM 93.08 ± 0.7 94.66 ± 0.8 90.62 ± 0.9 93.42 ± 0.8,False,False,False,False,False,False
+ANN 94.12 ± 0.6 94.98 ± 0.7 89.08 ± 0.7 90.71 ± 1.1,True,False,False,True,False,False
+DT 90.03 ± 0.5 89.83 ± 0.9 90.57 ± 0.9 86.39 ± 0.8,True,False,False,True,False,False
+BN 90.17 ± 0.4 90.09 ± 0.7 92.37 ± 0.5 88.95 ± 1.2,True,False,False,True,False,False
+Hierarchical combination SVM 95.87 ± 0.3 95.67 ± 0.2 92.68 ± 0.6 94.31 ± 0.3,False,False,False,False,False,False
+ANN 94.32 ± 0.5 95.72 ± 0.2 93.38 ± 0.4 93.18 ± 0.7,True,False,False,True,False,False
+DT 90.36 ± 0.9 92.19 ± 0.5 91.04 ± 0.8 88.83 ± 0.7,True,False,False,True,False,False
+BN 92.51 ± 0.4 93.11 ± 0.2 90.97 ± 0.5 91.53 ± 0.4,True,False,False,True,False,False
+Accuracies in bold indicate maximum values of each conﬁguration.,False,False,False,False,False,False
+2476 J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479,False,False,False,False,False,False
+probabilities of all nodes for a given sample of data. Fig. 12,False,False,False,False,False,False
+shows the conditional probability tables for each node of,False,False,False,False,False,False
+BN in Fig. 11. The probability values of each conditional,False,False,False,False,True,False
+probability table are calculated by BN learning with the,False,False,False,False,False,True
+CVD data in Table 1.,False,False,False,False,False,False
+4.5. Discussion,False,False,False,False,False,False
+The results of the experiment (Table 2) show that,False,False,False,False,False,False
+an improvement in prediction accuracy of more than,False,False,False,False,False,False
+about 10% has been achieved by applying the ensembl e,False,False,False,False,False,False
+"method. In particular, hierarchical combination of classiﬁ-",False,False,False,False,False,False
+"ers showed great accuracy improvements, implying that it",False,False,False,False,False,False
+is one of the desirable classiﬁer combination methods in,False,False,False,False,False,False
+"ensemble construction. Generally, SVMs, the current",False,False,False,False,False,False
+"state-of-the-art classiﬁer, and ANNs, the most widely",False,False,False,False,False,False
+"adopted model for clinical diagnosis application, achieved",False,False,False,False,False,False
+relatively higher accuracies than other classiﬁers.,False,False,False,False,False,False
+Although SVMs and ANNs achieved the best perfor-,False,False,False,False,False,False
+"mance for most data sets, it is not easy to understand how",False,False,False,False,False,False
+Fig. 11. The 10-node BN for CVD diagnosis generated by the BN model of AptaCDSS-E. Each node represents one protein selected from 3000 input,False,False,False,False,True,False
+"protein features (250 proteins after preprocessing), and class node represents the ﬁnal decision of this BN. The probability bar chart of each node",False,False,False,False,False,False
+represents its cumulative probability quantiﬁed by BN training with training samples (DT results are not shown in this paper).,False,False,False,False,False,False
+"Fig. 12. The conditional probability tables of the BN in Fig. 11. For each node, the size of table increases as the number of parent nodes increase.",False,False,False,False,True,False
+J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479 2477,False,False,False,False,False,False
+they produced diagnosis results because they use non-linear,False,False,False,False,False,False
+"feature mappings and weight compositions. For this reason,",False,False,False,False,False,False
+they are often referred to as ‘‘black box’’ models. Conse-,False,False,False,False,False,False
+"quently, these models are not appropriate for generating",False,False,False,False,False,False
+diagnosis support information that can be used by physi-,False,False,False,False,False,False
+cians and clinicians to help in their decision making.,False,False,False,False,False,False
+"In AptaCDSS-E, we adopted DTs and BNs to resolve",False,False,False,False,False,False
+this diﬃculty and generate decision sup port supplementary,False,False,False,False,False,False
+"information displayed by DSC. Generally, DTs generate",False,False,False,False,False,False
+human readable decisio n rules and BNs generate causality,False,False,False,False,False,False
+"networks, which can be easily understood by humans. The",False,False,False,False,False,False
+BN of Fig. 11 shows the causalities of the major 10 proteins,False,False,False,False,True,False
+selected from the total of 3000 proteins (250 proteins after,False,False,False,False,False,False
+preprocessing) for the diagnosis of cardiovascular disease.,False,False,False,False,False,False
+These selected proteins can be regarded as a set of possible,False,False,False,False,False,False
+biomarkers for CVD diagnosis and can be conﬁrmed as,False,False,False,False,False,False
+‘‘real’’ biomarkers after further experimental veriﬁcation.,False,False,False,False,False,False
+"Moreover, this information can be used by clinicians to",False,False,False,False,False,False
+design new clinical trials by utilizing those proposed possi-,False,False,False,False,False,False
+ble biomarkers for disease diagnosis.,False,False,False,False,False,False
+"To summarize, the advantage of using the proposed sys-",False,False,False,False,False,False
+tem is such that physicians can have practical aids in their,False,False,False,False,False,False
+daily diagnosis with relatively high accuracy and clinicians,False,False,False,False,False,False
+can ﬁnd meaningful ‘‘real’’ biomarkers by investigating the,False,False,False,False,False,False
+results produced by AptaCDSS-E.,False,False,False,False,False,False
+"However, even though we adopted an ensemble-based",False,False,False,False,False,False
+classiﬁer approach and bagging as a data augmentation,False,False,False,False,False,False
+"strategy to boost prediction accuracies, data sampling tech-",False,False,False,False,False,False
+niques cannot overcome coverage limitations inherent to,False,False,False,False,False,False
+the data set from which the samples are drawn. If the data,False,False,False,False,False,False
+set does not represent the underlying probability distribu-,False,False,False,False,False,False
+"tion of the population of interest, then even the most",False,False,False,False,False,False
+sophisticated feature selection based on sampling tech-,False,False,False,False,False,False
+niques will end up with an extremely biased subset of fea-,False,False,False,False,False,False
+"tures. In case of TBD data, the size of samples was too",False,False,False,False,False,False
+"small, and it seems that the sample data sets did not con-",False,False,False,False,False,False
+tain the sample characteristics appropriate for classifying,False,False,False,False,False,False
+"their classes. Consequently, the poor quality of samples",False,False,False,False,False,False
+led to degradation of overall prediction accuracy for this,False,False,False,False,False,False
+"data set for all classiﬁers. Therefore, securing more micro-",False,False,False,False,False,False
+array chip samples with relative ly good quality and reﬂect-,False,False,False,False,False,False
+ing the underlying characteristics of a disease of concern is,False,False,False,False,False,False
+one of the most important issues in achieving improved,False,False,False,False,False,False
+and generalized classiﬁcation accuracy.,False,False,False,False,False,False
+5. Conclusions,False,False,True,True,False,False
+We have presented a classiﬁer ensemble-based clinical,False,False,False,False,False,False
+decision support system called AptaCDSS-E for disease,False,False,False,False,False,False
+level prediction with aptamer biochip data. The system,False,False,False,False,False,False
+"employs four diﬀerent machine learning classiﬁers, com-",False,False,False,False,False,False
+bines the prediction results of each classiﬁer in an ensemble,False,False,False,False,False,False
+"machine, and generates supplementary information for dis-",False,False,False,False,False,False
+ease diagnosis. The system was trained with four diﬀerent,False,False,False,False,False,False
+disease data sets consisting of 242 cases including cardiovas-,False,False,False,False,False,False
+cular disease and the data sets were augmented by bagging,False,False,False,False,False,False
+for classiﬁer ensemble training. The experimental result,False,False,False,False,False,False
+with cross-validation shows that the proposed system pre-,False,False,False,False,False,False
+dicts the level of diseases with relatively high accuracy,False,False,False,False,False,False
+"(>94%) an d small prediction diﬀerence intervals (<6%),",False,False,False,False,False,False
+showing its usefulness in support of clinical decision making,False,False,False,False,False,False
+"for diagnosis. In particular, causality information among",False,False,False,False,False,False
+the major 10 proteins for cardiovascular disease diagnosis,False,False,False,False,False,False
+was found by the system as a candidate set of possible bio-,False,False,False,False,False,False
+"markers, which now require further clinical veriﬁcation.",False,False,False,False,False,False
+Acknowledgements,False,False,False,False,False,False
+This work was supported by the Korea Science and,False,False,False,False,False,False
+Engineering Foundation (KOSEF) through the National,False,False,False,False,False,False
+Research Lab. Program funded by the Ministry of Science,False,False,False,False,False,False
+and Techn ology (No. M10400000349-06J0000-34910) and,False,False,False,False,False,False
+supported by the Korea Research Foundation Grant,False,False,False,False,False,False
+funded by the Korean Government (MOEHRD) (KR F-,False,False,False,False,False,False
+2006-511-D00355). The authors would like to thank,False,False,False,False,False,False
+"Byoung-Hee Kim, Je-Keun Rhee, Min-Oh Heo, Young-",False,False,False,False,False,False
+"Jin Park, and Min-Hyeok Kim for the construction of",False,False,False,False,False,False
+"AptaCDSS platform, and developers and researchers of",False,False,False,False,False,False
+GenoProt Co. Ltd. for data preparation.,False,False,False,False,False,False
+References,False,False,False,True,False,False
+"Balla, J. I., Iansek, R., & Elstein, A. (1985). Bayesian diagnosis in presence",False,False,False,False,False,False
+"of preexisting disease. Lancet, 325(8424), 326–329.",False,False,False,False,False,False
+"Bauer, E., & Kohavi, R. (1999). An empirical comparison of voting",False,False,False,False,False,False
+"classiﬁcation 37 algorithms: Bagging, boosting, and variants. Machine",False,False,False,False,False,False
+"Learning, 36(1–2), 105–139.",False,False,False,False,False,False
+"Baxt, W. G. (1990). Use of an artiﬁcial neural network for data analysis in",False,False,False,False,False,False
+clinical decision making: The diagnosis of acute coronary occlusion.,False,False,False,False,False,False
+"Neural Computing, 2(4), 480–489.",False,False,False,False,False,False
+"Baxt, W. G. (1995). Application of artiﬁcial neural networks to clinical",False,False,False,False,False,False
+"medicine. Lancet, 346(8983), 1135–1138.",False,False,False,False,False,False
+"Bishop, C. M. (1995). Neural networks for pattern recognition. Oxford,",False,False,False,False,False,False
+UK: Oxford University Press.,False,False,False,False,False,False
+"Brasil, L. M., de Azevedo, F. M., & Barreto, J. M. (2001). Hybrid expert",False,False,False,False,False,False
+system for decision supporting in the medical area: Complexity and,False,False,False,False,False,False
+"cognitive computing. International Journal of Medical Informatics,",False,False,False,False,False,False
+"63(1–2), 19–30.",False,False,False,False,False,False
+"Breiman, L. (1996). Bagging predictors. Machine Learning, 24(2), 123–140.",False,False,False,False,False,False
+CDC’s Report 1. Accessed: 29.05.06. http://www.cdc.gov/nccdphp/,False,False,False,False,False,False
+overview.htm.,False,False,False,False,False,False
+CDC’s (2006). Accessed: 29.05.06. http://www.cdc.gov/nccdphp/publica-,False,False,False,False,False,False
+tions/aag/cvh.htm.,False,False,False,False,False,False
+"Chae, Y. M., Park, K. E., Park, K. S., & Bae, M. Y. (1998). Development",False,False,False,False,False,False
+of medical decision support system for Leukemia management. Expert,False,False,False,False,False,False
+"Systems with Applications, 15, 309–315.",False,False,False,False,False,False
+"Conforti, D., & Guido, R. (2005). Kernel-based support vector machine",False,False,False,False,False,False
+classiﬁers for early detection of myocardial infarction. Optimization,False,False,False,False,False,False
+"Methods and Software, 20(2–3), 401–413.",False,False,False,False,False,False
+"Cooper, G. F., & Herskovits, E. (1992). A Bayesian method for the",False,False,False,False,False,False
+"induction of probabilistic networks from data. Machine Learning, 9(4),",False,False,False,False,False,False
+309–347.,False,False,False,False,False,False
+"Cortes, C., & Vapnik, V. (1995). Support-vector networks machine learning",False,False,False,False,False,False
+"(pp. 237–297). Boston, MA: Kluwer Academic Publisher.",False,False,False,False,False,False
+"Dybowski, R., & Gant, V. (1995). Artiﬁcial neural networks in pathology",False,False,False,False,False,False
+"and medical laboratories. Lancet, 346(8984), 1203–1207.",False,False,False,False,False,False
+"Ellenius, J., & Groth, T. (2000). Transferability of neural network-based",False,False,False,False,False,False
+decision support algorithms for early assessment of chest-pain patients.,False,False,False,False,False,False
+"International Journal of Medical Informatics, 60(1), 1–20.",False,False,False,False,False,False
+2478 J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479,False,False,False,False,False,False
+"Geurts, P., Fillet, M., de Seny, D., Meuwis, M. A., Malaise, M., Merville,",False,False,False,False,False,False
+"M. P., et al. (2005). Proteomic mass spectra classiﬁcation using",False,False,False,False,False,False
+"decision tree based ensemble methods. Bioinformatics, 21(14),",False,False,False,False,False,False
+3138–3145.,False,False,False,False,False,False
+Gu,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ler, N. F., & Koc¸er, S. (2005). Use of support vector machines and",False,False,False,False,False,False
+neural network in diagnosis of neuromuscular disorders. Journal of,False,False,False,False,False,False
+"Medical Systems, 29(3), 271–284.",False,False,False,False,False,False
+Gu,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ven, A., & Kara, S. (2006). Classiﬁcation of electro-oculogram signals",False,False,False,False,False,False
+"using artiﬁcial neural network. Expert Systems with Applications,",False,False,False,False,False,False
+"31(1), 199–205.",False,False,False,False,False,False
+"Hansen, L. K., & Salamon, P. (1990). Neural network ensembles. IEEE",False,False,False,False,False,False
+"Transactions on Pattern Analysis and Machine Intelligence, 12,",False,False,False,False,False,False
+993–1001.,False,False,False,False,False,False
+"Harris, N. L. (1990). Probabilistic belief networks for genetic counseling.",False,False,False,False,False,False
+"Computer Methods and Programs in Biomedicine, 32(1), 37–44.",False,False,False,False,False,False
+"He, J., Hu, H. J., Harrison, R., Tai, P. C., & Pan, Y. (2006).",False,False,False,False,False,False
+Transmembrane segments prediction and understanding using support,False,False,False,False,False,False
+"vector machine and decision tree. Expert Systems with Applications,",False,False,False,False,False,False
+"30(1), 64–72.",False,False,False,False,False,False
+"Heckerman, D., Geiger, D., & Chickering, D. (1995). Learning Bayesian",False,False,False,False,False,False
+networks: The combination of knowledge and statistical data. Machine,False,False,False,False,False,False
+"Learning, 20(3), 197–243.",False,False,False,False,False,False
+"Kaplan, B. (2001). Evaluating informatics applications-clinical decision",False,False,False,False,False,False
+support systems literature review. International Journal of Medical,False,False,False,False,False,False
+"Informatics, 64(1), 15–37.",False,False,False,False,False,False
+"Kim, H.-C., Pang, S., Je, H.-M., Kim, D., & Bang, S. Y. (2003).",False,False,False,False,False,False
+"Constructing support vector machine ensemble. Pattern Recognition,",False,False,False,False,False,False
+"36(12), 2757–2767.",False,False,False,False,False,False
+"Kim, M.-J., Min, S.-H., & Han, I. (2006). An evolutionary approach to",False,False,False,False,False,False
+the combination of multiple classiﬁers to predict a stock price index.,False,False,False,False,False,False
+"Expert Systems with Applications, 31(2), 241–247.",False,False,False,False,False,False
+"Li, Y. C., Liu, L., Chiu, W. T., & Jian, W. S. (2000). Neural network",False,False,False,False,False,False
+modeling for surgical decisions on traumatic brain injury patients.,False,False,False,False,False,False
+"International Journal of Medical Informatics, 57(1), 1–9.",False,False,False,False,False,False
+"Liu, T.-F., Sung, W.-K., & Mittal, A. (2006). Model gene network by",False,False,False,False,False,False
+"semi-ﬁxed Bayesian network. Expert Systems with Applications, 30(1),",False,False,False,False,False,False
+42–49.,False,False,False,False,False,False
+"MacDowell, M., Somoza, E., Rothe, K., Fry, R., Brady, K., & Bocklet,",False,False,False,False,False,False
+A. (2001). Understanding birthing mode decision making using,False,False,False,False,False,False
+"artiﬁcial neural networks. Medical Decision Making, 21(6), 433–443.",False,False,False,False,False,False
+"Majumder, S. K., Ghosh, N., & Gupta, P. K. (2005). Support vector",False,False,False,False,False,False
+"machine for optical diagnosis of cancer. Journal of Biomedical Optics,",False,False,False,False,False,False
+"10(2), 24–34.",False,False,False,False,False,False
+"Mangalampalli, A., Mangalampalli, S. M., Chakravarthy, R., & Jain, A.",False,False,False,False,False,False
+K. (2006). A neural network based clinical decision-support system for,False,False,False,False,False,False
+eﬃcient diagnosis and fuzzy-based prescription of gynecological,False,False,False,False,False,False
+diseases using homoeopathic medicinal system. Expert Systems with,False,False,False,False,False,False
+"Applications, 30(1), 109–116.",False,False,False,False,False,False
+"Mendyk, A., & Jachowicz, R. (2005). Neural network as a decision",False,False,False,False,False,False
+support system in the development of pharmaceutical formulation –,False,False,False,False,False,False
+"focus on solid dispersions. Expert Systems with Applications, 28(2),",False,False,False,False,False,False
+285–294.,False,False,False,False,False,False
+"Mercer, T. (1909). Functions of positive and negative type and their",False,False,False,False,False,False
+connection with the theory of integral equations. Transaction of,False,False,False,False,False,False
+"London Philosophy Society (A), 209, 415–446.",False,False,False,False,False,False
+"Murphy, C. K. (2001). Identifying diagnostic errors with induced decision",False,False,False,False,False,False
+"trees. Medical Decision Making, 21(5), 368–375.",False,False,False,False,False,False
+"Nilson, N. J. (1965). Learning machines: Foundations of trainable pattern",False,False,False,False,False,False
+classiﬁers. New York: McGraw-Hill.,False,False,False,False,False,False
+"Ohlsson, M. (2004). WeAidU – A decision support system for myocardial",False,False,False,False,False,False
+perfusion images using artiﬁcial neural networks. Artiﬁcial Intelligence,False,False,False,False,False,False
+"in Medicine, 30(1), 49–60.",False,False,False,False,False,False
+"Pearl, J. (1988). Probabilistic reasoning in intelligent systems: Networks of",False,False,False,False,False,False
+"plausible inference. San Mateo, CA: Morgan Kaufmann Publishers.",False,False,False,False,False,False
+"Prados, J., Kalousis, A., Sanchez, J. C., Allard, L., Carrette, O., & Hilario,",False,False,False,False,False,False
+M. (2004). Mining mass spectra for diagnosis and biomarker discovery,False,False,False,False,False,False
+"of cerebral accidents. Proteomics, 4(8), 2320–2332.",False,False,False,False,False,False
+"Qu, Y., Adam, B.-L., Yasui, Y., Ward, M. D., Cazares, L. H.,",False,False,False,False,False,False
+"Schellhammer, P. F., et al. (2002). Boosted decision tree analysis of",False,False,False,False,False,False
+surface-enhanced laser desorption/ionization mass spectral serum,False,False,False,False,False,False
+proﬁles discriminates prostate cancer from noncancer patients. Clinical,False,False,False,False,False,False
+"Chemistry, 48(10), 1835–1843.",False,False,False,False,False,False
+"Quinlan, J. R. (1993). C4.5: Programs for machine learning. Los Altos,",False,False,False,False,False,False
+CA: Morgan Kaufmann Publishers.,False,False,False,False,False,False
+"Ripley, B. D. (1996). Pattern recognition and neural networks. Cambridge:",False,False,False,False,False,False
+Cambridge University Press.,False,False,False,False,False,False
+"Rumelhart, D. E., Hilton, G. E., & Williams, R. J. (1986). Learning",False,False,False,False,False,False
+"representations by back-propagating errors. Nature, 323, 533–536.",False,False,False,False,False,False
+"Sadeghi, S., Barzi, A., Sadeghi, N., & King, B. (2006). A Bayesian model",False,False,False,False,False,False
+for triage decision support. International Journal of Medical Informat-,False,False,False,False,False,False
+"ics, 75(5), 403–411.",False,False,False,False,False,False
+"Schubert, F., Mu",False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ller, J., Fritz, B., Lichter, P., & Eils, R. (2003).",False,False,False,False,False,False
+Understanding the classiﬁcation of tumors with a support vector,False,False,False,False,False,False
+machine: A case-based explanation scheme. Proceedings of the German,False,False,False,False,False,False
+"conference on bioinformatics (GCB 2003), Neuherberg/Garching, 12–",False,False,False,False,False,False
+14 October (pp. 123–127).,False,False,False,False,False,False
+"Sharkey, A. (1999). Multi-net systems. In A. J. C. Sharkey (Ed.),",False,False,False,False,False,False
+Combining artiﬁcial neural nets – Ensemble and modular multi-net,False,False,False,False,False,False
+systems (pp. 1–30). Berlin: Springer-Verlag.,False,False,False,False,False,False
+"Shin, H., & Markey, M. K. (2006). A machine learning perspective on the",False,False,False,False,False,False
+development of clinical decision support systems utilizing mass spectra,False,False,False,False,False,False
+"of blood samples. Journal of Biomedical Informatics, 39(2), 227–",False,False,False,False,False,False
+248.,False,False,False,False,False,False
+"Simpson, P. K. (1990). Artiﬁcial neural systems: Foundations paradigms",False,False,False,False,False,False
+"applications and implementations. Elmsford, NY: Pergamon Press.",False,False,False,False,False,False
+"Stockwell, D. R. B. (1993). LBS: Bayesian learning system for rapid expert",False,False,False,False,False,False
+"system development. Expert Systems with Applications, 6(2), 137–",False,False,False,False,False,False
+147.,False,False,False,False,False,False
+"Tung, K.-Y., Huang, I.-C., Chen, S.-L., & Shih, C.-T. (2005). Mining the",False,False,False,False,False,False
+generation xers’ job attitudes by artiﬁcial neural network and decision,False,False,False,False,False,False
+"tree – Empirical evidence in Taiwan. Expert Systems with Applications,",False,False,False,False,False,False
+"29(4), 783–794.",False,False,False,False,False,False
+Tu,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"rkoglu, I., Arslan, A., & Ilkay, E. (2002). An expert system for",False,False,False,False,False,False
+"diagnosis of the heart valve diseases. Expert Systems with Applications,",False,False,False,False,False,False
+"23(3), 229–236.",False,False,False,False,False,False
+"Vapnik, V. (1995). The nature of statistical learning theory. New York:",False,False,False,False,False,False
+Springer-Verlag.,False,False,False,False,False,False
+"Veropoulos, K., Cristianini, N., & Campbell, C. (1999). The application of",False,False,False,False,False,False
+support vector machines to medical decision support: A Case Study. In,False,False,False,False,False,False
+Proceedings of the ECCAI advanced course on artiﬁcial intelligence,False,False,False,False,False,False
+"(ACAI 1999), 5–16 July 1999, Chania, Greece.",False,False,False,False,False,False
+"West, D., Mangiameli, P., Rampal, R., & West, V. (2005). Ensemble",False,False,False,False,False,False
+strategies for a medical diagnostic decision support system: A breast,False,False,False,False,False,False
+cancer diagnosis application. European Journal of Operational,False,False,False,False,False,False
+"Research, 162(2), 532–551.",False,False,False,False,False,False
+"West, D., & West, V. (2000). Model selection for a medical diagnostic",False,False,False,False,False,False
+decision support system: A breast cancer detection case. Artiﬁcial,False,False,False,False,False,False
+"Intelligence in Medicine, 20(3), 183–204.",False,False,False,False,False,False
+"Won, Y., Song, H., Kang, T. W., Kim, J., Han, B., & Lee, S. (2003).",False,False,False,False,False,False
+Pattern analysis of serum proteome distinguishes renal cell carcinoma,False,False,False,False,False,False
+"from other urologic diseases and healthy persons. Proteomics, 3(12),",False,False,False,False,False,False
+2310–2316.,False,False,False,False,False,False
+"Yan, H.-M., Jiang, Y.-T., Zheng, J., Peng, C.-L., & Li, Q.-H. (2006). A",False,False,False,False,False,False
+multilayer perceptron-based medical decision support system for heart,False,False,False,False,False,False
+"disease diagnosis. Expert Systems with Applications, 30(2), 272–281.",False,False,False,False,False,False
+"Yang, S., & Browne, A. (2004). Neural network ensembles: Combining",False,False,False,False,False,False
+multiple models for enhanced performance using a multistage,False,False,False,False,False,False
+approach.,False,False,False,False,False,False
+"Expert Systems, 21(5), 279–288.",False,False,False,False,False,False
+J.-H. Eom et al. / Expert Systems with Applications 34 (2008) 2465–2479 2479,False,False,False,False,False,False

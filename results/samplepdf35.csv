@@ -1,0 +1,506 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+*,False,False,False,False,False,False
+a,False,False,False,False,False,False
+"Department of Informatics, Firat University, 23119 Elazig, Turkey",False,False,False,False,False,False
+b,False,False,False,False,False,False
+"Department of Electronics and Computer Science, Firat University, 23119 Elazig, Turkey",False,False,False,False,False,False
+article info,False,False,False,False,False,False
+Keywords:,False,False,False,False,False,False
+Heart disease,False,False,False,False,False,False
+SAS base software,False,False,False,False,False,False
+Neural networks,False,False,False,False,False,False
+Ensemble based model,False,False,False,False,False,False
+abstract,False,False,False,False,False,False
+"In the last decades, several tools and various methodologies have been proposed by the researchers for",False,False,False,False,False,False
+"developing effective medical decision support systems. Moreover, new methodologies and new tools",False,False,False,False,False,False
+are continued to develop and represent day by day. Diagnosing of the heart disease is one of the impor-,False,False,False,False,False,False
+tant issue and many researchers investigated to develop intelligent medical decision support systems to,False,False,False,False,False,False
+"improve the ability of the physicians. In this paper, we introduce a methodology which uses SAS base",False,False,False,False,False,False
+software 9.1.3 for diagnosing of the heart disease. A neural networks ensemble method is in the centre,False,False,False,False,False,False
+of the proposed system. This ensemble based methods creates new models by combining the posterior,False,False,False,False,False,False
+"probabilities or the predicted values from multiple predecessor models. So, more effective models can",False,False,False,False,False,False
+be created. We performed experiments with the proposed tool. We obtained 89.01% classiﬁcation accu-,False,False,False,False,False,False
+racy from the experiments made on the data taken from Cleveland heart disease database. We also,False,False,False,False,False,False
+"obtained 80.95% and 95.91% sensitivity and speciﬁcity values, respectively, in heart disease diagnosis.",False,False,False,False,False,False
+Ó 2008 Elsevier Ltd. All rights reserved.,False,False,False,False,False,False
+1. Introduction,False,False,True,True,False,False
+"Heart disease, which is usually called coronary artery disease",False,False,False,False,False,False
+"(CAD), is a broad term that can refer to any condition that affects",False,False,False,False,False,False
+the heart (http://yourtotalhealth.ivillage.com/heart-disease-fast-,False,False,False,False,False,False
+"facts.html, 2008). CAD is a chronic disease in which the coronary",False,False,False,False,False,False
+arteries gradually harden and narrow and the most common form,False,False,False,False,False,False
+of cardiovascular disease in the United States and the leading cause,False,False,False,False,False,False
+"of heart attacks. Moreover, cardiovascular disease is the leading",False,False,False,False,False,False
+"killer of American women, causing almost 500,000 deaths every",False,False,False,False,False,False
+year (http://yourtotalhealth.ivillage.com/heart-disease-fast-facts.,False,False,False,False,False,False
+"html, 2008).",False,False,False,False,False,False
+While many people with heart disease have symptoms such as,False,False,False,False,False,False
+"chest pain and fatigue, as many as 50% have no symptoms until a",False,False,False,False,False,False
+heart attack occurs. According to the American heart association,False,False,False,False,False,False
+"(AHA), CAD is the leading killer of American men and women,",False,False,False,False,False,False
+responsible for more than one of every ﬁve deaths in 2001,False,False,False,False,False,False
+"(http://www.americanheart.org, 2008). Many statistics show CAD",False,False,False,False,False,False
+as the leading cause of premature and permanent disability among,False,False,False,False,False,False
+American workers.,False,False,False,False,False,False
+There are many risk factors associated with CAD. Some risk fac-,False,False,False,False,False,False
+"tors for CAD, such as your sex, age and family history, cannot be",False,False,False,False,False,False
+changed. Other risk factors for CAD that are related to lifestyle,False,False,False,False,False,False
+often can be changed (http://yourtotalhealth.ivillage.com/heart-,False,False,False,False,False,False
+"disease-fast-facts.html, 2008). For example, smoking, high choles-",False,False,False,False,False,False
+"terol, high blood pressure and physical inactivity are all risk factors",False,False,False,False,False,False
+for coronary artery disease that can be modiﬁed and in some cases,False,False,False,False,False,False
+eliminated with lifestyle changes and medication. Diabetes and,False,False,False,False,False,False
+obesity can sometimes be prevented when lifestyle changes are,False,False,False,False,False,False
+made early in life.,False,False,False,False,False,False
+Having so many factors to analyze to diagnose the heart dis-,False,False,False,False,False,False
+"eases, physicians generally make decisions by evaluating the cur-",False,False,False,False,False,False
+rent test results of the patients. The previous decisions made on,False,False,False,False,False,False
+other patients with the same condition are also examined by the,False,False,False,False,False,False
+physicians. These complex procedures are not easy when consider-,False,False,False,False,False,False
+"ing the number of factors that the physician has to evaluate. So,",False,False,False,False,False,False
+diagnosing the heart disease of a patient involves experience and,False,False,False,False,False,False
+highly skilled physicians.,False,False,False,False,False,False
+Recent advances in the ﬁeld of artiﬁcial intelligence have led to,False,False,False,False,False,False
+the emergence of expert systems for medical applications. More-,False,False,False,False,False,False
+"over, in the last few decades computational tools have been de-",False,False,False,False,False,False
+signed to improve the experiences and abilities of physicians for,False,False,False,False,False,False
+making decisions about their patients. Motivated by the need of,False,False,False,False,False,False
+"such an expert system, in this study, we propose a method to efﬁ-",False,False,False,False,False,False
+ciently diagnose the heart disease. The proposed system uses neu-,False,False,False,False,False,False
+ral networks ensemble model. Ensemble based methods enable an,False,False,False,False,False,False
+increase in generalization performance by combining several indi-,False,False,False,False,False,False
+vidual neural networks train on the same task. We realized our,False,False,False,False,False,False
+proposal with SAS base software 9.1.3 (licence number: 291468).,False,False,False,False,False,False
+SAS enterprise miner streamlines the entire data mining process,False,False,False,False,False,False
+from data access to model assessment. It supports all necessary,False,False,False,False,False,False
+"tasks within a single, integrated solution while providing the ﬂex-",False,False,False,False,False,False
+ibility for efﬁcient collaborations. We obtained 89.01% classiﬁca-,False,False,False,False,False,False
+tion accuracy from the experiments made on the data taken from,False,False,False,False,False,False
+0957-4174/$ - see front matter Ó 2008 Elsevier Ltd. All rights reserved.,False,False,False,False,False,False
+doi:10.1016/j.eswa.2008.09.013,False,False,False,False,False,False
+* Corresponding author.,False,False,False,False,False,False
+E-mail address: rdas@ﬁrat.edu.tr (R. Das).,False,False,False,False,False,False
+Expert Systems with Applications 36 (2009) 7675–7680,False,False,False,False,False,False
+Contents lists available at ScienceDirect,False,False,False,False,False,False
+Expert Systems with Applications,False,False,False,False,False,False
+journal homepage: www.elsevier.com/locate/eswa,False,False,False,False,False,False
+Cleveland heart disease database. We also obtained 80.95% and,False,False,False,False,False,False
+"95.91% sensitivity and speciﬁcity values, respectively, in heart dis-",False,False,False,False,False,False
+ease diagnosis.,False,False,False,False,False,False
+The remaining of the paper is organized as follows. We present,False,False,False,False,False,False
+"a brief overview on related work, dataset description, neural net-",False,False,False,False,False,False
+works and ensemble based methods in the background section.,False,False,False,False,False,False
+Basic descriptions for this study can be found in this section.,False,False,False,False,False,False
+Methodology and implementation of the proposed system is de-,False,False,False,False,False,False
+scribed in Section 3. The components of the SAS base software,False,False,False,False,False,False
+are introduced brieﬂy. The implementation constraints are also gi-,False,False,False,False,False,False
+ven in this section. Experimental results are discussed in Section,False,False,False,False,False,False
+4. The SAS base software represents several statistical evaluation,False,False,True,True,False,False
+tests and different graphics for the users. Brief explanation can,False,False,False,False,False,False
+"also be found in this section. In Section 5, we ﬁnally conclude",False,False,False,False,False,False
+our study.,False,False,False,False,False,False
+2. Background,False,False,True,True,False,False
+2.1. A brief overview on related works,False,False,False,False,False,False
+So far a great variety of classiﬁcation algorithms have been em-,False,False,False,False,False,False
+ployed on Cleveland heart disease database and high classiﬁcation,False,False,False,False,False,False
+accuracies have been reported in the last decades (ftp://ftp.ics.u-,False,False,False,False,False,False
+"ci.edu/pub/ma, 2008; Cheung, 2001; Polat et al., 2005; Ozsen &",False,False,False,False,False,False
+"Gunes, in press; http://www.phys.uni.toru, 2008). Robert Detrano,",False,False,False,False,False,False
+"who constructed the Cleveland heart disease database, used logis-",False,False,False,False,False,False
+tic regression algorithm and obtained 77.0% classiﬁcation accuracy,False,False,False,False,False,False
+"(ftp://ftp.ics.uci.edu/pub/ma, 2008). Newton Cheung utilized C4.5,",False,False,False,False,False,False
+"Naïve Bayes, BNND and BNNF algorithms and reached the classiﬁ-",False,False,False,False,False,False
+"cation accuracies of 81.11%, 81.48%, 81.11% and 80.96%, respec-",False,False,False,False,False,False
+"tively (Cheung, 2001). Polat et al. proposed a method that uses",False,False,False,False,False,False
+artiﬁcial immune system (AIS) and obtained 84.5% classiﬁcation,False,False,False,False,False,False
+"accuracy (Polat et al., 2005). Then, a similar method was used by",False,False,False,False,False,False
+Ozsen and Gunes and 87.0% classiﬁcation accuracy was reported,False,False,False,False,False,False
+"(Ozsen & Gunes, in press). Moreover, more results were reported",False,False,False,False,False,False
+"by using ToolDiag, RA and WEKA tools in the following reference",False,False,False,False,False,False
+"(http://www.phys.uni.toru, 2008). As can be seen from the related",False,False,False,False,False,False
+reference the reached higher classiﬁcation accuracy was 77% when,False,False,False,False,False,False
+these tools were used.,False,False,False,False,False,False
+2.2. Database description,False,False,False,False,False,False
+The heart disease database was taken from UCI machine learn-,False,False,False,False,False,False
+"ing repository (ftp://ftp.ics.uci.edu/pub/ma, 2008). The Cleveland",False,False,False,False,False,False
+"heart disease data was obtained from V.A. Medical Center, Long",False,False,False,False,False,False
+Beach and Cleveland Clinic Foundation from Dr. Robert Detrano.,False,False,False,False,False,False
+The database contains 303 samples of which 297 are complete,False,False,False,False,False,False
+samples and six are samples with missing attributes. Origi-,False,False,False,False,False,False
+"nally, the database has 76 raw attributes. However, all the",False,False,False,False,False,False
+"published experiments only refer to 13 of them, and are listed",False,False,False,False,False,False
+as follows:,False,False,False,False,False,False
+"(1) age,",False,False,False,False,False,False
+"(2) sex,",False,False,False,False,False,False
+"(3) chest pain type (four values),",False,False,False,False,False,False
+"(4) resting blood pressure,",False,False,False,False,False,False
+"(5) serum cholestoral in mg/dl,",False,False,False,False,False,False
+"(6) fasting blood sugar>120 mg/dl,",False,False,False,False,False,False
+"(7) resting electrocardiographic results (values 0, 1 and 2),",False,False,False,False,False,False
+"(8) maximum heart rate achieved,",False,False,False,False,False,False
+"(9) exercise induced angina,",False,False,False,False,False,False
+"(10) old peak = ST depression induced by exercise relative to rest,",False,False,False,False,False,False
+"(11) the slope of the peak exercise ST segment,",False,False,False,False,False,False
+"(12) number of major vessels (0–3) colored by ﬂourosopy,",False,False,False,False,False,False
+(13) thal: 3 = normal; 6 = ﬁxed defect and 7 = reversable defect.,False,False,False,False,False,False
+2.3. Neural networks,False,False,False,False,False,False
+Artiﬁcial neural networks were originally developed by,False,False,False,False,False,False
+researchers who were trying to mimic the neurophysiology of,False,False,False,False,False,False
+"the human brain (Bishop, 1995). By combining many simple com-",False,False,False,False,False,False
+puting elements (neurons or units) into a highly interconnected,False,False,False,False,False,False
+"system, a complex phenomenon such as intelligence was indented",False,False,False,False,False,False
+to produce. A schematic diagram for an artiﬁcial neuron model is,False,False,False,False,False,False
+"shown in Fig. 1. Nowadays, neural network researchers have incor-",False,False,False,False,True,False
+porated methods from statistics and numerical analysis into their,False,False,False,False,False,False
+"networks. More speciﬁcally, feedforward neural networks are a",False,False,False,False,False,False
+"class of ﬂexible nonlinear regression, discriminant and data reduc-",False,False,False,False,False,False
+"tion models. By detecting complex nonlinear relationships in data,",False,False,False,False,False,False
+neural networks can help to make predictions about real-world,False,False,False,False,False,False
+"problems (Sengur et al., 2007).",False,False,False,False,False,False
+The neural network node provides a variety of feedforward net-,False,False,False,False,False,False
+works that are commonly called backpropagation networks. Back-,False,False,False,False,False,False
+propagation refers to the method for computing the error gradient,False,False,False,False,False,False
+"for a feedforward network, a straightforward application of the",False,False,False,False,False,False
+chain rule of elementary calculus (Hanbay,False,False,False,False,False,False
+et,False,False,False,False,False,False
+"al., 2008). By exten-",False,False,False,False,False,False
+"sion, backpropagation refers to various training methods that use",False,False,False,False,False,False
+"backpropagation to compute the gradient. By further extension, a",False,False,False,False,False,False
+backpropagation network is a feedforward network trained by,False,False,False,False,False,False
+any of various gradient descent techniques. There are numerous,False,False,False,False,False,False
+algorithms available for training neural network models; most of,False,False,False,False,False,False
+them can be viewed as a straightforward application of optimiza-,False,False,False,False,False,False
+tion theory and statistical estimation. Most of the algorithms used,False,False,False,False,False,False
+in training artiﬁcial neural networks are employing some form of,False,False,False,False,False,False
+gradient descent. This is done by simply taking the derivative of,False,False,False,False,False,False
+the cost function with respect to the network parameters and then,False,False,False,False,False,False
+changing those parameters in a gradient-related direction. The,False,False,False,False,False,False
+"most popular of them is the back propagation algorithm, which",False,False,False,False,False,False
+has different variants. Standard backpropagation is a gradient des-,False,False,False,False,False,False
+cent algorithm. It is very difﬁcult to know which training algorithm,False,False,False,False,False,False
+"will be the fastest for a given problem, and the best one is usually",False,False,False,False,False,False
+chosen by trial and error. An ANN with a back propagation algo-,False,False,False,False,False,False
+"rithm learns by changing the connection weights, and these",False,False,False,False,False,False
+changes are stored as knowledge.,False,False,False,False,False,False
+"Neural networks are trained by experience, when applied an",False,False,False,False,False,False
+unknown input to the network it can generalize from past experi-,False,False,False,False,False,False
+ences and product a new result. The output of the neuron net is gi-,False,False,False,False,False,False
+ven by the following equation:,False,False,False,False,False,False
+X,True,False,False,True,False,False
+m,False,False,False,False,False,False
+j¼1,False,False,False,False,False,False
+W,True,False,False,True,False,False
+ij,False,False,False,False,False,False
+x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+ðtÞh,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ !,False,False,False,False,False,False
+f,False,False,False,False,False,False
+1,False,False,False,False,False,False
+i,False,False,False,False,False,False
+X,True,False,False,True,False,False
+m,False,False,False,False,False,False
+j¼1,False,False,False,False,False,False
+w,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+x,False,False,False,False,False,False
+j,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"Fig. 1. Artiﬁcial neuron model (Hanbay et al., 2008).",False,False,False,False,True,False
+7676 R. Das et al. / Expert Systems with Applications 36 (2009) 7675–7680,False,False,False,False,False,False
+where X = (X,False,False,False,False,False,False
+", X",True,False,False,True,False,False
+", ..., X",True,False,False,True,False,False
+) represent the m input applied to the neu-,False,False,False,False,False,False
+"ron, W",False,False,False,False,False,False
+represent the weights for input X,False,False,False,False,False,False
+", h",False,False,False,False,False,False
+is a bias value and a(.) is,False,False,False,False,False,False
+activation function. There are many kind of activation function.,False,False,False,False,False,False
+"Usually nonlinear activation functions such as sigmoid, step are",False,False,False,False,False,False
+used.,False,False,False,False,False,False
+2.4. Ensemble based methods,False,False,False,False,False,False
+The ensemble based methods creates new models by combining,False,False,False,False,False,False
+the posterior probabilities (for class targets) or the predicted val-,False,False,False,False,False,False
+ues (for interval targets) from multiple predecessor models. The,False,False,False,False,False,False
+"new model is then used to score new data. Thus, this new model",False,False,False,False,False,False
+obtains an increase in generalization performance by combining,False,False,False,False,False,False
+several individual models trained on the same task (http://sup-,False,False,False,False,False,False
+"port.sas.com/d, 2008). A schematic illustration of ensemble model",False,False,False,False,False,False
+can be seen in Fig. 2.,False,False,False,False,False,False
+The creation of an ensemble approach is often divided into two,False,False,False,False,False,False
+"steps; (1) generate individual members, and (2) appropriately",False,False,False,False,False,False
+combine individual members’ outputs to constitute a new output.,False,False,False,False,False,False
+The basic method for forming ensemble based methods is to train,False,False,False,False,False,False
+each member model using random parameters. In the neural net-,False,False,False,False,False,False
+"work context, these methods include techniques for training with",False,False,False,False,False,False
+"different network topologies, different initial weights, different",False,False,False,False,False,False
+"learning parameters, and learning different portions of the training",False,False,False,False,False,False
+"set (Anastasiadis & Magoulas, 2006).",False,False,False,False,False,False
+"Moreover, methods for creating ensembles focus on creating",False,False,False,False,False,False
+"classiﬁers that disagree on their decisions. In general terms, these",False,False,False,False,False,False
+methods alter the training process in an attempt to produce classi-,False,False,False,False,False,False
+ﬁers that will generate different classiﬁcations.,False,False,False,False,False,False
+3. The proposed methodology and implementation,False,False,True,True,False,False
+"The proposed methodology, which is illustrated in Fig. 3,is",False,False,False,False,False,False
+implemented with the SAS base software 9.1.3. SAS enterprise,False,False,False,False,False,False
+miner streamlines the entire data mining process from data access,False,False,False,False,False,False
+to model assessment. It supports all necessary tasks within a sin-,False,False,False,False,False,False
+"gle, integrated solution while providing the ﬂexibility for efﬁcient",False,False,False,False,False,False
+"collaborations (http://support.sas.com/d, 2008). SAS enterprise",False,False,False,False,False,False
+"miner is designed for data miners, marketing analysts, database",False,False,False,False,False,False
+"marketers, risk analysts, fraud investigators, business managers,",False,False,False,False,False,False
+engineers and scientists who play strategic roles in identifying,False,False,False,False,False,False
+and solving critical business or research issues (http://sup-,False,False,False,False,False,False
+"port.sas.com/d, 2008).",False,False,False,False,False,False
+SAS base software 9.1.3 includes two different programs. These,False,False,False,False,False,False
+programs are called SAS enterprise guide 4.3 and SAS enterprise,False,False,False,False,False,False
+miner 5.2. While SAS enterprise guide 4.3 program was used for,False,False,False,False,False,False
+"data preprocessing, SAS enterprise miner 5.2 program was used",False,False,False,False,False,False
+to analyze and recognize the heart disease by combining several,False,False,False,False,False,False
+"neural networks with ensemble node. As can be seen from Fig. 3,",False,False,False,False,False,False
+the performed system is composed of ﬁve components. The brief,False,False,False,False,False,False
+description of each component is given in the following.,False,False,False,False,False,False
+Heart database component holds the features that are used to,False,False,False,False,False,False
+characterize healthy persons and patients. As it was mentioned,False,False,False,False,False,False
+"earlier, the database composed of 14 columns and 297 rows. About",False,False,False,False,False,False
+13 columns indicate the features and one column indicates the,False,False,False,False,False,False
+class labels. Heart disease data set was transferred by using SAS,False,False,False,False,False,False
+enterprise guide 4.3 to analyze in SAS enterprise miner 5.2.,False,False,False,False,False,False
+Data partition component was used to partition the input data,False,False,False,False,False,False
+into train and validation data sets. Partitioning provides mutually,False,False,False,False,False,False
+exclusive data sets. Two or more mutually exclusive data sets share,False,False,False,False,False,False
+no observations with each other. Partitioning the input data re-,False,False,False,False,False,False
+duces the computation time of preliminary modeling runs.,False,False,False,False,False,False
+Variable selection component was used in reducing the number,False,False,False,False,False,False
+of inputs by setting the status of the input variables that are,False,False,False,False,False,False
+not related to the target as rejected. Although rejected variables,False,False,False,False,False,False
+"were passed to subsequent nodes in the process ﬂow, these vari-",False,False,False,False,False,False
+ables were not used as model inputs by a successor modeling,False,False,False,False,False,False
+node.,False,False,False,False,False,False
+"Fig. 2. A schematic illustration of ensemble model (http://support.sas.com/d, 2008).",False,False,False,False,True,False
+Fig. 3. Proposed system for heart disease recognition.,False,False,False,False,True,False
+R. Das et al. / Expert Systems with Applications 36 (2009) 7675–7680,False,False,False,False,False,False
+7677,False,False,False,False,False,False
+Neural networks block component was used to classify the fea-,False,False,False,False,False,False
+ture space. Three independent neural networks models were used,False,False,False,False,False,False
+to construct this component. There are many types of neural net-,False,False,False,False,False,False
+"works architectures; however, multi-layer feedforward neural net-",False,False,False,False,False,False
+work is the most widely used for prediction. A multi-layer,False,False,False,False,False,False
+"feedforward neural network typically has an input layer, an output",False,False,False,False,False,False
+layer and one or more hidden layers. In multi-layer feedforward,False,False,False,False,False,False
+"networks, neurons are arranged in layers and there is a connection",False,False,False,False,False,False
+among the neurons of other layers. The inputs are applied to the,False,False,False,False,False,False
+input layer the output layer contributes to the output directly.,False,False,False,False,False,False
+Other layers between input and output layers are called hidden,False,False,False,False,False,False
+layers. Inputs are propagated in gradually modiﬁed form in the for-,False,False,False,False,False,False
+"ward direction, ﬁnally reaching the output layer. The backpropaga-",False,False,False,False,False,False
+"tion learning algorithm has been used in the feedforward, single",False,False,False,False,False,False
+hidden layer neural network. The variants of the algorithm used,False,False,False,False,False,False
+"in the study are the Levenberg–Marquardt (LM), scaled conjugate",False,False,False,False,False,False
+gradient (SCG) and Pola–Ribiere conjugate gradient (CGP) algo-,False,False,False,False,False,False
+rithms. A tangent sigmoid transfer function has been used for both,False,False,False,False,False,False
+the hidden layer and the output layer. We used 14 neurons in the,False,False,False,False,False,False
+hidden layer. The initial weights were chosen randomly.,False,False,False,False,False,False
+Ensemble component was used to create new models by com-,False,False,False,False,False,False
+bining the posterior probabilities (for class targets) or the pre-,False,False,False,False,False,False
+dicted values (for interval targets) from multiple predecessor,False,False,False,False,False,False
+models. The new model is then used to score new data.,False,False,False,False,False,False
+4. Experimental results and discussion,False,False,True,True,False,False
+"In this study, there were two diagnosis classes: healthy and a",False,False,False,False,False,False
+patient who is subject to possible heart disease. As it was noted,False,False,False,False,False,False
+"earlier in the background section, several researchers proposed",False,False,False,False,False,False
+various methods for diagnosing the heart disease. The reported,False,False,False,False,False,False
+accuracies vary between 50% and 87%. The database contains 303,False,False,False,False,False,False
+samples of which 297 are complete samples and six are samples,False,False,False,False,False,False
+with missing attributes. While 70% of the heart disease database,False,False,False,False,False,False
+"was used for training the neural networks ensemble model, the",False,False,False,False,False,False
+rest of the heart disease database (30%) was used for validation,False,False,False,False,False,False
+"of the proposed system. As we mentioned earlier, three different",False,False,False,False,False,False
+independent neural networks models were combined for con-,False,False,False,False,False,False
+structing the ensemble model. We also increased the number of,False,False,False,False,False,False
+neural networks node in the ensemble model but no performance,False,False,False,False,False,False
+improvement was obtained.,False,False,False,False,False,False
+Classiﬁcation results of the system were displayed by using a,False,False,False,False,False,False
+"confusion matrix. In a confusion matrix, each cell contains the",False,False,False,False,False,False
+raw number of exemplars classiﬁed for the corresponding combi-,False,False,False,False,False,False
+nation of desired and actual network outputs. Table 1 gives the,False,False,False,False,False,False
+confusion matrix showing the classiﬁcation results of this network.,False,False,False,False,False,False
+SAS enterprise miner 5.2 represents several performance evalu-,False,False,False,False,False,False
+"ation tests for the users. Here, we only examined these test methods",False,False,False,False,False,False
+brieﬂy; meanwhile we represented our experimental results and,False,False,False,False,False,False
+the related displays and tables. Moreover a comparison table was,False,False,False,False,False,False
+constructed and can be found in this section. SAS enterprise miner,False,False,False,False,False,False
+5.2 produces the following tables and plots in its results window: ﬁt,False,False,False,False,False,False
+"statistics table, classiﬁcation chart, score rankings overlay chart,",False,False,False,False,False,False
+"score rankings matrix chart, score distribution chart and ROC.",False,False,False,False,False,False
+The ﬁt statistics table in the ensemble results window displays,False,False,False,False,False,False
+the several statistics for the train and validates data sets. This table,False,False,False,False,False,False
+"is composed of 5 coulombs and 13 rows, respectively. The cou-",False,False,False,False,False,False
+"lombs of the table are called as the target, ﬁt statistics, statistical",False,False,False,False,False,False
+"labels, train and validation, respectively. The rows indicated the",False,False,False,False,False,False
+"each statistical evaluation method. As can be seen from Table 2,",False,False,False,False,False,False
+the average proﬁt which can be called as accuracy was 86.4% and,False,False,False,False,False,False
+"89.011% for training and validation data sets, respectively. Another",False,False,False,False,False,False
+"observation from Table 2 is that, while 10 of the validation data set",False,False,False,False,False,True
+"were wrongly classiﬁed, 81 of the validation data set were cor-",False,False,False,False,False,False
+rectly classiﬁed.,False,False,False,False,False,False
+Another evaluation display is the classiﬁcation table chart,False,False,False,False,False,False
+which displays a stacked bar chart of the classiﬁcation results for,False,False,False,False,False,False
+a categorical target variable. The following display shows an exam-,False,False,False,False,False,False
+ple of the classiﬁcation table chart (Fig. 4).,False,False,False,False,False,False
+The horizontal axis displays the target levels that observations,False,False,False,False,False,False
+actually belong to. The color of the stacked bars identiﬁes the tar-,False,False,False,False,False,False
+get levels that observations are classiﬁed into. The height of the,False,False,False,False,False,False
+stacked bars represents the percentage of total observations.,False,False,False,False,False,False
+"In the score rankings chart, several statistics for each group of",False,False,False,False,False,False
+"observations are plotted on the vertical axis. For a binary target,",False,False,False,False,False,False
+all observations in the scored data set are sorted by the posterior,False,False,False,False,False,False
+probabilities of the event level in descending order. For a nominal,False,False,False,False,False,False
+Table 1,False,False,False,False,False,True
+Classiﬁcation table,False,False,False,False,False,True
+Target Outcome Target,False,False,False,False,False,False
+percentage (%),False,False,False,False,False,False
+Outcome,False,False,False,False,False,False
+percentage (%),False,False,False,False,False,False
+Count Total,False,False,False,False,False,False
+percentage (%),False,False,False,False,False,False
+0 0 85.4545 95.9184 47 51.6484,False,False,False,False,False,False
+1 0 14.5455 19.0476 8 8.7912,False,False,False,False,False,False
+0 1 5.5556 4.0816 2 2.1978,False,False,False,False,False,False
+1 1 94.4444 80.9524 34 37.3626,False,False,False,False,False,False
+Table 2,False,False,False,False,False,True
+Fit statistics for ensemble model,False,False,False,False,False,False
+Target Fit statistics Statistics label Train Validation,False,False,False,False,False,False
+sinif _ERR_ Error function 124.2403 78.6215,False,False,False,False,False,False
+sinif _SSE_ Sum of squared errors 39.16356 19.27484,False,False,False,False,False,False
+sinif _MAX_ Maximum absolute error 0.927191 0.999591,False,False,False,False,False,False
+sinif _DIV_ Divisor for ASE 412 182,False,False,False,False,False,False
+sinif _NOBS_ Sum of frequencies 206 91,False,False,False,False,False,False
+sinif _WRONG_ Number of wrong classiﬁcations 28 10,False,False,False,False,False,False
+sinif _DISF_ Frequency of classiﬁed cases 206 91,False,False,False,False,False,False
+sinif _MISC_ Misclassiﬁcation rate 0.135922 0.10989,False,False,False,False,False,False
+sinif _PROF_ Total proﬁt 178 81,False,False,False,False,False,False
+sinif _APROF_ Average proﬁt 0.864078 0.89011,False,False,False,False,False,False
+sinif _ASE_ Average squared error 0.095057 0.105906,False,False,False,False,False,False
+sinif _RASE_ Root average squared error 0.308313 0.325432,False,False,False,False,False,False
+sinif _AVERR_ Average error function 0.301554 0.431986,False,False,False,False,False,False
+Fig. 4. Classiﬁcation table chart.,False,False,False,False,True,False
+7678 R. Das et al. / Expert Systems with Applications 36 (2009) 7675–7680,False,False,False,False,False,False
+Fig. 5. Score ranking chart.,False,False,False,False,True,False
+Fig. 6. The score distribution chart.,False,False,False,False,True,False
+Fig. 7. ROC chart.,False,False,False,False,True,False
+R. Das et al. / Expert Systems with Applications 36 (2009) 7675–7680,False,False,False,False,False,False
+7679,False,False,False,False,False,False
+"or ordinal target, observations are sorted from highest expected",False,False,False,False,False,False
+proﬁt to lowest expected proﬁt. Then the sorted observations are,False,False,False,False,False,False
+grouped into deciles based on the group bin property and observa-,False,False,False,False,False,False
+tions in a group are used to calculate the statistics that are plotted,False,False,False,False,False,False
+"in deciles charts. By default, the horizontal axis of a score rankings",False,False,False,False,False,False
+chart displays the deciles (groups) of the observations. The vertical,False,False,False,False,False,False
+"axis displays the following values, and their mean, minimum and",False,False,False,False,False,False
+maximum. The related ﬁgure can be seen in Fig. 5.,False,False,False,False,False,False
+"The score distribution chart plots the proportions of events,",False,False,False,False,False,False
+nonevents and other values on the vertical axis. The values on,False,False,False,False,False,False
+the horizontal axis represent the model score of a bin. The model,False,False,False,False,False,False
+score depends on the prediction of the target and the number of,False,False,False,False,False,False
+"buckets used. For categorical targets, observations are grouped into",False,False,False,False,False,False
+"bins, based on the posterior probabilities of the event level and the",False,False,False,False,False,False
+"number of buckets. For interval targets, observations are grouped",False,False,False,False,False,False
+"into bins, based on the actual predicted values of the target. The",False,False,False,False,False,False
+score distribution chart of a useful model shows a higher percent-,False,False,False,False,False,False
+age of events for higher model score and a higher percentage of,False,False,False,False,False,False
+nonevents for lower model scores. Fig. 6 shows the score distribu-,False,False,False,False,False,False
+tion chart for the heart disease detection system.,False,False,False,False,False,False
+The receiver operating characteristic (ROC) chart is a graphical,False,False,False,False,False,False
+display that gives the measure of the predictive accuracy of a logis-,False,False,False,False,False,False
+tic model. The chart displays the sensitivity and speciﬁcity. Sensi-,False,False,False,False,False,False
+tivity is a measure of accuracy for predicting events that is equal to,False,False,False,False,False,False
+the true positive/total actual positive. Speciﬁcity is a measure of,False,False,False,False,False,False
+accuracy for predicting nonevents that is equal to the true nega-,False,False,False,False,False,False
+tive/total actual negative of a classiﬁer for a range of cutoffs.,False,False,False,False,False,False
+Fig. 7 displays the ROC chart for a binary target.,False,False,False,False,True,False
+We compared our results with the previous results reported by,False,False,False,False,False,False
+earlier methods. Table 3 gives the classiﬁcation accuracies of our,False,False,False,False,False,True
+method and the previous proposed methods.,False,False,False,False,False,False
+5. Conclusions,False,False,True,True,False,False
+"Up to now, several studies have been reported focusing on heart",False,False,False,False,False,False
+"disease diagnosis (http://www.phys.uni.toru, 2008). These studies",False,False,False,False,False,False
+applied different methods to the given problem and achieved high,False,False,False,False,False,False
+classiﬁcation accuracies using the dataset taken from UCI machine,False,False,False,False,False,False
+"learning repository. In this study, SAS enterprise miner 5.2 was",False,False,False,False,False,False
+used to construct a neural networks ensemble based methodology,False,False,False,False,False,False
+for diagnosing of the heart disease. Experiments were conducted,False,False,False,False,False,False
+on the heart disease dataset to diagnose heart disease in a fully,False,False,False,False,False,False
+automatic manner. Three independent neural networks models,False,False,False,False,False,False
+were used to construct the ensemble model. The number of neural,False,False,False,False,False,False
+networks node in the ensemble model was also increased but no,False,False,False,False,False,False
+performance improvement was obtained. The experimental results,False,False,False,False,False,False
+"gained 89.01% classiﬁcation accuracy, 80.95% sensitivity and",False,False,False,False,False,False
+95.91% speciﬁcity values for heart disease diagnosis.,False,False,False,False,False,False
+SAS enterprise miner 5.2 supports all necessary tasks within a,False,False,False,False,False,False
+"single, integrated solution while providing the ﬂexibility for efﬁ-",False,False,False,False,False,False
+cient collaborations. It also gives opportunities to the user to deal,False,False,False,False,False,False
+with various performance evaluation test methods. This allows,False,False,False,False,False,False
+the user to evaluate their system performance from many different,False,False,False,False,False,False
+"points of views. Thus, SAS base software can be used in many ma-",False,False,False,False,False,False
+chine intelligence applications.,False,False,False,False,False,False
+Acknowledgement,False,False,False,False,False,False
+The authors gratefully acknowledge the ﬁnancial support from,False,False,False,False,False,False
+the Scientiﬁc Research Projects Administration Unit of Firat Uni-,False,False,False,False,False,False
+versity for this study performed under project with Grant No. 1526.,False,False,False,False,False,False
+References,False,False,False,True,False,False
+<http://yourtotalhealth.ivillage.com/heart-disease-fast-facts.html> (last accessed:,False,False,False,False,False,False
+"February 13, 2008.).",False,False,False,False,False,False
+"<http://www.americanheart.org> (last accessed: February 13, 2008).",False,False,False,False,False,False
+"ftp://ftp.ics.uci.edu/pub/machine-learning-databases (last accessed: February 5,",False,False,False,False,False,False
+2008).,False,False,False,False,False,False
+"Cheung, N. (2001). Machine learning techniques for medical analysis. School of",False,False,False,False,False,False
+"Information Technology and Electrical Engineering, B.Sc. Thesis, University of",False,False,False,False,False,False
+Queenland.,False,False,False,False,False,False
+"Polat, K., Sahan, S., Kodaz, H., Günes, S. (2005). A new classiﬁcation method to",False,False,False,False,False,False
+diagnosis heart disease: Supervised artiﬁcial immune system (AIRS). In,False,False,False,False,False,False
+Proceedings of the Turkish Symposium on Artiﬁcial Intelligence and Neural,False,False,False,False,False,False
+Networks (TAINN).,False,False,False,False,False,False
+"Ozsen, S., Gunes, S. (in press). Attribute weighting via genetic algorithms for",False,False,False,False,False,False
+attribute weighted artiﬁcial immune system (AWAIS) and its application to,False,False,False,False,False,False
+heart disease and liver disorders problems. Expert Systems with Applications.,False,False,False,False,False,False
+<http://www.phys.uni.torun.pl/kmk/projects/datasets.html> (last accessed:,False,False,False,False,False,False
+"February 15, 2008).",False,False,False,False,False,False
+"Bishop, Christopher M. (1995). Neural networks for pattern recognition. Oxford",False,False,False,False,False,False
+University Press.,False,False,False,False,False,False
+"Sengur, A., Turkoglu, I., & Ince, M. C. (2007). Wavelet packet neural networks for",False,False,False,False,False,False
+"texture classiﬁcation. Expert Systems with Applications, 32(2).",False,False,False,False,False,False
+"Hanbay, D., Turkoglu, I., & Demir, Y. (2008). An expert system based on wavelet",False,False,False,False,False,False
+decomposition and neural network for modeling Chua’s circuit. Expert Systems,False,False,False,False,False,False
+"with Applications, 34(4), 2278–2283.",False,False,False,False,False,False
+"<http://support.sas.com/documentation> (last accessed: January 20, 2008).",False,False,False,False,False,False
+"Anastasiadis, Aristoklis D., & Magoulas, George D. (2006). Analysing the localisation",False,False,False,False,False,False
+sites of proteins through neural networks ensembles. Neural Computing and,False,False,False,False,False,False
+"Applications, 15(3–4), 277–288.",False,False,False,False,False,False
+Table 3,False,False,False,False,False,True
+Classiﬁcation accuracies obtained with our proposed system and other classiﬁers,False,False,False,False,False,False
+from literature,False,False,False,False,False,False
+Author (year) Method Accuracy (%),False,False,False,False,False,False
+ToolDiag IB1-4 50.00,False,False,False,False,False,False
+"WEKA, RA InductH 58.50",False,False,False,False,False,False
+"ToolDiag, RA RBF 60.00",False,False,False,False,False,False
+"WEKA, RA FOIL 64.00",True,False,False,True,False,False
+"ToolDiag, RA MLP + BP 65.60",False,False,False,False,False,False
+"WEKA, RA T2 68.10",True,False,False,True,False,False
+"WEKA, RA 1R 71.40",True,False,False,True,False,False
+"WEKA, RA IB1c 74.00",False,False,False,False,False,False
+"WEKA, RA K",True,False,False,True,False,False
+*,False,False,False,False,False,False
+76.70,False,False,False,False,False,False
+Robert Detrano Logistic regression 77.00,False,False,False,False,False,False
+Newton Cheung (2001) C4.5 81.11,False,False,False,False,False,False
+Newton Cheung (2001) Naive Bayes 81.48,False,False,False,False,False,False
+Newton Cheung (2001) BNND 81.11,False,False,False,False,False,False
+Newton Cheung (2001) BNNF 80.96,False,False,False,False,False,False
+"WEKA, RA Naive Bayes 83.60",False,False,False,False,False,False
+Polat et al. (2005) AIRS 84.50,False,False,False,False,False,False
+Polat et al. (2006) Fuzzy–AIRS–Knn based system 87.00,False,False,False,False,False,False
+Our proposal – SAS base (2008) Neural networks ensemble 89.01,False,False,False,False,False,False
+7680 R. Das et al. / Expert Systems with Applications 36 (2009) 7675–7680,False,False,False,False,False,False

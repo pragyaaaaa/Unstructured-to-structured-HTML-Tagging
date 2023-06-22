@@ -1,0 +1,486 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+ ,False,False,False,False,False,False
+Application of K-Means and Genetic Algorithms for ,False,False,False,False,False,False
+Dimension Reduc,False,False,False,False,False,False
+tion by Integrating  ,False,False,False,False,False,False
+SVM for Diabetes Diagnosis ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"T. Santhanam a, M.S Padmavathi b ",False,False,False,False,False,False
+a,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"Associate Professor and Head, PG and Research Department of Computer Science,  ",False,False,False,False,False,False
+"D. G.Vaishnav College, Chennai - 600106, India. ",False,False,False,False,False,False
+b ,False,False,False,False,False,False
+"Ph.D Scholor, PG and Research Department of Computer Science,  ",False,False,False,False,False,False
+"D. G. Vaishnav College,Chennai - 600106, India ",False,False,False,False,False,False
+Abstract ,False,False,False,True,False,False
+"Vast amount of data available in health care industry is difficult to handle, hence mining is necessary to find the ",False,False,False,False,False,False
+necessary pattern and relationship among the features available. Medical data mining is one major research area where ,False,False,False,False,False,False
+"evolutionary algorithms and clustering algorithms play a vital role. In this research work, K-Means is used for ",False,False,False,False,False,False
+r,False,False,False,False,False,False
+emoving the noisy data and genetic algorithms for finding the optimal set of features with Support Vector Machine ,False,False,False,False,False,False
+"(SVM) as classifier for classification. The experimental result proves that, the proposed model has attained an average ",False,False,False,False,False,False
+accuracy of 98.79 % for reduced dataset of Pima Indians Diabetes from UCI repository. It also shows that the proposed ,False,False,False,False,False,False
+meth,False,False,False,False,False,False
+od has attained better results compared to modified K-Means clustering based data preparation method with SVM ,False,False,False,False,False,False
+classi,False,False,False,False,False,False
+fier (96.71 %) as described in the literature ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+© 2015 The Authors. Published by Elsevier B.V. ,False,False,False,False,False,False
+Peer-review under responsibility of organizing committee of the,False,False,False,False,False,False
+" Graph Algorithms, High Performance Implementations ",False,False,False,False,False,False
+and Applications (ICGHIA2014).,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Keywords: Diabetes Diagnosis; Feature Selection; Genetic Algorithms; K-Means; Support Vector Machine. ,False,False,False,False,False,False
+     Extracting knowledge and patterns for the diagnosis,False,False,False,False,False,False
+ and treatment of disease from the medical database ,False,False,False,False,False,False
+becomes more important to promote the development of telemedicine and community medicine. The ,False,False,False,False,False,False
+"methods and applications of medical data include artificial  neural network, genetic algorithms, fuzzy ",False,False,False,False,False,False
+© 2015 The Authors. Published by Elsevier B.V. This is an open access article under the CC BY-NC-ND license ,False,False,False,False,False,False
+(http://creativecommons.org/licenses/by-nc-nd/4.0/).,False,False,False,False,False,False
+Peer,False,False,False,False,False,False
+"-review under responsibility of organizing committee of the Graph Algorithms, High Performance Implementations ",False,False,False,False,False,False
+and Applications (ICGHIA2014),False,False,False,False,False,False
+ T. Santhanam and M.S. Padmavathi  /  Procedia Computer Science  47  ( 2015 )  76 – 83 ,False,False,False,False,False,False
+"system, rough set, and support vector machine ",False,False,False,False,False,False
+. One important application of medical mining is genetic ,False,True,False,True,False,False
+algorithms. Dimension reduction is the mapping of data to a lower dimensional space such that ,False,False,False,False,False,False
+"uninformative variance in the data is removed, such that a subspace in which the data lives is detected ",False,False,False,False,False,False
+. It ,False,True,False,True,False,False
+can be divided into instance selection or reduction and feature selection techniques. Instance reduction is ,False,False,False,False,False,False
+reducing the irrelevant instances from the dataset to increase the classification accuracy. Selecting a subset ,False,False,False,False,False,False
+of,False,False,False,False,False,False
+ relevant features to be used in model construction is called feature Selection.  ,False,False,False,False,False,False
+ Genetic Algorithms (GAs) are intrinsically parallel. GAs h,False,False,False,False,False,False
+"ave multiple offspring, they can explore the ",False,False,False,False,False,False
+"solution space in multiple directions at once. If one path has reached its end, then eliminate it and continue ",False,False,False,False,False,False
+"work on other paths, giving them a greater chance each run of finding the optimal solution ",False,False,False,False,False,False
+. There is a ,False,True,False,True,False,False
+greater scope for GAs in future for machine learning and optimization techniques. The K-Means clustering ,False,False,False,False,False,False
+partition,False,False,False,False,False,False
+s the data into groups which contain similar objects. The instances which do not belong to any ,False,False,False,False,False,False
+cluster (or) a cluster with fewer data points (or) forced to fit into a cluster are removed ,False,False,False,False,False,False
+. Clustering when ,False,True,False,True,False,False
+cascaded with classification considerably increases the accuracy of the model. SVMs are set of related ,False,False,False,False,False,False
+supervised learning methods used for classification and regression. It is a powerful machine method ,False,False,False,False,False,False
+developed from statistical learning and has made significant achievement in the field of image ,False,False,False,False,False,False
+"classification, bioinformatics, text categorization, hand-written categorization, etc ",False,False,False,False,False,False
+. Several recent studies ,False,True,False,True,False,False
+have reported that the SVM generally are capable of delivering higher performance in terms of ,False,False,False,False,False,False
+"classification accuracy than the other data classification algorithms including, statistical algorithms, ",False,False,False,False,False,False
+decision tree based algorithms and instance based learning methods ,False,False,False,False,False,False
+. ,False,True,False,True,False,False
+     This  research  work  proposes  K-Means clustering based outlier detection followed by GA for feature ,False,False,False,False,False,False
+selection,False,False,False,False,False,False
+ with SVM as classifier to classify the dataset. The rest of the paper is organized as follows: ,False,False,False,False,False,False
+Section 2 shows the literature review. The preliminaries used is given in section 3 followed by data source ,False,False,False,False,False,False
+description in section 4. The proposed model is described in section 5. Section 6 reports the experimental ,False,False,False,False,False,False
+analysis and the final section deals with a conclusion. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+     Ravi et al ,False,False,False,False,False,False
+ proposed a method using GAs to find an appropriate feature subset and SVM classifier on ,False,False,False,False,False,False
+"different datasets, to improve classification accuracy. Rajdev et al ",False,False,False,False,False,False
+  used a method for selecting optimal ,False,False,False,False,False,False
+"feature subset based on correlation using GA algorithm, where GA is used as optimal search tool for ",False,False,False,False,False,False
+selecting subset of attributes. Aishwarya et al ,False,False,False,False,False,False
+ proposed a medical decision support system based on GA ,False,False,False,False,False,False
+for feature subset selection and Least Square SVM for diagnosis of diabetes. Shruti et al ,False,False,False,False,False,False
+ used GA to find ,False,False,False,False,False,False
+the optimal reduced set of attributes genetic search method and naïve bayes classifier to diagnose the ,False,False,False,False,False,False
+presence or absence of heart disease. Sumeet et al ,False,False,False,False,False,False
+ presented a decision support system for heart disease ,False,False,False,False,False,False
+classification based on SVM and integer-coded GA for selecting the important features in diagnosis of heart ,False,False,False,False,False,False
+disease. Sarah B,False,False,False,False,False,False
+ehnam Aziz ,False,False,False,False,False,False
+ proposed a method for diagnosis of thyroid diseases using GAs and Neural ,False,False,False,False,False,False
+Networks. The GA was used to find the optimum network structure with high classification accuracy Mehdi ,False,False,False,False,False,False
+et al ,False,False,False,False,False,False
+ adopted a hybrid procedure using wrapper subset evaluation and genetic search. Information gain is ,False,False,False,False,False,False
+used to find the optimal feature space and it is proved to be the best method with a lower cost. Ahmad et al ,False,False,False,False,False,False
+ applied an improved GA for feature selection and multi-layer perceptron network to classify the medical ,False,False,False,False,False,False
+datasets. Asha et al ,False,False,False,False,False,False
+  used clustering and SVM for reducing datasets in the diagnosis of tuberculosis. ,False,False,False,False,False,False
+Hemant et  al ,False,False,False,False,False,False
+  involved K-Means cluster to reduce datasets with different classification algorithms for ,False,False,False,False,False,False
+predicting diabetes.  A hybrid model was proposed by Chin-Yuan Fan et al ,False,False,False,False,False,False
+ by integrating a case based ,False,False,False,False,False,False
+data clustering method and a fuzzy decision tree to classify the liver disorder and breast cancer datasets. ,False,False,False,False,False,False
+Nihat et al ,False,False,False,False,False,False
+  proposed modified K-Means for removing noisy data and SVM for classification of the ,False,False,False,False,False,False
+reduced datasets. Yuan et al ,False,False,False,False,False,False
+has modeled an objective function which is based on the leave-one-out cross-,False,False,False,False,False,False
+"validation, and the SVM parameters are optimized by usi",False,False,False,False,False,False
+ng GA and PSO (particle swarm optimization). ,False,False,False,False,False,False
+Patil et al ,False,False,False,False,False,False
+which SVM achieved high accuracy percentage. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ K-Means  clustering algorithm was developed in 1976 by MacQueen. It is a unsupervised clustering ,False,False,False,False,False,False
+alg,False,False,False,False,False,False
+"orithm generates a specific number of disjoint, flat (non-hierarchical) clusters The procedure follows a ",False,False,False,False,False,False
+ T. Santhanam and M.S. Padmavathi  /  Procedia Computer Science  47  ( 2015 )  76 – 83 ,False,False,False,False,False,False
+     SVM is a classier that performs classification tasks b,False,False,False,False,False,False
+y constructing hyperplanes in a multidimensional ,False,False,False,False,False,False
+space that separates cases of different class labels. The SVM method ,False,False,False,False,False,False
+ provides an optimally separating ,False,False,False,False,False,False
+subset of data instances used to define the hyperplane. The distance between the hyperplane and the nearest ,False,False,False,False,False,False
+support vector is called as margin ,False,False,False,False,False,False
+. SVM supports both regression and classification tasks and can handle ,False,True,False,True,False,False
+"multiple continuous and categorical variables. There are two types of SVMs, (a) Linear SVM is used to ",False,False,False,False,False,False
+separate the data points using a linear decision boundary and (b) Non-linear SVM separates the data points ,False,False,False,False,False,False
+usi,False,False,False,False,False,False
+ng a nonlinear decision boundary ,False,False,False,False,False,False
+.  ,False,True,False,True,False,False
+     Traditional SVM training algorithms require quadratic programming (QP) package. Solving a quadratic ,False,False,False,False,False,False
+prog,False,False,False,False,False,False
+ramming problem is slow and requires a lot of memory as well as in depth knowledge of numerical ,False,False,False,False,False,False
+analysis. Consider a binary classification problem with a dataset (x,False,False,False,False,False,False
+", y",False,False,False,False,False,False
+"), ..., (x",False,False,False,False,False,False
+", y",False,False,False,False,False,False
+"), where x",False,False,False,False,False,False
+ is an input ,False,False,False,False,False,False
+vector and y,False,False,False,False,False,False
+programming problem is given below ,False,False,False,False,False,False
+: ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ Subject to ,False,False,False,False,False,False
+    (3) ,False,False,False,False,False,False
+  ,False,False,False,False,False,False
+Sequential Minimal Optimization does a way  with the need for quadratic programming. The Sequential ,False,False,False,False,False,False
+Mini,False,False,False,False,False,False
+"mal Optimization (SMO) algorithm (Platt, 1999a) avoids working with numerical QP routines by ",False,False,False,False,False,False
+analytically solving a large number of small optimization sub-problems that involves only two Lagrange ,False,False,False,False,False,False
+", the constraints are reduced to the following: ",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+     This reduced problem can be solved analytically by finding a minimum of a one-dimensional quadratic ,False,False,False,False,False,False
+f,False,False,False,False,False,False
+ the sum over the rest of terms in the ,False,False,False,False,False,False
+equality constraint. The algorithm proceeds as follows: ,False,False,False,False,False,False
+optimization problem. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"     The  quadratic  programming  problem  has  been  solved,  when  KKT ",False,False,False,False,False,False
+  is satisfied by the Lagrange ,False,False,False,False,False,False
+multipliers. The above algorithm guarantees convergence and heuristic measures are used to choose the ,False,False,False,False,False,False
+pair of multipliers so as to increase the rate of convergence. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+4.  Data Source ,False,False,True,True,False,False
+ ,False,False,False,False,False,False
+     Pima Indian Diabetes ,False,False,False,False,False,False
+ contains female patients with at least 21 years old. It is used to diagnose the ,False,False,False,False,False,False
+"presence of diabetes in pregnant women. There are 768 records, out of which 268 cases in class ‘positive ",False,False,False,False,False,False
+test for diabetes’ and 500 cases for “negative test for diabetes” with 376 records contain missing values. It ,False,False,False,False,False,False
+contains 8 numerical attributes as input and one output variable. The attribute information present in the ,False,False,False,False,False,False
+dataset is as follows: ,False,False,False,False,False,False
+5.  Proposed Method ,False,False,True,True,False,False
+"     The working principle of proposed system shown in Fig.1, comprises of 3 steps: (1) Data cleaning is ",False,False,False,False,False,False
+done by replacing the missing values with mean (as the dataset lies under a normal distribution curve). (2) ,False,False,False,False,False,False
+"The cleaned datasets is clustered using K-Means to remove outliers, inconsiste",False,False,False,False,False,False
+nt and noisy data and the ,False,False,False,False,False,False
+reduced data is used for selecting the optimal features with genetic algorithm. (3) The reduced dataset is ,False,False,False,False,False,False
+classified using SVM classifier to achieve better accuracy compared to existing methods in literature. In ,False,False,False,False,False,False
+order to increase the reliability of classifier performance 10-fold cross-validation method is used      ,False,False,False,False,False,False
+"     To visualize the performance of supervised machine learning algorithms, confusion matrix is used. The ",False,False,False,False,False,False
+f,False,False,False,False,False,False
+our classification performance indices present in confusion matrix is given in Fig. 2. The evaluation ,False,False,False,False,False,False
+"metrics used are: Sensitivity, Specificity, Positively Predicted and Negatively Predicted value. Sensitivity ",False,False,False,False,False,False
+and Specificity is the proportion of actual positives and n,False,False,False,False,False,False
+egatives which are correctly identified as such. ,False,False,False,False,False,False
+"The Positive and Negative predictive values are the proportions of positive and negative results, which are ",False,False,False,False,False,False
+pred,False,False,False,False,False,False
+icted.      ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"     After replacing the missing values by mean, outliers, noisy and inconsistent samples / cases  were ",False,False,False,False,False,False
+re,False,False,False,False,False,False
+"moved using simple K-Means clustering algorithm. Then, GA was used as a feature selection tool and its ",False,False,False,False,False,False
+ T. Santhanam and M.S. Padmavathi  /  Procedia Computer Science  47  ( 2015 )  76 – 83 ,False,False,False,False,False,False
+"output was fed to SVM using 10-fold cross validation technique for classification.  During each run, GA ",False,False,False,False,False,False
+selected different features from the original set of features and the classification accuracy was recorded. To ,False,False,False,False,False,False
+"achieve consistent result, the experiment was repeated 50 times and the outcomes were listed in table 1. ",False,False,False,False,False,False
+The average classification accuracy was 98.79 %.    ,False,False,False,False,False,False
+"    Among the 50 test runs done, one trail / run which is",False,False,False,False,False,False
+ closer to the average classification accuracy value ,False,False,False,False,False,False
+is  chosen to determine the various performance m,False,False,False,False,False,False
+etrics. The evaluation metrics obtained by SVM for ,False,False,False,False,False,False
+"classifying the reduced dataset  is shown in table 2 and confusion matrix in table 3. From table 4, it is ",False,False,False,False,False,False
+prov,False,False,False,False,False,False
+en that the classification accuracy percentage of the proposed work is better than the existing work. ,False,False,False,False,False,False
+Table 1. Experimental Outcome for 50 runs. ,False,False,False,False,False,True
+Test ,False,False,False,False,False,False
+Run ,False,False,False,False,False,False
+No. of ,False,False,False,False,False,False
+Attributes ,False,False,False,False,False,False
+Selected  ,False,False,False,False,False,False
+SVM ,True,False,False,True,False,False
+Accuracy ,False,False,False,False,False,False
+(%) ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Test ,False,False,False,False,False,False
+Run ,False,False,False,False,False,False
+No. of ,False,False,False,False,False,False
+Attributes ,False,False,False,False,False,False
+Selected  ,False,False,False,False,False,False
+SVM ,True,False,False,True,False,False
+Accuracy ,False,False,False,False,False,False
+(%) ,False,False,False,False,False,False
+1 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+98.63 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+26 ,False,False,False,False,False,False
+6 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+2 ,False,False,False,False,False,False
+3 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+27 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+98.82 ,False,False,False,False,False,False
+3 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+99.21 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+28 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+99.21 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+29 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+99.02 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+99.21 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+30 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+6 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+99.02 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+31 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+98.63 ,False,False,False,False,False,False
+7 ,False,False,False,False,False,False
+6 ,False,False,False,False,False,False
+99.02 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+32 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+8 ,False,False,False,False,False,False
+3 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+33 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+99.21 ,False,False,False,False,False,False
+9 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+34 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+10 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+99.21 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+35 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.82 ,False,False,False,False,False,False
+11 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.82 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+36 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+99.21 ,False,False,False,False,False,False
+12 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+98.82 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+37 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+99.02 ,False,False,False,False,False,False
+13 ,False,False,False,False,False,False
+6 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+38 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+98.63 ,False,False,False,False,False,False
+14 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+99.21 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+39 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+99.02 ,False,False,False,False,False,False
+15 ,False,False,False,False,False,False
+3 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+40 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+99.21 ,False,False,False,False,False,False
+16 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+41 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.82 ,False,False,False,False,False,False
+17 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+42 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.82 ,False,False,False,False,False,False
+18 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.63 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+43 ,False,False,False,False,False,False
+3 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+19 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.82 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+44 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+98.82 ,False,False,False,False,False,False
+20 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+99.21 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+45 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+99.02 ,False,False,False,False,False,False
+21 ,False,False,False,False,False,False
+3 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+46 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+99.02 ,False,False,False,False,False,False
+22 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+99.21 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+47 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+98.82 ,False,False,False,False,False,False
+23 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+98.82 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+48 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+98.63 ,False,False,False,False,False,False
+24 ,False,False,False,False,False,False
+3 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+49 ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+99.21 ,False,False,False,False,False,False
+25 ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+98.82 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+50 ,False,False,False,False,False,False
+3 ,False,False,False,False,False,False
+98.43 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Table 2. Evaluation Metrics obtained from SVM classifier ,False,False,False,False,False,True
+Performance Measures ,False,False,False,False,False,False
+Reduced Dataset ,False,False,False,False,False,False
+No. of Attributes Used ,False,False,False,False,False,False
+5 ,False,False,False,False,False,False
+Sensitivity (%) ,False,False,False,False,False,False
+96.40 ,False,False,False,False,False,False
+Specificity (%) ,False,False,False,False,False,False
+99.73 ,False,False,False,False,False,False
+Positively Predicted value (%) ,False,False,False,False,False,False
+99.25 ,False,False,False,False,False,False
+Negatively Predicted value (%) ,False,False,False,False,False,False
+98.67 ,False,False,False,False,False,False
+   ,False,False,False,False,False,False
+ T. Santhanam and M.S. Padmavathi  /  Procedia Computer Science  47  ( 2015 )  76 – 83 ,False,False,False,False,False,False
+Applied Information Technology; 2009; 12(1).  ,False,False,False,False,False,False
+V,True,False,False,True,False,False
+andewalle.  Benchmarking Least Squares Support Vector Machine Classifiers.  Kluwer Academic Publishers; Machine ,False,False,False,False,False,False
+Learning ;2004; 54; 5–32. ,False,False,False,False,False,False
+Algo,False,False,False,False,False,False
+rithm for Large Medical Datasets. International Journal of Advanced Research in Computer Science and Software ,False,False,False,False,False,False
+Engineering; Feb 2014; 4(2); .272-277. ,False,False,False,False,False,False
+of C,False,False,False,False,False,False
+omputer Applications (0975–8887); 2010; 4(8). ,False,False,False,False,False,False
+M,True,False,False,True,False,False
+achine for Diabetes Disease Diagnosis. International Journal of Engineering Sciences & Research Technology; April ,False,False,False,False,False,False
+2014; 3(4). ,False,False,False,False,False,False
+O,True,False,False,True,False,False
+ptimal Reduced Set Of Attributes. I,False,False,False,False,False,False
+nternational Journal of Advanced Computational Engineering and Networking;April ,False,False,False,False,False,False
+2013; 1(2);2320-2106. ,False,False,False,False,False,False
+In,False,False,False,False,False,False
+"teger-Coded Genetic Algorithm to Select Critical Features. USA, San Francisco:  Proceedings of the World Congress on ",False,False,False,False,False,False
+E,True,False,False,True,False,False
+ngineering and Computer Science ; 2008.  ,False,False,False,False,False,False
+Computer Science and Mathematics; 2011; 3 (2);  1-13. ,False,False,False,False,False,False
+G,True,False,False,True,False,False
+roup of Classification Algorithms. International Journal of Computer Applications; May 2013; 69(17). ,False,False,False,False,False,False
+-multilayer perceptron network. J M,False,False,False,False,False,False
+ed Syst; April 2013; 37(2).  ,False,False,False,False,False,False
+Casc,False,False,False,False,False,False
+ading Clustering and Classification. CORR; 2011. ,False,False,False,False,False,False
+C,True,False,False,True,False,False
+ommunication & Networking Technologies (ICCCNT): Third International Conference; July 2012;  pp.1-7. ,False,False,False,False,False,False
+Dec,False,False,False,False,False,False
+ision Tree for Medical Data Classification.  Applied Soft Computing; 2011; 11(1); pp.632–644. ,False,False,False,False,False,False
+Di,False,False,False,False,False,False
+agnosis Systems of Heart and Diabetes Diseases. Springer: Transaction Processing Systems:J Med Syst;,False,False,False,False,False,False
+ April 2014; ,False,False,False,False,False,False
+38:48. ,False,False,False,False,False,False
+Op,False,False,False,False,False,False
+timization. Journal of Computers; 2010; No.5;1160-1169. ,False,False,False,False,False,False
+omm. Com. ,False,False,False,False,False,False
+Inf. Sc.94;2010; 423-434. ,False,False,False,False,False,False
+A,True,False,False,True,False,False
+nalysis: A Comparative Study.  Colombian Journal of Statistics; ISSN: 0120-1751; Dec 2010; 33(2); 321-339.  ,False,False,False,False,False,False
+.J.Computer ,False,True,False,True,False,False
+Technology & Applications; 2012; 3(5); 1758-1764. ,False,False,False,False,False,False
+"eading, MA: Addison-Wesley; 1989. ",False,False,False,False,False,False
+5. ,False,False,True,True,False,False
+po/ Chapter20.pdf.  ,False,False,False,False,False,False
+rec,False,False,False,False,False,False
+ognition application. Elsevier: Applied Soft Computing; January 2011; 11(1); 1457–1466. ,False,False,False,False,False,False
+te,False,False,False,False,False,False
+chnique. Elsevier:  Expert Systems with Applications; 201,False,False,False,False,False,False
+1; 38(8);9063–9069.  ,False,False,False,False,False,False
+w,False,False,False,False,False,False
+ith fuzzy K-nearest neighbor. Springer:J M,False,False,False,False,False,False
+ed Syst; Oct 2012;36(5):2721-29.  ,False,False,False,False,False,False
+Pa,False,False,False,False,False,False
+rkinson disease. Springer:J Med Syst; Aug 2012; 6(4):2141-47.  ,False,False,False,False,False,False
+nternational Journal of ,False,False,False,False,False,False
+Engineering Research and Applications; April 2013; 3(2);1797-1801.  ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False

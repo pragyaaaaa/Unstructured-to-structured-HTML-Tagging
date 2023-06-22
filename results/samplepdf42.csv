@@ -1,0 +1,727 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+⇑,False,False,False,False,False,False
+a,False,False,False,False,False,False
+"School of Mechanical and Aerospace Engineering, Nanyang Technological University, N3, 50 Nanyang Avenue, Singapore 639798, Singapore",False,False,False,False,False,False
+b,False,False,False,False,False,False
+"School of Electrical and Electronic Engineering, Nanyang Technological University, S1, 50 Nanyang Avenue, Singapore 639798, Singapore",False,False,False,False,False,False
+article info,False,False,False,False,False,False
+Keywords:,False,False,False,False,False,False
+Particle swarm optimization,False,False,False,False,False,False
+Decision tree,False,False,False,False,False,False
+Coronary artery disease,False,False,False,False,False,False
+If–then rules,False,False,False,False,False,False
+Membership function,False,False,False,False,False,False
+Expert system,False,False,False,False,False,False
+abstract,False,False,False,False,False,False
+This paper presents a particle swarm optimization (PSO)-based fuzzy expert system for the diagnosis of,False,False,False,False,False,False
+coronary artery disease (CAD). The designed system is based on the Cleveland and Hungarian Heart Dis-,False,False,False,False,False,False
+"ease datasets. Since the datasets consist of many input attributes, decision tree (DT) was used to unravel",False,False,False,False,False,False
+the attributes that contribute towards the diagnosis. The output of the DT was converted into crisp if–,False,False,False,False,False,False
+then rules and then transformed into fuzzy rule base. PSO was employed to tune the fuzzy membership,False,False,False,False,False,False
+"functions (MFs). Having applied the optimized MFs, the generated fuzzy expert system has yielded",False,False,False,False,False,False
+93.27% classiﬁcation accuracy. The major advantage of this approach is the ability to interpret the deci-,False,False,False,False,False,False
+"sions made from the created fuzzy expert system, when compared with other approaches.",False,False,False,False,False,False
+Ó 2012 Elsevier Ltd. All rights reserved.,False,False,False,False,False,False
+1. Introduction,False,False,True,True,False,False
+Cardiovascular diseases are a group of disorders of the heart and,False,False,False,False,False,False
+"its blood vessels, including coronary artery disease (CAD), cerebro-",False,False,False,False,False,False
+"vascular disease, peripheral arterial disease, rheumatic heart dis-",False,False,False,False,False,False
+"ease, congenital heart disease, pulmonary embolism. Among",False,False,False,False,False,False
+"those mentioned above, CAD is the most common type of cardio-",False,False,False,False,False,False
+"vascular disease and accounts for over 600,000 deaths each year",False,False,False,False,False,False
+"in the European Union (Wilson et al., 1998). It is the largest killer",False,False,False,False,False,False
+"disease of American males and females, which caused about one",False,False,False,False,False,False
+of every six deaths in the United States (US) in 2006. The estimated,False,False,False,False,False,False
+direct and indirect cost of CAD in the US in 2010 is $177.1 billion,False,False,False,False,False,False
+"(American Heart Association, 2010). In the United Kingdom, CAD",False,False,False,False,False,False
+"caused more than 120,000 deaths in 2001 (British Heart Founda-",False,False,False,False,False,False
+"tion, 2003). Worldwide, coronary artery disease is becoming pan-",False,False,False,False,False,False
+demic as developing countries experience the epidemiological,False,False,False,False,False,False
+"transition from famine to degenerative disease. Moreover, CAD",False,False,False,False,False,False
+tends to affect the younger population and thus could negatively,False,False,False,False,False,False
+"affect the productivity and workforce (Omran, 1979). The World",False,False,False,False,False,False
+Health Organization (WHO) estimates 11.1 million deaths from,False,False,False,False,False,False
+CAD in 2020.,False,False,False,False,False,False
+"In CAD, changes in one or more of the coronary arteries cause",False,False,False,False,False,False
+"inadequate blood ﬂow to the heart, which results in the develop-",False,False,False,False,False,False
+ment of atherosclerotic plaques within the walls of coronary arter-,False,False,False,False,False,False
+"ies, narrowing of the lumen of the coronary artery, and",False,False,False,False,False,False
+"subsequently, occlusion, and thus leading to myocardial infarction",False,False,False,False,False,False
+(MI) or sudden death. The identiﬁcation of cardiovascular risk,False,False,False,False,False,False
+"factors, preventive measures, its diagnosis and early treatment are",False,False,False,False,False,False
+of great importance to lessen the cardiac morbidity and mortality.,False,False,False,False,False,False
+Several computer aided diagnosis methodologies have been,False,False,False,False,False,False
+proposed in the literature for the diagnosis of CAD. More speciﬁ-,False,False,False,False,False,False
+"cally, the use of approaches like artiﬁcial neural networks (Patil",False,False,False,False,False,False
+"& Kumaraswamy, 2009; Resul, Ibrahim, & Abdulkadir, 2009; Ture,",False,False,False,False,False,False
+"Kurt, & Kurum, 2008), Naïve Bayes (Tu et al., 2009), support vector",False,False,False,False,False,False
+"machines (Andreeva, 2006), decision trees (Palaniappan and",False,False,False,False,False,False
+"Awang, 2008) have been previously reported.",False,False,False,False,False,False
+Even though these approaches produce good classiﬁcation accu-,False,False,False,False,False,False
+"racy, the interpretation of results is hard. They are popularly",False,False,False,False,False,False
+known as ‘‘Black Box’’ method since they focus only on the classi-,False,False,False,False,False,False
+"ﬁcation accuracy. Although rule based classiﬁer systems, reported",False,False,False,False,False,False
+in Tsipouras et al. (2008) and Adeli and Neshat (2010) produces,False,False,False,False,False,False
+"interpretable rules, they lack the robustness in the missing data.",False,False,False,False,False,False
+Expert systems are a branch of artiﬁcial intelligence which solve,False,False,False,False,False,False
+the problems at the level of a human expert making use of special-,False,False,False,False,False,False
+ized knowledge represented by a set of rules. The fuzziness and,False,False,False,False,False,False
+"imprecision, which is inherited in the biomedical problems can",False,False,False,False,False,False
+be treated incorporating fuzzy logic. A fuzzy expert system (FES),False,False,False,False,False,False
+is simply an expert system which include set of fuzzy rules and,False,False,False,False,False,False
+"membership functions, i.e., knowledge acquisition, considered to",False,False,False,False,False,False
+be the most important issue in the design of fuzzy expert system.,False,False,False,False,False,False
+"In general, knowledge could be obtained from the experts in the",False,False,False,False,False,False
+particular area. When there is an increase in possible number of,False,False,False,False,False,False
+"rules of the FES, experts ﬁnd it difﬁcult to deﬁne the complete rule",False,False,False,False,False,False
+set. Also the performance of the system can also be increased by,False,False,False,False,False,False
+tuning of membership function using optimization algorithms,False,False,False,False,False,False
+"(Ganesh Kumar et al., 2012).",False,False,False,False,False,False
+0957-4174/$ - see front matter Ó 2012 Elsevier Ltd. All rights reserved.,False,False,False,False,False,False
+http://dx.doi.org/10.1016/j.eswa.2012.04.036,False,False,False,False,False,False
+⇑,False,False,False,False,False,False
+Corresponding author. Tel.: +65 93519126.,False,False,False,False,False,False
+E-mail address: muthukar1@e.ntu.edu.sg (S. Muthukaruppan).,False,False,False,False,False,False
+Expert Systems with Applications 39 (2012) 11657–11665,False,False,False,False,False,False
+Contents lists available at SciVerse ScienceDirect,False,False,False,False,False,False
+journal homepage: www.elsevier.com/locate/eswa,False,False,False,False,False,False
+This paper proposes a new particle swarm optimization (PSO)-,False,False,False,False,False,False
+based fuzzy expert system that involves four stages. In the ﬁrst,False,False,False,False,False,False
+"stage, the missing data are imputed using nearest neighbour hot",False,False,False,False,False,False
+"deck imputation, while in the second stage, decision tree induction",False,False,False,False,False,False
+"and set of rules is extracted from it. In the third stage, the crisp",False,False,False,False,False,False
+rules are transformed into fuzzy rule base using fuzzy membership,False,False,False,False,False,False
+"functions. Finally, in the fourth stage, the fuzzy membership func-",False,False,False,False,False,False
+tions are tuned by PSO. The fuzzy model with the optimized,False,False,False,False,False,False
+parameters results in the ﬁnal FES. Since the generated FES is based,False,False,False,False,False,False
+"on the set of rules, they are able to provide interpretations for their",False,False,False,False,False,False
+decisions. The use of decision tree in the ﬁrst stage has the advan-,False,False,False,False,False,False
+tage of discovering new knowledge and is considered to be a very,False,False,False,False,False,False
+effective technique for the classiﬁcation tasks (Pedrycz & Sosnow-,False,False,False,False,False,False
+"ski, 2005; Quinlan, 1996). Furthermore, the development of the FES",False,False,False,False,False,False
+"from the set of rules and tuning of the MFs, improve the accuracy.",False,False,False,False,False,False
+The incorporation of fuzzy logic deals with the uncertain situation,False,False,False,False,False,False
+and fuzziness which are inherent in biomedical classiﬁcation prob-,False,False,False,False,False,False
+"lems (Tsoukalas and Uhrig, 1997).",False,False,False,False,False,False
+The paper is organized as follows. Section 2 brieﬂy introduces,False,False,False,False,False,False
+"the datasets employed, decision tree algorithm. In Section 3, fuzzy",False,False,False,False,False,False
+inference system and optimization of the fuzzy parameters are,False,False,False,False,False,False
+presented. Details of the simulations conducted and the results,False,False,False,False,False,False
+are reported in Section 4. Section 6 discusses about the concluding,False,False,False,False,False,False
+remarks.,False,False,False,False,False,False
+2. 2.Decision tree algorithm,False,False,True,True,False,False
+2.1. Datasets,False,False,False,False,False,False
+The system is designed based on the Hungarian Institute of,False,False,False,False,False,False
+"Cardiology, Budapest and the Cleveland Clinic Foundation datasets",False,False,False,False,False,False
+"(Newman, Hettich, Blake, & Merz, 1998). These datasets are the",False,False,False,False,False,False
+"part of collection of databases at the University of California, Irvine.",False,False,False,False,False,False
+It provides 597 records in total. The database contains 76 attri-,False,False,False,False,False,False
+"butes. However, all the published experiments refer to 13 of them",False,False,False,False,False,False
+"as inputs and 1 attribute as a result. The input variables are age,",False,False,False,False,False,False
+"blood pressure, serum cholesterol, maximum heart rate, sex, chest",False,False,False,False,False,False
+"pain type, fasting blood sugar, resting ECG, exercise induced",False,False,False,False,False,False
+"angina, old peak, slope, ﬂuoroscopy and thallium scan. The output",False,False,False,False,False,False
+variable is the angiographic status.,False,False,False,False,False,False
+2.2. Missing data imputation,False,False,False,False,False,False
+Many real world databases contain missing values arising due,False,False,False,False,False,False
+"to many reasons such as data entry procedures, incorrect measure-",False,False,False,False,False,False
+ments and malfunction of the equipments or essential information,False,False,False,False,False,False
+"has not been collected from the sources. With this incompleteness,",False,False,False,False,False,False
+"it is difﬁcult to generate useful knowledge from data, since many",False,False,False,False,False,False
+machine learning algorithms can only work with complete data.,False,False,False,False,False,False
+The simplest way of dealing with this missing data is to discard,False,False,False,False,False,False
+the record that contains missing values. This method is applicable,False,False,False,False,False,False
+only when the data contain relatively small number of missing,False,False,False,False,False,False
+"values. However, when a large proportion of missing values is pres-",False,False,False,False,False,False
+"ent, this approach may lead to wrong conclusions (Brown & Kros,",False,False,False,False,False,False
+2003).,False,False,False,False,False,False
+A possible approach to deal with this problem is to carry out,False,False,False,False,False,False
+data imputation that is deﬁned as the process in which the missing,False,False,False,False,False,False
+data are estimated by appropriately computed values. One advan-,False,False,False,False,False,False
+tage of data imputation is that the missing value treatment is inde-,False,False,False,False,False,False
+pendent of the machine learning algorithm employed. This enables,False,False,False,False,False,False
+the user to select the most appropriate data imputation method for,False,False,False,False,False,False
+their application. Different approaches have been discussed in,False,False,False,False,False,False
+Grzymala-Busse and Hu (2001) and Su et al. (2008).,False,False,False,False,False,False
+"In this paper, nearest neighbour hot deck imputation has been",False,False,False,False,False,False
+employed owing to its superiority over other methods (Jonsson,False,False,False,False,False,False
+"and Wohlin, 2004; Yu, 2005; Zhang et al., 2005). In this method,",False,False,False,False,False,False
+"for each record that contains the missing values, the most similar",False,False,False,False,False,False
+record is found from the same data set and the missing values,False,False,False,False,False,False
+are imputed from that record. If the most similar record also con-,False,False,False,False,False,False
+"tains the missing value for the same attribute, it is neglected, and",False,False,False,False,False,False
+the next closest record is found. This process is repeated until all,False,False,False,False,False,False
+the missing values of the entire database are imputed. There are,False,False,False,False,False,False
+several ways to ﬁnd the most similar record to the record with,False,False,False,False,False,False
+"the missing values (Rubin, 1987).",False,False,False,False,False,False
+"In this research, Heterogeneous Euclidean Overlap Metric",False,False,False,False,False,False
+"(HEOM) distance function is presented, which uses the overlap",False,False,False,False,False,False
+method for categorical attributes and a normalized euclidean dis-,False,False,False,False,False,False
+"tance for numeric attributes (Farhangfar et al., 2004). This HEOM",False,False,False,False,False,False
+distance eliminates the effects of arbitrary ordering of the categor-,False,False,False,False,False,False
+"ical attributes (Jerez et al., 2010). The HEOM distance between two",False,False,False,False,False,False
+input vectors x and y is given as follows:,False,False,False,False,False,False
+HEOMðx; yÞ¼,False,False,False,False,False,False
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ,False,False,False,False,False,False
+X,True,False,False,True,False,False
+m,False,False,False,False,False,False
+a¼1,False,False,False,False,False,False
+a,False,False,False,False,False,False
+a,False,False,False,False,False,False
+a,False,False,False,False,False,False
+2,False,False,False,False,False,False
+s,False,False,False,False,False,False
+where d,False,False,False,False,False,False
+"(x,y) is the distance between two values x and y of a given",False,False,False,False,False,False
+attribute ‘a’ and is given as follows:,False,False,False,False,False,False
+a,False,False,False,False,False,False
+1; if x or y is unknown; else,False,False,False,False,False,False
+erlapðx; yÞ; if a is nominal; else,False,False,False,False,False,False
+a,False,False,False,False,False,False
+8,False,False,False,False,False,False
+>,False,False,False,False,False,False
+<,False,False,False,False,False,False
+>,False,False,False,False,False,False
+:,False,False,False,False,False,False
+The overlap function assigns a value of 0 if both the categorical val-,False,False,False,False,False,False
+ues are the same; otherwise the value is 1.The range normalized dif-,False,False,False,False,False,False
+ference function is given as follows:,False,False,False,False,False,False
+a,False,False,False,False,False,False
+a,False,False,False,False,False,False
+ min,False,False,False,False,False,False
+a,False,False,False,False,False,False
+where max,False,False,False,False,False,False
+and min,False,False,False,False,False,False
+are the observed maximum and minimum,False,False,False,False,False,False
+values in the attribute a. The above deﬁnition for d,False,False,False,False,False,False
+returns a value,False,False,False,False,False,False
+in the range of 0–1 whether the input is categorical or numeric,False,False,False,False,False,False
+"(Wilson & Martinez, 1997).",False,False,False,False,False,False
+2.3. Decision tree induction,False,False,False,False,False,False
+The decision tree algorithm is one of the most widely used data,False,False,False,False,False,False
+mining algorithms. It is an induction learning algorithm based on,False,False,False,False,False,False
+"the training data, which has the advantages of simplicity, transpar-",False,False,False,False,False,False
+ency and ability to extract decision rules. A decision tree is a clas-,False,False,False,False,False,False
+siﬁer that can be expressed as a recursive partition of the instance,False,False,False,False,False,False
+"space (Rokach & Maimon, 2008; Weihong et al., 2006). The learn-",False,False,False,False,False,False
+ing system of a typical decision tree adopts a top–down strategy,False,False,False,False,False,False
+which ensures a simple tree but not necessarily the simplest tree,False,False,False,False,False,False
+will be found. The decision tree consists of nodes having only,False,False,False,False,False,False
+one incoming edge. A node with outgoing branches is referred to,False,False,False,False,False,False
+as a ‘‘test’’ node while all other nodes are called ‘‘terminal nodes’’.,False,False,False,False,False,False
+Each test node splits the instance space into two or more sub-,False,False,False,False,False,False
+spaces according to the attribute values. Each terminal node is,False,False,False,False,False,False
+assigned to one class that represents the most appropriate target,False,False,False,False,False,False
+value. Every path to the terminal node in the decision tree repre-,False,False,False,False,False,False
+sents a classiﬁcation rule. The key to construct an efﬁcient decision,False,False,False,False,False,False
+tree is to select good splitting criteria. Gini diversity index is cho-,False,False,False,False,False,False
+sen as splitting criterion. The Gini impurity measure d(t) at node,False,False,False,False,False,False
+t is calculated as follows:,False,False,False,False,False,False
+iðtÞ¼1  S,False,False,False,False,False,False
+where S (the impurity criteria) =,False,False,False,False,False,False
+p,False,False,False,False,False,False
+"(j|t), for j =0,1,2,...k. k de-",False,False,False,False,False,False
+notes the number of classes existing in that node and p(j|t) corre-,False,False,False,False,False,False
+sponds to the relative frequency of class j in node t. The Gini,False,False,False,False,False,False
+diversity index of a node attains its maximum value when all the,False,False,False,False,False,False
+classes in the node occur with equal probability and is minimal,False,False,False,False,False,False
+"11658 S. Muthukaruppan, M.J. Er /Expert Systems with Applications 39 (2012) 11657–11665",False,False,False,False,False,False
+"when the node contains only one class (Breiman et al., 1984; Sun &",False,False,False,False,False,False
+"Clark, 2009).",False,False,False,False,False,False
+"Generally speaking, a decision tree that is not complex is pref-",False,False,False,False,False,False
+erable since tree complexity has a serious effect on its accuracy.,False,False,False,False,False,False
+Tree complexity is controlled by the employed pruning method.,False,False,False,False,False,False
+Decision-tree pruning is the main task which simpliﬁes the deci-,False,False,False,False,False,False
+sion tree by discarding one or more parts of the tree (sub trees),False,False,False,False,False,False
+and replacing them with the terminal nodes. The reduced error,False,False,False,False,False,False
+pruning (REP) method has been implemented in this study. This,False,False,False,False,False,False
+"method, proposed by Quinlan (1987) is a conceptually simple",False,False,False,False,False,False
+and understandable method in decision tree pruning. For every,False,False,False,False,False,False
+"sub-tree T with no terminal nodes in the original decision tree,",False,False,False,False,False,False
+the change in the misclassiﬁcation error over the test set is exam-,False,False,False,False,False,False
+ined. Misclassiﬁcation errors would occur if this sub-tree is re-,False,False,False,False,False,False
+placed by the most frequent class. If the error rate of the new,False,False,False,False,False,False
+tree would be equal to or smaller than that of the original decision,False,False,False,False,False,False
+"tree, the T is replaced by that most frequent class. This process con-",False,False,False,False,False,False
+tinues until any extra pruning would drastically decrease the accu-,False,False,False,False,False,False
+racy. The main advantage of this method is its linear computational,False,False,False,False,False,False
+complexity since each node in the tree is visited only once to deter-,False,False,False,False,False,False
+"mine the opportunity of pruning it (Patil et al., 2010).",False,False,False,False,False,False
+The problem with REP is its bias towards over pruning when the,False,False,False,False,False,False
+test set is much smaller than the training set but becomes less,False,False,False,False,False,False
+appropriate when the number of cases in the test set increases.,False,False,False,False,False,False
+The performance of REP is found to be better in terms of accuracy,False,False,False,False,False,False
+"and size when compared with other methods (Esposito et al.,",False,False,False,False,False,False
+1997).,False,False,False,False,False,False
+The impact of REP on the accuracy of the decision tree is illus-,False,False,False,False,False,False
+"trated in Fig. 1. When pruning begins, the tree is at its maximum",False,False,False,False,True,False
+"size and lowest accuracy over the test data. As pruning proceeds,",False,False,False,False,False,False
+the number of nodes is reduced and accuracy over the test data,False,False,False,False,False,False
+increases.,False,False,False,False,False,False
+The crisp set of rules from the decision tree is shown in Fig. 2.,False,False,False,False,False,False
+3. Fuzzy inference system,False,False,True,True,False,False
+3.1. Development of a fuzzy model,False,False,False,False,False,False
+A fuzzy model is based on three basic aspects: the fuzziﬁcation,False,False,False,False,False,False
+"process, fuzzy inference system (FIS) and defuzziﬁcation process.",False,False,False,False,False,False
+Different combinations of the realization of the aforementioned,False,False,False,False,False,False
+Fig. 1. Impact of reduced error pruning on accuracy.,False,False,False,False,True,False
+Fig. 2. Indicative crisp rules.,False,False,False,False,True,False
+"S. Muthukaruppan, M.J. Er / Expert Systems with Applications 39 (2012) 11657–11665",False,False,False,False,False,False
+11659,False,False,False,False,False,False
+aspects yield different fuzzy models. The design process of a fuzzy,False,False,False,False,False,False
+model consists of determining the following tasks:,False,False,False,False,False,False
+(1) The input and output variables;,False,False,False,False,False,False
+(2) The fuzzy membership functions for each variable;,False,False,False,False,False,False
+(3) The fuzzy rules and (4) The parameters in (2) and (3),False,False,False,False,False,False
+"Tasks (1), (2) and (3) are associated with the structure of the",False,False,False,False,False,False
+fuzzy model while task (4) is related to the tuning of the parame-,False,False,False,False,False,False
+"ters of the model (Nawa et al., 1999). Fig. 3 illustrates the various",False,False,False,False,False,False
+components of the proposed fuzzy expert system.,False,False,False,False,False,False
+Mamdani fuzzy inference system has been employed and for,False,False,False,False,False,False
+"the fuzziﬁcation process, the crisp set of rules is transformed into",False,False,False,False,False,False
+a fuzzy model using a triangular membership function. The mem-,False,False,False,False,False,False
+bership deﬁnition for a triangular membership function is given as,False,False,False,False,False,False
+follows:,False,False,False,False,False,False
+Triangleðx : a; b; cÞ¼,False,False,False,False,False,False
+0 x < a,False,False,False,False,False,False
+0 x > c,False,False,False,False,False,False
+8,False,False,False,False,False,False
+>,False,False,False,False,False,False
+>,False,False,False,False,False,False
+>,False,False,False,False,False,False
+<,False,False,False,False,False,False
+>,False,False,False,False,False,False
+>,False,False,False,False,False,False
+>,False,False,False,False,False,False
+:,False,False,False,False,False,False
+This can also be represented as follows:,False,False,False,False,False,False
+Triangleðx : a; b; cÞ¼max min x  aÞ=ðb  aÞ; ðc  xÞ=ðc  dÞ; 0ðÞðÞ,False,False,False,False,False,False
+where the parameters a and b denote the lower and upper bounds,False,False,False,False,False,False
+respectively while c locates the peak of the triangle.,False,False,False,False,False,False
+Thus crisp rules can be represented by fuzzy rules with triangu-,False,False,False,False,False,False
+"lar membership function. Basically, there are two reasons for trans-",False,False,False,False,False,False
+forming crisp rule-base into a fuzzy rule-base:,False,False,False,False,False,False
+i. Fuzzy rule-base in comparison with the crisp rule-base con-,False,False,False,False,False,False
+tain additional information about the certainty degree of the,False,False,False,False,False,False
+classiﬁer decision.,False,False,False,False,False,False
+ii. Fuzzy systems can easily deﬁne non-axis parallel decision,False,False,False,False,False,False
+"boundaries, while the crisp rule base system approximates",False,False,False,False,False,False
+"in the step wise manner (Abonyi and Roubos, 2000).",False,False,False,False,False,False
+"For the defuzzication process, center of gravity (COG) is em-",False,False,False,False,False,False
+"ployed, which is the most commonly used and capable of produc-",False,False,False,False,False,False
+"ing very accurate results (Shi et al., 1999).",False,False,False,False,False,False
+"As mentioned above, the important section of the fuzzy model",False,False,False,False,False,False
+is the fuzzy membership functions of each attribute. For this fuzzy,False,False,False,False,False,False
+"model, there are 13 input variables and one output variable. They",False,False,False,False,False,False
+are given as follows.,False,False,False,False,False,False
+Age: This input variable has been divided into 4 fuzzy sets,False,False,False,False,False,False
+"namely ‘‘Young’’, ‘‘Middle’’, ‘‘Old’’ and ‘‘Very old’’. Membership",False,False,False,False,False,False
+functions of these fuzzy sets are triangular. These fuzzy sets are,False,False,False,False,False,False
+shown in Table 1.,False,False,False,False,False,True
+Blood pressure: This input variable is divided into four fuzzy,False,False,False,False,False,False
+"sets. They are ‘‘Low’’, ‘‘Medium’’, ‘‘High’’ and ‘‘Very high’’. Member-",False,False,False,False,False,False
+ship functions of these fuzzy sets are triangular. They are shown in,False,False,False,False,False,False
+Table 2.,False,False,False,False,False,True
+"Serum cholesterol: This input variable has four fuzzy sets (Low,",False,False,False,False,False,False
+"Medium, High and Very high). Membership functions of these",False,False,False,False,False,False
+fuzzy sets are triangular. They are shown in Table 3.,False,False,False,False,False,False
+"Maximum heart rate: In this ﬁeld, there are three fuzzy sets",False,False,False,False,False,False
+"(Low, Medium and High). They are triangular membership func-",False,False,False,False,False,False
+"tions. In Table 4, it has been shown.",False,False,False,False,False,True
+Sex: This input ﬁeld has two values (0 and 1) which correspond,False,False,False,False,False,False
+to female and male respectively.,False,False,False,False,False,False
+Chest pain type: This input ﬁeld supports four chest pain types.,False,False,False,False,False,False
+"Each chest pain type is a fuzzy set. In this ﬁeld, fuzzy sets do not",False,False,False,False,False,False
+have overlap. Chest Pain types with their values have been shown,False,False,False,False,False,False
+below.,False,False,False,False,False,False
+1 = Typical Angina,False,False,False,False,False,False
+2 = Atypical Angina,False,False,False,False,False,False
+3 = Non-anginal pain,False,False,False,False,False,False
+4 = Asymptomatic,False,False,False,False,False,False
+Fasting blood sugar: This input ﬁeld has two values (1 and 0),False,False,False,False,False,False
+which correspond to the amount of blood sugar higher than 120,False,False,False,False,False,False
+and lesser than 120 respectively.,False,False,False,False,False,False
+"Resting ECG: In this ﬁeld, there are three values (0, 1 and 2)",False,False,False,False,False,False
+"which correspond to normal, ST-T abnormality and left ventricular",False,False,False,False,False,False
+hypertrophy.,False,False,False,False,False,False
+Exercise Induced Angina: This input ﬁeld has just two values,False,False,False,False,False,False
+"(0 and 1).When the exercise induced angina is present, it corre-",False,False,False,False,False,False
+"sponds to 1. Otherwise, it corresponds to 0.",False,False,False,False,False,False
+Old Peak: This input ﬁeld has 2 fuzzy sets (low and high). These,False,False,False,False,False,False
+fuzzy sets have been shown in Table 5 with their ranges.,False,False,False,False,False,False
+"Slope: This input ﬁeld has three values (0, 1 and 2) which cor-",False,False,False,False,False,False
+"respond to upsloping, ﬂat and downsloping respectively.",False,False,False,False,False,False
+"Fluoroscopy: This input ﬁeld has four values (0, 1, 2 and 3)",False,False,False,False,False,False
+which correspond to the number of blood vessels coloured by,False,False,False,False,False,False
+ﬂuoroscopy.,False,False,False,False,False,False
+Fig. 3. Proposed fuzzy expert system.,False,False,False,False,True,False
+Table 1,False,False,False,False,False,True
+Classiﬁcation of age.,False,False,False,False,False,False
+Input ﬁeld Range Fuzzy set,False,False,False,False,False,False
+Age 0–34 Low,False,False,False,False,False,False
+30–35 Medium,False,False,False,False,False,False
+40–58 Old,False,False,False,False,False,False
+52–77 Very old,False,False,False,False,False,False
+Table 2,False,False,False,False,False,True
+Classiﬁcation of blood pressure.,False,False,False,False,False,False
+Input ﬁeld Range Fuzzy set,False,False,False,False,False,False
+Blood pressure 0-134 Low,False,False,False,False,False,False
+126-154 Medium,False,False,False,False,False,False
+142-172 High,False,False,False,False,False,False
+154-354 Very high,False,False,False,False,False,False
+Table 3,False,False,False,False,False,True
+Classiﬁcation of serum cholesterol.,False,False,False,False,False,False
+Input ﬁeld Range Fuzzy set,False,False,False,False,False,False
+Serum cholesterol 0–198 Low,False,False,False,False,False,False
+188–250 Medium,False,False,False,False,False,False
+217–307 High,False,False,False,False,False,False
+281–681 Very high,False,False,False,False,False,False
+Table 4,False,False,False,False,False,True
+Classiﬁcation of maximum heart rate.,False,False,False,False,False,False
+Input ﬁeld Range Fuzzy set,False,False,False,False,False,False
+Maximum heart rate 0–141 Low,False,False,False,False,False,False
+111–194 Medium,False,False,False,False,False,False
+153–353 High,False,False,False,False,False,False
+"11660 S. Muthukaruppan, M.J. Er / Expert Systems with Applications 39 (2012) 11657–11665",False,False,False,False,False,False
+"Thallium scan: This ﬁeld has three values (3, 6 and 7) which",False,False,False,False,False,False
+"correspond to normal, ﬁxed defect and reversible defect.",False,False,False,False,False,False
+The output variable is the angiographic disease status. It has,False,False,False,False,False,False
+two values (0 and 1) which correspond to healthy and heart dis-,False,False,False,False,False,False
+ease conditions.,False,False,False,False,False,False
+3.2. Fuzzy membership optimization,False,False,False,False,False,False
+Formation of desired fuzzy rule base is the crucial step in,False,False,False,False,False,False
+"designing the fuzzy system. In general, the rules and membership",False,False,False,False,False,False
+"function are generated by experts in the particular area, since the",False,False,False,False,False,False
+deﬁnition of these is generally affected by subjective decisions.,False,False,False,False,False,False
+"While fuzzy rules are relatively easy to derive by them, the MFs",False,False,False,False,False,False
+are difﬁcult to obtain. Tuning of MFs is a time consuming process.,False,False,False,False,False,False
+"From the foregoing discussion, it can be observed that fuzzy",False,False,False,False,False,False
+system is characterized by its membership function and the perfor-,False,False,False,False,False,False
+mance of the system is determined by the type and parameters of,False,False,False,False,False,False
+"MFs. Despite their importance, there are no observational methods",False,False,False,False,False,False
+available for determining them.,False,False,False,False,False,False
+"The fuzzy systems can be formulated as a space search problem,",False,False,False,False,False,False
+where each point in the space corresponds to a rule set and MFs.,False,False,False,False,False,False
+This makes evolutionary algorithms such as Genetic Algorithms,False,False,False,False,False,False
+"(GAs), particle swarm optimization (PSO), better choices for",False,False,False,False,False,False
+"searching these spaces (Cordon et al., 2001, 2004; Herrera et al.,",False,False,False,False,False,False
+"1998; Park et al., 1994).",False,False,False,False,False,False
+"Though PSO is similar to GAs, the main difference between",False,False,False,False,False,False
+them is that PSO does not have genetic operators such as crossover,False,False,False,False,False,False
+and mutation. Particles in PSO have memory which is important to,False,False,False,False,False,False
+"the algorithm. When compared to GAs, the advantages of PSO are",False,False,False,False,False,False
+simplicity in implementation and fewer parameters to adjust,False,False,False,False,False,False
+"(Jones, 2005).",False,False,False,False,False,False
+PSO refers to a relatively new family of evolutionary algorithms,False,False,False,False,False,False
+which can be used to ﬁnd optimal solutions to the numeric prob-,False,False,False,False,False,False
+lem using a population of particles. The PSO technique was devel-,False,False,False,False,False,False
+oped by Kennedy and Eberhart (1995) as a population based on,False,False,False,False,False,False
+stochastic optimization strategy. It is inspired by social behaviour,False,False,False,False,False,False
+"of ﬂocking birds, school of ﬁsh, swarm of bees and even human so-",False,False,False,False,False,False
+cial behaviour. A performance evaluation parameter called ﬁtness,False,False,False,False,False,False
+value is used to guide the search process of the particles.,False,False,False,False,False,False
+The particle which is associated with the ﬁtness value seems to,False,False,False,False,False,False
+be the leader and each particle keeps track of its coordinates in the,False,False,False,False,False,False
+search space. This ﬁtness value is stored and is called as pbest,False,False,False,False,False,False
+(personal best). Another ‘‘best’’ value that is tracked by the swarm,False,False,False,False,False,False
+"is the best value, obtained so far by any particle in the neighbours",False,False,False,False,False,False
+of the particle (local best lbest). When a particle takes all the par-,False,False,False,False,False,False
+"ticles in the populations as its topological neighbours, the best va-",False,False,False,False,False,False
+lue is gbest. The values of pbest and gbest are updated for every,False,False,False,False,False,False
+time instant inﬂuences the interactions between the particles,False,False,False,False,False,False
+"and the search process (Li and Engelbrecht, 2007; Paquet and",False,False,False,False,False,False
+"Engelbrecht, 2003).",False,False,False,False,False,False
+"For each fuzzy membership function, there are three parame-",False,False,False,False,False,False
+"ters as shown in (Fig. 4): C (centre), L (left) and R (right) corre-",False,False,False,False,False,False
+"sponds to the original membership function, where C",False,False,False,False,False,False
+",L",True,False,False,True,False,False
+and R,False,False,False,False,False,False
+"refers to the centre, left and right of the adjusted membership",False,False,False,False,False,False
+function.,False,False,False,False,False,False
+For the adjustment of membership functions the following,False,False,False,False,False,False
+equations are deﬁned:,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Being k,False,False,False,False,False,False
+and w,False,False,False,False,False,False
+"adjustment coefﬁcients, k",False,False,False,False,False,False
+makes each membership,False,False,False,False,False,False
+function move the membership function left or right with no distor-,False,False,False,False,False,False
+tion in the form. The membership function shrinks or expands,False,False,False,False,False,False
+through the parameter w,False,False,False,False,False,False
+. These parameters take any integer either,False,True,False,True,False,False
+positive or negative value. PSO with inertia weight will be used to,False,False,False,False,False,False
+ﬁnd the optimum values for k,False,False,False,False,False,False
+and w,False,False,False,False,False,False
+for the membership functions.,False,False,False,False,False,False
+Table 6 shows the PSO parameter set for tuning the fuzzy mem-,False,False,False,False,False,True
+bership functions.,False,False,False,False,False,False
+"The membership functions of the attributes such as age, blood",False,False,False,False,False,False
+"pressure, maximum heart rate, old peak and serum cholesterol",False,False,False,False,False,False
+have been shown in Fig. 5.,False,False,False,False,False,False
+4. Results and discussion,False,False,True,True,False,False
+"After tuning the deﬁned MFs and generating the fuzzy rule base,",False,False,False,False,False,False
+the fuzzy toolbox available in MATLAB 7 was used for building FIS.,False,False,False,False,False,False
+Rule viewer of the generated FIS is shown in Fig. 6.,False,False,False,False,False,False
+The rules were obtained from a training data set of 478 in-,False,False,False,False,False,False
+stances for which 278 instances were healthy and 200 instances,False,False,False,False,False,False
+were heart disease condition.,False,False,False,False,False,False
+For testing the built fuzzy model a portion of the data (119 in-,False,False,False,False,False,False
+stances) called testing data was used. Among the 119 instances for,False,False,False,False,False,False
+"testing, 74 instances were healthy and the remaining 45 instances",False,False,False,False,False,False
+"were heart disease condition. Using the test set, the created FIS was",False,False,False,False,False,False
+evaluated and its performance was given as confusion matrix,False,False,False,False,False,False
+(C.M.). Table 7 shows the C.M. for the test set. The entries of the,False,False,False,False,False,True
+C.M. are given as follows,False,False,False,False,False,False
+C:M: ¼,True,False,False,True,False,False
+TP FP,True,False,False,True,False,False
+FN TN,True,False,False,True,False,False
+,False,False,False,False,False,False
+"where TP, TN, FP and FN are the number of true positives, true neg-",False,False,False,False,False,False
+"atives, false positives, and false negatives respectively. TP: disease",False,False,False,False,False,False
+status predicted as healthy when it actually is healthy. TN: disease,False,False,False,False,False,False
+Table 5,False,False,False,False,False,True
+Classiﬁcation of old peak.,False,False,False,False,False,False
+Input ﬁeld Range Fuzzy set,False,False,False,False,False,False
+Old peak 0–4.2 Low,False,False,False,False,False,False
+2.55–7 High,False,False,False,False,False,False
+Fig. 4. Fuzzy membership parameters.,False,False,False,False,True,False
+Table 6,False,False,False,False,False,True
+PSO parameters.,False,False,False,False,False,False
+Parameter Value,False,False,False,False,False,False
+C,True,False,False,True,False,False
+1,False,False,False,False,False,False
+0.5,False,False,False,False,False,False
+C,True,False,False,True,False,False
+2,False,False,False,False,False,False
+0.8,False,False,False,False,False,False
+Population size 50,False,False,False,False,False,False
+W,True,False,False,True,False,False
+0.1,False,False,False,False,False,False
+W,True,False,False,True,False,False
+0.9,False,False,False,False,False,False
+Maximum generation 300,False,False,False,False,False,False
+"S. Muthukaruppan, M.J. Er / Expert Systems with Applications 39 (2012) 11657–11665",False,False,False,False,False,False
+11661,False,False,False,False,False,False
+status predicted as heart disease when it actually is heart disease,False,False,False,False,False,False
+condition. FP: disease status predicted as healthy when it actually,False,False,False,False,False,False
+is heart disease condition. FN: disease status predicted as heart dis-,False,False,False,False,False,False
+ease condition when it actually is healthy.,False,False,False,False,False,False
+The number of correctly classiﬁed instances is shown in the,False,False,False,False,False,False
+"diagonal elements in the C.M. In the ﬁrst row, the ﬁrst element",False,False,False,False,False,False
+shows the number of instances belonging to healthy and classiﬁed,False,False,False,False,False,False
+by FIS as healthy condition. The second element in the second row,False,False,False,False,False,False
+shows the instances belonging to heart disease and classiﬁed by FIS,False,False,False,False,False,False
+"as heart disease condition. Sensitivity, speciﬁcity and accuracy",False,False,False,False,False,False
+based on the C.M. is given as follows,False,False,False,False,False,False
+Sensitivity ¼ðTP=ðTP þ FNÞÞ ¼ 93:2%,False,False,False,False,False,False
+Specificity ¼ðTN=ðFP þ TNÞÞ ¼ 93:3%,False,False,False,False,False,False
+Accuracy ¼ðTP=ðTP þ FN þ FP þ TNÞÞ ¼ 93:3%,False,False,False,False,False,False
+Sensitivity is thus a measure of accuracy of FIS of healthy condition,False,False,False,False,False,False
+"instances, and speciﬁcity is a measure of accuracy of FIS of heart",False,False,False,False,False,False
+disease condition instances. Accuracy is the number of correctly,False,False,False,False,False,False
+classiﬁed instances divided by the total number of classiﬁcations.,False,False,False,False,False,False
+The proposed particle swarm optimization (PSO)-based fuzzy,False,False,False,False,False,False
+expert system results have been compared with the similar,False,False,False,False,False,False
+Fig. 5. Membership functions of (a) age (b) blood pressure (c) maximum heart rate (d) old peak and (e) serum cholesterol.,False,False,False,False,True,False
+"11662 S. Muthukaruppan, M.J. Er /Expert Systems with Applications 39 (2012) 11657–11665",False,False,False,False,False,False
+Fig. 6. Rule viewer for one of the test data.,False,False,False,False,True,False
+Fig. 5 (continued),False,False,False,False,True,False
+"S. Muthukaruppan, M.J. Er / Expert Systems with Applications 39 (2012) 11657–11665",False,False,False,False,False,False
+11663,False,False,False,False,False,False
+researches (Table 8) which reveals that the proposed method,False,False,False,False,False,False
+achieves the higher accuracy.,False,False,False,False,False,False
+5. Conclusions,False,False,True,True,False,False
+"In this study, a fuzzy expert system based on particle swarm",False,False,False,False,False,False
+optimization (PSO) was developed in Matlab’s Simulink in order,False,False,False,False,False,False
+to classify heart disease and healthy condition. With this proposed,False,False,False,False,False,False
+"approach, 93.27% correct classiﬁcation on the test set could be",False,False,False,False,False,False
+achieved. The discovery of the signiﬁcant attributes and fuzzy rules,False,False,False,False,False,False
+was achieved using the decision tree algorithm. The importance of,False,False,False,False,False,False
+discovering signiﬁcant and relevant fuzzy rules without the aid of,False,False,False,False,False,False
+the experts opens the possibility of knowledge discovery. The main,False,False,False,False,False,False
+advantages of the FES as a knowledge acquisition tool are the fol-,False,False,False,False,False,False
+lowing: (1) a small number of rules are obtained (2) the obtained,False,False,False,False,False,False
+rules can be easily interpreted. These results imply promising re-,False,False,False,False,False,False
+search areas employing decision trees and fuzzy expert system in,False,False,False,False,False,False
+several classiﬁcation problems.,False,False,False,False,False,False
+References,False,False,False,True,False,False
+"Abonyi, J., & Roubos, H. (2000). Structure identiﬁcation of fuzzy classiﬁers. In 5th",False,False,False,False,False,False
+online world conference on soft computing in industrial applications (WSCS).,False,False,False,False,False,False
+"Adeli, A., & Neshat, M. (2010). A fuzzy expert system for heart disease diagnosis. In",False,False,False,False,False,False
+Proc. international multiconference of engineering and computer scientists (pp.,False,False,False,False,False,False
+134–139).,False,False,False,False,False,False
+"American Heart Association, Heart Disease and Stroke Statistics – 2010 Update at a",False,False,False,False,False,False
+Glance. Dallas: American Heart Association (2010).,False,False,False,False,False,False
+"Andreeva, P. (2006). Data modelling and speciﬁc rule generation via data mining",False,False,False,False,False,False
+techniques. In Proc. international conference on computer systems and,False,False,False,False,False,False
+technologies (pp. IIIA.17–23).,False,False,False,False,False,False
+"Breiman, L. et al. (1984). Classiﬁcation and regression trees. Belmont, CA: Wadsworth",False,False,False,False,False,False
+International Group.,False,False,False,False,False,False
+"British Heart Foundation, Coronary Heart Disease Statistics – 2003 edition. London:",False,False,False,False,False,False
+British Heart Foundation (2003).,False,False,False,False,False,False
+"Brown, M. I., & Kros, J. F. (2003). Data mining and the impact of missing data.",False,False,False,False,False,False
+"Industrial Management and Data Systems, 103, 611–621.",False,False,False,False,False,False
+"Cheung, N. (2001). Machine learning techniques for medical analysis. School of",False,False,False,False,False,False
+"Information Technology and Electrical Engineering, B.Sc. Thesis, University of",False,False,False,False,False,False
+Queenland.,False,False,False,False,False,False
+"Cordon, O. et al. (2001). Generating the knowledge base of a fuzzy rule-based",False,False,False,False,False,False
+"system by the genetic learning of data base. IEEE Transactions on Fuzzy Systems,",False,False,False,False,False,False
+667–674.,False,False,False,False,False,False
+"Cordon, O. et al. (2004). Ten years of genetic fuzzy systems: Current framework and",False,False,False,False,False,False
+"new trends. Fuzzy Sets and Systems, 141, 5–31.",False,False,False,False,False,False
+"Esposito, F. et al. (1997). A comparative analysis of methods for pruning decision",False,False,False,False,False,False
+"trees. IEEE Transactions on Pattern Analysis and Machine Intelligence, 19, 476–491.",False,False,False,False,False,False
+"Farhangfar, A. et al. (2004). Experimental analysis of methods for imputation of",False,False,False,False,False,False
+missing values in databases. In Presented at the intelligent computing: theory and,False,False,False,False,False,False
+"applications II, Orlando, FL, USA, (pp. 172–182).",False,False,False,False,False,False
+"Ganesh Kumar, P. et al. (2012). Design of fuzzy expert system for microarray data",False,False,False,False,False,False
+classiﬁcation using a novel genetic swarm algorithm. Expert Systems with,False,False,False,False,False,False
+"Applications, 39, 1811–1821.",False,False,False,False,False,False
+"Grzymala-Busse, J.W., & Hu, M. (2001). A comparison of several approaches to",False,False,False,False,False,False
+missing attribute values in data mining. In Revised papers from the second,False,False,False,False,False,False
+"international conference on rough sets and current trends in computing, London",False,False,False,False,False,False
+(pp. 378–385).,False,False,False,False,False,False
+"Herrera, F. et al. (1998). A learning process for fuzzy control rules using genetic",False,False,False,False,False,False
+"algorithms. Fuzzy Sets and Systems, 143–158.",False,False,False,False,False,False
+"Jankowski, N., & Kadirkamanathan, V. (1997). Statistical control of rbf-like networks",False,False,False,False,False,False
+"for classiﬁcation. In Proc. 7th international conference on artiﬁcial, neural",False,False,False,False,False,False
+networks (pp. 385–390).,False,False,False,False,False,False
+"Jerez, J. M. et al. (2010). Missing data imputation using statistical and machine",False,False,False,False,False,False
+learning methods in a real breast cancer problem. Artiﬁcial Intelligence in,False,False,False,False,False,False
+"Medicine, 50, 105–115.",False,False,False,False,False,False
+"Jones, K.O. (2005). Comparison of genetic algorithm and particle swarm",False,False,False,False,False,False
+optimization. In Proc. international conference on computer systems and,False,False,False,False,False,False
+technologies (pp. IIIA1–6).,False,False,False,False,False,False
+"Jonsson, P., & Wohlin, C. (2004). An evaluation of k-nearest neighbour imputation",False,False,False,False,False,False
+"using likert data. In Proc. software metrics, 10th international, symposium (pp.",False,False,False,False,False,False
+108–118).,False,False,False,False,False,False
+"Kahramanli, H., & Allahverdi, N. (2008). Design of a hybrid system for the diabetes",False,False,False,False,False,False
+"and heart disease. Expert Systems with Applications, 35, 82–89.",False,False,False,False,False,False
+"Kennedy, J., & Eberhart, R.C. (1995). Particle swarm optimization. In Proc. 1995 IEEE",False,False,False,False,False,False
+"international conference on neural networks, Australia (pp. 1942–1948).",False,False,False,False,False,False
+"Li, X., & Engelbrecht, A.P. (2007). Particle swarm optimization: An introduction and",False,False,False,False,False,False
+its recent developments. In Presented at the 2007 GECCO conference companion,False,False,False,False,False,False
+"on Genetic and evolutionary computation, London (pp. 3391–3414).",False,False,False,False,False,False
+"Nawa, N. E. et al. (1999). Study on the discovery of relevant fuzzy rules using",False,False,False,False,False,False
+"pseudobacterial genetic algorithm. IEEE Transactions on Industrial Electronics, 46,",False,False,False,False,False,False
+1080–1089.,False,False,False,False,False,False
+"Newman, D. J., Hettich, S., Blake, C. L. S., & Merz, C. J. (1998). UCI repository of",False,False,False,False,False,False
+"machine learning database. Irvine, CA: University of California.",False,False,False,False,False,False
+"Omran, A. (1979). Changing patterns of health and disease during the process of",False,False,False,False,False,False
+"national development. In G.L. Albrecht, P.C. Higgins (Eds.), Health, illness, and",False,False,False,False,False,False
+"medicine: a reader in medical sociology, Chicago: Rand McNally.",False,False,False,False,False,False
+"Palaniappan, S., & Awang, R. (2008). Intelligent heart disease prediction system",False,False,False,False,False,False
+using data mining techniques. In Proc. 2008 IEEE/ACS international conference on,False,False,False,False,False,False
+computer systems and applications (pp. 108–115).,False,False,False,False,False,False
+"Paquet, U., & Engelbrecht, A.P. (2003). Training support vector machines with",False,False,False,False,False,False
+particle swarms. In Proc. international joint conference on neural networks (IJCNN),False,False,False,False,False,False
+conference (pp. 1593–1598).,False,False,False,False,False,False
+"Park, D. et al. (1994). Genetic-based new fuzzy reasoning models with application",False,False,False,False,False,False
+"to fuzzy control. IEEE Transactions on Systems, Man and Cybernetics, 24, 39–47.",False,False,False,False,False,False
+"Patil, D. D. et al. (2010). Evaluation of decision tree pruning algorithms for",False,False,False,False,False,False
+complexity and classiﬁcation accuracy. International Journal of Computer,False,False,False,False,False,False
+"Applications, 11, 23–30.",False,False,False,False,False,False
+"Patil, S. B., & Kumaraswamy, Y. S. (2009). Intelligent and effective heart attack",False,False,False,False,False,False
+prediction system using data mining and artiﬁcial neural network. European,False,False,False,False,False,False
+"Journal of Scientiﬁc Research, 31, 642–656.",False,False,False,False,False,False
+"Pedrycz, W., & Sosnowski, Z. A. (2005). Genetically optimized fuzzy decision trees. IEEE",False,False,False,False,False,False
+"Transactions on Systems, Man, and Cybernetics, Part B: Cybernetics, 35, 633–651.",False,False,False,False,False,False
+"Polat, K. et al. (2007). Automatic detection of heart disease using an artiﬁcial",False,False,False,False,False,False
+immune recognition system (AIRS) with fuzzy resource allocation mechanism,False,False,False,False,False,False
+and K-Nn (nearest neighbour) based weighting preprocessing. Expert Systems,False,False,False,False,False,False
+"with Applications, 32, 625–631.",False,False,False,False,False,False
+"Quinlan, J. R. (1987). Simplifying decision trees. International Journal of Man–",False,False,False,False,False,False
+"Machine Studies, 27, 221–234.",False,False,False,False,False,False
+"Quinlan, J. R. (1996). Improved use of continuous attributes in C4.5. Journal of",False,False,False,False,False,False
+"Artiﬁcial Intelligence Research, 4, 77–90.",False,False,False,False,False,False
+"Resul, D., Ibrahim, T., & Abdulkadir, S. (2009). Effective diagnosis of heart disease",False,False,False,False,False,False
+"through neural networks ensembles. Expert Systems with Applications, 36,",False,False,False,False,False,False
+7675–7680.,False,False,False,False,False,False
+"Rokach, L., & Maimon, O. (2008). Data mining with decision trees theory and",False,False,False,False,False,False
+applications. Singapore: World Scientiﬁc Publishing.,False,False,False,False,False,False
+"Rubin, D. B. (1987). Multiple imputation for nonresponse in surveys: J. New York:",False,False,False,False,False,False
+Wiley & Sons.,False,False,False,False,False,False
+"Senthil Kumar, A.V. (2011). Adaptive neuro-fuzzy inference system for heart disease",False,False,False,False,False,False
+"diagnosis. In Proc. international conference on information system, computer",False,False,False,False,False,False
+engineering and application.,False,False,False,False,False,False
+"Senthil Kumar, A.V. (2012). Diagnosis of heart disease using fuzzy resolution",False,False,False,False,False,False
+"mechanism. Journal of Artiﬁcial Intelligence, pp. 1–9, http://dx.doi.org/10.3923/",False,False,False,False,False,False
+jai.2012.,False,False,False,False,False,False
+Table 7,False,False,False,False,False,True
+Confusion matrix for test data.,False,False,False,False,False,False
+Predicted Actual,False,False,False,False,False,False
+Normal Heart disease,False,False,False,False,False,False
+Normal 69 3,False,False,False,False,False,False
+Heart disease 5 42,False,False,False,False,False,False
+Table 8,False,False,False,False,False,True
+Comparison of the proposed system outcome with the similar researches.,False,False,False,False,False,False
+Author Method Accuracy,False,False,False,False,False,False
+"(Cheung, 2001) BNNF 80.96",False,False,False,False,False,False
+"(Cheung, 2001) C 4.5 81.11",False,False,False,False,False,False
+"(Cheung, 2001) BNND 81.11",False,False,False,False,False,False
+"(Cheung, 2001) Naïve Bayes 81.48",False,False,False,False,False,False
+"(Ster and Dobnikar, 1996) Fisher discriminant",False,False,False,False,False,False
+Analysis,False,False,False,False,False,False
+84.2,False,False,False,False,False,False
+"(Ster & Dobnikar, 1996) LDA 84.5",False,False,False,False,False,False
+"(Ster & Dobnikar, 1996) Naïve Bayes 82.5–",False,False,False,False,False,False
+83.4,False,False,False,False,False,False
+"(Kahramanli & Allahverdi, 2008) Hybrid neural network",False,False,False,False,False,False
+system,False,False,False,False,False,False
+86.8,False,False,False,False,False,False
+"(Polat et al., 2007) Fuzzy-AIRS-Knn based",False,False,False,False,False,False
+system,False,False,False,False,False,False
+87.00,False,False,False,False,False,False
+"(Resul et al., 2009) Neural network ensembles 89.01",False,False,False,False,False,False
+"(Jankowski and Kadirkamanathan,",False,False,False,False,False,False
+1997),False,False,False,False,False,False
+IncNet 90.00,False,False,False,False,False,False
+"(Senthil Kumar, 2011) ANFIS 91.18",False,False,False,False,False,False
+"(Senthil Kumar, 2012) Fuzzy resolution",False,False,False,False,False,False
+mechanism,False,False,False,False,False,False
+91.83%,False,False,False,False,False,False
+Proposed system PSO based fuzzy expert,False,False,False,False,False,False
+system,False,False,False,False,False,False
+93.27%,False,False,False,False,False,False
+"11664 S. Muthukaruppan, M.J. Er /Expert Systems with Applications 39 (2012) 11657–11665",False,False,False,False,False,False
+"Shi, Y. et al. (1999). Implementation of evolutionary fuzzy systems. IEEE",False,False,False,False,False,False
+"Transactions on Fuzzy Systems, 7, 109–119.",False,False,False,False,False,False
+"Ster, B., & Dobnikar, A. (1996). Neural networks in medical diagnosis: Comparison",False,False,False,False,False,False
+with other methods. In Proc. international conference on engineering applications,False,False,False,False,False,False
+"of, neural networks (pp. 427–430).",False,False,False,False,False,False
+"Su, X. et al. (2008). Using imputation techniques to help learn accurate classiﬁers. In",False,False,False,False,False,False
+"Proc. IEEE international conference on tools with artiﬁcial intelligence (Vol. 01, pp.",False,False,False,False,False,False
+437–444).,False,False,False,False,False,False
+"Sun, Y. C., & Clark, O. G. (2009). Implementing an intuitive reasoner with a large",False,False,False,False,False,False
+"weather database. International Journal of Information and Mathematical Sciences,",False,False,False,False,False,False
+"5, 85–102.",False,False,False,False,False,False
+"Tsipouras, M. G. et al. (2008). Automated diagnosis of coronary artery disease based",False,False,False,False,False,False
+on data mining and fuzzy modeling. IEEE Transactions on Information technology,False,False,False,False,False,False
+"in biomedicine, 12, 447–458.",False,False,False,False,False,False
+"Tsoukalas, L. H., & Uhrig, R. E. (1997). Fuzzy and neural approaches in engineering.",False,False,False,False,False,False
+John Wiley & Sons.,False,False,False,False,False,False
+"Tu, M.C. et al. (2009). A comparative study of medical data classiﬁcation methods",False,False,False,False,False,False
+based on decision tree and bagging algorithms. In Proc. IEEE 8th international,False,False,False,False,False,False
+"conference on dependable, autonomic and secure, computing (pp. 183–187).",False,False,False,False,False,False
+"Ture, M., Kurt, I., & Kurum, A. T. (2008). Comparing performances of logistic",False,False,False,False,False,False
+"regression, classiﬁcation and regression tree, and neural networks for",False,False,False,False,False,False
+"predicting coronary artery disease. Expert Systems with Applications, 34,",False,False,False,False,False,False
+366–374.,False,False,False,False,False,False
+"Weihong, W. et al. (2006). A preliminary study on constructing decision tree with",False,False,False,False,False,False
+gene expression programming. In Proc. 1st international conference on innovative,False,False,False,False,False,False
+"computing, information and control (pp. 222–225).",False,False,False,False,False,False
+"Wilson, D. R., & Martinez, T. R. (1997). Improved heterogeneous distance functions.",False,False,False,False,False,False
+"Journal of Artiﬁcial Intelligence Research (JAIR), 6, 1–34.",False,False,False,False,False,False
+"Wilson, P. W. F. et al. (1998). Prediction of coronary heart disease using risk factor",False,False,False,False,False,False
+"categories. Circulation, 97, 1837–1847.",False,False,False,False,False,False
+"Yu, J. (2005). General C-means clustering model. IEEE Transactions on Pattern",False,False,False,False,False,False
+"Analysis and Machine Intelligence, 27, 1197–1211.",False,False,False,False,False,False
+"Zhang, S. et al. (2005). ‘‘Missing is Useful’’: missing values in cost-sensitive decision",False,False,False,False,False,False
+"trees. IEEE Transactions on Knowledge and Data Engineering, 17, 1689–1693.",False,False,False,False,False,False
+"S. Muthukaruppan, M.J. Er / Expert Systems with Applications 39 (2012) 11657–11665",False,False,False,False,False,False
+11665,False,False,False,False,False,False

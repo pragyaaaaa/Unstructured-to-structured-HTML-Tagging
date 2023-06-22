@@ -1,0 +1,626 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+*,False,False,False,False,False,False
+"Department of Computer Engineering, Selcuk University, Konya, Turkey",False,False,False,False,False,False
+article info,False,False,False,False,False,False
+Keywords:,False,False,False,False,False,False
+Binary particle swarm optimization,False,False,False,False,False,False
+Genetic algorithm,False,False,False,False,False,False
+Support vector machine,False,False,False,False,False,False
+Exercise stress testing,False,False,False,False,False,False
+Coronary artery disease,False,False,False,False,False,False
+abstract,False,False,False,False,False,False
+The aim of this study is to search the efﬁciency of binary particle swarm optimization (BPSO) and genetic,False,False,False,False,False,False
+algorithm (GA) techniques as feature selection models on determination of coronary artery disease (CAD),False,False,False,False,False,False
+"existence based upon exercise stress testing (EST) data. Also, increasing the classiﬁcation performance of",False,False,False,False,False,False
+the classiﬁer is another aim. The dataset having 23 features was obtained from patients who had per-,False,False,False,False,False,False
+formed EST and coronary angiography. Support vector machine (SVM) with k-fold cross-validation,False,False,False,False,False,False
+method is used as the classiﬁer system of CAD existence in both BPSO and GA feature selection tech-,False,False,False,False,False,False
+niques. Classiﬁcation results of feature selection technique using BPSO and GA are compared with each,False,False,False,False,False,False
+other and also with the results of the whole features using simple SVM model. The results show that fea-,False,False,False,False,False,False
+ture selection technique using BPSO is more successful than feature selection technique using GA on,False,False,False,False,False,False
+"determining CAD. Also with the new dataset composed by feature selection technique using BPSO, this",False,False,False,False,False,False
+study reached more accurate values of success on CAD existence research with more little complexity,False,False,False,False,False,False
+of classiﬁer system and more little classiﬁcati on time compared with whole features used SVM.,False,False,False,False,False,False
+Ó 2009 Elsevier Ltd. All rights reserved.,False,False,False,False,False,False
+1. Introduction,False,False,True,True,False,False
+Exercise stress test (EST) is most commonly used method on,False,False,False,False,False,False
+"diagnosis of angina. It is a noninvasive, inexpensive, easy operable,",False,False,False,False,False,False
+safe and reproducible method. The main cause of angina is coro-,False,False,False,False,False,False
+nary artery disease (CAD) and occurs due to atherosclerosis of,False,False,False,False,False,False
+"the cardiac arteries (Sprigings, 2002). Therefore, EST is one of the",False,False,False,False,False,False
+ﬁrst choice noninvasive diagnostic tools in the diagnosis of sus-,False,False,False,False,False,False
+"pected CAD. Nonetheless, the relatively low sensitivity and speci-",False,False,False,False,False,False
+ﬁcity of EST for diagnosing CAD has led to limit its clinical usage,False,False,False,False,False,False
+"(San Roman, Vilacosta, Castillo, et al., 1998; Thom et al., 2006).",False,False,False,False,False,False
+Artiﬁcial intelligence techniques are commonly used in medical,False,False,False,False,False,False
+"diagnosis with an amazing increment day by day, and also it could",False,False,False,False,False,False
+be seen in the literature.,False,False,False,False,False,False
+Fuzzy discrete hidden Markov model is used to classify trans-,False,False,False,False,False,False
+cranial Doppler signals to predict the patients whether they are,False,False,False,False,False,False
+brain diseased or not (Ug,False,False,False,False,False,False
+˘,False,False,False,False,False,False
+"uz, Öztürk, Saraçog",False,False,False,False,False,False
+˘,False,False,False,False,False,False
+"lu, & Arslan, 2008).",False,False,False,False,False,False
+Sepehri et al. proposed a method for automated screening of con-,False,False,False,False,False,False
+genital heart diseases in children by means of heart sound analysis,False,False,False,False,False,False
+techniques. The method relies on categorizing the pathological,False,False,False,False,False,False
+murmurs by examining the heart sound energy over speciﬁc fre-,False,False,False,False,False,False
+quency bands based on the heart sections initiating those (Sepehri,False,False,False,False,False,False
+"et al., 2008). Tantimongcolwata et al. proposed a method for",False,False,False,False,False,False
+the interpretation of ischemic heart disease pattern of magnetocar-,False,False,False,False,False,False
+diography recordings using backpropagation neural network,False,False,False,False,False,False
+and direct kernel self-organizing map machine learning,False,False,False,False,False,False
+"approaches (Tantimongcolwata, Naennab, Isarankura-Na-Ayudhy-",False,False,False,False,False,False
+"aa, Embrechtsc, & Prachayasittikula, 2008). Least squares support",False,False,False,False,False,False
+vector machine and backpropagation artiﬁcial neural network,False,False,False,False,False,False
+methods are employed to classify the extracted features obtained,False,False,False,False,False,False
+"from Doppler signals of the heart valve (Comak et al., 2007). Zhi-",False,False,False,False,False,False
+dong proposed noninvasive diagnosis method of coronary artery,False,False,False,False,False,False
+disease based on the instantaneous frequency estimation of dia-,False,False,False,False,False,False
+stolic murmurs and support vector machine (SVM) classiﬁer (Zhi-,False,False,False,False,False,False
+"dong, 2005). Kurt et al. compare performances of machine",False,False,False,False,False,False
+"learning approaches which are logistic regression, classiﬁcation",False,False,False,False,False,False
+"and regression tree, multi-layer perceptron, radial basis function",False,False,False,False,False,False
+and self-organizing feature maps in order to predict the presence,False,False,False,False,False,False
+"of CAD by using demographic and medical data (Kurt, Ture, & Kur-",False,False,False,False,False,False
+"um, 2008).",False,False,False,False,False,False
+"Since the use of optimization and feature selection techniques,",False,False,False,False,False,False
+these literature studies could be more effective and less complex.,False,False,False,False,False,False
+Binary particle swarm optimization (BPSO) is used as a feature,False,False,False,False,False,False
+selection method by implementing to the data obtained by mutual,False,False,False,False,False,False
+information and rough set to increase the effectiveness of the SVM,False,False,False,False,False,False
+"classiﬁer and the classiﬁcation accuracy (Zhou, Zhou, Liu, & Zhu,",False,False,False,False,False,False
+2006). Chuang et al. used improved BPSO in cancer-type classiﬁca-,False,False,False,False,False,False
+"tion based on the gene expression proﬁles (Chuang, Chang, Tu, &",False,False,False,False,False,False
+0957-4174/$ - see front matter Ó 2009 Elsevier Ltd. All rights reserved.,False,False,False,False,False,False
+doi:10.1016/j.eswa.2009.09.064,False,False,False,False,False,False
+* Corresponding author. Tel.: +90 332 223 20 63; fax: +90 332 241 06 35.,False,False,False,False,False,False
+E-mail address: ibabaoglu@selcuk.edu.tr (,False,False,False,False,False,False
+_,False,False,False,False,False,False
+I. Babaoglu).,False,True,False,True,False,False
+Expert Systems with Applications 37 (2010) 3177–3183,False,False,False,False,False,False
+Contents lists available at ScienceDirect,False,False,False,False,False,False
+Expert Systems with Applications,False,False,False,False,False,False
+journal homepage: www.elsevier.com/locate/eswa,False,False,False,False,False,False
+"Yang, 2008). Yang et al. proposed a feature selection and classiﬁca-",False,False,False,False,False,False
+tion method for hyperspectral images by combining the global,False,False,False,False,False,False
+optimization ability of particle swarm optimization algorithm,False,False,False,False,False,False
+"and the superior classiﬁcation performance of a SVM (Yang, Zhang,",False,False,False,False,False,False
+"Deng, & Du, 2007).",False,False,False,False,False,False
+"In this paper, SVM is used as the classiﬁer. The efﬁciency of",False,False,False,False,False,False
+BPSO and genetic algorithm (GA) techniques as feature selection,False,False,False,False,False,False
+models on determination of CAD existence based upon EST data,False,False,False,False,False,False
+"is investigated. Also, increasing the classiﬁcation performance of",False,False,False,False,False,False
+the classiﬁer is aimed.,False,False,False,False,False,False
+2. Materials and methods,False,False,True,True,False,False
+2.1. Data acquisition,False,False,False,False,False,False
+Four hundred eighty patients who underwent EST and coronary,False,False,False,False,False,False
+angiography (CAG) were included in this study. A total of 23 fea-,False,False,False,False,False,False
+tures are obtained from EST data. Basal demographic characteris-,False,False,False,False,False,False
+"tics, rest and peak exercise heart rate, blood pressure and",False,False,False,False,False,False
+exercise time were recorded. The EST results were evaluated by,False,False,False,False,False,False
+two experienced cardiologists. ST segment depression and eleva-,False,False,False,False,False,False
+tion occurred 60 ms after the J point were recorded at each deriva-,False,False,False,False,False,False
+tion in peak exercise. EST was accepted as positive in case P1mm,False,False,False,False,False,False
+ST depression or ST elevation in P2 contiguous leads seems. With-,False,False,False,False,False,False
+"in the ﬁrst month following the EST, CAG was performed to all pa-",False,False,False,False,False,False
+"tients, and the angiographic images were evaluated by two skilled",False,False,False,False,False,False
+cardiologists. Presence of P50% narrowing in left main coronary,False,False,False,False,False,False
+artery or P70% narrowing in other major epicardial coronary,False,False,False,False,False,False
+arteries indicated severe CAD. Patients with bundle branch blocks,False,False,False,False,False,False
+"(right or, left bundle branch block), pre-excitation syndromes, at-",False,False,False,False,False,False
+"rial ﬁbrillation, left ventricular hypertrophy and taking the digoxin",False,False,False,False,False,False
+were excluded from the study.,False,False,False,False,False,False
+2.2. Support vector machine,False,False,False,False,False,False
+Support vector machine has been invented by Vapnik (1995),False,False,False,False,False,False
+and proposed for classiﬁcation and regression tasks. SVM has been,False,False,False,False,False,False
+constructed on a strong statistical learning theory including Vap-,False,False,False,False,False,False
+nik–Chervonenkis dimension and structural risk minimization.,False,False,False,False,False,False
+Since SVM includes many reliable properties for learning and pre-,False,False,False,False,False,False
+"sents good experimental results, it has been used in many applica-",False,False,False,False,False,False
+"tion ﬁelds (Kulkarni, Jayaraman, & Kulkarni, 2004; Takeuchi &",False,False,False,False,False,False
+"Collier, 2003; Chen & Wang, 2007).",False,False,False,False,False,False
+2.2.1. Linear SVM classiﬁer,False,False,False,False,False,False
+Employed training data obey a form; (x,False,False,False,False,False,False
+", y",False,False,False,False,False,False
+"), ...,(x",False,False,False,False,False,False
+n,False,False,False,False,False,False
+", y",False,False,False,False,False,False
+n,False,False,False,False,False,False
+"), x",False,False,False,False,False,False
+e,False,False,False,False,False,False
+R,True,False,False,True,False,False
+N,True,False,False,True,False,False
+and y,False,False,False,False,False,False
+e,False,False,False,False,False,False
+"{+1,1}. Each data is formed with N dimensional vector",False,False,False,False,False,False
+and belonging only one of two classes (+1 or 1). Hyperplanes sep-,False,False,False,False,False,False
+arate two classes from each other to provide following forms for all,False,False,False,False,False,False
+"training data. Thus,",False,False,False,False,False,False
+ðw  x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Þþw,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ðw  x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Þþw,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+½ðw  x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Þþw,False,False,False,False,False,False
+where n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+P 0 are slack variables and used for providing a tolerance,False,False,False,False,False,False
+"to some data with small error. If all data satisfy (1) correctly, n",False,False,False,False,False,False
+i,False,False,False,False,False,False
+vari-,False,False,False,False,False,False
+ables will not be used. Optimal hyperplane among all hyperplanes is,False,False,False,False,False,False
+found by minimizing following formula,False,False,False,False,False,False
+C,True,False,False,True,False,False
+n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+where C is a regularization parameter and providing a trade-off be-,False,False,False,False,False,False
+"tween complexity and classiﬁcation performance. In other words,",False,False,False,False,False,False
+the optimal separating hyperplane maximizes the margin illus-,False,False,False,False,False,False
+trated in Fig. 1. Problem is transformed into following dual form,False,False,False,False,True,False
+of quadratic optimization problem,False,False,False,False,False,False
+n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+k,False,False,False,False,False,False
+y,False,False,False,False,False,False
+k,False,False,False,False,False,False
+ðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; x,False,False,False,False,False,False
+k,False,False,False,False,False,False
+n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+According to,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"Lagrange multipliers computed in (3), following",False,False,False,False,False,False
+decision function is built,False,False,False,False,False,False
+f ðxÞ¼sign,False,False,False,False,False,False
+s,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ðx; x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Þþb,False,False,False,False,False,False
+2.2.2. Nonlinear SVM classiﬁer,False,False,False,False,False,False
+"In a nonlinear input space (including all training data), SVM fails",False,False,False,False,False,False
+"to build optimal separating hyperplane. In this case, nonlinear in-",False,False,False,False,False,False
+put space is transformed into higher dimensional linear feature,False,False,False,False,False,False
+space via several kernel functions. A kernel function can be deﬁned,False,False,False,False,False,False
+as following formula,False,False,False,False,False,False
+Kðx; x,False,False,False,False,False,False
+Þ¼ðUðxÞUðx,False,False,False,False,False,False
+ÞÞ ¼ UðxÞUðx,False,False,False,False,False,False
+"Kernel functions must satisfy the Mercer’s condition. Thus, aim of",False,False,False,False,False,False
+quadratic optimization problem and decision function of SVM in,False,False,False,False,False,False
+Section 2.2.1 are transformed into following formula,False,False,False,False,False,False
+n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+k,False,False,False,False,False,False
+y,False,False,False,False,False,False
+k,False,False,False,False,False,False
+Kðx,False,False,False,False,False,False
+i,False,False,False,False,False,False
+; x,False,False,False,False,False,False
+k,False,False,False,False,False,False
+f ðxÞ¼sign,False,False,False,False,False,False
+s,False,False,False,False,False,False
+i,False,False,False,False,False,False
+y,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Kðx; x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Þþb,False,False,False,False,False,False
+Commonly used kernel functions are as follows:,False,False,False,False,False,False
+ Dot product kernels: Kðx; x,False,False,False,False,False,False
+Þ¼x  x,False,False,False,False,False,False
+.,False,True,False,True,False,False
+ Polynomial kernels: Kðx; x,False,False,False,False,False,False
+Þ¼ðx  x,False,False,False,False,False,False
+þ 1Þ,False,False,False,False,False,False
+; where d is the degree,False,False,False,False,False,False
+of kernel and positive integer number.,False,False,False,False,False,False
+ RBF kernels: Kðx; x,False,False,False,False,False,False
+Þ¼expðjjx  x,False,False,False,False,False,False
+Þ; where,False,False,False,False,False,False
+is a positive,False,False,False,False,False,False
+real number.,False,False,False,False,False,False
+Fig. 1. SVM structure.,False,False,False,False,True,False
+3178,False,False,False,False,False,False
+_,False,False,False,False,False,False
+I. Babaoglu et al. / Expert Systems with Applications 37 (2010) 3177–3183,False,True,False,True,False,False
+2.3. Binary particle swarm optimization,False,False,False,False,False,False
+Particle swarm optimization is an optimization technique based,False,False,False,False,False,False
+on swarm intelligence such as ﬁsh schooling and bird ﬂocking. The,False,False,False,False,False,False
+aim of this technique is to ﬁnd optimum solution in the solution,False,False,False,False,False,False
+set.,False,False,False,False,False,False
+The PSO is ﬁrstly developed by Kennedy in 1995 (Kennedy &,False,False,False,False,False,False
+"Eberhart, 1995). This technique is developed to optimize the prob-",False,False,False,False,False,False
+"lems that could be solved using real numbers. Later, it is success-",False,False,False,False,False,False
+fully implemented in many research areas.,False,False,False,False,False,False
+"In PSO technique, particles are composed of cells called posi-",False,False,False,False,False,False
+tion. The swarm composed from these particles separates in the,False,False,False,False,False,False
+solution space randomly. Every particle in the swarm is a part of,False,False,False,False,False,False
+the solution set. Best values of each particle (local best value –,False,False,False,False,False,False
+p,False,False,False,False,False,False
+", global best value – g",False,False,False,False,False,False
+) in the swarm and the swarm itself,False,False,False,False,False,False
+are accumulated to be used in the next step and also to obtain opti-,False,False,False,False,False,False
+mum values. The velocity and the position of the particle are calcu-,False,False,False,False,False,False
+lated as follows,False,False,False,False,False,False
+i;j,False,False,False,False,False,False
+i;j,False,False,False,False,False,False
+ðtÞþc,False,False,False,False,False,False
+R,True,False,False,True,False,False
+ðp,False,False,False,False,False,False
+best,False,False,False,False,False,False
+ x,False,False,False,False,False,False
+i;j,False,False,False,False,False,False
+ðtÞÞ þ c,False,False,False,False,False,False
+R,True,False,False,True,False,False
+ðg,False,False,False,False,False,False
+best,False,False,False,False,False,False
+ x,False,False,False,False,False,False
+i;j,False,False,False,False,False,False
+x,False,False,False,False,False,False
+i;j,False,False,False,False,False,False
+i;j,False,False,False,False,False,False
+ðtÞþ,False,False,False,False,False,False
+i;j,False,False,False,False,False,False
+"where i is the index of particle, j is the index of position in particle, t",False,False,False,False,False,False
+"shows the iteration number,",False,False,False,False,False,False
+(t) is the velocity of the ith particle,False,False,False,False,False,False
+in swarm on j th index of position in particle,False,False,False,False,False,False
+(t) 6,False,False,False,False,False,False
+and x,False,False,False,False,False,False
+(t) is the position. R,False,False,False,False,False,False
+and R,False,False,False,False,False,False
+are the random numbers uni-,False,False,False,False,False,False
+formly distributed between 0 and 1. c,False,False,False,False,False,False
+and c,False,False,False,False,False,False
+are the acceleration,False,False,False,False,False,False
+numbers and default values 2 and w is the inertia weight and is usu-,False,False,False,False,False,False
+ally used less than 1. PSO is brieﬂy illustrated in Fig. 2.,False,False,False,False,False,False
+Binary particle swarm optimization is introduced in 1997 ﬁrstly,False,False,False,False,False,False
+"by Kennedy and Eberhart. Like GA, BPSO could be effectively uti-",False,False,False,False,False,False
+"lized in binary optimization problems (Kennedy & Eberhart,",False,False,False,False,False,False
+"1997). In the BPSO technique, the probability of the particle being",False,False,False,False,False,False
+as 0 or 1 is speciﬁed by the velocity value using sigmoid function,False,False,False,False,False,False
+"(Kennedy & Eberhart, 1997). This determination of the position is",False,False,False,False,False,False
+performed using the following formula,False,False,False,False,False,False
+X,True,False,False,True,False,False
+i;j,False,False,False,False,False,False
+i;j,False,False,False,False,False,False
+i;j,False,False,False,False,False,False
+where rand() is the random numbers uniformly distributed be-,False,False,False,False,False,False
+tween 0 and 1. S() is the sigmoid function and it is given as follows,False,False,False,False,False,False
+Sð,False,False,False,False,False,False
+i;j,False,False,False,False,False,False
+2.4. Genetic algorithm,False,False,False,False,False,False
+"Based on long-term observation, Darwin asserted his theory of",False,False,False,False,False,False
+"natural evolution. According to this theory, living beings compete",False,False,False,False,False,False
+"with each other to survive. At the end of this competition, the suc-",False,False,False,False,False,False
+cessful beings transfer their genes to the beings in the next,False,False,False,False,False,False
+generation.,False,False,False,False,False,False
+"Inspiring by Darwin’s evolution theory, Genetic algorithm was",False,False,False,False,False,False
+ﬁrst introduced by Holland as a powerful computational model,False,False,False,False,False,False
+"in 1975 (Holland, 1975). It is commonly used for optimization",False,False,False,False,False,False
+problems which could take discontiguous or continuous values.,False,False,False,False,False,False
+Prime aim of GA is to ﬁnd optimum solution within the potential,False,False,False,False,False,False
+solution set. Each solution set is called as population. Populations,False,False,False,False,False,False
+"are composed of vectors, namely, chromosome or individual. Each",False,False,False,False,False,False
+item in the vector is called as gene. The structure of the GA is given,False,False,False,False,False,False
+in Fig. 3 and described as follows.,False,False,False,False,True,False
+Fig. 2. The PSO algorithm. Fig. 3. The structure of the GA.,False,False,False,False,True,False
+_,False,False,False,False,False,False
+I. Babaoglu et al. / Expert Systems with Applications 37 (2010) 3177–3183,False,True,False,True,False,False
+3179,False,False,False,False,False,False
+2.4.1. Initialization,False,False,False,False,False,False
+"At the beginning of the process, each chromosome is randomly",False,False,False,False,False,False
+composed within the values 0 and 1. These chromosomes are indi-,False,False,False,False,False,False
+vidual solutions in the potential solution set.,False,False,False,False,False,False
+2.4.2. Evaluation,False,False,False,False,False,False
+"In the optimization process with GA, the proper degree of each",False,False,False,False,False,False
+chromosome in the potential solution set is calculated using ﬁtness,False,False,False,False,False,False
+function. One of the most important factors that effect the achieve-,False,False,False,False,False,False
+"ment of GA is the selection of the ﬁtness function. Thus, ﬁtness",False,False,False,False,False,False
+function must be adopted effectively focused to the solution.,False,False,False,False,False,False
+2.4.3. Selection,False,False,False,False,False,False
+This is the process of the selection of the chromosomes to trans-,False,False,False,False,False,False
+fer their genes to the next generation considering ﬁtness values.,False,False,False,False,False,False
+Selection process is implemented using roulette wheel selection,False,False,False,False,False,False
+technique. The probability of the selection of each chromosome,False,False,False,False,False,False
+using roulette wheel selection technique is calculated as follows,False,False,False,False,False,False
+P ðc,False,False,False,False,False,False
+i,False,False,False,False,False,False
+f,False,False,False,False,False,False
+i,False,False,False,False,False,False
+N,True,False,False,True,False,False
+f,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+where c,False,False,False,False,False,False
+i,False,False,False,False,False,False
+"is the chromosome in question, f",False,False,False,False,False,False
+i,False,False,False,False,False,False
+is the ﬁtness value of the,False,False,False,False,False,False
+"chromosome, N is the number of the chromosomes in the",False,False,False,False,False,False
+population.,False,False,False,False,False,False
+2.4.4. Crossover,False,False,False,False,False,False
+The chromosome pairs are crossed over to generate the chro-,False,False,False,False,False,False
+mosomes in the next generation using a predetermined crossover,False,False,False,False,False,False
+rate. Crossover is the process of replacement of one or more seg-,False,False,False,False,False,False
+ments which are selected randomly.,False,False,False,False,False,False
+2.4.5. Mutation,False,False,False,False,False,False
+Mutation process is utilized to enhance the variation of the pop-,False,False,False,False,False,False
+ulation. Value of the each gene in the chromosomes is changed,False,False,False,False,False,False
+considering mutation rate.,False,False,False,False,False,False
+2.4.6. Termination,False,False,False,False,False,False
+"The selection, crossover and mutation processes are repeated to",False,False,False,False,False,False
+the end of the iteration. The algorithm is also terminated in the sit-,False,False,False,False,False,False
+uation of obtaining desired ﬁtness value.,False,False,False,False,False,False
+3. Proposed feature selection methods,False,False,True,True,False,False
+3.1. Feature selection technique using BPSO (BPSO-FST) architecture,False,False,False,False,False,False
+"In the BPSO–FST, each particle is composed of 23 binary cells,",False,False,False,False,False,False
+which refer to the whole features in the dataset. The value of these,False,False,False,False,False,False
+cells shows whether the feature that the cell refers to would be se-,False,False,False,False,False,False
+lected. A cell value of 1 shows the feature that the cell refers to is,False,False,False,False,False,False
+"selected, a cell value of 0 shows the feature that the cell refers to is",False,False,False,False,False,False
+not selected into the dataset. The structure of the particle is given,False,False,False,False,False,False
+"below, where n is the number of the features, x is the value of the",False,False,False,False,False,False
+cell and x,False,False,False,False,False,False
+e,False,False,False,False,False,False
+"{0, 1}, and",False,False,False,False,False,False
+denotes the velocity of the cell.,False,False,False,False,False,False
+BPSO is iterated 200 times to ﬁnd the optimum solution set,False,False,False,False,False,False
+for each value of the parameters c and,False,False,False,False,False,False
+that effect SVM’s,False,False,False,False,False,False
+performance.,False,False,False,False,False,False
+"Population includes 10 particles, and the values of these parti-",False,False,False,False,False,False
+cles are taken as 0 at the beginning of the process. In the optimiza-,False,False,False,False,False,False
+"tion process, training and test sets are composed considering the",False,False,False,False,False,False
+"features deﬁned by the particles, and SVM is trained and tested",False,False,False,False,False,False
+"using mentioned datasets. As a result, classiﬁcation accuracy rate,",False,False,False,False,False,False
+training error rate and the sum of the times elapsed for training,False,False,False,False,False,False
+and test processes are obtained for each particle. The success rate,False,False,False,False,False,False
+of each particle is calculated using the following ﬁtness function,False,False,False,False,False,False
+formula,False,False,False,False,False,False
+"where f(i) is the success rate, A(i) is the classiﬁcation accuracy rate",False,False,False,False,False,False
+and E(i) is the training error rate of ith particle. Velocity of the par-,False,False,False,False,False,False
+ticles is calculated using (7) and,False,False,False,False,False,False
+and,False,False,False,False,False,False
+"are used as 6 and 6,",False,False,False,False,False,False
+respectively. The value of the cells within each particle is updated,False,False,False,False,False,False
+"using (8). For each iteration, p",False,False,False,False,False,False
+and g,False,False,False,False,False,False
+is updated if necessary.,False,False,False,False,False,False
+"At the end of the optimization process, g",False,False,False,False,False,False
+is found as the opti-,False,False,False,False,False,False
+mum solution.,False,False,False,False,False,False
+3.2. Feature selection technique using GA (GA–FST) architecture,False,False,False,False,False,False
+"In the GA–FST, each chromosome is composed of 23 genes,",False,False,False,False,False,False
+which refers to the whole features in the dataset similarly particles,False,False,False,False,False,False
+used in BPSO–FST. The value of these genes shows whether the fea-,False,False,False,False,False,False
+ture that the gene refers to would be selected. A gene value of 1,False,False,False,False,False,False
+"shows the feature that the gene refers to is selected, a gene value",False,False,False,False,False,False
+of 0 shows the feature that the gene refers to is not selected into,False,False,False,False,False,False
+the dataset.,False,False,False,False,False,False
+The same SVM kernel parameters ranges are used in the GA–FST,False,False,False,False,False,False
+"to compare with BPSO–FST. Also, GA–FST is implemented for 200",False,False,False,False,False,False
+iterations.,False,False,False,False,False,False
+"The size of the population, the mutation rate and the crossover",False,False,False,False,False,False
+"rate is used as 10, 0.05 and 0.25, respectively, in this study. At the",False,False,False,False,False,False
+"beginning of the process, the values of each chromosome are used",False,False,False,False,False,False
+"as 0. In the optimization process, training and test sets are com-",False,False,False,False,False,False
+"posed considering the features deﬁned by the chromosomes, and",False,False,False,False,False,False
+Fig. 4. A structure of the particle.,False,False,False,False,True,False
+Fig. 5. SVM parameter search grid.,False,False,False,False,True,False
+3180,False,False,False,False,False,False
+_,False,False,False,False,False,False
+I. Babaoglu et al. / Expert Systems with Applications 37 (2010) 3177–3183,False,True,False,True,False,False
+"SVM is trained and tested using mentioned datasets. As a result,",False,False,False,False,False,False
+"classiﬁcation accuracy rate, training error rate and the sum of the",False,False,False,False,False,False
+times elapsed for training and test processes are obtained for each,False,False,False,False,False,False
+chromosome. The success rate of each chromosome is calculated,False,False,False,False,False,False
+using (12). Chromosomes are selected using roulette wheel com-,False,False,False,False,False,False
+posed according to the success rates mentioned. Chromosomes,False,False,False,False,False,False
+are crossed over and mutated according to the given crossover,False,False,False,False,False,False
+"and mutation rates. At the end of the process, the chromosome that",False,False,False,False,False,False
+has the optimum ﬁtness value is found as the optimum solution.,False,False,False,False,False,False
+4. Results and discussion,False,False,True,True,False,False
+Fig. 4 Datasets are implemented by normalizing into the range,False,False,False,False,True,False
+"[1, 1]. Radial basis function (RBF) kernel, which is commonly used",False,False,False,False,False,False
+"for SVM, is employed for the default kernel. The values of the RBF",False,False,False,False,False,False
+kernel parameters c and,False,False,False,False,False,False
+are found using grid search algorithm,False,False,False,False,False,False
+"(Cormen, Leiserson, Rivest, & Stein, 2001) and both of the values",False,False,False,False,False,False
+of these parameters are used as 2,False,False,False,False,False,False
+n,False,False,False,False,False,False
+. The search grid used in this,False,True,False,True,False,False
+"study is diagrammatized in Fig. 5. In this technique, n is used in",False,False,False,False,False,False
+"the range [2, 13] and [6, 6] for c and",False,False,False,False,False,False
+", respectively.",False,False,False,False,False,False
+Table 1,False,False,False,False,False,True
+Test results.,False,False,False,False,False,False
+Method c,False,False,False,False,False,False
+ERR (%) ACC (%) TIME (s) NoF,False,False,False,False,False,False
+BPSO–FST 4 8 0.26 81.46 0.52 11,True,False,False,True,False,False
+GA–FST 512 4 0.00 79.17 0.53 12,True,False,False,True,False,False
+SVM 8 1 0.31 76.67 0.67 23,True,False,False,True,False,False
+"Method, Method used in classiﬁcation; c, RBF kernels parameter;",False,False,False,False,False,False
+", RBF kernels",False,False,False,False,False,False
+"parameter; ERR, Training error; ACC, Classiﬁcation accuracy; TIME, Sum of the time",False,False,False,False,False,False
+"elapsed in training and test processes of SVM classiﬁcation; NoF, Number of fea-",False,False,False,False,False,False
+"tures selected by the feature selection method; BPSO–FST, SVM classiﬁcation uti-",False,False,False,False,False,False
+"lizing BPSO–FST; GA–FST, SVM classiﬁcation utilizing GA–FST; SVM, Simple SVM",False,False,False,False,False,False
+classiﬁcation.,False,False,False,False,False,False
+Fig. 6. Classiﬁcation accuracy graph depend on,False,False,False,False,True,False
+". The values of the ﬁxed c parameters are 4, 512 and 8 for BPSO–FST, GA–FST and simple SVM classiﬁcation model,",False,True,False,True,False,False
+"respectively. BPSO–FST, SVM classiﬁcation utilizing BPSO–FST; GA–FST, SVM classiﬁcation utilizing GA–FST; SVM, Simple SVM classiﬁcation.",False,False,False,False,False,False
+Fig. 7. Training error graph depend on,False,False,False,False,True,False
+". The values of the ﬁxed c parameters are 4, 512 and 8 for BPSO–FST, GA–FST and simple SVM classiﬁcation model, respectively. BPSO–",False,True,False,True,False,False
+"FST, SVM classiﬁcation utilizing BPSO–FST; GA–FST, SVM classiﬁcation utilizing GA–FST; SVM, Simple SVM classiﬁcation.",False,False,False,False,False,False
+_,False,False,False,False,False,False
+I. Babaoglu et al. / Expert Systems with Applications 37 (2010) 3177–3183,False,True,False,True,False,False
+3181,False,False,False,False,False,False
+"The results of the BPSO-FST, the results of the GA–FST and the",False,False,False,False,False,False
+results of the simple SVM classiﬁcation are compared using the,False,False,False,False,False,False
+optimum c and,False,False,False,False,False,False
+parameters obtained for each technique.,False,False,False,False,False,False
+"Classiﬁcation accuracy, training error and the sum of the train-",False,False,False,False,False,False
+ing and test time is considered ﬁnding the best classiﬁcation archi-,False,False,False,False,False,False
+tecture. k-Fold cross-validation method is employed using k =5to,False,False,False,False,False,False
+"improve the reliability of the results (Shao, 1993; An, Liu, & Venk-",False,False,False,False,False,False
+"atesh, 2007).",False,False,False,False,False,False
+The implementations are employed using LIBSVM package,False,False,False,False,False,False
+"(Chang & Lin, 2001) in the Matlab 7.0 application platform in a",False,False,False,False,False,False
+computer with Pentium IV with a 3.2 GHz CPU and 1 GByte,False,False,False,False,False,False
+memory.,False,False,False,False,False,False
+The optimum parameters c and,False,False,False,False,False,False
+"are found as 4 and 8, respec-",False,False,False,False,False,False
+"tively, in the BPSO–FST. The optimum particle has 11 features se-",False,False,False,False,False,False
+"lected, and the sum of the training and test times is 0.52 s.",False,False,False,False,False,False
+The optimum parameters c and,False,False,False,False,False,False
+"are found as 512 and 4,",False,False,False,False,False,False
+"respectively, in the GA–FST. The optimum particle has 12 features",False,False,False,False,False,False
+"selected, and the sum of the training and test times is 0.53 s.",False,False,False,False,False,False
+The optimum parameters c and,False,False,False,False,False,False
+"are found as 8 and 1, respec-",False,False,False,False,False,False
+"tively, in the simple SVM classiﬁcation technique. Whole 23 fea-",False,False,False,False,False,False
+"tures are used in this technique, and the sum of the training and",False,False,False,False,False,False
+test times is 0.67 s.,False,False,False,False,False,False
+The values of the optimum parameters and the result,False,False,False,False,False,False
+of the SVM classiﬁcation process for all techniques are given in Ta-,False,False,False,False,False,False
+ble 1.,False,False,False,False,False,False
+"In each technique, the classiﬁcation accuracy and training er-",False,False,False,False,False,False
+ror graphs depend on the,False,False,False,False,False,False
+parameter of SVM for the results,False,False,False,False,False,False
+based on ﬁxed c parameters in the optimum solutions are given,False,False,False,False,False,False
+in Figs. 6 and 7. The classiﬁcation accuracy and training error,False,False,False,False,False,False
+graphs depend on the c parameter of SVM for the results based,False,False,False,False,False,False
+on ﬁxed,False,False,False,False,False,False
+parameters in the optimum solutions are given in Figs.,False,False,False,False,False,False
+8 and 9.,False,False,False,False,False,False
+"As seen in Figs. 6–9, BPSO–FST has highest classiﬁcation accu-",False,False,False,False,False,False
+racy rate considered to GA–FST and simple SVM classiﬁcation tech-,False,False,False,False,False,False
+nique for each c and,False,False,False,False,False,False
+parameters within the search grid. Sum of,False,False,False,False,False,False
+the training and test times depends on number of the features used,False,False,False,False,False,False
+"in SVM classiﬁcation process. Hence, BPSO–FST has the minimum",False,False,False,False,False,False
+Fig. 8. Classiﬁcation accuracy graph depend on c. The values of the ﬁxed,False,False,False,False,True,False
+"parameters are 8, 4 and 1 for BPSO–FST, GA–FST and simple SVM classiﬁcation model, respectively.",False,False,False,False,False,False
+"BPSO–FST, SVM classiﬁcation utilizing BPSO–FST; GA–FST, SVM classiﬁcation utilizing GA–FST; SVM, Simple SVM classiﬁcation.",False,False,False,False,False,False
+Fig. 9. Training error graph depend on c. The values of the ﬁxed,False,False,False,False,True,False
+"parameters are 8, 4 and 1 for BPSO–FST, GA–FST and simple SVM classiﬁcation model, respectively. BPSO–",False,False,False,False,False,False
+"FST, SVM classiﬁcation utilizing BPSO–FST; GA–FST, SVM classiﬁcation utilizing GA–FST; SVM, Simple SVM classiﬁcation.",False,False,False,False,False,False
+3182,False,False,False,False,False,False
+_,False,False,False,False,False,False
+I. Babaoglu et al. / Expert Systems with Applications 37 (2010) 3177–3183,False,True,False,True,False,False
+"feature size, so that the sum of the training and test times is also",False,False,False,False,False,False
+minimum compared to the other classiﬁcation techniques in addi-,False,False,False,False,False,False
+tion to providing the best classiﬁcation accuracy.,False,False,False,False,False,False
+5. Conclusion,False,False,True,True,False,False
+"Instead of using the whole features in the dataset, SVM classiﬁ-",False,False,False,False,False,False
+cation process is implemented employing the reduced dataset on,False,False,False,False,False,False
+the determination of CAD using EST data. The dataset’s dimension,False,False,False,False,False,False
+is reduced by utilizing BPSO–FST or GA–FST. The classiﬁcation pro-,False,False,False,False,False,False
+cess implemented by feature selection techniques achieves more,False,False,False,False,False,False
+"successful classiﬁcation accuracy. Besides, they decrease the com-",False,False,False,False,False,False
+plexity of the system by reducing the dimensions of the dataset.,False,False,False,False,False,False
+Classiﬁcation processes implemented by using mentioned tech-,False,False,False,False,False,False
+niques are compared to each other. The classiﬁcation process,False,False,False,False,False,False
+implemented by utilizing BPSO–FST has the best classiﬁcation,False,False,False,False,False,False
+accuracy and minimal process time compared to others.,False,False,False,False,False,False
+References,False,False,False,True,False,False
+"An, S., Liu, W., & Venkatesh, S. (2007). Fast cross-validation algorithms for least",False,False,False,False,False,False
+squares support vector machine and kernel ridge regression. Pattern,False,False,False,False,False,False
+"Recognition, 40, 2154–2162.",False,False,False,False,False,False
+"Chang, C. C., & Lin, C. J. (2001). LIBSVM: A library for support vector machines,",False,False,False,False,False,False
+available: <http://www.csie.ntu.edu.tw/~cjlin/libsvm>.,False,False,False,False,False,False
+"Chen, K. Y., & Wang, C. H. (2007). A hybrid SARIMA and support vector machines in",False,False,False,False,False,False
+forecasting the production values of the machinery industry in Taiwan. Expert,False,False,False,False,False,False
+"Systems with Applications, 32(1), 254–264.",False,False,False,False,False,False
+"Chuang, L. Y., Chang, H. W., Tu, C. J., & Yang, C. H. (2008). Improved binary PSO for",False,False,False,False,False,False
+feature selection using gene expression data. Computational Biology and,False,False,False,False,False,False
+"Chemistry, 32, 29–38.",False,False,False,False,False,False
+"Comak, E., Arslan, A., & Turkoglu, I. (2007). A decision support system based on",False,False,False,False,False,False
+support vector machines for diagnosis of the heart valve diseases. Computers in,False,False,False,False,False,False
+"Biology and Medicine, 37, 21–27.",False,False,False,False,False,False
+"Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2001). Introduction to",False,False,False,True,False,False
+algorithms (2nd ed.). MIT Press.,False,False,False,False,False,False
+"Holland, J. (1975). Adaptation in natural and artiﬁcial systems. The Michigan",False,False,False,False,False,False
+University Press.,False,False,False,False,False,False
+"Kennedy, J., & Eberhart, R. C. (1995). Particle swarm optimization. In Proceedings of",False,False,False,False,False,False
+IEEE international conference on neural networks (vol. 4; pp. 1942–1948).,False,False,False,False,False,False
+"Kennedy, J., & Eberhart R. C. (1997). A discrete binary version of the particle swarm",False,False,False,False,False,False
+algorithm. In Proceedings of 1997 conference systems man and cybernetics (pp.,False,False,False,False,False,False
+4104–4108).,False,False,False,False,False,False
+"Kulkarni, A., Jayaraman, V. K., & Kulkarni, B. D. (2004). Support vector classiﬁcation",False,False,False,False,False,False
+with parameter tuning assisted by agent-based technique. Computers and,False,False,False,False,False,False
+"Chemical Engineering, 28, 311–318.",False,False,False,False,False,False
+"Kurt, I., Ture, M., & Kurum, A. T. (2008). Comparing performances of logistic",False,False,False,False,False,False
+"regression, classiﬁcation and regression tree, and neural networks for",False,False,False,False,False,False
+"predicting coronary artery disease. Expert Systems with Applications, 34,",False,False,False,False,False,False
+366–374.,False,False,False,False,False,False
+"San Roman, J. A., Vilacosta, I., Castillo, J. A., Rollan, M. J., Hernandez, M., Peral, V.,",False,False,False,False,False,False
+et al. (1998). Selection of the optimal stress test for the diagnosis of coronary,False,False,False,False,False,False
+"artery disease. Heart, 80(4), 370–376.",False,False,False,False,False,False
+"Sepehri, A. A., Hancq, J., Dutoit, T., Gharehbaghi, A., Kocharian, A., & Kiani, A. (2008).",False,False,False,False,False,False
+Computerized screening of children congenital heart diseases. Computer,False,False,False,False,False,False
+"methods and programs in biomedicine, 92(2), 186–192.",False,False,False,False,False,False
+"Shao, J. (1993). Linear model selection by cross-validation. Journal of American",False,False,False,False,False,False
+"Statistical Association, 88, 486–494.",False,False,False,False,False,False
+"Sprigings, D. (2002). Exercise stress testing. Medicine, 30(3), 31–33.",False,False,False,False,False,False
+"Takeuchi, K., & Collier, N. (2003). Bio-medical entity extraction using support vector",False,False,False,False,False,False
+"machines. Artiﬁcial Intelligence in Medicine, 33(2), 125–137.",False,False,False,False,False,False
+"Tantimongcolwata, T., Naennab, T., Isarankura-Na-Ayudhyaa, C., Embrechtsc, M. J.,",False,False,False,False,False,False
+"& Prachayasittikula, V. (2008). Identiﬁcation of ischemic heart disease via",False,False,False,False,False,False
+machine learning analysis on magnetocardiograms. Computers in Biology and,False,False,False,False,False,False
+"Medicine, 38, 817–825.",False,False,False,False,False,False
+"Thom, T., Haase, N., Rosamond, W., Howard, V. J., Rumsfeld, J., Manolio, T., et al.",False,False,False,False,False,False
+(2006). Heart disease and stroke statistics – 2006 update: A report from the,False,False,False,False,False,False
+American Heart Association Statistics Committee and Stroke Statistics,False,False,False,False,False,False
+"Subcommittee. Circulation, 113, e85–e151.",False,False,False,False,False,False
+Ug,False,False,False,False,False,False
+˘,False,False,False,False,False,False
+"uz, H., Öztürk, A., Saraçog",False,False,False,False,False,False
+˘,False,False,False,False,False,False
+"lu, R., & Arslan, A. (2008). A biomedical system based on",False,False,False,False,False,False
+fuzzy discrete hidden Markov model for the diagnosis of the brain diseases.,False,False,False,False,False,False
+"Expert Systems with Applications, 35, 1104–1114.",False,False,False,False,False,False
+"Vapnik, V. (1995). The nature of statistical learning theory. New York: Springer.",False,False,False,False,False,False
+"Yang, H. C., Zhang, S. B., Deng, K. Z., & Du, P. J. (2007). Research into a feature",False,False,False,False,False,False
+selection method for hyperspectral imagery using PSO and SVM. Journal of China,False,False,False,False,False,False
+"University of Mining and Technology, 17(4), 473–478.",False,False,False,False,False,False
+"Zhidong, Z. (2005). Noninvasive diagnosis of coronary artery disease based on",False,False,False,False,False,False
+instantaneous,False,False,False,False,False,False
+frequency,False,False,False,False,False,False
+of diastolic murmurs and SVM. In Proceedings of the,False,False,False,False,False,False
+"2005 IEEE engineering in medicine and biology 27th annual conference, Shanghai,",False,False,False,False,False,False
+China (pp. 5651–5654).,False,False,False,False,False,False
+"Zhou, W., Zhou, C., Liu, G., & Zhu, H. (2006). Feature selection for microarray data",False,False,False,False,False,False
+analysis using mutual information and rough set theory. Boston: Springer.,False,False,False,False,False,False
+_,False,False,False,False,False,False
+I. Babaoglu et al. / Expert Systems with Applications 37 (2010) 3177–3183,False,True,False,True,False,False
+3183,False,False,False,False,False,False

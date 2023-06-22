@@ -1,0 +1,25 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+D.G! ,True,False,False,True,False,False
+",MURTHY ",True,False,False,True,False,False
+T.V.S.ARUN ,True,False,False,True,False,False
+to ,False,False,False,False,False,False
+L1-91 ,True,False,False,True,False,False
+of: ,False,False,False,False,False,False
+of ,False,False,False,False,False,False
+& ,False,False,False,False,False,False
+SYSTEM ,True,False,False,True,False,False
+_I ,True,False,False,True,False,False
+54 ,False,False,False,False,False,False
+10 ,False,False,False,False,False,False
+C ,True,False,False,True,False,False
+palate ,False,False,False,False,False,False
+which ,False,False,False,False,False,False
+the ,False,False,False,False,False,False
+It ,False,False,False,False,False,False
+A ,True,False,False,True,False,False
+sonhn ,False,False,False,False,False,False
+"A, ",True,False,False,True,False,False
+pp ,False,False,False,False,False,False
+AI ,True,False,False,True,False,False
+(8) ,False,False,False,False,False,False
+(1) ,False,False,False,False,False,False

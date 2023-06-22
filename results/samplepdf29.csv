@@ -1,0 +1,77 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+Zhong-Hua Quan,False,False,False,False,False,False
+"1,2",False,False,False,False,False,False
+", Kun-Hong Liu",False,False,False,False,False,False
+"1,2",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Summary ,False,False,False,True,False,False
+Keywords ,False,False,False,False,False,False
+" Hidden Markov Model, Artificial Neural Networks, ",False,False,False,False,False,False
+"Online signature verification, Viterbi algorithm ",False,False,False,False,False,False
+1 Introduction ,False,False,False,True,False,False
+2 Signature Data and Preprocessing ,False,False,False,False,False,False
+2.1 Signature Data ,False,False,False,False,False,False
+x,False,False,False,False,False,False
+x,False,False,False,False,False,False
+"-axis,  ()",False,False,False,False,False,False
+x,False,False,False,False,False,False
+y,False,False,False,False,False,False
+y,False,False,False,False,False,False
+(),False,False,False,False,False,False
+y,False,False,False,False,False,False
+y,False,False,False,False,False,False
+t ; iii) Pressure  (),False,False,False,False,False,False
+p,False,False,False,False,False,False
+p,False,False,False,False,False,False
+t  applied by the pen; iv) ,False,False,False,False,False,False
+()t,False,False,False,False,False,False
+γ,False,False,False,False,False,False
+()t,False,False,False,False,False,False
+ϕ,False,False,False,False,False,False
+2.2 Preprocessing ,False,False,False,False,False,False
+x,False,False,False,False,False,False
+x,False,False,False,False,False,False
+x,False,False,False,False,False,False
+θ,False,False,False,False,False,False
+"v , pressure  ()",False,False,False,False,False,False
+p,False,False,False,False,False,False
+x,False,False,False,False,False,False
+x,False,False,False,False,False,False
+y,False,False,False,False,False,False
+3 The Hybrid HMM/ANN Model ,False,False,False,False,False,False
+3.1 HMM Description ,False,False,False,False,False,False
+B,True,False,False,True,False,False
+λ,False,False,False,False,False,False
+λ,False,False,False,False,False,False
+p,False,False,False,False,False,False
+3.2 The Discriminant HMM ,False,False,False,False,False,False
+3.3 TDNN as Probability Estimator ,False,False,False,False,False,False
+"o . Thus, if  21",False,False,False,False,False,False
+p,False,False,False,False,False,False
++,False,False,False,False,False,False
+x,False,False,False,False,False,False
+x,False,False,False,False,False,False
+3.4 Initialization and Training of the Hybrid ,False,False,False,False,False,False
+Model ,False,False,False,False,False,False
+10,False,False,False,False,False,False
+j,False,False,False,False,False,False
+j,False,False,False,False,False,False
+j,False,False,False,False,False,False
+4 Signature Verification Based on the ,False,False,False,False,False,False
+Hybrid HMM /ANN and Local ,False,False,False,False,False,False
+Comparison ,False,False,False,False,False,False
+4.1 HMM/ANN Based verification ,False,False,False,False,False,False
+4.2 Local Comparison Based Verification ,False,False,False,False,False,False
+x,False,False,False,False,False,False
+y,False,False,False,False,False,False
+p,False,False,False,False,False,False
+x,False,False,False,False,False,False
+y,False,False,False,False,False,False
+(),False,False,False,False,False,False
+p,False,False,False,False,False,False
+μ,False,False,False,False,False,False
+4.3 Decision Fusion ,False,False,False,False,False,False
+5 Experimental Results ,False,False,False,False,False,False
+6 Conclusions ,False,False,False,True,False,False
+References ,False,False,False,True,False,False
+Kun-Hong Liu received the ,False,False,False,False,False,False

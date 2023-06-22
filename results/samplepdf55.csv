@@ -1,0 +1,1680 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+•,False,False,False,False,False,False
+•,False,False,False,False,False,False
+Received: 21 August 2014 / Accepted: 24 February 2015,False,False,False,False,False,False
+ Australasian College of Physical Scientists and Engineers in Medicine 2015,False,False,False,False,False,False
+are based on individual classiﬁers or simple combination of,False,False,False,False,False,False
+these classiﬁers which tend to show moderate performance.,False,False,False,False,False,False
+This research paper presents a novel classiﬁer ensemble,False,False,False,False,False,False
+framework based on enhanced bagging approach with,False,False,False,False,False,False
+multi-objective weighted voting scheme for prediction and,False,False,False,False,False,False
+analysis of heart disease. The proposed model overcomes,False,False,False,False,False,False
+the limitations of conventional performance by utilizing an,False,False,False,False,False,False
+ensemble of ﬁve heterogeneous classiﬁers: Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ve Bayes,",False,False,False,False,False,False
+"linear regression, quadratic discriminant analysis, instance",False,False,False,False,False,False
+based learner and support vector machines. Five different,False,False,False,False,False,False
+"datasets are used for experimentation, evaluation and",False,False,False,False,False,False
+validation. The datasets are obtained from publicly avail-,False,False,False,False,False,False
+able data repositories. Effectiveness of the proposed,False,False,False,False,False,False
+ensemble is investigated by comparison of results with,False,False,False,False,False,False
+several classiﬁers. Prediction results of the proposed,False,False,False,False,False,False
+ensemble model are assessed by ten fold cross validation,False,False,False,False,False,False
+and ANOVA statistics. The experimental evaluation shows,False,False,False,False,False,False
+that the proposed framework deals with all type of at-,False,False,False,False,False,False
+"tributes and achieved high diagnosis accuracy of 84.16 %,",False,False,False,False,False,False
+"93.29 % sensitivity, 96.70 % speciﬁcity, and 82.15 %",False,False,False,False,False,False
+f-measure. The f-ratio higher than f-critical and p value less,False,False,False,False,False,False
+than 0.05 for 95 % conﬁdence interval indicate that the,False,False,False,False,False,False
+results are extremely statistically signiﬁcant for most of the,False,False,False,False,False,False
+datasets.,False,False,False,False,False,False
+disease  Multi-objective optimization  Prediction  Data,False,False,False,False,False,False
+mining,False,False,False,False,False,False
+Computational intelligence has started playing a vital role,False,False,False,False,False,False
+in medical diagnosis and intelligent decision making.,False,False,False,False,False,False
+Medical diagnosis procedures can be categorized using,False,False,False,False,False,False
+intelligent computational classiﬁcation tasks. Data mining,False,False,False,False,False,False
+is a process of analyzing and identifying previously un-,False,False,False,False,False,False
+"known and hidden patterns, relationships and knowledge",False,False,False,False,False,False
+from large datasets that was not possible with traditional,False,False,False,False,False,False
+"techniques [1]. According to recent research, data mining",False,False,False,False,False,False
+techniques are extremely helpful in the diagnosis of several,False,False,False,False,False,False
+"diseases such as cancer [2], stroke [3], diabetes [4] and",False,False,False,False,False,False
+heart disease [5].,False,False,False,False,False,False
+Several classiﬁcation techniques are used for heart dis-,False,False,False,False,False,False
+ease prediction; such as Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ve Bayes, linear regression,",False,False,False,False,False,False
+"neural networks, support vector machine, and kernel den-",False,False,False,False,False,False
+"sity, which results in different levels of precision, recall",False,False,False,False,False,False
+and accuracy [5–7]. An ensemble approach shows,False,False,False,False,False,False
+promising results as compared to a single technique [8];,False,False,False,False,False,False
+"therefore, researchers have been investigating ensemble",False,False,False,False,False,False
+based data mining approaches for heart disease prediction,False,False,False,False,False,False
+showing fruitful results.,False,False,False,False,False,False
+Figure 1 presents a generic ensemble framework for,False,False,False,False,True,False
+prediction and evaluation of a disease. It is composed of,False,False,False,False,False,False
+"training set, test set, model builder, ensemble model, pre-",False,False,False,False,False,False
+diction and evaluation. This ensemble framework can also,False,False,False,False,False,False
+"be applied to heart disease data. Heart disease datasets,",False,False,False,False,False,False
+"with known class labels, are partitioned into training and",False,False,False,False,False,False
+test sets. The training set is used to train the classiﬁers and,False,False,False,False,False,False
+fed into a model builder which consists of individual,False,False,False,False,False,False
+S. Bashir  U. Qamar  F. H. Khan (&),False,False,False,False,False,False
+"Computer Engineering Department, College of Electrical and",False,False,False,False,False,False
+"Mechanical Engineering, National University of Sciences and",False,False,False,False,False,False
+"Technology (NUST), Islamabad, Pakistan",False,False,False,False,False,False
+e-mail: farhan.hassan@ceme.nust.edu.pk,False,False,False,False,False,False
+S. Bashir,False,False,False,False,False,False
+e-mail: saba.bashir@ceme.nust.edu.pk,False,False,False,False,False,False
+U. Qamar,False,False,False,False,False,False
+e-mail: usmanq@ceme.nust.edu.pk,False,False,False,False,False,False
+123,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+DOI 10.1007/s13246-015-0337-6,False,False,False,False,False,False
+classiﬁers. These trained classiﬁers are then combined us-,False,False,False,False,False,False
+ing an ensemble technique. This ensemble model is then,False,False,False,False,False,False
+executed on the test set and prediction is computed. Fi-,False,False,False,False,False,False
+"nally, the performance is evaluated by comparing the",False,False,False,False,False,False
+predicted results with other classiﬁers and ensembles.,False,False,False,False,False,False
+This research paper presents a framework for intelligent,False,False,False,False,False,False
+heart disease decision support system (DSS) using a novel,False,False,False,False,False,False
+ensemble approach based on heterogeneous machine,False,False,False,False,False,False
+learning techniques. The proposed framework results in,False,False,False,False,False,False
+reliable performance for heart disease prediction as com-,False,False,False,False,False,False
+pared to other classiﬁers. It integrates multiple heteroge-,False,False,False,False,False,False
+neous classiﬁers using enhanced bagging with multi-,False,False,False,False,False,False
+objective optimized weighted voting scheme.,False,False,False,False,False,False
+Research contributions,False,False,False,False,False,False
+Healthcare industry is continuously making an effort to,False,False,False,False,False,False
+reduce medical errors and provide patient care and safety.,False,False,False,False,False,False
+Adverse reactions can occur if a disease is not diagnosed,False,False,False,False,False,False
+accurately. A DSS can assist health professionals for,False,False,False,False,False,False
+decision making tasks such as diagnosis of heart disease,False,False,False,False,False,False
+"from patient’s data. However, in medical applications",False,False,False,False,False,False
+"decision quality is of crucial importance. Therefore, high",False,False,False,False,False,False
+accuracy is of prime importance in heart disease classi-,False,False,False,False,False,False
+ﬁcation and prediction. In this research we present a,False,False,False,False,False,False
+complete DSS for accurate diagnosis of heart disease. It,False,False,False,False,False,False
+can be used by health professionals for diagnosis of heart,False,False,False,False,False,False
+disease from patient’s data. Whilst human decision-mak-,False,False,False,False,False,False
+ing performance can be suboptimal and deteriorate as the,False,False,False,False,False,False
+"complexity of the problem increases, the proposed",False,False,False,False,False,False
+framework can help healthcare professionals to make,False,False,False,False,False,False
+correct decisions.,False,False,False,False,False,False
+The main contributions of the proposed research are,False,False,False,False,False,False
+summarized as follows:,False,False,False,False,False,False
+• A novel ensemble approach is proposed which uses,False,False,False,False,False,False
+Bootstrap Aggregation (Bagging) with multi-objective,False,False,False,False,False,False
+optimized weighted vote for diagnosis of heart disease.,False,False,False,False,False,False
+• The proposed framework overcomes the limitations of,False,False,False,False,False,False
+conventional performance by utilizing an ensemble of,False,False,False,False,False,False
+ﬁve heterogeneous classiﬁers: Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ve Bayes, linear",False,False,False,False,False,False
+"regression, quadratic discriminant analysis, instance",False,False,False,False,False,False
+"based learner and support vector machines. However,",False,False,False,False,False,False
+the proposed framework can be implemented using any,False,False,False,False,False,False
+"set of classiﬁers which may be homogenous, heteroge-",False,False,False,False,False,False
+neous or a combination of both.,False,False,False,False,False,False
+• We compare the proposed ensemble approach with,False,False,False,False,False,False
+existing classiﬁers and ensembles to prove the superi-,False,False,False,False,False,False
+ority of our technique.,False,False,False,False,False,False
+The rest of the paper is organized as follows: ‘‘Literature,False,False,False,False,False,False
+review’’ section is related to literature review. The pro-,False,False,False,False,False,False
+posed approach is deﬁned in ‘‘The proposed framework’’,False,False,False,False,False,False
+section and ‘‘Dataset description’’section describes dataset,False,False,False,False,False,False
+information. ‘‘Results and discussion’’ section presents the,False,False,False,False,False,False
+"results and discussion sections. Finally, ‘‘Real-time im-",False,False,False,False,False,False
+plementation of the proposed framework’’ section sum-,False,False,False,False,False,False
+marizes the work which has been done.,False,False,False,False,False,False
+There are various machine learning techniques that are,False,False,False,False,False,False
+widely accepted for heart disease analysis and prediction.,False,False,False,False,False,False
+A clinical decision support framework involves many,False,False,False,False,False,False
+Datasets,False,False,False,False,False,False
+0,False,False,False,False,False,False
+1,False,False,False,False,False,False
+1,False,False,False,False,False,False
+0,False,False,False,False,False,False
+Model Builder,False,False,False,False,False,False
+0,False,False,False,False,False,False
+1,False,False,False,False,False,False
+0,False,False,False,False,False,False
+1,False,False,False,False,False,False
+Results known,False,False,False,False,False,False
+Training set,False,False,False,False,False,False
+Evaluate,False,False,False,False,False,False
+Predictions,False,False,False,False,False,False
+Testing set,False,False,False,False,False,False
+Ensemble ,False,False,False,False,False,False
+Model,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+machine learning algorithms. Table 1 shows comparison of,False,False,False,False,False,False
+"accuracy, sensitivity and speciﬁcity for different techniques",False,False,False,False,False,False
+used for heart disease diagnosis. It is observed from,False,False,False,False,False,False
+Table 1 that most of the work is focused on applying a,False,False,False,False,False,True
+single classiﬁcation technique for heart disease analysis,False,False,False,False,False,False
+and prediction. Pattekari and Parveen [9] used Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bayes,False,False,False,False,False,False
+for heart disease prediction. The proposed technique uses a,False,False,False,False,False,False
+single classiﬁer and works only on categorical data. The,False,False,False,False,False,False
+technique can be improved by using other data mining,False,False,False,False,False,False
+"techniques such as time series, clustering and association",False,False,False,False,False,False
+mining whereas the results can be improved by considering,False,False,False,False,False,False
+other data types as well. Peter and Somasundaram [10],False,False,False,False,False,False
+proposed a cardiovascular disease risk prediction frame-,False,False,False,False,False,False
+work by using data mining and pattern recognition tech-,False,False,False,False,False,False
+niques. Analysis of results indicates that Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bayes has,False,False,False,False,False,False
+better accuracy as compared to other techniques. The,False,False,False,False,False,False
+proposed technique limits the use of only numerical at-,False,False,False,False,False,False
+tribute set and input of attribute set is in ASCII ﬁle format.,False,False,False,False,False,False
+Ghumbre et al. [11] proposed a system that used radial,False,False,False,False,False,False
+based function network structure and support vector ma-,False,False,False,False,False,False
+chine for heart disease prediction. The results indicate that,False,False,False,False,False,False
+the accuracy of support vector machine is as good as radial,False,False,False,False,False,False
+based function network. The technique is sensitive to data,False,False,False,False,False,False
+acquisition method used. Chitra and Seenivasagam [12],False,False,False,False,False,False
+used a supervised learning algorithm for prediction of heart,False,False,False,False,False,False
+disease at early stages. The proposed classiﬁer is based on,False,False,False,False,False,False
+cascaded neural network (CNN) with hidden neurons. High,False,False,False,False,False,False
+speciﬁcity and sensitivity values show that the technique,False,False,False,False,False,False
+has a high probability of predicting healthy individuals and,False,False,False,False,False,False
+patients with heart disease.,False,False,False,False,False,False
+Chen et al. [13] presented a framework for heart disease,False,False,False,False,False,False
+analysis and prediction using learning vector quantization,False,False,False,False,False,False
+(LVQ) algorithm. It uses ROC curve to display results and,False,False,False,False,False,False
+achieved 80 % accuracy. Enhancements can be made by,False,False,False,False,False,False
+using text mining techniques along with data mining. Text,False,False,False,False,False,False
+mining has the capability to mine unstructured data avail-,False,False,False,False,False,False
+able in heart disease datasets. Jabbar et al. [14] used as-,False,False,False,False,False,False
+sociation mining and genetic algorithm for heart disease,False,False,False,False,False,False
+prediction. High values of interestingness measure and,False,False,False,False,False,False
+accuracy were achieved. The framework used entire at-,False,False,False,False,False,False
+tribute set as input which can be further improved by,False,False,False,False,False,False
+"feature reduction, selecting only those features that con-",False,False,False,False,False,False
+tribute towards the diagnosis of the disease.,False,False,False,False,False,False
+Valente et al. [15] used multivariate linear regression,False,False,False,False,False,False
+(MLR) to study the relationship between MLR spatial ac-,False,False,False,False,False,False
+tivation patterns and behavioral ratings. Model coefﬁcients,False,False,False,False,False,False
+are used to perform mapping and sought-after links are,False,False,False,False,False,False
+provided among different activities. It is concluded from,False,False,False,False,False,False
+the experimentation that multiple linear regression models,False,False,False,False,False,False
+are good for target modeling and it deals with high di-,False,False,False,False,False,False
+mensional data. Rizk-Jackson et al. [16] proposed a,False,False,False,False,False,False
+framework using support vector regression and linear re-,False,False,False,False,False,False
+gression techniques in order to generate quantitative mea-,False,False,False,False,False,False
+surements of disease progression. Different neuroimaging,False,False,False,False,False,False
+measures were used to correlate the established measures,False,False,False,False,False,False
+of disease progression. It is concluded from results that,False,False,False,False,False,False
+there are different neuroimaging measures that are based,False,False,False,False,False,False
+on multivariate measurements and disease-state biomarkers,False,False,False,False,False,False
+can be established successfully. Maroco et al. [17] used,False,False,False,False,False,False
+"different data mining techniques to improve accuracy,",False,False,False,False,False,False
+sensitivity and speciﬁcity of results generated from neu-,False,False,False,False,False,False
+ropsychological testing. The proposed technique compares,False,False,False,False,False,False
+"linear discriminant analysis, quadratic discriminant analy-",False,False,False,False,False,False
+sis and logistic regression to other seven non parametric,False,False,False,False,False,False
+classiﬁers. Five fold cross validation is used to obtain the,False,False,False,False,False,False
+statistical distribution of results.,False,False,False,False,False,False
+As the ensemble approach outperforms individual clas-,False,False,False,False,False,False
+"siﬁers, many such approaches have been introduced in",False,False,False,False,False,False
+Author/year/reference Technique Speciﬁcity,False,False,False,False,False,False
+(%),False,False,False,False,False,False
+Sensitivity,False,False,False,False,False,False
+(%),False,False,False,False,False,False
+Accuracy,False,False,False,False,False,False
+(%),False,False,False,False,False,False
+Chen et al. 2011 [13] Artiﬁcial neural network 70 85 80,False,False,False,False,False,False
+Das 2009 [5] Neural network ensemble 95.91 80.95 89.01,False,False,False,False,False,False
+Ghumbre et al. 2011 [11] Support vector machine 88.50 84.06 85.05,False,False,False,False,False,False
+Radial basis function 82.10 82.40 82.24,False,False,False,False,False,False
+Chitra et al. 2013 [12] Cascaded neural network 87 83 85,False,False,False,False,False,False
+Support vector machine 77.5 85.5 82,False,False,False,False,False,False
+Shouman et al. 2011 [38] Nine voting equal frequency discretization gain ratio decision tree 85.2 77.9 84.1,False,False,False,False,False,False
+Tu et al. 2009 [39] J4.8 decision tree 84.48 72.01 78.9,False,False,False,False,False,False
+Bagging algorithm 86.64 74.93 81.41,False,False,False,False,False,False
+Shouman et al. 2013 [40] Gain ratio decision tree 81.6 75.6 79.1,False,False,False,False,False,False
+Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bayes 80.8 78 83.5,False,False,False,False,False,False
+K nearest neighbor 85.1 76.7 83.2,False,False,False,False,False,False
+Shouman et al. 2012 [41] K mean clustering with Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bayes algorithm 76.59 69.93 78.62,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+recent decade. Das et al. [5] presented an ensemble based,False,False,False,False,False,False
+method for diagnosis of heart disease. It combines different,False,False,False,False,False,False
+neural networks that are trained using same dataset and,False,False,False,False,False,False
+produce higher generalization. Only one heart disease,False,False,False,False,False,False
+database is used for the proposed technique and more,False,False,False,False,False,False
+datasets are required for veriﬁcation of results. Helmy et al.,False,False,False,False,False,False
+"[18] proposed an ensemble framework based on SVM,",False,False,False,False,False,False
+ANN and ANFIS to generate high prediction accuracy.,False,False,False,False,False,False
+Individual classiﬁers were trained using bagging algorithm,False,False,False,False,False,False
+and results reveal that heterogeneous ensemble has better,False,False,False,False,False,False
+results as compared to individual classiﬁers. It used only,False,False,False,False,False,False
+two datasets for result veriﬁcation and does not provide any,False,False,False,False,False,False
+cross validation technique.,False,False,False,False,False,False
+The proposed framework consists of two main,False,False,False,False,False,False
+components.,False,False,False,False,False,False
+(a) Data acquisition and pre-processing module.,False,False,False,False,False,False
+"(b) BagMOOV, the ensemble model for heart disease",False,False,False,False,False,False
+prediction.,False,False,False,False,False,False
+The data acquisition process obtains data from different,False,False,False,False,False,False
+"repositories, performs data partition and variable selection.",False,False,False,False,False,False
+"Pre-processing steps involve: missing value imputation,",False,False,False,False,False,False
+"outlier detection, feature selection and class label identiﬁ-",False,False,False,False,False,False
+cation. This is then followed by training each classiﬁer,False,False,False,False,False,False
+"using the training set and ﬁnally, the proposed ensemble",False,False,False,False,False,False
+"model, BagMOOV combines ﬁve different classiﬁers. For",False,False,False,False,False,False
+"each classiﬁer, the weight is calculated based on F-measure",False,False,False,False,False,False
+of the training dataset. The ﬁnal output of the ensemble,False,False,False,False,False,False
+"classiﬁer is the label with highest weighted vote [8, 19].",False,False,False,False,False,False
+The ﬂowchart of the proposed approach is given in Fig. 2.,False,False,False,False,False,False
+Data acquisition and pre-processing module,False,False,False,False,False,False
+The basic purpose of data acquisition and pre-processing,False,False,False,False,False,False
+module is to obtain data from different heart disease,False,False,False,False,False,False
+repositories and then reﬁne them into a form that is suitable,False,False,False,False,False,False
+for subsequent analysis. Each dataset holds the feature,False,False,False,False,False,False
+space that will ultimately differentiate the data into healthy,False,False,False,False,False,False
+individuals and sick (heart disease) patients. Each dataset,False,False,False,False,False,False
+has different set of attributes and data types. The data is then,False,False,False,False,False,False
+divided into training set and test set by data partition,False,False,False,False,False,False
+component. Ten fold cross validation is used to partition the,False,False,False,False,False,False
+dataset into ten mutually exclusive partitions. The biasness,False,False,False,False,False,False
+is avoided by randomly selecting the samples from each,False,False,False,False,False,False
+partition. The partitioning results in reduction of computa-,False,False,False,False,False,False
+tion time for preliminary model runs. The pre-processing,False,False,False,False,False,False
+phase involves multiple steps that are applied on each,False,False,False,False,False,False
+"dataset sequentially. It includes feature selection, missing",False,False,False,False,False,False
+"value imputation, noise removal and outlier detection.",False,False,False,False,False,False
+• Feature selection This process involves feature reduc-,False,False,False,False,False,False
+tion by selecting only those attributes which contribute,False,False,False,False,False,False
+towards ﬁnal prediction of disease. The rejected features,False,False,False,False,False,False
+will not be used for subsequent modules and analysis.,False,False,False,False,False,False
+There are multiple steps involved in the process of,False,False,False,False,False,False
+feature selection and identiﬁcation [20]. The generation,False,False,False,False,False,False
+and selection procedures are two of the most important,False,False,False,False,False,False
+steps. The generation procedure involves generation,False,False,False,False,False,False
+features subset whereas selection procedure will evaluate,False,False,False,False,False,False
+these features on the basis of different criteria. The,False,False,False,False,False,False
+"generation procedure can result in an empty set, subset",False,False,False,False,False,False
+based on randomly selected attributes or a set based on all,False,False,False,False,False,False
+attributes. Forward selection is used in case of empty set,False,False,False,False,False,False
+which iteratively adds the attributes in feature set,False,False,False,False,False,False
+whereas backward elimination is used in case of all,False,False,False,False,False,False
+"attributes, which iteratively eliminates the irrelevant",False,False,False,False,False,False
+attributes from feature set. The relevancy of an attribute,False,False,False,False,False,False
+is measured by wrapper approaches. The main focus of a,False,False,False,False,False,False
+wrapper approach is classiﬁcation accuracy [21]. The,False,False,False,False,False,False
+estimation accuracy of each feature set is calculated that,False,False,False,False,False,False
+is a candidate for adding or removing from the dataset.,False,False,False,False,False,False
+We have used cross validation for accuracy estimation of,False,False,False,False,False,False
+each feature set of the training set. The feature selection,False,False,False,False,False,False
+process continues until pre-speciﬁed number of features,False,False,False,False,False,False
+is achieved or some threshold criteria are attained [21].,False,False,False,False,False,False
+The proposed ensemble framework performs feature,False,False,False,False,False,False
+selection for each dataset individually. We have used,False,False,False,False,False,False
+benchmark heart disease datasets in the research and they,False,False,False,False,False,False
+do not contain any irrelevant features as the respective,False,False,False,False,False,False
+"publishers have already processed them. Therefore, the",False,False,False,False,False,False
+entire feature set of each dataset will be used for,False,False,False,False,False,False
+subsequent analysis. The deﬁned feature selection,False,False,False,False,False,False
+method will be used for any other dataset that may,False,False,False,False,False,False
+contain irrelevant attributes.,False,False,False,False,False,False
+• Noise removal Noise is referred to as random error or,False,False,False,False,False,False
+variance in a measured attribute. There are multiple,False,False,False,False,False,False
+techniques for noise removal such as regression,False,False,False,False,False,False
+"analysis, binning and clustering. The proposed pre-",False,False,False,False,False,False
+processing involves noise removal using binning and,False,False,False,False,False,False
+the reﬁned data is passed onto the next process.,False,False,False,False,False,False
+Benchmark heart disease datasets have been used that,False,False,False,False,False,False
+do not contain any noise because they are already,False,False,False,False,False,False
+processed by the respective publishers. For other,False,False,False,False,False,False
+"datasets, the noise removal method will be used.",False,False,False,False,False,False
+• Outlier detection Outlier is a type of noise and they are,False,False,False,False,False,False
+attribute values that fall above or below a deﬁned,False,False,False,False,False,False
+range. The outlier detection procedure removes outliers,False,False,False,False,False,False
+from each attribute. Inter-Quartile Range (IQR) is used,False,False,False,False,False,False
+to detect outliers and any value not in the range,False,False,False,False,False,False
+of ± 1.5 IQR will be replaced with attribute mean for,False,False,False,False,False,False
+continuous attributes and mod for categorical values.,False,False,False,False,False,False
+No outliers were detected in the datasets used in this,False,False,False,False,False,False
+research.,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+Heart disease ,False,False,False,False,False,False
+historical data,False,False,False,False,False,False
+Feature selection,False,False,False,False,False,False
+Remove ,False,False,False,False,False,False
+Duplicates,False,False,False,False,False,False
+Duplicates?,False,False,False,False,False,False
+Yes,False,False,False,False,False,False
+Start,False,False,False,False,False,False
+No,False,False,False,False,False,False
+Missing value?,False,False,False,False,False,False
+Desired attributes,False,False,False,False,False,False
+Yes,False,False,False,False,False,False
+No,False,False,False,False,False,False
+Replace by ,False,False,False,False,False,False
+attribute Mean,False,False,False,False,False,False
+Replace by ,False,False,False,False,False,False
+attribute Mean,False,False,False,False,False,False
+Outlier?,False,False,False,False,False,False
+No,False,False,False,False,False,False
+Decompose into ,False,False,False,False,False,False
+training/Test set,False,False,False,False,False,False
+No,False,False,False,False,False,False
+Train classifier,False,False,False,False,False,False
+Test classifier,False,False,False,False,False,False
+Generate ,False,False,False,False,False,False
+Ensemble,False,False,False,False,False,False
+All classifiers ,False,False,False,False,False,False
+trained?,False,False,False,False,False,False
+Yes,False,False,False,False,False,False
+No,False,False,False,False,False,False
+Final prediction,False,False,False,False,False,False
+All classifiers ,False,False,False,False,False,False
+tested?,False,False,False,False,False,False
+No,False,False,False,False,False,False
+Yes,False,False,False,False,False,False
+Yes,False,False,False,False,False,False
+>=50%,False,False,False,False,False,False
+Remove ,False,False,False,False,False,False
+attribute,False,False,False,False,False,False
+Yes,False,False,False,False,False,False
+framework,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+• Missing value imputation Missing data in medical datasets,False,False,False,False,False,False
+must be handled carefully because they have a serious,False,False,False,False,False,False
+effect on conclusions and interpretation of data. The,False,False,False,False,False,False
+proposed pre-processing module also involves missing,False,False,False,False,False,False
+data handling and missing values are replaced by the,False,False,False,False,False,False
+mean/mode of each attribute depending on the data type. If,False,False,False,False,False,False
+the missing values for a particular attribute are more than,False,False,False,False,False,False
+"50 % of all instances, that attribute will be automatically",False,False,False,False,False,False
+discarded. Mean substitution is a conservative procedure,False,False,False,False,False,False
+as the distribution mean as a whole does not change and,False,False,False,False,False,False
+researchers don’t have to guess at missing values. In this,False,False,False,False,False,False
+research we have used group mean substitution instead of,False,False,False,False,False,False
+simple mean substitution. This is because in medical,False,False,False,False,False,False
+"datasets, we have both male and female patients, as an",False,False,False,False,False,False
+example the use of menopause are recorded only for,False,False,False,False,False,False
+women; it is not possible to impute appropriate values for,False,False,False,False,False,False
+men. Therefore we impute a missing value using the class-,False,False,False,False,False,False
+"conditional mean of the feature (i.e., the mean feature",False,False,False,False,False,False
+value of all points within the same class as the instance,False,False,False,False,False,False
+with the missing value). For example if the case with a,False,False,False,False,False,False
+"missing value is a male patient with hypertension, the",False,False,False,False,False,False
+mean value for male patient with hypertension is calcu-,False,False,False,False,False,False
+lated and inserted in place of the missing value.,False,False,False,False,False,False
+BagMOOV ensemble,False,False,False,False,False,False
+The proposed ensemble uses Bootstrap Aggregation (Bag-,False,False,False,False,False,False
+ging) with multi-objective optimized weighted vote based,False,False,False,False,False,False
+technique. The ensemble consists of combination of hetero-,False,False,False,False,False,False
+geneous classiﬁers which are Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ve Bayes (NB), linear re-",False,False,False,False,False,False
+"gression (LR), quadratic discriminant analysis (QDA),",False,False,False,False,False,False
+instance based learner (IBL) and support vector machine,False,False,False,False,False,False
+"(SVM). However, the proposed framework can be imple-",False,False,False,False,False,False
+"mented using any set of classiﬁerswhich may be homogenous,",False,False,False,False,False,False
+heterogeneous or a combination of both. The description of,False,False,False,False,False,False
+each individual classiﬁer and the proposed weighted voting,False,False,False,False,False,False
+ensemble approach are explained in this section.,False,False,False,False,False,False
+Base classiﬁers,False,False,False,False,False,False
+A. Naı¨ve Bayes (NB) classiﬁer Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bayes classiﬁer,False,False,False,False,False,False
+depends on the hypothesis that presence or absence of a,False,False,False,False,False,False
+disease is independent of the feature space. Various su-,False,False,False,False,False,False
+pervised learning algorithms can be used to train the,False,False,False,False,False,False
+probability model [22].,False,False,False,False,False,False
+It requires a small training dataset and only the attributes,False,False,False,False,False,False
+of given class are required instead of entire covariance,False,False,False,False,False,False
+matrix as they are independent of each other [23]. Fol-,False,False,False,False,False,False
+lowing formula is used to classify the given problem:,False,False,False,False,False,False
+P(CkjX) = P(Ck) ,False,False,False,False,False,False
+PðXjCkÞ,False,False,False,False,False,False
+P(X),True,False,False,True,False,False
+ð1Þ,False,False,False,False,False,False
+"where X is an example that needs to be classiﬁed, C",False,False,False,False,False,False
+k,False,False,False,False,False,False
+is a,False,False,False,False,False,False
+possible class and P(C,False,False,False,False,False,False
+k,False,False,False,False,False,False
+|X) is the probability of vector X,False,False,False,False,False,False
+belonging to class C,False,False,False,False,False,False
+k,False,False,False,False,False,False
+.,False,True,False,True,False,False
+B. Linear regression (LR) Regression is one of the most,False,False,False,False,False,False
+common techniques used for prediction. It determines the,False,False,False,False,False,False
+relationship between set of independent variables and a,False,False,False,False,False,False
+dependent variable in order to perform prediction for de-,False,False,False,False,False,False
+pendent variable. The prior relationship identiﬁes the future,False,False,False,False,False,False
+outcome [24]. A simple regression is where only one,False,False,False,False,False,False
+variable is used as independent variable whereas multiple,False,False,False,False,False,False
+regression uses more than one independent variables to,False,False,False,False,False,False
+predict the value of dependent variable. Regression models,False,False,False,False,False,False
+are used to determine graphical relationship between,False,False,False,False,False,False
+variables. The regression model can be deﬁned by fol-,False,False,False,False,False,False
+lowing formula [25]:,False,False,False,False,False,False
+y,False,False,False,False,False,False
+x,False,False,False,False,False,False
+x,False,False,False,False,False,False
+=x,False,False,False,False,False,False
+ð2Þ,False,False,False,False,False,False
+"where i = 1,………,n. T presents transpose of x and it is",False,False,False,False,False,False
+used to calculate the inner product between x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+Combining above n equations and representing in vector,False,False,False,False,False,False
+form as follows:,False,False,False,False,False,False
+"where y represents dependent variable, X represents inde-",False,False,False,False,False,False
+i,False,False,False,False,False,False
+is error term.,False,False,False,False,False,False
+Multiple attributes given in heart disease datasets are,False,False,False,False,False,False
+considered as independent variables whereas output class,False,False,False,False,False,False
+(healthy/sick) is considered as dependent variable.,False,False,False,False,False,False
+C. Quadratic discriminant analysis (QDA) It is a ma-,False,False,False,False,False,False
+chine learning classiﬁer that uses quadratic surface to,False,False,False,False,False,False
+separate two or more classes. It assumes that each class has,False,False,False,False,False,False
+normal distribution and does not require any parameters to,False,False,False,False,False,False
+tune the algorithm. QDA allows each class to have its own,False,False,False,False,False,False
+covariance matrix and tends to ﬁt the data best as compared,False,False,False,False,False,False
+to linear discriminant analysis (LDA). It is inherently,False,False,False,False,False,False
+multiclass and has closed-form solution [26]. Following,False,False,False,False,False,False
+formula is used to determine quadratic discriminant,False,False,False,False,False,False
+function:,False,False,False,False,False,False
+ðx) = ,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+logj,False,False,False,False,False,False
+j,False,False,False,False,False,False
+1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+Þ,True,False,False,True,False,False
+ð4Þ,False,False,False,False,False,False
+"classes,",False,False,False,False,False,False
+k,False,False,False,False,False,False
+k,False,False,False,False,False,False
+is,False,False,False,False,False,False
+the prior probability of class k. Following classiﬁcation,False,False,False,False,False,False
+rule is used to classify given datasets:,False,False,False,False,False,False
+G(x) ¼ argmax,False,False,False,False,False,False
+xðÞ,False,False,False,False,False,False
+ð5Þ,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+A class which maximizes the quadratic discriminant,False,False,False,False,False,False
+function will be considered as output class. The dis-,False,False,False,False,False,False
+criminant analysis has reduced error rate and uses multiple,False,False,False,False,False,False
+"dependent variables to determine output class. Moreover,",False,False,False,False,False,False
+the interpretation between-groups is easier to interpret and,False,False,False,False,False,False
+calculate.,False,False,False,False,False,False
+D. Instance based learner (IBL) Instance based Learner,False,False,False,False,False,False
+compares each new instance with the instances stored in,False,False,False,False,False,False
+memory from the training set. It is also termed as lazy,False,False,False,False,False,False
+learning and works on the principal of k nearest neighbor,False,False,False,False,False,False
+(kNN) approach. Its advantage over other data mining,False,False,False,False,False,False
+techniques is that the model automatically adapts to unseen,False,False,False,False,False,False
+data. The nearest neighbor is identiﬁed by a distance,False,False,False,False,False,False
+function which is selected depending upon the data type of,False,False,False,False,False,False
+attributes. Following formula is used to calculate the dis-,False,False,False,False,False,False
+tance between two feature vectors [27]:,False,False,False,False,False,False
+d(x,False,False,False,False,False,False
+Þ¼,True,False,False,True,False,False
+ðX,False,False,False,False,False,False
+ X,True,False,False,True,False,False
+Þ,True,False,False,True,False,False
+þ,False,False,False,False,False,False
+L,True,False,False,True,False,False
+ðX,False,False,False,False,False,False
+ X,True,False,False,True,False,False
+Þð6Þ,False,False,False,False,False,False
+where L,False,False,False,False,False,False
+c,False,False,False,False,False,False
+deﬁnes the distance between two categorical at-,False,False,False,False,False,False
+"tributes in the form of MxM matrix, Q represents set of",False,False,False,False,False,False
+quantitative features and C stands for set of categorical,False,False,False,False,False,False
+features. Let an instance x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+has the k nearest neighbors,False,False,False,False,False,False
+represented by N,False,False,False,False,False,False
+i,False,False,False,False,False,False
+and the distance is denoted by d then the,False,False,False,False,False,False
+majority voting scheme is used to determine the votes V,False,False,False,False,False,False
+i,False,False,False,False,False,False
+(t),False,False,False,False,False,False
+having the label t for all neighbors of x,False,False,False,False,False,False
+i,False,False,False,False,False,False
+". Formally, it can be",False,True,False,True,False,False
+written as [27]:,False,False,False,False,False,False
+V,True,False,False,True,False,False
+ðt) =,False,False,False,False,False,False
+k 2 N,False,False,False,False,False,False
+"ðI(t,y",False,False,False,False,False,False
+ÞÞ ð7Þ,False,False,False,False,False,False
+"where I represents the indicator function and I(t,y",False,False,False,False,False,False
+k,False,False,False,False,False,False
+) = 1; if,False,False,False,False,False,False
+t = y,False,False,False,False,False,False
+k,False,False,False,False,False,False
+"and (t,y",False,False,False,False,False,False
+k,False,False,False,False,False,False
+) = 0; otherwise.,False,False,False,False,False,False
+E. Support vector machine (SVM) SVM is supervised,False,False,False,False,False,False
+learning algorithm that is used for binary classiﬁcation. A,False,False,False,False,False,False
+prediction model is constructed for each input test set and,False,False,False,False,False,False
+produces output in the form of two classes making it non,False,False,False,False,False,False
+probabilistic binary classiﬁer [11]. SVM ﬁnds linear max-,False,False,False,False,False,False
+imum margin hyper-plane. It is deﬁned by a weight vector,False,False,False,False,False,False
+w and bias b which is hyperplane distance from center. The,False,False,False,False,False,False
+non-linear separation of dataset is performed by using a,False,False,False,False,False,False
+kernel function. The following classiﬁcation rule is used by,False,False,False,False,False,False
+SVM classiﬁer for solving the given problem:,False,False,False,False,False,False
+"Sgn(f(x,w,b)) ð8Þ",False,False,False,False,False,False
+"where f(w,b) presents maximum margin hyperplane for the",False,False,False,False,False,False
+complex problem and x denotes the example to be classi-,False,False,False,False,False,False
+"ﬁed. In our study, we use two attributes for each dataset,",False,False,False,False,False,False
+selected on the basis of highest information gain.,False,False,False,False,False,False
+Each individual classiﬁer which is used by the ensemble,False,False,False,False,False,False
+is trained using the training data in order to make them,False,False,False,False,False,False
+useful for heart disease prediction. The feature space and,False,False,False,False,False,False
+the resultant class labels of each dataset are known to each,False,False,False,False,False,False
+"trained classiﬁer, which then has the capability to predict",False,False,False,False,False,False
+healthy and sick individuals.,False,False,False,False,False,False
+Bootstrap aggregation,False,False,False,False,False,False
+"Bagging stands for Bootstrap Aggregation, which combi-",False,False,False,False,False,False
+nes the results of base classiﬁers treating each model with,False,False,False,False,False,False
+equal weight (vote) to generate ﬁnal prediction. In order to,False,False,False,False,False,False
+"generate better prediction results, each base classiﬁer is",False,False,False,False,False,False
+trained using randomly drawn sample sets (bootstrap,False,False,False,False,False,False
+samples) with replacement from original training set [25].,False,False,False,False,False,False
+The proposed ensemble approach is an enhancement of,False,False,False,False,False,False
+bagging algorithm and it can be divided into two stages. At,False,False,False,False,False,False
+"ﬁrst stage, original training set for each heart disease",False,False,False,False,False,False
+dataset is divided into multiple bootstrap sets with re-,False,False,False,False,False,False
+placement. In order to create bootstrap samples from,False,False,False,False,False,False
+"training set of size m, t multinomial trails are performed,",False,False,False,False,False,False
+where one of the m examples is drawn for each trial. The,False,False,False,False,False,False
+probability of each example to be drawn in each trial is,False,False,False,False,False,False
+1/m. The proposed ensemble algorithm chooses a sample r,False,False,False,False,False,False
+from 1 to m and the rth training example is added to,False,False,False,False,False,False
+"bootstrap training set S. Moreover, it is possible that some",False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+of the training examples will not be selected in bootstrap,False,False,False,False,False,False
+training sets whereas others may be chosen one time or,False,False,False,False,False,False
+"more. At second stage, classiﬁers’ training is performed",False,False,False,False,False,False
+using bootstrap training sets generated during the ﬁrst,False,False,False,False,False,False
+stage.,False,False,False,False,False,False
+We argue that each classiﬁer in the bagging approach,False,False,False,False,False,False
+should not have the same weight as each classiﬁer has a,False,False,False,False,False,False
+"different individual performance level. Therefore, we pro-",False,False,False,False,False,False
+pose to use multi-objective optimized weighting scheme,False,False,False,False,False,False
+instead of simple voting. The BagMOOV ensemble will,False,False,False,False,False,False
+return a function h(d) that classiﬁes new samples into class,False,False,False,False,False,False
+y having the highest weight from the base models h,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",h",False,False,False,False,False,False
+2,False,False,False,False,False,False
+",-",False,False,False,False,False,False
+h,False,False,False,False,False,False
+3,False,False,False,False,False,False
+",……,h",False,False,False,False,False,False
+t,False,False,False,False,False,False
+. t bootstrap training sets are created which have,False,True,False,True,False,False
+some differences with each other. The ensemble model will,False,False,False,False,False,False
+perform better than individual classiﬁer if the difference,False,False,False,False,False,False
+among bootstrap training sets induces a noticeable differ-,False,False,False,False,False,False
+"ence among M individual classiﬁers, generating reasonably",False,False,False,False,False,False
+good performance by each of them. [28] proposed that a,False,False,False,False,False,False
+bagged ensemble approach outperforms each base classiﬁer,False,False,False,False,False,False
+if the base classiﬁers are trained using sample sets where,False,False,False,False,False,False
+differences in sample training sets induce a signiﬁcant,False,False,False,False,False,False
+difference in the base classiﬁers. The ﬂowchart of proposed,False,False,False,False,False,False
+BagMOOV ensemble algorithm is given in Fig. 3. It shows,False,False,False,False,False,False
+that training set is divided into multiple datasets using,False,False,False,False,False,False
+"bootstrap aggregation method, then proposed technique is",False,False,False,False,False,False
+applied on these datasets and ﬁnal prediction is obtained.,False,False,False,False,False,False
+Multi-objective optimization criteria The proposed,False,False,False,False,False,False
+ensemble classiﬁer is based on the principle of multi-ob-,False,False,False,False,False,False
+jective optimization where we try to optimize multiple,False,False,False,False,False,False
+"goals simultaneously. Formally, it can be stated as [19]:",False,False,False,False,False,False
+Find the number of vectors V,False,False,False,False,False,False
+k,False,False,False,False,False,False
+where V,False,False,False,False,False,False
+k,False,False,False,False,False,False
+=,False,False,False,False,False,False
+{v,False,False,False,False,False,False
+1,False,False,False,False,False,False
+",v",False,False,False,False,False,False
+2,False,False,False,False,False,False
+",v",False,False,False,False,False,False
+3,False,False,False,False,False,False
+",……v",False,False,False,False,False,False
+n,False,False,False,False,False,False
+} for each classiﬁer C,False,False,False,False,False,False
+k,False,False,False,False,False,False
+and C,False,False,False,False,False,False
+k,False,False,False,False,False,False
+= {C,True,False,False,True,False,False
+1,False,False,False,False,False,False
+",-",False,False,False,False,False,False
+C,True,False,False,True,False,False
+2,False,False,False,False,False,False
+",C",True,False,False,True,False,False
+3,False,False,False,False,False,False
+…C,True,False,False,True,False,False
+n,False,False,False,False,False,False
+} such that simultaneously optimize the N ob-,False,False,False,False,False,False
+"jective criteria, while satisfying the constraints, if any. The",False,False,False,False,False,False
+multi-objective optimization focuses on the maximization,False,False,False,False,False,False
+problem which states that a solution v,False,False,False,False,False,False
+i,False,False,False,False,False,False
+will always dom-,False,False,False,False,False,False
+inate a solution v,False,False,False,False,False,False
+j,False,False,False,False,False,False
+"if for all K2 1,2,3…..N, f",False,False,False,False,False,False
+k,False,False,False,False,False,False
+(v,False,False,False,False,False,False
+i,False,False,False,False,False,False
+k,False,False,False,False,False,False
+(v,False,False,False,False,False,False
+j,False,False,False,False,False,False
+),False,False,False,False,False,False
+where f,False,False,False,False,False,False
+k,False,False,False,False,False,False
+is an objective function. The maximization,False,False,False,False,False,False
+problem stands true for each objective function used for the,False,False,False,False,False,False
+proposed classiﬁer ensemble technique.,False,False,False,False,False,False
+Selection of objectives The choice of objective functions,False,False,False,False,False,False
+should be as much contradictory as possible in order to,False,False,False,False,False,False
+achieve high performance of weighted voting for ensemble,False,False,False,False,False,False
+classiﬁer. We have used precision and recall as two ob-,False,False,False,False,False,False
+jective functions. The recall tries to increase the number of,False,False,False,False,False,False
+healthy samples while precision tries to increase the,False,False,False,False,False,False
+number of correct healthy samples as much as possible.,False,False,False,False,False,False
+The f-measure is then calculated for the training set using,False,False,False,False,False,False
+the precision and recall for each classiﬁer. F-measure re-,False,False,False,False,False,False
+sults in a value (weight) that has the highest precision and,False,False,False,False,False,False
+recall combination. The weights are then normalized by,False,False,False,False,False,False
+applying min–max normalization using the following for-,False,False,False,False,False,False
+mula [29]:,False,False,False,False,False,False
+V,True,False,False,True,False,False
+¼,False,False,False,False,False,False
+V,True,False,False,True,False,False
+min,False,False,False,False,False,False
+max,False,False,False,False,False,False
+min,False,False,False,False,False,False
+ðnew max,False,False,False,False,False,False
+new min,False,False,False,False,False,False
+Þ+ new min,False,False,False,False,False,False
+ð10Þ,False,False,False,False,False,False
+where min,False,False,False,False,False,False
+A,True,False,False,True,False,False
+and max,False,False,False,False,False,False
+A,True,False,False,True,False,False
+are the min and max values for,False,False,False,False,False,False
+"attribute A in the training set, respectively.",False,False,False,False,False,False
+new_min,False,False,False,False,False,False
+A,True,False,False,True,False,False
+"is normalized minimum value for attribute A,",False,False,False,False,False,False
+speciﬁed as 0.1 and new_max,False,False,False,False,False,False
+A,True,False,False,True,False,False
+is normalized maximum,False,False,False,False,False,False
+"value for attribute A, speciﬁed as 1.0.",False,False,False,False,False,False
+Precision presents percentage of healthy samples labeled,False,False,False,False,False,False
+as healthy by the classiﬁer and it is deﬁned as:,False,False,False,False,False,False
+Precision =,False,False,False,False,False,False
+True Positives,False,False,False,False,False,False
+True Positives þFalse Positives,False,False,False,False,False,False
+ð11Þ,False,False,False,False,False,False
+Recall presents the relevant instances that are retrieved,False,False,False,False,False,False
+by the classiﬁer and is deﬁned as:,False,False,False,False,False,False
+No. Dataset Attributes Instances No. of attributes,False,False,False,False,False,False
+"1 SPECT F1…F22, (partial diagnosis 1…22, binary), goal 267 23 (22 binary ? 1 binary class)",False,False,False,False,False,False
+"2 SPECTF F1R…F22R (count in ROI 1…22 in rest),F1S….F22S (count in ROI",False,False,False,False,False,False
+"1…22 in stress), goal",False,False,False,False,False,False
+267 45 (44 continous ? 1 binary class),False,False,False,False,False,False
+3 Heart,False,False,False,False,False,False
+disease,False,False,False,False,False,False
+"Age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope,",False,False,False,False,False,False
+"ca, thal, goal",False,False,False,False,False,False
+"303 14 (6 real, 1 ordered, 3 binary, 3",False,False,False,False,False,False
+"nominal, 1 binary class)",False,False,False,False,False,False
+"4 Statlog Age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope,",False,False,False,False,False,False
+"ca, thal, goal",False,False,False,False,False,False
+"270 14 (6 real, 1 ordered, 3 binary, 3",False,False,False,False,False,False
+"nominal, 1 binary class)",False,False,False,False,False,False
+"5 Eric Age, chest_pain, rest_bpress, blood_sugar, rest_electro, max_heart_rate,",False,False,False,False,False,False
+"exercise_angina,goal",False,False,False,False,False,False
+"209 8 (7 real, 1 binary class)",False,False,False,False,False,False
+Predicted Class Known class,False,False,False,False,False,False
+AB,True,False,False,True,False,False
+A True positives False negatives,False,False,False,False,False,False
+B False positives True negatives,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+Recall =,False,False,False,False,False,False
+True Positives,False,False,False,False,False,False
+True Positives + False Negatives,False,False,False,False,False,False
+ð12Þ,False,False,False,False,False,False
+The F-measure is the weighted average of recall and,False,False,False,False,False,False
+"precision, represented by:",False,False,False,False,False,False
+F-Measure = 2 ,False,False,False,False,False,False
+Recall Precision,False,False,False,False,False,False
+Recall + Precision,False,False,False,False,False,False
+ð13Þ,False,False,False,False,False,False
+"Both objective functions (Precision, Recall) achieve",False,False,False,False,False,False
+two different classiﬁcation qualities and often there is,False,False,False,False,False,False
+inverse relationship between them where one is increased,False,False,False,False,False,False
+"at the cost of reducing the other. For example, an in-",False,False,False,False,False,False
+formation retrieval system such as a search engine in-,False,False,False,False,False,False
+creases the recall by retrieving more ﬁles whereas the,False,False,False,False,False,False
+precision is decreased by increasing number of irrelevant,False,False,False,False,False,False
+ﬁles that are retrieved. Thus the motivation of the pro-,False,False,False,False,False,False
+posed ensemble classiﬁer is to simultaneously optimize,False,False,False,False,False,False
+the two objectives.,False,False,False,False,False,False
+Working of the proposed ensemble,False,False,False,False,False,False
+Working of the proposed ensemble classiﬁer can be easily,False,False,False,False,False,False
+understood by the following example.,False,False,False,False,False,False
+1. Suppose that the classiﬁer training is performed for,False,False,True,True,False,False
+training data and f-measure is calculated. Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bayes,False,False,False,False,False,False
+"(NB), linear regression (LR), quadratic discriminant",False,False,False,False,False,False
+"analysis (QDA), instance based learner (IBL) and",False,False,False,False,False,False
+support vector machine (SVM) are used as individual,False,False,False,False,False,False
+classiﬁers. Following f-measure results are generated,False,False,False,False,False,False
+"for each classiﬁer: NB = 60 %, LR = 70 %,",False,False,False,False,False,False
+"QDA = 80 %, IBL = 85 %, SVM = 90 %",True,False,False,True,False,False
+"2. Now, votes are calculated using the formula given in",False,False,True,True,False,False
+"Eq. (10) having new_max = 1.0, new_min = 0.1,",False,False,False,False,False,False
+"max = 100, min = 0. The resultant weights are as",False,False,False,False,False,False
+"follows: NB = 0.6, LR = 0.7, QDA = 0.8,",False,False,False,False,False,False
+"IBL = 0.9, SVM = 0.9",True,False,False,True,False,False
+"3. Suppose, the classiﬁers have predicted the following",False,False,True,True,False,False
+"classes for a test instance: NB = Class 0, LR = Class",False,False,False,False,False,False
+"0, QDA = Class 1, IBL = Class 0, SVM = Class 1",False,False,False,False,False,False
+4. The weighted vote based ensemble classiﬁer will,False,False,True,True,False,False
+generate the following prediction results:,False,False,False,False,False,False
+"5. Hence, according to weighted vote based ensemble",False,False,True,True,False,False
+classiﬁer class 0 has higher value as compared to class,False,False,False,False,False,False
+"1. Therefore, the test instance will be classiﬁed as",False,False,True,True,False,False
+Class 0.,False,False,False,False,False,False
+Five different datasets have been used in the proposed re-,False,False,False,False,False,False
+"search. SPECT, SPECTF, Heart disease and Statlog",False,False,False,False,False,False
+datasets are downloaded from UCI machine learning,False,False,False,False,False,False
+repository,False,False,False,False,False,False
+1,False,False,False,False,False,False
+and Eric dataset is downloaded from ricco.,False,False,False,False,False,False
+2,False,False,False,False,False,False
+Each database contains a feature set and a column indi-,False,False,False,False,False,False
+cating the class label. The class label of each dataset is,False,False,False,False,False,False
+replaced with 0 and 1 in order to maintain consistency.,False,False,False,False,False,False
+Table 2 shows statistics of ﬁve heart disease datasets that,False,False,False,False,False,True
+are used for experimentation and analysis. It shows dataset,False,False,False,False,False,False
+"name, number of attributes, number of instances and at-",False,False,False,False,False,False
+"tributes name for each dataset (SPECT, SPECTF, Heart",False,False,False,False,False,False
+"disease, Eric and Statlog).",False,False,False,False,False,False
+The experiments are conducted on ﬁve different heart,False,False,False,False,False,False
+disease datasets having different set of attributes. The,False,False,False,False,False,False
+classiﬁer evaluation is performed using test sets of each,False,False,False,False,False,False
+dataset and then results are analysed. tenfold cross,False,False,False,False,False,False
+"validation is used to alleviate the insufﬁciency of samples,",False,False,False,False,False,False
+dividing each dataset into training set and test set. The,False,False,False,False,False,False
+learning of each classiﬁer is performed on training set and,False,False,False,False,False,False
+then they are analysed using the test set. Five classiﬁers,False,False,False,False,False,False
+"(NB, LR, QDA, IBL and SVM) are ﬁrst trained using the",False,False,False,False,False,False
+training sets and then they are tested on a separate unseen,False,False,False,False,False,False
+test set.,False,False,False,False,False,False
+The following evaluation measures are used to assess,False,False,False,False,False,False
+the performance of the proposed ensemble.,False,False,False,False,False,False
+Statistical signiﬁcance,False,False,False,False,False,False
+The performance of the proposed ensemble model as well,False,False,False,False,False,False
+as of individual classiﬁers is evaluated by calculating the,False,False,False,False,False,False
+"Confusion matrix, Sensitivity, Speciﬁcity, F-Measure and",False,False,False,False,False,False
+Accuracy of ﬁve datasets. The mathematical equations for,False,False,False,False,False,False
+"sensitivity, speciﬁcity and f-measure are given in (14), (15)",False,False,False,False,False,False
+and (16) respectively.,False,False,False,False,False,False
+Sensitivity =,False,False,False,False,False,False
+True Positives,False,False,False,False,False,False
+True Positives þFalse Negatives,False,False,False,False,False,False
+ð14Þ,False,False,False,False,False,False
+Specificity =,False,False,False,False,False,False
+True Negatives,False,False,False,False,False,False
+False Positives þTrue Negatives,False,False,False,False,False,False
+ð15Þ,False,False,False,False,False,False
+F-Measure =,False,False,False,False,False,False
+2 Sensitivity  Specificity,False,False,False,False,False,False
+Sensitivity þSpecificity,False,False,False,False,False,False
+ð16Þ,False,False,False,False,False,False
+The accuracy measure presents the proportion of in-,False,False,False,False,False,False
+"stances that are correctly classiﬁed. Mathematically,",False,False,False,False,False,False
+25 2013].,False,False,False,False,False,False
+25 2013].,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+A confusion matrix used for the comparison of the ac-,False,False,False,False,False,False
+tual classiﬁcation of data set with the number of correct and,False,False,False,False,False,False
+incorrect predictions made by the model. The number of,False,False,False,False,False,False
+rows and columns represent the number of classes. It can,False,False,False,False,False,False
+be used to calculate the accuracy of each classiﬁer [30].,False,False,False,False,False,False
+The traditional confusion matrix is deﬁned in Table 3.It,False,False,False,False,False,False
+shows information about actual and predicted classiﬁca-,False,False,False,False,False,False
+tions done by classiﬁcation framework.,False,False,False,False,False,False
+The ensemble model is applied on each test set which,False,False,False,False,False,False
+processes each instance individually. Each instance of test,False,False,False,False,False,False
+set is classiﬁed into healthy or sick class labels. The ten,False,False,False,False,False,False
+confusion matrices obtained from each fold of cross,False,False,False,False,False,False
+validation are then summed up into ﬁnal confusion matrix.,False,False,False,False,False,False
+The average prediction results for all subsets are calculated,False,False,False,False,False,False
+and then analysed to verify the superiority of proposed,False,False,False,False,False,False
+ensemble. We have used multiple heart disease datasets in,False,False,False,False,False,False
+order to show that proposed ensemble model has robust,False,False,False,False,False,False
+performance when applied on different kind of medical,False,False,False,False,False,False
+heart disease datasets. Different input features/attributes,False,False,False,False,False,False
+are selected from each dataset in order to generate training,False,False,False,False,False,False
+sets and test sets. Table 4 shows the comparison of accu-,False,False,False,False,False,False
+"racy, sensitivity, speciﬁcity and F-measure results of the",False,False,False,False,False,False
+proposed ensemble classiﬁer for all datasets with indi-,False,False,False,False,False,False
+vidual classiﬁer techniques such as Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ve Bayes (NB),",False,False,False,False,False,False
+"Support vector machine (SVM), Linear Regression (LR),",False,False,False,False,False,False
+Quadratic discriminant analysis (QDA) and k-nearest,False,False,False,False,False,False
+"neighbour (KNN). It is recognizable from Table 4 that, the",False,False,False,False,False,False
+proposed ensemble model produces signiﬁcant results,False,False,False,False,False,False
+when compared with individual classiﬁers. Highest accu-,False,False,False,False,False,False
+racy level is achieved for all the datasets when compared to,False,False,False,False,False,False
+other individual classiﬁers.,False,False,False,False,False,False
+"Table 5 shows comparison of accuracy, sensitivity,",False,False,False,False,False,True
+speciﬁcity and F-measure for proposed ensemble classiﬁer,False,False,False,False,False,False
+"with other ensemble classiﬁers such as Bagging [31],",False,False,False,False,False,False
+"AdaBoost [32], Stacking [33] as well as with neural net-",False,False,False,False,False,False
+work ensemble [5]. The comparison of results show that,False,False,False,False,False,False
+proposed ensemble model performed much better than,False,False,False,False,False,False
+"traditional classiﬁcation techniques. Again, highest",False,False,False,False,False,False
+Speciﬁcity and F-Measure,False,False,False,False,False,False
+comparison of Proposed,False,False,False,False,False,False
+Ensemble vs Individual,False,False,False,False,False,False
+Classiﬁers,False,False,False,False,False,False
+"Acc accuracy, Spec speciﬁcity,",False,False,False,False,False,False
+"Sen Sensitivity, F-M F-measure,",False,False,False,False,False,False
+NB Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ve Bayes, SVM support",False,False,False,False,False,False
+"vector machine, LR linear",False,False,False,False,False,False
+"regression, QDA quadratic",False,False,False,False,False,False
+"discriminant analysis, kNN k",False,False,False,False,False,False
+nearest neighbor,False,False,False,False,False,False
+Classiﬁers Acc Sen Spec F-M Acc Sen Spec F-M,False,False,False,False,False,False
+Cleveland dataset (%) Eric dataset (%),False,False,False,False,False,False
+NB 77.23 81.71 71.94 76.51 68.90 77.78 57.61 66.19,True,False,False,True,False,False
+SVM 80.86 93.90 65.47 77.15 78.47 89.74 64.13 74.81,True,False,False,True,False,False
+LR 83.50 88.41 77.70 82.71 77.99 88.89 64.13 74.51,True,False,False,True,False,False
+QDA 65.68 68.29 62.59 65.32 46.41 10.26 92.39 18.46,True,False,False,True,False,False
+kNN 64.36 68.90 58.99 63.56 65.55 68.38 61.96 65.01,False,False,False,False,False,False
+BagMOOV 84.16 93.29 73.38 82.15 80.86 86.32 73.91 79.64,False,False,False,False,False,False
+SPECT dataset (%) SPECTF dataset (%),False,False,False,False,False,False
+NB 80.52 76.36 81.60 78.90 78.28 23.64 92.45 37.65,True,False,False,True,False,False
+SVM 67.04 85.45 62.26 72.04 79.40 0.00 100 0.00,True,False,False,True,False,False
+LR 83.15 38.18 94.81 54.44 78.28 9.09 96.23 16.61,True,False,False,True,False,False
+QDA 83.52 36.36 95.75 52.71 20.60 100 0.00 0.00,True,False,False,True,False,False
+kNN 79.40 7.27 98.11 13.54 71.91 36.36 81.13 50.22,False,False,False,False,False,False
+BagMOOV 82.02 27.27 96.2 42.50 78.28 7.27 96.70 13.53,False,False,False,False,False,False
+Statlog dataset (%),False,False,False,False,False,False
+NB 78.52 82.00 74.17 77.89,True,False,False,True,False,False
+SVM 81.85 94.67 65.83 77.66,True,False,False,True,False,False
+LR 82.59 87.33 76.67 81.65,True,False,False,True,False,False
+QDA 68.15 64.00 73.33 68.35,True,False,False,True,False,False
+kNN 65.56 68.67 61.67 64.98,False,False,False,False,False,False
+BagMOOV 84.07 92.00 74.17 82.13,False,False,False,False,False,False
+Accuracy =,False,False,False,False,False,False
+True Positives þTrue Negatives,False,False,False,False,False,False
+True Positives þFalse Positives þTrue Negatives þFalse Negatives,False,False,False,False,False,False
+ð17Þ,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+accuracy level is achieved for all the datasets when com-,False,False,False,False,False,False
+pared to ensembles. SVM shows high sensitivity and low,False,False,False,False,False,False
+accuracy for almost all datasets except SPECT dataset,False,False,False,False,False,False
+where 0 % sensitivity and 79.4 % accuracy is achieved. It,False,False,False,False,False,False
+is possible for a classiﬁer to have low accuracy with high,False,False,False,False,False,False
+sensitivity because accuracy is derived from both sensi-,False,False,False,False,False,False
+tivity and speciﬁcity. If any of the sensitivity or speciﬁcity,False,False,False,False,False,False
+"is high, accuracy can be biased towards highest value; and",False,False,False,False,False,False
+"if both are high then accuracy will be high [34]. Moreover,",False,False,False,False,False,False
+"even both sensitivity and speciﬁcity are high, it does not",False,False,False,False,False,False
+necessarily mean that accuracy will be equally high as,False,False,False,False,False,False
+well. Accuracy also depends on the factor that how com-,False,False,False,False,False,False
+mon the disease is in selected population. A diagnosis for,False,False,False,False,False,False
+rare conditions in the population of interest may result in,False,False,False,False,False,False
+"high sensitivity and speciﬁcity, but low accuracy [35].",False,False,False,False,False,False
+The proposed technique shows a consistent accuracy,False,False,False,False,False,False
+level of around 82 % whereas other classiﬁers are not,False,False,False,False,False,False
+stable as observed in the results. The proposed model in-,False,False,False,False,False,False
+creased the classiﬁcation and prediction quality by im-,False,False,False,False,False,False
+"proving sensitivity and speciﬁcity, as a result of which",False,False,False,False,False,False
+f-measure and accuracy are enhanced to a reasonable,False,False,False,False,False,False
+margin as compared to conventional models. The proposed,False,False,False,False,False,False
+Speciﬁcity and F-Measure,False,False,False,False,False,False
+comparison of Proposed,False,False,False,False,False,False
+Ensemble vs Other Ensembles,False,False,False,False,False,False
+"Acc accuracy, Spec speciﬁcity,",False,False,False,False,False,False
+"Sen sensitivity, F-M F-measure,",False,False,False,False,False,False
+NNE neural network ensemble,False,False,False,False,False,False
+Ensembles Acc Sen Spec F-M Acc Sen Spec F-M,False,False,False,False,False,False
+Cleveland dataset (%) Eric dataset (%),False,False,False,False,False,False
+Bagging 74.59 81.10 66.91 73.32 73.21 76.92 68.48 72.46,False,False,False,False,False,False
+Adaboost 64.36 68.90 58.99 63.56 65.07 68.38 60.87 64.40,False,False,False,False,False,False
+Stacking 82.51 88.41 75.54 81.47 79.43 87.18 69.57 77.38,False,False,False,False,False,False
+NNE 80.86 82.93 78.42 80.61 77.03 79.49 73.91 76.60,True,False,False,True,False,False
+BagMOOV 84.16 93.29 73.38 82.15 80.86 86.32 73.91 79.64,False,False,False,False,False,False
+SPECT dataset (%) SPECTF dataset (%),False,False,False,False,False,False
+Bagging 79.40 0.00 100.00 0.00 71.16 90.91 66.04 76.50,False,False,False,False,False,False
+Adaboost 78.28 7.27 96.70 13.53 71.91 36.36 81.13 50.22,False,False,False,False,False,False
+Stacking 79.40 0.00 100.00 0.00 70.41 90.91 65.09 75.87,False,False,False,False,False,False
+NNE 79.03 47.27 87.26 61.32 77.53 47.27 85.38 60.85,True,False,False,True,False,False
+BagMOOV 82.02 27.27 96.23 42.50 78.28 7.27 96.70 13.53,False,False,False,False,False,False
+Statlog dataset (%),False,False,False,False,False,False
+Bagging 73.33 80.00 65.00 71.72,False,False,False,False,False,False
+Adaboost 65.93 69.33 61.67 65.28,False,False,False,False,False,False
+Stacking 82.59 90.00 73.33 80.82,False,False,False,False,False,False
+NNE 78.15 77.33 79.17 78.24,True,False,False,True,False,False
+BagMOOV 84.07 92.00 74.17 82.13,False,False,False,False,False,False
+of machine learning techniques,False,False,False,False,False,False
+for Cleveland heart disease,False,False,False,False,False,False
+dataset,False,False,False,False,False,False
+Reference Year Technique Accuracy (%),False,False,False,False,False,False
+Shouman et al. [40] 2013 Gain ratio decision tree 79.1,False,False,False,False,False,False
+Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bayes 83.5,False,False,False,False,False,False
+K nearest neighbor 83.2,False,False,False,False,False,False
+Chaurasia et al. [42] 2013 CART 83.4,False,False,False,False,False,False
+ID3 72.9,True,False,False,True,False,False
+Decision table 82.5,False,False,False,False,False,True
+Sunday et al. [43] 2012 WAC 84,False,False,False,False,False,False
+Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve bayes 78,False,False,False,False,False,False
+Soni. et al. [44] 2011 WAC 57.75,False,False,False,False,False,False
+CBA 58.28,True,False,False,True,False,False
+CMAR 53.64,True,False,False,True,False,False
+CPAR 52.32,True,False,False,True,False,False
+Chen et al. [13] 2011 Artiﬁcial neural network 80,False,False,False,False,False,False
+Proposed technique BagMOOV Model 84.16,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+ensemble model achieved best accuracy of 84.16 % with,False,False,False,False,False,False
+"93.29 % sensitivity, 96.70 % speciﬁcity, and 82.15 %",False,False,False,False,False,False
+f-measure.,False,False,False,False,False,False
+Table 6 shows accuracy comparison of proposed Bag-,False,False,False,False,False,True
+MOOV ensemble technique with state of art techniques.,False,False,False,False,False,False
+The analysis of table indicates that proposed ensemble,False,False,False,False,False,False
+model achieved higher accuracy of disease classiﬁcation,False,False,False,False,False,False
+for Cleveland heart disease dataset.,False,False,False,False,False,False
+Another method used to show the signiﬁcance of results,False,False,False,False,False,False
+is ANOVA (Analysis of Variance) statistics. It is a,False,False,False,False,False,False
+statistical test used to measure the difference between,False,False,False,False,False,False
+group means and their variations such as variations among,False,False,False,False,False,False
+and between groups [36]. The results of ANOVA statistics,False,False,False,False,False,False
+for each dataset are given in Table 7. The f-ratio and p,False,False,False,False,False,False
+value obtained from ANOVA statistics indicate that the,False,False,False,False,False,False
+results are extremely statistically signiﬁcant for most of the,False,False,False,False,False,False
+datasets at 95 % conﬁdence interval. It is clear from ana-,False,False,False,False,False,False
+lysis of ANOVA statistics that proposed framework results,False,False,False,False,False,False
+are statistically signiﬁcant when compared with other,False,False,False,False,False,False
+classiﬁers.,False,False,False,False,False,False
+Classiﬁers Variation SS df MS F F crit P value SS df MS F F crit P value,False,False,False,False,False,False
+Cleveland dataset Eric dataset,False,False,False,False,False,False
+NB BG 0.7277 1 0.7277 4.6918 3.8569 0.0307 1.4952 1 1.4952 8.0645 3.8639 0.0047,True,False,False,True,False,False
+WG 93.6832 604 0.1551 77.1292 416 0.1854,True,False,False,True,False,False
+SVM BG 0.5957 1 0.5957 3.8864 3.8569 0.0491 0.0598 1 0.0598 0.3678 3.8639 0.5446,True,False,False,True,False,False
+WG 92.5809 604 0.1533 67.6555 416 0.1626,True,False,False,True,False,False
+LR BG 0.0066 1 0.0066 0.0485 3.8569 0.8257 0.6914 1 0.6914 3.8973 3.8639 0.0490,True,False,False,True,False,False
+WG 82.1452 604 0.1360 73.7990 416 0.1774,True,False,False,True,False,False
+QDA BG 5.17492 1 5.1749 28.7549 3.8569 0.0001 12.4019 1 12.4019 61.1820 3.8639 0.0001,True,False,False,True,False,False
+WG 108.6997 604 0.1800 84.3254 416 0.2027,True,False,False,True,False,False
+kNN BG 5.9406 1 5.9406 32.6487 3.8569 0.0001 2.4498 1 2.4498 12.8123 3.8639 0.0004,False,False,False,False,False,False
+WG 109.9010 604 0.1820 79.5407 416 0.1912,True,False,False,True,False,False
+Classiﬁers Variation SPECT dataset SPECTF dataset,False,False,False,False,False,False
+NB BG 0.6760 1 0.6760 4.0158 3.8590 0.0456 1.0787 1 1.0787 5.6140 3.8590 0.0182,True,False,False,True,False,False
+WG 89.5581 532 0.1683 102.2172 532 0.1921,True,False,False,True,False,False
+SVM BG 2.9963 1 2.9963 16.2047 3.8590 0.0001 0.7491 1 0.7491 3.9607 3.8590 0.0471,True,False,False,True,False,False
+WG 98.3670 532 0.1849 100.6142 532 0.1891,True,False,False,True,False,False
+LR BG 1.0787 1 1.0787 6.2405 3.8590 0.0128 1.5749 1 1.5749 8.0522 3.8590 0.0047,True,False,False,True,False,False
+WG 91.9551 532 0.1729 104.0524 532 0.1956,True,False,False,True,False,False
+QDA BG 1.5749 1 1.5749 8.8977 3.8590 0.0030 44.4120 1 44.4120 265.2618 3.8590 0.0001,True,False,False,True,False,False
+WG 94.1648 532 0.1770 89.0712 532 0.1674,True,False,False,True,False,False
+kNN BG 1.7996 1 1.7996 10.0783 3.8590 0.0016 2.1648 1 2.1648 10.8956 3.8590 0.0010,False,False,False,False,False,False
+WG 94.9963 532 0.1786 105.7004 532 0.1987,True,False,False,True,False,False
+Classiﬁers Variation Statlog dataset,False,False,False,False,False,False
+NB BG 0.4167 1 0.4167 2.7440 3.8588 0.0982,True,False,False,True,False,False
+WG 81.6926 538 0.1519,True,False,False,True,False,False
+SVM BG 0.7407 1 0.7407 4.7189 3.8588 0.0303,True,False,False,True,False,False
+WG 84.4519 538 0.1570,True,False,False,True,False,False
+LR BG 0.0296 1 0.0296 0.2126 3.8588 0.6449,True,False,False,True,False,False
+WG 74.9704 538 0.1394,True,False,False,True,False,False
+QDA BG 3.4241 1 3.4241 19.4403 3.8588 0.0001,True,False,False,True,False,False
+WG 94.7593 538 0.1761,True,False,False,True,False,False
+kNN BG 4.6296 1 4.6296 25.6464 3.8588 0.0001,False,False,False,False,False,False
+WG 97.1185 538 0.1805,True,False,False,True,False,False
+NB Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ve Bayes, SVM support vector machine, LR linear regression, QDA quadratic discriminant analysis, kNN k nearest neighbor, BG between",False,False,False,False,False,False
+"groups, WG within group, SS sum of squares, df degree of freedom, MS mean square, F F-statistic, F-crit F-critical",False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+Discussion,False,False,False,False,False,False
+Heterogeneous classiﬁer ensemble model is used by com-,False,False,False,False,False,False
+bining entirely different type of classiﬁers to achieve a,False,False,False,False,False,False
+higher level of diversity. The diversity parameter can be,False,False,False,False,False,False
+determined by the extent to which each individual classiﬁer,False,False,False,False,False,False
+disagrees about the probability distributions for the test,False,False,False,False,False,False
+datasets. The Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bayes classiﬁer considers each at-,False,False,False,False,False,False
+tribute independently without taking into account the re-,False,False,False,False,False,False
+lation between them whereas the proposed ensemble model,False,False,False,False,False,False
+can handle dependency and relation between given at-,False,False,False,False,False,False
+tribute set by using Instance based learning algorithm,False,False,False,False,False,False
+where neighbors determine the class label for unknown,False,False,False,False,False,False
+instance. The Linear regression model determines the sta-,False,False,False,False,False,False
+tistical relationship between various independent and de-,False,False,False,False,False,False
+pendent variables and achieves optimal results. It limits the,False,False,False,False,False,False
+prediction of numeric output where Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bayes Classiﬁer,False,False,False,False,False,False
+overcomes this limitation. The quadratic discriminant,False,False,False,False,False,False
+analysis model can handle multiple dependent variables to,False,False,False,False,False,False
+"determine output class and reduce error rate. Moreover, it",False,False,False,False,False,False
+makes very easy to determine between-group differences.,False,False,False,False,False,False
+The individual IBL algorithm has some limitations such as,False,False,False,False,False,False
+it is computationally intensive and requires lot of storage,False,False,False,False,False,False
+space. The ensemble model has resolved the storage,False,False,False,False,False,False
+problem by selecting only necessary and useful features for,False,False,False,False,False,False
+heart disease analysis and prediction. The SVM algorithm,False,False,False,False,False,False
+performs the feature selection by using only subset of data,False,False,False,False,False,False
+"chosen based on information gain. Thus, all of the ﬁve",False,False,False,False,False,False
+selected classiﬁers complement each other very well. In,False,False,False,False,False,False
+"any scenario where one classiﬁer has some limitation, other",False,False,False,False,False,False
+"classiﬁer overcomes it and as a result, higher ensemble",False,False,False,False,False,False
+performance is achieved. The proposed ensemble shows,False,False,False,False,False,False
+stable performance which is a signiﬁcant assessment for,False,False,False,False,False,False
+accurately determining the heart disease patients. The in-,False,False,False,False,False,False
+dividual classiﬁers did not achieve such stability. More-,False,False,False,False,False,False
+"over, traditional ensemble classiﬁers did not achieve such",False,False,False,False,False,False
+performance results when applied on heart disease datasets.,False,False,False,False,False,False
+Linear classiﬁcation is a useful learning tool for pre-,False,False,False,False,False,False
+diction and analysis. We have used linear classiﬁcation,False,False,False,False,False,False
+models for base classiﬁers. The beneﬁt of using linear,False,False,False,False,False,False
+models is that training and testing speed is much faster as,False,False,False,False,False,False
+compared to non-linear models [37] and can be used,False,False,False,False,False,False
+prediction DSS for real-time,False,False,False,False,False,False
+clinical practice,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+"effectively for large scale applications. Moreover, they",False,False,False,False,False,False
+directly work on data in the original input space. The,False,False,False,False,False,False
+training of linear classiﬁer is also more efﬁcient [37].,False,False,False,False,False,False
+The fundamental advantage of proposed BagMOOV,False,False,False,False,False,False
+ensemble technique is improved accuracy and efﬁciency,False,False,False,False,False,False
+for heart disease classiﬁcation and prediction as compared,False,False,False,False,False,False
+to other state of art techniques. It can help healthcare,False,False,False,False,False,False
+professionals to make valuable decisions related to the,False,False,False,False,False,False
+diagnosis of heart disease. It can provide several beneﬁts to,False,False,False,False,False,False
+healthcare resources such as effective management of pa-,False,False,False,False,False,False
+"tient’s data, smarter treatment techniques, improved patient",False,False,False,False,False,False
+"care, recognize high-risk patients and health policy plan-",False,False,False,False,False,False
+"ning etc. Moreover, the performance of unstable learning",False,False,False,False,False,False
+algorithms can be improved using proposed technique. The,False,False,False,False,False,False
+proposed BagMOOV approach utilizes bagging approach,False,False,False,False,False,False
+with weighted voting scheme where bagging works as a,False,False,False,False,False,False
+bias and variance reduction method of base classiﬁers. The,False,False,False,False,False,False
+mean square error (MSE) of base classiﬁers is reduced due,False,False,False,False,False,False
+to its smoothing effect and it works as a smoothing op-,False,False,False,False,False,False
+eration which improves the predictive performance of,False,False,False,False,False,False
+classiﬁcation and regression methods. The proposed,False,False,False,False,False,False
+method is more resilient to noise than boosting and other,False,False,False,False,False,False
+ensemble techniques and can be trivially parallelizable and,False,False,False,False,False,False
+more amendable to build the large ensemble. All kinds of,False,False,False,False,False,False
+variables can be handled by the proposed ensemble model,False,False,False,False,False,False
+"such as interval-scaled, categorical, continuous, real and",False,False,False,False,False,False
+binary variables. The analysis of ANOVA statistics also,False,False,False,False,False,False
+proved that proposed model is effective for heart disease,False,False,False,False,False,False
+diagnosis and can be effectively utilized in real time en-,False,False,False,False,False,False
+vironment. The combination of multiple techniques using,False,False,False,False,False,False
+boostrap aggregation and weighted voting method makes,False,False,False,False,False,False
+the model complex and interpretation becomes difﬁcult.,False,False,False,False,False,False
+This section discusses how the proposed DSS can be used,False,False,False,False,False,False
+in real-time environment and with real-life biological test,False,False,False,False,False,False
+data. The workﬂow of the DSS is shown in Fig. 4 where,False,False,False,False,False,False
+the adaption of DSS is quite beneﬁcial for heart disease,False,False,False,False,False,False
+diagnosis. A patient showing symptoms for heart disease,False,False,False,False,False,False
+goes to doctor. The doctor performs clinical examination,False,False,False,False,False,False
+and suggests medical tests related to heart disease such as,False,False,False,False,False,False
+"cholesterol level, blood pressure, heart rate, defect size etc.",False,False,False,False,False,False
+The patient receives tests results and goes to the doctor,False,False,False,False,False,False
+again. The doctor diagnoses the diseases based on test re-,False,False,False,False,False,False
+"sults, knowledge and experience. Moreover, in order to",False,False,False,False,False,False
+"attain beneﬁts of proposed DSS, he also enters the data to",False,False,False,False,False,False
+DSS. The system makes a disease prediction for that par-,False,False,False,False,False,False
+ticular data. The doctor then compares the prediction made,False,False,False,False,False,False
+"by him and the proposed DSS. If these results are same,",False,False,False,False,False,False
+this adds weight to the diagnosis performed by the doctor,False,False,False,False,False,False
+"but if they are different, further investigations are per-",False,False,False,False,False,False
+formed by doctor.,False,False,False,False,False,False
+"It should be noted, that an intelligent DSS is not a re-",False,False,False,False,False,False
+placement for doctor or practitioner but it can help them to,False,False,False,False,False,False
+gather and interpret information and build a foundation for,False,False,False,False,False,False
+decision-making related to particular disease. There are,False,False,False,False,False,False
+multiple ways in which the proposed DSS can help both the,False,False,False,False,False,False
+doctors as well as individual patient. For example:,False,False,False,False,False,False
+for heart disease,False,False,False,False,False,False
+Patient_ID 2DEchoResult_Part1 BP-MA_mmHg-uppLim,False,False,False,False,False,False
+Age 2DEchoResult_Part2 BP-MA_mmHg-lowLim,False,False,False,False,False,False
+Gender 2DEchoResult_Disease1 AffectedArea1,False,False,False,False,False,False
+Protocol 2DEchoResult_Disease2 AffectedArea2,False,False,False,False,False,False
+BMI P_Complain1 AffectedArea3,False,False,False,False,False,False
+Known_Disease1 P_Complain2 LV_Myocardium,False,False,False,False,False,False
+Known_Disease2 P_Complain3 Defect_Size,False,False,False,False,False,False
+Known_Disease3 RestingECGResult1 Defected_AreaSize,False,False,False,False,False,False
+FstMI_Type HeartRate-BI_BPM Defect_Segment,False,False,False,False,False,False
+Angiography_Result1 HeartRate-MA_BPM Via/Non-via,False,False,False,False,False,False
+2DEchoResult BP-BI_mmHg-uppLim IsDefected,False,False,False,False,False,False
+2DEchoResult_Part BP-BI_mmHg-lowLim I_LVEF,False,False,False,False,False,False
+rules generated by proposed,False,False,False,False,False,False
+ensemble framework,False,False,False,False,False,False
+Rules Diagnosis,False,False,False,False,False,False
+If thal C 3.5 and cp C 3.5 and ca C 0.5 and exang C 0.16 Class = 1,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+– Diagnose by regularly interpreting and monitoring,False,False,False,False,False,False
+patient data The proposed DSS can implement rules,False,False,False,False,False,False
+and patterns for individual patients on the basis of,False,False,False,False,False,False
+clinical parameters and warning can be generated in,False,False,False,False,False,False
+case of rule violations.,False,False,False,False,False,False
+– Heart disease management using benchmarks and,False,False,False,False,False,False
+alerts A deviation from normal value such as high,False,False,False,False,False,False
+heart beat reading could result in an intervention before,False,False,False,False,False,False
+the condition worsens.,False,False,False,False,False,False
+Evaluation of the proposed framework in real-time,False,False,False,False,False,False
+environment,False,False,False,False,False,False
+"In order to evaluate the proposed system, collaboration was",False,False,False,False,False,False
+sought with Rawalpindi Institute of Cardiology to apply the,False,False,False,False,False,False
+proposed framework in real-time environment and on real-,False,False,False,False,False,False
+life data. Rawalpindi Institute of Cardiology,False,False,False,False,False,False
+3,False,False,False,False,False,False
+is one of the,False,False,False,False,False,False
+major tertiary cardiac care centers in Pakistan. This,False,False,False,False,False,False
+272-bedded hospital provides care for the cardiac patients,False,False,False,False,False,False
+from over the country. It equipped with Coronary Care,False,False,False,False,False,False
+"units, surgical ITC, Departments of Cardiac Electro-",False,False,False,False,False,False
+"physiology, Echocardiography, Exercise Tolerance Test",False,False,False,False,False,False
+and Nuclear Cardiology. They kindly agreed to allow the,False,False,False,False,False,False
+use of proposed DSS for research purposes only under the,False,False,False,False,False,False
+strict supervision of a team of medical experts and their,False,False,False,False,False,False
+information technology team.,False,False,False,False,False,False
+The ﬁrst step was to build a knowledge from which the,False,False,False,False,False,False
+classiﬁers maybe trained for prediction of heart disease. A,False,False,False,False,False,False
+team of ﬁve based on medical practitioners and doctors,False,False,False,False,False,False
+helped us to deﬁne the medical knowledge in order to,False,False,False,False,False,False
+classify the healthy and heart disease patients. A patient,False,False,False,False,False,False
+"will come to the doctor to be diagnosed, the medical",False,False,False,False,False,False
+knowledge was stated in natural language and was written,False,False,False,False,False,False
+as follows: A person is having heart disease if a person has,False,False,False,False,False,False
+high blood pressure (BP) of 180/100 and heart rate of 100,False,False,False,False,False,False
+"beats per minute (BPM), a strong prior history of cardio-",False,False,False,False,False,False
+"vascular ailment, echo results are abnormal and resting",False,False,False,False,False,False
+electrocardiographic results are positive then there are,False,False,False,False,False,False
+strong chances of heart disease. On the other hand if a,False,False,False,False,False,False
+person has normal blood pressure (BP) of 120/80 and,False,False,False,False,False,False
+"heart rate of 60 beats per minute (BPM), echo results are",False,False,False,False,False,False
+normal and no prior history of cardiovascular disease then,False,False,False,False,False,False
+there are less chances of heart disease.,False,False,False,False,False,False
+"In accordance with this knowledge, the features men-",False,False,False,False,False,False
+tioned with the parameters were put in a dataset along with,False,False,False,False,False,False
+the diagnosis done by the doctor. All patient names and,False,False,False,False,False,False
+other identifying tags were anonymyzed. This process was,False,False,False,False,False,False
+repeated for 138 patients. The input dataset attributes for,False,False,False,False,False,False
+proposed DSS are given in Table 8.,False,False,False,False,False,False
+These feature sets and values from the dataset were then,False,False,False,False,False,False
+used to write the ‘‘if–then’ rules as well as training the base,False,False,False,False,False,False
+classiﬁers to be used by the proposed system. A sample of,False,False,False,False,False,False
+these rules is given in Table 9. Training of the classiﬁers is,False,False,False,False,False,False
+a onetime process.,False,False,False,False,False,False
+"Now that the classiﬁers were trained, in the second step",False,False,False,False,False,False
+DSS was used for predication of heart disease. Just like,False,False,False,False,False,False
+"before, a patient will come to the doctor for diagnosis. The",False,False,False,False,False,False
+patient data was feed into the DSS and the prediction,False,False,False,False,False,False
+performed by the DSS was discussed by a panel of doctors,False,False,False,False,False,False
+in order to verify the accuracy of disease prediction.,False,False,False,False,False,False
+"Moreover at the end of each discussion, the recommen-",False,False,False,False,False,False
+dations provided by the proposed DSS were compared with,False,False,False,False,False,False
+panel’s decisions in order to determine whether the two,False,False,False,False,False,False
+recommendations matched. The proposed DSS was,False,False,False,False,False,False
+evaluated on 138 patients.,False,False,False,False,False,False
+Analysis of results,False,False,False,False,False,False
+The prediction done by the panel of doctors for each patient,False,False,False,False,False,False
+was matched with prediction done by proposed framework,False,False,False,False,False,False
+and accuracy was calculated. This process is shown for ﬁrst,False,False,False,False,False,False
+"ten patients in Table 10. For rest of the patients, the results",False,False,False,False,False,False
+are shown in Appendix (see Table 14).,False,False,False,False,False,False
+The confusion matrix for the 138 patients is shown in,False,False,False,False,False,False
+Table 11. It shows high level of agreement between the,False,False,False,False,False,True
+doctor’s diagnosis and proposed ensemble framework. In,False,False,False,False,False,False
+"case of discrepancies, we identiﬁed the reasons why pro-",False,False,False,False,False,False
+posed DSS provided different decisions. In general the,False,False,False,False,False,False
+Patient_ID By doctor Prediction by BagMOOV,False,False,False,False,False,False
+111,False,False,False,False,False,False
+211,False,False,False,False,False,False
+310,False,False,False,False,False,False
+411,False,False,False,False,False,False
+511,False,False,False,False,False,False
+600,False,False,False,False,False,False
+711,False,False,False,False,False,False
+800,False,False,False,False,False,False
+911,False,False,False,False,False,False
+10 1 1,False,False,False,False,False,False
+Classiﬁed by doctor,False,False,False,False,False,False
+Class 0,False,False,False,False,False,False
+(healthy),False,False,False,False,False,False
+Class 1,False,False,False,False,False,False
+(sick),False,False,False,False,False,False
+Predicted by,False,False,False,False,False,False
+BagMoov,False,False,False,False,False,False
+Class 0,False,False,False,False,False,False
+(Healthy),False,False,False,False,False,False
+36 8,False,False,False,False,False,False
+Class 1 (Sick) 13 81,False,False,False,False,False,False
+http://en.wikipedia.org/wiki/Rawalpindi_Institute_of_Cardiology,False,False,False,False,False,False
+"[Last accessed on 8th December, 2014].",False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+main reason behind was outlier values for some features,False,False,False,False,False,False
+"that results in deviation pattern. For the 138 patients, the",False,False,False,False,False,False
+proposed DSS produced an accuracy of 84.78 % with,False,False,False,False,False,False
+"73.47 % sensitivity, 91.01 % speciﬁcity and 81.30 %",False,False,False,False,False,False
+f-measure.,False,False,False,False,False,False
+"Table 12 shows the accuracy, sensitivity, speciﬁcity and",False,False,False,False,False,True
+f-measure of proposed framework for real-time prediction,False,False,False,False,False,False
+against other classiﬁers. Highest accuracy level is achieved,False,False,False,False,False,False
+by the proposed DSS for all the datasets when compared to,False,False,False,False,False,False
+other individual classiﬁers.,False,False,False,False,False,False
+"Table 13 shows the accuracy, sensitivity, speciﬁcity and",False,False,False,False,False,True
+f-measure of proposed framework for real-time prediction,False,False,False,False,False,False
+"against other ensemble models. Again, highest accuracy",False,False,False,False,False,False
+level is achieved for all the datasets when compared to,False,False,False,False,False,False
+ensembles.,False,False,False,False,False,False
+These results again reﬂect the effectiveness of the pro-,False,False,False,False,False,False
+"posed DSS. For each patient, the proposed ensemble",False,False,False,False,False,False
+framework can also store the state of care process such as,False,False,False,False,False,False
+"recommendation done by doctors, patients history related",False,False,False,False,False,False
+to heart disease and diagnosis of disease type.,False,False,False,False,False,False
+Ensemble methods were ﬁrst proposed about 10 years ago,False,False,False,False,False,False
+in the ﬁeld of data mining and machine learning. The use of,False,False,False,False,False,False
+ensemble technique is the ﬁeld of medical domain plays a,False,False,False,False,False,False
+vital role for disease prediction and classiﬁcation. Heart,False,False,False,False,False,False
+disease is one of the major causes of death and it should be,False,False,False,False,False,False
+diagnosed at early stages. This research paper presents a,False,False,False,False,False,False
+novel ensemble approach using bagging with multi-objec-,False,False,False,False,False,False
+tive optimized weighted voting applied on heart disease,False,False,False,False,False,False
+datasets in order to improve the classiﬁcation and disease,False,False,False,False,False,False
+prediction accuracy. It is based on ﬁve heterogeneous,False,False,False,False,False,False
+classiﬁers to achieve diversity among individual classiﬁers,False,False,False,False,False,False
+with respect to misclassiﬁed instances. The base classiﬁers,False,False,False,False,False,False
+used are Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+"ve Bayes, Linear Regression, Quadratic Dis-",False,False,False,False,False,False
+"criminant Analysis, Support Vector Machine and Instance",False,False,False,False,False,False
+based Learning. Data pre-processing is performed before,False,False,False,False,False,False
+model construction in order to remove anomalies in data.,False,False,False,False,False,False
+Five heart disease datasets are obtained from UCI data,False,False,False,False,False,False
+repository to perform experimentation and results,False,False,False,False,False,False
+Class 0 Class 1 Accuracy (%) Sensitivity (%) Speciﬁcity (%) F-measure (%),False,False,False,False,False,False
+NB Class 0 24 14 71.74 48.98 84.27 61.95,False,False,False,False,False,False
+Class 1 25 75,False,False,False,False,False,False
+SVM Class 0 37 14 81.16 75.51 84.27 79.65,False,False,False,False,False,False
+Class 1 12 75,False,False,False,False,False,False
+Linear Reg Class 0 34 15 78.26 69.39 83.15 75.65,False,False,False,False,False,False
+Class 1 15 74,False,False,False,False,False,False
+QDA Class 0 29 10 78.26 59.18 88.76 71.02,False,False,False,False,False,False
+Class 1 20 79,False,False,False,False,False,False
+kNN Class 0 34 13 79.71 69.39 85.39 76.56,False,False,False,False,False,False
+Class 1 15 76,False,False,False,False,False,False
+BagMOOV Class 0 36 8 84.78 73.47 91.01 81.30,False,False,False,False,False,False
+Class 1 13 81,False,False,False,False,False,False
+Class 0 Class 1 Accuracy (%) Sensitivity (%) Speciﬁcity (%) F-measure (%),False,False,False,False,False,False
+Bagging Class 0 36 14 80.43 73.47 84.27 78.50,False,False,False,False,False,False
+Class 1 13 75,False,False,False,False,False,False
+Adaboost Class 0 34 13 79.71 69.39 85.39 76.56,False,False,False,False,False,False
+Class 1 15 76,False,False,False,False,False,False
+Stacking Class 0 36 14 80.43 73.47 84.27 78.50,False,False,False,False,False,False
+Class 1 13 75,False,False,False,False,False,False
+NNE Class 0 38 14 81.88 77.55 84.27 80.77,False,False,False,False,False,False
+Class 1 11 75,False,False,False,False,False,False
+BagMOOV Class 0 36 8 84.78 73.47 91.01 81.30,False,False,False,False,False,False
+Class 1 13 81,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+evaluation. Different parameters are used to show the sig-,False,False,False,False,False,False
+"niﬁcance of results such as ANOVA statistics, p value,",False,False,False,False,False,False
+"confusion matrices, accuracy, sensitivity, speciﬁcity and",False,False,False,False,False,False
+f-measure. Each parameter results in high signiﬁcance of,False,False,False,False,False,False
+the proposed ensemble approach. The proposed ensemble,False,False,False,False,False,False
+classiﬁer is compared with single classiﬁers as well as with,False,False,False,False,False,False
+ensemble classiﬁers. Signiﬁcant results are achieved from,False,False,False,False,False,False
+"the classiﬁers comparison. Also, the comparison of results",False,False,False,False,False,False
+exhibit that proposed ensemble approach outperforms other,False,False,False,False,False,False
+approaches. It is also concluded that proposed bagging,False,False,False,False,False,False
+method (BagMOOV) increases disease prediction accuracy.,False,False,False,False,False,False
+Future research directions include enhancements of in-,False,False,False,False,False,False
+dividual classiﬁer to be used in a voting ensemble and ap-,False,False,False,False,False,False
+plication of the proposed algorithm on different diseases like,False,False,False,False,False,False
+diabetes and cancer for classiﬁcation and prediction. We also,False,False,False,False,False,False
+plan to apply BagMOOV for multi-disease classiﬁcation and,False,False,False,False,False,False
+compare the results with other ensemble techniques such as,False,False,False,False,False,False
+"bagging, boosting, Adaboost, stacking, etc.",False,False,False,False,False,False
+Cardiology for their support in using the proposed DSS for research,False,False,False,False,False,False
+purposes only under the strict supervision of a team of medical ex-,False,False,False,False,False,False
+perts and their information technology team.,False,False,False,False,False,False
+See Table 14.,False,False,False,False,False,True
+MOOV prediction,False,False,False,False,False,False
+Patient_ID Diagnosis by doctor Prediction by BagMOOV,False,False,False,False,False,False
+11 1,False,False,False,False,False,False
+21 1,False,False,False,False,False,False
+31 0,False,False,False,False,False,False
+41 1,False,False,False,False,False,False
+51 1,False,False,False,False,False,False
+60 0,False,False,False,False,False,False
+71 1,False,False,False,False,False,False
+80 0,False,False,False,False,False,False
+91 1,False,False,False,False,False,False
+10 1 1,False,False,False,False,False,False
+11 1 1,False,False,False,False,False,False
+12 1 1,False,False,False,False,False,False
+13 1 1,False,False,False,False,False,False
+14 1 1,False,False,False,False,False,False
+15 1 1,False,False,False,False,False,False
+16 1 0,False,False,False,False,False,False
+17 1 1,False,False,False,False,False,False
+18 1 1,False,False,False,False,False,False
+19 1 0,False,False,False,False,False,False
+20 1 1,False,False,False,False,False,False
+Patient_ID Diagnosis by doctor Prediction by BagMOOV,False,False,False,False,False,False
+21 0 1,False,False,False,False,False,False
+22 0 0,False,False,False,False,False,False
+23 0 1,False,False,False,False,False,False
+24 0 1,False,False,False,False,False,False
+25 1 1,False,False,False,False,False,False
+26 1 1,False,False,False,False,False,False
+27 0 1,False,False,False,False,False,False
+28 1 1,False,False,False,False,False,False
+29 1 1,False,False,False,False,False,False
+30 1 1,False,False,False,False,False,False
+31 1 1,False,False,False,False,False,False
+32 1 1,False,False,False,False,False,False
+33 1 1,False,False,False,False,False,False
+34 1 1,False,False,False,False,False,False
+35 0 0,False,False,False,False,False,False
+36 1 1,False,False,False,False,False,False
+37 0 0,False,False,False,False,False,False
+38 1 1,False,False,False,False,False,False
+39 0 0,False,False,False,False,False,False
+40 1 1,False,False,False,False,False,False
+41 1 1,False,False,False,False,False,False
+42 0 0,False,False,False,False,False,False
+43 1 1,False,False,False,False,False,False
+44 0 0,False,False,False,False,False,False
+45 0 1,False,False,False,False,False,False
+46 1 1,False,False,False,False,False,False
+47 1 1,False,False,False,False,False,False
+48 1 1,False,False,False,False,False,False
+49 1 0,False,False,False,False,False,False
+50 1 1,False,False,False,False,False,False
+51 1 1,False,False,False,False,False,False
+52 1 1,False,False,False,False,False,False
+53 1 1,False,False,False,False,False,False
+54 1 1,False,False,False,False,False,False
+55 0 0,False,False,False,False,False,False
+56 0 0,False,False,False,False,False,False
+57 1 1,False,False,False,False,False,False
+58 1 1,False,False,False,False,False,False
+59 0 0,False,False,False,False,False,False
+60 1 1,False,False,False,False,False,False
+61 1 1,False,False,False,False,False,False
+62 0 0,False,False,False,False,False,False
+63 0 0,False,False,False,False,False,False
+64 0 0,False,False,False,False,False,False
+65 0 0,False,False,False,False,False,False
+66 0 0,False,False,False,False,False,False
+67 0 0,False,False,False,False,False,False
+68 0 1,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+"1. Rajkumar A, Reena GS (2010) Diagnosis of heart disease",False,False,True,True,False,False
+using data mining algorithm. Glob J Comput Sci Technol,False,False,False,False,False,False
+10(10):38,False,False,False,False,False,False
+"2. Porter T, Green B (2009) Identifying diabetic patients: a data",False,False,True,True,False,False
+mining approach. In: Americas conference on information,False,False,False,False,False,False
+systems,False,False,False,False,False,False
+3. Panzarasa S et al. (2010) Data mining techniques for analyzing,False,False,True,True,False,False
+stroke care processes. In: Proceedings of the 13th world congress,False,False,False,False,False,False
+on medical informatics,False,False,False,False,False,False
+"4. Li L, Tang H, Wu Z, Gong J, Gruidl M, Zou J Tockman M, Clark",False,False,True,True,False,False
+RA (2004) Data mining techniques for cancer detection using,False,False,False,False,False,False
+"serum proteomic proﬁling. In: Artiﬁcial intelligence in medicine,",False,False,False,False,False,False
+Elsevier,False,False,False,False,False,False
+"5. Das R, Turkoglu I, Sengur A (2009) Effective diagnosis of heart",False,False,True,True,False,False
+disease through neural networks ensembles. In: Expert Systems,False,False,False,False,False,False
+"with Applications, Elsevier, pp. 7675–7680",False,False,False,False,False,False
+"6. Srinivas K, Rani BK, Govrdhan A (2010) Applications of data",False,False,True,True,False,False
+mining techniques in healthcare and prediction of heart attacks.,False,False,False,False,False,False
+Int J Comput Sci Eng (IJCSE) 2:250–255,False,False,False,False,False,False
+"7. Shouman M, Turner T, Stocker R (2012) Using data mining",False,False,True,True,False,False
+techniques in heart disease diagnosis and treatment. 978-1-4673-,False,False,False,False,False,False
+"0484-9/12, IEEE",True,False,False,True,False,False
+"8. Zhang L, Zhou WD (2011) Sparse ensembles using weighted",False,False,True,True,False,False
+combination methods based on linear programming. Pattern,False,False,False,False,False,False
+Recognit 44:97–106,False,False,False,False,False,False
+"9. Pattekari SA, Parveen A (2012) Prediction system for heart dis-",False,False,True,True,False,False
+ease using Naı,False,False,False,False,False,False
+¨,False,False,False,False,False,False
+ve Bayes. Int J Adv Computer Math Sci,False,False,False,False,False,False
+3(3):290–294,False,False,False,False,False,False
+Patient_ID Diagnosis by doctor Prediction by BagMOOV,False,False,False,False,False,False
+69 1 1,False,False,False,False,False,False
+70 1 1,False,False,False,False,False,False
+71 0 1,False,False,False,False,False,False
+72 1 1,False,False,False,False,False,False
+73 1 1,False,False,False,False,False,False
+74 0 1,False,False,False,False,False,False
+75 1 1,False,False,False,False,False,False
+76 1 1,False,False,False,False,False,False
+77 0 0,False,False,False,False,False,False
+78 1 1,False,False,False,False,False,False
+79 1 1,False,False,False,False,False,False
+80 0 1,False,False,False,False,False,False
+81 1 1,False,False,False,False,False,False
+82 0 0,False,False,False,False,False,False
+83 1 1,False,False,False,False,False,False
+84 1 1,False,False,False,False,False,False
+85 0 0,False,False,False,False,False,False
+86 1 0,False,False,False,False,False,False
+87 0 0,False,False,False,False,False,False
+88 0 1,False,False,False,False,False,False
+89 0 0,False,False,False,False,False,False
+90 1 1,False,False,False,False,False,False
+91 0 0,False,False,False,False,False,False
+92 0 0,False,False,False,False,False,False
+93 1 1,False,False,False,False,False,False
+94 0 0,False,False,False,False,False,False
+95 1 1,False,False,False,False,False,False
+96 1 0,False,False,False,False,False,False
+97 1 1,False,False,False,False,False,False
+98 0 0,False,False,False,False,False,False
+99 1 1,False,False,False,False,False,False
+100 1 1,False,False,False,False,False,False
+101 1 1,False,False,False,False,False,False
+102 1 1,False,False,False,False,False,False
+103 0 1,False,False,False,False,False,False
+104 1 0,False,False,False,False,False,False
+105 0 0,False,False,False,False,False,False
+106 1 1,False,False,False,False,False,False
+107 0 1,False,False,False,False,False,False
+108 1 1,False,False,False,False,False,False
+109 1 1,False,False,False,False,False,False
+110 0 0,False,False,False,False,False,False
+111 1 1,False,False,False,False,False,False
+112 1 1,False,False,False,False,False,False
+113 1 1,False,False,False,False,False,False
+114 0 0,False,False,False,False,False,False
+115 1 1,False,False,False,False,False,False
+116 1 1,False,False,False,False,False,False
+Patient_ID Diagnosis by doctor Prediction by BagMOOV,False,False,False,False,False,False
+117 1 1,False,False,False,False,False,False
+118 1 1,False,False,False,False,False,False
+119 0 1,False,False,False,False,False,False
+120 0 0,False,False,False,False,False,False
+121 1 1,False,False,False,False,False,False
+122 1 0,False,False,False,False,False,False
+123 1 1,False,False,False,False,False,False
+124 1 1,False,False,False,False,False,False
+125 0 0,False,False,False,False,False,False
+126 1 1,False,False,False,False,False,False
+127 0 0,False,False,False,False,False,False
+128 0 0,False,False,False,False,False,False
+129 0 0,False,False,False,False,False,False
+130 1 1,False,False,False,False,False,False
+131 1 1,False,False,False,False,False,False
+132 1 1,False,False,False,False,False,False
+133 0 0,False,False,False,False,False,False
+134 1 1,False,False,False,False,False,False
+135 1 1,False,False,False,False,False,False
+136 0 0,False,False,False,False,False,False
+137 1 1,False,False,False,False,False,False
+138 1 1,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False
+"10. Peter TJ, Somasundaram K (2012) An empirical study on pre-",False,False,True,True,False,False
+diction of heart disease using classiﬁcation data mining tech-,False,False,False,False,False,False
+niques. In: IEEE-International conference on advances in,False,False,False,False,False,False
+"engineering, science and management (ICAESM-2012)",False,False,False,False,False,False
+"11. Ghumbre S, Patil C, Ghatol A (2011) Heart disease diagnosis",False,False,True,True,False,False
+using support vector machine. In: International conference on,False,False,False,False,False,False
+computer science and information technology (ICCSIT’) Pattaya,False,False,False,False,False,False
+"12. Chitra R, Seenivasagam DV (2013) Heart disease prediction",False,False,True,True,False,False
+system using supervised learning classiﬁer. Int J Softw Eng Soft,False,False,False,False,False,False
+Comput 3(1):01–07,False,False,False,False,False,False
+"13. Chen AH, Huang SY, Hong PS, Cheng CH, Lin EJ (2011) HDPS:",False,False,True,True,False,False
+heart disease prediction system. In: Computing in cardiology,False,False,False,False,False,False
+"14. Jabbar MA, Chandra P, Deekshatulu BL (2012) Heart disease",False,False,True,True,False,False
+prediction system using associative classiﬁcation and genetic,False,False,False,False,False,False
+algorithm. In: International conference on emerging trends in,False,False,False,False,False,False
+"electrical, electronics and communication technologies-ICECIT",False,False,False,False,False,False
+"15. Valente G, Castellanos AL, Vanacor EG, Formisan OE (2014)",False,False,True,True,False,False
+Multivariate linear regression of high-dimensional fMRI data,False,False,False,False,False,False
+with multiple target variables. Hum brain mapp 35(2):2163–2177,False,False,False,False,False,False
+"16. Rizk-Jackson A, Stoffers D, Sheldon S, Kuperman J, Dale A,",False,False,True,True,False,False
+"Goldstein J, Corey-Bloom J, Poldrack RA, Aron AR (2011)",False,False,False,False,False,False
+Evaluating imaging biomarkers for neurodegeneration in pre-,False,False,False,False,False,False
+symptomatic Huntington’s disease using machine learning tech-,False,False,False,False,False,False
+niques. NeuroImage 56(2):788–796,False,False,False,False,False,False
+"17. Maroco J, Silva D, Rodrigues A, Guerreiro M, Santana I, Men-",False,False,True,True,False,False
+donc¸a AD (2011) Data mining methods in the prediction of De-,False,False,False,False,False,False
+"mentia: A real-data comparison of the accuracy, sensitivity and",False,False,False,False,False,False
+"speciﬁcity of linear discriminant analysis, logistic regression,",False,False,False,False,False,False
+"neural networks, support vector machines, classiﬁcation trees and",False,False,False,False,False,False
+random forests. BMC Res Notes 4(1):299,False,False,False,False,False,False
+"18. Helmy T, Rahman SM, Hossain MI, Abdelraheem A (2013) Non-",False,False,True,True,False,False
+linear heterogeneous ensemble model for permeability prediction,False,False,False,False,False,False
+of oil reservoirs. Arab J Sci Eng 38:1379–1395,False,False,False,False,False,False
+"19. Saha S, Ekbal A (2013) Combining multiple classiﬁers using vote",False,False,True,True,False,False
+based classiﬁer ensemble technique for named entity recognition.,False,False,False,False,False,False
+Data Knowl Eng 85:15–39,False,False,False,False,False,False
+"20. Mokeddem S, Atmani B, Mokaddem M (2013) Supervised fea-",False,False,True,True,False,False
+ture selection for diagnosis of coronary artery disease based on,False,False,False,False,False,False
+genetic algorithm. In: First international conference on compu-,False,False,False,False,False,False
+tational science and engineering (CSE-2013),False,False,False,False,False,False
+"21. Kohavi R, John GH (1997) Wrappers for feature subset selection.",False,False,True,True,False,False
+Artif Intell 97(1):273–324,False,False,False,False,False,False
+22. Patil RR (2014) Heart disease prediction system using Naive,False,False,True,True,False,False
+Bayes and Jelinek-mercer smoothing. Int J Adv Res Comput,False,False,False,False,False,False
+Commun Eng,False,False,False,False,False,False
+"23. Palaniappan S, Awang R (2008) Intelligent heart disease pre-",False,False,True,True,False,False
+diction system using data mining techniques. In: International,False,False,False,False,False,False
+"conference on computer system and applications. AICCSA,",False,False,False,False,False,False
+pp 108–115,False,False,False,False,False,False
+24. Mehra A (2003) Statistical sampling and regression: simple linear,False,False,True,True,False,False
+regression. PreMBA analytical methods. Columbia Business,False,False,False,False,False,False
+School and Columbia University,False,False,False,False,False,False
+"25. Weiss SM, Kulikowski CA (1991) Computer systems that learn:",False,False,True,True,False,False
+"classiﬁcation and prediction methods from statistics, neural nets,",False,False,False,False,False,False
+"machine learning, and expert systems. Morgan Kaufman, San",False,False,False,False,False,False
+Mateo,False,False,False,False,False,False
+26. STAT55-Data mining (2014) The Pennsylvania State University,False,False,True,True,False,False
+"27. Uguroglu S, Carbonell J, Doyle M, Biederman R (2012) Cost-",False,False,True,True,False,False
+sensitive risk stratiﬁcation in the diagnosis of heart disease. In:,False,False,False,False,False,False
+Proceedings of the twenty-fourth innovative applications of ar-,False,False,False,False,False,False
+tiﬁcial intelligence conference,False,False,False,False,False,False
+"28. Breiman L (1994) Bagging Predictors, Technical Report 421,",False,False,True,True,False,False
+"Department of Statistics, University of California, Berkeley",False,False,False,False,False,False
+"29. Jain M, Dua P, Lukiw WJ (2013) Data adaptive rule-based",False,False,True,True,False,False
+classiﬁcation system for Alzheimer classiﬁcation. J Comput Sci,False,False,False,False,False,False
+Syst Biol 6:291–297,False,False,False,False,False,False
+"30. Peter TJ, Somasundaram K (2012) An empirical study on pre-",False,False,True,True,False,False
+diction of heart disease using classiﬁcation data mining tech-,False,False,False,False,False,False
+"niques, In: IEEE-international conference on advances in",False,False,False,False,False,False
+"engineering, science and management",False,False,False,False,False,False
+"31. Tu MC, Shin D, Shin D (2009) Effective diagnosis of heart",False,False,True,True,False,False
+disease through Bagging approach. In: 2nd international confer-,False,False,False,False,False,False
+ence on biomedical engineering and informatics,False,False,False,False,False,False
+"32. Pai P, Li L, Hung W (2014) Using ADABOOST and rough set",False,False,True,True,False,False
+theory for Debris ﬂow disaster. Water Resour Manag,False,False,False,False,False,False
+28(4):1143–1155,False,False,False,False,False,False
+"33. Hastie T, Tibshirani R, Friedman J (2009) The elements of sta-",False,False,True,True,False,False
+"tistical learning. Data mining, inference and prediction, 2nd edn.",False,False,False,False,False,False
+Springer series in statistics,False,False,False,False,False,False
+"34. BLA (2009) Sensitivity, speciﬁcity, accuracy and the relationship",False,False,True,True,False,False
+between them. Bioinformatics,False,False,False,False,False,False
+"35. Palaniappan S, Awang R (2008) Intelligent heart disease pre-",False,False,True,True,False,False
+diction system using data mining techniques. IJCSNS Int J,False,False,False,False,False,False
+"Comput Sci Netw Secur, 8(8)",False,False,False,False,False,False
+"36. Gelman A (2008) Variance, analysis of. The new Palgrave dic-",False,False,True,True,False,False
+"tionary of economics, 2nd edn. Palgrave Macmillan, Basingstoke,",False,False,False,False,False,False
+Hampshire New York,False,False,False,False,False,False
+"37. Yuan G, Ho C, Lin C (2012) Recent advances of large-scale",False,False,True,True,False,False
+linear classiﬁcation. Proc IEEE 100(9):2584–2603,False,False,False,False,False,False
+"38. Shouman M, Turner T, Stocker R (2011) Using decision tree for",False,False,True,True,False,False
+diagnosing heart disease patients. In: Proceedings of the 9th,False,False,False,False,False,False
+"Australasian data mining conference, Ballarat, Australia",False,False,False,False,False,False
+"39. Tu MC, Shin D et al (2009) Effective diagnosis of heart disease",False,False,True,True,False,False
+through bagging approach. In: 2nd international conference on,False,False,False,False,False,False
+"biomedical engineering and informatics. IEEE, pp 1–4",False,False,False,False,False,False
+"40. Shouman M, Turner T, Stocker R (2013) Integrating clustering",False,False,True,True,False,False
+with different data mining techniques in the diagnosis of,False,False,False,False,False,False
+heart disease. J Comput Sci Eng 20(1),False,False,False,False,False,False
+"41. Shouman M, Turner T, Stocker R (2012) Integrating Naive Bayes",False,False,True,True,False,False
+and K-means clustering with different initial centroid selection,False,False,False,False,False,False
+methods in the diagnosis of heart disease patients. Glob J Comput,False,False,False,False,False,False
+Sci Technol 125–137,False,False,False,False,False,False
+"42. Chaurasia V, Pal S (2013) Early prediction of heart diseases using",False,False,True,True,False,False
+data mining techniques. Caribb J Sci Technol 1:208–217,False,False,False,False,False,False
+"43. Sunday NA, Latha PP (2013) Performance analysis of classiﬁ-",False,False,True,True,False,False
+cation data mining techniques over heart disease database. Int J,False,False,False,False,False,False
+Eng Sci Adv Technol 2(3):470–478,False,False,False,False,False,False
+"44. Soni J, Ansari U, Sharma D (2011) Intelligent and effective heart",False,False,True,True,False,False
+disease prediction system using weighted associative classiﬁers.,False,False,False,False,False,False
+Int J Computer Sci Eng (IJCSE) 3(6):2385–2392,False,False,False,False,False,False
+Australas Phys Eng Sci Med,False,False,False,False,False,False
+123,False,False,False,False,False,False

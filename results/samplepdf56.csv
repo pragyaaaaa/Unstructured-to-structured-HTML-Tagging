@@ -1,0 +1,1111 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+Ensemble of Classiﬁers based on Multiobjective,False,False,False,False,False,False
+Genetic Sampling for Imbalanced Data,False,False,False,False,False,False
+"Everlandio R. Q. Fernandes, Andre C. P. L. F. de Carvalho, and Xin Yao",False,False,False,False,False,False
+Abstract—Imbalanced datasets may negatively impact the predictive performance of most classical classiﬁcation algorithms. This,False,False,False,True,False,False
+"problem, commonly found in real-world, is known in machine learning domain as imbalanced learning. Most techniques proposed to",False,False,False,False,False,False
+"deal with imbalanced learning have been proposed and applied only to binary classiﬁcation. When applied to multiclass tasks, their",False,False,False,False,False,False
+efﬁciency usually decreases and negative side effects may appear. This paper addresses these limitations by presenting a novel,False,False,False,False,False,False
+"adaptive approach, E-MOSAIC (Ensemble of Classiﬁers based on MultiObjective Genetic Sampling for Imbalanced Classiﬁcation).",False,False,False,False,False,False
+"E-MOSAIC evolves a selection of samples extracted from training dataset, which are treated as individuals of a MOEA. The",False,False,False,False,False,False
+multiobjective process looks for the best combinations of instances capable of producing classiﬁers with high predictive accuracy in all,False,False,False,False,False,False
+"classes. E-MOSAIC also incorporates two mechanisms to promote the diversity of these classiﬁers, which are combined into an",False,False,False,False,False,False
+ensemble speciﬁcally designed for imbalanced learning. Experiments using twenty imbalanced multi-class datasets were carried out.,False,False,False,False,False,False
+"In these experiments, the predictive performance of E-MOSAIC is compared with state-of-the-art methods, including methods based",False,False,False,False,False,False
+"on presampling, active-learning, cost-sensitive, and boosting. According to the experimental results, the proposed method obtained the",False,False,False,False,False,False
+best predictive performance for the multiclass accuracy measures mAUC and G-mean.,False,False,False,False,False,False
+"Index Terms—Imbalanced datasets, ensemble of classiﬁers, evolutionary algorithm",False,False,False,False,False,False
+F,True,False,False,True,False,False
+1 INTRODUCTION,True,False,False,True,False,False
+A,True,False,False,True,False,False
+Large number of real classiﬁcation datasets present,False,False,False,False,False,False
+"imbalanced class distribution, i.e., there are many more",False,False,False,False,False,False
+examples of some classes (majority classes) than others,False,False,False,False,False,False
+(minority classes). This imbalanced distribution occurs nat-,False,False,False,False,False,False
+urally in data from applications such as network intrusion,False,False,False,False,False,False
+"detection, ﬁnancial engineering, and medical diagnostics [1].",False,False,False,False,False,False
+"In such cases, imbalanced datasets can make many classi-",False,False,False,False,False,False
+"cal classiﬁcation algorithms less effective, especially when",False,False,False,False,False,False
+predicting minority class examples. This is because most of,False,False,False,False,False,False
+the classical classiﬁcation algorithms are designed to induce,False,False,False,False,False,False
+models that are able to generalize from the training data,False,False,False,False,False,False
+then return the simplest classiﬁcation model that best ﬁts,False,False,False,False,False,False
+"the data. However, the simplest model pays less attention to",False,False,False,False,False,False
+"rare cases, sometimes treating as noise [2] and the resulting",False,False,False,False,False,False
+classiﬁer might lose its classiﬁcation ability in this scenario.,False,False,False,False,False,False
+"The imbalanced learning problem is treated, in machine",False,False,False,False,False,False
+"learning, in two distinct ways: at the data and the algorithm",False,False,False,False,False,False
+"level [3]. However, most existing imbalanced learning tech-",False,False,False,False,False,False
+niques are only designed for and tested in two-class sce-,False,False,False,False,False,False
+"narios, i.e., binary datasets. Unfortunately, when a dataset",False,False,False,False,False,False
+"with multiple classes are present, the literature solutions",False,False,False,False,False,False
+"proposed for the binary case may not be directly applicable,",False,False,False,False,False,False
+or may achieve a lower performance than expected [4],False,False,False,False,False,False
+"[5]. In addition, a multiclass problem can have a different",False,False,False,False,False,False
+"purpose. For example, in the binary case the researchers",False,False,False,False,False,False
+"focus on the correct classiﬁcation of the minority class, as",False,False,False,False,False,False
+the classiﬁer is usually biased toward the majority class and,False,False,False,False,False,False
+• E. Fernandes and A. de Carvalho are with the Instituto de Ciˆencias,False,False,False,False,False,False
+"Matem´aticas e de Computa¸c˜ao (ICMC) at University of S˜ao Paulo (USP),",False,False,False,False,False,False
+Brazil.,False,False,False,False,False,False
+• X. Yao is with Southern University of Science and Technology Department,False,False,False,False,False,False
+"of Compute Science and Engineering Shenzhen 518055, China.",False,False,False,False,False,False
+"Manuscript received May 19, 2017; revised August 30, 2018.",False,False,False,False,False,False
+the minority class is usually the most important. Datasets,False,False,False,False,False,False
+"with several classes can have more than one main class, i.e.,",False,False,False,False,False,False
+multiple classes that need to have a high degree of accuracy,False,False,False,False,False,False
+regarding the classiﬁer.,False,False,False,False,False,False
+A commonly strategy used to generate binary classiﬁ-,False,False,False,False,False,False
+cation models when the training dataset is imbalanced is,False,False,False,False,False,False
+to select a balanced sample of the dataset. This means that,False,False,False,False,False,False
+"the classes have the same number of examples. Thus, the",False,False,False,False,False,False
+model induced by this sample would not harm the minority,False,False,False,False,False,False
+class. Although this strategy be easily extended to multiclass,False,False,False,False,False,False
+"classiﬁcation problems, it may not be effective in some cases,",False,False,False,False,False,False
+as the generated classiﬁcation model despises instances that,False,False,False,False,False,False
+"are not part of the sample. Furthermore, the sample may not",False,False,False,False,False,False
+be truly representative. Such cases may lead to erroneous,False,False,False,False,False,False
+"inferences or distort results, especially when the sample is",False,False,False,False,False,False
+randomly selected.,False,False,False,False,False,False
+This approach raises important questions regarding clas-,False,False,False,False,False,False
+"siﬁcation in imbalanced datasets, like: which imbalance",False,False,False,False,False,False
+ratio of datasets really affects the predictive performance of,False,False,False,False,False,False
+"classic learning algorithms? And, are all learning paradigms",False,False,False,False,False,False
+equally affected by class imbalance?,False,False,False,False,False,False
+In [6] the authors present an extensive study with 22 bi-,False,False,False,False,False,False
+nary datasets and seven learning algorithms from different,False,False,False,False,False,False
+"paradigms. Given a database, part of the study is to generate",False,False,False,False,False,False
+several training set distributions with increasing degrees of,False,False,False,False,False,False
+"class imbalance (50/50, 40/60, 30/70, 20/80, 10/90, 5/95",False,False,False,False,False,False
+and 1/99). The 50/50 distribution represents a balanced,False,False,False,False,False,False
+"distribution, 40/60 means that 40% of the instances in the",False,False,False,False,False,False
+dataset belongs to the minority class and 60% to the majority,False,False,False,False,False,False
+"class, and so on. Next, the authors induce a classiﬁer for each",False,False,False,False,False,False
+class distribution and compare its performance loss with,False,False,False,False,False,False
+the performance loss for the balanced distribution (50/50).,False,False,False,False,False,False
+"According to the authors, most of the learning algorithms",False,False,False,False,False,False
+investigated had some degree of performance loss for every,False,False,False,False,False,False
+non-balanced distribution. The losses start to be signiﬁcant,False,False,False,False,False,False
+(5% or more) when the minority class represents at most,False,False,False,False,False,False
+10% of the dataset. The study also shows that different,False,False,False,False,False,False
+learning paradigms are affected in different degrees by the,False,False,False,False,False,False
+class imbalance.,False,False,False,False,False,False
+"In opposition to the previous study, recently published",False,False,False,False,False,False
+studies have reported the successful use of ensembles of,False,False,False,False,False,False
+"classiﬁers for classiﬁcation with imbalanced datasets, where",False,False,False,False,False,False
+each classiﬁer is induced by a different sample from the,False,False,False,False,False,False
+original dataset [7]. Ensembles are designed to increase the,False,False,False,False,False,False
+accuracy of a single classiﬁer by separately inducing a set of,False,False,False,False,False,False
+hypotheses and combining their decisions using a consensus,False,False,False,False,False,False
+operator [8]. The generalization ability of an ensemble is,False,False,False,False,False,False
+usually higher than a single classiﬁer. In [9] the authors,False,False,False,False,False,False
+present a formal demonstration of this. Although ensembles,False,False,False,False,False,False
+"of classiﬁers tend to perform better than their members,",False,False,False,False,False,False
+"their construction is not an easy task. According to [10], an",False,False,False,False,False,False
+ensemble with high accuracy implies two conditions: each,False,False,False,False,False,False
+base classiﬁer has an accuracy higher than 50%; and they,False,False,False,False,False,False
+should be different from each other. Two classiﬁers are con-,False,False,False,False,False,False
+sidered different from each other if their misclassiﬁcations,False,False,False,False,False,False
+"are made at different instances in the same test set i.e., they",False,False,False,False,False,False
+should disagree as much as possible in their outcomes [11].,False,False,False,False,False,False
+"Therefore, diversity and accuracy are the two main crite-",False,False,False,False,False,False
+ria to be taken into account when generating an effective,False,False,False,False,False,False
+ensemble of classiﬁers. The literature has several examples,False,False,False,False,False,False
+were the use of diversity measures to select the base classi-,False,False,False,False,False,False
+ﬁers positively affects the ensemble predictive performance,False,False,False,False,False,False
+[12] [13]. Examples of diversity measures include Negative,False,False,False,False,False,False
+Correlation Learning (NCL) [14] and Pairwise Failure Cred-,False,False,False,False,False,False
+iting (PFC) [15].,False,False,False,False,False,False
+Regarding the predictive accuracy of the base classi-,False,False,False,False,False,False
+"ﬁers, a good accuracy in the minority classes is usually",False,False,False,False,False,False
+"as important, or in some scenarios more important, than",False,False,False,False,False,False
+"majority class accuracy. However, these learning objectives",False,False,False,False,False,False
+are usually in conﬂict; increasing the accuracy of some,False,False,False,False,False,False
+classes can result in lower accuracy in others. Multiobjective,False,False,False,False,False,False
+Evolutionary Algorithms (MOEA) can deal with this trade-,False,False,False,False,False,False
+"off, as they have been successfully worked with conﬂicting",False,False,False,False,False,False
+objectives in the learning process (e.g. predictive accuracy in,False,False,False,False,False,False
+each class). MOEA simultaneously evolve a set (or front) of,False,False,False,False,False,False
+"non-dominated solutions over two or more objectives, with-",False,False,False,False,False,False
+out requiring the imposition of preferences on the objectives,False,False,False,False,False,False
+[16].,False,False,False,False,False,False
+"In this context, this paper proposes a new ensemble-",False,False,False,False,False,False
+"based method, named E-MOSAIC (Ensemble of Classiﬁers",False,False,False,False,False,False
+based on Multiobjective Genetic Sampling for Imbalanced,False,False,False,False,False,False
+"Classiﬁcation), to deal with imbalanced multiclass classiﬁ-",False,False,False,False,False,False
+"cation tasks. For such, E-MOSAIC induced a set of classi-",False,False,False,False,False,False
+ﬁers from imbalanced datasets evolving balanced samples,False,False,False,False,False,False
+"extracted from imbalanced datasets, guided by the class",False,False,False,False,False,False
+accuracy of the classiﬁers induced from these samples. It,False,False,False,False,False,False
+should be noted that this strategy allows the evolution of,False,False,False,False,False,False
+"the samples, which may result in imbalanced samples, but",False,False,False,False,False,False
+which induce classiﬁers with high predictive accuracy for,False,False,False,False,False,False
+each class of the original dataset. In order to promote the,False,False,False,False,False,False
+"diversity between the classiﬁers, the PFC diversity measure",False,False,False,False,False,False
+is used together with a process that eliminates similar so-,False,False,False,False,False,False
+lutions after crossover process. PFC is used as a secondary,False,False,False,False,False,False
+ﬁtness that resolves tie issues in the selection process of the,False,False,False,False,False,False
+multiobjective genetic algorithm.,False,False,False,False,False,False
+Important aspects in the E-MOSAIC and that differ it,False,False,False,False,False,False
+from the others genetic sampling methods for imbalanced,False,False,False,False,False,False
+classiﬁcation is that the proposed approach does not have,False,False,False,False,False,False
+any mechanism to limiter the growing of amount of in-,False,False,False,False,False,False
+stances in each class. Balanced samples are randomly se-,False,False,False,False,False,False
+lected to form the initial population. This aim to eliminate,False,False,False,False,False,False
+the initial risk of some minority class of the dataset to,False,False,False,False,False,False
+receive less attention or to be treated as noise by leaner,False,False,False,False,False,False
+classiﬁer. The combination of solutions in a ensemble of,False,False,False,False,False,False
+classiﬁers aims to reduce the loss of information inherent,False,False,False,False,False,False
+in the process of undersampling used to build the initial,False,False,False,False,False,False
+population. Experimental results for 20 multiclass imbal-,False,False,False,False,False,False
+anced datasets from the UCI machine learning repository,False,False,False,False,False,False
+[17] show the advantages of the proposed approach over,False,False,False,False,False,False
+existing methods.,False,False,False,False,False,False
+The remainder of this paper is structured as follows:,False,False,False,False,False,False
+Section 2 provides a review of related work. Section 3,False,False,False,False,False,False
+explains the main ingredients of the E-MOSAIC approach.,False,False,False,False,False,False
+Section 4 shows the experimental analysis and Section 5,False,False,False,False,False,False
+concludes the paper.,False,False,False,False,False,False
+2 RELATED WORKS,True,False,False,True,False,False
+"In general, the classiﬁcation of imbalanced datasets can be",False,False,False,False,False,False
+categorized into two primary levels: (i) the data level and,False,False,False,False,False,False
+"(ii) the algorithm level. In the ﬁrst, the objective is primarily",False,False,False,False,False,False
+"to balance the class distribution [2], [5], [18] whereas, in the",False,False,False,False,False,False
+"second, algorithms are adapted to increase the importance",False,False,False,False,False,False
+of instances from the minority class for model optimization,False,False,False,False,False,False
+"[19], [20]. There are also other approaches that focus on",False,False,False,False,False,False
+feature selection or work at the ensemble level.,False,False,False,False,False,False
+Several works can be found in the literature regarding,False,False,False,False,False,False
+resampling techniques that study the effect of changing,False,False,False,False,False,False
+"the class distribution in imbalanced datasets [18], [21]. All",False,False,False,False,False,False
+"works show, empirically, that applying a pre-processing",False,False,False,False,False,False
+step to rebalance class distribution is frequently very useful.,False,False,False,False,False,False
+Techniques are usually classiﬁed as oversampling and under-,False,False,False,False,False,False
+"sampling strategies, or a mixture of both. In oversampling,",False,False,False,False,False,False
+the number of instances of the minority class is grown until,False,False,False,False,False,False
+"it reaches the size of the majority class and, in undersam-",False,False,False,False,False,False
+"pling, the opposite takes place.",False,False,False,False,False,False
+"Random oversampling (ROS), a non-heuristic method",False,False,False,False,False,False
+that add instances through random replication of a minor-,False,False,False,False,False,False
+"ity class, is one of the simplest approaches. Interpolation",False,False,False,False,False,False
+techniques such as the Synthetic Minority Oversampling,False,False,False,False,False,False
+Technique (SMOTE) [18] are commonly used to generate,False,False,False,False,False,False
+synthetic data. SMOTE ﬁnds the k nearest neighbors of each,False,False,False,False,False,False
+"instance from the minority class, then synthetically gener-",False,False,False,False,False,False
+ates new instances in the line that connects that instance to,False,False,False,False,False,False
+its k nearest neighbors.,False,False,False,False,False,False
+"Depending on how instances are created, oversampling",False,False,False,False,False,False
+techniques generally increase the probability of overlapping,False,False,False,False,False,False
+between classes. Some techniques have been proposed to,False,False,False,False,False,False
+"minimize this drawback, such as the Modiﬁed Synthetic Mi-",False,False,False,False,False,False
+nority Oversampling Technique (MSMOTE) [22] and Adap-,False,False,False,False,False,False
+tive Synthetic Sampling (ADASYN) [23]. Another aspect to,False,False,False,False,False,False
+address is that the replication of instances tends to increase,False,False,False,False,False,False
+the computational cost of the learning process [21] and can,False,False,False,False,False,False
+generate data that would not be found in the investigated,False,False,False,False,False,False
+problem.,False,False,False,False,False,False
+"Conversely, random undersampling (RUS) is a simple",False,False,False,False,False,False
+strategy employed to shrink the majority class. Although,False,False,False,False,False,False
+"of simple use, it may despise useful data. In order to",False,False,False,False,False,False
+"overcome this problem, directed undersampling aims to",False,False,False,False,False,False
+detect and eliminate less representative instances from the,False,False,False,False,False,False
+majority class. This is the strategy used by the One-sided,False,False,False,False,False,False
+Selection (OSS) technique [24] which attempts to remove,False,False,False,False,False,False
+"redundant, noisy and/or, close to the boundary instances",False,False,False,False,False,False
+from the majority class. Border instances are detected by,False,False,False,False,False,False
+applying Tomek links and instances distant from the de-,False,False,False,False,False,False
+cision boundary (redundant instances) are discovered by,False,False,False,False,False,False
+Condensed Nearest Neighbor (CNN) [25]. The elimination,False,False,False,False,False,False
+of instances from the majority class close to the separation,False,False,False,False,False,False
+boundary is also handled by the Majority Under-sampling,False,False,False,False,False,False
+"Technique (MUTE) [26], which deﬁnes security levels for",False,False,False,False,False,False
+each instance from the majority class and uses these to,False,False,False,False,False,False
+propose undersampling.,False,False,False,False,False,False
+Solutions proposed at the algorithm level are based on,False,False,False,False,False,False
+adapting existing classiﬁcation algorithms to improve the,False,False,False,False,False,False
+overall accuracy of the classiﬁer and number of positive,False,False,False,False,False,False
+classiﬁcations (detection of instances from the minority,False,False,False,False,False,False
+classes) at the same time. There are two major categories,False,False,False,False,False,False
+"in this method, the recognition-based and cost-sensitive",False,False,False,False,False,False
+approaches.,False,False,False,False,False,False
+The One-class SVM method [27] is a recognition-based,False,False,False,False,False,False
+example that considers only one class of examples during,False,False,False,False,False,False
+the learning process in order to recognize (or rebuild) the,False,False,False,False,False,False
+class of interest. The support vector model in One-class,False,False,False,False,False,False
+"SVM is trained on data that has only one class, which is",False,False,False,False,False,False
+the normal class. It infers the properties of normal cases,False,False,False,False,False,False
+and from these can predict which examples are unlike the,False,False,False,False,False,False
+normal examples. This is useful for imbalanced datasets,False,False,False,False,False,False
+because the scarcity of training examples is what excludes,False,False,False,False,False,False
+the rare cases.,False,False,False,False,False,False
+A dynamic sampling method (DyS) for multilayer per-,False,False,False,False,False,False
+"ceptions (MLP) was proposed in [28]. In DyS, for each epoch",False,False,False,False,False,False
+"of the training process, every example is fed to the current",False,False,False,False,False,False
+"MLP, then the probability of it being selected for training",False,False,False,False,False,False
+the MLP is estimated. The selection mechanism can allay,False,False,False,False,False,False
+the effects of class imbalance and pay more attention to,False,False,False,False,False,False
+examples that are difﬁcult to classify.,False,False,False,False,False,False
+"As pointed out by [21], solutions at the algorithm level",False,False,False,False,False,False
+are usually speciﬁc to the particular algorithm and/or prob-,False,False,False,False,False,False
+"lem. Therefore, they are only effective in certain contexts",False,False,False,False,False,False
+and usually require expertise in classiﬁcation algorithms,False,False,False,False,False,False
+and their ﬁeld of application.,False,False,False,False,False,False
+In contrast to the common approaches of machine learning,False,False,False,False,False,False
+"that try to build a hypothesis about the training data, the",False,False,False,False,False,False
+ensemble of classiﬁers technique constructs a set of hypothe-,False,False,False,False,False,False
+ses and combines them through some method/operator,False,False,False,False,False,False
+consensus [8]. The ability to generalize in an ensemble is,False,False,False,False,False,False
+generally greater than the isolated classiﬁers that compose,False,False,False,False,False,False
+"it, usually called base-classiﬁers. In [9] a formal demonstra-",False,False,False,False,False,False
+tion of this is presented. Methods based on committees are,False,False,False,False,False,False
+"attractive because they are able to boost weak classiﬁers,",False,False,False,False,False,False
+and this is better than guessing which classiﬁers can make,False,False,False,False,False,False
+more accurate predictions [8].,False,False,False,False,False,False
+"In recent years, several ensemble learning methods have",False,False,False,False,False,False
+been proposed as possible solutions to the task of classi-,False,False,False,False,False,False
+ﬁcation with imbalanced datasets [29] [30] [31] [32]. The,False,False,False,False,False,False
+proposed solutions are based on a combination of: ensem-,False,False,False,False,False,False
+"ble learning techniques, some resampling methods, cost-",False,False,False,False,False,False
+sensitive methods or adaption of some existing classiﬁcation,False,False,False,False,False,False
+"algorithms. However, most of them have been developed",False,False,False,False,False,False
+only to address the problem of binary classiﬁcation.,False,False,False,False,False,False
+Most methods use some variation of Bagging [33] and,False,False,False,False,False,False
+"Boosting [34]. In Bagging, a set of base classiﬁers are trained",False,False,False,False,False,False
+with different samples from the training dataset. Sampling,False,False,False,False,False,False
+is carried out with replacement and each sample has the,False,False,False,False,False,False
+same size as in the original dataset. After base classiﬁers are,False,False,False,False,False,False
+"created, a combination of classiﬁers responses by majority",False,False,False,False,False,False
+voting is performed and new input instances are assigned,False,False,False,False,False,False
+to the most voted-for class. The AdaBoost method [34] is,False,False,False,False,False,False
+the most typical algorithm in the Boosting family. It uses,False,False,False,False,False,False
+the whole training dataset to create classiﬁers after several,False,False,False,False,False,False
+"iterations. At each iteration, instances incorrectly classiﬁed",False,False,False,False,False,False
+at the previous iteration are emphasized and used to create,False,False,False,False,False,False
+"new classiﬁers. After obtaining the base classiﬁers, when a",False,False,False,False,False,False
+"new instance is presented, each base classiﬁer yields its vote",False,False,False,False,False,False
+(weighted by its overall accuracy) and the label for the new,False,False,False,False,False,False
+instance is determined by majority voting.,False,False,False,False,False,False
+Although ensembles of classiﬁers usually present predic-,False,False,False,False,False,False
+"tive performance better than their individual counterparts,",False,False,False,False,False,False
+"their constructing is not an easy task. Commonly, an ensem-",False,False,False,False,False,False
+ble of classiﬁers with high accuracy is advocated to have,False,False,False,False,False,False
+two main characteristics: each base classiﬁer has to have,False,False,False,False,False,False
+accuracy higher than 50% and the base classiﬁers should,False,False,False,False,False,False
+present high diversity among themselves [10]. Two classi-,False,False,False,False,False,False
+ﬁers are considered diverse when they disagree as much,False,False,False,False,False,False
+"as possible or, in other words, when generating different",False,False,False,False,False,False
+misclassiﬁcations for different instances of the same test set,False,False,False,False,False,False
+[11].,False,False,False,False,False,False
+Several methods that take into account diversity and,False,False,False,False,False,False
+accuracy of base classiﬁers have been proposed. Multi-,False,False,False,False,False,False
+"objective Genetic Sampling (MOGASamp) [35], which is",False,False,False,False,False,False
+"designed to handle only binary dataset, constructs an en-",False,False,False,False,False,False
+semble of classiﬁers induced from balanced samples in,False,False,False,False,False,False
+"the training dataset. For this, a customized multiobjective",False,False,False,False,False,False
+"genetic algorithm is applied, combining instances from bal-",False,False,False,False,False,False
+anced samples and guided by the performance of classiﬁers,False,False,False,False,False,False
+induced by those samples. This strategy aims to obtain a,False,False,False,False,False,False
+set of balanced samples from the imbalanced dataset and,False,False,False,False,False,False
+induce classiﬁers with high accuracy and diversity.,False,False,False,False,False,False
+"In [29], the authors developed a Multiobjective Genetic",False,False,False,False,False,False
+Programming (MOGP) approach that uses accuracies of the,False,False,False,False,False,False
+minority and majority classes as competing objectives in the,False,False,False,False,False,False
+learning process. The MOGP approach is adapted to evolve,False,False,False,False,False,False
+"diverse solutions into an ensemble, aiming at improving the",False,False,False,False,False,False
+general classiﬁcation performance.,False,False,False,False,False,False
+"In [36], the authors investigate two types of multiclass",False,False,False,False,False,False
+"imbalance problems, i.e., multi-minority and multi-majority.",False,False,False,False,False,False
+"First, they investigate the performance of two basic resam-",False,False,False,False,False,False
+pling techniques when applied to these problems. They con-,False,False,False,False,False,False
+clude that in both cases the predictive performance of the,False,False,False,False,False,False
+methods decreases when the number of imbalanced classes,False,False,False,False,False,False
+"increases. Motivated by these results, the authors investigate",False,False,False,False,False,False
+the two more popular ensemble approaches (Adaboost and,False,False,False,False,False,False
+Bagging) combining them with class decomposition (the,False,False,False,False,False,False
+one-against-all strategy) and using resampling techniques.,False,False,False,False,False,False
+"According to their experimental results, the use of class",False,False,False,False,False,False
+decomposition did not provide any advantages in multiclass,False,False,False,False,False,False
+imbalance learning.,False,False,False,False,False,False
+3 THE PROPOSED METHOD,True,False,False,True,False,False
+The main objective of the proposed method is to build an,False,False,False,False,False,False
+ensemble of classiﬁers with high accuracy and diversity,False,False,False,False,False,False
+"for imbalanced multiclass classiﬁcation, named E-MOSAIC.",False,False,False,False,False,False
+These base classiﬁers are induced by optimized samples,False,False,False,False,False,False
+"from imbalanced datasets, without the need of empirical",False,False,False,False,False,False
+studies that are normally required to ﬁnd an optimal class,False,False,False,False,False,False
+distribution. E-MOSAIC uses a multiobjective genetic algo-,False,False,False,False,False,False
+rithm based on NSGA-II [37] to evolve a combination of,False,False,False,False,False,False
+"balanced samples, each sample used to induce a base clas-",False,False,False,False,False,False
+"siﬁer, and evaluate the classiﬁers induced by these samples",False,False,False,False,False,False
+regarding the predictive accuracy for each class. Tie issues,False,False,False,False,False,False
+in the selection process are resolved by the PFC diversity,False,False,False,False,False,False
+"measure. The use of this metric, together with a mechanism",False,False,False,False,False,False
+"to eliminate similar solutions after the crossover process,",False,False,False,False,False,False
+aim to promote the creation of diverse solutions in the,False,False,False,False,False,False
+evolutionary process.,False,False,False,False,False,False
+"Figure 1 outlines the proposed method, which is detailed",False,False,False,False,True,False
+in the next sections.,False,False,False,False,False,False
+"First, n balanced samples are obtained from the training",False,False,False,False,False,False
+dataset. This means that each sample has the same number,False,False,False,False,False,False
+of instances of each class. The sample size is chosen based on,False,False,False,False,False,False
+the number of instances of the class that has fewer instances,False,False,False,False,False,False
+"in training dataset, i.e., the most minority class. However,",False,False,False,False,False,False
+only 90% of the instances of the most minority class are,False,False,False,False,False,False
+used to compose the samples. Despite the small number,False,False,False,False,False,False
+"of instances of the minority class in some datasets, this",False,False,False,False,False,False
+percentage was chosen to not compromise the diversity of,False,False,False,False,False,False
+the samples regarding the minority class.,False,False,False,False,False,False
+Consider a dataset with 3 classes and 50 instances at the,False,False,False,False,False,False
+most minority class as an example. The sample size will be,False,False,False,False,False,False
+"0.9 ∗ 50 ∗ 3, i.e., 45 instances of each class. Thus, 2 samples",False,False,False,False,False,False
+may be different with respect to the most minority class by,False,False,False,False,False,False
+"up to 5 instances i.e., 11.11% of the sample. On the other",False,False,False,False,False,False
+"hand, considering the majority classes, this difference can",False,False,False,False,False,False
+reach 100% depending on the number of instances of the,False,False,False,False,False,False
+majority classes.,False,False,False,False,False,False
+Each sample represents an individual in the population,False,False,False,False,False,False
+of the Genetic Algorithm (GA). These samples are encoded,False,False,False,False,False,False
+by a binary vector where each cell represents one instance of,False,False,False,False,False,False
+the training dataset. The bits ”1” and ”0” indicate selected,False,False,False,False,False,False
+"and ignored instances, respectively. After the sampling pro-",False,False,False,False,False,False
+"cess, an MLP model is generated for each individual. This",False,False,False,False,False,False
+induction uses only the instances ﬂagged as ”1” (selected),False,False,False,False,False,False
+in the sample.,False,False,False,False,False,False
+"In order to evaluate each individual, the predictive model",False,False,False,False,False,False
+obtained by training a MLP network is validated using the,False,False,False,False,False,False
+entire training dataset. The predictive accuracy of this model,False,False,False,False,False,False
+for each class is estimated using the PPV metric (positive,False,False,False,False,False,False
+predictive value). The PPV of a classiﬁer c with respect to a,False,False,False,False,False,False
+class i is calculated according to Equation 1.,False,False,False,False,False,False
+P P V,True,False,False,True,False,False
+"c,i",False,False,False,False,False,False
+=,False,False,False,False,False,False
+#true positives,False,False,False,False,False,False
+i,False,False,False,False,False,False
+#true positives,False,False,False,False,False,False
+i,False,False,False,False,False,False
++ #f alse positives,False,False,False,False,False,False
+i,False,False,False,False,False,False
+(1),False,False,False,False,False,False
+where #true,False,False,False,False,False,False
+positives,False,False,False,False,False,False
+i,False,False,False,False,False,False
+is the number of times the,False,False,False,False,False,False
+"model correctly classiﬁes instances from class i, and",False,False,False,False,False,False
+#false positives indicates the number of times the model,False,False,False,False,False,False
+classiﬁes instances that are not from class i as belonging,False,False,False,False,False,False
+"to this class. In this evaluation approach, these metrics",False,False,False,False,False,False
+are used as competing objectives in the learning process.,False,False,False,False,False,False
+"Therefore, each individual is associated with the PPVs of its",False,False,False,False,False,False
+classiﬁcation model.,False,False,False,False,False,False
+"The initial samples will be balanced, so the classiﬁers",False,False,False,False,False,False
+induced using these samples will not be affected by class,False,False,False,False,False,False
+imbalance. Since part of the examples from the majority,False,False,False,False,False,False
+"classes will not be in these samples, only a part of the",False,False,False,False,False,False
+original dataset will be used and the predictive accuracy,False,False,False,False,False,False
+"(PPV) for the minority classes will be overestimated, e.g.,",False,False,False,False,False,False
+will be close to their accuracy if there were no imbalance.,False,False,False,False,False,False
+A main aspect in the multiobjective genetic algorithm is,False,False,False,False,False,False
+"the concept of Pareto Dominance [38]. In Pareto Dominance,",False,False,False,False,False,False
+a solution x,False,False,False,False,False,False
+1,False,False,False,False,False,False
+is said to dominate the other solution x,False,False,False,False,False,False
+2,False,False,False,False,False,False
+", if the",False,False,False,False,False,False
+solution x,False,False,False,False,False,False
+1,False,False,False,False,False,False
+is no worse than x,False,False,False,False,False,False
+2,False,False,False,False,False,False
+"in all objectives, and x",False,False,False,False,False,False
+1,False,False,False,False,False,False
+is strictly better than x,False,False,False,False,False,False
+2,False,False,False,False,False,False
+in at least one objective [39]. This,False,False,False,False,False,False
+allows individuals to be ranked according to their perfor-,False,False,False,False,False,False
+mance on all the objectives with regard to all individuals,False,False,False,False,False,False
+"in the population. Based on this, the accuracies associated",False,False,False,False,False,False
+with each individual are used to compose a nondominance,False,False,False,False,False,False
+rank of the solutions. Nondominance rank [40] is a common,False,False,False,False,False,False
+Pareto-based dominance metric that calculates the number,False,False,False,False,False,False
+of other solutions in the population that dominate a given,False,False,False,False,False,False
+"solution. So, a non-dominated solution will have a best ﬁt-",False,False,False,False,False,False
+"ness of 0, while high ﬁtness values indicate poor-performing",False,False,False,False,False,False
+"solutions, i.e., solutions dominated by many individuals.",False,False,False,False,False,False
+"However, without an explicit objective of diversity in",False,False,False,False,False,False
+the evolutionary process to encourage optimized samples,False,False,False,False,False,False
+to produce classiﬁers that make different errors in different,False,False,False,False,False,False
+"inputs, there is no guarantee of the diversity of the classiﬁers",False,False,False,False,False,False
+"produced by the optimized samples. Therefore, E-MOSAIC",False,False,False,False,False,False
+incorporates a diversity of classiﬁers measure as secondary,False,False,False,False,False,False
+objective in the evolutionary process. The PFC diversity,False,False,False,False,False,False
+measure is used in this approach because of its good results,False,False,False,False,False,False
+with imbalanced classiﬁcation presented in [29] and fernan-,False,False,False,False,False,False
+des2015 and because it shows more compliance with the,False,False,False,False,False,False
+performed search than does the crowding distance metric,False,False,False,False,False,False
+used by NSGA-II. This is because the crowding distance is,False,False,False,False,False,False
+calculated taking into account the values of the objectives,False,False,False,False,False,False
+used in the evolutionary algorithm (i.e. predictive accuracy,False,False,False,False,False,False
+"in each class), giving preference to solutions that are more",False,False,False,False,False,False
+"distant from the others in the objective space. However,",False,False,False,False,False,False
+the PFC indicates the diversity of the classiﬁcation model,False,False,False,False,False,False
+associated with an individual in relation to the other models,False,False,False,False,False,False
+of the population and we are looking for more diverse,False,False,False,False,False,False
+"classiﬁcation models, aiming at constructing an effective",False,False,False,False,False,False
+ensemble of classiﬁers.,False,False,False,False,False,False
+PFC is calculated for each individual using a pair-wise,False,False,False,False,False,False
+comparison with all individuals of the current population.,False,False,False,False,False,False
+Fig. 1: E-MOSAIC - Ensemble of Classiﬁer based on Multiobjective Genetic Sampling for Imbalanced Classiﬁcation,False,False,False,False,True,False
+The metric is used into the E-MOSAIC as a secondary ﬁtness,False,False,False,False,False,False
+"measure that resolves tie issues in the selection process (i.e.,",False,False,False,False,False,False
+to apply the genetic operators of crossover/mutation and to,False,False,False,False,False,False
+build the next generation refer to the next step). This means,False,False,False,False,False,False
+that if two or more individuals have the same nondomi-,False,False,False,False,False,False
+"nance rank, the individual with the higher PFC is preferred.",False,False,False,False,False,False
+Solutions with higher PFC indicate that their nearest neigh-,False,False,False,False,False,False
+bors are far apart; these are preferred to smaller distance,False,False,False,False,False,False
+values.,False,False,False,False,False,False
+Nondominance rank is used to select individuals that will,False,False,False,False,False,False
+breed a new generation using the genetic operators (repro-,False,False,False,False,False,False
+duction and mutation). This selection is performed using a,False,False,False,False,False,False
+"tournament of size 3. If a tie occurs, we consider the winner",False,False,False,False,False,False
+to be the one with the highest PFC. The quantity of parents,False,False,False,False,False,False
+selected will be equal to the quantity of individuals in the,False,False,False,False,False,False
+current population.,False,False,False,False,False,False
+"For each selected pair of parents, two new individuals",False,False,False,False,False,False
+are generated using the one-point crossover technique [41].,False,False,False,False,False,False
+One-point or single-point crossover is a simple and fre-,False,False,False,False,False,False
+quently used method for genetic algorithms that selects a,False,False,False,False,False,False
+single crossover point on both parents’ vectors and all data,False,False,False,False,False,False
+"beyond this point, in either parent, is swapped between the",False,False,False,False,False,False
+two parents. The resulting vectors are the children. Mutation,False,False,False,False,False,False
+occurs in a percentage of generated offspring. The bits of a,False,False,False,False,False,False
+random portion of the vector that represents an individual,False,False,False,False,False,False
+are inverted.,False,False,False,False,False,False
+Another important aspect is that from this point the,False,False,False,False,False,False
+number of instances of each class in the sample is no longer,False,False,False,False,False,False
+"limiting. So, if after the crossover and mutation processes",False,False,False,False,False,False
+"one sample is imbalanced, but it presets higher ﬁtness than",False,False,False,False,False,False
+"the other samples, it will be selected for the next generation.",False,False,False,False,False,False
+"After applying the genetic operators, identical individuals",False,False,False,False,False,False
+"can occur, especially when the imbalance ratio is not high.",False,False,False,False,False,False
+This fact was analyzed during our experimental tests. Iden-,False,False,False,False,False,False
+tical individuals with high ﬁtness have a higher probability,False,False,False,False,False,False
+of being selected for reproduction and for future genera-,False,False,False,False,False,False
+"tions, thereby increasing the number of identical solutions.",False,False,False,False,False,False
+"However, the goal of this work is to have a diverse ensemble",False,False,False,False,False,False
+"of classiﬁers with high accuracy. For this reason, after the re-",False,False,False,False,False,False
+"production stage, identical individuals are eliminated. After",False,False,False,False,False,False
+"this elimination, if the number of individuals is less than",False,False,False,False,False,False
+"the initial population size, new reproduction and mutation",False,False,False,False,False,False
+processes are performed.,False,False,False,False,False,False
+Selection of the individuals that comprise the new genera-,False,False,False,False,False,False
+tion is based on the nondominance rank of each individual.,False,False,False,False,False,False
+"First, individuals with higher levels of non-dominance are",False,False,False,False,False,False
+"selected, then only those who are not dominated by the ﬁrst,",False,False,False,False,False,False
+"and so on, until the default population size is reached. The",False,False,False,False,False,False
+composition of the ensemble tries to mitigate the loss of,False,False,False,False,False,False
+"information inherent to the sampling process, thus different",False,False,False,False,False,False
+classiﬁers may have different views of the dataset. This is,False,False,False,False,False,False
+encouraged by the mechanisms of diversity included into,False,False,False,False,False,False
+E-MOSAIC.,True,False,False,True,False,False
+It is worth mentioning that even using elitism; there is no,False,False,False,False,False,False
+guarantee that the resulting ensemble of these individuals,False,False,False,False,False,False
+will have higher predictive accuracy than the ensemble,False,False,False,False,False,False
+from the previous generation. The reason is that even if,False,False,False,False,False,False
+the predictive accuracy of the models continues to improve,False,False,False,False,False,False
+"over successive generations, the diversity between models",False,False,False,False,False,False
+"can stagnate or even decrease, hampering the ensemble’s",False,False,False,False,False,False
+predictive performance.,False,False,False,False,False,False
+"For this reason, in the initial population and after each",False,False,False,False,False,False
+"generation, the classiﬁcation models of all individuals in",False,False,False,False,False,False
+the current generation comprise an ensemble of classiﬁers,False,False,False,False,False,False
+representing the generation. This ensemble is evaluated,False,False,False,False,False,False
+"based on the entire training dataset, and two accuracy",False,False,False,False,False,False
+"measures are extracted from this evaluation, namely G-",False,False,False,False,False,False
+"mean [30] and mAUC [42]. At ﬁrst, the initial population",False,False,False,False,False,False
+and its accuracy measures (G-mean and mAUC) are saved,False,False,False,False,False,False
+as ”Saved Population.” After each generation the G-mean and,False,False,False,False,False,False
+mAUC of the current population are compared with the,False,False,False,False,False,False
+metrics of the ”Saved Population.” If the current ensemble of,False,False,False,False,False,False
+classiﬁers presents improvement in their G-mean or mAUC,False,False,False,False,False,False
+"and none of them are any worse, the current population",False,False,False,False,False,False
+replaces the ”Saved Population.”,False,False,False,False,False,False
+The process stops after a ﬁxed number of generations or,False,False,False,False,False,False
+after 5 generations without any replacement of the ”Saved,False,False,False,False,False,False
+Population” or when Gmean or mAUC metrics reach their,False,False,False,False,False,False
+"maximum value, i.e. max. G-mean = 1.0 and max. mAUC",False,False,False,False,False,False
+= 1.0. The classiﬁcation models of all individuals in the,False,False,False,False,False,False
+ﬁnal ”Saved Population” compose the ensemble of classiﬁers.,False,False,False,False,False,False
+"When a new example is presented to the classiﬁers, the",False,False,False,False,False,False
+class of this example is determined by the majority vote,False,False,False,False,False,False
+considering the output of each classiﬁer.,False,False,False,False,False,False
+4 EXPERIMENTAL STUDY,True,False,False,True,False,False
+"In this section, we present an empirical analysis of E-",False,False,False,False,False,False
+"MOSAIC, including comparison with other approaches pro-",False,False,False,False,False,False
+posed for classiﬁcation from imbalanced datasets. The ex-,False,False,False,False,False,False
+periments include a number of imbalanced datasets ob-,False,False,False,False,False,False
+tained from the UCI Machine Learning Database Repository,False,False,False,False,False,False
+[17]. The goal of these experiments is to verify whether E-,False,False,False,False,False,False
+MOSAIC actually offers some advantage in terms of overall,False,False,False,False,False,False
+performance and its effect during the learning process.,False,False,False,False,False,False
+The comparisons also allow us to determine the individual,False,False,False,False,False,False
+strengths and weaknesses of the proposed method com-,False,False,False,False,False,False
+pared to other existing approaches.,False,False,False,False,False,False
+A recent study [43] suggests that more elaborate methods of,False,False,False,False,False,False
+classiﬁcation with imbalanced datasets do not have better,False,False,False,False,False,False
+"performance than simple methods, such as ROS and RUS.",False,False,False,False,False,False
+"Furthermore, E-MOSAIC incorporates an undersampling",False,False,False,False,False,False
+"technique in its process, so it was ﬁrst compared to the pre-",False,False,False,False,False,False
+processing methods. ROS and RUS be employed separately,False,False,False,False,False,False
+or used simultaneously to make a balanced dataset with,False,False,False,False,False,False
+the same number of instances as the original dataset. This,False,False,False,False,False,False
+method was also employed in our experiments and will be,False,False,False,False,False,False
+referred to as random ﬁxed-size sampling (RFS) from now,False,False,False,False,False,False
+"on. In addition, we applied no-sampling (NoS), in which the",False,False,False,False,False,False
+original training set without any resampling process was,False,False,False,False,False,False
+used to provide a baseline for our comparisons.,False,False,False,False,False,False
+"In addition to the data level approaches cited above,",False,False,False,False,False,False
+the performance of E-MOSAIC was compared with some,False,False,False,False,False,False
+algorithm level solutions and ensemble learning methods,False,False,False,False,False,False
+based on multiclass classiﬁcation with imbalanced datasets,False,False,False,False,False,False
+"found in the literature. DyS [28] is a recent method, closely",False,False,False,False,False,False
+"related to active learning and boosting-type algorithms,",False,False,False,False,False,False
+for multiclass classiﬁcation with imbalanced datasets. In,False,False,False,False,False,False
+the same study the authors presented MLP-based active,False,False,False,False,False,False
+learning (AL). Both methods were used in our experimental,False,False,False,False,False,False
+study.,False,False,False,False,False,False
+"For comparison with cost-sensitive learning, the min-",False,False,False,False,False,False
+imization of misclassiﬁcation cost (MMC) [44] and,False,False,False,False,False,False
+Rescale,False,False,False,False,False,False
+[45] were chosen. Stagewise Additive Modeling,False,False,False,False,False,False
+using a Multiclass Exponential loss function (SAMME) [46],False,False,False,False,False,False
+is a method that directly extends the AdaBoost algorithm,False,False,False,False,False,False
+"to the multiclass case, but it was originally developed with",False,False,False,False,False,False
+decision trees as the base-classiﬁers. In order to make the,False,False,False,False,False,False
+"comparison fairer, the SAMME was modiﬁed to use MLP as",False,False,False,False,False,False
+base-classiﬁers.,False,False,False,False,False,False
+When the task is to evaluate a classiﬁer over imbalanced,False,False,False,False,False,False
+"domains, classical ways of evaluating, such as overall ac-",False,False,False,False,False,False
+"curacy, do not make sense. A standard classiﬁer may ig-",False,False,False,False,False,False
+nore the importance of the minority classes because their,False,False,False,False,False,False
+representation inside the dataset is not strong enough. A,False,False,False,False,False,False
+typical example of this in a binary-class case is as follows:,False,False,False,False,False,False
+"if the ratio of imbalance presented in the dataset is 1:100,",False,False,False,False,False,False
+the error of ignoring this class is only 1%. An effective,False,False,False,False,False,False
+metric for evaluating the performance of a classiﬁer is the,False,False,False,False,False,False
+rate of classiﬁcation errors made in each class [47]. Single-,False,False,False,False,False,False
+class performance measures evaluate how well a classiﬁer,False,False,False,False,False,False
+"performs in one class. However, the goal is to achieve good",False,False,False,False,False,False
+"prediction in all classes. Therefore, it is necessary to combine",False,False,False,False,False,False
+"individual metrics, as they are not useful when used alone.",False,False,False,False,False,False
+The Receiver Operating Characteristic (ROC) curve [48],False,False,False,False,False,False
+shows the relationship between the beneﬁts and classiﬁca-,False,False,False,False,False,False
+"tion costs, in relation to the distribution of the data. So, we",False,False,False,False,False,False
+say that one classiﬁcation model is better than another if,False,False,False,False,False,False
+its ROC curve dominates the other. When it is necessary to,False,False,False,False,False,False
+"encode the ROC curve into single scalar value, the strategy",False,False,False,False,False,False
+"is calculating the Area Under the ROC Curve (AUC) [49],",False,False,False,False,False,False
+which has been widely used to evaluate the performance,False,False,False,False,False,False
+"of classiﬁers. Originally, AUC is only applicable to binary-",False,False,False,False,False,False
+"class datasets. However, Hand and Till [42] extended AUC",False,False,False,False,False,False
+"to multiclass problems and proposed a metric, called M, for",False,False,False,False,False,False
+multiclass classiﬁcation problems (MAUC).,False,False,False,False,False,False
+"Furthermore, to evaluate the classiﬁcation performance",False,False,False,False,False,False
+"in detail, an extended version of the Geometric Mean (G-",False,False,False,False,False,False
+"mean) [50] proposed by Sun, Kamel and Wang (2014) [30]",False,False,False,False,False,False
+will be employed as another performance metric in our,False,False,False,False,False,False
+experimental study. The G-mean metric to evaluate the,False,False,False,False,False,False
+performance of multiclass classiﬁers is deﬁned in [30] as,False,False,False,False,False,False
+G − mean =,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+tr,False,False,False,False,False,False
+i,False,False,False,False,False,False
+n,False,False,False,False,False,False
+i,False,False,False,False,False,False
+(2),False,False,False,False,False,False
+"where m is the number of classes, n",False,False,False,False,False,False
+i,False,False,False,False,False,False
+is the number,False,False,False,False,False,False
+"of examples in class i, and tr",False,False,False,False,False,False
+i,False,False,False,False,False,False
+is the number of correctly,False,False,False,False,False,False
+classiﬁed examples in class i.,False,False,False,False,False,False
+In order to compare the performance of the proposed,False,False,False,False,False,False
+method with the other methods used in this experimental,False,False,False,False,False,False
+"study, 20 datasets were obtained from the UCI Machine",False,False,False,False,False,False
+Learning Database Repository [17]. The basic characteristics,False,False,False,False,False,False
+"of the datasets are presented in Table 1, including the",False,False,False,False,False,False
+"number of features (#F), number of classes (#C), total of",False,False,False,False,False,False
+instances in the dataset (#Inst.) and class distribution.,False,False,False,False,False,False
+The ﬁrst 18 datasets are originally multiclass imbalanced,False,False,False,False,False,False
+"datasets, but the numbers of classes are not very large. So,",False,False,False,False,False,False
+"the letter-recognition dataset, which has 26 classes, was used",False,False,False,False,False,False
+to form two imbalanced datasets by randomly removing,False,False,False,False,False,False
+examples of some classes. The characteristics of the two,False,False,False,False,False,False
+resulting datasets are also presented in Table 1 (Letter-1 and,False,False,False,False,False,False
+Letter-2).,False,False,False,False,False,False
+TABLE 1: Basic Characteristics of The Datasets (#F: The,False,False,False,False,False,True
+"Number of Features, #C: The Number of Classes, #Inst.: The",False,False,False,False,False,False
+Total Number of Instances),False,False,False,False,False,False
+"All the methods in this experimental study use, or were",False,False,False,False,False,False
+"adapted to use, MLP as a base classiﬁer and the back-",False,False,False,False,False,False
+propagation algorithm [51] was used to train the MLP. The,False,False,False,False,False,False
+parameters of MLP used here are the same used in [28] and,False,False,False,False,False,False
+"are shown in Table 2, including the number of hidden nodes",False,False,False,False,False,False
+(#Hid. Nodes) and the number of training epochs (#Epoch).,False,False,False,False,False,False
+"In addition to the values shown in Table 2, the learning rate",False,False,False,False,False,False
+was set to 0.1.,False,False,False,False,False,False
+The E-MOSAIC and SAMME are methods that return,False,False,False,False,False,False
+an ensemble of classiﬁers. They need an input that informs,False,False,False,False,False,False
+the number of base classiﬁers that is returned from the,False,False,False,False,False,False
+learning process to comprise the ensemble. This parameter,False,False,False,False,False,False
+also means that E-MOSAIC will have 30 individuals in,False,False,False,False,False,False
+the population of the multiobjective genetic algorithm as,False,False,False,False,False,False
+each individual induces a classiﬁer and all classiﬁers are,False,False,False,False,False,False
+"used to compose the ensemble. In addition, being a method",False,False,False,False,False,False
+"based on genetic algorithms, E-MOSAIC also has to set the",False,False,False,False,False,False
+reproduction and mutation rates of its reproduction process.,False,False,False,False,False,False
+"The mutation rate was set at 0.1, this means that 10% of new",False,False,False,False,False,False
+individuals created by the reproduction process undergo the,False,False,False,False,False,False
+mutation process as explained in Subsection 3.3. Regard-,False,False,False,False,False,False
+"ing the reproduction process, each pair of selected parents",False,False,False,False,False,False
+generates two new individuals. So the reproduction rate is,False,False,False,False,False,False
+100%. The number of individuals generated in each genera-,False,False,False,False,False,False
+"tion is equal to the size of population, i.e., 30 individuals.",False,False,False,False,False,False
+The results are reported after ten executions of each,False,False,False,False,False,False
+TABLE 2: Parameters for MLP,False,False,False,False,False,True
+method using 5 trials of stratiﬁed 5-fold cross-validation.,False,False,False,False,False,False
+"In this procedure, the original dataset is divided into 5",False,False,False,False,False,False
+"non-intersected subsets, each of which maintains the orig-",False,False,False,False,False,False
+"inal class imbalance ratio. For each fold, each algorithm is",False,False,False,False,False,False
+"trained with the examples of the remaining folds, and the",False,False,False,False,False,False
+prediction accuracy rate of the induced model tested on,False,False,False,False,False,False
+the current fold is considered to be the model predictive,False,False,False,False,False,False
+performance [31] [30].,False,False,False,False,False,False
+"Figures 2 and 3 present, respectively, the average values for",False,False,False,False,False,False
+"MAUC and G-mean obtained by E-MOSAIC, ROS, RUS,",False,False,False,False,False,False
+"RFS and NoS for each dataset used. For each dataset, these",False,False,False,False,False,False
+ﬁgures also present a bar chart illustrating the comparative,False,False,False,False,False,False
+performance of the methods. The bars that represent the,False,False,False,False,False,False
+"proposed method (blue bar) are highlighted, to evidence",False,False,False,False,False,False
+the difference between its performance and the performance,False,False,False,False,False,False
+obtained by the other methods.,False,False,False,False,False,False
+In order to provide some reassurance about the validity,False,False,False,False,False,False
+"and non-randomness of the obtained results, we carried out",False,False,False,False,False,False
+statistical tests following the approach proposed by Dem,False,False,False,False,False,False
+ˇ,False,False,False,False,False,False
+sar,False,False,False,False,False,False
+"[52]. In brief, this approach seeks to compare multiple algo-",False,False,False,False,False,False
+"rithms on multiple datasets, and is based on the Friedman",False,False,False,False,False,False
+test with a corresponding post-hoc test. The Friedman test is,False,False,False,False,False,False
+a non-parametric counterpart of the well-known ANOVA.,False,False,False,False,False,False
+"If the null hypothesis, which states that the classiﬁers un-",False,False,False,False,False,False
+"der study present similar performances, is rejected, then",False,False,False,False,False,False
+we proceed with the Nemenyi post-hoc test for pairwise,False,False,False,False,False,False
+comparisons.,False,False,False,False,False,False
+"According to the bar charts (Figures 2 and 3), E-MOSAIC",False,False,False,False,False,False
+"outperforms the other methods in most datasets, present-",False,False,False,False,False,False
+ing the best overall predictive performance. The ranking,False,False,False,False,False,False
+"provided by the Friedman test supports this assumption,",False,False,False,False,False,False
+showing E-MOSAIC as the best-ranked method for MAUC,False,False,False,False,False,False
+and G-mean metrics. The Friedman test also indicates the,False,False,False,False,False,False
+"rejection of the null-hypothesis, i.e., there is a statistically",False,False,False,False,False,False
+Fig. 2: Mauc Data Level Methods,False,False,False,False,True,False
+Fig. 3: G-Mean Data Level Methods,False,False,False,False,True,False
+signiﬁcant difference between the algorithms (MAUC: p-,False,False,False,False,False,False
+value = 8.1349 × e,False,False,False,False,False,False
+−14,False,False,False,False,False,False
+", G-mean: p-value = 1.6887 × e",False,False,False,False,False,False
+−10,False,False,False,False,False,False
+).,False,False,False,False,False,False
+"Hence, we executed the Nemenyi post-hoc test for pairwise",False,False,False,False,False,False
+comparison. The proposed method outperforms all the data,False,False,False,False,False,False
+"level methods on MAUC, measured with statistical signiﬁ-",False,False,False,False,False,False
+"cance at a 95% conﬁdence level, except for the ROS method,",False,False,False,False,False,False
+which had a statistical signiﬁcance at a 90%. Regarding the,False,False,False,False,False,False
+"G-mean metric, the proposed method overcomes the ROS,",False,False,False,False,False,False
+RUS and NoS methods with statistical signiﬁcance at a 95%,False,False,False,False,False,False
+conﬁdence level.,False,False,False,False,False,False
+We observe from Figure 2 that when comparing by the,False,False,False,False,False,False
+"values of MAUC, E-MOSAIC outperforms other methods",False,False,False,False,False,False
+"on most datasets (17 datasets). Only on three datasets, the",False,False,False,False,False,False
+proposed method does not achieve the best MAUC but it,False,False,False,False,False,False
+did not show the worst performance in any of them. E-,False,False,False,False,False,False
+MOSAIC is able to perform better overall due to its ability to,False,False,False,False,False,False
+induce an ensemble of classiﬁers with different views of the,False,False,False,False,False,False
+"dataset. Also, due to the balanced way that the samples are",False,False,False,False,False,False
+"collected and treated during the evolutionary process, the",False,False,False,False,False,False
+models of classiﬁcation are generated in order to not harm,False,False,False,False,False,False
+the minority classes.,False,False,False,False,False,False
+A similar situation can be seen in the Figure 3. On only a,False,False,False,False,False,False
+few datasets do the proposed method does not reach the,False,False,False,False,False,False
+highest G-mean value and none of them has the lowest,False,False,False,False,False,False
+"value. However, in some datasets, such as Abalone, Arrhyth-",False,False,False,False,False,False
+"mia, Chess and Letter-2, the G-mean value for all methods",False,False,False,False,False,False
+is very low (< 0.5). G-mean is the geometric mean of the,False,False,False,False,False,False
+"classiﬁcation accuracy of every class. Thus, poor accuracy of",False,False,False,False,False,False
+"even one class will lead to poor G-mean. Therefore, a low",False,False,False,False,False,False
+value of G-mean value indicates that the classiﬁer cannot,False,False,False,False,False,False
+"effectively classify at least one class, which makes it less",False,False,False,False,False,False
+useful in practice.,False,False,False,False,False,False
+"As in the previous subsection, Figures 4 and 5 show the",False,False,False,False,False,False
+"average of MAUC and G-mean metrics, respectively, ob-",False,False,False,False,False,False
+"tained by E-MOSAIC, DyS, AL, MMC, Rescale and SAMME",False,False,False,False,False,False
+"methods in each dataset used here. Similarly, associated to",False,False,False,False,False,False
+"each dataset, the ﬁgures also present a bar chart representing",False,False,False,False,False,False
+"the comparative performance of the methods, the proposed",False,False,False,False,False,False
+method is highlighted by the blue bar. Table 3 shows the,False,False,False,False,False,False
+"number of wins, draws and losses achieved by E-MOSAIC",False,False,False,False,False,False
+in a pairwise comparison with the algorithm level methods.,False,False,False,False,False,False
+TABLE 3: Number of win-draw-lose between E-MOSAIC,False,False,False,False,False,True
+and the algorithm-level compared methods.,False,False,False,False,False,False
+"The results of statistical tests, following the methodology",False,False,False,False,False,False
+proposed by Dem,False,False,False,False,False,False
+ˇ,False,False,False,False,False,False
+"sar [52], suggest that E-MOSAIC achieved",False,False,False,False,False,False
+the best overall performance. The ranking provided by,False,False,False,False,False,False
+"the Friedman test supports this assumption, indicating E-",False,False,False,False,False,False
+MOSAIC as the best-ranked method for MAUC and G-,False,False,False,False,False,False
+mean. The Friedman test also indicates the rejection of the,False,False,False,False,False,False
+"null-hypothesis, i.e., there is a statistically signiﬁcant differ-",False,False,False,False,False,False
+ence among the algorithms (MAUC: p-value = 1.6688 ×,False,False,False,False,False,False
+e,False,False,False,False,False,False
+−15,False,False,False,False,False,False
+", G-mean: p-value = 2.3263 × e",False,False,False,False,False,False
+−11,False,False,False,False,False,False
+). The application of,False,False,False,False,False,False
+Nemenyi post-hoc test revealed that the proposed method,False,False,False,False,False,False
+"outperforms the Dys, AL, MMC and Rescale methods on",False,False,False,False,False,False
+MAUC metric with statistical signiﬁcance at a 95% conﬁ-,False,False,False,False,False,False
+dence level. Considering the G-mean metric the post-hoc,False,False,False,False,False,False
+"test indicated that E-MOSAIC outperforms the AL, MMC,",False,False,False,False,False,False
+and SAMME methods with statistical signiﬁcance at a 95%,False,False,False,False,False,False
+conﬁdence level.,False,False,False,False,False,False
+"Initially, we turn our attention to methods based on",False,False,False,False,False,False
+"active learning, i.e., DyS and AL. Comparing the results",False,False,False,False,False,False
+"shown in Figure 4 and Table 3, referring to MAUC, E-",False,False,False,False,True,False
+MOSAIC outperforms DyS on 18 datasets and the AL on,False,False,False,False,False,False
+"19 datasets, there are not draws. With regards to G-mean",False,False,False,False,False,False
+"metric (Figure 5), the proposed method overcomes DyS on",False,False,False,False,False,False
+"15 datasets and AL on all datasets, with the exception of",False,False,False,False,False,False
+Fig. 4: Mauc Algorithm Level Methods,False,False,False,False,True,False
+Fig. 5: Gmean Algorithm Level Methods,False,False,False,False,True,False
+"Letter-2 where the G-mean values of E-MOSAIC, DyS and",False,False,False,False,False,False
+AL are 0.,False,False,False,False,False,False
+Methods based on active learning select informative,False,False,False,False,False,False
+"examples for training a classiﬁer through some criterion,",False,False,False,False,False,False
+such as based on the distance from the decision hyperplane,False,False,False,False,False,False
+to the example. This decision criterion can suffer the in-,False,False,False,False,False,False
+"ﬂuence of several factors, which complicates the selection",False,False,False,False,False,False
+"of the parameters for the algorithms, sometimes requiring",False,False,False,False,False,False
+the aid of an expert in the data. E-MOSAIC tends to have,False,False,False,False,False,False
+better performance than these methods because the example,False,False,False,False,False,False
+selection process is embedded in the evolutionary process,False,False,False,False,False,False
+"of the genetic algorithm, i.e., the selected sample to induce",False,False,False,False,False,False
+"a classiﬁer will be modiﬁed during the process, guided by",False,False,False,False,False,False
+the classiﬁer performance and not by some pre-established,False,False,False,False,False,False
+"factor, which may not be the best decision for all datasets.",False,False,False,False,False,False
+MMC [44] is based on cost-sensitive methods. As with,False,False,False,False,False,False
+"most of these methods, it needs a cost matrix to operate",False,False,False,False,False,False
+properly. The cost matrix used in these experiments was,False,False,False,False,False,False
+formulated the same as the one used in [44]. The results,False,False,False,False,False,False
+"reached by MMC are presented in Figures 4 and 5, referring",False,False,False,False,False,False
+"to MAUC and G-mean metrics, respectively. As we can see,",False,False,False,False,False,False
+MMC has in most cases obtained the bars with the lowest,False,False,False,False,False,False
+"heights, indicating that this method has the worst results",False,False,False,False,False,False
+compared to other algorithm-level methods. The ranking,False,False,False,False,False,False
+"provided by the Friedman test supports this assumption,",False,False,False,False,False,False
+indicating MMC as the worst-ranked method on MAUC and,False,False,False,False,False,False
+G-mean metrics. The probable reason is that this method is,False,False,False,False,False,False
+very dependent on the cost matrix formulation and when,False,False,False,False,False,False
+"the dataset is imbalanced, the cost matrix should be adjusted",False,False,False,False,False,False
+"for this kind of problem [28]. In practice, this is a very hard",False,False,False,False,False,False
+"task, requiring deeper knowledge of the dataset or a trial",False,False,False,False,False,False
+and error process.,False,False,False,False,False,False
+The following compares E-MOSAIC and another cost-,False,False,False,False,False,False
+sensitive method. Rescaling is possibly the most popular,False,False,False,False,False,False
+approach to cost-sensitive learning. In [45] the authors pub-,False,False,False,False,False,False
+lished a study using a rescaling approach to multiclass prob-,False,False,False,False,False,False
+lems (referred here as Rescale,False,False,False,False,False,False
+) and it was also applied,False,False,False,False,False,False
+to pure class imbalanced problems. The results obtained,False,False,False,False,False,False
+by this method are presented in the ”Rescale” rows of the,False,False,False,False,False,False
+"tables embedded in Figures 4 and 5, referring to the MAUC",False,False,False,False,False,False
+and G-mean metrics respectively. As we can see in Table,False,False,False,False,False,False
+"3, E-MOSAIC outperforms Rescale on 18 datasets and is",False,False,False,False,False,False
+outperformed by Rescale on only 2 datasets when compar-,False,False,False,False,False,False
+"ing in terms of MAUC. In terms of G-mean, E-MOSAIC",False,False,False,False,False,False
+"outperforms Rescale on 15 datasets, is outperformed by",False,False,False,False,False,False
+Rescale on 4 datasets and ties with Rescale on Letter-2,False,False,False,False,False,False
+dataset where the G-mean values of both are 0.,False,False,False,False,False,False
+Boosting [34] has been widely used for solving binary,False,False,False,False,False,False
+"classiﬁcation problems. In [45], the authors presented an",False,False,False,False,False,False
+"extension of boosting technique for multiclass classiﬁcation,",False,False,False,False,False,False
+"named SAMME. In that study, the authors also performed",False,False,False,False,False,False
+"experiments with imbalanced datasets, getting good results.",False,False,False,False,False,False
+For this reason and because SAMME is an ensemble-based,False,False,False,False,False,False
+method we compared the proposed method with it. MLPs,False,False,False,False,False,False
+with the same parameters as those given in Table 2 were,False,False,False,False,False,False
+used as the base classiﬁers for SAMME. The number of,False,False,False,False,False,False
+"classiﬁers was set to 30, the same amount of classiﬁers used",False,False,False,False,False,False
+in the proposed method. The ”SAMME” rows of the tables,False,False,False,False,False,False
+embedded in Figures 4 and 5 refer to the results obtained,False,False,False,False,False,False
+"for MAUC and G-mean metrics, respectively.",False,False,False,False,False,False
+"In Table 3, observing the comparison between E-",False,False,False,False,False,True
+"MOSAIC and SAMME in terms of MAUC, we can see",False,False,False,False,False,False
+that E-MOSAIC outperforms SAMME on 17 datasets and,False,False,False,False,False,False
+"is outperformed by SAMME on 3 datasets, there are no",False,False,False,False,False,False
+"draws. In terms of the G-mean metric, the proposed method",False,False,False,False,False,False
+"outperforms SAMME on 16 dataset, is outperformed by",False,False,False,False,False,False
+SAMME on 3 datasets and there is a tie on the Letter-2,False,False,False,False,False,False
+dataset where the G-mean value of both is 0. Of the methods,False,False,False,False,False,False
+"used in our experimental study, SAMME most resembles the",False,False,False,False,False,False
+proposed method because of the amount of base-classiﬁers,False,False,False,False,False,False
+"generated during the training process. However, SAMME",False,False,False,False,False,False
+generates a new classiﬁer increasing focus on examples that,False,False,False,False,False,False
+were wrongly classiﬁed in the previous iteration. On the,False,False,False,False,False,False
+"other hand, the aim of the proposed method is to ﬁnd and",False,False,False,False,False,False
+optimize the selection of samples from the training data so,False,False,False,False,False,False
+that each classiﬁcation model generated for these samples,False,False,False,False,False,False
+has high predictive accuracy and they are dissimilar as,False,False,False,False,False,False
+possible.,False,False,False,False,False,False
+"Moreover, E-MOSAIC produces and validates an en-",False,False,False,False,False,False
+"semble of classiﬁers at each iteration (generation), and the",False,False,False,False,False,False
+one that has greater predictive accuracy with respect to,False,False,False,False,False,False
+the training data is the ensemble of classiﬁers resultant of,False,False,False,False,False,False
+"the training process. On the other hand, SAMME generates",False,False,False,False,False,False
+a new classiﬁer at each iteration with low dependence,False,False,False,False,False,False
+on previously generated classiﬁers without considering the,False,False,False,False,False,False
+resultant ensemble of classiﬁers. This is an important feature,False,False,False,False,False,False
+of E-MOSAIC as it is possible to generate an ensemble of,False,False,False,False,False,False
+classiﬁers that get results lower than its single classiﬁers,False,False,False,False,False,False
+[53].,False,False,False,False,False,False
+"From the results above, we can conclude that E-MOSAIC",False,False,False,False,False,False
+"outperforms the other methods on most datasets. However,",False,False,False,False,False,False
+on some datasets the proposed method did not achieved,False,False,False,False,False,False
+the best result of all the methods used. That happens partic-,False,False,False,False,False,False
+ularly when the number of instances of the most minority,False,False,False,False,False,False
+class is very low in comparison with the one of the most,False,False,False,False,False,False
+"majority class, such as the Chess dataset, i.e., when the",False,False,False,False,False,False
+undersampling technique is not a good option due the large,False,False,False,False,False,False
+amount of information lost by discarding instances of the,False,False,False,False,False,False
+majority classes.,False,False,False,False,False,False
+The number of instances of the most minority class is,False,False,False,False,False,False
+part of the main process of E-MOSAIC. It deﬁnes the sample,False,False,False,False,False,False
+size that represents each individual in the population of the,False,False,False,False,False,False
+"genetic algorithm. So, if there are very few instances of the",False,False,False,False,False,False
+most minority class the sample size will be proportional to,False,False,False,False,False,False
+this number. The problem is that a very small sample may,False,False,False,False,False,False
+not contain adequate representation of the dataset and thus,False,False,False,False,False,False
+induces classiﬁers with low overall accuracy. E-MOSAIC,False,False,False,False,False,False
+overcomes this problem on most of datasets inducing an,False,False,False,False,False,False
+ensemble of classiﬁers with different views of datasets and,False,False,False,False,False,False
+combining their decisions.,False,False,False,False,False,False
+"However, on few datasets, such as the Chess dataset, this",False,False,False,False,False,False
+does not seem to be enough to reach the best overall accu-,False,False,False,False,False,False
+racy of all methods used in the experiments. One possible,False,False,False,False,False,False
+explanation is that the sample size is not large enough to,False,False,False,False,False,False
+contain a good representation of the majority classes. If this,False,False,False,False,False,False
+"is true, the classiﬁers returned by the proposed method in",False,False,False,False,False,False
+that situation would have higher accuracy for the minority,False,False,False,False,False,False
+classes than for the majority classes. In order to verify this,False,False,False,False,False,False
+"situation, the classiﬁcation accuracy of each class was cal-",False,False,False,False,False,False
+culated for each classiﬁer returned by E-MOSAIC over the,False,False,False,False,False,False
+10 times ﬁve-fold cross validation on the studied datasets.,False,False,False,False,False,False
+"Table 4 shows the classes, the amount of instances of each",False,False,False,False,False,True
+"class (#Instances), and the Positive Predictive Value (PPV)",False,False,False,False,False,False
+"for each class of the Chess, Glass, Car, and Conceptive datasets",False,False,False,False,False,False
+used here.,False,False,False,False,False,False
+Comparing the class distribution of the datasets shown,False,False,False,False,False,False
+"in Table 4, we can observe that the classiﬁcation accuracies",False,False,False,False,False,True
+"of smaller classes are usually higher than larger classes,",False,False,False,False,False,False
+particularly when the number of instances of the most,False,False,False,False,False,False
+minority class is very low. Taking the Chess dataset as an,False,False,False,False,False,False
+"example, the most minority class (zero Class) has a PPV of",False,False,False,False,False,False
+"0.6, which is almost twice that reached on the most majority",False,False,False,False,False,False
+class (fourteen Class) at is 0.3768. This difference lessens,False,False,False,False,False,False
+when the disproportion between the most minority and the,False,False,False,False,False,False
+most majority classes is not so high. An example of this is,False,False,False,False,False,False
+"the Contraceptive dataset, which has class distributions of",False,False,False,False,False,False
+"629: 333: 511 and the PPV of each class is 0.5644, 0.6084, and",False,False,False,False,False,False
+"0.4731, respectively.",False,False,False,False,False,False
+"Obviously, other factors may interfere with these results,",False,False,False,False,False,False
+"such as the overlapping level between the classes. However,",False,False,False,False,False,False
+increasing the number of instances of classes with low,False,False,False,False,False,False
+"predictive accuracy in the sample, so that the sample does",False,False,False,False,False,False
+"not get a high level of imbalance, could improve the results",False,False,False,False,False,False
+"in the majority classes without harming the minority classes,",False,False,False,False,False,False
+and therefore improve the overall accuracy. This will be,False,False,False,False,False,False
+studied in depth in our future work.,False,False,False,False,False,False
+TABLE 4: Accuracy for each class returned by E-MOSAIC,False,False,False,False,False,True
+"on Chess, Glass, Car and Conceptive datasets.",False,False,False,False,False,False
+5 CONCLUSION,True,False,False,True,False,False
+"In this paper we presented a new modeling approach, called",False,False,False,False,False,False
+E-MOSAIC (Ensemble of Classiﬁers based on Multiobjective,False,False,False,False,False,False
+"Genetic Sampling for Imbalanced Classiﬁcation), to address",False,False,False,False,False,False
+the problem of classiﬁcation with multiclass imbalanced,False,False,False,False,False,False
+datasets. This approach is based on a multiobjective ge-,False,False,False,False,False,False
+netic algorithm and produced an ensemble of classiﬁers.,False,False,False,False,False,False
+"For this, a customized MOEA evolved combinations of",False,False,False,False,False,False
+"instances in balanced samples, guided by the performance",False,False,False,False,False,False
+of the classiﬁers induced by these samples for each class.,False,False,False,False,False,False
+"In addition, the multi-objective ﬁtness function incorporates",False,False,False,False,False,False
+"a PFC diversity measure, which aims to encourage the",False,False,False,False,False,False
+diversity of classiﬁers from the learning process. In this way,False,False,False,False,False,False
+E-MOSAIC produces a set of classiﬁers with high accuracy,False,False,False,False,False,False
+"and diversity. Then, the obtained classiﬁers are used as",False,False,False,False,False,False
+an ensemble of classiﬁers to predict new instances using,False,False,False,False,False,False
+majority votes.,False,False,False,False,False,False
+Extensive experiments on 20 multiclass imbalanced,False,False,False,False,False,False
+datasets from the UCI machine learning repository showed,False,False,False,False,False,False
+that E-MOSAIC outperforms other relevant methods in,False,False,False,False,False,False
+"most cases, including presampling, active learning, cost-",False,False,False,False,False,False
+"sensitive, and boosting-type methods. In a few datasets the",False,False,False,False,False,False
+proposed method did not achieve the best result of the,False,False,False,False,False,False
+"methods used in the experiments, though none of them",False,False,False,False,False,False
+showed the worst results.,False,False,False,False,False,False
+In a further analysis we investigated such occurrences,False,False,False,False,False,False
+and identiﬁed that the proposed method may be harmed,False,False,False,False,False,False
+when the number of instances of the most minority class,False,False,False,False,False,False
+is low. This is because the size of samples that generate,False,False,False,False,False,False
+base-classiﬁers depends on the number of instances of that,False,False,False,False,False,False
+class. The problem is that very small samples may not,False,False,False,False,False,False
+"contain proper representation of the dataset that affect, in",False,False,False,False,False,False
+"this case, the majority classes. A possible solution would",False,False,False,False,False,False
+be to increase the number of instances of classes with low,False,False,False,False,False,False
+predictive accuracy in the samples. This will be studied in,False,False,False,False,False,False
+depth in our future work.,False,False,False,False,False,False
+Although a MLP has been used as base classiﬁer in,False,False,False,False,False,False
+"this paper, the general idea of E-MOSAIC can be extended",False,False,False,False,False,False
+"to any other learning algorithm, along with the measures",False,False,False,False,False,False
+of accuracy and diversity used in the ﬁtness function of,False,False,False,False,False,False
+"the genetic algorithm. Other, more recent, multiobjective",False,False,False,False,False,False
+"evolutionary algorithms can also be used by E-MOSAIC,",False,False,False,False,False,False
+like Bi-Criterion Evolution [54] and Two Arch2 [55]. The,False,False,False,False,False,False
+investigation of these algorithms is also part of the future,False,False,False,False,False,False
+work.,False,False,False,False,False,False
+ACKNOWLEDGMENTS,True,False,False,True,False,False
+"The authors would like to thank FAPESP, CNPq, CAPES and",False,False,False,False,False,False
+Intel for their ﬁnancial support.,False,False,False,False,False,False
+REFERENCES,True,False,False,True,False,False
+"scoring,” JORS, vol. 64, no. 7, pp. 1060–1070, 2013. [Online].",False,False,False,False,False,False
+"boosting for classiﬁcation of imbalanced data,” Pattern Recogn.,",False,False,False,False,False,False
+"datasets,” International Journal of Computer Science and Information",False,False,False,False,False,False
+"Security, vol. 8, pp. 132–137, 2010.",False,False,False,False,False,False
+"approaches,” Knowledge-Based Systems, vol. 42, pp. 97 –",False,False,False,False,False,False
+"Knowledge and Data Engineering, IEEE Transactions on, vol. 18,",False,False,False,False,False,False
+"methods,” Knowledge and Information Systems, pp. 1–24, 2014.",False,False,False,False,False,False
+", boosting-, and hybrid-based approaches.” IEEE Transactions on",False,False,False,False,False,False
+"Systems, Man, and Cybernetics, Part C, vol. 42, no. 4, pp. 463–484,",False,False,False,False,False,False
+"[8] Z.-H. Zhou, “Ensemble learning.” in Encyclopedia of Biometrics,",False,False,False,False,False,False
+"linearly combined neural classiﬁers,” Pattern Recognition, vol. 29,",False,False,False,False,False,False
+"tions,” AI MAGAZINE, vol. 18, pp. 97–136, 1997.",False,False,False,False,False,False
+"validation, and active learning,” in Advances in Neural Information",False,False,False,False,False,False
+"Processing Systems. MIT Press, 1995, pp. 231–238.",False,False,False,False,False,False
+"accuracy,” Machine Learning, vol. 51, no. 2, pp. 181–207, May 2003.",False,False,False,False,False,False
+"diversity of base classiﬁers,” Neurocomputing, vol. 126, pp. 29 –",False,False,False,False,False,False
+"produce best ensembles,” Australian Journal of Intelligent Informa-",False,False,False,False,False,False
+"tion Processing Systems, vol. 4, no. 3/4, pp. 176–185, 1997.",False,False,False,False,False,False
+"objective evolutionary algorithms,” J. Math. Model. Algorithms,",False,False,False,False,False,False
+"optimization,” Applied Soft Computing, vol. 24, pp. 757 –",False,False,False,False,False,False
+"“Smote: Synthetic minority over-sampling technique,” Journal of",False,False,False,False,False,False
+"Artiﬁcial Intelligence Research, vol. 16, pp. 321–357, 2002.",False,False,False,False,False,False
+"disjuncts,” Machine Learning, vol. 6, no. 1, pp. 93–98, 1991.",False,False,False,False,False,False
+"costs and probabilities are both unknown,” in Proceedings of the sev-",False,False,False,False,False,False
+enth ACM SIGKDD international conference on Knowledge discovery,False,False,False,False,False,False
+"and data mining. ACM, 2001, pp. 204–213.",False,False,False,False,False,False
+"of imbalanced data: a review,” IJPRAI, vol. 23, no. 4, pp.",False,False,False,False,False,False
+"tion performance when training data is imbalanced,” in Computer",False,False,False,False,False,False
+"Science and Engineering, 2009. WCSE ’09. Second International Work-",False,False,False,False,False,False
+"shop on, vol. 2, Oct 2009, pp. 13–17.",False,False,False,False,False,False
+"[23] H. He, Y. Bai, E. Garcia, S. Li et al., “Adasyn: Adaptive synthetic",False,False,False,False,False,False
+"sampling approach for imbalanced learning,” in Neural Networks,",False,False,False,False,False,False
+2008. IJCNN 2008.(IEEE World Congress on Computational Intelli-,False,False,True,True,False,False
+"gence). IEEE International Joint Conference on. IEEE, 2008, pp. 1322–",False,False,False,False,False,False
+"training sets: One-sided selection,” in In Proceedings of the Four-",False,False,False,False,False,False
+teenth International Conference on Machine Learning. Morgan Kauf-,False,False,False,False,False,False
+"[25] P. E. Hart, “The condensed nearest neighbor rule (corresp.).” IEEE",False,False,False,False,False,False
+"Transactions on Information Theory, vol. 14, no. 3, pp. 515–516, 1968.",False,False,False,False,False,False
+"“MUTE: Majority under-sampling technique,” in 2011 8th Interna-",False,False,False,False,False,False
+"tional Conference on Information, Communications & Signal Processing.",False,False,False,False,False,False
+"bution.” Neural Computation, vol. 13, no. 7, pp. 1443–1471, 2001.",False,False,False,False,False,False
+"IEEE Trans. Neural Netw. Learning Syst., vol. 24, no. 4, pp. 647–660,",False,False,False,False,False,False
+"Unbalanced Data,” IEEE Transactions on Evolutionary Computation,",False,False,False,False,False,False
+"Based on Exploratory Undersampling,” Mathematical Problems in",False,False,False,False,False,False
+"Engineering, vol. 2014, pp. 1–14, 2014.",False,False,False,False,False,False
+"in 2013 IEEE International Conference on Systems, Man, and Cyber-",False,False,False,False,False,False
+"netics. IEEE, Oct. 2013, pp. 1883–1888.",False,False,False,False,False,False
+"Neurocomputing, vol. 143, pp. 57–67, Nov. 2014.",False,False,False,False,False,False
+"[33] L. Breiman, “Bagging predictors,” Machine Learning, vol. 24,",False,False,False,False,False,False
+"of on-line learning and an application to boosting,” J. Comput.",False,False,False,False,False,False
+"Syst. Sci., vol. 55, no. 1, pp. 119–139, Aug. 1997. [Online].",False,False,False,False,False,False
+"balanced data,” in Neural Networks (IJCNN), 2015 International Joint",False,False,False,False,False,False
+"Conference on. IEEE, 2015, pp. 1–7.",False,False,False,False,False,False
+"and potential solutions,” IEEE Transactions on Systems, Man, and",False,False,False,False,False,False
+"Cybernetics, Part B (Cybernetics), vol. 42, no. 4, pp. 1119–1130, Aug",False,False,False,False,False,False
+"and elitist multiobjective genetic algorithm: Nsga-ii,” Trans. Evol.",False,False,False,False,False,False
+"Comp, vol. 6, no. 2, pp. 182–197, Apr. 2002. [Online]. Available:",False,False,False,False,False,False
+"mization,” in Evolutionary Methods for Design Optimization and",False,False,False,False,False,False
+"Control with Applications to Industrial Problems, K. C. Giannakoglou,",False,False,False,False,False,False
+"[39] K. Deb, Multi-Objective Optimization using Evolutionary Algorithms,",False,False,False,False,False,False
+"[41] R. Poli and W. B. Langdon, Genetic Programming with One-Point",False,False,False,False,False,False
+"Crossover. London: Springer London, 1998, pp. 180–189. [Online].",False,False,False,False,False,False
+"problems,” Machine Learning, vol. 45, no. 2, pp. 171–186, 2001,",False,False,False,False,False,False
+"tal perspectives on learning from imbalanced data,” in Proceedings",False,False,False,False,False,False
+"of the 24th international conference on Machine learning. ACM, 2007,",False,False,False,False,False,False
+"networks,” in Proceedings of the 13th European Conference on Artiﬁcial",False,False,False,False,False,False
+"Intelligence (ECAI-98. John Wiley & Sons, 1998, pp. 445–449.",False,False,False,False,False,False
+"learning.” Computational Intelligence, vol. 26, no. 3, pp. 232–257,",False,False,False,False,False,False
+"Statistics and its Interface, vol. 2, no. 3, pp. 349–360, 2009.",False,False,False,False,False,False
+"[47] H. He and E. A. Garcia, “Learning from imbalanced data,” IEEE",False,False,False,False,False,False
+"Transactions on Knowledge and Data Engineering, vol. 21, no. 9, pp.",False,False,False,False,False,False
+"evaluation of machine learning algorithms,” Pattern Recognition,",False,False,False,False,False,False
+"tributions.” in KDD, D. Heckerman, H. Mannila, and D. Pregibon,",False,False,False,False,False,False
+"classes with imbalanced class distribution,” in Sixth International",False,False,False,False,False,False
+"Conference on Data Mining (ICDM’06), Dec 2006, pp. 592–602.",False,False,False,False,False,False
+"data sets,” J. Mach. Learn. Res., vol. 7, pp. 1–30, Dec. 2006. [Online].",False,False,False,False,False,False
+"classiﬁers,” Information Fusion, vol. 3, no. 2, pp. 135 –",False,False,False,False,False,False
+"evolution in multiobjective optimization,” IEEE Transactions on",False,False,False,False,False,False
+"Evolutionary Computation, vol. 20, no. 5, pp. 645–665, Oct 2016.",False,False,False,False,False,False
+"archive algorithm for many-objective optimization,” IEEE Transac-",False,False,False,False,False,False
+"tions on Evolutionary Computation, vol. 19, no. 4, pp. 524–541, Aug",False,False,False,False,False,False
+Everlandio R. Q. Fernandes is a Ph.D. in Com-,False,False,False,False,False,False
+puter Science and Computational Mathematics,False,False,False,False,False,False
+at the University of So Paulo (USP) 2018. He,False,False,False,False,False,False
+received in 2002 the B.Sc. degree in Computer,False,False,False,False,False,False
+Sciences from the Federal University of Rio,False,False,False,False,False,False
+"Grande do Norte, Brazil and M.Sc. degree in Ap-",False,False,False,False,False,False
+plied Informatics from the University of Fortaleza,False,False,False,False,False,False
+(2009). His main research interests are cluster-,False,False,False,False,False,False
+"ing, pattern recognition, data mining, ensembles",False,False,False,False,False,False
+of classiﬁers and evolutionary algorithms.,False,False,False,False,False,False
+Andr,False,False,False,False,False,False
+´,False,False,False,False,False,False
+e C. P. L. F. de Carvalho is Full Professor,False,False,False,False,False,False
+"in the department of Computer Science, Uni-",False,False,False,False,False,False
+"versity of So Paulo, Brazil. He was Associate",False,False,False,False,False,False
+"Professor in the University of Guelph, Canada.",False,False,False,False,False,False
+He was visiting researcher in the University of,False,False,False,False,False,False
+"Porto, Portugal and visiting professor University",False,False,False,False,False,False
+"of Kent, UK. He is Assessor ad hoc for funding",False,False,False,False,False,False
+"Agencies in Brazil, Canada, UK, Czech Republic",False,False,False,False,False,False
+and Chile. His main research interests are data,False,False,False,False,False,False
+"mining, data science and machine learning. Prof.",False,False,False,False,False,False
+de Carvalho has more than 300 publications in,False,False,False,False,False,False
+"these areas, including 10 paper awards from conferences organized",False,False,False,False,False,False
+"by ACM, IEEE and SBC. He is the director of the Center of Machine",False,False,False,False,False,False
+"Learning in Data Analysis, University of So Paulo.",False,False,False,False,False,False
+Xin Yao received the B.Sc. and Ph.D. degrees,False,False,False,False,False,False
+from the University of Science and Technology,False,False,False,False,False,False
+"of China, Hefei, China, in 1982 and 1990, re-",False,False,False,False,False,False
+spectively. He is a Chair Professor of computer,False,False,False,False,False,False
+science with the Southern University of Science,False,False,False,False,False,False
+"and Technology, Shenzhen, China, and a Pro-",False,False,False,False,False,False
+fessor of computer science with the University,False,False,False,False,False,False
+"of Birmingham, Birmingham, U.K. He has been",False,False,False,False,False,False
+researching on multiobjective optimization since,False,False,False,False,False,False
+"2003, when he published a well-cited EMO03",False,False,False,False,False,False
+paper on many objective optimization. His cur-,False,False,False,False,False,False
+"rent research interests include evolutionary computation, ensemble",False,False,False,False,False,False
+"learning, and their applications in software engineering.",False,False,False,False,False,False

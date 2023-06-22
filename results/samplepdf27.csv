@@ -1,0 +1,86 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+Guanganmen Hospita  Dongzhimen hospital ,False,False,False,False,False,False
+Chinese Academy of Medical Sciences  Beijing university of Chinese medicine ,False,False,False,False,False,False
+"Beijing 100053, China  Beijing 100700, China ",False,False,False,False,False,False
+Abstract ,False,False,False,True,False,False
+The prediction of survival of Coronary Heart Disease (CHD) has ,False,False,False,False,False,False
+been a challenging research problem for medical society. The ,False,False,False,False,False,False
+goal of this paper is to develop data mining algorithms for ,False,False,False,False,False,False
+predicting survival of CHD patients based on 1000 cases .We ,False,False,False,False,False,False
+carry out a clinical observation and a 6-month follow up to ,False,False,False,False,False,False
+include 1000 CHD cases. The survival information of each case ,False,False,False,False,False,False
+"is obtained via follow up. Based on the data, we employed three ",False,False,False,False,False,False
+popular data mining algorithms to develop the prediction models ,False,False,False,False,False,False
+using the 502 cases. We also used 10-fold cross-validation ,False,False,False,False,False,False
+methods to measure the unbiased estimate of the three prediction ,False,False,False,False,False,False
+models for performance comparison purposes. The results ,False,False,False,False,False,False
+indicated that the SVM is the best predictor with ,False,False,False,False,False,False
+92.1 ％ ,False,False,False,False,False,False
+accuracy on the holdout sample artificial neural networks came ,False,False,False,False,False,False
+out to be the second with,False,False,False,False,False,False
+91.0％ accuracy and the decision tress ,False,False,False,False,False,False
+models came out to be the worst of the three with 89.6% ,False,False,False,False,False,False
+accuracy. The comparative study of multiple prediction models ,False,False,False,False,False,False
+for survival of CHD patients along with a 10-fold cross-,False,False,False,False,False,False
+validation provided us with an insight into the relative prediction ,False,False,False,False,False,False
+ability of different data. ,False,False,False,False,False,False
+1. Introduction ,False,False,True,True,False,False
+2007 International Conference on Convergence Information Technology,False,False,False,False,False,False
+0-7695-3038-9/07 $25.00 © 2007 IEEE,True,False,False,True,False,False
+DOI 10.1109/ICCIT.2007.204,True,False,False,True,False,False
+868,False,False,False,False,False,False
+2. Survival analysis ,False,False,True,True,False,False
+3. Three data mining prediction models ,False,False,True,True,False,False
+3.1 Support vector machine ,False,False,False,False,False,False
+The SVM is a state-of-the-art maximum margin ,False,False,False,False,False,False
+classification algorithm rooted in statistical learning ,False,False,False,False,False,False
+theory [7-8]. SVM performs classification tasks by ,False,False,False,False,False,False
+maximizing the margin separating both classes while ,False,False,False,False,False,False
+minimizing the classification errors. We used sequential ,False,False,False,False,False,False
+minimal optimization algorithm to train the SVM here.  ,False,False,False,False,False,False
+3.2 Artificial neural networks ,False,False,False,False,False,False
+3.3 Decision trees ,False,False,False,False,False,False
+4. Survival Data  concerning on CHD ,False,False,True,True,False,False
+869,False,False,False,False,False,False
+4.1,False,False,False,False,False,False
+ Inclusion and exclusion criteria ,False,False,False,False,False,False
+4.2 Basic information of the data ,False,False,False,False,False,False
+Variables Type  ,False,False,False,False,False,False
+5. Results ,False,False,True,True,False,False
+10-fold cross validation is used here to minimize the bias ,False,False,False,False,False,False
+produced by random sampling of the training and test data ,False,False,False,False,False,False
+"samples. Extensive tests on numerous datasets, with ",False,False,False,False,False,False
+"different learning strategies, have shown that 10 is about ",False,False,False,False,False,False
+"the right number of folds to get the best estimate of error, ",False,False,False,False,False,False
+and there is also some theoretical evidence that backs this ,False,False,False,False,False,False
+up [13]. ,False,False,False,False,False,False
+91.0％with a sensitivity of 91.73％ and a specificity of ,False,False,False,False,False,False
+88.12％. The C5 achieved a classification accuracy of ,False,False,False,False,False,False
+89.6％ with a sensitivity of 90.98％ and a specificity of ,False,False,False,False,False,False
+"84.16％.However, The SVM preformed the best of three ",False,False,False,False,False,False
+92.1％with a sensitivity of 92.87％ and a specificity of ,False,False,False,False,False,False
+89.11％. Table 2 shows the complete set of results in a ,False,False,False,False,False,True
+6. Conclusion ,False,False,True,True,False,False
+popular data mining methods。We survey a data of 1000 ,False,False,False,False,False,False
+870,False,False,False,False,False,False
+accuracy of 89.6%. The results showed here make clinical ,False,False,False,False,False,False
+"application more accessible, which will provide great ",False,False,False,False,False,False
+advance in healing CHD.  ,False,False,False,False,False,False
+Acknowledgement  ,False,False,False,False,False,False
+Reference ,False,False,False,False,False,False
+"1. World Health Organization. World Health statistics Annual, ",False,False,True,True,False,False
+"Geneva, Switzerland: World Health Organization (2006) ",False,False,False,False,False,False
+2.  Ritter M. Gene tied to manic-depression. Newspaper article ,False,False,True,True,False,False
+"in Tulsa World June 16, 2003: D8. ",False,False,False,False,False,False
+"7 .Vapnik, K. : Statistical learning theory. Wiley, New York ",False,False,False,False,False,False
+(1998) ,False,False,False,False,False,False
+"8. Graf, A., Wichmann. F., Bulthoff .H., etc. : Classification of ",False,False,True,True,False,False
+"faces in man and machine. Neural Computation, 18 (2006) ",False,False,False,False,False,False
+143-165. ,False,False,False,False,False,False
+871,False,False,False,False,False,False
+741 ,False,False,False,False,False,False
+180 ,False,False,False,False,False,False
+92.87％ 89.11％ 92.1％ ,False,False,False,False,False,False
+91.73％ 88.12％ 91.0％ ,False,False,False,False,False,False
+90.98％ 84.16％ 89.6％ ,False,False,False,False,False,False
+872,False,False,False,False,False,False

@@ -1,0 +1,182 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+,False,False,False,False,False,False
+__________________________________ ,False,False,False,False,False,False
+Decision Support System for Heart Disease based on Support Vector Machine and ,False,False,False,False,False,False
+Artificial Neural Network ,False,False,False,False,False,False
+"Mrudula Gudadhe, Kapil Wankhade ",False,False,False,False,False,False
+"Snehlata Dongre, Lecturer ",False,False,False,False,False,False
+Abstract—The medical diagnosis process can be interpreted as a ,False,False,False,True,False,False
+"decision making process, during which the physician induces the ",False,False,False,False,False,False
+diagnosis of a new and unknown case from an available set of ,False,False,False,False,False,False
+clinical data and from his/her clinical experience. This process ,False,False,False,False,False,False
+can be computerized in order to present medical diagnostic ,False,False,False,False,False,False
+"procedures in a rational, objective, accurate and fast way. This ",False,False,False,False,False,False
+paper presents a decision support system for heart disease ,False,False,False,False,False,False
+classification based on support vector machine (SVM) and ,False,False,False,False,False,False
+Artificial Neural Network (ANN). A multilayer perceptron ,False,False,False,False,False,False
+neural network (MLPNN) with three layers is employed to ,False,False,False,False,False,False
+develop a decision support system for the diagnosis of heart ,False,False,False,False,False,False
+disease. The multilayer perceptron neural network is trained by ,False,False,False,False,False,False
+back-propagation algorithm which is computationally efficient ,False,False,False,False,False,False
+method. Results obtained show that a MLPNN with back-,False,False,False,False,False,False
+propagation can be successfully used for diagnosing heart disease ,False,False,False,False,False,False
+than support vector machine. ,False,False,False,False,False,False
+"Keywords-back-propagation, clinical decision support system, ",False,False,False,False,False,False
+"heart disease, multilayer perceptron, support  vector machine. ",False,False,False,False,False,False
+NTRODUCTION,True,False,False,True,False,False
+UPPORT ,True,False,False,True,False,False
+ECTOR ,True,False,False,True,False,False
+ACHINE,True,False,False,True,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+"1, ",False,False,False,False,False,False
+1,False,False,False,False,False,False
+"2, ",False,False,False,False,False,False
+2,False,False,False,False,False,False
+"D, ",True,False,False,True,False,False
+D,True,False,False,True,False,False
+i ,False,False,False,False,False,False
+i. ,False,False,False,False,False,False
+i ,False,False,False,False,False,False
+i ,False,False,False,False,False,False
+1,False,False,False,False,False,False
+i ,False,False,False,False,False,False
+2,False,False,False,False,False,False
+i ,False,False,False,False,False,False
+1 ,False,False,False,False,False,False
+2 ,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i ,False,False,False,False,False,False
+i,False,False,False,False,False,False
+ii,False,False,False,False,False,False
+1,False,False,False,False,False,False
+"() sgn y , b",False,False,False,False,False,False
+yx xx+,False,False,False,False,False,False
+=,False,False,False,False,False,False
+ªº,False,False,False,False,False,False
+=α  ,False,False,False,False,False,False
+«»,False,False,False,False,False,False
+¬¼,False,False,False,False,False,False
+Figure 1. Maximum margin and optimal hyperplane ,False,False,False,False,True,False
+1,False,False,False,False,False,False
+"() sgn ,",False,False,False,False,False,False
+yx yK x x b,False,False,False,False,False,False
+=,False,False,False,False,False,False
+ªº,False,False,False,False,False,False
+=α +,False,False,False,False,False,False
+«»,False,False,False,False,False,False
+¬¼,False,False,False,False,False,False
+i,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+i,False,False,False,False,False,False
+T,True,False,False,True,False,False
+j,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+i,False,False,False,False,False,False
+T,True,False,False,True,False,False
+j ,False,False,False,False,False,False
+d,False,False,False,False,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+2,False,False,False,False,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+i,False,False,False,False,False,False
+T,True,False,False,True,False,False
+j,False,False,False,False,False,False
+RTIFICIAL ,True,False,False,True,False,False
+EURAL ,True,False,False,True,False,False
+ETWORK,True,False,False,True,False,False
+Figure 2. Multilayer Perceptron (MLP) ,False,False,False,False,True,False
+Figure 3. Function of one node of MLP ,False,False,False,False,True,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+XPERIMENTS AND ,True,False,False,True,False,False
+ESULTS,True,False,False,True,False,False
+i,False,False,False,False,False,False
+j,False,False,False,False,False,False
+2,False,False,False,False,False,False
+Ȗ,True,False,False,True,False,False
+TABLE I.  D,True,False,False,False,False,True
+ISTRIBUTION OF ,True,False,False,True,False,False
+H,True,False,False,True,False,False
+EART ,True,False,False,True,False,False
+D,True,False,False,True,False,False
+ISEASE ,True,False,False,True,False,False
+R,True,False,False,True,False,False
+ECORDS FOR ,True,False,False,True,False,False
+SVM ,True,False,False,True,False,False
+Figure 4. Comparison of accuracy rate obtained by training set and test set on ,False,False,False,False,True,False
+Real Data ,False,False,False,False,False,False
+TABLE II.  D,True,False,False,False,False,True
+ISTRIBUTION OF ,True,False,False,True,False,False
+H,True,False,False,True,False,False
+EART ,True,False,False,True,False,False
+D,True,False,False,True,False,False
+ISEASE ,True,False,False,True,False,False
+R,True,False,False,True,False,False
+ECORDS FOR ,True,False,False,True,False,False
+ANN ,True,False,False,True,False,False
+,False,False,False,False,False,False
+,False,False,False,False,False,False
+Figure 5. Comparison of accuracy rate obtained by training set and test set on ,False,False,False,False,True,False
+Real Data ,False,False,False,False,False,False
+ONCLUSION,True,False,False,True,False,False
+EFERENCES,True,False,False,True,False,False
+"[1] C. M. Bishop, Neural network for pattern recognition, Oxford University ",False,False,False,False,False,False
+"Press, Oxford, 1995. ",False,False,False,False,False,False
+"[2] B. D. Ripley, Pattern recognition and neural network, Cambridge ",False,False,False,False,False,False
+"University Press, Cambridge, 1996. ",False,False,False,False,False,False
+"[3] N.  Kumaravel, K. S. Sridhar, N. Nithiyanandam, “Automatic diagnoses ",False,False,False,False,False,False
+"of heart diseases using neural network”, Proccedings of the fifteenth ",False,False,False,False,False,False
+"Biomedical Engineering Conference, pp 319-322, 29-31 March,1996. ",False,False,False,False,False,False
+"[4] D. J. Hand, Construction and assessment of classification rules, Wiley, ",False,False,False,False,False,False
+"New York, 1997. ",False,False,False,False,False,False
+"[5] E. B. Reategui, J. A. Campbell, B. F. Leao, ""Combining a neural ",False,False,False,False,False,False
+"network with ease-based reasoning in a diagnostic system"". Artificial ",False,False,False,False,False,False
+"Intelligence in Medicine, 9; 5-27, 1997. ",False,False,False,False,False,False
+"[6] D. Y. Tsai and S. Watanabe, ""Method for optimization of fuzzy ",False,False,False,False,False,False
+reasoning by genetic algorithms and is application to discrimination of ,False,False,False,False,False,False
+"myocardial heart disease"", IEEE Nuclear Science Symposium and ",False,False,False,False,False,False
+"Medico1 Imaging Conference, Pages 1756-1761, Nov. 1998. ",False,False,False,False,False,False
+"[7] J. Yang,  V. Honavar, “Feature Subset Selection using a Genetic ",False,False,False,False,False,False
+"Algorithm”, IEEE Intelligent    Systems, pp 44-49, March-April 1998. ",False,False,False,False,False,False
+"[8] F. Azuaje, W. Dubitzky, P. Lopes, N. Black, K. Adamsom et al., ",False,False,False,False,False,False
+"""Predicting coronary disease risk based on short-term RR interval ",False,False,False,False,False,False
+"measurements: A neural network approach"", Artificial Intelligence ",False,False,False,False,False,False
+"Medicine, IS: 275.197, 1999. ",False,False,False,False,False,False
+"[9] E. J. Tkacz and P. Kostka, ""An application of wavelet neural network for ",False,False,False,False,False,False
+classification patients with coronary artery disease based on HRV ,False,False,False,False,False,False
+"analysis"", Proceedings of Annual Internoliono1 Conference of the IEEE ",False,False,False,False,False,False
+"Engineering in Medicine and Biology. July 2000, pages 1391 - 1393. ",False,False,False,False,False,False
+"[10] W. David and W. Vivian, ""Improving diagnostic accuracy using a ",False,False,False,False,False,False
+"hierarchical neural network to model decision subtasks"", Int. J. Med. ",False,False,False,False,False,False
+"Inform., 57: 41-55, 2000. ",False,False,False,False,False,False
+"[11] Mercedes Fernandez and Carlos Hernandez-Espinosa, Weight ",False,False,False,False,False,False
+"Initialization Methods for Multilayer Feedforward, European ",False,False,False,False,False,False
+"Symposium on Artificial Neural Networks, Bruges (Belgium), 25-27, ",False,False,False,False,False,False
+April 2001. ,False,False,False,False,False,False
+"[12] C. L. Huang, C. J. Wang, “A GA-based feature selection and parameters ",False,False,False,False,False,False
+"optimization for support vector machines”, Expert Systems with ",False,False,False,False,False,False
+"applications, Vol.-31, pp -231-240, 2006. ",False,False,False,False,False,False
+"[13] E. Comak, A. Arslan, T. Ibrahim, “ A decision support system based on ",False,False,False,False,False,False
+"support vector machines for diagnosis of the heart valve diseases”, ",False,False,False,False,False,False
+"Computers in biology and Medicine, pp 21-27, 2007. ",False,False,False,False,False,False
+"[14] H. Temurtas, N. Yumusak and F. Temurtas, A comparative study on ",False,False,False,False,False,False
+"diabetes disease diagnosis using neural networks, Elsevier Ltd, 2008. ",False,False,False,False,False,False
+"[15] H. Yan, J. Zheng, Y. Jiang, C. Peng, C. Xiao, “ Selecting critical clinical ",False,False,False,False,False,False
+features for heart diseases diagnosis with a real-coded genetic ,False,False,False,False,False,False
+"algorithm”, Applied Soft Computing, Vol.-8, pp 1105-1111, 2008. ",False,False,False,False,False,False
+"[16] M. Rouhani and Mehdi motavalli haghighi, The Diagnosis of Hepatitis ",False,False,False,False,False,False
+"diseases by Support Vector Machines and Artificial Neural Networks, ",False,False,False,False,False,False
+"IEEE, 2009. ",True,False,False,True,False,False
+[17] Medline Plus: Heart Diseases. ,False,False,False,False,False,False
+http://www.nlm.nih.gov/medlineplus/heartdiseases.html ,False,False,False,False,False,False
+[18] UCI Machine Learning Repository: Heart Disease Data Set. ,False,False,False,False,False,False
+http://archive.ics.uci.edu/ml/datasets/Heart+Disease,False,False,False,False,False,False

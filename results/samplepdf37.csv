@@ -1,0 +1,404 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+"     M.Neshat.  Department  of  Computer  Engineering,  Faculty University ",False,False,False,False,False,False
+"Islamic Azad of shirvan branch, Iran Phone : + 9805118526851 ",False,False,False,False,False,False
+",Fax:+989157005321,E-mail : neshat_mehdi @ yahoo . com. ",False,False,False,False,False,False
+A.Adeli.S.Department of computer Engineering University Islamic Azad ,False,False,False,False,False,False
+"of shirvan branch, Iran.(student) Phone: +989153846831 ",False,False,False,False,False,False
+",Fax:+985842251884 ,E-mail: adeli_ali405@yahoo.com. ",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ A Fuzzy Expert System for Heart Disease ,False,False,False,False,False,False
+Diagnosis  ,False,False,False,False,False,False
+"Ali.Adeli, Mehdi.Neshat ",False,False,False,False,False,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, ",False,False,False,False,False,False
+"IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ,True,False,False,True,False,False
+ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+IMECS 2010,True,False,False,True,False,False
+IMECS 2010,True,False,False,True,False,False
+" In this section, we show the fuzzy expert system ",False,False,False,False,False,False
+1. Chest pain: This input variable supports 4 chest pain ,False,False,True,True,False,False
+types. We have defined a value in this system for each chest ,False,False,False,False,False,False
+e use these values for system testing. Each ,False,False,False,False,False,False
+               4=asymptomatic ,False,False,False,False,False,False
+2. Blood Pressure: Different values of blood pressure ,False,False,True,True,False,False
+TABLE 1.CLASSIFICATION OF SYSTOLIC BLOOD PRESSURE ,True,False,False,False,False,True
+INPUT FIELD  RANGE  FUZZY SETS ,True,False,False,True,False,False
+Systolic Blood Pressure ,False,False,False,False,False,False
+<134 ,False,False,False,False,False,False
+  127-153 ,False,False,False,False,False,False
+  142-172 ,False,False,False,False,False,False
+154> ,False,False,False,False,False,False
+Low ,False,False,False,False,False,False
+Medium ,False,False,False,False,False,False
+High ,False,False,False,False,False,False
+Very high  ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 1. Membership functions of Systolic Blood Pressure ,False,False,False,False,True,False
+⎭,False,False,False,False,False,False
+⎬,False,False,False,False,False,False
+⎫,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎩,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎨,False,False,False,False,False,False
+⎧,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎭,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎬,False,False,False,False,False,False
+⎫,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎩,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎨,False,False,False,False,False,False
+⎧,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎭,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎬,False,False,False,False,False,False
+⎫,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎩,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎨,False,False,False,False,False,False
+⎧,False,False,False,False,False,False
+⎭,False,False,False,False,False,False
+⎬,False,False,False,False,False,False
+⎫,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎩,False,False,False,False,False,False
+⎪,False,False,False,False,False,False
+⎨,False,False,False,False,False,False
+⎧,False,False,False,False,False,False
+≥,False,False,False,False,False,False
+<≤,False,False,False,False,False,False
+−,False,False,False,False,False,False
+=,False,False,False,False,False,False
+<≤,False,False,False,False,False,False
+=,False,False,False,False,False,False
+<≤,False,False,False,False,False,False
+−,False,False,False,False,False,False
+−,False,False,False,False,False,False
+=,False,False,False,False,False,False
+<≤,False,False,False,False,False,False
+=,False,False,False,False,False,False
+<≤,False,False,False,False,False,False
+−,False,False,False,False,False,False
+−,False,False,False,False,False,False
+=,False,False,False,False,False,False
+<≤,False,False,False,False,False,False
+<,False,False,False,False,False,False
+−,False,False,False,False,False,False
+=,False,False,False,False,False,False
+171,False,False,False,False,False,False
+171154,False,False,False,False,False,False
+1,False,False,False,False,False,False
+17,False,False,False,False,False,False
+154,False,False,False,False,False,False
+)(,False,False,False,False,False,False
+172157,False,False,False,False,False,False
+157,False,False,False,False,False,False
+157142,False,False,False,False,False,False
+15,False,False,False,False,False,False
+172,False,False,False,False,False,False
+1,False,False,False,False,False,False
+15,False,False,False,False,False,False
+142,False,False,False,False,False,False
+)(,False,False,False,False,False,False
+153139,False,False,False,False,False,False
+139,False,False,False,False,False,False
+139127,False,False,False,False,False,False
+14,False,False,False,False,False,False
+153,False,False,False,False,False,False
+1,False,False,False,False,False,False
+12,False,False,False,False,False,False
+127,False,False,False,False,False,False
+)(,False,False,False,False,False,False
+134111,False,False,False,False,False,False
+111,False,False,False,False,False,False
+23,False,False,False,False,False,False
+134,False,False,False,False,False,False
+1,False,False,False,False,False,False
+)(,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+(1) ,False,False,False,False,False,False
+ 3. Cholesterol: Cholesterol has salient affect on the ,False,False,False,False,False,False
+membership function expressions of cholesterol.     ,False,False,False,False,False,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, ",False,False,False,False,False,False
+"IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ,True,False,False,True,False,False
+ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+IMECS 2010,True,False,False,True,False,False
+IMECS 2010,True,False,False,True,False,False
+TABLE 2. CLASSIFICATION OF HDL CHOLESTEROL ,True,False,False,False,False,True
+INPUT FIELD  RANGE  FUZZY SETS ,True,False,False,True,False,False
+Cholesterol ,False,False,False,False,False,False
+<197 ,False,False,False,False,False,False
+  188-250 ,False,False,False,False,False,False
+  217-307 ,False,False,False,False,False,False
+281> ,False,False,False,False,False,False
+Low ,False,False,False,False,False,False
+Medium ,False,False,False,False,False,False
+High ,False,False,False,False,False,False
+Very high  ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 2. Membership functions of Cholesterol ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+(2) ,False,False,False,False,False,False
+4. Blood Sugar (Diabetes): Blood sugar field is one of the ,False,False,True,True,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 3. Membership function of Blood Sugar ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+( 3) ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"5. Resting Electrocardiography (ECG): In this field, we ",False,False,True,True,False,False
+TABLE  3. CLASSIFICATION OF ECG ,True,False,False,False,False,True
+INPUT FIELD  RANGE  FUZZY SETS ,True,False,False,True,False,False
+Resting ,False,False,False,False,False,False
+Electrocardiography ,False,False,False,False,False,False
+(ECG) ,True,False,False,True,False,False
+"(0)   [-0.5, 0.4] ",False,False,False,False,False,False
+"(1)   [2.45, 1.8] ",False,False,False,False,False,False
+"(2) [1.4, 2.5] ",False,False,False,False,False,False
+Normal ,False,False,False,False,False,False
+ST-T abnormal ,False,False,False,False,False,False
+Hypertrophy ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 4. Membership function of ECG ,False,False,False,False,True,False
+6. Maximum Heart Rate: The value of this input field is ,False,False,True,True,False,False
+TABLE 4 .CLASSIFICATION OF MAXIMUM HEART RATE ,True,False,False,False,False,True
+INPUT FIELD  RANGE  FUZZY SETS ,True,False,False,True,False,False
+Maximum Heart Rate ,False,False,False,False,False,False
+<141 ,False,False,False,False,False,False
+111-194 ,False,False,False,False,False,False
+152> ,False,False,False,False,False,False
+Low ,False,False,False,False,False,False
+Medium ,False,False,False,False,False,False
+ High  ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 5. Membership function of Maximum Heart Rate ,False,False,False,False,True,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, ",False,False,False,False,False,False
+"IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ,True,False,False,True,False,False
+ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+IMECS 2010,True,False,False,True,False,False
+IMECS 2010,True,False,False,True,False,False
+ ,False,False,False,False,False,False
+ (4) ,False,False,False,False,False,False
+"   7. Exercise: This input field has just 2 values (0, 1) and one ",False,False,False,False,False,False
+8. Old Peak: This input field means ST depression ,False,False,True,True,False,False
+TABLE 5. CLASSIFICATION OF OLD PEAK ,True,False,False,False,False,True
+INPUT FIELD  RANGE  FUZZY SETS ,True,False,False,True,False,False
+Old Peak ,False,False,False,False,False,False
+<2 ,False,False,False,False,False,False
+1.5-4.2 ,False,False,False,False,False,False
+2.55> ,False,False,False,False,False,False
+Low ,False,False,False,False,False,False
+Risk ,False,False,False,False,False,False
+ Terrible  ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 6. Membership function of Old Peak ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+ (5) ,False,False,False,False,False,False
+ 9. Thallium Scan: This input field consists 3 fuzzy sets: ,False,False,False,False,False,False
+TABLE 6. CLASSIFICATION OF THALLIUM SCAN ,True,False,False,False,False,True
+INPUT FIELD  RANGE  FUZZY SETS ,True,False,False,True,False,False
+Thallium scan ,False,False,False,False,False,False
+3 ,False,False,False,False,False,False
+6 ,False,False,False,False,False,False
+7 ,False,False,False,False,False,False
+Normal ,False,False,False,False,False,False
+Fixed Defect ,False,False,False,False,False,False
+ Reversible Defect ,False,False,False,False,False,False
+" 10. Sex: This input field just has 2 values (0, 1) and sets ",False,False,False,False,False,False
+" 11. Age: This input field divides to 4 fuzzy sets (Young, ",False,False,False,False,False,False
+TABLE 7. CLASSIFICATION OF AGE ,True,False,False,False,False,True
+INPUT FIELD  RANGE  FUZZY SETS ,True,False,False,True,False,False
+Age ,False,False,False,False,False,False
+<38 ,False,False,False,False,False,False
+33-45 ,False,False,False,False,False,False
+40-58 ,False,False,False,False,False,False
+52> ,False,False,False,False,False,False
+Young ,False,False,False,False,False,False
+Mild ,False,False,False,False,False,False
+ Old ,False,False,False,False,False,False
+Very old  ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 7. Membership functions of Age ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ (6) ,False,False,False,False,False,False
+Output Variable:   ,False,False,False,False,False,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, ",False,False,False,False,False,False
+"IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ,True,False,False,True,False,False
+ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+IMECS 2010,True,False,False,True,False,False
+IMECS 2010,True,False,False,True,False,False
+TABLE 8. CLASSIFICATION OF AGE ,True,False,False,False,False,True
+OUTPUT ,True,False,False,True,False,False
+FIELD ,True,False,False,True,False,False
+RANGE  FUZZY SETS ,True,False,False,True,False,False
+Result ,False,False,False,False,False,False
+<1.78 ,False,False,False,False,False,False
+1-2.51 ,False,False,False,False,False,False
+1.78-3.25 ,False,False,False,False,False,False
+1.5-4.5 ,False,False,False,False,False,False
+3.25> ,False,False,False,False,False,False
+Healthy ,False,False,False,False,False,False
+Sick (s1) ,False,False,False,False,False,False
+ Sick (s2) ,False,False,False,False,False,False
+Sick (s3) ,False,False,False,False,False,False
+Sick (s4)  ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 8. Membership functions of Result   ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+…… ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 9. Rule Base of System ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+…… ,False,False,False,False,False,False
+FIG. 10. Surface Viewer of  Blood Pressure and Cholesterol  ,False,False,False,False,True,False
+…… ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 11. Surface Viewer of  Blood Sugar and Cholesterol  ,False,False,False,False,True,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, ",False,False,False,False,False,False
+"IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ,True,False,False,True,False,False
+ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+IMECS 2010,True,False,False,True,False,False
+IMECS 2010,True,False,False,True,False,False
+ ,False,False,False,False,False,False
+…… ,False,False,False,False,False,False
+FIG. 12. Surface Viewer of  Sex and Blood Pressure  ,False,False,False,False,True,False
+TABLE  9. SYSTEM TESTING ,True,False,False,False,False,True
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 13. Result of the Patient in Designed System ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+FIG. 14. Membership functions of test   ,False,False,False,False,True,False
+"[1]  Novruz ALLAHVERDI & Serhat TORUN & Ismail SARITAS, ",False,False,False,False,False,False
+DESIGN  OF  A  FUZZY  EXPERT  SYSTEM  FOR       ,True,False,False,True,False,False
+"DETERMINATION OF CORONARY HEART DISEASE RISK, ",True,False,False,True,False,False
+International Conference on Computer Systems and         Technologies ,False,False,False,False,False,False
+- CompSysTech’07 ,False,False,False,False,False,False
+"[2]  M.Nikravesh & Janusz & Lotfi A.Zadeh, Foring New Frontier: Fuzzy  ",False,False,False,False,False,False
+"Pioneer I, Springer 2007 ",False,False,False,False,False,False
+"[3]  Robert Detrano & M.D & PhD, V.A. Medical Center, Long Each and ",False,False,False,False,False,False
+Cleveland Clinic Foundation. Available:   ,False,False,False,False,False,False
+ www.archive.ics.uci.edu/ml/datasets/Heart+Disease,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"[4] Kemal Polata,∗ & Salih Güne¸sa & Sülayman Tosunb, Diagnosis of ",False,False,False,False,False,False
+heart disease using artificial immune recognition system and fuzzy ,False,False,False,False,False,False
+"weighted pre-processing, ELSEVIER , PATTERN RECOGNATION, ",False,False,False,False,False,False
+2007. ,False,False,True,True,False,False
+"[5]  K. Polat & S.Sahan, H. Kodaz & S. Güne¸s, A new classification ",False,False,False,False,False,False
+method to diagnosis heart disease: supervised artificial immune system ,False,False,False,False,False,False
+"(AIRS), in: Proceedings of the Turkish Symposium on Artificial ",False,False,False,False,False,False
+"Intelligence and Neural Networks (TAINN), 2005. ",False,False,False,False,False,False
+"[6]  S. ¸Sahan & H. Kodaz & S. Güne¸s & K. Polat, A new classifier based ",False,False,False,False,False,False
+"on attribute weighted artificial immune system, Lecture Notes in ",False,False,False,False,False,False
+"Computer Science, vol. 3280, ISSN 0302-9743, 2004, pp. 11–20. ",False,False,False,False,False,False
+"[7]  K. Polat & S. Sahan & S. Güne¸s, A new method to medical diagnosis: ",False,False,False,False,False,False
+artificial immune recognition system (AIRS) with fuzzy weighted ,False,False,False,False,False,False
+"pre-processing and application to ECG arrhythmia, Expert Systems ",False,False,False,False,False,False
+with Applications 31 (2) (2006) 264–269. ,False,False,False,False,False,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+"Proceedings of the International MultiConference of Engineers and Computer Scientists 2010 Vol I, ",False,False,False,False,False,False
+"IMECS 2010, March 17 - 19, 2010, Hong Kong",False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+ISBN: 978-988-17012-8-2    ,True,False,False,True,False,False
+ISSN: 2078-0958 (Print); ISSN: 2078-0966 (Online) ,False,False,False,False,False,False
+IMECS 2010,True,False,False,True,False,False
+IMECS 2010,True,False,False,True,False,False

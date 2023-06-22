@@ -1,0 +1,520 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+DataMining Clustering Techniques in the Prediction of ,False,False,False,False,False,False
+Heart Disease using Attribute Selection Method ,False,False,False,False,False,False
+"Atul Kumar Pandey*, Prabhat Pandey**, K.L. Jaiswal***, Ashish Kumar Sen**** ",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ABSTRACT—Heart  disease  is  the  leading ,False,False,False,False,False,False
+cause of death in the world over the past 10 ,False,False,False,False,False,False
+years.  In  this  paper  proposes  the ,False,False,False,False,False,False
+performance  of  clustering  algorithm  using ,False,False,False,False,False,False
+heart  disease  data.  We  are  evaluating  the ,False,False,False,False,False,False
+"performance of clustering algorithms of EM, ",False,False,False,False,False,False
+"Cobweb, Farthest First, Make Density Based ",False,False,False,False,False,False
+"Clusters,  Simple  K-Means  algorithms.  The ",False,False,False,False,False,False
+performance  of  clusters  will  be  calculated ,False,False,False,False,False,False
+using  the  mode  of  classes  to  clusters ,False,False,False,False,False,False
+evaluation. The  selected  attributes  after  the ,False,False,False,False,False,False
+Common Features Subset Evaluator (CFs) ,False,False,False,False,False,False
+"and Best-First Search (BFs) are cp, restecg, ",False,False,False,False,False,False
+"thalach, exang, oldpeak, ca, thal, and num. ",False,False,False,False,False,False
+"In  the  final  result,  Make  Density  Based ",False,False,False,False,False,False
+Clusters  shows  the  high  performance ,False,False,False,False,False,False
+algorithms  for  heart  disease  data  after ,False,False,False,False,False,False
+applying the Attribute selection Method and ,False,False,False,False,False,False
+their Prediction Accuracy is 85.80%. ,False,False,False,False,False,False
+"KEYWORDS:  -  EM,  Make  Density-Based ",False,False,False,False,False,False
+"Clusters,  Farthest  First,  K-Mean,  and ",False,False,False,False,False,False
+Attribute Selection. ,False,False,False,False,False,False
+ 1. INTRODUCTION  ,True,False,False,True,False,False
+In health care the data mining is ,False,False,False,False,False,False
+more  popular  and  essential  for  all  the ,False,False,False,False,False,False
+healthcare applications [22]. It contains ,False,False,False,False,False,False
+"the many data, but these data have not ",False,False,False,False,False,False
+been  used  for  some  useful  purpose. ,False,False,False,False,False,False
+This  data  will  be  converted  in  to  the ,False,False,False,False,False,False
+some  useful  purpose  by  using  data ,False,False,False,False,False,False
+mining  techniques.  Data  mining  in ,False,False,False,False,False,False
+healthcare  is  an  emerging  field  of  high ,False,False,False,False,False,False
+importance  for  providing  prognosis  and ,False,False,False,False,False,False
+a deeper understanding of medical data. ,False,False,False,False,False,False
+Healthcare  data  mining  attempts  to ,False,False,False,False,False,False
+solve  real world  health  problems  in  the ,False,False,False,False,False,False
+diagnosis and treatment of diseases [1]. ,False,False,False,False,False,False
+Researchers  are  using  data  mining ,False,False,False,False,False,False
+techniques  in  the  medical  diagnosis  of ,False,False,False,False,False,False
+"several  diseases  such  as  diabetes  [2], ",False,False,False,False,False,False
+"stroke [3], cancer [4], and heart disease ",False,False,False,False,False,False
+[5].  ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Mr. Atul Kumar Pandey Assistant Professor of ,False,False,False,False,False,False
+"Computer  Science,  Department  of  Physics,  Govt. ",False,False,False,False,False,False
+"PG  Science  College,  Rewa(M.P.)-India,  Mobile  No-",False,False,False,False,False,False
+"09424944538,  ",False,False,False,False,False,False
+"Dr.  Prabhat  Pandey  OSD,  Additional ",False,False,False,False,False,False
+"Directorate,  Higher  Education,  Division  Rewa ",False,False,False,False,False,False
+"(M.P.)-India, Mobile No-09425183334.,  ",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Heart disease is a general name for a ,False,False,False,False,False,False
+"wide  variety  of  diseases,  disorders  and ",False,False,False,False,False,False
+conditions  that  affect  the  heart  and ,False,False,False,False,False,False
+sometimes  the  blood  vessels  as  well ,False,False,False,False,False,False
+[23].  Heart  disease  is  the  number  one ,False,False,False,False,False,False
+killer of women  and  men. Symptoms of ,False,False,False,False,False,False
+heart  disease  vary  depending  on  the ,False,False,False,False,False,False
+specific  type of  heart  disease.  A  classic ,False,False,False,False,False,False
+symptom of heart disease is chest pain. ,False,False,False,False,False,False
+"However,  with  some  forms  of  heart ",False,False,False,False,False,False
+"disease,  such  as  atherosclerosis,  there ",False,False,False,False,False,False
+may  be  no  symptoms  in  some  people ,False,False,False,False,False,False
+until  life-threatening  complications ,False,False,False,False,False,False
+develop. Any of a number of conditions ,False,False,False,False,False,False
+that  can  be  affects  the  heart.  The  data ,False,False,False,False,False,False
+mining  is  the  process  of  finding  the ,False,False,False,False,False,False
+hidden knowledge from the data base or ,False,False,False,False,False,False
+any  other  information  repositories.  The ,False,False,False,False,False,False
+main  purpose  of  the  health  care ,False,False,False,False,False,False
+industry  is  to  improving  the  quality  of ,False,False,False,False,False,False
+healthcare data by reducing the missing ,False,False,False,False,False,False
+values  and  removing  the  noise  in  the ,False,False,False,False,False,False
+data  base.  Several  data  mining ,False,False,False,False,False,False
+techniques are used in the diagnosis of ,False,False,False,False,False,False
+"heart  disease  such  as  naïve  bayes, ",False,False,False,False,False,False
+"decision  tree,  and  neural  network, ",False,False,False,False,False,False
+"kernel  density,  bagging  algorithm,  k-",False,False,False,False,False,False
+mean  clustering  and  support  vector ,False,False,False,False,False,False
+machine  showing  different  levels  of ,False,False,False,False,False,False
+accuracies [5-11] ,False,False,False,False,False,False
+K-means clustering is one of the ,False,False,False,False,False,False
+most  popular  and well  know  clustering ,False,False,False,False,False,False
+techniques.  Its  simplicity  and  reliable ,False,False,False,False,False,False
+behavior  made  it  popular  in  many ,False,False,False,False,False,False
+"applications  [12,  18].  Several ",False,False,False,False,False,False
+"researchers  have  identified  that  age, ",False,False,False,False,False,False
+blood  pressure  and  cholesterol  are ,False,False,False,False,False,False
+critical  risk  factors  associated  with ,False,False,False,False,False,False
+"heart disease [14, 16-17]. ",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Dr.  K.L.  Jaiswal  Assistant  Professor  and  In ,False,False,False,False,False,False
+"charge  of  BCA,  DCA  &  PGDCA,  Department  of ",False,False,False,False,False,False
+"Physics,  Govt.  PG  Science  College,  Rewa(M.P.)-",False,False,False,False,False,False
+"India-486001, Mobile No-09424746167.,  ",False,False,False,False,False,False
+"Mr.  Ashish  Kumar  Sen  Assistant  Professor, ",False,False,False,False,False,False
+Department  of  Mathematics  and  Computer ,False,False,False,False,False,False
+"Science,  Govt.  PG  Science  College,  Rewa(M.P.)-",False,False,False,False,False,False
+"India, Mobile No-09893658054,  ",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+In identifying the attributes that will be ,False,False,False,False,False,False
+"used  in  the  clustering,  these  attributes ",False,False,False,False,False,False
+are  obvious  clustering  attributes  for ,False,False,False,False,False,False
+heart disease patients. ,False,False,False,False,False,False
+2. BACKGROUND  ,True,False,True,True,False,False
+Researchers  have  been ,False,False,False,False,False,False
+investigating  the  use  of  statistical ,False,False,False,False,False,False
+analysis and data mining techniques to ,False,False,False,False,False,False
+help  healthcare  professionals  in  the ,False,False,False,False,False,False
+diagnosis  of  heart  disease.  Statistical ,False,False,False,False,False,False
+analysis  has  identified  the  risk  factors ,False,False,False,False,False,False
+"associated with heart disease to be age, ",False,False,False,False,False,False
+"blood  pressure,  smoking  [13], ",False,False,False,False,False,False
+"cholesterol  [15],  diabetes  [16],  and ",False,False,False,False,False,False
+"hypertension,  family  history  of  heart ",False,False,False,False,False,False
+"disease  [17],  obesity,  and  lack  of ",False,False,False,False,False,False
+physical  activity  [18].  Knowledge  of  the ,False,False,False,False,False,False
+risk  factors  associated  with  heart ,False,False,False,False,False,False
+disease  helps  health  care  professionals ,False,False,False,False,False,False
+to  identify  patients  at  high  risk  of ,False,False,False,False,False,False
+having heart disease.  ,False,False,False,False,False,False
+The  Clustering  is  the  process  of ,False,False,False,False,False,False
+grouping  the  similar  data  items  [20].  It ,False,False,False,False,False,False
+is  the  unsupervised  learning ,False,False,False,False,False,False
+"techniques, in which the class label will ",False,False,False,False,False,False
+not  be  provided.  The  Clustering ,False,False,False,False,False,False
+"methods  are  Partitioned  clustering, ",False,False,False,False,False,False
+"Hierarchical  methods,  Density  based ",False,False,False,False,False,False
+"clustering,  Sub  Space  Clustering. ",False,False,False,False,False,False
+Hierarchical  algorithms  find  successive ,False,False,False,False,False,False
+clusters  using  previously  established ,False,False,False,False,False,False
+clusters.  These  algorithms  usually  are ,False,False,False,False,False,False
+either  agglomerative  (“bottom-up”)  or ,False,False,False,False,False,False
+divisive  (“top-down”).  Agglomerative ,False,False,False,False,False,False
+algorithms begin with each element as a ,False,False,False,False,False,False
+separate  cluster  and  merge  them  into ,False,False,False,False,False,False
+successively  larger  clusters.  Divisive ,False,False,False,False,False,False
+algorithms begin with the whole set and ,False,False,False,False,False,False
+proceed  to  divide  it  into  successively ,False,False,False,False,False,False
+smaller  clusters.  Partitioned  algorithms ,False,False,False,False,False,False
+"typically  determine  all clusters  at once, ",False,False,False,False,False,False
+but  can  also  be  used  as  divisive ,False,False,False,False,False,False
+algorithms in the hierarchical clustering ,False,False,False,False,False,False
+[21]. D e n s i t y - b a s e d clustering ,False,False,False,False,False,False
+algorithms  are  devised  to  discover ,False,False,False,False,False,False
+arbitrary-shaped  clusters.  In  this ,False,False,False,False,False,False
+"approach,  a  cluster  is  regarded  as  a ",False,False,False,False,False,False
+region  in  which  the  density  of  data ,False,False,False,False,False,False
+objects  exceeds  a  threshold.  DBSCAN ,False,False,False,False,False,False
+and  OPTICS  are  two  typical  algorithms ,False,False,False,False,False,False
+of  this  kind.  Subspace  clustering ,False,False,False,False,False,False
+methods look for clusters that can only ,False,False,False,False,False,False
+be  seen  in  a  particular  projection ,False,False,False,False,False,False
+"(subspace,  manifold)  of  the  data.  These ",False,False,False,False,False,False
+methods  thus  can  ignore  irrelevant ,False,False,False,False,False,False
+attributes.  The  general  problem  is  also ,False,False,False,False,False,False
+known  as  Correlation  clustering  while ,False,False,False,False,False,False
+the  special  case  of  axis-parallel ,False,False,False,False,False,False
+subspaces  is  also  known  as  Two-way ,False,False,False,False,False,False
+"clustering,  co-clustering  or  bi ",False,False,False,False,False,False
+clustering:  in  these  methods  not  only ,False,False,False,False,False,False
+the  objects  are  clustered  but  also  the ,False,False,False,False,False,False
+"features of the objects, i.e., if the data is ",False,False,False,False,False,False
+"represented  in  a  data  matrix,  the  rows ",False,False,False,False,False,False
+and  columns  are  clustered ,False,False,False,False,False,False
+simultaneously  [19].  They  usually  do ,False,False,False,False,False,False
+not however work with arbitrary feature ,False,False,False,False,False,False
+combinations  as  in  general  subspace ,False,False,False,False,False,False
+methods. But this special case deserves ,False,False,False,False,False,False
+attention  due  to  its  applications  in ,False,False,False,False,False,False
+bioinformatics. Conceptual clustering is ,False,False,False,False,False,False
+a  machine  learning  paradigm  for ,False,False,False,False,False,False
+unsupervised  classification  developed ,False,False,False,False,False,False
+mainly  during  the  1980s.  It  is ,False,False,False,False,False,False
+distinguished  from  ordinary  data ,False,False,False,False,False,False
+clustering  by  generating  a  concept ,False,False,False,False,False,False
+description  for  each  generated  class ,False,False,False,False,False,False
+[21].  Most  conceptual  clustering ,False,False,False,False,False,False
+methods  are  capable  of  generating ,False,False,False,False,False,False
+hierarchical  category  structures;  see ,False,False,False,False,False,False
+Categorization  for  more  information  on ,False,False,False,False,False,False
+hierarchy.  Conceptual  clustering  is ,False,False,False,False,False,False
+closely  related  to  formal  concept ,False,False,False,False,False,False
+"analysis,  decision  tree  learning,  and ",False,False,False,False,False,False
+mixture model learning.  ,False,False,False,False,False,False
+ 3. METHODOLOGY  ,True,False,False,True,False,False
+ I. HEART DISEASE DATASET  ,True,False,False,True,False,False
+The  data  used  in  this  study  is ,False,False,False,False,False,False
+the  Cleveland  Clinic  Foundation  Heart ,False,False,False,False,False,False
+disease  data  set  available  at ,False,False,False,False,False,False
+http://archive.ics.uci.edu/ml/datasets,False,False,False,False,False,False
+/Heart+Disease.  The  data  set  has  76 ,False,False,False,False,False,False
+"raw  attributes.  However,  all  of  the ",False,False,False,False,False,False
+published  experiments  only  refer  to  13 ,False,False,False,False,False,False
+of them. The data set contains 303 rows ,False,False,False,False,False,False
+of  which  297  are  complete.  Six  rows ,False,False,False,False,False,False
+contain  missing  values  and  they  are ,False,False,False,False,False,False
+removed from the experiment ,False,False,False,False,False,False
+II. PROPOSED FRAMEWORK ,True,True,False,True,False,False
+The  Proposed  Framework  has ,False,False,False,False,False,False
+two major categories Attribute Selection ,False,False,False,False,False,False
+method  and  Clustering  Algorithm.  In ,False,False,False,False,False,False
+Attribute  Selection  Method  they  have ,False,False,False,False,False,False
+two  stages  first  is  Common  Features ,False,False,False,False,False,False
+Subset evaluator  (CFs)  and  second  one ,False,False,False,False,False,False
+is  Best-First  Search  Method.  We  have ,False,False,False,False,False,False
+applied  five  clustering  algorithms  and ,False,False,False,False,False,False
+classified  the  heart  patients  in  Classes ,False,False,False,False,False,False
+to Clusters Evaluation Mode against the ,False,False,False,False,False,False
+last attribute nom. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Fig 1: Proposed Framework ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+III.  ATTRIBUTE  SUBSET  SELECTION ,True,True,False,True,False,False
+METHOD ,True,False,False,True,False,False
+In  weka  the  preprocessing ,False,False,False,False,False,False
+contains  two  filters  of  supervised  and ,False,False,False,False,False,False
+unsupervised  filters.  The  attribute ,False,False,False,False,False,False
+selection is one of the supervised filters. ,False,False,False,False,False,False
+A supervised attribute filter that can be ,False,False,False,False,False,False
+used  to  select attributes  [24].  It  is  very ,False,False,False,False,False,False
+flexible  and  allows  various  search  and ,False,False,False,False,False,False
+evaluation  methods  to  be  combined.  In ,False,False,False,False,False,False
+this filter uses the CfsSubsetEval for the ,False,False,False,False,False,False
+evation  and  the  best  first  for  the ,False,False,False,False,False,False
+searching.  ,False,False,False,False,False,False
+Options:-evaluator  --  Determines  how ,False,False,False,False,False,False
+attributes/attribute  subsets  are ,False,False,False,False,False,False
+evaluated  search  --  Determines  the ,False,False,False,False,False,False
+search method. ,False,False,False,False,False,False
+[1]   CfsSubsetEval ,False,False,False,False,False,False
+Evaluates  the  worth  of  a  subset  of ,False,False,False,False,False,False
+attributes by considering the individual ,False,False,False,False,False,False
+predictive  ability  of  each  feature  along ,False,False,False,False,False,False
+with  the  degree of  redundancy  between ,False,False,False,False,False,False
+them.  Subsets  of  features  that  are ,False,False,False,False,False,False
+highly  correlated  with  the  class  while ,False,False,False,False,False,False
+having  low  Inter-co-relation  are ,False,False,False,False,False,False
+preferred. ,False,False,False,False,False,False
+Options:-locallyPredictive  --  Identify ,False,False,False,False,False,False
+locally  predictive  attributes.  Iteratively ,False,False,False,False,False,False
+adds  attributes  with  the  highest ,False,False,False,False,False,False
+correlation  with  the  class  as  long  as ,False,False,False,False,False,False
+there  is  not  already  an  attribute in  the ,False,False,False,False,False,False
+subset  that  has  a  higher  correlation ,False,False,False,False,False,False
+with  the  attribute  in  question ,False,False,False,False,False,False
+missingSeparate  --Treat  missing  as  a ,False,False,False,False,False,False
+"separate  value.  Otherwise,  counts  for ",False,False,False,False,False,False
+missing  values  are  distributed  across ,False,False,False,False,False,False
+other  values  in  proportion  to  their ,False,False,False,False,False,False
+frequency. ,False,False,False,False,False,False
+[2]  Best First ,False,False,False,False,False,False
+Searches  the  space  of  attribute ,False,False,False,False,False,False
+subsets  by  greedy  hill  climbing ,False,False,False,False,False,False
+augmented with a backtracking facility. ,False,False,False,False,False,False
+Setting the number of consecutive non-,False,False,False,False,False,False
+improving  nodes  allowed  controls  the ,False,False,False,False,False,False
+level  of  backtracking  done.  Best  first ,False,False,False,False,False,False
+may  start  with  the  empty  set  of ,False,False,False,False,False,False
+"attributes  and  search  forward,  or  start ",False,False,False,False,False,False
+with the full set of attributes and search ,False,False,False,False,False,False
+"backward,  or  start  at  any  point  and ",False,False,False,False,False,False
+search  in  both  directions  (by ,False,False,False,False,False,False
+considering  all  possible  single  attribute ,False,False,False,False,False,False
+additions  and  deletions  at  a  given ,False,False,False,False,False,False
+point). ,False,False,False,False,False,False
+Options:-direction  --  Set  the  direction ,False,False,False,False,False,False
+of  the  search.  lookupCacheSize  --Set ,False,False,False,False,False,False
+the  maximum  size  of  the  lookup  cache ,False,False,False,False,False,False
+of  evaluated  subsets.This  is  expressed ,False,False,False,False,False,False
+as  a  multiplier  of  the  number  of ,False,False,False,False,False,False
+attributes  inthe  data  set.  (default  = ,False,False,False,False,False,False
+1).searchTermination  --  Set  the ,False,False,False,False,False,False
+amount  of  backtracking.  Specify  the ,False,False,False,False,False,False
+number of startSet -- Set the startpoint ,False,False,False,False,False,False
+for  the  search.  This  is  specified  as  a ,False,False,False,False,False,False
+comma  seperated  listoff  attribute ,False,False,False,False,False,False
+indexes starting at 1. ,False,False,False,False,False,False
+4. PERFORMANCE EVALUATION ,True,False,True,True,False,False
+  The  table  1  shows  the ,False,False,False,False,False,True
+performance  of  clustering  algorithms ,False,False,False,False,False,False
+Medical Dataset ,False,False,False,False,False,False
+Medical Dataset ,False,False,False,False,False,False
+Select the Frequent Patterns ,False,False,False,False,False,False
+Select the Frequent Patterns ,False,False,False,False,False,False
+ Classes to Clusters ,False,False,False,False,False,False
+Evaluation Clustering Mode ,False,False,False,False,False,False
+Display the Correctly Classified Heart Patients ,False,False,False,False,False,False
+Display the Correctly ,False,False,False,False,False,False
+Classified Heart ,False,False,False,False,False,False
+Patients ,False,False,False,False,False,False
+Attribute Selection Method (CFs+BFs) ,False,False,False,False,False,False
+Attribute Selection Method ,False,False,False,False,False,False
+(CFs+BFs) ,False,False,False,False,False,False
+using heart disease data. The attributes ,False,False,False,False,False,False
+will  be  evaluated  based  on  the ,False,False,False,False,False,False
+prediction accuracy of the algorithms.  ,False,False,False,False,False,False
+TABLE 1: PREDICTION ACCURACY OF CLUSTERS BEFORE FEATURES SELECTION METHOD ,True,False,False,False,False,True
+Clusters Algorithms ,False,False,False,False,False,False
+Clusters Algorithms ,False,False,False,False,False,False
+Correctly Classified Instance ,False,False,False,False,False,False
+Correctly Classified ,False,False,False,False,False,False
+Instance ,False,False,False,False,False,False
+In correctly Classified Instance ,False,False,False,False,False,False
+In correctly ,False,False,False,False,False,False
+Classified Instance ,False,False,False,False,False,False
+Prediction Accuracy % ,False,False,False,False,False,False
+Prediction ,False,False,False,False,False,False
+Accuracy % ,False,False,False,False,False,False
+COBWEB ,True,False,False,True,False,False
+297 ,False,False,False,False,False,False
+1.9802% ,False,False,False,False,False,False
+EM ,True,False,False,True,False,False
+56 ,False,False,False,False,False,False
+81.5182 ,False,False,False,False,False,False
+Farthest First ,False,False,False,False,False,False
+80 ,False,False,False,False,False,False
+73.5974 ,False,False,False,False,False,False
+Make Density Based Clusters ,False,False,False,False,False,False
+56 ,False,False,False,False,False,False
+81.5182 ,False,False,False,False,False,False
+Simple K-Means ,False,False,False,False,False,False
+58 ,False,False,False,False,False,False
+80.8581 ,False,False,False,False,False,False
+The  following  evaluation  graph ,False,False,False,False,False,False
+shows the performance of the clustering ,False,False,False,False,False,False
+"algorithms in fig 2. In data mining, the ",False,False,False,False,True,False
+clustering  algorithms  EM  and  Make ,False,False,False,False,False,False
+Density  Based  Clusters  having  the ,False,False,False,False,False,False
+highest  prediction  accuracy  comparing ,False,False,False,False,False,False
+to  the  remaining  clustering  algorithms ,False,False,False,False,False,False
+and their accuracy are similar. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+   Fig 2:- Evaluation Graph without Attributes Selection Method ,False,False,False,False,True,False
+TABLE 2: PREDICTION ACCURACY OF CLUSTERS AFTER FEARURE SELECTION METHOD ,True,False,False,False,False,True
+Clusters Algorithms ,False,False,False,False,False,False
+Correctly ,False,False,False,False,False,False
+Classified ,False,False,False,False,False,False
+Instance ,False,False,False,False,False,False
+In correctly ,False,False,False,False,False,False
+Classified ,False,False,False,False,False,False
+Instance ,False,False,False,False,False,False
+Prediction ,False,False,False,False,False,False
+Accuracy % ,False,False,False,False,False,False
+COBWEB ,True,False,False,True,False,False
+10 ,False,False,False,False,False,False
+293 ,False,False,False,False,False,False
+3.3003 ,False,False,False,False,False,False
+EM ,True,False,False,True,False,False
+250 ,False,False,False,False,False,False
+60 ,False,False,False,False,False,False
+80.198 ,False,False,False,False,False,False
+Farthest First ,False,False,False,False,False,False
+226 ,False,False,False,False,False,False
+67 ,False,False,False,False,False,False
+77.8878 ,False,False,False,False,False,False
+Make Density Based Clusters ,False,False,False,False,False,False
+250 ,False,False,False,False,False,False
+43 ,False,False,False,False,False,False
+85.8086 ,False,False,False,False,False,False
+Simple K-Means ,False,False,False,False,False,False
+248 ,False,False,False,False,False,False
+60 ,False,False,False,False,False,False
+80.198 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Fig 3: Evaluation Graph after Feature Selection Method ,False,False,False,False,True,False
+"The  clustering  algorithm,  Make ",False,False,False,False,False,False
+Density  Based  Clusters  having  the ,False,False,False,False,False,False
+highest  prediction  accuracy compare  to ,False,False,False,False,False,False
+other  clustering  algorithms  after ,False,False,False,False,False,False
+applying  the  attribute  selection  method ,False,False,False,False,False,False
+in table 2. In attribute selection method ,False,False,False,False,False,True
+CFs  Subset  Evaluator  and  BestFirst ,False,False,False,False,False,False
+search method results the selected eight ,False,False,False,False,False,False
+attributes  which  gives  better  results ,False,False,False,False,False,False
+than  the  previous  one.  These  selected ,False,False,False,False,False,False
+"attributes  are  cp,  restecg,  thalach, ",False,False,False,False,False,False
+"exang,  oldpeak,  ca,  thal,  num.  Make ",False,False,False,False,False,False
+Density  Based  Clusters  algorithm ,False,False,False,False,False,False
+having  the  highest  prediction  accuracy ,False,False,False,False,False,False
+of 85.80%. The evaluation graph shows ,False,False,False,False,False,False
+the  performance  of  the  clustering ,False,False,False,False,False,False
+algorithms in fig 3. ,False,False,False,False,True,False
+"In  Figure  4,  shows  the  result  of ",False,False,False,False,True,False
+Make  Density  Based  Clusters  Algorithm  on ,False,False,False,False,False,False
+Weka Clusterer Visualize. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Fig 4: Weka Clusterer Visualize of Make Density Based Cluster Algorithm ,False,False,False,False,True,False
+5. SUMMARY ,True,False,True,True,False,False
+Heart  disease  is  the  leading ,False,False,False,False,False,False
+cause of death all over the world in the ,False,False,False,False,False,False
+past ten years. Motivated by the world-,False,False,False,False,False,False
+wide  increasing  mortality  of  heart ,False,False,False,False,False,False
+disease  patients  each  year  and  the ,False,False,False,False,False,False
+availability  of  huge  amount  of  patients’ ,False,False,False,False,False,False
+data  that  could  be  used  to  extract ,False,False,False,False,False,False
+"useful  knowledge,  researchers  have ",False,False,False,False,False,False
+been  using  data  mining  techniques  to ,False,False,False,False,False,False
+help  health  care  professionals  in  the ,False,False,False,False,False,False
+diagnosis of heart disease. In this paper ,False,False,False,False,False,False
+we have applied the  different clustering ,False,False,False,False,False,False
+algorithms  on  Heart  disease  dataset. ,False,False,False,False,False,False
+The  results  shows  that  EM  and  Make ,False,False,False,False,False,False
+Density  Based  Clusters  having  the ,False,False,False,False,False,False
+highest  prediction  accuracy  comparing ,False,False,False,False,False,False
+to  the  remaining  clustering  algorithms ,False,False,False,False,False,False
+and  their  accuracy  are  similar  to  each ,False,False,False,False,False,False
+other  without  applying  the  attribute ,False,False,False,False,False,False
+selection  method.  After  applying  the ,False,False,False,False,False,False
+attributes selection method  CFs  Subset ,False,False,False,False,False,False
+evaluator  and BestFirst  Search  method ,False,False,False,False,False,False
+results  the  selected  eight  attributes. ,False,False,False,False,False,False
+"These  selected  eight  attributes  are  cp, ",False,False,False,False,False,False
+"restecg,  thalach,  exang,  oldpeak,  ca, ",False,False,False,False,False,False
+"thal, and num. The clustering algorithm ",False,False,False,False,False,False
+Make  Density  Based  Clusters  having ,False,False,False,False,False,False
+the  85.80%  of  highest  Prediction ,False,False,False,False,False,False
+Accuracy  after  applying  the  attributes ,False,False,False,False,False,False
+selection method on a Cleveland dataset ,False,False,False,False,False,False
+to  investigate  its  efficiency  in  the ,False,False,False,False,False,False
+diagnosis  of  heart  disease.  We  also ,False,False,False,False,False,False
+investigated  if  integrating  Attribute ,False,False,False,False,False,False
+Selection  with  Make  Density  Based ,False,False,False,False,False,False
+Clusters  could  enhance  its  accuracy ,False,False,False,False,False,False
+even further.  ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+REFERENCES  ,True,False,False,True,False,False
+medical  data  categorization  for  data ,False,False,False,False,False,False
+mining  classification  techniques.  MED. ,False,False,False,False,False,False
+"INFORM., 2002. Vol. 27, no. 1, 59–67,  ",False,False,False,False,False,False
+Diabetic  Patients:  A  Data  Mining ,False,False,False,False,False,False
+Approach.  Americas  Conference  on ,False,False,False,False,False,False
+"Information Systems, 2009. ",False,False,False,False,False,False
+techniques  for  analyzing  stroke  care ,False,False,False,False,False,False
+processes.  Proceedings  of  the  13th ,False,False,False,False,False,False
+"World  Congress  on Medical  Informatics, ",False,False,False,False,False,False
+2010.  ,False,False,True,True,False,False
+"J,  Tockman  M,  Clark  RA,  Data  mining ",False,False,False,False,False,False
+techniques  for  cancer  detection  using ,False,False,False,False,False,False
+serum  proteomic  profiling.  Artificial ,False,False,False,False,False,False
+"Intelligence in Medicine, Elsevier, 2004.  ",False,False,False,False,False,False
+Effective  diagnosis  of  heart  disease ,False,False,False,False,False,False
+through  neural  networks  ensembles. ,False,False,False,False,False,False
+"Expert  Systems  with  Applications, ",False,False,False,False,False,False
+"Elsevier, 2009. 36 (2009): p. 7675–7680.  ",False,False,False,False,False,False
+Specific  Rule  Generation  via  Data ,False,False,False,False,False,False
+Mining  Techniques.  International ,False,False,False,False,False,False
+Conference  on  Computer  Systems  and ,False,False,False,False,False,False
+"Technologies - CompSysTech, 2006.  ",False,False,False,False,False,False
+by  Soft  Computing  Methods  for  The ,False,False,False,False,False,False
+Coronary  Heart  Disease  Database. ,False,False,False,False,False,False
+Fourth  International  Workshop  on ,False,False,False,False,False,False
+Computational  Intelligence  & ,False,False,False,False,False,False
+"Applications, IEEE, 2008.  ",False,False,False,False,False,False
+Of  Heart  Disease  Using  Datamining ,False,False,False,False,False,False
+Algorithm.  Global  Journal  of  Computer ,False,False,False,False,False,False
+"Science  and  Technology,  2010.  Vol.  10 ",False,False,False,False,False,False
+(Issue 10).  ,False,False,False,False,False,False
+learning  algorithms  in  cardiovascular ,False,False,False,False,False,False
+disease  risk  evaluation.  Journal  of ,False,False,False,False,False,False
+Applied  Computer  Science  & ,False,False,False,False,False,False
+"Mathematics, 2009. ",False,False,False,False,False,False
+"Govrdhan,  Applications  of  Data  Mining ",False,False,False,False,False,False
+Techniques in Healthcare and Prediction ,False,False,False,False,False,False
+of  Heart  Attacks.  International  Journal ,False,False,False,False,False,False
+on  Computer  Science  and  Engineering ,False,False,False,False,False,False
+"(IJCSE),  2010.  Vol.  02,  No.  02:  p. 250-",False,False,False,False,False,False
+255.  ,False,False,True,True,False,False
+decision  support  system  for  heart ,False,False,False,False,False,False
+disease  diagnosis  using  multilayer ,False,False,False,False,False,False
+perceptron.  Proceedings  of  the  2003 ,False,False,False,False,False,False
+"International  Symposium  on,  2003. ",False,False,False,False,False,False
+vol.5: p. pp. V-709- V-712.  ,False,False,False,False,False,False
+"mining analysis. Knowl. Inf. Syst., 2007.  ",False,False,False,False,False,False
+predict coronary heart disease? Findings ,False,False,False,False,False,False
+in  the  United  Kingdom  Heart  Disease ,False,False,False,False,False,False
+Prevention  Project.  BRITISH  MEDICAL ,False,False,False,False,False,False
+"JOURNAL, 1984.  ",True,False,False,True,False,False
+Coronary  Heart  Disease  Using  Risk ,False,False,False,False,False,False
+Factor  Categories.  American  Heart ,False,False,False,False,False,False
+"Association Journal, 1998.  ",False,False,False,False,False,False
+prediction  of  cardiovascular  disease  in ,False,False,False,False,False,False
+elderly  Australians:  the  Dubbo  Study. ,False,False,False,False,False,False
+"Medical Journal of Australia, 2003. 178. ",False,False,False,False,False,False
+Analysis  of  Risk  Factors  for ,False,False,False,False,False,False
+Cardiovascular  disease  in  Malakand ,False,False,False,False,False,False
+"Division.  Pak.  j.  stat.  oper.  res.,  2006. ",False,False,False,False,False,False
+Vol.II: p. pp49-56.  ,False,False,False,False,False,False
+Disease  Risk  Factors  among  Adult ,False,False,False,False,False,False
+Australian-Lebanese  in  Melbourne. ,False,False,False,False,False,False
+International  Journal  of  Research  in ,False,False,False,False,False,False
+"Nursing, 2010. 6 (1).  ",False,False,False,False,False,False
+2007: Springer.  ,False,False,False,False,False,False
+Discovery  from  Database  using  an ,False,False,False,False,False,False
+Integration  of  clustering  and ,False,False,False,False,False,False
+"Classification”,  IJACSA,  vol  2  No.3,PP. ",False,False,False,False,False,False
+"29-33,March 2011. ",False,False,False,False,False,False
+"Alam,  “Data  Clustering  Method  for ",False,False,False,False,False,False
+Discovering  Clusters  in  Spatial  Cancer ,False,False,False,False,False,False
+"Databases”,  International  Journal  of ",False,False,False,False,False,False
+Computer  Applications  (0975  –  8887) ,False,False,False,False,False,False
+"Volume 10– No.6, November 2010. ",False,False,False,False,False,False
+Practical  Machine  Learning  Tools  and ,False,False,False,False,False,False
+"Techniques"",  2nd  edn.  Morgan ",False,False,False,False,False,False
+"Kaufmann, San Francisco (2005). ",False,False,False,False,False,False
+Classification  of  Heart  beats  using ,False,False,False,False,False,False
+Neural  Network  Classifier  based  on  a ,False,False,False,False,False,False
+"Bayesian  Frame  Work”,  IEEE,  Vol ",False,False,False,False,False,False
+"1,2006. ",False,False,False,False,False,False
+Attribute  Value  Prediction  Based  on ,False,False,False,False,False,False
+Artificial Neural Network and Rough Set ,False,False,False,False,False,False
+"Theory”, IEEE, Vol 1, pp.306-310,2008 ",False,False,False,False,False,False
+"Software,  [Online]Available  : ",False,False,False,False,False,False
+http://www.cs.waikato.ac.nz/ml/. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False

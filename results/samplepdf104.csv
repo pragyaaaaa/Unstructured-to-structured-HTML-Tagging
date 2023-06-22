@@ -1,0 +1,648 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+"By James R. Matey, Senior Member IEEE, Oleg Naroditsky, Keith Hanna, Ray Kolczynski,",False,False,False,False,False,False
+"Dominick J. LoIacono, Shakuntala Mangru, Michael Tinker,",False,False,False,False,False,False
+"Senior Member IEEE,",False,False,False,False,False,False
+"Thomas M. Zappia, and Wenyi Y. Zhao,",False,False,False,False,False,False
+Senior Member IEEE,False,False,False,False,False,False
+ABSTRACT,True,False,False,True,False,False
+|,False,False,False,False,False,False
+Iris recognition is one of the most powerful,False,False,False,False,False,False
+techniques for biometric identification ever developed. Com-,False,False,False,False,False,False
+mercial systems based on the algorithms developed by John,False,False,False,False,False,False
+Daugman have been available since 1995 and have been used,False,False,False,False,False,False
+"in a variety of practical applications. However, all currently",False,False,False,False,False,False
+available systems impose substantial constraints on subject,False,False,False,False,False,False
+position and motion during the recognition process. These,False,False,False,False,False,False
+"constraints are largely driven by the image acquisition process,",False,False,False,False,False,False
+rather than the particular pattern-matching algorithm used for,False,False,False,False,False,False
+the recognition process. In this paper we present results of our,False,False,False,False,False,False
+efforts to substantially reduce constraints on position and,False,False,False,False,False,False
+motion by means of a new image acquisition system based on,False,False,False,False,False,False
+"high-resolution cameras, video synchronized strobed illumi-",False,False,False,False,False,False
+"nation, and specularity based image segmentation. We discuss",False,False,False,False,False,False
+the design tradeoffs we made in developing the system and the,False,False,False,False,False,False
+performance we have been able to achieve when the image,False,False,False,False,False,False
+acquisition system is combined with a standard iris recognition,False,False,False,False,False,False
+algorithm. The Iris on the Move (IOM) s ystem is the first system,False,False,False,False,False,False
+to enable capture of iris images of sufficient quality for iris,False,False,False,False,False,False
+recognition while the subject is moving at a normal walking,False,False,False,False,False,False
+pace through a minimally confining portal.,False,False,False,False,False,False
+KEYWORDS,True,False,False,True,False,False
+|,False,False,False,False,False,False
+Biometric identification; eye safety; image acqui-,False,False,False,False,False,False
+sition; image processing; iris recognition; strobe illumination,False,False,False,False,False,False
+I. INTRODUCTION,True,True,False,True,False,False
+A. Overview of Iris Recognition,False,False,False,True,False,False
+1) How it Works: All commercial iris recognition,False,False,False,False,False,False
+systems work on the basic principles described in the,False,False,False,False,False,False
+patents of Flom and Safir [1] and Daugman [2]. These,False,False,False,False,False,False
+principles are summarized in Fig. 1. The subject iris is,False,False,False,False,False,False
+illuminated with light from controlled and ambient light,False,False,False,False,False,False
+sources. The camera and the controlled illumination are at,False,False,False,False,False,False
+some defined standoff distance from the subject. The,False,False,False,False,False,False
+camera and lens (possibly filtered) acquire an image that is,False,False,False,False,False,False
+then captured by a computer. The iris image is then,False,False,False,False,False,False
+"segmented, normalized, and an iris template (commonly",False,False,False,False,False,False
+called an iris code) is generated. The template is then,False,False,False,False,False,False
+matched against an existing database of previously enrolled,False,False,False,False,False,False
+irises; a match against the database indicates that the,False,False,False,False,False,False
+current iris is the same iris that was used to create the,False,False,False,False,False,False
+template that is in the database.,False,False,False,False,False,False
+Segmentation identifies the centers and radii of the,False,False,False,False,False,False
+pupil and iris and normalization remaps the iris region,False,False,False,False,False,False
+between the pupil and the sclera (the white of the eye),False,False,False,False,False,False
+using a Cartesian to polar transform. See Fig. 2 for an,False,False,False,False,False,False
+example.,False,False,False,False,False,False
+"The process described above, or an equivalent, is",False,False,False,False,False,False
+common to many if not most of the iris recognition,False,False,False,False,False,False
+algorithms that have been proposed to date. The differ-,False,False,False,False,False,False
+"ences between them lie in the details of the segmentation,",False,False,False,False,False,False
+"template generation, and template matching algorithms.",False,False,False,False,False,False
+"J. R. Matey, O. Naroditsky, R. Kolczynski, D. J. LoIacono, S. Mangru, M. Tinker,",False,False,False,False,False,False
+"T. M. Zappia, and W. Y. Zhao are with the Sarnoff Corporation, Princeton,",False,False,False,False,False,False
+"K. Hanna is with the Hoyos Group, New York, NY 10022 USA",False,False,False,False,False,False
+Digital Object Identifier: 10.1109/JPROC.2006.884091,False,False,False,False,False,False
+"1936 Proceedings of the IEEE |Vol.94,No.11,November2006 0018-9219/$20.00",False,False,False,False,False,False
+Ó,True,False,False,True,False,False
+In this work we use an Iridian implementation of the,False,False,False,False,False,False
+"Daugman algorithm. In this algorithm, the iris code is",False,False,False,False,False,False
+generated by performing a dot product between complex,False,False,False,False,False,False
+normalized image. The phase angles of resulting complex,False,False,False,False,False,False
+dot products are then quantized to 2 bits and assembled,False,False,False,False,False,False
+The comparison step computes a fractional Hamming,False,False,False,False,False,False
+distance between the bit array of one template and that of,False,False,False,False,False,False
+another and compares that distance to a predetermined,False,False,False,False,False,False
+threshold. The fractional Hamming distance (hereafter,False,False,False,False,False,False
+"referred to as the Hamming distance, in accordance with",False,False,False,False,False,False
+popularusage)isthefractionofthebitsthatdiffer,False,False,False,False,False,False
+between the two templates.,False,False,False,False,False,False
+Using a statistical argument to extrapolate from a,False,False,False,False,False,False
+"limited dataset, Daugman predicted that the probability of",False,False,False,False,False,False
+obtaining a Hamming distance less than 0.33 for templates,False,False,False,False,False,False
+that arise from different irises is about one part in 4 million,False,False,False,False,False,False
+and drops to less than one part in a billion at 0.30 [4]. At,False,False,False,False,False,False
+"the time, the available datasets were not good enough to",False,False,False,False,False,False
+"test the prediction. In a later paper [5], he presented",False,False,False,False,False,False
+extensive real world tests of the argument and found that,False,False,False,False,False,False
+the probability at 0.297 is about one part in 18 million.,False,False,False,False,False,False
+ThedistancereportedbytheIridianimplementation,False,False,False,False,False,False
+of the Daugman algorithm is a modified (sometimes,False,False,False,False,False,False
+called normalized) fractional Hamming distance that is,False,False,False,False,False,False
+"adjusted to provide a constant probability of a false match,",False,False,False,False,False,False
+based upon the fraction of valid bits in the compared,False,False,False,False,False,False
+templates [5].,False,False,False,False,False,False
+In many commercial implementations of the Daugman,False,False,False,False,False,False
+"algorithm, the templates are transformed using random",False,False,False,False,False,False
+xor and permutation matrices to generate iris templates,False,False,False,False,False,False
+"[6], [7] that are specific to the particular instantiation of",False,False,False,False,False,False
+the implementation in which the algorithm is used.,False,False,False,False,False,False
+"2) Examples of Existing Commercial Systems: At present,",False,False,False,False,False,False
+there are four major manufacturers of commercial iris,False,False,False,False,False,False
+recognition systems. Representative examples of the,False,False,False,False,False,False
+systems are listed in Table 1. The capture volume is the,False,False,False,False,False,False
+volume of the space within which an eye must be placed in,False,False,False,False,False,False
+order for the system to acquire a useful iris image. The,False,False,False,False,False,False
+standoff is the camera-to-subject-iris distance. The verifi-,False,False,False,False,False,False
+cation time is the approximate time required to acquire an,False,False,False,False,False,False
+image of sufficient quality for iris recognition and to,False,False,False,False,False,False
+perform identification using a database small enough that,False,False,False,False,False,False
+the database search time is negligible. The verification,False,False,False,False,False,False
+times in the table were not all obtained under the same,False,False,False,False,False,False
+conditions; this lack of uniformity complicates their,False,False,False,False,False,False
+"interpretation. For example, some of the systems acquire",False,False,False,False,False,False
+"two irises at a time; in one case, the image acquisition is",False,False,False,False,False,False
+under close control of a trained operator; and in some,False,False,False,False,False,False
+casesthesubjectswereprepositionedbytheoperatorator,False,False,False,False,False,False
+near the optimum position for the system. In our ex-,False,False,False,False,False,False
+"perience, self-positioning can often add 5–10 s to the",False,False,False,False,False,False
+"verification time for nonhabituated subjects, and some-",False,False,False,False,False,False
+times can add much more.,False,False,False,False,False,False
+3) How Well Iris Recognition Works: There are several,False,False,False,False,False,False
+reports of carefully structured analyses of iris recognition,False,False,False,False,False,False
+"tests including those sponsored by Iridian [8], the U.S.",False,False,False,False,False,False
+"Department of Homeland Security (DHS) [9], and the",False,False,False,False,False,False
+United Kingdom [10]. The results of [9] are perhaps best,False,False,False,False,False,False
+summarized in the receiver operating characteristic (ROC),False,False,False,False,False,False
+"and detection error tradeoff (DET) plots in that report, two",False,False,False,False,False,False
+ofwhichwereproduceinFig.3.andFig.4.Thesefigures,False,False,False,False,False,False
+show that iris recognition systems can provide false accept,False,False,False,False,False,False
+rates on the order of 10,False,False,False,False,False,False
+at false reject rates on the order,False,False,False,False,False,False
+of 1%; these figures are consistent with the results re-,False,False,False,False,False,False
+ported by Iridian in [8] and the United Kingdom in [10].,False,False,False,False,False,False
+This level of performance exceeds that of the other modal-,False,False,False,False,False,False
+ities in [10] and is adequate for many applications.,False,False,False,False,False,False
+Although all existing commercial implementations of,False,False,False,False,False,False
+"iris recognition are based on the Daugman algorithm,",False,False,False,False,False,False
+"other algorithms have been proposed. To date, none has",False,False,False,False,False,False
+been as thoroughly tested as the Daugman algorithm.,False,False,False,False,False,False
+"However, as this is being written, the NIST is sponsoring",False,False,False,False,False,False
+"Vol. 94, No. 11, November 2006 | Proceedings of the IEEE 1937",False,False,False,False,False,False
+Iris Challenge Evaluation (ICE). Seven algorithms have,False,False,False,False,False,False
+been submitted; preliminary results from an analysis of the,False,False,False,False,False,False
+algorithms’ performance on a publicly available database,False,False,False,False,False,False
+(ICE 2005) are just becoming available [18]. The results,False,False,False,False,False,False
+from a critical evaluation of the algorithms on a mod-,False,False,False,False,False,False
+"erately large, sequestered database (ICE 2006) should be",False,False,False,False,False,False
+availablebeforetheendof2006viatheICEWebsite.,False,False,False,False,False,False
+B. Constraints That Limit Use,False,False,False,False,False,False
+"The human iris is a small target, approximately 1 cm in",False,False,False,False,False,False
+"diameter, with relatively low albedo, approximately 0.15 in",False,False,False,False,False,False
+"the near infrared (NIR). ISO/IEC 19794-6 [11], a standard",False,False,False,False,False,False
+"supporting existing iris recognition algorithms, considers a",False,False,False,False,False,False
+resolution of more than 200 pixels or more across the iris,False,False,False,False,False,False
+"to be of Bgood quality,[ of 150–200 pixels across the iris to",False,False,False,False,False,False
+"be of Bacceptable[ quality, and of 100–150 pixels to be of",False,False,False,False,False,False
+"Bmarginal[ quality. Hence, acquisition of iris images of",False,False,False,False,False,False
+"sufficient quality for iris recognition is challenging, par-",False,False,False,False,False,False
+ticularly from a distance.,False,False,False,False,False,False
+Current commercially available iris cameras require,False,False,False,False,False,False
+substantial cooperation on the part of the subject. A simple,False,False,False,False,False,False
+metric for the required degree of cooperation is the,False,False,False,False,False,False
+capture volume in four dimensions. The capture volume is,False,False,False,False,False,False
+the three-dimensional spatial volume into which an eye,False,False,False,False,False,False
+Table 1 Capture Volumes for Representative Examples of Commercial Iris Recognition Systems and the Prototype Iris on the Move System,False,False,False,False,False,True
+"1938 Proceedings of the IEEE |Vol.94,No.11,November2006",False,False,False,False,False,False
+mustbeplacedandheldforsomeperiodoftime(thefourth,False,False,False,False,False,False
+dimension) in order for the system to reliably capture an,False,False,False,False,False,False
+iris image of sufficient quality for iris recognition. See,False,False,False,False,False,False
+Fig. 5 for an illustration in the context of the Iris on the,False,False,False,False,True,False
+"Move (IOM) system. For ease of use, we want the spatial",False,False,False,False,False,False
+extent of the capture volume to be as large as possible and,False,False,False,False,False,False
+the temporal extent of the capture volume to be as small as,False,False,False,False,False,False
+possible.,False,False,False,False,False,False
+"A related issue is the standoff distance, i.e., the",False,False,False,False,False,False
+distance between the subject and the iris image acquisition,False,False,False,False,False,False
+system. Existing systems require reasonably close proxim-,False,False,False,False,False,False
+ity: in some cases an Bin your face[ proximity.,False,False,False,False,False,False
+Existing iris recognition algorithms are generally good,False,False,False,False,False,False
+enough for most applications; the challenge is in reducing,False,False,False,False,False,False
+constraints on the subject so that iris recognition is easier,False,False,False,False,False,False
+to use. This opinion is supported by a recent study,False,False,False,False,False,False
+conducted by Atos Origin for the U.K. Passport Service,False,False,False,False,False,False
+[12]. The customer experience section of that report,False,False,False,False,False,False
+indicated that iris recognition systems scored low relative,False,False,False,False,False,False
+to other biometrics for time taken (against expectations),False,False,False,False,False,False
+and for ease of positioning during the acquisition process.,False,False,False,False,False,False
+The positioning issue was particularly acute for disabled,False,False,False,False,False,False
+participants. Quoting from that report:,False,False,False,False,False,False
+The top two reasons for a participant’s overall,False,False,False,False,False,False
+experience of the iris enrolment being worse than,False,False,False,False,False,False
+expected are Ftime taken to record_ and Fthe need to,False,False,False,False,False,False
+stay still._,False,False,False,False,False,False
+These issues apply to acquisition for both enroll-,False,False,False,False,False,False
+ment and verification/recognition. Since enrollment need,False,False,False,False,False,False
+"only be done once for each subject, ease of use during",False,False,False,False,False,False
+verification/recognition is rather more important. This,False,False,False,False,False,False
+affords us an opportunity to exploit the asymmetry be-,False,False,False,False,False,False
+tween the enrollment and verification/identification,False,False,False,False,False,False
+"modes of a system, as we shall see later.",False,False,False,False,False,False
+In order to deal with these issues for verification/,False,False,False,False,False,False
+"recognition, we developed techniques for capturing iris",False,False,False,False,False,False
+"images that provide increased capture volume, decreased",False,False,False,False,False,False
+"acquisition time, increased standoff, and the capability of",False,False,False,False,False,False
+acquisition of iris images from moving subjects. We call,False,False,False,False,False,False
+this system BIris On the Move.[,False,False,False,False,False,False
+II. IOM DESIGN,True,True,False,True,False,False
+Our design for the system begins with a simplified con-,False,False,False,False,False,False
+cept of operation. Subjects walk through an access control,False,False,False,False,False,False
+"Vol. 94, No. 11, November 2006 | Proceedings of the IEEE 1939",False,False,False,False,False,False
+point such as a metal detector portal at normal walking,False,False,False,False,False,False
+speed (G 1 m/s) without pause. The subjects are mode-,False,False,False,False,False,False
+rately cooperative; they look forward and do not engage,False,False,False,False,False,False
+"in behavior intended to prevent iris image acquisition,",False,False,False,False,False,False
+such as squinting or looking away from the acquisition,False,False,False,False,False,False
+camera. Subjects may be required to remove sunglasses,False,False,False,False,False,False
+depending on the optical density of those sunglasses.,False,False,False,False,False,False
+Most subjects should be able to wear normal eyeglasses,False,False,False,False,False,False
+or contact lenses. This scenario is illustrated in Fig. 6,False,False,False,False,False,False
+where we see a subject walking through the system. This,False,False,False,False,False,False
+demonstration uses a commercial metal detector as the,False,False,False,False,False,False
+portal; the NIR illuminators are supported on stanchions,False,False,False,False,False,False
+attached to the metal detector. The camera system is,False,False,False,False,False,False
+about 3 m in front of the subject and is visible at the far,False,False,False,False,False,False
+right of Fig. 6.,False,False,False,False,True,False
+We made a key design decision early on: the system,False,False,False,False,False,False
+would be modular so that expansion of the capture,False,False,False,False,False,False
+volume can be achieved by duplication of independent,False,False,False,False,False,False
+(or nearly independent) modules. We also decided to use,False,False,False,False,False,False
+an algorithm licensed from Iridian as the core template,False,False,False,False,False,False
+generation and recognition engine. The key design issue,False,False,False,False,False,False
+was design of an image acquisition module that could,False,False,False,False,False,False
+feed iris images to the Iridian engine. To control costs,False,False,False,False,False,False
+"and development time, we decided to use commercial",False,False,False,False,False,False
+off-the-shelf (COTS) components for the major image,False,False,False,False,False,False
+"acquisition subsystems such as camera, lens, and frame",False,False,False,False,False,False
+grabber.,False,False,False,False,False,False
+Another key design decision was to make the complete,False,False,False,False,False,False
+system asymmetric with respect to image resolution: we,False,False,False,False,False,False
+use a COTS iris camera such as a Securimetrics PIER 2.3,False,False,False,False,False,False
+that acquires images with approximately 200 pixels across,False,False,False,False,False,False
+"the iris for enrollment, and take images with approxi-",False,False,False,False,False,False
+mately 100 pixels across the iris using the IOM for,False,False,False,False,False,False
+identification or verification.,False,False,False,False,False,False
+A. Optics and Camera,False,False,False,False,False,False
+We conducted preliminary experiments to estimate the,False,False,False,False,False,False
+width of the capture volume needed to insure ease of use.,False,False,False,False,False,False
+Human heads are on the order of 15 cm wide. Walking,False,False,False,False,False,False
+through a portal while remaining within 5–10 cm of the,False,False,False,False,False,False
+centerline of the portal is relatively easy for most people.,False,False,False,False,False,False
+"Hence, we needed a capture volume width on the order of",False,False,False,False,False,False
+20–30 cm.,False,False,False,False,False,False
+"As noted, the human iris diameter is on the order of",False,False,False,False,False,False
+1 cm; standards [11] consider Bgood quality[ iris images to,False,False,False,False,False,False
+"have 200 pixels or more across the iris, corresponding to",False,False,False,False,False,False
+200 pixels/cm at the subject. The highest resolution COTS,False,False,False,False,False,False
+video camera that was available was a Pulnix TM4000-CL,False,False,False,False,False,False
+capture volume width of only 10 cm. We conducted,False,False,False,False,False,False
+experiments to test the effect of reduced resolution on the,False,False,False,False,False,False
+capability of the recognition engine and came to the,False,False,False,False,False,False
+conclusion that approximately 100 pixels/cm would likely,False,False,False,False,False,False
+be acceptable and would give us a capture volume width,False,False,False,False,False,False
+on the order of 20 cm. This is consistent with the,False,False,False,False,False,False
+minimum quality levels in ISO/IEC 19794-6 [11]. The,False,False,False,False,False,False
+ratio of the camera sensor pitch to the subject resolution,False,False,False,False,False,False
+gives an optical system magnification of 0.074. We use the,False,False,False,False,False,False
+simple lens equations,False,False,False,False,False,False
+"In these equations, f is the lens focal length, p and q are the",False,False,False,False,False,False
+"lens-to-object and lens-to-image distances, respectively,",False,False,False,False,False,False
+and M is the magnification. We can then compute the,False,False,False,False,False,False
+required lens focal length. For this design the focal,False,False,False,False,False,False
+"length is approximately 210 mm, which is conveniently",False,False,False,False,False,False
+available in the form of the Nikon NIKKOR-W 210 lens.,False,False,False,False,False,False
+System parameters are summarized in Table 2. Examples,False,False,False,False,False,False
+of images acquired under these conditions can be seen,False,False,False,False,False,False
+in Fig. 7.,False,False,False,False,True,False
+"With this camera and lens combination, the capture",False,False,False,False,False,False
+volume per camera is approximately 20 cm wide and,False,False,False,False,False,False
+"20 cm high. Subject heights vary more than 20 cm. Hence,",False,False,False,False,False,False
+we made provisions for incorporating multiple cameras.,False,False,False,False,False,False
+The demonstration system described in this report uses,False,False,False,False,False,False
+two cameras stacked vertically to provide a capture,False,False,False,False,False,False
+Table 2 Iris on the Move System Parameters,False,False,False,False,False,True
+"1940 Proceedings of the IEEE | Vol. 94, No. 11, November 2006",False,False,False,False,False,False
+volume height of approximately 37 cm (there is ap-,False,False,False,False,False,False
+proximately 3 cm of overlap). We subsequently built sys-,False,False,False,False,False,False
+tems with up to four cameras covering a height range of,False,False,False,False,False,False
+up to 70 cm.,False,False,False,False,False,False
+The depth of the capture volume is determined by the,False,False,False,False,False,False
+depth of field of the optical system. We can estimate the,False,False,False,False,False,False
+"depth of field using geometric optics, given the ap-",False,False,False,False,False,False
+propriate circle of confusion. BCircle of confusion[ is a,False,False,False,False,False,False
+photographic term that denotes the diameter of the,False,False,False,False,False,False
+image of a point source at the transition from in focus to,False,False,False,False,False,False
+out of focus. This can be a subjective judgment in pho-,False,False,False,False,False,False
+"tography. However, for the IOM system the appropriate",False,False,False,False,False,False
+circle of confusion is related to the Hamming distance,False,False,False,False,False,False
+between images taken at best focus and those taken away,False,False,False,False,False,False
+from best focus rather than the conventional photo-,False,False,False,False,False,False
+"graphic criteria. Hence, it is more straightforward to",False,False,False,False,False,False
+simply measure the depth of field; those measurements,False,False,False,False,False,False
+along with geometric optics enable estimates of the,False,False,False,False,False,False
+effects of changes in the F-number of the lens on the,False,False,False,False,False,False
+depth of field.,False,False,False,False,False,False
+Fig. 8 shows the results of measurements in which we,False,False,False,False,True,False
+captured iris images as a function of distance around the,False,False,False,False,False,False
+"best focus of the system, computed iris templates and",False,False,False,False,False,False
+then computed the Hamming distance between those,False,False,False,False,False,False
+templates and an enrollment image captured using a,False,False,False,False,False,False
+Securimetrics PIER 2.3 handheld camera. There is a,False,False,False,False,False,False
+region approximately 5 cm in depth where the Hamming,False,False,False,False,False,False
+distance is small and constant; there is a region approx-,False,False,False,False,False,False
+imately 12 cm in depth where the Hamming distances are,False,False,False,False,False,False
+smaller than the nominal cutoff for recognition,False,False,False,False,False,False
+"somewhere between 5 and 12 cm, depending on which",False,False,False,False,False,False
+criterion we use.,False,False,False,False,False,False
+It is possible to extend the depth of field by in-,False,False,False,False,False,False
+creasing the subject irradiance and reducing the lens,False,False,False,False,False,False
+aperture. It is also possible to increase the depth of field,False,False,False,False,False,False
+through the use of wavefront coding of the optical sys-,False,False,False,False,False,False
+"tem, as demonstrated by Narayanswamy et al. [13]. They",False,False,False,False,False,False
+demonstrated a threefold increase of depth of field in an,False,False,False,False,False,False
+iris imaging system from approximately 6 cm to,False,False,False,False,False,False
+approximately 20 cm. Both approaches involve a tradeoff,False,False,False,False,False,False
+of S/N for depth of field. S/N in the wavefront approach,False,False,False,False,False,False
+is inversely proportional to the first power of the depth,False,False,False,False,False,False
+"of field, with irradiance held constant. S/N in the re-",False,False,False,False,False,False
+duced aperture approach is inversely proportional to the,False,False,False,False,False,False
+"second power of the depth of field, with irradiance held",False,False,False,False,False,False
+"constant. On this basis, it would appear the wavefront",False,False,False,False,False,False
+"approach is a clear winner. However, the wavefront ap-",False,False,False,False,False,False
+"proach is computationally expensive. In the IOM system,",False,False,False,False,False,False
+we process large images at frame rates. We are inves-,False,False,False,False,False,False
+tigating both of these options.,False,False,False,False,False,False
+"Vol. 94, No. 11, November 2006 | Proceedings of the IEEE 1941",False,False,False,False,False,False
+"We can estimate the number of useful images N,that",False,False,False,False,False,False
+can be acquired by a camera of frame rate f as a subject,False,False,False,False,False,False
+walks through a capture volume of depth D at a speed V,False,False,False,False,False,False
+from,False,False,False,False,False,False
+"Taking 10 cm as the depth of field, 15 frames/s and 1 m/s,",False,False,False,False,False,False
+the system captures 1.5 images. At least one in-focus image,False,False,False,False,False,False
+will be captured as the subject walks through the system.,False,False,False,False,False,False
+B. Illumination,False,False,False,False,False,False
+Motion blur is a crucial issue for any system that,False,False,False,False,False,False
+images moving objects. It is particularly important for the,False,False,False,False,False,False
+IOM system because we are looking for details in the iris at,False,False,False,False,False,False
+close to the limit of resolution of the camera system. We,False,False,False,False,False,False
+canreducemotionblurbyusingafastshutteronthe,False,False,False,False,False,False
+"camera. However, if we use a shutter with a 10% duty",False,False,False,False,False,False
+"cycle, we throw away 90% of the photons supplied by the",False,False,False,False,False,False
+illumination system.,False,False,False,False,False,False
+"To get a better photon budget, we strobe the",False,False,False,False,False,False
+illumination and synchronize the strobes to the start of,False,False,False,False,False,False
+the camera frame. We also shutter the camera; the shutter,False,False,False,False,False,False
+is only open during the strobe to reduce the effect of,False,False,False,False,False,False
+ambient light. Synchronization is maintained by a custom,False,False,False,False,False,False
+circuit incorporating an embedded processor. The circuit,False,False,False,False,False,False
+was designed with flexibility in mind; it can accept video,False,False,False,False,False,False
+"input, strip out the synchronization pulses, and use the",False,False,False,False,False,False
+stripped synchronization to trigger illumination. It can,False,False,False,False,False,False
+"also free run, generating synch signals that trigger the",False,False,False,False,False,False
+camera and the illumination. The circuit has digital inputs,False,False,False,False,False,False
+that we use to sense the entry and departure of a subject,False,False,False,False,False,False
+from the portal using optical beam breaks and has an,False,False,False,False,False,False
+RS-232 connection to the computer that is capturing the,False,False,False,False,False,False
+images and running the demonstration application. The,False,False,False,False,False,False
+Pulnix TM-4000CL cameras used in the experiments,False,False,False,False,False,False
+"reported here use progressive scan, line transfer CCD",False,False,False,False,False,False
+imagers; use of interlaced or rolling window imagers can,False,False,False,False,False,False
+significantly complicate synchronization.,False,False,False,False,False,False
+We selected high-power infrared light-emitting diodes,False,False,False,False,False,False
+(LEDs) to enable use of strobed illumination. The rated,False,False,False,False,False,False
+maximum-pulsed current for LEDs is generally larger than,False,False,False,False,False,False
+"the rated maximum dc current. However, most of the",False,False,False,False,False,False
+manufacturer’s specifications apply for very short pulses,False,False,False,False,False,False
+(a few microseconds) and are not applicable in the,False,False,False,False,False,False
+millisecond regime required for the IOM system. We have,False,False,False,False,False,False
+carried out life test experiments in this regime and are,False,False,False,False,False,False
+able to run the LEDs at substantially higher currents in,False,False,False,False,False,False
+the pulsed mode.,False,False,False,False,False,False
+C. Coarse Segmentation,False,False,False,False,False,False
+the Iridian implementation of the Daugman algorithm,False,False,False,False,False,False
+an initial coarse segmentation of the images to isolate,False,False,False,False,False,False
+likely irises.,False,False,False,False,False,False
+The illumination subsystem of the IOM system consists,False,False,False,False,False,False
+of four individual illuminators per camera. The specular,False,False,False,False,False,False
+reflections caused by the illuminators on the corneal,False,False,False,False,False,False
+surface appear in an arrangement geometrically related to,False,False,False,False,False,False
+the illuminator layout. Our algorithm detects this specific,False,False,False,False,False,False
+configuration of specularities in the input image and crops,False,False,False,False,False,False
+The algorithm steps are as follows.,False,False,False,False,False,False
+1) Apply a match filter to the captured image that,False,False,False,False,False,False
+produces the highest response on the in-focus,False,False,False,False,False,False
+specularities and then threshold the output to,False,False,False,False,False,False
+leave only the peaks.,False,False,False,False,False,False
+"2) For each specularity in the binary image, find its",False,False,False,False,False,False
+"border, width, height, and center. Using para-",False,False,False,False,False,False
+"meterstunedtothesize,shape,andlocationof",False,False,False,False,False,False
+"the illuminators, discard specularities that are too",False,False,False,False,False,False
+"large, too small, or oddly shaped.",False,False,False,False,False,False
+3) Identify candidate sets of specularities that form a,False,False,False,False,False,False
+complete or partial configuration consistent with,False,False,False,False,False,False
+the illumination.,False,False,False,False,False,False
+4) Extract iris images around the strongest candi-,False,False,False,False,False,False
+"dates, process the images to iris templates, and",False,False,False,False,False,False
+match the templates against the database.,False,False,False,False,False,False
+We use specialized image processing hardware within,False,False,False,False,False,False
+the image capture board of the system to speed up the,False,False,False,False,False,False
+application of the match filter and subsequent thres-,False,False,False,False,False,False
+holding. This reduces the load on the system CPU. The,False,False,False,False,False,False
+computations that are executed on the CPU consist of,False,False,False,False,False,False
+"simple operations on binary images, further reducing pro-",False,False,False,False,False,False
+cessing requirements.,False,False,False,False,False,False
+This algorithm easily accommodates a variety of,False,False,False,False,False,False
+illuminatorconfigurationsandallowstheoperatorto,False,False,False,False,False,False
+set the iris acceptance criteria appropriate for the,False,False,False,False,False,False
+"application. For instance, the acceptance rate for iris",False,False,False,False,False,False
+"1942 Proceedings of the IEEE |Vol.94,No.11,November2006",False,False,False,False,False,False
+"candidates can be increased, thus requiring the presence",False,False,False,False,False,False
+of fewer specularities. Restricting the algorithm to accept,False,False,False,False,False,False
+"only the best, sharpest irises by tightly controlling the",False,False,False,False,False,False
+size and increasing the required number of specularities,False,False,False,False,False,False
+"will decrease the rate. In less restrictive configurations,",False,False,False,False,False,False
+failures in coarse segmentation can be caused by specu-,False,False,False,False,False,False
+"larities from jewelry, eyeglass frames, and other highly",False,False,False,False,False,False
+"reflective objects. However, the probability that an iris",False,False,False,False,False,False
+code constructed from an image extracted around such,False,False,False,False,False,False
+specularities would match a person in a database is very,False,False,False,False,False,False
+low [4].,False,False,False,False,False,False
+III. IOM PERFORMANCE,True,True,False,True,False,False
+A. Enrollment,False,False,False,False,False,False
+The IOM system is not designed to acquire high-quality,False,False,False,False,False,False
+"enrollment images. As noted above, one of our design",False,False,False,False,False,False
+tradeoffs was a reduction in the resolution to 100 pixels,False,False,False,False,False,False
+"across the subject’s iris. Hence, we use other iris cameras",False,False,False,False,False,False
+for enrollment. We have successfully used images acquired,False,False,False,False,False,False
+"from several commercial iris cameras. At the present, we",False,False,False,False,False,False
+incorporate a SecuriMetrics PIER 2.3 working in tethered,False,False,False,False,False,False
+mode into our demonstration systems. The PIER 2.3,False,False,False,False,False,False
+provides us with excellent quality images that we process,False,False,False,False,False,False
+into iris templates that are then stored in the demonstra-,False,False,False,False,False,False
+tion database (see Fig. 10).,False,False,False,False,False,False
+B. Identification,False,False,False,False,False,False
+"For a given capture volume, false match rate (FMR),",False,False,False,False,False,False
+"false nonmatch rate (FNMR), and system throughput are",False,False,False,False,False,False
+the most important metrics of system performance for,False,False,False,False,False,False
+most of the applications that we envision for IOM.,False,False,False,False,False,False
+Thedistancebetweenthebeambreaksthattriggeran,False,False,False,False,False,False
+identification cycle and signal the system to display results,False,False,False,False,False,False
+"is about 1.5 m. Hence, at a normal walking pace of ap-",False,False,False,False,False,False
+"proximately 1 m/s, we can process people with a through-",False,False,False,False,False,False
+put of about 1 person/3 s. This assumes a modest level of,False,False,False,False,False,False
+"cooperation on the part of the subjects: eyes open, looking",False,False,False,False,False,False
+"at the camera, and walking down the center of the portal",False,False,False,False,False,False
+without exaggerated motions.,False,False,False,False,False,False
+In the experiments described below the system was,False,False,False,False,False,False
+configured with two cameras that provide an approx-,False,False,False,False,False,False
+imately 8-L capture volume as described above. The,False,False,False,False,False,False
+Hamming distance cutoff for recognition is 0.33. The,False,False,False,False,False,False
+experiments were carried out using a protocol approved,False,False,False,False,False,False
+by Sarnoff’s Internal Review Board for Human,False,False,False,False,False,False
+Experimentation.,False,False,False,False,False,False
+We performed a small-scale test of the system FNMR,False,False,False,False,False,False
+using 119 Sarnoff employees. The employees were self-,False,False,False,False,False,False
+chosen volunteers. Each subject was assigned an ID,False,False,False,False,False,False
+number and the link between the ID number and the,False,False,False,False,False,False
+subject’s name was kept in a separate database to protect,False,False,False,False,False,False
+privacy. We recorded gender and glasses/contact lens use,False,False,False,False,False,False
+"for each subject in a database keyed on the ID number, and",False,False,False,False,False,False
+"we captured full-color, high-resolution facial images of the",False,False,False,False,False,False
+subject standing in front of a scale that enables us to,False,False,False,False,False,False
+measure height and interpupillary distance and to,False,False,False,False,False,False
+determine eye color. For the purpose of the present,False,False,False,False,False,False
+"analysis, the eye color was a subjective evaluation of the",False,False,False,False,False,False
+image by the operator of the experiment. Each subject was,False,False,False,False,False,False
+then enrolled using a PIER 2.3; subjects with glasses were,False,False,False,False,False,False
+enrolled with glasses removed; subjects with contact,False,False,False,False,False,False
+lenses wore the lenses for enrollment and identification.,False,False,False,False,False,False
+The demographics of the test subjects are shown in,False,False,False,False,False,False
+Table 3.,False,False,False,False,False,True
+"After enrollment, the subjects walked through the",False,False,False,False,False,False
+system 15 times. The subjects were instructed to walk,False,False,False,False,False,False
+"along the centerline of the portal, at a normal walking pace",False,False,False,False,False,False
+"with eyes open, looking at the camera. Subjects with",False,False,False,False,False,False
+glasses wore the glasses for the first seven walkthroughs,False,False,False,False,False,False
+and took them off for the remainder. A separate video,False,False,False,False,False,False
+camera recorded the walkthroughs for subsequent analysis,False,False,False,False,False,False
+of failure modes.,False,False,False,False,False,False
+Fig. 11 shows the cumulative recognition rate as a,False,False,False,False,True,False
+function of attempt number for the first three attempts. It,False,False,False,False,False,False
+is important to note that these were the very first three,False,False,False,False,False,False
+attempts by each subject. They had not used the IOM,False,False,False,False,False,False
+system before. This shows a FNMR for a three-attempt,False,False,False,False,False,False
+transaction of approximately 1%. This compares favorably,False,False,False,False,False,False
+with the multiattempt results reported in Fig. 3.,False,False,False,False,False,False
+Table 3 Demographics of Test Subjects,False,False,False,False,False,True
+"Vol. 94, No. 11, November 2006 | Proceedings of the IEEE 1943",False,False,False,False,False,False
+The overall recognition rate (total number of successful,False,False,False,False,False,False
+recognitions divided by total number of attempts) for all,False,False,False,False,False,False
+subjects was 78%. This gives a raw FNMR of 22% for single,False,False,False,False,False,False
+recognition attempts. This compares unfavorably with the,False,False,False,False,False,False
+single-attempt FNMR illustrated in Fig. 4. We examined,False,False,False,False,False,False
+the videotape of the subject walkthroughs to investigate,False,False,False,False,False,False
+the reasons for the failures. Approximately 30% of the,False,False,False,False,False,False
+failures were the result of subjects looking away from the,False,False,False,False,False,False
+"camera, squinting, or closing their eyes. Some of this was",False,False,False,False,False,False
+"intentional behavior on the part of the subjects, despite",False,False,False,False,False,False
+their instructions. The majority of the subjects were,False,False,False,False,False,False
+engineers and after several successful passes through the,False,False,False,False,False,False
+"system, some of them took it upon themselves to see if they",False,False,False,False,False,False
+"could force failures, without advising the test operators.",False,False,False,False,False,False
+Follow-up on failures evoked responses such as: BIt worked,False,False,False,False,False,False
+"fine as long as I looked at the camera, but I could make it",False,False,False,False,False,False
+fail by ...[ Some of the failures were associated with,False,False,False,False,False,False
+subject height; subjects whose heights put them at the top,False,False,False,False,False,False
+or bottom of the capture volume had higher failure rates,False,False,False,False,False,False
+that those close to the middle. Incorporation of additional,False,False,False,False,False,False
+cameras in the system can increase the range of heights,False,False,False,False,False,False
+that the system can accommodate.,False,False,False,False,False,False
+"In order to diagnose the failures, we computed the",False,False,False,False,False,False
+failure rate for each subject and then rank ordered them.,False,False,False,False,False,False
+We then plotted the cumulative failure rate as a function of,False,False,False,False,False,False
+"rank order as seen in Fig. 12. Of the failures, 50% are",False,False,False,False,False,False
+attributed to less than 20% of the subjects. We then invited,False,False,False,False,False,False
+the ten subjects with the highest failure rates to return.,False,False,False,False,False,False
+Each subject executed five trials of the system under close,False,False,False,False,False,False
+observation and was then given instructions on how to,False,False,False,False,False,False
+improvetheirsuccessrate.Thesubjectswerealso,False,False,False,False,False,False
+instructed that the goal of the experiment was to get a,False,False,False,False,False,False
+high success rate. The results are summarized in Table 4.,False,False,False,False,False,False
+"With one exception, all the subjects had substantial",False,False,False,False,False,False
+improvements. Two subjects had their Bheight[ increased,False,False,False,False,False,False
+by placing an 8-cm-high platform on the walking surface.,False,False,False,False,False,False
+Three subjects removed their glasses. The remaining,False,False,False,False,False,False
+subjects were simply reminded that they needed to provide,False,False,False,False,False,False
+"a small degree of cooperation: eyes open, look ahead at the",False,False,False,False,False,False
+"camera, do not try to break the system.",False,False,False,False,False,False
+The success rate for subject 01-054 did not improve. If,False,False,False,False,False,False
+"we exclude subject 01-054, the average success rate for the",False,False,False,False,False,False
+"least successful subjects has risen to 99%, i.e., as good as",False,False,False,False,False,False
+the results in Fig. 3. A follow-up with subject 01-054,False,False,False,False,False,False
+revealed a verbal communications problem: this subject is,False,False,False,False,False,False
+not a native English speaker and has a hearing loss; as a,False,False,False,False,False,False
+"result, the instructions had not been well understood.",False,False,False,False,False,False
+"Once the instructionsVeyes wide open, look straight",False,False,False,False,False,False
+"ahead, walk at a moderate pace, and try to be recognized",False,False,False,False,False,False
+"(rather than try to break the system)Vwere understood,",False,False,False,False,False,False
+subject 01-054 jumped to 100%.,False,False,False,False,False,False
+"On the basis of anecdotal observations, we suspect that",False,False,False,False,False,False
+the difficulty with some of the glasses is that the glasses,False,False,False,False,False,False
+frames cast shadows that interfere with the coarse seg-,False,False,False,False,False,False
+mentation. This effect depends on both the subject and,False,False,False,False,False,False
+the shape/configuration of the glasses. Sufficiently opaque,False,False,False,False,False,False
+"glasses, e.g., metallized sunglasses, can block enough of",False,False,False,False,False,False
+the NIR illumination to make it impossible to acquire a,False,False,False,False,False,False
+good iris image. All of the glasses worn by subjects in,False,False,False,False,False,False
+these experiments were nominally transparent.,False,False,False,False,False,False
+The experiments described here are too small to probe,False,False,False,False,False,False
+the FMR of the system; there were no false matches in the,False,False,False,False,False,False
+experiments described above. It is reasonable to argue that,False,False,False,False,False,False
+the expected FMR should be similar to that for other,False,False,False,False,False,False
+"systems based upon the Daugman/Iridian algorithms,",False,False,False,False,False,False
+providing that the enrollment images are acquired at the,False,False,False,False,False,False
+higher resolutions recommended by the standards for iris,False,False,False,False,False,False
+images.,False,False,False,False,False,False
+C. Safety,False,False,False,False,False,False
+"All electromagnetic radiation, from long radio waves",False,False,False,False,False,False
+"to gamma rays, is absorbed to some extent by human",False,False,False,False,False,False
+"1944 Proceedings of the IEEE |Vol.94,No.11,November2006",False,False,False,False,False,False
+tissue. Depending on the type of tissue and the wave-,False,False,False,False,False,False
+"length of the radiation, absorbed radiation can cause",False,False,False,False,False,False
+"thermal effects, photochemical effects, or ionization",False,False,False,False,False,False
+"effects, all of which can result in tissue damage at su-",False,False,False,False,False,False
+"fficiently high levels. In general, for a particular wave-",False,False,False,False,False,False
+"length and a particular tissue type, the magnitude and",False,False,False,False,False,False
+"determines the degree of tissue damage, if any. The",False,False,False,False,False,False
+American Council of Government and Industrial Hygie-,False,False,False,False,False,False
+nists (ACGIH) publishes guidelines known as threshold,False,False,False,False,False,False
+limit values (TLV) for a variety of chemical and physical,False,False,False,False,False,False
+agents [14]. A TLV is the level at which it is believed that,False,False,False,False,False,False
+a person can normally be repeatedly exposed to an agent,False,False,False,False,False,False
+without adverse health effects. For analysis of the safety,False,False,False,False,False,False
+of the IOM system we rely upon the TLVs published by,False,False,False,False,False,False
+the ACGIH.,False,False,False,False,False,False
+The eye is the organ that is most sensitive to NIR,False,False,False,False,False,False
+radiation and is the body part that we seek to illuminate,False,False,False,False,False,False
+"with the IOM system. Hence, we concentrate our",False,False,False,False,False,False
+analysis on the eye. Eye safety in the NIR is complicated,False,False,False,False,False,False
+by the presence of optical structures in the eye that can,False,False,False,False,False,False
+focus NIR radiation on the retina. To protect the cornea,False,False,False,False,False,False
+"and lens, we must control the ocular irradiance. To pro-",False,False,False,False,False,False
+"tect the retina, we need to consider both the flux",False,False,False,False,False,False
+incident on the eye and the ability of the eye to focus,False,False,False,False,False,False
+that flux; an analysis by Sliney and Wolbarsht [15] de-,False,False,False,False,False,False
+monstrates that the subtended angle of the source and,False,False,False,False,False,False
+safety metrics.,False,False,False,False,False,False
+To protect the cornea and lens in the 770 nm to,False,False,False,False,False,False
+"3000 nm regime, the irradiance should not exceed",False,False,False,False,False,False
+10 mW/cm,False,False,False,False,False,False
+for exposures exceeding 1000 s. For shorter,False,False,False,False,False,False
+"durations, the TLV depends on the exposure time as t",False,False,False,False,False,False
+.,False,True,False,True,False,False
+To protect the retina in the wavelength range 700 to,False,False,False,False,False,False
+R depends exponentially on wavelength and ranges from,False,False,False,False,False,False
+subtense of the source at the eye. The radiance of an array,False,False,False,False,False,False
+"of LEDs will be, at most, the radiance of the most radiant",False,False,False,False,False,False
+LED in the array; the radiance of an array of sources is not,False,False,False,False,False,False
+the sum of the radiances of the array members.,False,False,False,False,False,False
+"To insure the safety of our subjects, we measure the",False,False,False,False,False,False
+subject irradiance and adjust the system parameters to,False,False,False,False,False,False
+insure that the irradiance remains below the irradiance,False,False,False,False,False,False
+TLV. We also measure the radiance of the LEDs used in our,False,False,False,False,False,False
+illuminators. Our results are consistent with published,False,False,False,False,False,False
+results that conclude that surface emitting IR diodes are,False,False,False,False,False,False
+"safe [16], [17].",False,False,False,False,False,False
+The approach to safety analysis sketched here may not,False,False,False,False,False,False
+be appropriate for all scenarios. We recommend that,False,False,False,False,False,False
+anyone building an iris camera should review the literature,False,False,False,False,False,False
+themselves and make appropriate measurements to insure,False,False,False,False,False,False
+the safety of their subjects.,False,False,False,False,False,False
+IV. CONCLUSION,True,True,False,True,False,False
+"The IOM system is the first, and at this time only,",False,False,False,False,False,False
+system that can capture iris images of recognition quality,False,False,False,False,False,False
+from subjects walking at a normal pace through a mi-,False,False,False,False,False,False
+nimally confining portal. This result has been achieved,False,False,False,False,False,False
+"through the use of controlled, strobed illumination, high-",False,False,False,False,False,False
+"resolution cameras, and specularity based algorithms for",False,False,False,False,False,False
+eye finding. h,False,False,False,False,False,False
+Acknowledgment,False,False,False,False,False,False
+The Daugman algorithms for iris recognition used in,False,False,False,False,False,False
+the IOM system were licensed from Iridian Techno-,False,False,False,False,False,False
+"logies, Inc. Our thanks to J. Ruddle, J. Cambier,",False,False,False,False,False,False
+"U. C. von Seelen, and other Iridian staff for their",False,False,False,False,False,False
+assistance. We used Pier 2.3 cameras from SecuriMetrics,False,False,False,False,False,False
+tocaptureimagesforourenrollments.Ourthanksto,False,False,False,False,False,False
+D. Bigelow and G. Peterson of Securimetrics for their,False,False,False,False,False,False
+assistance. Our thanks to IBG and the U.S. Department of,False,False,False,False,False,False
+Homeland Security for permission to use figures from [9].,False,False,False,False,False,False
+Our thanks to T. Mansfield for permission to use figures,False,False,False,False,False,False
+from [10] and for providing soft copy of those figures.,False,False,False,False,False,False
+Our thanks to J. Daugman and to the peer reviewers for,False,False,False,False,False,False
+helpful suggestions that improved the manuscript. Final-,False,False,False,False,False,False
+"ly, our thanks to our colleagues at Sarnoff who assisted in",False,False,False,False,False,False
+"this work, particularly G. Van Sant and his mechanical",False,False,False,False,False,False
+designers and F. Bennett and his shop team.,False,False,False,False,False,False
+Table 4 Improvement in Success Rates for Ten Least Successful Subjects,False,False,False,False,False,True
+"Vol. 94, No. 11, November 2006 | Proceedings of the IEEE 1945",False,False,False,False,False,False
+"1946 Proceedings of the IEEE | Vol. 94, No. 11, November 2006",False,False,False,False,False,False
+"Vol. 94, No. 11, November 2006 | Proceedings of the IEEE 1947",False,False,False,False,False,False

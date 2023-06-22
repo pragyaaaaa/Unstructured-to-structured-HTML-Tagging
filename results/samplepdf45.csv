@@ -1,0 +1,1113 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+*,False,False,False,False,False,False
+"Department of Information Technology, Al Musanna College of Technology, Directorate General of Technological Education,",False,False,False,False,False,False
+"Ministry of Manpower, Oman",False,False,False,False,False,False
+Received 23 June 2011; accepted 6 September 2011,False,False,False,False,False,False
+Available online 22 November 2011,False,False,False,False,False,False
+KEYWORDS,True,False,False,True,False,False
+Clinical decision support,False,False,False,False,False,False
+system (CDSS);,False,False,False,False,False,False
+Heart disease;,False,False,False,False,False,False
+Fuzzy logic;,False,False,False,False,False,False
+Weighted fuzzy rules;,False,False,False,False,False,False
+Attribute selection;,False,False,False,False,False,False
+Risk prediction;,False,False,False,False,False,False
+UCI repository;,False,False,False,False,False,False
+Accuracy;,False,False,False,False,False,False
+Sensitivity and speciﬁcity,False,False,False,False,False,False
+"Abstract As people have interests in their health recently, development of medical domain applica-",False,False,False,True,False,False
+tion has been one of the most active research areas. One example of the medical domain application,False,False,False,False,False,False
+"is the detection system for heart disease based on computer-aided diagnosis methods, where the data",False,False,False,False,False,False
+are obtained from some other sources and are evaluated based on computer-based applications.,False,False,False,False,False,False
+"Earlier, the use of computer was to build a knowledge based clinical decision support system which",False,False,False,False,False,False
+uses knowledge from medical experts and transfers this knowledge into computer algorithms man-,False,False,False,False,False,False
+ually. This process is time consuming and really depends on medical experts’ opinions which may be,False,False,False,False,False,False
+"subjective. To handle this problem, machine learning techniques have been developed to gain knowl-",False,False,False,False,False,False
+"edge automatically from examples or raw data. Here, a weighted fuzzy rule-based clinical decision",False,False,False,False,False,False
+"support system (CDSS) is presented for the diagnosis of heart disease, automatically obtaining",False,False,False,False,False,False
+knowledge from the patient’s clinical data. The proposed clinical decision support system for the risk,False,False,False,False,False,False
+prediction of heart patients consists of two phases: (1) automated approach for the generation of,False,False,False,False,False,False
+"weighted fuzzy rules and (2) developing a fuzzy rule-based decision support system. In the ﬁrst phase,",False,False,False,False,False,False
+"we have used the mining technique, attribute selection and attribute weightage method to obtain the",False,False,False,False,False,False
+"weighted fuzzy rules. Then, the fuzzy system is constructed in accordance with the weighted fuzzy",False,False,False,False,False,False
+"rules and chosen attributes. Finally, the experimentation is carried out on the proposed system using",False,False,False,False,False,False
+the datasets obtained from the UCI repository and the performance of the system is compared with,False,False,False,False,False,False
+"the neural network-based system utilizing accuracy, sensitivity and speciﬁcity.",False,False,False,False,False,False
+ª 2011 King Saud University. Production and hosting by Elsevier B.V. All rights reserved.,False,False,False,False,False,False
+1. Introduction,False,False,True,True,False,False
+To extract hidden patterns and relationships from large,False,False,False,False,False,False
+"databases, data mining merges statistical analysis, machine",False,False,False,False,False,False
+"learning and database technology (Thuraisingham, 2000). In",False,False,False,False,False,False
+"several areas of medical services, including prediction of the",False,False,False,False,False,False
+"effectiveness of surgical procedures, medical tests, medication,",False,False,False,False,False,False
+and the discovery of relationships among clinical and diagnosis,False,False,False,False,False,False
+"data, data mining techniques have been applied (Tang et al.,",False,False,False,False,False,False
+2005). Modern-day medical diagnosis is a very composite,False,False,False,False,False,False
+*,False,False,False,False,False,False
+Mobile: +968 95710984.,False,False,False,False,False,False
+"E-mail addresses: anoojpk@gmail.com, anoojphd@gmail.com",False,False,False,False,False,False
+1319-1578 ª 2011 King Saud University. Production and hosting by,False,False,False,False,False,False
+Elsevier B.V. All rights reserved.,False,False,False,False,False,False
+Peer review under responsibility of King Saud University.,False,False,False,False,False,False
+doi:10.1016/j.jksuci.2011.09.002,False,False,False,False,False,False
+Production and hosting by Elsevier,False,False,False,False,False,False
+"Journal of King Saud University – Computer and Information Sciences (2012) 24, 27–40",False,False,False,False,False,False
+King Saud University,False,False,False,False,False,False
+www.ksu.edu.sa,False,False,False,False,False,False
+www.sciencedirect.com,False,False,False,False,False,False
+"process, entailing precise patient data, a philosophical under-",False,False,False,False,False,False
+standing of the medical literature and many years of clinical,False,False,False,False,False,False
+"experience. The health care data which, unfortunately, are",False,False,False,False,False,False
+not ‘‘mined’’ to discover hidden information for effective deci-,False,False,False,False,False,False
+sion-making are collected in a huge amount by the health care,False,False,False,False,False,False
+"industry (Subbalakshmi et al., 2011). Clinical decisions are",False,False,False,False,False,False
+often taken on the basis of doctors’ perception and experience,False,False,False,False,False,False
+rather than on the knowledge rich data masked in the database,False,False,False,False,False,False
+"(Parthiban and Subramanian, 2008). However unfortunately",False,False,False,False,False,False
+every doctor’s expertise is not even in every sub-specialty,False,False,False,False,False,False
+and is in several places as a scarce resource (Parthiban and,False,False,False,False,False,False
+"Subramanian, 2008). The information afforded by the patients",False,False,False,False,False,False
+may entail redundant and interrelated symptoms and signs in,False,False,False,False,False,False
+medical diagnosis especially when the patients suffer from,False,False,False,False,False,False
+more than one type of disease of the same category. The phy-,False,False,False,False,False,False
+sicians may not be capable to diagnose it accurately (Shanthi,False,False,False,False,False,False
+"et al., 2008). Unfortunately, due to complex interdependence",False,False,False,False,False,False
+"on a variety of factors, accurate diagnosis of disease at a",False,False,False,False,False,False
+"premature stage is quite a challenging task (Yan et al., 2003).",False,False,False,False,False,False
+"To enhance health and health care, clinical decision support",False,False,False,False,False,False
+"(CDS) affords clinicians, staff, patients, or other individuals",False,False,False,False,False,False
+"with knowledge and person speciﬁc information, intelligently",False,False,False,False,False,False
+ﬁltered or presented at appropriate times. In enhancing out-,False,False,False,False,False,False
+"comes at a few health care institutions and practice sites,",False,False,False,False,False,False
+CDS has been effective by making needed medical knowledge,False,False,False,False,False,False
+"readily obtainable to knowledge users (Merijohn et al., 2008).",False,False,False,False,False,False
+"Addressing clinical requirements, such as ensuring accurate",False,False,False,False,False,False
+"diagnoses, screening in a timely manner for preventable dis-",False,False,False,False,False,False
+"eases, or averting adverse drug events, are the most general",False,False,False,False,False,False
+"exploitations of CDS (Garg et al., 2005). Nevertheless, CDS",False,False,False,False,False,False
+"can also be potentially lower costs, progress efﬁciency, and",False,False,False,False,False,False
+"minimize patient inconvenience. In fact, CDS can occasionally",False,False,False,False,False,False
+"deal with all three of these areas simultaneously, for instance,",False,False,False,False,False,False
+by alerting clinicians to potentially duplicative testing. For,False,False,False,False,False,False
+"more complex cognitive tasks, such as diagnostic decision-",False,False,False,False,False,False
+"making, the intention of CDS is to support, rather than to re-",False,False,False,False,False,False
+"place, the clinician (Miller, 1990; Miller and Masarie, 1990),",False,False,False,False,False,False
+whereas the CDS may relieve the clinician of the burden of,False,False,False,False,False,False
+reconstructing orders for each encounter for other tasks (such,False,False,False,False,False,False
+"as the presentation of a predeﬁned order set) (Osheroff, 2009 ).",False,False,False,False,False,False
+"The CDS possibly will provide suggestions, but the clinician",False,False,False,False,False,False
+"ought to ﬁlter the information, review the suggestions, and de-",False,False,False,False,False,False
+cide whether to take action or what action to take.,False,False,False,False,False,False
+Clinical decision support systems are widely categorized,False,False,False,False,False,False
+into two major groups namely (1) knowledge based CDSS,False,False,False,False,False,False
+"and (2) non-knowledge based CDSS (Abbasi and Kashiyarndi,",False,False,False,False,False,False
+2006). The knowledge based clinical decision support system,False,False,False,False,False,False
+comprises rules mostly in the form of IF–Then statements.,False,False,False,False,False,False
+Generally the data are associated with these rules. For in-,False,False,False,False,False,False
+"stance, generate warning and more only if the pain intensity",False,False,False,False,False,False
+is up to a certain level. Generally the knowledge based CDSS,False,False,False,False,False,False
+"encloses three main parts – knowledge base, inference rules",False,False,False,False,False,False
+and a mechanism to communicate. To illustrate the result to,False,False,False,False,False,False
+"the users as well as to afford input to the system, knowledge",False,False,False,False,False,False
+"base holds the rules, inference engine merges rules with the pa-",False,False,False,False,False,False
+tient data and the communication mechanism is utilized. The,False,False,False,False,False,False
+adaptive guidelines from a knowledge base server prove to,False,False,False,False,False,False
+"be much more effective than others in certain cases, such as",False,False,False,False,False,False
+"that of chest pain management (Ali et al., 1999). Vagueness,",False,False,False,False,False,False
+impreciseness and uncertainty are the fundamental and indis-,False,False,False,False,False,False
+"pensable aspects of knowledge, so as in several practical prob-",False,False,False,False,False,False
+"lems, the experts face vagueness in feature vectors and",False,False,False,False,False,False
+"uncertainty in decision-making. Basically, a symptom is an",False,False,False,False,False,False
+uncertain indication of a phenomenon since it may or may,False,False,False,False,False,False
+"not occur with it. Especially, uncertainty characterizes a rela-",False,False,False,False,False,False
+"tion between symptoms and phenomena (Straszecka, 2007;",False,False,False,False,False,False
+"De et al., 2001).",False,False,False,False,False,False
+"In almost every stage of a clinical decision-making process,",False,False,False,False,False,False
+uncertainty occurs. Sources of uncertainties may comprise that,False,False,False,False,False,False
+patients cannot describe accurately what has happened to,False,False,False,False,False,False
+"them or how they suffer, doctors and nurses cannot explain",False,False,False,False,False,False
+"exactly what they detect, laboratory reports’ outcomes may",False,False,False,False,False,False
+"be with some degrees of error, physiologists do not precisely",False,False,False,False,False,False
+"understand how the human body works, medical researchers",False,False,False,False,False,False
+cannot precisely characterize how diseases modify the normal,False,False,False,False,False,False
+"functioning of the body, pharmacologists do not understand",False,False,False,False,False,False
+the mechanisms entirely accounting for the effectiveness of,False,False,False,False,False,False
+"drugs, and no one can precisely determine one’s prognosis",False,False,False,False,False,False
+"(Szolovit, 1995; Kong et al., 2008). Decision support systems",False,False,False,False,False,False
+that are implemented with the support of artiﬁcial intelligence,False,False,False,False,False,False
+have the capability to espouse in a new environment and to,False,False,False,False,False,False
+"learn with instance (Warren et al., 2000; Anderson, 1997). In",False,False,False,False,False,False
+"computer-aided support systems/expert systems, various meth-",False,False,False,False,False,False
+ods are exploited to congregate information used for the pro-,False,False,False,False,False,False
+"cess of decision-making. Statistical method, neural network,",False,False,False,False,False,False
+"knowledge based methods, fuzzy logic rule-based, genetic algo-",False,False,False,False,False,False
+rithms and more are included in these methods (Abbasi and,False,False,False,False,False,False
+"Kashiyarndi, 2006). Since the idea of computer-based CDSSs",False,False,False,False,False,False
+"emerged at ﬁrst, signiﬁcant research has been made in both",False,False,False,False,False,False
+theoretical and practical areas. Nevertheless numerous obsta-,False,False,False,False,False,False
+cles persist to impede the effective implementation of CDSSs,False,False,False,False,False,False
+"in clinical settings, among which representation and reasoning",False,False,False,False,False,False
+about medical knowledge predominantly under uncertainty,False,False,False,False,False,False
+are the areas that need reﬁned methodologies and techniques,False,False,False,False,False,False
+"(Lin et al., 2006; Musen et al., 2001).",False,False,False,False,False,False
+"In the proposed work, we have proposed an effective clini-",False,False,False,False,False,False
+cal decision support system using fuzzy logic in which auto-,False,False,False,False,False,False
+"matically generated weighted fuzzy rules are used. At ﬁrst,",False,False,False,False,False,False
+data preprocessing is applied on the heart disease dataset for,False,False,False,False,False,False
+removing the missing values and other noisy information.,False,False,False,False,False,False
+"Then, using the class label, the input database is divided into",False,False,False,False,False,False
+two subsets of data that are then used for mining the frequent,False,False,False,False,False,False
+"attribute category individually. Subsequently, the deviation",False,False,False,False,False,False
+range is computed using these frequent attribute categories,False,False,False,False,False,False
+so as to compute the relevant attributes. Based on the devia-,False,False,False,False,False,False
+"tion range, the attributes are selected whether any deviation",False,False,False,False,False,False
+"exists or not. Using this deviation range, the decision rules",False,False,False,False,False,False
+are constructed and these rules are scanned in the learning,False,False,False,False,False,False
+"database to ﬁnd its frequency. According to its frequency,",False,False,False,False,False,False
+the weightage is calculated for every decision rule obtained,False,False,False,False,False,False
+and the weighted fuzzy rules are obtained with the help of fuz-,False,False,False,False,False,False
+"zy membership function. Finally, the weighted fuzzy rules are",False,False,False,False,False,False
+given to the Mamdani fuzzy inference system so that the sys-,False,False,False,False,False,False
+tem can learn these rules and the risk prediction can be carried,False,False,False,False,False,False
+out on the designed fuzzy system.,False,False,False,False,False,False
+2. Related works,False,False,True,True,False,False
+"For devising clinical decision support systems, literature pre-",False,False,False,False,False,False
+sents a number of researches that have made use of artiﬁcial,False,False,False,False,False,False
+"intelligence and data mining techniques. Among them, to",False,False,False,False,False,False
+"support decision makers in the risk prediction of heart disease,",False,False,False,False,False,False
+a handful of researches have been presented. A few of the,False,False,False,False,False,False
+28 P.K. Anooj,False,False,False,False,False,False
+signiﬁcant researches obtainable in the literature are explained,False,False,False,False,False,False
+below.,False,False,False,False,False,False
+Using Dempster-Shafer theory of evidence and fuzzy sets,False,False,False,False,False,False
+"theory, Khatibi and Montazer (2010) have proposed an infer-",False,False,False,False,False,False
+ence engine named fuzzy-evidential hybrid inference engine.,False,False,False,False,False,False
+"The hybrid engine functions in two phases. In the initial phase,",False,False,False,False,False,False
+"through fuzzy sets, it models the input information’s vague-",False,False,False,False,False,False
+"ness. Further, it applies the fuzzy inference rules on the",False,False,False,False,False,False
+acquired fuzzy sets to generate the ﬁrst phase results by,False,False,False,False,False,False
+extracting the fuzzy rule set for the problem. At the subsequent,False,False,False,False,False,False
+"phase, the attained consequences of preceding stage were as-",False,False,False,False,False,False
+sumed as basic beliefs for the problem propositions and in this,False,False,False,False,False,False
+"method, the belief and plausibility functions (or the belief",False,False,False,False,False,False
+interval) are positioned. They have afforded diverse basic,False,False,False,False,False,False
+beliefs which should be exploited to generate an integrative,False,False,False,False,False,False
+outcome by gathering information from diverse sources. It,False,False,False,False,False,False
+has yielded a 91.58% accuracy rate for its accurate prediction,False,False,False,False,False,False
+by applying the proposed engine on the coronary heart disease,False,False,False,False,False,False
+(CHD) risk assessment. The hybrid engine precisely models the,False,False,False,False,False,False
+information’s vagueness and decision-making’s uncertainty,False,False,False,False,False,False
+"and through information fusion, affords further accurate",False,False,False,False,False,False
+results.,False,False,False,False,False,False
+"For the diagnosis of coronary artery disease (CAD),",False,False,False,False,False,False
+Tsipouras et al. (2008) have proposed a fuzzy rule-based deci-,False,False,False,False,False,False
+sion support system (DSS). Using a four stage methodology:,False,False,False,False,False,False
+(1) induction of a decision tree from the data; (2) extraction,False,False,False,False,False,False
+"of a set of rules from the decision tree, in disjunctive normal",False,False,False,False,False,False
+form and formulation of a crisp model; (3) transformation of,False,False,False,False,False,False
+the crisp set of rules into a fuzzy model; and (4) optimization,False,False,False,False,False,False
+"of the parameters of the fuzzy model, the system was",False,False,False,False,False,False
+automatically generated from an initial annotated dataset.,False,False,False,False,False,False
+The dataset utilized for the DSS generation and evaluation,False,False,False,False,False,False
+"comprises 199 subjects, each one characterized by 19 features,",False,False,False,False,False,False
+"in addition to demographic and history data, as well as",False,False,False,False,False,False
+laboratory examinations. Tenfold cross-validation was ap-,False,False,False,False,False,False
+"plied, and using the set of rules extracted from the decision",False,False,False,False,False,False
+"tree (ﬁrst and second stages), the average sensitivity and spec-",False,False,False,False,False,False
+"iﬁcity obtained are 62% and 54%, respectively, while the",False,False,False,False,False,False
+average sensitivity and speciﬁcity increases to 80% and,False,False,False,False,False,False
+"65%, respectively, when the fuzziﬁcation and optimization",False,False,False,False,False,False
+"stages are exploited. Since it was automatically generated,",False,False,False,False,False,False
+"the system suggests numerous advantages, it affords CAD",False,False,False,False,False,False
+diagnosis based on easily and noninvasively acquired fea-,False,False,False,False,False,False
+"tures, and was able to afford interpretation for the decisions",False,False,False,False,False,False
+made.,False,False,False,False,False,False
+For the diagnosis of coronary artery disease based on evi-,False,False,False,False,False,False
+dence Setiawan et al. (2009) have developed a fuzzy decision,False,False,False,False,False,False
+support system. The coronary artery disease data sets obtained,False,False,False,False,False,False
+from the University of California Irvine (UCI) are utilized. By,False,False,False,False,False,False
+"using rules extraction method based on rough set theory, the",False,False,False,False,False,False
+knowledge base of fuzzy decision support system was taken.,False,False,False,False,False,False
+Based on information from the discretization of numerical,False,False,False,False,False,False
+"attributes, the rules then were selected and fuzziﬁed. Using",False,False,False,False,False,False
+"the information from the support of extracted rules, fuzzy",False,False,False,False,False,False
+"rules weights were proposed. To verify the proposed system,",False,False,False,False,False,False
+"UCI heart disease data sets collected from US, Switzerland",False,False,False,False,False,False
+"and Hungary, data from Ipoh Specialist Hospital Malaysia",False,False,False,False,False,False
+are used. The results revealed that the system was capable to,False,False,False,False,False,False
+provide the percentage of coronary artery blocking better than,False,False,False,False,False,False
+cardiologists and angiography. The consequences of the pro-,False,False,False,False,False,False
+posed system were veriﬁed and authenticated by three expert,False,False,False,False,False,False
+cardiologists.,False,False,False,False,False,False
+To investigate factors that contribute signiﬁcantly to,False,False,False,False,False,False
+enhancing the risk of acute coronary syndrome Jilani et al.,False,False,False,False,False,False
+(2009) have utilized data mining techniques. They have presup-,False,False,False,False,False,False
+posed that the dependent variable was diagnosed – with,False,False,False,False,False,False
+dichotomous values showing the presence or the absence of,False,False,False,False,False,False
+disease. They have applied binary regression to the factors dis-,False,False,False,False,False,False
+tressing the dependent variable. The data set has been obtained,False,False,False,False,False,False
+"from two diverse cardiac hospitals of Karachi, Pakistan. They",False,False,False,False,False,False
+have a total of 16 variables out of which one was presupposed,False,False,False,False,False,False
+dependent and other 15 are independent variables. Data reduc-,False,False,False,False,False,False
+tion techniques like principle component analysis were applied,False,False,False,False,False,False
+for better performance of the regression model in predicting,False,False,False,False,False,False
+acute coronary syndrome. They have considered only 14 out,False,False,False,False,False,False
+of 16 factors on the basis of data reduction results.,False,False,False,False,False,False
+"Using neural network, Patil and Kumaraswamy (2009)",False,False,False,False,False,False
+have proposed an intelligent and effective heart attack predic-,False,False,False,False,False,False
+tion system. For the extraction of signiﬁcant patterns from,False,False,False,False,False,False
+"the heart disease warehouses for heart attack prediction, a",False,False,False,False,False,False
+"proﬁcient methodology has been proposed. Initially, in order",False,False,False,False,False,False
+"to make it suitable to the mining process, the data warehouse",False,False,False,False,False,False
+"was pre-processed. Once the preprocessing ended, the heart",False,False,False,False,False,False
+disease warehouse was clustered with the support of the K-,False,False,False,False,False,False
+"means clustering algorithm, which will extract the data",False,False,False,False,False,False
+appropriate to heart attack from the warehouse. Conse-,False,False,False,False,False,False
+quently with the aid of the MAFIA algorithm from the data,False,False,False,False,False,False
+"extracted, the frequent patterns applicable to heart disease",False,False,False,False,False,False
+"are mined. In addition, on basis of the computed signiﬁcant",False,False,False,False,False,False
+"weightage, the patterns vital to heart attack prediction are se-",False,False,False,False,False,False
+"lected. For the effectual prediction of heart attack, the neural",False,False,False,False,False,False
+network was trained with the preferred signiﬁcant patterns.,False,False,False,False,False,False
+"With back-propagation as the training algorithm, they have",False,False,False,False,False,False
+employed the multi-layer perceptron neural network. The,False,False,False,False,False,False
+consequences thus attained have illustrated that the designed,False,False,False,False,False,False
+prediction system was skilled in predicting heart attack,False,False,False,False,False,False
+efﬁciently.,False,False,False,False,False,False
+A prototype intelligent heart disease prediction system,False,False,False,False,False,False
+(IHDPS) has been developed by Palaniappan and Awang,False,False,False,False,False,False
+"(2008) using data mining techniques, namely, decision trees,",False,False,False,False,False,False
+naive Bayes and neural network. Results exposed that in real-,False,False,False,False,False,False
+"izing the objectives of the deﬁned mining goals, each technique",False,False,False,False,False,False
+has its exclusive strength. IHDPS can respond to complex,False,False,False,False,False,False
+‘‘what if’’ queries whereas the traditional decision support sys-,False,False,False,False,False,False
+tem is unable to answer. It can foretell the possibility of pa-,False,False,False,False,False,False
+"tients getting a heart disease, using medical proﬁles such as",False,False,False,False,False,False
+"age, sex, blood pressure and blood sugar. It facilitates signiﬁ-",False,False,False,False,False,False
+"cant knowledge, e.g. patterns, relationships between medical",False,False,False,False,False,False
+"factors related to heart disease, to be recognized. IHDPS is",False,False,False,False,False,False
+"Web-based, user-friendly, scalable, reliable and expandable.",False,False,False,False,False,False
+To utilize artiﬁcial intelligence tools as clinical decision sup-,False,False,False,False,False,False
+port in assessing cardiovascular risk in patients Fidele et al.,False,False,False,False,False,False
+(2009) have presented a research study. In the proposed artiﬁ-,False,False,False,False,False,False
+"cial neural network, a two-layer neural network employing the",False,False,False,False,False,False
+Levenberg–Marquardt algorithm and the resilient back-propa-,False,False,False,False,False,False
+gation have been utilized. It has been shown by exploiting the,False,False,False,False,False,False
+"long beach dataset, how this network was efﬁcient in predict-",False,False,False,False,False,False
+ing cardiovascular risk in individual patients. At an individual,False,False,False,False,False,False
+level the application of the network seems to better deal with,False,False,False,False,False,False
+the prediction of cardiovascular disease.,False,False,False,False,False,False
+The ability of fuzzy neural network model to predict the,False,False,False,False,False,False
+likelihood of coronary heart disease has been evaluated by,False,False,False,False,False,False
+Abidin et al. (2009) for individuals based on knowledge of,False,False,False,False,False,False
+"their biomarkers, risk habits and demographic proﬁles. The",False,False,False,False,False,False
+Clinical decision support system: Risk level prediction of heart disease using weighted fuzzy rules 29,False,False,False,False,False,False
+prediction performance of fuzzy neural network models were,False,False,False,False,False,False
+calculated in terms of percentage accuracies and compared,False,False,False,False,False,False
+with the prediction performance of logistic regression models.,False,False,False,False,False,False
+Provisionary consequences have illustrated that for the predic-,False,False,False,False,False,False
+"tion of coronary heart disease in the sample studied, four",False,False,False,False,False,False
+"markers namely body mass index, systolic blood pressure, total",False,False,False,False,False,False
+"cholesterol level, and age are the appropriate markers. Fuzzy",False,False,False,False,False,False
+neural network models’ prediction performances were found,False,False,False,False,False,False
+to be sophisticated to the logistic regression performance in,False,False,False,False,False,False
+addition to other outcomes that are reported in the related,False,False,False,False,False,False
+literature.,False,False,False,False,False,False
+3. Discussion of heart disease dataset,False,False,True,True,False,False
+3.1. Heart disease,False,False,False,False,False,False
+Heart disease refers to numerous problems that distress the,False,False,False,False,False,False
+heart and the blood vessels in the heart. Coronary artery dis-,False,False,False,False,False,False
+"ease (CAD), angina, heart attack and heart failure are some",False,False,False,False,False,False
+examples for the diverse types of heart diseases. Coronary,False,False,False,False,False,False
+heart disease (CHD) is a key reason of sickness and death,False,False,False,False,False,False
+in the modern society. The expense of handling CHD is a,False,False,False,False,False,False
+major economic load and so prevention of coronary artery,False,False,False,False,False,False
+disease is an extremely essential step in the management.,False,False,False,False,False,False
+Some of the several methods that can be used for CHD pre-,False,False,False,False,False,False
+"vention include health promotion activities, special protection",False,False,False,False,False,False
+"schemes, programs to change way of living, identiﬁcation in",False,False,False,False,False,False
+advance and excellent control of risk factors and the contin-,False,False,False,False,False,False
+"uous observation of arising risk factors (Knopp, 2002).",False,False,False,False,False,False
+Amassment of plaques inside the walls of the coronary arter-,False,False,False,False,False,False
+ies that deliver blood to the myocardium causes CAD. Dam-,False,False,False,False,False,False
+age to the myocardium may result due to the continued,False,False,False,False,False,False
+temporary oxygen deprivation that may be caused by CAD,False,False,False,False,False,False
+"(Setiawan et al., 2009). The term ‘cardiovascular disease’ that",False,False,False,False,False,False
+represents a category of heart disease comprises a broad vari-,False,False,False,False,False,False
+ety of conditions that upset the heart and the blood vessels,False,False,False,False,False,False
+and the way in which blood is pumped and circulated in,False,False,False,False,False,False
+the body. CHD is caused by the decreased blood and oxygen,False,False,False,False,False,False
+supply to the heart due to the narrowing of the coronary,False,False,False,False,False,False
+"arteries. CHD includes myocardial infarctions, commonly",False,False,False,False,False,False
+"called as heart attacks, and angina pectoris, or chest pain",False,False,False,False,False,False
+"(Patil and Kumaraswamy, 2009). Heart attack results due",False,False,False,False,False,False
+"to the abrupt blockage of a coronary artery, usually because",False,False,False,False,False,False
+of a blood clot. Insufﬁcient blood ﬂow to the heart muscles,False,False,False,False,False,False
+"results in chest pains (Chen and Greiner, 1999). There are",False,False,False,False,False,False
+several types of cardiovascular disease such as high blood,False,False,False,False,False,False
+"pressure, coronary artery disease, valvular heart disease,",False,False,False,False,False,False
+"stroke, or rheumatic fever/rheumatic heart disease (http://",False,False,False,False,False,False
+chinese-school.netﬁrms.com/heart-disease-causes.html).,False,False,False,False,False,False
+3.2. Dataset description,False,False,False,False,False,False
+The data set is taken from Data Mining Repository of the,False,False,False,False,False,False
+"University of California, Irvine (UCI) (Newman et al., 1998).",False,False,False,False,False,False
+"Finally the system is validated using data sets from Cleveland,",False,False,False,False,False,False
+"Hungary and Switzerland. In those datasets, totally, 14 attri-",False,False,False,False,False,False
+"butes such as Age, sex, chest pain type, resting blood pressure,",False,False,False,False,False,False
+"serum cholesterol in mg/dl, fasting blood sugar, resting electro-",False,False,False,False,False,False
+"cardiographic results, maximum heart rate achieved, exercise",False,False,False,False,False,False
+"induced angina, ST depression, slope of the peak exercise ST",False,False,False,False,False,False
+"segment, number of major vessels, thal and diagnosis of heart",False,False,False,False,False,False
+disease are presented.,False,False,False,False,False,False
+3.2.1. Cleveland data,False,False,False,False,False,False
+"Robert Detrano, M.D., Ph.D., collected these data at V.A.",False,False,False,False,False,False
+Medical Centre. All published experiments related to using a,False,False,False,False,False,False
+subset of 14 of the 76 attributes present in the processed Cleve-,False,False,False,False,False,False
+"land heart disease database. Speciﬁcally, ML researchers use",False,False,False,False,False,False
+only the Cleveland database till today. The existence of heart,False,False,False,False,False,False
+disease in the patient is indicated in the ‘‘goal’’ ﬁeld by means,False,False,False,False,False,False
+of an integer that can take any value from 0 (no presence) to 4.,False,False,False,False,False,False
+Distinguishing disease existence (values 1–4) from non-exis-,False,False,False,False,False,False
+tence (value 0) has been the focus of the experiments con-,False,False,False,False,False,False
+"ducted in the Cleveland database (Ephzibah, 2010). Six of",False,False,False,False,False,False
+the examples have been discarded because they had missing,False,False,False,False,False,False
+"values. Class distributions are 54% heart disease absent,",False,False,False,False,False,False
+46% heart disease present.,False,False,False,False,False,False
+3.2.2. Hungarian data,False,False,False,False,False,False
+"Andras Janosi, M.D., collected these data at the Hungarian",False,False,False,False,False,False
+"Institute of Cardiology, Budapest. Due to a huge percentage",False,False,False,False,False,False
+of missing values three of the attributes have been discarded,False,False,False,False,False,False
+but the format of the data is exactly the same as that of the,False,False,False,False,False,False
+Cleveland data. Thirty-four examples of the database were dis-,False,False,False,False,False,False
+carded on account of missing values and 261 examples were,False,False,False,False,False,False
+present. Class distributions are 62.5% heart disease absent,False,False,False,False,False,False
+"and 37.5% heart disease present (Bradley, 1997).",False,False,False,False,False,False
+3.2.3. Switzerland data,False,False,False,False,False,False
+"William Steinbrunn, M.D., collected these data at the Univer-",False,False,False,False,False,False
+"sity Hospital, Zurich, Switzerland. Switzerland data has more",False,False,False,False,False,False
+number of missing values. It contains 123 data instances and,False,False,False,False,False,False
+14 attributes. Class distributions are 6.5% heart disease absent,False,False,False,False,False,False
+and 93.5% heart disease present.,False,False,False,False,False,False
+4. An Efﬁcient clinical decision support system to risk level,False,False,True,True,False,False
+prediction of heart disease,False,False,False,False,False,False
+"Normally, direct support clinical decision-making is the inten-",False,False,False,False,False,False
+tion behind the design of a clinical decision support system and,False,False,False,False,False,False
+it presents patient-speciﬁc assessments or recommendations,False,False,False,False,False,False
+produced using the characteristics of individual patients to cli-,False,False,False,False,False,False
+"nicians for consideration (Kawamoto et al., 2005). In recent",False,False,False,False,False,False
+"years, clinical decision support system based on computer-",False,False,False,False,False,False
+aided diagnosis methodologies have been proposed in the liter-,False,False,False,False,False,False
+ature by which evaluating the data obtained by some of the,False,False,False,False,False,False
+"methods or other sources (i.e., laboratory examinations, demo-",False,False,False,False,False,False
+"graphic and/or history data, etc.) from a computer-based",False,False,False,False,False,False
+application leads to a computer-aided diagnosis. The data,False,False,False,False,False,False
+analysis methods used in most of the proposed methods can-,False,False,False,False,False,False
+not provide clear and direct explanation for the decisions made,False,False,False,False,False,False
+to examine the risk factors for cardiovascular diseases as they,False,False,False,False,False,False
+"are based on neural networks. Hence, a method based on eas-",False,False,False,False,False,False
+ily obtained features capable of calculating the risk level of,False,False,False,False,False,False
+computer-aided diagnosis and providing explanation for the,False,False,False,False,False,False
+decisions made would be of immense clinical value (Tsipouras,False,False,False,False,False,False
+"et al., 2008). So, the soft computing technique in particular the",False,False,False,False,False,False
+fuzzy logic technique could be used for assessing the risk level,False,False,False,False,False,False
+of heart patients in developing the clinical decision support,False,False,False,False,False,False
+system of heart disease diagnosis.,False,False,False,False,False,False
+"In the proposed system, the biomarkers for cardiovascular",False,False,False,False,False,False
+"diseases described in the literature are age, sex, total choles-",False,False,False,False,False,False
+"terol level, HDL, LDL, age, smoking status, hypertension,",False,False,False,False,False,False
+and pre-eclampsia that are mainly used to predict the risk level,False,False,False,False,False,False
+"of heart patients. For better prediction of risk level, we make",False,False,False,False,False,False
+30 P.K. Anooj,False,False,False,False,False,False
+"use of fuzzy logic, where the decision to be taken on heart",False,False,False,False,False,False
+disease of patients is based on the weighted fuzzy rules. By,False,False,False,False,False,False
+"considering the CDSS based on fuzzy logic, the efﬁciency",False,False,False,False,False,False
+mainly depends on the fuzzy rules employed in the system.,False,False,False,False,False,False
+"In general, the domain experts or professionals in the corre-",False,False,False,False,False,False
+sponding domain provide the fuzzy rules for prediction prob-,False,False,False,False,False,False
+"lem. But, here, we automatically generated the fuzzy rules to",False,False,False,False,False,False
+provide the better learning of fuzzy system using historic data.,False,False,False,False,False,False
+"In addition to which, the fuzzy rules are weighted in accor-",False,False,False,False,False,False
+dance with their importance using the attribute weightage.,False,False,False,False,False,False
+These weighted fuzzy rules are applied on the rule base of,False,False,False,False,False,False
+the fuzzy system and then the prediction can be carried out,False,False,False,False,False,False
+on the designed fuzzy-based CDSS. The detailed steps involved,False,False,False,False,False,False
+in the proposed clinical decision support system are explained,False,False,False,False,False,False
+in Figs. 1 and 2.,False,False,False,False,False,False
+4.1. Data preprocessing,False,False,False,False,False,False
+The purpose of data preprocessing is to extract useful data,False,False,False,False,False,False
+from raw heart disease datasets and then these data should,False,False,False,False,False,False
+be converted into the format necessary for the prediction of,False,False,False,False,False,False
+risk level. Due to the irrelevant information in the heart disease,False,False,False,False,False,False
+"datasets, the original raw data cannot be directly used in the",False,False,False,False,False,False
+"prediction procedure, hence in data preprocessing phase, raw",False,False,False,False,False,False
+"data need to be cleaned, analyzed and transformed for further",False,False,False,False,False,False
+"steps. So, the irrelevant attributes are identiﬁed using the",False,False,False,False,False,False
+procedure discussed in Section 4.3.2 and are converted into,False,False,False,False,False,False
+the row–column format after removing the irrelevant ones.,False,False,False,False,False,False
+"Here, each row represents the patient information and the col-",False,False,False,False,False,False
+umn indicates a list of attributes (biomarkers). The last column,False,False,False,False,False,False
+gives the class label that corresponds to the risk level of the,False,False,False,False,False,False
+heart patients.,False,False,False,False,False,False
+4.2. Classiﬁcation of training dataset based on risk level,False,False,False,False,False,False
+"After data processing, the input training dataset used for pre-",False,False,False,False,False,False
+diction is classiﬁed into two subsets of data based on the class,False,False,False,False,False,False
+"label described in the data. Actually, the heart disorder is usu-",False,False,False,False,False,False
+"ally a blood vessel problem, for example, blockage of the blood",False,False,False,False,False,False
+ﬂow or narrowing of the blood vessel. There are two output,False,False,False,False,False,False
+"classes for the diagnosis of heart disease, less than 50% diam-",False,False,False,False,False,False
+eter narrowing (no heart disease) or greater than 50% diameter,False,False,False,False,False,False
+"narrowing (has heart disease). Here, value 0 represents no pres-",False,False,False,False,False,False
+ence of heart disease which means less than 50% diameter nar-,False,False,False,False,False,False
+rowing and values 1–4 represent the presence of heart disease,False,False,False,False,False,False
+that means greater the 50% diameter narrowing. According,False,False,False,False,False,False
+"to, we modiﬁed the chosen UCI data into two class labels.",False,False,False,False,False,False
+"In all three datasets, class 0 speciﬁes the no presence of heart",False,False,False,False,False,False
+disease (less than 50% diameter narrowing) and class 1 speci-,False,False,False,False,False,False
+ﬁes the presence of heart disease (greater the 50% diameter,False,False,False,False,False,False
+"narrowing). Using these two class labels, the dataset (D",False,False,False,False,False,False
+H,True,False,False,True,False,False
+) is di-,False,False,False,False,False,False
+"vided into two subsets of data, D",False,False,False,False,False,False
+¼fD,False,False,False,False,False,False
+"; 1 6 j 6 2g, where, j",False,False,False,False,False,False
+denotes the class label that describes the risk level of patients.,False,False,False,False,False,False
+"In addition to which, each class contains m number of attri-",False,False,False,False,False,False
+butes and each attribute (b,False,False,False,False,False,False
+i,False,False,False,False,False,False
+) presented in the dataset consists,False,False,False,False,False,False
+of an attribute category that is the continuous value speciﬁed,False,False,False,False,False,False
+for every patient. The two subsets of data D,False,False,False,False,False,False
+Hj,False,False,False,False,False,False
+obtained are,False,False,False,False,False,False
+then employed for generating a better set of weighted fuzzy,False,False,False,False,False,False
+rules automatically so that the fuzzy system can learn the rules,False,False,False,False,False,False
+effectively.,False,False,False,False,False,False
+4.3. Automated approach to generate weighted fuzzy rules,False,False,False,False,False,False
+This section describes the automated approach to generate the,False,False,False,False,False,False
+weighted fuzzy rules from the classiﬁed dataset in order to,False,False,False,False,False,False
+effectively learn the fuzzy system. By considering the heart dis-,False,False,False,False,False,False
+"ease datasets, a large number of attributes is presented but, the",False,False,False,False,False,False
+extraction signiﬁcance attributes exactly suitable for prediction,False,False,False,False,False,False
+are very important. In order to choose the most relevant and,False,False,False,False,False,False
+"important attributes, we have used the frequent attribute cate-",False,False,False,False,False,False
+"gory that is mined from the input datasets. Then, based on the",False,False,False,False,False,False
+frequency of attribute category and the weightage of attri-,False,False,False,False,False,False
+"butes, the fuzzy rules are generated automatically. The steps",False,False,False,False,False,False
+to be used for the automatic generation of fuzzy rules are dis-,False,False,False,False,False,False
+cussed in this sub-section.,False,False,False,False,False,False
+4.3.1. Mining of attribute category,False,False,False,False,False,False
+"In this step, the frequent attribute category corresponding to",False,False,False,False,False,False
+every attribute b,False,False,False,False,False,False
+i,False,False,False,False,False,False
+presented in the datasets D,False,False,False,False,False,False
+Hj,False,False,False,False,False,False
+should be,False,False,False,False,False,False
+mined so that the frequency of every attribute category with-,False,False,False,False,False,False
+in the class C,False,False,False,False,False,False
+j,False,False,False,False,False,False
+is obtained by scanning the database. The fre-,False,False,False,False,False,False
+quency of attribute category is computed by ﬁnding the,False,False,False,False,False,False
+occurrence of the attribute category in the whole dataset.,False,False,False,False,False,False
+"For continuous attributes, we discretize them in equi-width",False,False,False,False,False,False
+"to ﬁnd the frequency. Here, the well known algorithms, such",False,False,False,False,False,False
+"as Apriori (Agrawal et al., 1993) and FP-growth (Han et al.,",False,False,False,False,False,False
+Figure 1 Clinical decision support system.,False,False,False,False,True,False
+Figure 2 Proposed fuzzy-based clinical decision support system.,False,False,False,False,True,False
+Clinical decision support system: Risk level prediction of heart disease using weighted fuzzy rules 31,False,False,False,False,False,False
+2004) are not suitable for mining of the frequent attribute,False,False,False,False,False,False
+category because these data formats are different from the,False,False,False,False,False,False
+"data that are suitable for traditional algorithms. Here, we",False,False,False,False,False,False
+simply mine the one length attribute category by ﬁnding,False,False,False,False,False,False
+"the frequency in the database and then, the attribute category",False,False,False,False,False,False
+of the attributes b,False,False,False,False,False,False
+i,False,False,False,False,False,False
+within the class C,False,False,False,False,False,False
+j,False,False,False,False,False,False
+are arranged in accor-,False,False,False,False,False,False
+"dance with their frequency. Then, for every attribute, a set of",False,False,False,False,False,False
+attribute categories are selected from the sorted list based,False,False,False,False,False,False
+minimum support. The selected attribute category is then,False,False,False,False,False,False
+"stored in a two vector, V",False,False,False,False,False,False
+and V,False,False,False,False,False,False
+"for each class, in",False,False,False,False,False,False
+which one vector contains the minimum value corresponds,False,False,False,False,False,False
+to the attribute category of every attribute and second vector,False,False,False,False,False,False
+that contains the maximum value corresponds to the attribute,False,False,False,False,False,False
+"category of every attribute. It is denoted as, V",False,False,False,False,False,False
+¼,False,False,False,False,False,False
+fb,False,False,False,False,False,False
+min 1,False,False,False,False,False,False
+; b,False,False,False,False,False,False
+min 2,False,False,False,False,False,False
+; :::; b,False,False,False,False,False,False
+min m,False,False,False,False,False,False
+g and V,False,False,False,False,False,False
+¼fb,False,False,False,False,False,False
+max 1,False,False,False,False,False,False
+; b,False,False,False,False,False,False
+max 2,False,False,False,False,False,False
+; :::; b,False,False,False,False,False,False
+max m,False,False,False,False,False,False
+g.,False,False,False,False,False,False
+4.3.2. Selection of suitable attributes,False,False,False,False,False,False
+"Here, the suitable attributes are then identiﬁed employing the",False,False,False,False,False,False
+"two vectors, V",False,False,False,False,False,False
+and V,False,False,False,False,False,False
+obtained from the previous step.,False,False,False,False,False,False
+The reason behind this step is that the input data contain a,False,False,False,False,False,False
+"large number of attributes, in which all the attributes are not",False,False,False,False,False,False
+so effective in the predicting risk level of the heart patient.,False,False,False,False,False,False
+"So, the identiﬁcation of suitable attributes should ensure the",False,False,False,False,False,False
+better accuracy in risk level prediction. For identifying the suit-,False,False,False,False,False,False
+"able attributes, we have used the deviation method, where",False,False,False,False,False,False
+mined 1-length attribute category is used. The deviation range,False,False,False,False,False,False
+for the entire element presented in the minimum vector of two,False,False,False,False,False,False
+"classes, V",False,False,False,False,False,False
+1,False,False,False,False,False,False
+and V,False,False,False,False,False,False
+2,False,False,False,False,False,False
+is identiﬁed by performing the one-to-,False,False,False,False,False,False
+"one comparison of the respective location. In a similar way, the",False,False,False,False,False,False
+deviation range can be identiﬁed for the two maximum vectors,False,False,False,False,False,False
+"of two classes, V",False,False,False,False,False,False
+1,False,False,False,False,False,False
+and V,False,False,False,False,False,False
+2,False,False,False,False,False,False
+. The minimum and maximum,False,True,False,True,False,False
+"deviation vectors thus obtained are represented as, D",False,False,False,False,False,False
+MAX,True,False,False,True,False,False
+and D,False,False,False,False,False,False
+MIN,True,False,False,True,False,False
+". Then, the suitable attributes are chosen if the devi-",False,True,False,True,False,False
+"ation is found out, otherwise it is eliminated. The effective",False,False,False,False,False,False
+attributes selected for rule generation process is represented,False,False,False,False,False,False
+"as, A =[b",False,False,False,False,False,False
+(1),False,False,False,False,False,False
+", b",False,False,False,False,False,False
+(2),False,False,False,False,False,False
+",...,b",False,False,False,False,False,False
+(k),False,False,False,False,False,False
+"], where, k 6 m.",False,False,False,False,False,False
+4.3.3. Generation of decision rules and rule weighting,False,False,False,False,False,False
+Rule generation and rule weighting are an important step for,False,False,False,False,False,False
+developing fuzzy-based clinical decision support system. The,False,False,False,False,False,False
+"deviation vectors, D",False,False,False,False,False,False
+MAX,True,False,False,True,False,False
+and D,False,False,False,False,False,False
+MIN,True,False,False,True,False,False
+obtained from the previous,False,False,False,False,False,False
+step are employed here to generate the decision rules that spec-,False,False,False,False,False,False
+iﬁed the risk level of heart patients in terms of numerical vari-,False,False,False,False,False,False
+ables. The rules are generated automatically from the two,False,False,False,False,False,False
+deviation vectors that contain the deviation of each attribute,False,False,False,False,False,False
+"comparing two classes. From the equal size deviation vector,",False,False,False,False,False,False
+three decision rules are generated from every element by com-,False,False,False,False,False,False
+"paring the corresponding elements of both vectors. Suppose,",False,False,False,False,False,False
+"assume that the ﬁrst element of the vectors, D",False,False,False,False,False,False
+MIN,True,False,False,True,False,False
+and D,False,False,False,False,False,False
+MAX,True,False,False,True,False,False
+"are ‘3’ and ‘8’, the corresponding generated decision rules",False,False,False,False,False,False
+"are, ‘‘IF b",False,False,False,False,False,False
+(1),False,False,False,False,False,False
+"is less than 3, THEN the risk is less than 50’’",False,False,False,False,False,False
+and ‘‘IF b,False,False,False,False,False,False
+(1),False,False,False,False,False,False
+"is greater than 8, THEN the risk is greater than",False,False,False,False,False,False
+50’’ and ‘‘IF b,False,False,False,False,False,False
+(1),False,False,False,False,False,False
+"is in between 3 and 8, THEN the risk is either",False,False,False,False,False,False
+less than 50 or greater than 50’’. These rules are then weighted,False,False,False,False,False,False
+based on its importance level in the database D,False,False,False,False,False,False
+H,True,False,False,True,False,False
+. For each rule,False,True,False,True,False,False
+"generated, we ﬁnd the number of patients (M) satisfy these",False,False,False,False,False,False
+rules by scanning the database D,False,False,False,False,False,False
+H,True,False,False,True,False,False
+. Once we ﬁnd the value,False,True,False,True,False,False
+of ‘‘M’’ for the rule (R,False,False,False,False,False,False
+1,False,False,False,False,False,False
+ﬁ R,False,False,False,False,False,False
+2,False,False,False,False,False,False
+"), the weightage of the rule is",False,False,False,False,False,False
+found by using the following formulae:,False,False,False,False,False,False
+WðR,False,False,False,False,False,False
+1,False,False,False,False,False,False
+! R,True,False,False,True,False,False
+2,False,False,False,False,False,False
+Þ¼,True,False,False,True,False,False
+M,True,False,False,True,False,False
+N,True,False,False,True,False,False
+where M,False,False,False,False,False,False
+"is the number of patients who satisfy the rule,",False,False,False,False,False,False
+R,True,False,False,True,False,False
+1,False,False,False,False,False,False
+ﬁ R,False,False,False,False,False,False
+2,False,False,False,False,False,False
+and N is the total number of patients in the database.,False,False,False,False,False,False
+4.3.4. Finding weighted fuzzy rules,False,False,False,False,False,False
+The extremely important task of generating fuzzy rules from,False,False,False,False,False,False
+the data described using numeric–symbolic values appears to,False,False,False,False,False,False
+be extremely difﬁcult. Handling these types of values is extre-,False,False,False,False,False,False
+mely important because it is very close to human knowledge,False,False,False,False,False,False
+and rules with such values are normally more comprehensible,False,False,False,False,False,False
+and accountable when compared to rules with numerical val-,False,False,False,False,False,False
+ues. Handling such values is permitted by the introduction of,False,False,False,False,False,False
+fuzzy set theory which by the construction of fuzzy leads to,False,False,False,False,False,False
+the generation of a set of fuzzy rules. The automatic method,False,False,False,False,False,False
+proposed here is based on the construction of fuzzy modalities,False,False,False,False,False,False
+that enables the generation of fuzzy values from a set of rules,False,False,False,False,False,False
+with numerical values. The decision rules obtained from the,False,False,False,False,False,False
+"previous contain IF and THEN parts, in which IF part speci-",False,False,False,False,False,False
+ﬁes the numerical variable and THEN part speciﬁes the class,False,False,False,False,False,False
+"label. At ﬁrst, the numerical variable speciﬁed in the IF part",False,False,False,False,False,False
+of the decision rules is converted into the linguistic variable,False,False,False,False,False,False
+according to the fuzzy membership function and THEN part,False,False,False,False,False,False
+of the fuzzy rules is similar to that of the decision rules. For,False,False,False,False,False,False
+"example, ‘‘ IF b",False,False,False,False,False,False
+(1),False,False,False,False,False,False
+"is LOW, THEN the risk is less than 50",False,False,False,False,False,False
+(class ’0’) and ‘‘IF b,False,False,False,False,False,False
+(1),False,False,False,False,False,False
+"is MEDIUM, THEN the risk is either",False,False,False,False,False,False
+less than 50 or greater than 50 (class ‘0’ or ‘1’) and ‘‘IF b,False,False,False,False,False,False
+(1),False,False,False,False,False,False
+"is HIGH, THEN the risk is greater than 50 (class ‘1’)’’. In a",False,False,False,False,False,False
+"similar way, we process entire decision rules with numeric var-",False,False,False,False,False,False
+iable and they are converted into the fuzzy rules using mem-,False,False,False,False,False,False
+bership function. A group of fuzzy IF–THEN rules obtained,False,False,False,False,False,False
+"is belonging to one of the most popular, most effective, and",False,False,False,False,False,False
+user-friendly knowledge representations so as to provide the,False,False,False,False,False,False
+effective learning for the fuzzy system.,False,False,False,False,False,False
+4.4. Developing clinical decision support system using fuzzy logic,False,False,False,False,False,False
+This section describes the developing of clinical decision,False,False,False,False,False,False
+support system using fuzzy logic system for assessing the risk,False,False,False,False,False,False
+level of the heart patient. Fuzzy logic introduced by Zadeh,False,False,False,False,False,False
+"in the late 1960s (Zadeh, 1965) is the rediscovery of multi-",False,False,False,False,False,False
+"valued logic designed by Lukasiewicz. A fuzziﬁer, fuzzy rules,",False,False,False,False,False,False
+fuzzy inference engine and defuzziﬁer exist in a fuzzy logic,False,False,False,False,False,False
+"model. Fuzziﬁer: Firstly, fuzzy linguistic variables, fuzzy lin-",False,False,False,False,False,False
+guistic terms and membership functions are used to convert,False,False,False,False,False,False
+a gathered crisp set of input data into a fuzzy set. This step,False,False,False,False,False,False
+is known as fuzziﬁcation. Enabling interpretation of fuzzy,False,False,False,False,False,False
+condition in a rule is the purpose of the fuzziﬁcation process.,False,False,False,False,False,False
+Fuzzy rule base: The fuzzy rules that are important for any,False,False,False,False,False,False
+fuzzy system are deﬁned after the inputs are fuzziﬁed. A fuzzy,False,False,False,False,False,False
+rule contains a condition and a conclusion and its structure is,False,False,False,False,False,False
+similar to the IF–THEN rule. An entire fuzzy rule that is,False,False,False,False,False,False
+created to control the output variable exists in the rule base.,False,False,False,False,False,False
+"Inference engine: Subsequently, a set of rules deﬁned in the",False,False,False,False,False,False
+fuzzy rule base is used as the basis for interpreting and by,False,False,False,False,False,False
+employing reasoning fuzzy outputs are generated. Defuzziﬁer:,False,False,False,False,False,False
+A fuzzy set (the aggregate output fuzzy set) is used as the input,False,False,False,False,False,False
+for the defuzziﬁcation process and membership functions,False,False,False,False,False,False
+based mapping of fuzzy sets to a crisp output is used to obtain,False,False,False,False,False,False
+a single number as the output. The general structure of the,False,False,False,False,False,False
+fuzzy logic system is shown in Fig. 3.,False,False,False,False,False,False
+The designed clinical decision support system shown in,False,False,False,False,False,False
+"Fig. 4 contains ‘m’ inputs and one output, where inputs are",False,False,False,False,True,False
+related to the ‘m’ attributes and output is related to the class,False,False,False,False,False,False
+32 P.K. Anooj,False,False,False,False,False,False
+"label (risk level). Here, m-input, single-output of Mamdani",False,False,False,False,False,False
+fuzzy inference system with the centroid of area defuzziﬁcation,False,False,False,False,False,False
+"strategy was used for this purpose. Here, each input fuzzy set",False,False,False,False,False,False
+deﬁned in the fuzzy system includes four membership func-,False,False,False,False,False,False
+"tions (VL, L, M and H) and an output fuzzy set contains",False,False,False,False,False,False
+two membership functions (L and H). Each membership func-,False,False,False,False,False,False
+tion used triangular function for the fuzziﬁcation strategy. The,False,False,False,False,False,False
+fuzzy rule base contains a set of weighted fuzzy rules obtained,False,False,False,False,False,False
+from the proposed procedure discussed in Section 4.3.4 to,False,False,False,False,False,False
+"learn the system. Then, for testing, the test data are given to",False,False,False,False,False,False
+the designed fuzzy system that predicts whether the patient,False,False,False,False,False,False
+has the heart disease or not.,False,False,False,False,False,False
+5. Results and discussion,False,False,True,True,False,False
+The experimental results of the clinical decision support system,False,False,False,False,False,False
+"for risk prediction are explained in this section. Here, the per-",False,False,False,False,False,False
+formance of the proposed system is compared with the neural,False,False,False,False,False,False
+"network-based system to evaluate the sensitivity, speciﬁcity",False,False,False,False,False,False
+and accuracy.,False,False,False,False,False,False
+5.1. Experimental environment and evaluation metrics,False,False,False,False,False,False
+The proposed fuzzy logic-based clinical decision support sys-,False,False,False,False,False,False
+tem has been implemented using MATLAB (7.10). For exper-,False,False,False,False,False,False
+"imentation, we have taken Cleveland, Hungarian and",False,False,False,False,False,False
+Switzerland heart disease datasets (http://archive.ics.uci.edu/,False,False,False,False,False,False
+ml/datasets.html) which are widely accepted databases ob-,False,False,False,False,False,False
+tained from the UCI machine learning repository. In the test-,False,False,False,False,False,False
+"ing phase, the testing dataset is given to the proposed system to",False,False,False,False,False,False
+ﬁnd the risk prediction of heart patients and obtained results,False,False,False,False,False,False
+"are evaluated with the evaluation metrics namely, sensitivity,",False,False,False,False,False,False
+"speciﬁcity and accuracy (Zhu et al., 2010).",False,False,False,False,False,False
+"Sensitivity, speciﬁcity and accuracy are the commonly",False,False,False,False,False,False
+used statistical measures to illustrate the medical diagnostic,False,False,False,False,False,False
+"test and especially, used to enumerate how the test was good",False,False,False,False,False,False
+and consistent. Sensitivity evaluates the diagnostic test,False,False,False,False,False,False
+correctly at detecting a positive disease. Speciﬁcity measures,False,False,False,False,False,False
+how the proportion of patients without disease can be,False,False,False,False,False,False
+correctly ruled out. The association between both the sensi-,False,False,False,False,False,False
+tivity and speciﬁcity measures is deﬁned by the graphical,False,False,False,False,False,False
+representation of the ROC curve and this helps to make a,False,False,False,False,False,False
+decision to ﬁnd the optimal model to determine the best,False,False,False,False,False,False
+threshold for the diagnostic test. Accuracy can be concluded,False,False,False,False,False,False
+with the aid of the sensitivity and speciﬁcity measures in the,False,False,False,False,False,False
+presence of prevalence. Accuracy measures correctly ﬁgured,False,False,False,False,False,False
+out the diagnostic test by eliminating a given condition. In,False,False,False,False,False,False
+"order to ﬁnd these metrics, we ﬁrst compute some of the",False,False,False,False,False,False
+"terms like, True positive, True negative, False negative and",False,False,False,False,False,False
+False positive based on the deﬁnitions given in Table 1.,False,False,False,False,False,False
+Sensitivity ¼ TP=ðTP þ FNÞ,False,False,False,False,False,False
+Figure 3 Fuzzy inference system.,False,False,False,False,True,False
+Figure 4 Designed fuzzy inference system based on weighted,False,False,False,False,True,False
+fuzzy rules.,False,False,False,False,False,False
+"Table 1 Terms used to deﬁne sensitivity, speciﬁcity and accuracy.",False,False,False,False,False,True
+Outcome of the,False,False,False,False,False,False
+diagnostic test,False,False,False,False,False,False
+Condition (e.g. disease) as determined by the Standard of Truth,False,False,False,False,False,False
+Positive Negative Row total,False,False,False,False,False,False
+Positive TP FP TP + FP (total number of,False,False,False,False,False,False
+subjects with positive test),False,False,False,False,False,False
+Negative FN TN FN + TN (total number of,False,False,False,False,False,False
+subjects with negative test),False,False,False,False,False,False
+Column total TP + FN (total number of,False,False,False,False,False,False
+subjects with given,False,False,False,False,False,False
+condition),False,False,False,False,False,False
+FP + TN (total number of,False,False,False,False,False,False
+subjects without given,False,False,False,False,False,False
+condition),False,False,False,False,False,False
+N = TP + TN + FP + FN,True,False,False,True,False,False
+(Total number of subjects in,False,False,False,False,False,False
+study),False,False,False,False,False,False
+Clinical decision support system: Risk level prediction of heart disease using weighted fuzzy rules 33,False,False,False,False,False,False
+Specificity ¼ TN=ðTN þ FPÞ,False,False,False,False,False,False
+Accuracy ¼ðTN þ TPÞ=ðTN þ TP þ FN þ FPÞ,False,False,False,False,False,False
+"where TP is the True positive, TN is the True negative, FN is",False,False,False,False,False,False
+the False negative and FP is the False positive.,False,False,False,False,False,False
+5.2. Experimentation,False,False,False,False,False,False
+"For experimentation, the heart disease datasets are divided",False,False,False,False,False,False
+into two sets such as: (1) training dataset and (2) testing data-,False,False,False,False,False,False
+"set. Here, the missing values of a particular attribute are re-",False,False,False,False,False,False
+placed by taking the average of the whole values in the same,False,False,False,False,False,False
+"attribute. Along with this, we modiﬁed the chosen UCI data",False,False,False,False,False,False
+"into two class labels. In all three datasets, value 0 speciﬁes",False,False,False,False,False,False
+the no presence of heart disease (less than 50% diameter,False,False,False,False,False,False
+Table 2 Details of datasets.,False,False,False,False,False,True
+Total instance Training data Testing data,False,False,False,False,False,False
+Cleveland 303 202 101,False,False,False,False,False,False
+Hungarian 294 196 98,False,False,False,False,False,False
+Switzerland 123 82 41,False,False,False,False,False,False
+Table 3 Selected attributes for fuzzy rule generation.,False,False,False,False,False,True
+Datasets Selected attributes,False,False,False,False,False,False
+"Cleveland Age, Trestbps (resting blood pressure), Chol (serum cholesterol in mg/dl), Thalach",False,False,False,False,False,False
+"(maximum heart rate achieved), Oldpeak (ST depression induced by exercise relative",False,False,False,False,False,False
+"to rest), Thal",False,False,False,False,False,False
+"Hungarian Age, Trestbps, Chol, Restecg (resting electrocardiographic results), Thalach, Exang",False,False,False,False,False,False
+"(exercise induced angina), Oldpeak, Slope (slope of the peak exercise ST segment)",False,False,False,False,False,False
+"Switzerland Age, Sex, Cp (chest pain type), Trestbps, Fbs (fasting blood sugar), Restecg,",False,False,False,False,False,False
+"Thalach, Oldpeak, Slope, Ca (number of major vessels), Thal",False,False,False,False,False,False
+Table 4 The performance of the proposed clinical decision support system in risk prediction.,False,False,False,False,False,True
+Datasets Class Metric Proposed system,False,False,False,False,False,False
+Training Testing,False,False,False,False,False,False
+Cleveland <50% Accuracy 0.509901 0.623529,False,False,False,False,False,False
+Sensitivity 0.724771 0.765957,False,False,False,False,False,False
+Speciﬁcity 0.258065 0.447368,False,False,False,False,False,False
+>50% Accuracy 0.509901 0.623529,False,False,False,False,False,False
+Sensitivity 0.258065 0.447368,False,False,False,False,False,False
+Speciﬁcity 0.724771 0.765957,False,False,False,False,False,False
+Hungarian <50% Accuracy 0.715054 0.469388,False,False,False,False,False,False
+Sensitivity 0.8 0.31746,False,False,False,False,False,False
+Speciﬁcity 0.540984 0.742857,False,False,False,False,False,False
+>50% Accuracy 0.715054 0.469388,False,False,False,False,False,False
+Sensitivity 0.540984 0.742857,False,False,False,False,False,False
+Speciﬁcity 0.8 0.31746,False,False,False,False,False,False
+Switzerland <50% Accuracy 0.364706 0.512195,False,False,False,False,False,False
+Sensitivity 0.625 0.333333,False,False,False,False,False,False
+Speciﬁcity 0.337662 0.526316,False,False,False,False,False,False
+>50% Accuracy 0.364706 0.512195,False,False,False,False,False,False
+Sensitivity 0.337662 0.526316,False,False,False,False,False,False
+Speciﬁcity 0.625 0.333333,False,False,False,False,False,False
+Figure 5 Risk prediction for the patients who come under below 50%: (a) training dataset and (b) testing dataset.,False,False,False,False,True,False
+34 P.K. Anooj,False,False,False,False,False,False
+Figure 6 Risk prediction for the patients who come under above 50%: (a) training dataset and (b) testing dataset.,False,False,False,False,True,False
+Figure 7 Risk prediction for the patients who come under below 50%: (a) training dataset and (b) testing dataset.,False,False,False,False,True,False
+Figure 8 Risk prediction for the patients who come under above 50%: (a) training dataset and (b) testing dataset.,False,False,False,False,True,False
+Figure 9 Risk prediction for the patients who come under below 50%: (a) training dataset and (b) testing dataset.,False,False,False,False,True,False
+Clinical decision support system: Risk level prediction of heart disease using weighted fuzzy rules 35,False,False,False,False,False,False
+Figure 10 Risk prediction for the patients who come under above 50%: (a) training dataset and (b) testing dataset.,False,False,False,False,True,False
+"Figure 11 Analysis of Cleveland dataset: (a) accuracy graph, (b) sensitivity graph and (c) speciﬁcity graph.",False,False,False,False,True,False
+36 P.K. Anooj,False,False,False,False,False,False
+narrowing) andvalues 1–4 speciﬁes the presence of heart disease,False,False,False,False,False,False
+"(greater the 50% diameter narrowing). According to this, we",False,False,False,False,False,False
+"have transformed it into two class data, where class 0 speciﬁes",False,False,False,False,False,False
+the no presence of heart disease and class1 speciﬁes the pres-,False,False,False,False,False,False
+ence of heart disease. The training dataset is used to generate,False,False,False,False,False,False
+the weighted fuzzy rules and the testing dataset is used to ana-,False,False,False,False,False,False
+lyze the performance of the proposed system. Table 2 provides,False,False,False,False,False,False
+the description of these datasets.,False,False,False,False,False,False
+"At ﬁrst, the suitable attributes are chosen from the training",False,False,False,False,False,False
+"dataset using the proposed approach and then, the fuzzy rules",False,False,False,False,False,False
+are generated based on the chosen attribute. The attributes,False,False,False,False,False,False
+chosen by the proposed system for risk prediction is given in,False,False,False,False,False,False
+Table 3.,False,False,False,False,False,True
+"Then, the fuzzy rules are generated from the selected attri-",False,False,False,False,False,False
+butes using the proposed system. Some of the fuzzy rules ob-,False,False,False,False,False,False
+"tained are, ‘‘IF (resting blood pressure is H) then (Class is",False,False,False,False,False,False
+"Class1) (0.20388)’’, ‘‘IF (Age is VL) then (Class is Class0)",False,False,False,False,False,False
+"(0.12621)’’, ‘‘IF (fasting blood sugar is M) then (Class is",False,False,False,False,False,False
+"Class1) (0.64078)’’, and ‘‘IF (exercise induced angina is VL)",False,False,False,False,False,False
+"then (Class is Class1) (0.15534)’’. In the above rules, ﬂoating",False,False,False,False,False,False
+values specify the weight of the fuzzy rules obtained. Subse-,False,False,False,False,False,False
+"quently, the testing procedure is carried out to predict the risk",False,False,False,False,False,False
+level of the patient. The evaluation metrics are computed for,False,False,False,False,False,False
+both training and testing dataset in the testing phase and the,False,False,False,False,False,False
+"obtained result for Cleveland, Hungarian and Switzerland",False,False,False,False,False,False
+datasets are given in Table 4. Table 4 shows the overall,False,False,False,False,False,False
+"Figure 12 Analysis of Hungarian dataset: (a) accuracy graph, (b) sensitivity graph and (c) speciﬁcity graph.",False,False,False,False,True,False
+Clinical decision support system: Risk level prediction of heart disease using weighted fuzzy rules 37,False,False,False,False,False,False
+"performance of the proposed system in risk prediction, in",False,False,False,False,False,False
+"which, class 0 indicates that the risk level is below 50% and",False,False,False,False,False,False
+class 1 indicates the risk level is above 50%.,False,False,False,False,False,False
+5.3. Performance analysis,False,False,False,False,False,False
+The performance of the proposed clinical decision support sys-,False,False,False,False,False,False
+tem was analyzed with three different heart disease datasets.,False,False,False,False,False,False
+"Here, we compare the performance of the proposed clinical",False,False,False,False,False,False
+decision support system in risk prediction with the neural net-,False,False,False,False,False,False
+"work-based system using these datasets. According to this, we",False,False,False,False,False,False
+have used a standard feed-forward neural network that was,False,False,False,False,False,False
+trained by the back-propagation algorithm. The results ob-,False,False,False,False,False,False
+tained for these three datasets are shown in Figs. 5–10. By ana-,False,False,False,False,False,False
+"lyzing the plotted graphs, the performance of the proposed",False,False,False,False,False,False
+clinical support system has signiﬁcantly improved the risk pre-,False,False,False,False,False,False
+diction compared with the neural network-based clinical sup-,False,False,False,False,False,False
+port system.,False,False,False,False,False,False
+5.4. Comparative analysis of the proposed system,False,False,False,False,False,False
+This section presents the performance analysis of the proposed,False,False,False,False,False,False
+system using k-fold cross-validation method. According to,False,False,False,False,False,False
+"this, the original data are divided into k subsets of data and",False,False,False,False,False,False
+"Figure 13 Analysis of Switzerland dataset: (a) accuracy graph, (b) sensitivity graph and (c) speciﬁcity graph.",False,False,False,False,True,False
+38 P.K. Anooj,False,False,False,False,False,False
+"for every validation, a single subset is used as the testing data",False,False,False,False,False,False
+and the remaining subsets are utilized as training data. This,False,False,False,False,False,False
+procedure is repeated until all the subsets of data are utilized,False,False,False,False,False,False
+"as testing data. Here, we have chosen k = 10 (for Cleveland",False,False,False,False,False,False
+and Hungarian datasets) and k = 8 (for Switzerland dataset),False,False,False,False,False,False
+"so that, the input data is divided into ‘ k’ sub-samples to exten-",False,False,False,False,False,False
+"sively analyze the proposed system. Along with this, the com-",False,False,False,False,False,False
+parative analysis is also performed to ﬁnd the efﬁciency of the,False,False,False,False,False,False
+"proposed system. For comparison, we make use of the system",False,False,False,False,False,False
+"proposed by Tsipouras et al. (2008), who developed a fuzzy",False,False,False,False,False,False
+rule-based decision support system (DSS) for the diagnosis,False,False,False,False,False,False
+of coronary artery disease. In the previous system (Tsipouras,False,False,False,False,False,False
+"et al., 2008), the rules are extracted from the decision tree after",False,False,False,False,False,False
+"inputting the input data. Then, the extracted crisp rules are",False,False,False,False,False,False
+transformed into fuzzy rules that are given to the fuzzy model,False,False,False,False,False,False
+"after optimizing the parameters. In addition to this, the results",False,False,False,False,False,False
+are also analyzed with the help of standard feed-forward,False,False,False,False,False,False
+neural network that was trained using the back-propagation,False,False,False,False,False,False
+"algorithm. Hence, an extensive analysis is carried out using",False,False,False,False,False,False
+the 10-fold cross validation method to compare the efﬁciency,False,False,False,False,False,False
+of the three CDSSs used.,False,False,False,False,False,False
+"Then, three datasets are given to the proposed system,",False,False,False,False,False,False
+Tsipouras et al.’s (2008) system and neural-network-based,False,False,False,False,False,False
+"system for predicting the risk level of the heart disease. Here,",False,False,False,False,False,False
+the prediction results are analyzed with the k-fold cross valida-,False,False,False,False,False,False
+"tion method and their corresponding sensitivity, speciﬁcity and",False,False,False,False,False,False
+accuracy values are computed. The values are then plotted as,False,False,False,False,False,False
+"graphs, in which Fig. 11 is obtained for the Cleveland data.",False,False,False,False,False,False
+"When analyzing these graphs, the proposed system outper-",False,False,False,False,False,False
+formed other two methods in most of the sub-samples. For,False,False,False,False,False,False
+"the sensitivity computation, the neural network-based system",False,False,False,False,False,False
+achieved 52.473% compared with the sensitivity of our system,False,False,False,False,False,False
+"(45.22%). But, the overall speciﬁcity of the proposed system is",False,False,False,False,False,False
+68.75% compared with the other systems’ speciﬁcity (52.461%,False,False,False,False,False,False
+"and 43.896%). In overall accuracy, the proposed system",False,False,False,False,False,False
+"achieved 57.851%, while the accuracy of the network-based",False,False,False,False,False,False
+system and the previous method are 53.862% and 51.793%,False,False,False,False,False,False
+respectively.,False,False,False,False,False,False
+"Similarly, in Hungarian datasets, the proposed system pro-",False,False,False,False,False,False
+duced higher accuracy (50.583%) with regard to the graph,False,False,False,False,False,False
+"shown in Fig. 12. Here, neural-network-based approach",False,False,False,False,True,False
+achieved 46.417% and the fuzzy-based system achieved only,False,False,False,False,False,False
+36%. When analyzing the Switzerland data (graph shown in,False,False,False,False,False,False
+"Fig. 13), the proposed system outperformed in sensitivity, spec-",False,False,False,False,True,False
+iﬁcity and accuracy computation compared with the existing,False,False,False,False,False,False
+systems. The overall sensitivity of the proposed system is im-,False,False,False,False,False,False
+proved by 10% higher than the fuzzy-based system and 20%,False,False,False,False,False,False
+"higher than the neural network-based system. In addition, the",False,False,False,False,False,False
+speciﬁcity of our proposed system is increased nearly by 50%,False,False,False,False,False,False
+"higher than the previous systems. Hence, the overall accuracy",False,False,False,False,False,False
+of the proposed system is improved by 10% than the fuzzy-based,False,False,False,False,False,False
+system and 20% than the neural network-based approach.,False,False,False,False,False,False
+6. Conclusion,False,False,True,True,False,False
+We have presented a weighted fuzzy rule-based clinical deci-,False,False,False,False,False,False
+sion support system (CDSS) for computer-aided diagnosis of,False,False,False,False,False,False
+the heart disease. The automatic procedure to generate the,False,False,False,False,False,False
+fuzzy rules is an advantage of the proposed system and the,False,False,False,False,False,False
+weighted procedure introduced in the proposed work is addi-,False,False,False,False,False,False
+tional advantage for effective learning of the fuzzy system.,False,False,False,False,False,False
+The proposed clinical decision support system for risk predic-,False,False,False,False,False,False
+tion of the heart patients contains two steps such as: (1) gen-,False,False,False,False,False,False
+eration of weighted fuzzy rules and (2) developing of a fuzzy,False,False,False,False,False,False
+"rule-based decision support system. Here, the suitable attri-",False,False,False,False,False,False
+butes were generated after applying the mining procedure,False,False,False,False,False,False
+and these attributes were used to generate the fuzzy rules that,False,False,False,False,False,False
+are then weighted based on the frequency in the learning,False,False,False,False,False,False
+datasets. These weighted fuzzy rules were used to build the,False,False,False,False,False,False
+clinical decision support system using Mamdani fuzzy infer-,False,False,False,False,False,False
+"ence system. Finally, the experimentation was carried out",False,False,False,False,False,False
+on the UCI machine learning repository and the results in,False,False,False,False,False,False
+risk prediction ensured that the proposed clinical decision,False,False,False,False,False,False
+support system improved signiﬁcantly compared with the net-,False,False,False,False,False,False
+"work-based system in terms of accuracy, sensitivity and",False,False,False,False,False,False
+speciﬁcity.,False,False,False,False,False,False
+References,False,False,False,True,False,False
+"Abbasi, M.M., Kashiyarndi, S., 2006. Clinical decision support",False,False,False,False,False,False
+systems: a discussion on different methodologies used in health,False,False,False,False,False,False
+care.,False,False,False,False,False,False
+"Abidin, B., Dom, R.M., Rahman, A.R.A., Bakar, R.A., 2009. Use of",False,False,False,False,False,False
+fuzzy neural network to predict coronary heart disease in a,False,False,False,False,False,False
+Malaysian sample. In: Proceedings of the 8th WSEAS Interna-,False,False,False,False,False,False
+"tional Conference on Telecommunications and Informatics, Istan-",False,False,False,False,False,False
+"bul, Turkey, May 30–June 1.",False,False,False,False,False,False
+"Agrawal, R., Imielinski, T., Swami, A., 1993. Mining association rules",False,False,False,False,False,False
+between sets of items in large databases. In: Proceedings of 1993,False,False,False,False,False,False
+ACM SIGMOD International Conference on Management of,False,False,False,False,False,False
+"Data, Washington, DC, pp. 207–216.",False,False,False,False,False,False
+"Ali, S., Chia, P., Ong, K., 1999. Graphical knowledge-based protocols",False,False,False,False,False,False
+for chest pain management. In: Proceedings of the Conference on,False,False,False,False,False,False
+"Computers in Cardiology, Hannover, Germany, pp. 309–312.",False,False,False,False,False,False
+"Anderson, J., 1997. Clearing the way for physicians’ use of clinical",False,False,False,False,False,False
+"information systems. Communication of the ACM, 83–90.",False,False,False,False,False,False
+"Bradley, A.P., 1997. The use of the area under the roc curve in the",False,False,False,False,False,False
+evaluation of machine learning algorithms. Pattern Recognition 30,False,False,False,False,False,False
+"(7), 1145–1159.",False,False,False,False,False,False
+"Chen, J., Greiner, R., 1999. Comparing Bayesian network classiﬁers.",False,False,False,False,False,False
+"In: Proceedings of UAI-99, Stockholm, Sweden, pp. 101–108.",False,False,False,False,False,False
+"De, S.K., Biswas, A., Roy, R., 2001. An application of intuitionistic",False,False,False,False,False,False
+"fuzzy sets in medical diagnosis. Fuzzy Sets and Systems 117, 209–",False,False,False,False,False,False
+213.,False,False,False,False,False,False
+"Ephzibah, E.P., 2010. Cost effective approach on feature selection",False,False,False,False,False,False
+using genetic algorithms and LS-SVM classiﬁer. IJ CA Special,False,False,False,False,False,False
+"Issue on Evolutionary Computation for Optimization Techniques,",False,False,False,False,False,False
+"EC OT.55, pp. 55–56.",False,False,False,False,False,False
+"Fidele, B., Cheeneebash, J., Gopaul, A., Goorah, S.S.D., 2009.",False,False,False,False,False,False
+Artiﬁcial neural network as a clinical decision-supporting tool to,False,False,False,False,False,False
+predict cardiovascular disease. Trends in Applied Sciences,False,False,False,False,False,False
+"Research 4 (1), 36–46.",False,False,False,False,False,False
+"Garg, A.X., Adhikari, N.K., McDonald, H., Rosas-Arellano, M.P.,",False,False,False,False,False,False
+"Devereaux, P.J., Beyene, J., Sam, J., Haynes, R.B., 2005. Effects of",False,False,False,False,False,False
+computerized clinical decision support systems on practitioner,False,False,False,False,False,False
+performance and patient outcomes. Journal of the American,False,False,False,False,False,False
+"Medical Association, PubMed 293 (10), 1223–1238.",False,False,False,False,False,False
+"Han, J., Pei, J., Yin, Y., Mao, R., 2004. Mining frequent patterns",False,False,False,False,False,False
+without candidate generation: a frequent-pattern tree approach.,False,False,False,False,False,False
+"Data Mining and Knowledge Discovery 8 (1), 53–87.",False,False,False,False,False,False
+"Jilani, T.A., Yasin, H., Yasin, M., Ardil, C., 2009. Acute coronary",False,False,False,False,False,False
+syndrome prediction using data mining techniques – an applica-,False,False,False,False,False,False
+"tion. World Academy of Science, Engineering and Technology, p.",False,False,False,False,False,False
+59.,False,False,False,False,False,False
+"Kawamoto, K., Houlihan, C.A., Balas, E.A., Lobach, D.F., 2005.",False,False,False,False,False,False
+Improving clinical practice using clinical decision support systems:,False,False,False,False,False,False
+Clinical decision support system: Risk level prediction of heart disease using weighted fuzzy rules 39,False,False,False,False,False,False
+a systematic review of trials to identify features critical to success.,False,False,False,False,False,False
+"BMJ 330, 765.",True,False,False,True,False,False
+"Khatibi, V., Montazer, G.A., 2010. A fuzzy-evidential hybrid inference",False,False,False,False,False,False
+engine for coronary heart disease risk assessment. Expert Systems,False,False,False,False,False,False
+"with Applications 37 (12), 8536–8542.",False,False,False,False,False,False
+"Knopp, R.H., 2002. Risk factors for coronary artery disease in women.",False,False,False,False,False,False
+"The American Journal of Cardiology 89 (12A), 28–34.",False,False,False,False,False,False
+"Kong, G., Xu, D.L., Yang, J.B., 2008. Clinical decision support",False,False,False,False,False,False
+systems: a review on knowledge representation and inference under,False,False,False,False,False,False
+uncertainties. International Journal of Computational Intelligence,False,False,False,False,False,False
+"Systems 1 (2), 159–167.",False,False,False,False,False,False
+"Lin, L., Hu, P.J.H., Sheng, O.R.L., 2006. Decision Support Systems",False,False,False,False,False,False
+42.,False,False,False,False,False,False
+"Merijohn, G.K., Bader, J.D., Frantsve-Hawley, J., Aravamudhan, K.,",False,False,False,False,False,False
+2008. Clinical decision support chairside tools for evidence-based,False,False,True,True,False,False
+dental practice. The Journal of Evidence-Based Dental Practice 8,False,False,False,False,False,False
+"(3), 119–132.",False,False,False,False,False,False
+"Miller, R.A., 1990. Why the standard view is standard: people, not",False,False,False,False,False,False
+"machines, understand patients’ problems. The Journal of Medicine",False,False,False,False,False,False
+"and Philosophy 15 (6), 581–591.",False,False,False,False,False,False
+"Miller, R.A., Masarie, F.E., 1990. The demise of the ‘‘Greek Oracle’’",False,False,False,False,False,False
+model for medical diagnostic systems. Methods of Information in,False,False,False,False,False,False
+"Medicine 29 (1), 1–2.",False,False,False,False,False,False
+"Musen, M., Shahar, Y., Shortliffe, E.H., 2001. Clinical decision",False,False,False,False,False,False
+"support systems. In: Shortliffe, E.H., Perrault, L., Wiederhold, G.,",False,False,False,False,False,False
+"et al. (Eds.), Medical Informatics: Computer Applications in",False,False,False,False,False,False
+"Health Care and Biomedicine, Springer-Verlag, New York, pp.",False,False,False,False,False,False
+573–609.,False,False,False,False,False,False
+"Newman, D.J., Hettich, S., Blake, C.L., Merz, C.J., 1998. UCI",False,False,False,False,False,False
+repository of machine learning databases. Department of,False,False,False,False,False,False
+"Information and Computer Science, University California",False,False,False,False,False,False
+Irvine.,False,False,False,False,False,False
+"Osheroff, J.A., 2009. Improving Medication Use and Outcomes with",False,False,False,False,False,False
+Clinical Decision Support: A Step-by-step Guide. The Healthcare,False,False,False,False,False,False
+"Information and Management Systems Society, Chicago, IL.",False,False,False,False,False,False
+"Palaniappan, S., Awang, R., 2008. Intelligent heart disease prediction",False,False,False,False,False,False
+system using data mining techniques. International Journal of,False,False,False,False,False,False
+"Computer Science and Network Security 8 (8), 108–115.",False,False,False,False,False,False
+"Parthiban, L., Subramanian, R., 2008. Intelligent heart disease",False,False,False,False,False,False
+prediction system using CANFIS and genetic algorithm. Inter-,False,False,False,False,False,False
+"national Journal of Biological, Biomedical and Medical Sciences",False,False,False,False,False,False
+"3, 3.",False,False,False,False,False,False
+"Patil, S.B., Kumaraswamy, Y.S., 2009. Intelligent and effective",False,False,False,False,False,False
+heart attack prediction system using data mining and artiﬁcial,False,False,False,False,False,False
+"neural network. European Journal of Scientiﬁc Research 31 (4),",False,False,False,False,False,False
+642–656.,False,False,False,False,False,False
+"Setiawan, N.A., Venkatachalam, P.A., Hani, A.F.M., 2009. Diagnosis",False,False,False,False,False,False
+of coronary artery disease using artiﬁcial intelligence based decision,False,False,False,False,False,False
+support system. In: Proceedings of the International Conference on,False,False,False,False,False,False
+"Man-Machine Systems, Batu Ferringhi, Penang, 11–13 October,",False,False,False,False,False,False
+2009.,False,False,False,False,False,False
+"Shanthi, D., Sahoo, G., Saravanan, N., 2008. Input feature selection",False,False,False,False,False,False
+using hybrid neuro-genetic approach in the diagnosis of stroke,False,False,False,False,False,False
+disease. International Journal of Computer Science and Network,False,False,False,False,False,False
+"Security 8, 12.",False,False,False,False,False,False
+"Straszecka, E., 2007. Combining uncertainty and imprecision in",False,False,False,False,False,False
+"models of medical diagnosis. Information Sciences 176, 3026–3059.",False,False,False,False,False,False
+"Subbalakshmi, G., Ramesh, K., Chinna Rao, M., 2011. Decision",False,False,False,False,False,False
+support in heart disease prediction system using naive Bayes.,False,False,False,False,False,False
+"Indian Journal of Computer Science and Engineering (IJCSE) 2 (2),",False,False,False,False,False,False
+170–176.,False,False,False,False,False,False
+"Szolovit, P., 1995. Methods of Information in Medicine 34, 111.",False,False,False,False,False,False
+"Tang, T.I., Zheng, G., Huang, Y., Shu, G., Wang, P., 2005. A",False,False,False,False,False,False
+comparative study of medical data classiﬁcation methods based on,False,False,False,False,False,False
+"decision tree and system reconstruction analysis. IEMS 4 (1), 102–",False,False,False,False,False,False
+108.,False,False,False,False,False,False
+"Thuraisingham, B., 2000. A primer for understanding and applying",False,False,False,False,False,False
+"data mining, IT professional. IEEE Computer Society, pp. 28–31.",False,False,False,False,False,False
+"Tsipouras, M.G., Exarchos, T.P., Fotiadis, D.I., Kotsia, A.P., Vakalis,",False,False,False,False,False,False
+"K.V., Naka, K.K., Michalis, L.K., 2008. Automated diagnosis of",False,False,False,False,False,False
+coronary artery disease based on data mining and fuzzy modeling.,False,False,False,False,False,False
+IEEE Transactions on Information Technology in Biomedicine 12,False,False,False,False,False,False
+"(4), 447–458.",False,False,False,False,False,False
+"Warren, J., Beliakov, G., Zwaag, B., 2000. Fuzzy logic in clinical",False,False,False,False,False,False
+practice decision support system. In: Proceedings of the 33rd,False,False,False,False,False,False
+"Hawaii International Conference on System Sciences, Maui,",False,False,False,False,False,False
+"Hawaii, 4–7 January 2000.",False,False,False,False,False,False
+"Yan, H., Zheng, J., Jiang, Y., Peng, C., Li, Q., 2003. Development of a",False,False,False,False,False,False
+decision support system for heart disease diagnosis using multilayer,False,False,False,False,False,False
+perceptron. In: Proceedings of the 2003 International Symposium,False,False,False,False,False,False
+"on Circuits and Systems, May 25–28, pp. 5, 709–712.",False,False,False,False,False,False
+"Zadeh, L.A., 1965. Fuzzy sets. Information and Control 8, 338–353.",False,False,False,False,False,False
+"Zhu, W., Zeng, N., Wang, N., 2010. Sensitivity, speciﬁcity, accuracy,",False,False,False,False,False,False
+associated conﬁdence interval and roc analysis with practical SAS,False,False,False,False,False,False
+implementations. In: NESUG Proceedings: Health Care and Life,False,False,False,False,False,False
+"Sciences, Baltimore, Maryland.",False,False,False,False,False,False
+Anooj P.K. received the B.Sc. degree in physics,False,False,False,False,False,False
+"from Mahatma Gandhi University, Kerala,",False,False,False,False,False,False
+"and his MCA from Indira Gandhi University,",False,False,False,False,False,False
+New Delhi. He has also done hardware,False,False,False,False,False,False
+specialization post graduate diploma from Lal,False,False,False,False,False,False
+Bahadur Shastri Centre for Science and,False,False,False,False,False,False
+"Technology, Kerala. He has been working as",False,False,False,False,False,False
+a senior teacher and lecturer in computer,False,False,False,False,False,False
+science in various institutions from year 2000.,False,False,False,False,False,False
+"Since 2009, he is working as the registrar and",False,False,False,False,False,False
+lecturer in the Department of Information,False,False,False,False,False,False
+"Technology, Al Musanna College of Technology, Directorate General",False,False,False,False,False,False
+"of Technological Education, Ministry of Manpower, Oman. He is",False,False,False,False,False,False
+currently pursuing his Ph.D. degree working closely with Dr. V.,False,False,False,False,False,False
+"Khanaa, IT Dean, Bharath University, Chennai, and Dr. T. Jebarajan,",False,False,False,False,False,False
+"Department of Computer Science Engineering, Karpaga Vinayaga",False,False,False,False,False,False
+"College of Engineering, Anna University, Chennai.",False,False,False,False,False,False
+40 P.K. Anooj,False,False,False,False,False,False

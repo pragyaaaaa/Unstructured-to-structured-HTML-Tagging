@@ -1,0 +1,64 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+B. ,True,False,False,True,False,False
+"Stytz, ",False,False,False,False,False,False
+"Virtual Environments,  Human-Computer  Interaction, ",False,False,False,False,False,False
+and ,False,False,False,False,False,False
+ArtiJcial  Intelligence  Laboratories ,False,False,False,False,False,False
+Air Force Institute ,False,False,False,False,False,False
+of ,False,False,False,False,False,False
+Technology ,False,False,False,False,False,False
+"sbanks,  mswtz,  esantos@aft.ajmil ",False,False,False,False,False,False
+Abstract ,False,False,False,True,False,False
+an ,False,False,False,False,False,False
+We ,False,False,False,False,False,False
+a ,False,False,False,False,False,False
+of ,False,False,False,False,False,False
+Introduction ,False,False,False,True,False,False
+A ,True,False,False,True,False,False
+of ,False,False,False,False,False,False
+[ ,False,False,False,False,False,False
+[ ,False,False,False,False,False,False
+1 ,False,False,False,False,False,False
+(HA) ,True,False,False,True,False,False
+"[4, ",False,False,False,False,False,False
+This ,False,False,False,False,False,False
+[ ,False,False,False,False,False,False
+our ,False,False,False,False,False,False
+Background ,False,False,False,False,False,False
+In ,False,False,False,False,False,False
+to ,False,False,False,False,False,False
+in ,False,False,False,False,False,False
+two ,False,False,False,False,False,False
+two ,False,False,False,False,False,False
+in ,False,False,False,False,False,False
+in ,False,False,False,False,False,False
+in ,False,False,False,False,False,False
+[ ,False,False,False,False,False,False
+2 ,False,False,False,False,False,False
+in ,False,False,False,False,False,False
+SM ,True,False,False,True,False,False
+[ ,False,False,False,False,False,False
+to ,False,False,False,False,False,False
+us ,False,False,False,False,False,False
+or ,False,False,False,False,False,False
+is ,False,False,False,False,False,False
+(SIRDS). ,True,False,False,True,False,False
+or ,False,False,False,False,False,False
+A ,True,False,False,True,False,False
+an ,False,False,False,False,False,False
+SIRDS ,True,False,False,True,False,False
+2D ,True,False,False,True,False,False
+3D ,True,False,False,True,False,False
+is ,False,False,False,False,False,False
+in ,False,False,False,False,False,False
+"[4, ",False,False,False,False,False,False
+To ,False,False,False,False,False,False
+IIA ,True,False,False,True,False,False
+in ,False,False,False,False,False,False
+[I]. ,True,False,False,True,False,False
+A ,True,False,False,True,False,False
+in ,False,False,False,False,False,False
+[Ill. ,False,False,False,False,False,False
+its ,False,False,False,False,False,False
+VE ,True,False,False,True,False,False
+SIRDS ,True,False,False,True,False,False

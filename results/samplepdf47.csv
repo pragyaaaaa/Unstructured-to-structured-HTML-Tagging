@@ -1,0 +1,536 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+"1,2,3",False,False,False,False,False,False
+Department of Computer Science & Engineering  ,False,False,False,False,False,False
+"Integral University, Lucknow, India ",False,False,False,False,False,False
+syed.umar.amin@gmail.com,False,False,False,False,False,False
+1,False,False,False,False,False,False
+", kavitalucknow@gmail.com",False,False,False,False,False,False
+2,False,False,False,False,False,False
+", rizwanbeg@gmail.com",False,False,False,False,False,False
+3 ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ Abstract-  Data  mining  techniques  have  been  widely  used  in ,False,False,False,True,False,False
+clinical decision support  systems for prediction  and diagnosis  of ,False,False,False,False,False,False
+various diseases with good accuracy. These techniques have been ,False,False,False,False,False,False
+very  effective  in  designing  clinical  support  systems  because  of ,False,False,False,False,False,False
+their  ability  to  discover  hidden  patterns  and  relationships  in ,False,False,False,False,False,False
+medical data.  One of the most important applications   of   such   ,False,False,False,False,False,False
+systems    is   in   diagnosis of  heart diseases because it is one of ,False,False,False,False,False,False
+the leading causes of deaths all over the world. Almost all systems ,False,False,False,False,False,False
+that predict heart diseases use clinical dataset having parameters ,False,False,False,False,False,False
+and  inputs  from  complex  tests  conducted  in  labs.  None  of  the ,False,False,False,False,False,False
+"system predicts heart diseases based on risk factors such as age, ",False,False,False,False,False,False
+"family  history,  diabetes,  hypertension,  high  cholesterol,  tobacco ",False,False,False,False,False,False
+"smoking, alcohol intake, obesity or physical inactivity, etc. Heart ",False,False,False,False,False,False
+disease  patients  have  lot  of  these  visible  risk  factors  in  common ,False,False,False,False,False,False
+which can be used very effectively for diagnosis. System based on ,False,False,False,False,False,False
+such risk factors would not only help medical professionals but it ,False,False,False,False,False,False
+would  give  patients  a  warning  about  the  probable  presence  of ,False,False,False,False,False,False
+heart  disease  even  before  he  visits  a  hospital  or  goes  for  costly ,False,False,False,False,False,False
+medical  checkups.  Hence  this  paper  presents  a  technique  for ,False,False,False,False,False,False
+prediction  of  heart  disease  using  major  risk  factors.  This ,False,False,False,False,False,False
+"technique involves two most successful data mining tools, neural ",False,False,False,False,False,False
+networks  and  genetic  algorithms.  The  hybrid  system ,False,False,False,False,False,False
+implemented  uses  the  global  optimization  advantage  of  genetic ,False,False,False,False,False,False
+algorithm  for  initialization  of  neural  network  weights.  The ,False,False,False,False,False,False
+"learning  is  fast,  more  stable  and  accurate  as  compared  to  back ",False,False,False,False,False,False
+propagation.  The  system  was  implemented  in  Matlab  and ,False,False,False,False,False,False
+predicts the risk of heart disease with an accuracy of 89%. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"Keywords-  data  mining,  heart  disease  risk  factors,  prediction  and ",False,False,False,False,False,False
+diagnosis systems. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+I.    INTRODUCTION ,True,True,False,True,False,False
+ ,False,False,False,False,False,False
+Heart  diseases  are  the  number  one  cause  of  death  globally: ,False,False,False,False,False,False
+more people  die  annually  from  Heart diseases  than  from any ,False,False,False,False,False,False
+other cause. An estimated 17.3 million people died from Heart ,False,False,False,False,False,False
+"diseases  in  2008,  representing  30%  of  all  global  deaths.  Of ",False,False,False,False,False,False
+"these  deaths,  an  estimated  7.3  million  were  due  to  coronary ",False,False,False,False,False,False
+heart  disease  and  6.2  million  were  due  to  stroke  [1].  Recent ,False,False,False,False,False,False
+research in the field of medicine has been able to identify risk ,False,False,False,False,False,False
+factors  that  may  contribute  toward  the  development  of  heart ,False,False,False,False,False,False
+disease but  more research is  needed to use this knowledge in ,False,False,False,False,False,False
+"reducing  the  occurrence  of  heart  diseases.  Diabetes, ",False,False,False,False,False,False
+"hypertension,  and  high  blood  cholesterol  have  been ",False,False,False,False,False,False
+established  as  the  major  risk  factors  of  heart  diseases.  Life ,False,False,False,False,False,False
+"style  risk  factors  which  include  eating  habits,  physical ",False,False,False,False,False,False
+"inactivity, smoking, alcohol intake, obesity are also associated ",False,False,False,False,False,False
+with  the  major    heart  disease  risk  factors  and  heart  disease ,False,False,False,False,False,False
+"[2,3].There  are  studies  showing  that  reducing  these    risk ",False,False,False,False,False,False
+factors for heart disease  can  actually help in preventing heart ,False,False,False,False,False,False
+diseases  [4].  There  are  many  studies  and  researches  on  the ,False,False,False,False,False,False
+prevention  of  heart  disease  risk.  Data  from  studies  of ,False,False,False,False,False,False
+"population has helped in prediction of heart diseases, based on ",False,False,False,False,False,False
+"blood pressure, smoking habit, cholesterol and blood pressure ",False,False,False,False,False,False
+"levels,  diabetes.  Researchers  have  used  these  prediction ",False,False,False,False,False,False
+algorithms  in  adapted  form  of  simplified  score  sheets  that ,False,False,False,False,False,False
+allow  patients  to  calculate  the  risk  of  heart diseases  [6].  The ,False,False,False,False,False,False
+Framingham  Risk  Score  (FRS)  is  a  popular  risk  prediction ,False,False,False,False,False,False
+criterion  which  is  used  in  algorithms  for  heart  disease ,False,False,False,False,False,False
+prediction [7]. ,False,False,False,False,False,False
+This  study  aimed  at  developing  an  intelligent  data  mining ,False,False,False,False,False,False
+system based on genetic algorithm optimized neural networks ,False,False,False,False,False,False
+for  the  prediction  of  heart  disease  based  on  risk  factors’ ,False,False,False,False,False,False
+categories.  The  system  was  implemented  using  MATLAB ,False,False,False,False,False,False
+R2012a. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+II,True,False,False,True,False,False
+. DATA MINING TECHNIQUES ,True,True,False,True,False,False
+ ,False,False,False,False,False,False
+"Data  mining  techniques  are  used  to  explore,  analyze  and ",False,False,False,False,False,False
+extract  medical  data  using  complex  algorithms  in  order  to ,False,False,False,False,False,False
+discover unknown patterns. Researchers are using data mining ,False,False,False,False,False,False
+techniques  for  the  diagnosis  of  many  diseases  such  as  heart ,False,False,False,False,False,False
+"disease [8], diabetes [9], stroke [10] and cancer [11] and many ",False,False,False,False,False,False
+data  mining  techniques  have  been  used  in  the  diagnosis  of ,False,False,False,False,False,False
+heart  disease  with  good  accuracy.  Researchers  have  been ,False,False,False,False,False,False
+"applying different data mining techniques such as naïve bayes, ",False,False,False,False,False,False
+"neural  network,  decision  tree,  bagging,  kernel  density,  and ",False,False,False,False,False,False
+support  vector  machine  for  prediction  and  diagnosis  of  heart ,False,False,False,False,False,False
+diseases  [13]-[15]. One of the systems [16] uses neural based ,False,False,False,False,False,False
+learning  classifier  for  classifying  data  mining  tasks  showed ,False,False,False,False,False,False
+that  neural  based  learning  classifier  system  performs ,False,False,False,False,False,False
+equivalently  to  supervise  learning  classifier.  IEHPS  [17] ,False,False,False,False,False,False
+intelligent  and  effective  heart  attack  prediction  system  was ,False,False,False,False,False,False
+built  using  data  mining  and  neural  networks  and  it  proposed ,False,False,False,False,False,False
+extracting  significant  patterns  for  heart  disease  prediction ,False,False,False,False,False,False
+using K-means clustering and used MAFIA algorithm to mine ,False,False,False,False,False,False
+"the  frequent  patterns.  Polatet  al.,  developed  system  using ",False,False,False,False,False,False
+hybrid  fuzzy  and  k-nearest  neighbour  approach  for  the ,False,False,False,False,False,False
+"prediction  of  heart  disease,  which  had  87%  accuracy  in ",False,False,False,False,False,False
+diagnosis  [18].  In  another  system  [19]  neural  network ,False,False,False,False,False,False
+ensemble  was  used  in  the  diagnosis  of  heart  disease  with  an ,False,False,False,False,False,False
+"accuracy of 89.01%. Latha and Subramanian (2007), proposed ",False,False,False,False,False,False
+an  intelligent  heart  disease  prediction  system  using  CANFIS ,False,False,False,False,False,False
+and genetic algorithm which had a very low mean square error ,False,False,False,False,False,False
+"[20].Analyzing  the  different  techniques  discussed,  this  paper ",False,False,False,False,False,False
+proposes  a  novel  system  using  genetic  algorithm  and  neural ,False,False,False,False,False,False
+Proceedings of 2013 IEEE Conference on Information and Communication Technologies (ICT 2013),False,False,False,False,False,False
+978-1-4673-5758-6/,False,False,False,False,False,False
+13/$31.00 © 2013 IEEE,True,False,False,True,False,False
+1227,False,False,False,False,False,False
+network  for  predicting  the  risk  of  heart  diseases.  Genetic ,False,False,False,False,False,False
+algorithm is used to optimize neural network weights. What is ,False,False,False,False,False,False
+even more different in this paper is that it is the first time that ,False,False,False,False,False,False
+such  a  hybrid  technique  is  applied  on  risk  factors  for  the ,False,False,False,False,False,False
+accurate prediction of heart disease. Hence the main objective ,False,False,False,False,False,False
+is not only to use this system in clinical decision support but to ,False,False,False,False,False,False
+also  use  this  system  as  risk  indicator  so  that  it  helps  people ,False,False,False,False,False,False
+reduce the risks of having any heart disease in future. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+III,True,False,False,True,False,False
+. MATERIALS AND METHODS ,True,True,False,True,False,False
+ ,False,False,False,False,False,False
+A. Data Analysis and Encoding ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+The  problem  with  risk  factors  related  to  heart  disease  is  that ,False,False,False,False,False,False
+"there  are  many  risk  factors  involved  like  age,  usage  of ",False,False,False,False,False,False
+"cigarette,  blood  cholesterol,  person's  fitness,  blood  pressure, ",False,False,False,False,False,False
+stress  and  etc.  and  understanding  and  categorizing  each  one ,False,False,False,False,False,False
+according  to  its  importance  is  a  difficult  task.  Also  a  heart ,False,False,False,False,False,False
+disease  is  often  detected  when  a  patient  reaches  advanced ,False,False,False,False,False,False
+stage of the disease [21]. Hence the risk factors were analyzed ,False,False,False,False,False,False
+from various sources [22]-[23]. The dataset was composed of ,False,False,False,False,False,False
+"12 important risk factors  which  were  sex, age,  family  history ",False,False,False,False,False,False
+"blood pressure, Smoking Habit, alcohol consumption, physical ",False,False,False,False,False,False
+"inactivity,  diabetes,  blood  cholesterol,  poor  diet, obesity .The ",False,False,False,False,False,False
+system indicated whether the patient had risk of heart disease ,False,False,False,False,False,False
+or  not.  The  data  for  50  people  was  collected  from  surveys ,False,False,False,False,False,False
+done  by  the  American  Heart  Association  [23].  Most  of  the ,False,False,False,False,False,False
+heart disease patients had many similarities in the risk factors ,False,False,False,False,False,False
+[24]. The TABLE I below shows the identified important risk ,False,False,False,False,False,True
+factors and the corresponding values and their encoded values ,False,False,False,False,False,False
+"in brackets, which were used as input to the system. ",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+TABLE I ,True,False,False,False,False,True
+RISK FACTORS VALUES AND THEIR ENCODINGS  ,True,False,False,True,False,False
+ ,False,False,False,False,False,False
+ Risk Factors  Values ,False,False,False,False,False,False
+1 ,False,False,False,False,False,False
+"Sex  Male (1), Female (0) ",False,False,False,False,False,False
+2 ,False,False,False,False,False,False
+Age (years) ,False,False,False,False,False,False
+"20-34 (-2), 35-50 (-1), 51-60 (0), ",False,False,False,False,False,False
+"61-79 (1) , >79 (2) ",False,False,False,False,False,False
+3 ,False,False,False,False,False,False
+Blood ,False,False,False,False,False,False
+Cholesterol ,False,False,False,False,False,False
+Below 200 mg/dL  -  Low (-1) ,False,False,False,False,False,False
+200-239 mg/dL -  Normal (0) ,False,False,False,False,False,False
+240 mg/dL and above -   High (1) ,False,False,False,False,False,False
+4 ,False,False,False,False,False,False
+Blood ,False,False,False,False,False,False
+Pressure ,False,False,False,False,False,False
+Below 120 mm Hg-  Low (-1) ,False,False,False,False,False,False
+120 to 139 mm Hg-  Normal (0) ,False,False,False,False,False,False
+Above 139 mm Hg-  High  (-1) ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+5  Hereditary ,False,False,False,False,False,False
+Family Member diagnosed with HD  -Yes (1)  ,False,False,False,False,False,False
+Otherwise –No (0) ,False,False,False,False,False,False
+6 ,False,False,False,False,False,False
+Smoking  Yes (1) or No (0) ,False,False,False,False,False,False
+7 ,False,False,False,False,False,False
+Alcohol ,False,False,False,False,False,False
+Intake ,False,False,False,False,False,False
+Yes (1) or No (0) ,False,False,False,False,False,False
+8 ,False,False,False,False,False,False
+Physical ,False,False,False,False,False,False
+Activity ,False,False,False,False,False,False
+"Low (-1) , Normal (0) or High (-1) ",False,False,False,False,False,False
+9 ,False,False,False,False,False,False
+Diabetes  Yes  (1) or  No (0) ,False,False,False,False,False,False
+10 ,False,False,False,False,False,False
+"Diet  Poor (-1), Normal (0) or Good (1) ",False,False,False,False,False,False
+11 ,False,False,False,False,False,False
+Obesity  Yes (1) or No (0) ,False,False,False,False,False,False
+12 ,False,False,False,False,False,False
+Stress ,False,False,False,False,False,False
+Yes (1) or No (0) ,False,False,False,False,False,False
+Output  Heart Disease ,False,False,False,False,False,False
+Yes (1) or No (0) ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Data  analysis  has  been  carried  out  in  order to  trans,False,False,False,False,False,False
+form  data ,False,False,False,False,False,False
+"into  useful  form,  for  this  the  values  were  encoded  mostly ",False,False,False,False,False,False
+"between  a  range  [-1,  1].  Data  analysis  also  removed  the ",False,False,False,False,False,False
+inconsistency  and  anomalies  in  the  data.  This  was  needed. ,False,False,False,False,False,False
+Data analysis was needed  for correct data preprocessing. The ,False,False,False,False,False,False
+removal  of  missing  and  incorrect  inputs  will  help  the  neural ,False,False,False,False,False,False
+network to generalize well. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+B. Neural Network Weight Optimization by Genetic Algorithm ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+This  system uses  backpropagation algorithm  for  learning and ,False,False,False,False,False,False
+"training  the  neural  network,  but  there  are  two  major ",False,False,False,False,False,False
+disadvantages with backpropagation algorithm. First is that the ,False,False,False,False,False,False
+initialization of the NN  weights is a blind process hence it is ,False,False,False,False,False,False
+not possible to find out globally optimized initial weights and ,False,False,False,False,False,False
+there  is  a  danger  that  the  network  output  would  run  towards ,False,False,False,False,False,False
+local optima hence the overall tendency of the network to find ,False,False,False,False,False,False
+out a global solution is greatly affected. The second problem is ,False,False,False,False,False,False
+that  backpropagation  algorithm  is  very  slow  in  convergence ,False,False,False,False,False,False
+and  there  is  a  possibility  that  network  never  converges  [25]. ,False,False,False,False,False,False
+This  problem  of  local  optimum  solution  can  be  solved  by ,False,False,False,False,False,False
+optimizing  the  initial  weights  of  neural  network.  For  this  we ,False,False,False,False,False,False
+use  a  genetic  algorithm  which  is  specialized  for  global ,False,False,False,False,False,False
+searching  [26].  For  this  we  first  determine  the  number  of ,False,False,False,False,False,False
+"inputs,  layers  and  hidden  neurons  of  the  neural  network  and ",False,False,False,False,False,False
+then we would use the backpropagation algorithm to train the ,False,False,False,False,False,False
+networks using the weights optimized by GA.  ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+C. Neural Network Architecture ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+A multilayered feed-forward network is used having 12 input ,False,False,False,False,False,False
+nodes  10  hidden  nodes  and  2  output  nodes.  The  number  of ,False,False,False,False,False,False
+inputs is based on the final set of risk factors for each patient ,False,False,False,False,False,False
+which is given in TABLE I. number of hidden nodes must be ,False,False,False,False,False,False
+decided for which the training is fast and the network gives the ,False,False,False,False,False,False
+best output. The first step is to initialize the weights of neural ,False,False,False,False,False,False
+network using the ‘configure’ function available in MATLAB. ,False,False,False,False,False,False
+Then  these  configured  weights  are  passed  to  the  genetic ,False,False,False,False,False,False
+algorithm  for  optimization  according  to  the  fitness  function. ,False,False,False,False,False,False
+"Once  the  weights  are  optimized,  the  Levenberg-Marquardt ",False,False,False,False,False,False
+backpropagation  algorithm  is  used  for  training  and  learning ,False,False,False,False,False,False
+and  ‘trainlm’  is  a  network  training  function  that  updates ,False,False,False,False,False,False
+weight  and  bias  values  according  to  Levenberg-Marquardt ,False,False,False,False,False,False
+optimization.  The  ‘trainlm’  is  often  the  fastest ,False,False,False,False,False,False
+"backpropagation  algorithm  in  the  toolbox,  and  is  highly ",False,False,False,False,False,False
+"recommended as a first-choice supervised algorithm, although ",False,False,False,False,False,False
+it does require more memory than other algorithms.,False,False,False,False,False,False
+number  of  epochs  to  train  is  set  to  a  default  value  100.  The ,False,False,False,False,False,False
+learning stops at a predefined minimum error after modifying ,False,False,False,False,False,False
+network weights and adjusting them to an optimal quantity at ,False,False,False,False,False,False
+which  the  classification  is  accurate.  The  predicted  output ,False,False,False,False,False,False
+would be presence or absence of a heart disease. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Proceedings of 2013 IEEE Conference on Information and Communication Technologies (ICT 2013),False,False,False,False,False,False
+978-1-4673-5758-6/,False,False,False,False,False,False
+13/$31.00 © 2013 IEEE,True,False,False,True,False,False
+1228,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+TABLE II ,True,False,False,False,False,True
+PATIENT’S CASE STUDY DATA IN ENCODED FORM ,True,False,False,True,False,False
+No  Sex  Age ,False,False,False,False,False,False
+Blood ,False,False,False,False,False,False
+Cholesterol ,False,False,False,False,False,False
+Blood ,False,False,False,False,False,False
+Pressure  Hereditary  Smoking ,False,False,False,False,False,False
+Alcohol ,False,False,False,False,False,False
+Intake ,False,False,False,False,False,False
+Physical ,False,False,False,False,False,False
+Activity  Diabetes  Diet  Obesity  Stress ,False,False,False,False,False,False
+Heart ,False,False,False,False,False,False
+Disease ,False,False,False,False,False,False
+1  Female  35  High  Normal  No  No  Yes  Low  Yes  Poor  Yes  Yes  Yes ,False,False,False,False,False,False
+2  Male  70  Low  Low  No  No  Yes  High  Yes  Normal  No  No  No ,False,False,False,False,False,False
+3  Female  60  High  High  No  No  No  Normal  Yes  Poor  Yes  Yes  Yes ,False,False,False,False,False,False
+4  Female  36  Low  Normal  No  No  No  Normal  No  Good  No  No  No ,False,False,False,False,False,False
+5  Male  30  Low  Normal  No  No  Yes  High  No  Normal  No  No  No ,False,False,False,False,False,False
+6  Female  39  Low  Normal  Yes  No  Yes  High  Yes  Normal  No  Yes  No ,False,False,False,False,False,False
+7  Female  41  High  Normal  No  No  No  Low  No  Poor  Yes  No  No ,False,False,False,False,False,False
+8  Male  70  High  Normal  No  No  Yes  Low  No  Poor  Yes  No  Yes ,False,False,False,False,False,False
+9  Male  65  Normal  High  Yes  Yes  Yes  Normal  Yes  Poor  Yes  No  Yes ,False,False,False,False,False,False
+10  Male  30  Normal  High  No  Yes  No  Normal  No  Good  No  Yes  No ,False,False,False,False,False,False
+11  Female  31  Low  Normal  No  No  No  High  No  Normal  No  No  No ,False,False,False,False,False,False
+12  Female  29  Low  Normal  No  No  Yes  High  No  Good  No  No  No ,False,False,False,False,False,False
+13  Male  30  Low  Normal  No  No  Yes  Normal  No  Normal  No  No  No ,False,False,False,False,False,False
+14  Female  45  Normal  High  Yes  Yes  No  Normal  Yes  Normal  Yes  Yes  No ,False,False,False,False,False,False
+15  Male  25  High  Normal  Yes  Yes  Yes  Low  Yes  Normal  No  No  Yes ,False,False,False,False,False,False
+16  Female  37  Normal  Normal  No  No  No  Normal  Yes  Poor  No  Yes  No ,False,False,False,False,False,False
+17  Female  37  Normal  High  No  Yes  Yes  High  No  Poor  No  Yes  No ,False,False,False,False,False,False
+18  Male  53  High  Low  No  Yes  No  Normal  Yes  Normal  No  Yes  No ,False,False,False,False,False,False
+19  Male  57  High  Normal  No  Yes  No  Low  No  Poor  Yes  Yes  Yes ,False,False,False,False,False,False
+20  Male  52  High  Low  No  No  No  Normal  Yes  Poor  Yes  No  No ,False,False,False,False,False,False
+21  Male  48  Normal  Normal  Yes  Yes  Yes  Normal  No  Normal  No  No  Yes ,False,False,False,False,False,False
+22  Male  62  High  High  No  Yes  Yes  Normal  Yes  Normal  No  No  Yes ,False,False,False,False,False,False
+23  Male  56  Normal  High  No  Yes  Yes  Low  No  Poor  Yes  Yes  Yes ,False,False,False,False,False,False
+24  Female  27  Low  Normal  No  No  No  High  No  Good  No  No  No ,False,False,False,False,False,False
+25  Male  33  Normal  Normal  No  No  No  Normal  Yes  Good  No  No  No ,False,False,False,False,False,False
+26  Female  33  Normal  Normal  No  No  Yes  Low  Yes  Poor  No  Yes  No ,False,False,False,False,False,False
+27  Male  37  High  Normal  No  No  Yes  Normal  No  Normal  No  Yes  No ,False,False,False,False,False,False
+28  Male  43  Normal  High  No  No  No  Normal  Yes  Poor  Yes  Yes  Yes ,False,False,False,False,False,False
+29  Male  46  Low  Normal  No  No  No  Normal  Yes  Poor  Yes  Yes  No ,False,False,False,False,False,False
+30  Female  36  Low  Normal  No  No  No  Normal  No  Normal  No  No  No ,False,False,False,False,False,False
+31  Female  29  Low  Normal  No  No  No  Normal  No  Good  No  No  No ,False,False,False,False,False,False
+32  Female  47  Normal  Normal  No  No  Yes  High  Yes  Normal  No  Yes  No ,False,False,False,False,False,False
+33  Male  58  High  High  No  Yes  Yes  Normal  Yes  Normal  No  Yes  Yes ,False,False,False,False,False,False
+34  Male  44  High  Normal  Yes  Yes  Yes  Normal  No  Normal  Yes  Yes  Yes ,False,False,False,False,False,False
+35  Female  36  Normal  High  No  No  No  Normal  No  Good  Yes  No  Yes ,False,False,False,False,False,False
+36  Male  42  Low  Normal  Yes  No  Yes  Low  No  Poor  No  Yes  No ,False,False,False,False,False,False
+37  Female  25  Low  Normal  No  No  No  High  No  Poor  No  No  No ,False,False,False,False,False,False
+38  Female  28  Low  Normal  No  No  Yes  High  No  Normal  No  No  No ,False,False,False,False,False,False
+39  Female  26  Low  Normal  Yes  No  No  Normal  No  Normal  Yes  No  Yes ,False,False,False,False,False,False
+Proceedings of 2013 IEEE Conference on Information and Communication Technologies (ICT 2013),False,False,False,False,False,False
+978-1-4673-5758-6/13/$31.00 © 2013 IEEE,True,False,False,True,False,False
+1229,False,False,False,False,False,False
+40  Male  28  Low  Normal  No  No  No  Normal  No  Poor  No  No  No ,False,False,False,False,False,False
+41  Female  45  High  Normal  No  No  Yes  Low  Yes  Poor  Yes  Yes  Yes ,False,False,False,False,False,False
+42  Male  63  Low  Low  No  No  Yes  High  Yes  Good  No  No  No ,False,False,False,False,False,False
+43  Female  55  High  High  No  No  No  Normal  Yes  Normal  Yes  Yes  Yes ,False,False,False,False,False,False
+44  Female  44  Low  Normal  No  No  No  Normal  No  Normal  No  No  No ,False,False,False,False,False,False
+45  Male  35  Low  Normal  No  No  Yes  High  No  Normal  No  No  No ,False,False,False,False,False,False
+46  Female  42  Normal  Normal  No  No  Yes  High  Yes  Good  No  No  No ,False,False,False,False,False,False
+47  Female  43  Normal  Normal  No  No  No  Low  No  Poor  Yes  No  No ,False,False,False,False,False,False
+48  Male  65  Normal  Normal  No  No  Yes  Low  No  Normal  Yes  Yes  Yes ,False,False,False,False,False,False
+49  Male  74  Normal  High  No  Yes  Yes  Normal  Yes  Normal  Yes  Yes  Yes ,False,False,False,False,False,False
+50  Male  36  Normal  High  No  Yes  No  Normal  No  Poor  No  No  No ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+IV.PARAMETER SETTINGS  ,True,True,False,True,False,False
+ ,False,False,False,False,False,False
+The  system  was  developed  using  MATLAB  R2012a.  Global ,False,False,False,False,False,False
+Optimization Toolbox and the Neural Network Toolbox were ,False,False,False,False,False,False
+used  for  implementing  the  algorithm  [27].  The  data  for  risk ,False,False,False,False,False,False
+factors  related  to  heart  diseases  collected  from  50  people  is ,False,False,False,False,False,False
+provided in TABLE II. ANN is initialized with the ‘configure’ ,False,False,False,False,False,True
+"function,  with each  weigh  being between  -1.0  to +1.0. These ",False,False,False,False,False,False
+weights  are  then  passed  to  the  genetic  algorithm  which  uses ,False,False,False,False,False,False
+the  mean  square  error  as  the  fitness  function.  The ,False,False,False,False,False,False
+interconnecting  weights  and  thresholds  of  the  trained  neural ,False,False,False,False,False,False
+network  are  passed  to  the  genetic  algorithm.  The  number  of ,False,False,False,False,False,False
+"neurons  in  the  three  layer  neural  networks  is  12,  10,  and  2 ",False,False,False,False,False,False
+"respectively in input, hidden and output layer. Hence there are ",False,False,False,False,False,False
+(12x10+10)  +  (10x2+2)  =  152  total  weights  and  biases.  The ,False,False,False,False,False,False
+weights in the ANN are encoded in such a way each weight is ,False,False,False,False,False,False
+being between -1.0 to +1.0. After that weights are assigned to ,False,False,False,False,False,False
+each  link.  Weights  adjustment  using  GA  is  done  with ,False,False,False,False,False,False
+"‘population  size  =20’.In  this  application,  each  string  or ",False,False,False,False,False,False
+chromosome in the population represents the weight and bias ,False,False,False,False,False,False
+values of the network. Fitness function is calculated  for each ,False,False,False,False,False,False
+chromosome based on mean square error. The fitness function ,False,False,False,False,False,False
+used is mean square error (mse) which is calculated as below:      ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+mse =,False,False,False,False,False,False
+k,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+(O,True,False,False,True,False,False
+k,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+– T,True,False,False,True,False,False
+k,False,False,False,False,False,False
+),False,False,False,False,False,False
+2 ,False,False,False,False,False,False
+/ n ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"After  selection,  crossover  and  mutation  in  GA,  the ",False,False,False,False,False,False
+chromosomes  with  lower  adaptation  are  replaced  with  better ,False,False,False,False,False,False
+"ones,  and  the  better  and  fitter  chromosomes  (optimized ",False,False,False,False,False,False
+solutions)  that  correspond  to  the  interconnecting  weights  and ,False,False,False,False,False,False
+"thresholds  of  neural  network  are  generated.  A  small  value, ",False,False,False,False,False,False
+"closes  to  zero,  shows  that  the  network  has  generalized  well ",False,False,False,False,False,False
+and is ready for the classification problem. In this method GA ,False,False,False,False,False,False
+searches among several set of  weight vectors simultaneously. ,False,False,False,False,False,False
+The  initial  population  is  randomly  generated.  By  selecting ,False,False,False,False,False,False
+"suitable  parameters,  like  selection  criteria,  probability  of ",False,False,False,False,False,False
+"cross-over, probability of  mutation,  initial  population, etc.,  to ",False,False,False,False,False,False
+"the GA, high efficiency and performance can be achieved. ",False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+TABLE III ,True,False,False,False,False,True
+SOME PARAMETERS USED IN GA ,True,False,False,True,False,False
+Search Method  Genetic Algorithm ,False,False,False,False,False,False
+PopulationSize  20 ,False,False,False,False,False,False
+Generations  100 ,False,False,False,False,False,False
+CrossoverFraction  0.8000 ,False,False,False,False,False,False
+MigrationInterval  20 ,False,False,False,False,False,False
+MigrationFraction:  0.2000 ,False,False,False,False,False,False
+EliteCount  2 ,False,False,False,False,False,False
+TolFun  1.0000e-006 ,False,False,False,False,False,False
+     ,False,False,False,False,False,False
+V. RESULTS AND DISCUSSION ,True,True,False,True,False,False
+ ,False,False,False,False,False,False
+The  input  data  consisted  of  risk  factors  collected  from  50 ,False,False,False,False,False,False
+people  through  case  studies  provided  at  the  website  of  the ,False,False,False,False,False,False
+American  Heart  Association  [23].  The  data  was  encoded  as ,False,False,False,False,False,False
+shown in TABLE II. 70% of the data was used for training and ,False,False,False,False,False,True
+15%  each  for  testing  and  validation.  A  confusion  matrix  is ,False,False,False,False,False,False
+produced using Matlab and accuracy is determined (shown in ,False,False,False,False,False,False
+TABLE IV) as Accuracy = (TP + TN) / (TP + FP + TN + FN); ,False,False,False,False,False,True
+"where  TP,  TN,  FP  and  FN  denotes  true  positives,  true ",False,False,False,False,False,False
+"negatives,  false  positives  and  false  negatives,  respectively. ",False,False,False,False,False,False
+The  accuracy  of  prediction  of  heart  disease  on  the  training ,False,False,False,False,False,False
+data  was  calculated  as  89%  and  accuracy  on  validation  data ,False,False,False,False,False,False
+was 96.2%. The least mean square error (MSE) achieved was ,False,False,False,False,False,False
+"0.034683 after 12 epochs, as shown in Figure 1. Results show ",False,False,False,False,False,False
+genetic  algorithm  and  neural  network  approach  gives  better ,False,False,False,False,False,False
+average prediction accuracy than the traditional ANN. ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+    Figure 1: Performance Graph ,False,False,False,False,True,False
+Proceedings of 2013 IEEE Conference on Information and Communication Technologies (ICT 2013),False,False,False,False,False,False
+978-1-4673-5758-6/,False,False,False,False,False,False
+13/$31.00 © 2013 IEEE,True,False,False,True,False,False
+1230,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+TABLE IV ,True,False,False,False,False,True
+DATA SETS ,True,False,False,True,False,False
+Data Set  Number of Data  Accuracy (%) ,False,False,False,False,False,False
+Training Set  34  96.2% ,False,False,False,False,False,False
+Test Set  8  92% ,False,False,False,False,False,False
+Validation Set  8  89% ,False,False,False,False,False,False
+Total instances  50  - ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+Figure 2: Training State Graph ,False,False,False,False,True,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+VI. CONCLUSION ,True,True,False,True,False,False
+ ,False,False,False,False,False,False
+Data  mining  techniques  and  methods  applied  in  patien,False,False,False,False,False,False
+t  medical ,False,False,False,False,False,False
+"dataset has resulted in innovations, standards and decision support ",False,False,False,False,False,False
+system  that  have  significant  success  in  improving  the  health  of ,False,False,False,False,False,False
+patients  and the  overall  quality  of  medical  services.  But  we  still ,False,False,False,False,False,False
+need systems  which  could  predict  heart  diseases  in early  stages. ,False,False,False,False,False,False
+"In  this  study,  a  new  hybrid  model  of  Neural  Networks  and ",False,False,False,False,False,False
+Genetic Algorithm to optimize the connection weights of ANN so ,False,False,False,False,False,False
+as to improve the performance of the  Artificial Neural Network. ,False,False,False,False,False,False
+The  system  uses  identified  important  risk  factors  for  the ,False,False,False,False,False,False
+prediction of heart disease and it does not require costly medical ,False,False,False,False,False,False
+tests. Risk factors data of 50 patients was collected and the results ,False,False,False,False,False,False
+obtained  showed  training  accuracy  of  96.2%  and  a  validation ,False,False,False,False,False,False
+accuracy  of  89%  as  specified  in  TABLE  IV.  With  using  hybrid ,False,False,False,False,False,False
+data  mining  techniques  we  could  design  more  accurate  clinical ,False,False,False,False,False,False
+decision support systems for diagnosis of diseases. We can build ,False,False,False,False,False,False
+an  intelligent  system  which  could  predict  the  disease  using  risk ,False,False,False,False,False,False
+factors hence  saving  cost  and  time to  undergo  medical tests  and ,False,False,False,False,False,False
+checkups and ensuring that the patient can monitor his health on ,False,False,False,False,False,False
+his own and plan preventive measures and treatment at the early ,False,False,False,False,False,False
+stages of the diseases.,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+RE,True,False,False,True,False,False
+FERENCES ,True,False,False,True,False,False
+ ,False,False,False,False,False,False
+"[1]    “Global atlas on cardiovascular disease prevention and control”, WHO, ",False,False,False,False,False,False
+2011. ,False,False,True,True,False,False
+"[2]   Mozaffarian D, Wilson PW, Kannel WB, Beyond established and novel ",False,False,False,False,False,False
+risk factors: lifestyle risk factors for cardiovascular disease. Circulation ,False,False,False,False,False,False
+"117: 3031–3038, 2008. ",False,False,False,False,False,False
+"[3]  Poirier P, Healthy lifestyle: even if you are doing everything right, extra ",False,False,False,False,False,False
+weight carries an excess risk of acute coronary events. Circulation 117: ,False,False,False,False,False,False
+"3057–3059, 2008.  ",False,False,False,False,False,False
+"[4]    Wood  D,  De  Backer,  Prevention  of  coronary  heart  disease  in  clinical ",False,False,False,False,False,False
+practice: recommendations of the Second Joint Task Force of European ,False,False,False,False,False,False
+and other Societies on  Coronary Prevention. Atherosclerosis 140: 199–,False,False,False,False,False,False
+"270, 1998. ",False,False,False,False,False,False
+"[5]   Anderson  KM,  Odell  PM,  Cardiovascular  disease  risk  profiles.  Am ",False,False,False,False,False,False
+Heart J 121: 293–298. 1991. ,False,False,False,False,False,False
+"[6]  Anderson  KM,  Odell  PM,  Wilson  PWF,  Kannel  WB.  Cardiovascular ",False,False,False,False,False,False
+"disease risk profiles. Am Heart J., 121: 293–298, 1991. ",False,False,False,False,False,False
+"[7]   Kannel WB, An investigation of coronary heart disease in families. The ",False,False,False,False,False,False
+"Framingham offspring study. Am J Epidemiol 110: 281–290, 1979. ",False,False,False,False,False,False
+"[8]  R. Das, I. Turkoglu, and A. Sengur, Effective diagnosis of heart disease ",False,False,False,False,False,False
+"through neural networks ensembles, Expert Systems with  Applications, ",False,False,False,False,False,False
+"Elsevier, pp. 7675–7680, 2009. ",False,False,False,False,False,False
+"[9]  T. Porter  and B.  Green,  ""Identifying Diabetic Patients: A  Data  Mining ",False,False,False,False,False,False
+"Approach,"" Americas Conference on Information Systems, 2009. ",False,False,False,False,False,False
+"[10]  S.  Panzarasa  et  al,  ""Data  mining  techniques  for  analyzing  stroke  care ",False,False,False,False,False,False
+"processes,"" in Proc. of the 13th World Congress on Medical Informatics, ",False,False,False,False,False,False
+2010. ,False,False,True,True,False,False
+"[11]  L. Li, T. H., Z. Wu, J. Gong, M. Gruidl, J. Zou, M. Tockman, and R. A. ",False,False,False,False,False,False
+"  Clark,  ""Data  mining  techniques  for  cancer  detection  using  serum ",False,False,False,False,False,False
+"proteomic profiling,"" Artificial Intelligence in Medicine, Elsevier, 2004. ",False,False,False,False,False,False
+"[12]  V.  A.  Sitar-Taut  et  al.,  ""Using  machine  learning  algorithms  in ",False,False,False,False,False,False
+"cardiovascular  disease  risk  evaluation,""  Journal  of  Applied  Computer ",False,False,False,False,False,False
+"Science and Mathematics, 2009. ",False,False,False,False,False,False
+"[13]  K. Srinivas, B. K. Rani, and A. Govrdhan, ""Applications of Data Mining ",False,False,False,False,False,False
+"Techniques in Healthcare and Prediction of Heart Attacks,"" International ",False,False,False,False,False,False
+"Journal on Computer Science and Engineering (IJCSE), vol. 2, no. 2, pp. ",False,False,False,False,False,False
+"250-255, 2010. ",False,False,False,False,False,False
+"[14]  H.  Yan,  et  al.,  ""Development  of  a  decision  support  system  for  heart ",False,False,False,False,False,False
+"disease  diagnosis  using  multilayer  perceptron,""  in  Proc.  of  the  2003 ",False,False,False,False,False,False
+"International Symposium on, vol. 5, pp. V-709- V-712. ",False,False,False,False,False,False
+"[15]  M. C. Tu, D. Shin, and D. Shin, ""Effective Diagnosis of Heart Disease ",False,False,False,False,False,False
+"through Bagging Approach,"" Biomedical Engineering and Informatics, ",False,False,False,False,False,False
+"IEEE, 2009. ",True,False,False,True,False,False
+"[16]  Hai H.Dam, Hussain A.Abbass and Xin Yao, “Neural – Based Learning ",False,False,False,False,False,False
+"Classifier  Systems”,  IEEE  Transactions  on  Knowledge  and  Data ",False,False,False,False,False,False
+"Engineering, Vol.20, No.1, pp.26-39, 2008.     ",False,False,False,False,False,False
+"[17]  Shantakumar B.Patil and Y.S.Kumaraswamy, “Intelligent and Effective ",False,False,False,False,False,False
+Heart Attack Prediction System Using Data Mining and Artificial Neural ,False,False,False,False,False,False
+"Network”,  European  Journal  of  Scientific  Research,  Vol.31,  No.4, ",False,False,False,False,False,False
+"pp.642-656, 2009.    ",False,False,False,False,False,False
+"[18]  Polat , K., S. Sahan, and S. Gunes, Automatic detection of heart disease ",False,False,False,False,False,False
+using  an  artificial  immune  recognition  system  (AIRS)  with  fuzzy ,False,False,False,False,False,False
+resource  allocation  mechanism  and  k-nn  (nearest  neighbour  based ,False,False,False,False,False,False
+weighting preprocessing. Expert Systems with Applications   2007. 32 p. ,False,False,False,False,False,False
+625–631. ,False,False,False,False,False,False
+" [19] Das, R., I. Turkoglu, and A. Sengur, Effective diagnosis of heart disease ",False,False,False,False,False,False
+"through neural networks ensembles. Expert Systems with  Applications, ",False,False,False,False,False,False
+"Elsevier, 2009. 36 (2009): p. 7675–7680. ",False,False,False,False,False,False
+"[20]  Latha  Parthiban  and  R.Subramanian,  “Intelligent  Heart  Disease ",False,False,False,False,False,False
+"Prediction System using CANFIS and Genetic Algorithm”, International ",False,False,False,False,False,False
+"  Journal of Biological and Life Sciences, Vol.3, No.3, pp.157-160, 2007. ",False,False,False,False,False,False
+"[21]  N.  Elfadil  and  A.  Hossen,  ""Identification  of  Patients  With  Congestive ",False,False,False,False,False,False
+"Heart  Failure  Using  Different  Neural  Networks  Approaches"",  Journal ",False,False,False,False,False,False
+"Technology and Health Core, vol. 17 Issue 4, December 2009. ",False,False,False,False,False,False
+"[22]  Centre for Disease Control and Prevention, ",False,False,False,False,False,False
+http://www.cdc.gov/heartdisease/risk_factors.htm,False,False,False,False,False,False
+. ,False,True,False,True,False,False
+http://www.heart.org/HEARTORG/Conditions,False,False,False,False,False,False
+ ,False,False,False,False,False,False
+"[24]   D. Isern, D. Sanchez, and A. Moreno, ""Agents Applied in Health Care: ",False,False,False,False,False,False
+"A Review"", International Journal of Medical Informatics, 79(3), pp.146-",False,False,False,False,False,False
+"166, doi:10.1016/j.ijmedinf201O.01.003, 2010. ",False,False,False,False,False,False
+"[25]  J. G. Yang, S. Y. Weng,, Applied Textbook of Artificial Neural Network, ",False,False,False,False,False,False
+"Zhejiang University Press, Hangzhou, 2001. ",False,False,False,False,False,False
+"[26]  Y. J. Lei, and X. W. Zhang, Genetic Algorithm Toolbox of MatLab and ",False,False,False,False,False,False
+"its  Application,  Xian  University of  Electronic  Science and  Technology ",False,False,False,False,False,False
+"Press, 2005. ",False,False,False,False,False,False
+"[27]  J. Guo, and W. J. Sun, Theory of Neural Network and its Implementation ",False,False,False,False,False,False
+"with MatLab, Electronic Industry Press, Beijing, 2005. ",False,False,False,False,False,False
+Proceedings of 2013 IEEE Conference on Information and Communication Technologies (ICT 2013),False,False,False,False,False,False
+978-1-4673-5758-6/,False,False,False,False,False,False
+13/$31.00 © 2013 IEEE,True,False,False,True,False,False
+1231,False,False,False,False,False,False

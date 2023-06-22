@@ -1,0 +1,866 @@
+Text,Is Capitalized,Is Roman Numeral,Is Number,is_heading,is_figure_heading,is_table_heading
+Abstract—Coronary heart disease (CHD) is one of the major,False,False,False,True,False,False
+causes of disability in adults as well as one of the main causes of,False,False,False,False,False,False
+death in the developed countries. Although signiﬁcant progress has,False,False,False,False,False,False
+"been made in the diagnosis and treatment of CHD, further inves-",False,False,False,False,False,False
+tigation is still needed. The objective of this study was to develop a,False,False,False,False,False,False
+data-mining system for the assessment of heart event-related risk,False,False,False,False,False,False
+factors targeting in the reduction of CHD events. The risk factors,False,False,False,False,False,False
+"investigated were: 1) before the event: a) nonmodiﬁable—age, sex,",False,False,False,False,False,False
+"and family history for premature CHD, b) modiﬁable—smoking",False,False,False,False,False,False
+"before the event, history of hypertension, and history of diabetes;",False,False,False,False,False,False
+"and 2) after the event: modiﬁable—smoking after the event, systolic",False,False,False,False,False,False
+"blood pressure, diastolic blood pressure, total cholesterol, high-",False,False,False,False,False,False
+"density lipoprotein, low-density lipoprotein, triglycerides, and glu-",False,False,False,False,False,False
+"cose. The events investigated were: myocardial infarction (MI),",False,False,False,False,False,False
+"percutaneous coronary intervention (PCI), and coronary artery",False,False,False,False,False,False
+bypass graft surgery (CABG). A total of 528 cases were collected,False,False,False,False,False,False
+"from the Paphos district in Cyprus, most of them with more than",False,False,False,False,False,False
+one event. Data-mining analysis was carried out using the C4.5,False,False,False,False,False,False
+decision tree algorithm for the aforementioned three events using,False,False,False,False,False,False
+"ﬁve different splitting criteria. The most important risk factors,",False,False,False,False,False,False
+"as extracted from the classiﬁcation rules analysis were: 1) for MI,",False,False,False,False,False,False
+"age, smoking, and history of hypertension; 2) for PCI, family his-",False,False,False,False,False,False
+"tory, history of hypertension, and history of diabetes; and 3) for",False,False,False,False,False,False
+"CABG, age, history of hypertension, and smoking. Most of these",False,False,False,False,False,False
+risk factors were also extracted by other investigators. The highest,False,False,False,False,False,False
+"percentages of correct classiﬁcations achieved were 66%, 75%, and",False,False,False,False,False,False
+"75% for the MI, PCI, and CABG models, respectively. It is antici-",False,False,False,False,False,False
+pated that data mining could help in the identiﬁcation of high and,False,False,False,False,False,False
+"low risk subgroups of subjects, a decisive factor for the selection",False,False,False,False,False,False
+"of therapy, i.e., medical or surgical. However, further investigation",False,False,False,False,False,False
+with larger datasets is still needed.,False,False,False,False,False,False
+"Index Terms—Coronary heart disease (CHD), data mining, de-",False,False,False,False,False,False
+"cision trees, risk factors.",False,False,False,False,False,False
+I. INTRODUCTION,True,True,False,True,False,False
+C,True,False,False,True,False,False
+ORONARY heart disease (CHD) is the single most com-,False,False,False,False,False,False
+"mon cause of death in Europe, responsible for nearly two",False,False,False,False,False,False
+million deaths a year [1]. Advances in the ﬁeld of medicine over,False,False,False,False,False,False
+the past few decades enabled the identiﬁcation of risk factors,False,False,False,False,False,False
+"that may contribute toward the development of CHD. However,",False,False,False,False,False,False
+"Manuscript received August 5, 2009; revised November 24, 2009. First",False,False,False,False,False,False
+"published January 12, 2010; current version published June 3, 2010.",False,False,False,False,False,False
+"M. A. Karaolis, D. Hadjipanayi, and C. S. Pattichis are with the Department",False,False,False,False,False,False
+"of Computer Science, University of Cyprus, Nicosia 1678, Cyprus (e-mail:",False,False,False,False,False,False
+karaolis@spidernet.com.cy; demetra.hadjipanayi@gmail.com; pattichi@ucy.,False,False,False,False,False,False
+ac.cy).,False,False,False,False,False,False
+"J. A. Moutiris is with the Department of Cardiology, Paphos General Hospi-",False,False,False,False,False,False
+"tal, Paphos 8100, Cyprus (e-mail: moutiris@ucy.ac.cy).",False,False,False,False,False,False
+Digital Object Identiﬁer 10.1109/TITB.2009.2038906,False,False,False,False,False,False
+this knowledge has not yet helped in the signiﬁcant reduction,False,False,False,False,False,False
+of CHD i ncidence. There are several factors that contribute,False,False,False,False,False,False
+to the development of a coronary heart event. These risk fac-,False,False,False,False,False,False
+"tors may be classiﬁed into two categories, not modiﬁable and",False,False,False,False,False,False
+modiﬁable. The ﬁrst category includes factors that cannot be,False,False,False,False,False,False
+"altered by intervention such as age, gender, operations, family",False,False,False,False,False,False
+"history, and genetic attributes [2]–[4]. Modiﬁable risk factors",False,False,False,False,False,False
+are those for which either treatment is available or in which,False,False,False,False,False,False
+alternations in behavior can reduce the proportion of the pop-,False,False,False,False,False,False
+"ulation exposed. Established, modiﬁable risk factors for CHD",False,False,False,False,False,False
+"currently include smoking, hypertension, diabetes, cholesterol,",False,False,False,False,False,False
+"high-density lipoprotein, low-density lipoprotein, triglycerides",False,False,False,False,False,False
+"[5], [6].",False,False,False,False,False,False
+The objective of this study was to develop a data mining,False,False,False,False,False,False
+system based on decision trees for the assessment of CHD-,False,False,False,False,False,False
+related risk factors targeting in the reduction of CHD events.,False,False,False,False,False,False
+Data-mining analysis was carried out using the C4.5 decision,False,False,False,False,False,False
+tree algorithm using ﬁve different splitting criteria for extract-,False,False,False,False,False,False
+ing rules based on the aforementioned risk factors. Preliminary,False,False,False,False,False,False
+results of this study were previously published [7].,False,False,False,False,False,False
+Many studies have been carried out investigating CHD and re-,False,False,False,False,False,False
+lated risk factors. Some of them used the Framingham equation,False,False,False,False,False,False
+"to describe the population in a region or country [8], [9], whereas",False,False,False,False,False,False
+other studies examined the features of available Framingham-,False,False,False,False,False,False
+based risk calculation [10]. The American Heart Association,False,False,False,False,False,False
+(AHA) assessed multiple risk factors and also developed new,False,False,False,False,False,False
+"guidelines for CHD [11], [12]. Furthermore, results from the",False,False,False,False,False,False
+European Action on Secondary and Primary Prevention by In-,False,False,False,False,False,False
+tervention to Reduce Events (EUROASPIRE) revealed the im-,False,False,False,False,False,False
+portant risk factors through various surveys across European,False,False,False,False,False,False
+countries [2]–[4].,False,False,False,False,False,False
+Data mining facilitates data exploration using data analysis,False,False,False,False,False,False
+methods with sophisticated algorithms in order to discover un-,False,False,False,False,False,False
+known patterns. Such algorithms include decision trees that have,False,False,False,False,False,False
+been used extensively in medicine. According to Podgorelec,False,False,False,False,False,False
+et al. [13] decision-tree-based algorithms give reliable and ef-,False,False,False,False,False,False
+fective results that provide high-classiﬁcation accuracy with,False,False,False,False,False,False
+"a simple representation of gathered knowledge, and are es-",False,False,False,False,False,False
+pecially appropriate to support decision-making processes in,False,False,False,False,False,False
+medicine.,False,False,False,False,False,False
+Several studies have been carried out that investigated the,False,False,False,False,False,False
+usefulness of decision tree models in CHD-related problems.,False,False,False,False,False,False
+"Ordonez [14], [15] investigated decision trees and association",False,False,False,False,False,False
+"rules to predict CHD based on the risk factors sex, smok-",False,False,False,False,False,False
+"ing, cholesterol, and age. Gamberger et al. [16] used a deci-",False,False,False,False,False,False
+sion support method to target high-risk groups for CHD using,False,False,False,False,False,False
+"risk factors like smoking, cholesterol and hypertension. Tsien",False,False,False,False,False,False
+1089-7771/$26.00 © 2010 IEEE,True,False,False,True,False,False
+et al. [17] used also classiﬁcation trees and logistic regression,False,False,False,False,False,False
+building three different models for myocardial infarction (MI),False,False,False,False,False,False
+and examining also the signiﬁcance of these models. Decision-,False,False,False,False,False,False
+tree-based software tools were developed in [18] and [19] to aid,False,False,False,False,False,False
+in the diagnosis of CHD. Rao et al. [18] presented a framework,False,False,False,False,False,False
+to create structured clinical data for CHD. Zavrsnik et al. [19],False,False,False,False,False,False
+used decision trees and created the ROSE tool for use in car-,False,False,False,False,False,False
+"diology. Furthermore, Polat et al. [20] developed decision tree",False,False,False,False,False,False
+"based models for the classiﬁcation of CHD, achieving a correct",False,False,False,False,False,False
+"classiﬁcation score of 82%. Moreover, Pavlopoulos et al. [21]",False,False,False,False,False,False
+used the C4.5 algorithm decision trees to analyze the different,False,False,False,False,False,False
+"heart sound features, which assist clinicians to make a better",False,False,False,False,False,False
+diagnosis in CHD.,False,False,False,False,False,False
+Several other studies investigated different technologies for,False,False,False,False,False,False
+"the assessment of CHD, including logistic regression [17], as-",False,False,False,False,False,False
+"sociation rules [7], [15], fuzzy modeling [22], [23], neural net-",False,False,False,False,False,False
+"works [24], and other.",False,False,False,False,False,False
+"In this study, we investigate how data mining based on deci-",False,False,False,False,False,False
+sion trees can help for the evaluation of the risk of CHD. The,False,False,False,False,False,False
+aim is to identify the most important risk factors based on the,False,False,False,False,False,False
+classiﬁcation rules to be extracted. These rules will enable the,False,False,False,False,False,False
+better management of the patient targeting in the reduction of,False,False,False,False,False,False
+"events, as well as, reduction of the cost of therapy, due to the",False,False,False,False,False,False
+expected restriction of interventions in necessary cases only.,False,False,False,False,False,False
+The rest of the paper is organized as follows. Section II de-,False,False,False,False,False,False
+"scribes the material and methods, section III the results and",False,False,False,False,False,False
+Section IV the discussion.,False,False,False,False,False,False
+II. M,True,True,False,True,False,False
+ATERIALS AND METHODS,True,False,False,True,False,False
+"A. Data Collection, Cleaning, and Coding",False,False,False,False,False,False
+Data from 1500 consecutive CHD subjects were collected be-,False,False,False,False,False,False
+tween the years 2003–2006 and 2009 (300 subjects each year),False,False,False,False,False,False
+"according to a prespeciﬁed protocol, under the supervision of",False,False,False,False,False,False
+"the participating cardiologist (Dr. J. Moutiris, second author",False,False,False,False,False,False
+"of this paper) at the Department of Cardiology, at the Paphos",False,False,False,False,False,False
+General Hospital in Cyprus. Subjects had at least one of the,False,False,False,False,False,False
+"following criteria on enrollment, history of MI, or percutaneous",False,False,False,False,False,False
+"coronary intervention (PCI), or coronary artery bypass graft",False,False,False,False,False,False
+surgery (CABG). Data for each subject were collected as given,False,False,False,False,False,False
+"in Table I: 1) risk factors before the event, a) nonmodiﬁable—",False,False,False,False,False,True
+"age, sex, and family history (FH); 2) modiﬁable—smoking be-",False,False,False,False,False,False
+"fore the event (SMBEF), history of hypertension (HxHTN),",False,False,False,False,False,False
+and history of diabetes (HxDM); and 2) risk factors after the,False,False,False,False,False,False
+"event, modiﬁable—smoking after the event (SMAFT), sys-",False,False,False,False,False,False
+"tolic blood pressure (SBP) in mmHg, diastolic blood pressure",False,False,False,False,False,False
+"(DBP) in mmHg, total cholesterol (TC) in mg/dL, high-density",False,False,False,False,False,False
+"lipoprotein (HDL) in mg/dL, low-density lipoprotein (LDL)",False,False,False,False,False,False
+"in mg/dL, triglycerides (TG) in mg/dL, and glucose (GLU)",False,False,False,False,False,False
+in mg/dL.,False,False,False,False,False,False
+"To clean the data, the ﬁelds were identiﬁed, duplications were",False,False,False,False,False,False
+"extracted, missing values were ﬁlled, and the data were coded",False,False,False,False,False,False
+"as given in Table I. After data cleaning, the number of cases",False,False,False,False,False,False
+"was reduced as given in Table II, mainly due to unavailability",False,False,False,False,False,False
+of biochemical results.,False,False,False,False,False,False
+TABLE I,True,False,False,False,False,True
+C,True,False,False,True,False,False
+ODING OF RISK FACTORS,True,False,False,True,False,False
+TABLE II,True,False,False,False,False,True
+N,True,False,False,True,False,False
+O. OF CASES PER SET OF RULES/MODELS INVESTIGATED,True,False,False,True,False,False
+B. Classiﬁcation by Decision Trees,False,False,False,False,False,False
+"The C4.5 algorithm [25], which uses the divide-and-conquer",False,False,False,False,False,False
+"approach to decision tree induction, was employed. The al-",False,False,False,False,False,False
+gorithm uses a selected criterion to build the tree. It works,False,False,False,False,False,False
+"top–down, seeking at each stage an attribute to split on that",False,False,False,False,False,False
+"which best separates the classes, and then recursively process-",False,False,False,False,False,False
+ing the sub problems t hat result from the split. The algorithm,False,False,False,False,False,False
+uses heuristics for pruning derived based on the statistical sig-,False,False,False,False,False,False
+niﬁcance of splits.,False,False,False,False,False,False
+"Algorithm Generate Decision Tree [25], [26]:",False,False,False,False,False,False
+Input:,False,False,False,False,False,False
+"1) Training dataset D, which is a set of training observations",False,False,False,False,False,False
+and their associated class value.,False,False,False,False,False,False
+"2) Attribute list A, the set of candidate attributes.",False,False,False,False,False,False
+3) Selected splitting criteria method.,False,False,False,False,False,False
+Output: A decision tree.,False,False,False,False,False,False
+Method:,False,False,False,False,False,False
+1) Create a node Nd.,False,False,False,False,False,False
+2) If all observations in the training dataset have the same,False,False,False,False,False,False
+"class output value C, then return Nd as a leaf node labeled",False,False,False,False,False,False
+with C.,False,False,False,False,False,False
+"3) If attribute list is empty, then return Nd as leaf node labeled",False,False,False,False,False,False
+with majority class output value in training dataset.,False,False,False,False,False,False
+4) Apply selected splitting criteria method to training dataset,False,False,False,False,False,False
+in order to ﬁnd the ‘‘best” splitting criterion attribute.,False,False,False,False,False,False
+5) Label node Nd with the splitting criterion attribute.,False,False,False,False,False,False
+6) Remove the splitting criterion attribute from the attribute,False,False,False,False,False,False
+list.,False,False,False,False,False,False
+7) For each value j in the splitting criterion attribute.,False,False,False,False,False,False
+a) Let D,False,False,False,False,False,False
+j,False,False,False,False,False,False
+be the observations in training dataset satis-,False,False,False,False,False,False
+fying attribute value j.,False,False,False,False,False,False
+b) If D,False,False,False,False,False,False
+j,False,False,False,False,False,False
+"is empty (no observations), then attach a leaf",False,False,False,False,False,False
+node labeled with the majority class output value to,False,False,False,False,False,False
+node Nd.,False,False,False,False,False,False
+c) Else attach the node returned by generate deci-,False,False,False,False,False,False
+sion tree (D,False,False,False,False,False,False
+j,False,False,False,False,False,False
+", attribute list, selected splitting criteria",False,False,False,False,False,False
+method) to node Nd.,False,False,False,False,False,False
+8) End for.,False,False,False,False,False,False
+9) Return node Nd.,False,False,False,False,False,False
+"In this study, the following splitting criteria were investigated",False,False,False,False,False,False
+"that are brieﬂy presented shortly: information gain, gini index,",False,False,False,False,False,False
+"likelihood ratio chi-squared statistics, gain ratio, and distance",False,False,False,False,False,False
+measure.,False,False,False,False,False,False
+1) Information Gain (IG): Information gain is based on,False,False,False,False,False,False
+Claude Shannon’s work on information theory. InfoGain of an,False,False,False,False,False,False
+attribute A is used to select the best splitting criterion attribute.,False,False,False,False,False,False
+The highest InfoGain is selected to build the decision tree [27],False,False,False,False,False,False
+InfoGain(A)=Info(D) − Info,False,False,False,False,False,False
+A,True,False,False,True,False,False
+(D) (2.1),True,False,False,True,False,False
+where A is the attribute investigated.,False,False,False,False,False,False
+Info (D)=−,False,False,False,False,False,False
+m,False,False,False,False,False,False
+,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+i,False,False,False,False,False,False
+log,False,False,False,False,False,False
+2,False,False,False,False,False,False
+(p,False,False,False,False,False,False
+i,False,False,False,False,False,False
+),False,False,False,False,False,False
+(2.2),False,False,False,False,False,False
+where,False,False,False,False,False,False
+i,False,False,False,False,False,False
+= probability(class i in dataset D);,False,False,False,False,False,False
+m = number of class values.,False,False,False,False,False,False
+Info,False,False,False,False,False,False
+A,True,False,False,True,False,False
+(D)=,True,False,False,True,False,False
+v,False,False,False,False,False,False
+,False,False,False,False,False,False
+j =1,False,False,False,False,False,False
+|D,True,False,False,True,False,False
+j,False,False,False,False,False,False
+|,False,False,False,False,False,False
+|D|,True,False,False,True,False,False
+Info (D,False,False,False,False,False,False
+j,False,False,False,False,False,False
+) (2.3),False,False,False,False,False,False
+where,False,False,False,False,False,False
+|D,True,False,False,True,False,False
+j,False,False,False,False,False,False
+| = number of observations with attribute value j in,False,False,False,False,False,False
+dataset D;,False,False,False,False,False,False
+|D| = total number of observations in dataset D;,False,False,False,False,False,False
+j,False,False,False,False,False,False
+= sub dataset of D that contains attribute value j;,False,False,False,False,False,False
+v = all attribute values.,False,False,False,False,False,False
+Although information gain is usually a good measure for,False,False,False,False,False,False
+"deciding the relevance of an attribute, it is not perfect. A problem",False,False,False,False,False,False
+occurs when information gain is applied to attributes that can,False,False,False,False,False,False
+"take on a large number of distinct values. When that happens,",False,False,False,False,False,False
+then gain ratio is used instead.,False,False,False,False,False,False
+2) Gini Index (GI): The Gini index is an impurity-based cri-,False,False,False,False,False,False
+terion that measures the divergence between the probability dis-,False,False,False,False,False,False
+tributions of the target attributes values [28],False,False,False,False,False,False
+GiniIndex(D) = Gini(D) −,False,False,False,False,False,False
+v,False,False,False,False,False,False
+,False,False,False,False,False,False
+j =1,False,False,False,False,False,False
+j,False,False,False,False,False,False
+× Gini(D,False,False,False,False,False,False
+j,False,False,False,False,False,False
+) (2.4),False,False,False,False,False,False
+Gini (D)=1−,False,False,False,False,False,False
+m,False,False,False,False,False,False
+,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+2,False,False,False,False,False,False
+i,False,False,False,False,False,False
+. (2.5),False,True,False,True,False,False
+2,False,False,False,False,False,False
+): The like-,False,False,False,False,False,False
+lihood ratio chi-squared statistic is useful for measuring the,False,False,False,False,False,False
+statistical signiﬁcance of the information gain criterion [29],False,False,False,False,False,False
+2,False,False,False,False,False,False
+"(A, D)=2× ln (2) ×|D|×InfoGain (A) . (2.6)",False,False,False,False,False,False
+4) Gain Ratio (GR): Gain ratio biases the decision tree,False,False,False,False,False,False
+against considering attributes with a large number of distinct,False,False,False,False,False,False
+values. So it solves the drawback of information gain [25],False,False,False,False,False,False
+GainRatio (A)=,False,False,False,False,False,False
+InfoGain(A),False,False,False,False,False,False
+SplitInfo,False,False,False,False,False,False
+A,True,False,False,True,False,False
+(D),True,False,False,True,False,False
+(2.7),False,False,False,False,False,False
+SplitInfo,False,False,False,False,False,False
+A,True,False,False,True,False,False
+(D)=−,True,False,False,True,False,False
+v,False,False,False,False,False,False
+,False,False,False,False,False,False
+j =1,False,False,False,False,False,False
+|D,True,False,False,True,False,False
+j,False,False,False,False,False,False
+|,False,False,False,False,False,False
+|D|,True,False,False,True,False,False
+× log,False,False,False,False,False,False
+2,False,False,False,False,False,False
+,False,False,False,False,False,False
+|D,True,False,False,True,False,False
+j,False,False,False,False,False,False
+|,False,False,False,False,False,False
+|D|,True,False,False,True,False,False
+,False,False,False,False,False,False
+. (2.8),False,True,False,True,False,False
+"5) Distance Measure (DM): Distance measure, like GR, nor-",False,False,False,False,False,False
+malizes the impurity criterion (GI). It suggests normalizing it in,False,False,False,False,False,False
+a different way [30],False,False,False,False,False,False
+DM (A)=,True,False,False,True,False,False
+Gini (D),False,False,False,False,False,False
+−,False,False,False,False,False,False
+,False,False,False,False,False,False
+v,False,False,False,False,False,False
+j =1,False,False,False,False,False,False
+,False,False,False,False,False,False
+m,False,False,False,False,False,False
+i=1,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+× log,False,False,False,False,False,False
+2,False,False,False,False,False,False
+(p,False,False,False,False,False,False
+ij,False,False,False,False,False,False
+),False,False,False,False,False,False
+. (2.9),False,True,False,True,False,False
+A data-mining tool was developed by our group that supports,False,False,False,False,False,False
+the C4.5 decision tree algorithm using the aforementioned cri-,False,False,False,False,False,False
+teria. Overﬁtting is a signiﬁcant practical difﬁculty for decision,False,False,False,False,False,False
+"tree learning. Therefore, pruning is implemented to avoid over-",False,False,False,False,False,False
+ﬁtting. We implemented the bottom-up pruning algorithm using,False,False,False,False,False,False
+Laplace error estimation. While the decision tree is built and a,False,False,False,False,False,False
+"leaf node is created, then the Laplace error [31] is estimated as",False,False,False,False,False,False
+follows:,False,False,False,False,False,False
+E (D)=,True,False,False,True,False,False
+N − n + m − 1,False,False,False,False,False,False
+N + m,False,False,False,False,False,False
+(2.10),False,False,False,False,False,False
+where,False,False,False,False,False,False
+C = class value majority class in D;,False,False,False,False,False,False
+N = number of observations in D;,False,False,False,False,False,False
+n = number of observations has class value C.,False,False,False,False,False,False
+"As the algorithm returns to the root node, the error of the leaf",False,False,False,False,False,False
+node is passed to the father node. The father node calculates the,False,False,False,False,False,False
+total error of all of its children and its own error. If the father’s,False,False,False,False,False,False
+"error is less than the total error of the children, then the father",False,False,False,False,False,False
+node is pruned and replaced by a leaf node with the majority,False,False,False,False,False,False
+class value. If the father’s error is greater than the total error of,False,False,False,False,False,False
+"the children, then no more pruning is done to the path and the",False,False,False,False,False,False
+returned error is zero.,False,False,False,False,False,False
+C. Classiﬁcation Models Investigated,False,False,False,False,False,False
+The following sets of models were investigated as given in,False,False,False,False,False,False
+Table II.,False,False,False,False,False,True
+1) MI: MI versus non-MI. Subjects having myocardial infrac-,False,False,False,False,False,False
+tion were marked as symptomatic and the rest as asymp-,False,False,False,False,False,False
+tomatic.,False,False,False,False,False,False
+2) PCI: PCI versus non-PCI. Subjects having only PCI were,False,False,False,False,False,False
+marked as symptomatic and the rest as asymptomatic.,False,False,False,False,False,False
+Subjects having both PCI and MI were excluded.,False,False,False,False,False,False
+3) CABG: CABG versus non-CABG. Subjects having only,False,False,False,False,False,False
+CABG were marked as symptomatic and the rest as,False,False,False,False,False,False
+asymptomatic. Subjects having both CABG and MI were,False,False,False,False,False,False
+excluded.,False,False,False,False,False,False
+"For each set of models, three different subsets of runs were",False,False,False,False,False,False
+carried out as given in the following:,False,False,False,False,False,False
+1) with risk factors before the event (B);,False,False,False,False,False,False
+2) with risk factors after the event (A); and,False,False,False,False,False,False
+3) with risk factors before and after the event (B + A).,False,False,False,False,False,False
+"For each model, for each splitting criterion, 20 runs were",False,False,False,False,False,False
+carried out with random sampling [32] of equal number of cases,False,False,False,False,False,False
+used for training and evaluation as given in Table II. A total,False,False,False,False,False,False
+"of 300 runs were carried out for each set of models [i.e., 20",False,False,False,False,False,False
+"runs × 5 splitting criteria × 3 (for B, A, and B +A datasets)].",False,False,False,False,False,False
+The Wilcoxon rank sum test [33] was also carried out to,False,False,False,False,False,False
+investigate if there was or not signiﬁcant difference between the,False,False,False,False,False,False
+"ﬁve splitting criteria used as well as between the B, A, and B +",False,False,False,False,False,False
+A decision tree models at p < 0.05.,False,False,False,False,False,False
+D. Performance Measures,False,False,False,False,False,False
+In order to evaluate the performance of our results we used,False,False,False,False,False,False
+the following measures [34].,False,False,False,False,False,False
+1) Correct classiﬁcations (%CC): is the percentage of the,False,False,False,False,False,False
+correctly classiﬁed records; equals to (TP + TN)/N.,False,False,False,False,False,False
+2) True positive rate (%TP): corresponds to the number of,False,False,False,False,False,False
+positive examples correctly predicted by the classiﬁcation,False,False,False,False,False,False
+model.,False,False,False,False,False,False
+3) False positive rate (%FP): corresponds to the number of,False,False,False,False,False,False
+negative examples wrongly predicted as positive by the,False,False,False,False,False,False
+classiﬁcation model.,False,False,False,False,False,False
+4) True negative rate (%TN): corresponds to the number of,False,False,False,False,False,False
+negative examples correctly predicted by the classiﬁcation,False,False,False,False,False,False
+model.,False,False,False,False,False,False
+5) False negative rate (%FN): corresponds to the number of,False,False,False,False,False,False
+positive examples wrongly predicted as negative by the,False,False,False,False,False,False
+classiﬁcation model.,False,False,False,False,False,False
+6) Sensitivity: is deﬁned as the fraction of positive examples,False,False,False,False,False,False
+"predicted correctly by the model, equals to TP/(TP + FN).",False,False,False,False,False,False
+7) Speciﬁcity: is deﬁned as the f raction of negative examples,False,False,False,False,False,False
+"predicted correctly by the model, equals t o TN/(TN + FP).",False,False,False,False,False,False
+8) Support: is the number of cases for which the rule applies,False,False,False,False,False,False
+"(or predicts correctly; i.e., if we have the rule X → Z,",False,False,False,False,False,False
+Support is the probability that a transaction contains,False,False,False,False,False,False
+"{X, Z} [26]",True,False,False,True,False,False
+Support = P (XZ)=,False,False,False,False,False,False
+no of cases that s atify X and Z,False,False,False,False,False,False
+|D|,True,False,False,True,False,False
+9) Conﬁdence: is the number of cases for which the rule,False,False,False,False,False,False
+"applies (or predicts correctly), expressed as a percentage",False,False,False,False,False,False
+"of all instances to which it applies (i.e., if we have the rule",False,False,False,False,False,False
+"X → Z, Conﬁdence is the conditional probability that a",False,False,False,False,False,False
+transaction having X also contains Z) [26],False,False,False,False,False,False
+Conﬁdence = P (Z|X)=,False,False,False,False,False,False
+P (XZ),True,False,False,True,False,False
+P (X),True,False,False,True,False,False
+E. Calculation of the Risk,False,False,False,False,False,False
+"For each subject, we used the Framingham equation [8]–[10]",False,False,False,False,False,False
+to calculate the risk for an event to occur. We separated the,False,False,False,False,False,False
+"subjects into two categories, those who have had an event and",False,False,False,False,False,False
+"those who have not had an event. Then, for each extracted rule,",False,False,False,False,False,False
+we found out the subjects matching that rule and computed the,False,False,False,False,False,False
+average event risk per rule based on the risk value of each subject,False,False,False,False,False,False
+(see last two columns of Table V). It is noted that values of risk,False,False,False,False,False,False
+"lower than 5%, between 5–10%, and higher than 10% classify",False,False,False,False,False,False
+"a subject as low, intermediate, and high risk, r espectively.",False,False,False,False,False,False
+III. R,True,True,False,True,False,False
+ESULTS,True,False,False,True,False,False
+Table III tabulates the classiﬁcation results of the three set,False,False,False,False,False,True
+of models investigated for the ﬁve different splitting criteria,False,False,False,False,False,False
+"using risk factors before the event (B), after the event (A), and",False,False,False,False,False,False
+"before and after (B + A). The median (Me), minimum (m),",False,False,False,False,False,False
+"and maximum (M) for 20 runs are given for %CC, %TP, and",False,False,False,False,False,False
+"%FP, whereas for sensitivity and speciﬁcity only the median",False,False,False,False,False,False
+values are given. Table IV gives the three most important risk,False,False,False,False,False,False
+factors obtained from the classiﬁcation decision tree models.,False,False,False,False,False,False
+"Also, selected rules of the models obtained in Table III are",False,False,False,False,False,False
+given in Table V as well as the risk per rule computed using the,False,False,False,False,False,True
+Framingham equation.,False,False,False,False,False,False
+A. MI Models,False,False,False,False,False,False
+There was no signiﬁcant difference for the different splitting,False,False,False,False,False,False
+criteria investigated for %CC using the Wilcoxon rank sum test,False,False,False,False,False,False
+"at p < 0.05. As shown in Table III, comparable performance",False,False,False,False,False,False
+"in the region of 60% for %CC was obtained for the B, A, and",False,False,False,False,False,False
+B + A risk factor models for all splitting criteria. Better perfor-,False,False,False,False,False,False
+"mance was obtained for the B + A models, where the median",False,False,False,False,False,False
+"of the %CC ranged from 62% to 63%, respectively. The best",False,False,False,False,False,False
+model was obtained when using t he GI splitting criterion for the,False,False,False,False,False,False
+B + A risk factor codings with a maximum %CC = 66%.,False,False,False,False,False,False
+The most important risk factors as given in Table IV were for,False,False,False,False,False,False
+"the B models, age, history of hypertension, and smoking before",False,False,False,False,False,False
+"the event, for the A models, systolic blood pressure, smoking",False,False,False,False,False,False
+"after the event, and diastolic blood pressure, and for the B + A",False,False,False,False,False,False
+"models, age, systolic blood pressure, smoking, and history of",False,False,False,False,False,False
+hypertension.,False,False,False,False,False,False
+"Based on the decision tree model, sample rules could be",False,False,False,False,False,False
+"extracted. For example, as given in Table IV:",False,False,False,False,False,False
+Rule 1.3 and 1.4:,False,False,False,False,False,False
+1) The percentage of subjects aged 51–60 with history of,False,False,False,False,False,False
+hypertension who are non smokers and have event is,False,False,False,False,False,False
+TABLE III,True,False,False,False,False,True
+C,True,False,False,True,False,False
+LASSIFICATION RESULTS OF THE THREE SET OF MODELS INVESTIGATED FOR THE FIVE DIFFERENT SPLITTING CRITERIA USING RISK FACTORS BEFORE THE,True,False,False,True,False,False
+"EVENT (B), AFTER THE EVENT (A), AND BEFORE AND AFTER (B+A)",True,False,False,True,False,False
+TABLE IV,True,False,False,False,False,True
+T,True,False,False,True,False,False
+HREE MOST IMPORTANT RISK FACTORS OF THE THREE SET OF MODELS INVESTIGATED GIVEN IN TABLE III FOR THE FIVE DIFFERENT SPLITTING CRITERIA,True,False,False,True,False,False
+"USING RISK FACTORS BEFORE THE EVENT (B), AFTER THE EVENT (A), AND BEFORE AND AFTER (B + A)",True,False,False,True,False,False
+approximately the same with those who were smokers,False,False,False,False,False,False
+and did not have an episode.,False,False,False,False,False,False
+"For the MI models, there were 0/0 (0/0%), 28/7 (5.3/1.3%),",False,False,False,False,False,False
+"and 330/163 (62.5/30.9%) subjects with event yes/no, with low,",False,False,False,False,False,False
+"intermediate, and high risk, respectively. Moreover, the average",False,False,False,False,False,False
+"event risk per rule ranged from 11.8% to 15.0%, i.e., all rules",False,False,False,False,False,False
+"were classiﬁed as high risk (see Table IV). Also, there was no",False,False,False,False,False,False
+difference between the rule event risk for an MI event to occur,False,False,False,False,False,False
+versus not to occur.,False,False,False,False,False,False
+B. PCI Models,False,False,False,False,False,False
+"For the PCI models, slightly better performance was obtained",False,False,False,False,False,False
+compared to the MI models. Better performance was obtained,False,False,False,False,False,False
+"for the A and B + A models, with the median of %CC ranging",False,False,False,False,False,False
+"from 65% to 67%. Again, similar performance was obtained for",False,False,False,False,False,False
+all splitting criteria with no signiﬁcant difference.,False,False,False,False,False,False
+The most important risk factors were for the before risk fac-,False,False,False,False,False,False
+"tors models, age, family history, history of hypertension and",False,False,False,False,False,False
+"history of diabetes, for the after risk factors models, diastolic",False,False,False,False,False,False
+"blood pressure, low density lipoprotein, and smoking after the",False,False,False,False,False,False
+"event, and for the before and after risk factors models, history",False,False,False,False,False,False
+"of diabetes, diastolic blood pressure, family history, history of",False,False,False,False,False,False
+"hypertension, and age.",False,False,False,False,False,False
+Based on the rules given in Table IV:,False,False,False,False,False,False
+Rules 2.5–2.8 for diabetes subjects the number of PCI events,False,False,False,False,False,False
+increase with age (support increases from 2% to 20%).,False,False,False,False,False,False
+"For the PCI models, there were 0/0 (0/0%), 20/15 (3.8/2.8%),",False,False,False,False,False,False
+"and 193/300 (36.6/56.8%) subjects with event yes/no, with low,",False,False,False,False,False,False
+"intermediate, and high risk respectively. The average event risk",False,False,False,False,False,False
+"per rule ranged from 11.7 to 13.9%, i.e all rules were classi-",False,False,False,False,False,False
+"ﬁed as high risk (see Table IV). Also, there was no difference",False,False,False,False,False,False
+between the rule event risk for a PCI event to occur vs not to,False,False,False,False,False,False
+occur.,False,False,False,False,False,False
+TABLE V,True,False,False,False,False,True
+S,True,False,False,True,False,False
+ELECTED RULES FROM MODELS GIVEN IN TABLE III (BASED ON THE CODING,True,False,False,True,False,False
+OF THE,True,False,False,True,False,False
+RISK FACTORS GIVEN IN TABLE II),True,False,False,True,False,False
+C. CABG Models,False,False,False,False,False,False
+"Highest performance was obtained for the CABG models,",False,False,False,False,False,False
+with median of %CC in the region of 70%. As in the aforemen-,False,False,False,False,False,False
+"tioned two set of models, there was no signiﬁcant difference",False,False,False,False,False,False
+in the models obtained with the different splitting criteria. The,False,False,False,False,False,False
+"highest performance was obtained for the GR splitting criterion,",False,False,False,False,False,False
+"for the B + A model, where the maximum %CC = 75%.",False,False,False,False,False,False
+The most important risk factors based on Table IV were for the,False,False,False,False,False,False
+"before risk factors models, age, history of hypertension, history",False,False,False,False,False,False
+"of diabetes, and smoking before the event, for the after risk",False,False,False,False,False,False
+"factors models, smoking after the event, systolic blood pressure,",False,False,False,False,False,False
+"and diastolic blood pressure, and for the before and after risk",False,False,False,False,False,False
+"factors models, age, smoking before the event, smoking after",False,False,False,False,False,False
+"the event, and history of diabetes. Based on the rules given in",False,False,False,False,False,False
+Table V:,False,False,False,False,False,True
+Rules 3.2 and 3.3:,False,False,False,False,False,False
+1) CABG occurs usually in subjects aged between 51 and 60,False,False,False,False,False,False
+years old when they have history of diabetes.,False,False,False,False,False,False
+Rules 3.5 and 3.6:,False,False,False,False,False,False
+1) Family history is not an important risk factor for CABG.,False,False,False,False,False,False
+"For the CABG models, there were 0/0 (0/0%), 9/26",False,False,False,False,False,False
+"(1.7/4.9%), and 206/287 (39/54.4%) subjects with event yes/no,",False,False,False,False,False,False
+"with low, intermediate, and high risk respectively. Similar to the",False,False,False,False,False,False
+"previous two models, the average event risk per rule varied very",False,False,False,False,False,False
+"little, ranging from 11.5 to 13.3%, and all rules were classiﬁed",False,False,False,False,False,False
+"as high risk (see Table IV). Also, there was no difference be-",False,False,False,False,False,False
+tween the rule event risk for a CABG event to occur vs not to,False,False,False,False,False,False
+occur.,False,False,False,False,False,False
+IV. D,True,True,False,True,False,False
+ISCUSSION,True,False,False,True,False,False
+"The events investigated through this study were: MI, PCI,",False,False,False,False,False,False
+and CABG. Three classiﬁcation models were developed based,False,False,False,False,False,False
+"on decision trees for classifying MI, PCI, and CABG patients,",False,False,False,False,False,False
+where the highest percentage of correct classiﬁcations obtained,False,False,False,False,False,False
+"were 66%, 75%, and 75%, respectively. Although different risk",False,False,False,False,False,False
+"factors were obtained for the MI, PCI, and CABG models in-",False,False,False,False,False,False
+"vestigated, the most important risk factors, as extracted from",False,False,False,False,False,False
+"the classiﬁcation rule analysis were: sex, age, smoking, blood",False,False,False,False,False,False
+"pressure, and cholesterol. It is important to note that the latter",False,False,False,False,False,False
+three risk factors can be modiﬁed; therefore the CHD risk of a,False,False,False,False,False,False
+subject may be reduced through a proper control of these fac-,False,False,False,False,False,False
+"tors. Furthermore, the importance of smoking in increased CHD",False,False,False,False,False,False
+risk was clearly illustrated.,False,False,False,False,False,False
+The above ﬁndings and risk factors were also extracted,False,False,False,False,False,False
+by other investigators [35]. The EUROASPIRE study with,False,False,False,False,False,False
+"EUROASPIRE surveys (I, II, III) involved various European",False,False,False,False,False,False
+populations and also included additional risk factors such as,False,False,False,False,False,False
+obesity. All Euroaspire surveys were reviewed together and,False,False,False,False,False,False
+combined results were extracted [4]. A general outcome was,False,False,False,False,False,False
+the fact that patients do not follow the advice and recommenda-,False,False,False,False,False,False
+tions of their physicians. In comparison with the EUROASPIRE,False,False,False,False,False,False
+"survey, our ﬁndings concerning the modiﬁable risk factors after",False,False,False,False,False,False
+the event are the following [4]:,False,False,False,False,False,False
+1) 14% of subjects smoke after the event (16% in,False,False,False,False,False,False
+EUROASPIRE);,True,False,False,True,False,False
+2) 22% of subjects had high blood pressure (26% in,False,False,False,False,False,False
+EUROASPIRE);,True,False,False,True,False,False
+3) 34% of subjects had high total cholesterol (31% in,False,False,False,False,False,False
+EUROASPIRE); and,False,False,False,False,False,False
+4) 45% of subjects had low-density lipoprotein (31% in,False,False,False,False,False,False
+EUROASPIRE).,True,False,False,True,False,False
+"In the EUROASPIRE survey, s moking, blood pressure, and",False,False,False,False,False,False
+"cholesterol were found to be important risk factors [2], [4]. It",False,False,False,False,False,False
+was concluded that wide variations exist between 15 countries,False,False,False,False,False,False
+in the risk factor prevalence’s and the use of cardioprotective,False,False,False,False,False,False
+"drug therapies [3]. Also, there is still considerable potential",False,False,False,False,False,False
+throughout Europe to raise standards of preventive care in order,False,False,False,False,False,False
+to reduce the risk of recurrent disease and death in patients with,False,False,False,False,False,False
+CHD.,True,False,False,True,False,False
+"Furthermore, additional observations that could be extracted",False,False,False,False,False,False
+from the database investigated in this study regarding the non-,False,False,False,False,False,False
+modiﬁable risk factors in comparison with EUROASPIRE sur-,False,False,False,False,False,False
+vey [4] are the following:,False,False,False,False,False,False
+1) 14% of subjects were female (24.7% in EUROASPIRE);,False,False,False,False,False,False
+2) 9% of subjects were ≤50 years old (23.1% in,False,False,False,False,False,False
+EUROASPIRE);,True,False,False,True,False,False
+3) 28% were between 51 and 60 years old (33.8% in,False,False,False,False,False,False
+EUROASPIRE);,True,False,False,True,False,False
+4) 39% of subjects were between 61 and 70 years old (43.1%,False,False,False,False,False,False
+in EUROASPIRE); and,False,False,False,False,False,False
+5) 24% of subjects were between 71 and 84 years old.,False,False,False,False,False,False
+No female subject was under the age of 50 years old; only,False,False,False,False,False,False
+male subjects were found under this age.,False,False,False,False,False,False
+Rea et al. [35] concluded that smoking was associated with an,False,False,False,False,False,False
+"elevated risk for recurrent coronary events, whereas Gamberger",False,False,False,False,False,False
+et al. [16] mention the relationship between the risk factors,False,False,False,False,False,False
+cholesterol and overweight.,False,False,False,False,False,False
+"Wang et al. [8] used the risk factors age, sex, cholesterol,",False,False,False,False,False,False
+"HDL, blood pressure, diabetes, and smoking to predict CHD.",False,False,False,False,False,False
+They used the Framingham function and concluded that the,False,False,False,False,False,False
+traditional risk factors have different degrees of impact and/or,False,False,False,False,False,False
+than other factors are contributing to risk.,False,False,False,False,False,False
+It should be noted that the results of our study based on a small,False,False,False,False,False,False
+"city in the island of Cyprus are comparable with other studies,",False,False,False,False,False,False
+as it is known that traditional risk factors have different degrees,False,False,False,False,False,False
+of impact and/or that other factors are contributing to risk. A,False,False,False,False,False,False
+population-speciﬁc risk function is needed as also indicated by,False,False,False,False,False,False
+other investigators [8].,False,False,False,False,False,False
+The values of risk computed for each subject were between,False,False,False,False,False,False
+"7% and 15.5% that fall into the range of none (0%) for low risk,",False,False,False,False,False,False
+"35 (6.6%) for intermediate risk, and 493 (93.4%) for high risk.",False,False,False,False,False,False
+"Although an average rule risk was computed for each rule,",False,False,False,False,False,False
+"the values extracted for an event to occur or not are very close,",False,False,False,False,False,False
+not making possible the differentiation between high and low,False,False,False,False,False,False
+risk subgroups of subjects. This ﬁnding should somehow be,False,False,False,False,False,False
+"expected, given that almost all of the subjects used for deriving",False,False,False,False,False,False
+"the proposed models fall into the high, risk group. Thus, the",False,False,False,False,False,False
+proposed methodology should be f urther investigated by using a,False,False,False,False,False,False
+"more heterogenous group of subjects, covering numerous cases",False,False,False,False,False,False
+of low and medium risk.,False,False,False,False,False,False
+Ordonez [14] using the C4.5 decision tree algorithm and as-,False,False,False,False,False,False
+sociation rules for the prediction of cardiac disease based on 25,False,False,False,False,False,False
+risk factors documented that association rules generally include,False,False,False,False,False,False
+simpler predictive rules than decision tree rules [15]. The use-,False,False,False,False,False,False
+fulness of association rules in the analysis of CHD risk factors,False,False,False,False,False,False
+was also investigated by our group on a similar database with,False,False,False,False,False,False
+this study [36]. The results regarding the most important risk,False,False,False,False,False,False
+factors were similar.,False,False,False,False,False,False
+Tsien et al. [17] in their study indicated that classiﬁcation,False,False,False,False,False,False
+"trees, which have certain advantages over logistic regression",False,False,False,False,False,False
+"models, may perform similar to logistic regression models in",False,False,False,False,False,False
+the diagnosis of patients with MI.,False,False,False,False,False,False
+"The following ﬁve different criteria were investigated, in-",False,False,False,False,False,False
+"formation gain, gini index, likelihood ratio chi-squared statis-",False,False,False,False,False,False
+"tics, gain ratio, and distance measure, that resulted in models",False,False,False,False,False,False
+"with similar performance, with no signiﬁcant difference be-",False,False,False,False,False,False
+tween them. Thus any one of the splitting criteria investigated,False,False,False,False,False,False
+could be used for the datasets in this study. This ﬁnding is in,False,False,False,False,False,False
+agreement with this study for developing the decision tree mod-,False,False,False,False,False,False
+"els, that documented that the choice of splitting criteria does",False,False,False,False,False,False
+"not make much difference on the tree performance [24], [32].",False,False,False,False,False,False
+"Also, the different splitting criteria, agreed on the most im-",False,False,False,False,False,False
+portant risk factors. To the best of our knowledge no simi-,False,False,False,False,False,False
+lar study was found in the literature comparing the ﬁve dif-,False,False,False,False,False,False
+ferent criteria investigated in this study for the problem of,False,False,False,False,False,False
+CHD.,True,False,False,True,False,False
+"Concluding, comparing our ﬁndings with other studies:",False,False,False,False,False,False
+1) a data mining system was proposed to extract rules for CHD,False,False,False,False,False,False
+"events, 2) the rules extracted facilitated the grouping of risk",False,False,False,False,False,False
+"factors into high and low risk factors, and 3) the rules extracted",False,False,False,False,False,False
+"are associated with an event risk, however, this needs further",False,False,False,False,False,False
+investigation.,False,False,False,False,False,False
+It is anticipated that data mining based on decision trees could,False,False,False,False,False,False
+help i n the identiﬁcation of risk subgroups of subjects for de-,False,False,False,False,False,False
+veloping future events and it might be a decisive factor for the,False,False,False,False,False,False
+"selection of therapy, i.e., angioplasty or surgery. Moreover, the",False,False,False,False,False,False
+extracted models and rules could help to reduce CHD morbid-,False,False,False,False,False,False
+"ity and possibly, mortality. However, further investigation with",False,False,False,False,False,False
+larger datasets and other rule extraction algorithms and criteria,False,False,False,False,False,False
+are still needed.,False,False,False,False,False,False
+R,True,False,False,True,False,False
+EFERENCES,True,False,False,True,False,False
+"[1] British Heart Foundation. (2008, Mar. 8). European Cardio-",False,False,False,False,False,False
+vascular Disease Statistics. [Online]. Available: http://www.,False,False,False,False,False,False
+heartstats.org/datapage.asp?id=7683,False,False,False,False,False,False
+"[2] Euroaspire study group, “A European Society of Cardiology survey of",False,False,False,False,False,False
+"secondary prevention of coronary heart disease: Principal results,” Eur.",False,False,False,False,False,False
+"Heart J., vol. 18, pp. 1569–1582, 1997.",False,False,False,False,False,False
+"[3] Euroaspire II Study Group, “Lifestyle and risk factor management and",False,False,False,False,False,False
+"use of drug therapies in coronary patients from 15 countries,” Eur. Heart",False,False,False,False,False,False
+"J., vol. 22, pp. 554–572, 2002.",False,False,False,False,False,False
+"[4] Euroaspire stusy group, “Euroaspire III: A survey on the lifestyle, risk",False,False,False,False,False,False
+factors and use of cardioprotective drug therapies in coronary patients,False,False,False,False,False,False
+"from 22 European countries,” Eur. J. Cardiovasc. Prev. Rehabil., vol. 16,",False,False,False,False,False,False
+"no. 2, pp. 121–137, 2009.",False,False,False,False,False,False
+"[5] T. Marshall, “Identiﬁcation of patients for clinical risk assessment by",False,False,False,False,False,False
+"prediction of cardiovascular risk using d efault risk factor values,” Br.",False,False,False,False,False,False
+"Med. Assoc. Public Health , vol. 8, p. 25, 2008.",False,False,False,False,False,False
+"[6] W. B. Kannel, “Contributions of the Framingham Study to the conquest",False,False,False,False,False,False
+"of coronary artery disease,” Amer. J. Cardiol., vol. 62, pp. 1109–1112,",False,False,False,False,False,False
+1988.,False,False,False,False,False,False
+"[7] M. Karaolis, J. A. Moutiris, and C. S. Pattichis, “Assessment of the risk of",False,False,False,False,False,False
+"coronary heart event based on data mining,” in Proc. 8th IEEE Int. Conf.",False,False,False,False,False,False
+"Bioinformatics Bioeng., 2008, pp. 1–5.",False,False,False,False,False,False
+"[8] Z. Wang and W. E. Hoy, “Is the Framingham coronary heart disease",False,False,False,False,False,False
+"absolute risk function applicable to Aboriginal people?” Med. J. Australia,",False,False,False,False,False,False
+"vol. 182, no. 2, pp. 66–69, 2005.",False,False,False,False,False,False
+"[9] P. Brindle, J. Emberson, F. Lampe, M. Walker, P. Whincup, T. Fahey, and",False,False,False,False,False,False
+"S. Ebrahim, “Predictive accuracy of the Framingham coronary risk score",False,False,False,False,False,False
+"in British men: Prospective cohort study,” Br.Med.Assoc., vol. 327,",False,False,False,False,False,False
+"pp. 1267–1270, 2003.",False,False,False,False,False,False
+"[10] S. Sheridan, M. Pignone, and C. Mulrow, “Framingham-based tools to",False,False,False,False,False,False
+calculate the global risk of coronary heart disease: A systematic review of,False,False,False,False,False,False
+"tools for clinicians,” J. Gen. Intern. Med., vol. 18, no. 12, pp. 1060–1061,",False,False,False,False,False,False
+2003.,False,False,False,False,False,False
+"[11] T. A. Pearson, S. N. Blair, S. R. Daniels, R. H. Eckel, J. M. Fair,",False,False,False,False,False,False
+"S. P. Fortmann, B. A. Franklin, L. B. Goldstein, Ph. Greenland, S.",False,False,False,False,False,False
+"M. Grundy, Y. Hong, N. H. Miller, R. M. Lauer, I. S. Ockene, R. L. Sacco,",False,False,False,False,False,False
+"J. F. Sallis, S. C. Smith, N. J. Stone, and K. A. Taubert, “AHA guidelines",False,False,False,False,False,False
+"for primary prevention of cardiovascular disease and stroke,” Circulation,",False,False,False,False,False,False
+"vol. 106, no. 3, pp. 388–391, 2002.",False,False,False,False,False,False
+"[12] S. M. Grundy, R. Pasternak, P. Greenland, S. Smith, and V. Fuster, “As-",False,False,False,False,False,False
+sessment of cardiovascular risk by use of multiple-risk-factor assessment,False,False,False,False,False,False
+"equations,” Amer. Heart Assoc., vol. 100, pp. 1481–1492, 1999.",False,False,False,False,False,False
+"[13] V. Podgorelec, P. Kokol, B. Stiglic, and I. Rozman, “Decision trees: An",False,False,False,False,False,False
+"overview and their use in medicine,” J. Med. Syst., vol. 26, no. 5, pp. 445–",False,False,False,False,False,False
+"463, 2002.",False,False,False,False,False,False
+"[14] C. Ordonez, “Comparing association rules and decision trees for disease",False,False,False,False,False,False
+"prediction,” in Proc. Int. Conf. Inf. Knowl. Manage., Workshop Healthcare",False,False,False,False,False,False
+"Inf. Knowl. Manage. Arlington, VA, 2006, pp. 17–24.",False,False,False,False,False,False
+"[15] C. Ordonez, E. Omiecinski, L. de Braal, C. A. Santana, N. Ezquerra,",False,False,False,False,False,False
+"J. A. Taboada, D. Cooke, E. Krawczvnska, and E. V. Garcia, “Mining",False,False,False,False,False,False
+"constrained association rules to predict heart disease,” in Proc. IEEE Int.",False,False,False,False,False,False
+"Conf. Data Mining (ICDM 2001), pp. 431–440.",False,False,False,False,False,False
+[16] D. Gamberger and R. Bo,False,False,False,False,False,False
+ˇ,False,False,False,False,False,False
+skovi,False,False,False,False,False,False
+´,False,False,False,False,False,False
+"c Institute, Zarageb, Croatia, “Med-",False,False,False,False,False,False
+ical prevention: Targeting high-risk groups for coronary heart dis-,False,False,False,False,False,False
+"ease,” Sol-EU-Net: Data Mining Decision Support [Online]. Available:",False,False,False,False,False,False
+http://soleunet.ijs.si/website/other/case_solutions/CHD.pdf.,False,False,False,False,False,False
+"[17] C. L. Tsien, H. S. F. Fraser, W. J. Long, and R. L. Kennedy, “Using",False,False,False,False,False,False
+classiﬁcation trees and logistic regression methods to diagnose myocardial,False,False,False,False,False,False
+"infraction,” in Proc. 9th World Congr. Med. Inf., vol. 52, pp. 493–497,",False,False,False,False,False,False
+1998.,False,False,False,False,False,False
+"[18] R. B. Rao, S. Krishan, and R. S. Niculescu, “Data mining for improved",False,False,False,False,False,False
+"cardiac care,” ACM SIGKDD Explorations Newslett., vol. 8, no. 1, pp. 3–",False,False,False,False,False,False
+"10, 2006.",False,False,False,False,False,False
+"[19] J. Zavrsnik, P. Kokol, I. Maleiae, K. Kancler, M. Mernik, and M. Bigec,",False,False,False,False,False,False
+"“ROSE: Decision trees, automatic learning and their applications in car-",False,False,False,False,False,False
+"diac medicine,” Medinfo, vol. 8, no. 2, p. 1688, 1995.",False,False,False,False,False,False
+"[20] K. Polat, S. Sahan, H. Kodaz, and S. Guenes, “A hybrid approach to medi-",False,False,False,False,False,False
+"cal decision support systems: combining feature selection, fuzzy weighted",False,False,False,False,False,False
+"pre-processing and AIRS,” Comput. Methods Programs Biomed., vol. 88,",False,False,False,False,False,False
+"no. 2, pp. 164–174, 2007.",False,False,False,False,False,False
+"[21] S. A. Pavlopoulos, A. Ch. Stasis, and E. N. Loukis, “A decision tree-",False,False,False,False,False,False
+based method for the differential diagnosis of aortic stenosis from mitral,False,False,False,False,False,False
+"regurgitation using heart sounds,” Biomed. Eng. OnLine, vol. 3, p. 21,",False,False,False,False,False,False
+2004.,False,False,False,False,False,False
+"[22] C. A. Pena-Reyes, “Evolutionary fuzzy modeling human diagnostic deci-",False,False,False,False,False,False
+"sions,” Ann. NY Acad. Sci., vol. 1020, pp. 190–211, 2004.",False,False,False,False,False,False
+"[23] K. Boegl, K.-P. Adlassnig, Y. Hayashi, T. E. Rothenﬂuh, and H. Leitich,",False,False,False,False,False,False
+“Knowledge acquisition in the fuzzy knowledge representation framework,False,False,False,False,False,False
+"of a medical consultation system,” Artif. Intell. Med., vol. 30, no. 1, pp. 1–",False,False,False,False,False,False
+"26, 2004.",False,False,False,False,False,False
+"[24] D. Michie, D. J. Spiegelhalter, and C. C. Taylor, Machine Learning, Neural",False,False,False,False,False,False
+"and Statistical Classiﬁcation. West Susser, England: Ellis Horwood,",False,False,False,False,False,False
+1994.,False,False,False,False,False,False
+"[25] J. R. Quinlan, in C4.5 Programs for Machine Learning, C. Schaffer, Ed.",False,False,False,False,False,False
+"San Mateo, CA: Morgan Kaufmann, 1993.",False,False,False,False,False,False
+"[26] J. Han and M. Kamber, Data Mining, Concepts and Techniques, 2nd ed.",False,False,False,False,False,False
+"San Francisco, CA: Morgan Kaufmann, 2001.",False,False,False,False,False,False
+"[27] J. R. Quinlan, “Simplifying decision trees,” Int. J. Man-Mach. Stud.,",False,False,False,False,False,False
+"vol. 27, pp. 221–234, 1987.",False,False,False,False,False,False
+"[28] L. Breiman, J. Friedman, C. J. Stone, and R. A. Olshen, Classiﬁcation and",False,False,False,False,False,False
+"Regression Trees. Belmont, CA: Wadsworth Int. Group, 1984.",False,False,False,False,False,False
+"[29] F. Attneave, Applications of Information Theory to Psychology.New",False,False,False,False,False,False
+"York: Holt, Rinehart, and Winston, 1959.",False,False,False,False,False,False
+"[30] R. Lopez de Mantras, “A distance-based attribute selection measure for",False,False,False,False,False,False
+"decision tree induction,” Mach. Learn., vol. 6, pp. 81–92, 1991.",False,False,False,False,False,False
+"[31] T. Niblett, “Constructing Decision trees in noisy domains,” in Proc. 2nd",False,False,False,False,False,False
+"Eur. Working Session Learn., 1987, pp. 67–78.",False,False,False,False,False,False
+"[32] L. Rokach and O. Maimon, Data Mining with Decision Trees, Theory and",False,False,False,False,False,False
+"Applications. Singapore: World Scientiﬁc, 2008.",False,False,False,False,False,False
+"[33] F. Wilcoxon, “Individual comparisons by ranking methods,” Biometrics,",False,False,False,False,False,False
+"vol. 1, pp. 80–83, 1945.",False,False,False,False,False,False
+"[34] P.-N. Tan, Introduction to Data Mining. Reading, MA: Addison-Wesley,",False,False,False,True,False,False
+2006.,False,False,False,False,False,False
+"[35] T. D. Rea, S. R. Heckbert, R. C. Kaplan, N. L. Smith, R. N. Lemaitre, and",False,False,False,False,False,False
+"B. M. Psaty, “Smoking status and risk for recurrent coronary events after",False,False,False,False,False,False
+"myocardial infraction,” Ann. Int. Med., vol. 137, pp. 494–500, 2002.",False,False,False,False,False,False
+"[36] M. Karaolis, J. A. Moutiris, L. Papaconstantinou, and C. S. Pattichis,",False,False,False,False,False,False
+“Association rule analysis for the assessment of the risk of coronary,False,False,False,False,False,False
+"heart events,” in Proc. 31st Annu. Int. IEEE Eng. Med. Biol. Soc. Conf.,",False,False,False,False,False,False
+"Minneapolis, MN, Sep. 2–6, 2009, pp. 6238–6241.",False,False,False,False,False,False
+"Minas A. Karaolis (M’08) was born in Cyprus,",False,False,False,False,False,False
+"on July 1, 1964. He received the Diploma (Mas-",False,False,False,False,False,False
+ters’ equivalent) degree in computer science from,False,False,False,False,False,False
+the Technical University Carolo Wilhelmina Braun-,False,False,False,False,False,False
+"schweig, Braunschweig, Germany. He is currently",False,False,False,False,False,False
+working toward the Ph.D. degree in computer science,False,False,False,False,False,False
+"from the Department of Computer Science, Univer-",False,False,False,False,False,False
+"sity of Cyprus, Nicosia, Cyprus.",False,False,False,False,False,False
+"He was engaged in the Ministry of Education,",False,False,False,False,False,False
+"Nicosia, Cyprus, hold the positions of a High School",False,False,False,False,False,False
+"Teacher, a Teaching Assistant in the Computer Sci-",False,False,False,False,False,False
+"ence Department at the University of Cyprus, Nicosia, Cyprus. He was engaged",False,False,False,False,False,False
+"for four years as an Assistant in the Computer Science Department, Technical",False,False,False,False,False,False
+"University Carolo Wilhelmina Braunschweig, Braunschweig, Germany, where",False,False,False,False,False,False
+he was involved in the development of the automatic generation of loop plans for,False,False,False,False,False,False
+"industrial buildings under the Preussag Company in Germany, using software",False,False,False,False,False,False
+engineering and databases. He was involved as a Teacher of computers for the,False,False,False,False,False,False
+"special education programs of the Cyprus Ministry of Education, for ﬁve years.",False,False,False,False,False,False
+"He was engaged in the Department of Information Technology, Bank of Cyprus,",False,False,False,False,False,False
+as a Programmer-Analyst. He was also involved in the technical support and,False,False,False,False,False,False
+training for Prisma Computers Ltd. and in the technical support and Microsoft,False,False,False,False,False,False
+training for AKTINA. His current research interests include data-mining appli-,False,False,False,False,False,False
+cations and development of algorithms in medical diagnostic systems. He is the,False,False,False,False,False,False
+author or coauthor of more than nine publications in this area.,False,False,False,False,False,False
+Joseph A. Moutiris received the M.D. degree from,False,False,False,False,False,False
+"Medical School, University of Cluj, the Diploma in",False,False,False,False,False,False
+"cardiology from Medical School, Imperial College,",False,False,False,False,False,False
+"London, U.K., the M.Sc. degree in cardiology from",False,False,False,False,False,False
+"the University of London, London, and the Ph.D. de-",False,False,False,False,False,False
+"gree in medicine from Medical School, University of",False,False,False,False,False,False
+"Warsaw, Warsaw, Poland.",False,False,False,False,False,False
+He is currently a Consultant Cardiologist and,False,False,False,False,False,False
+"Assistant Director of cardiology, in the Department",False,False,False,False,False,False
+"of Cardiology, Paphos General Hospital, Paphos,",False,False,False,False,False,False
+Cyprus. He is also a Visiting Lecturer of cardiology,False,False,False,False,False,False
+"at the School of Health Sciences, University of Nicosia, Nicosia, Cyprus. His",False,False,False,False,False,False
+research interests include management of coronary artery disease and especially,False,False,False,False,False,False
+"secondary prevention, invasive cardiology, and cardiac pacing.",False,False,False,False,False,False
+Demetra Hadjipanayi was born in Cyprus in 1983.,False,False,False,False,False,False
+She received the B.Sc. degree in computer sci-,False,False,False,False,False,False
+"ence, and the M.Sc. degree in advanced information",False,False,False,False,False,False
+"technology from the University of Cyprus, Nicosia,",False,False,False,False,False,False
+"Cyprus, in 2009.",False,False,False,False,False,False
+She is currently in the Department of Computer,False,False,False,False,False,False
+"Science, University of Cyprus. Her M.Sc. thesis is",False,False,False,False,False,False
+on rule extraction of cardiovascular database using,False,False,False,False,False,False
+decision trees. Her ﬁnal year project is on bounding,False,False,False,False,False,False
+volume of visual hulls. She has also been a Profes-,False,False,False,False,False,False
+sional Services Consultant and Software Engineer,False,False,False,False,False,False
+"with NCR since September 2006, where she has been engaged on numerous",False,False,False,False,False,False
+projects related to banking and insurance. She is also engaged on a project with,False,False,False,False,False,False
+the Insurance Companies Control Service at the Ministry of Finance.,False,False,False,False,False,False
+Constantinos S. Pattichis (S’88–M’88– SM’99) was,False,False,False,False,False,False
+"born in Cyprus on January 30, 1959. He received",False,False,False,False,False,False
+the Diploma degree as a Technician Engineer from,False,False,False,False,False,False
+"the Higher Technical Institute, Nicosia, Cyprus, in",False,False,False,False,False,False
+"1979, the B.Sc. degree in electrical engineering from",False,False,False,False,False,False
+"the University of New Brunswick, Fredericton, NB,",False,False,False,False,False,False
+"Canada, in 1983, the M.Sc. degree in biomedical en-",False,False,False,False,False,False
+"gineering from the University of Texas, Austin, in",False,False,False,False,False,False
+"1984, the M.Sc. degree in neurology from the Uni-",False,False,False,False,False,False
+"versity of Newcastle Upon Tyne, Newcastle Upon",False,False,False,False,False,False
+"Tyne, U.K., in 1991, and the Ph.D. degree in elec-",False,False,False,False,False,False
+"tronic engineering from the University of London, London, U.K., in 1992.",False,False,False,False,False,False
+"He is currently a Professor with the Department of Computer Science, Uni-",False,False,False,False,False,False
+"versity of Cyprus, Nicosia. His research interests include e-health, medical",False,False,False,False,False,False
+"imaging, biosignal analysis, and intelligent systems. He has been involved in",False,False,False,False,False,False
+"numerous projects in these areas funded by EU, the National Research Founda-",False,False,False,False,False,False
+"tion of Cyprus, the INTERREG and other bodies, with a total funding managed",False,False,False,False,False,False
+close to 5 million Euros. He is the author or coauthor of 52 refereed journal,False,False,False,False,False,False
+"and 142 conference papers, and 19 chapters in books in these areas. He is the",False,False,False,False,False,False
+"Co-Editor of the books M-Health: Emerging Mobile Health Systems (Springer,",False,False,False,False,False,False
+"2006) and of the Information Technology in Biomedicine (Piscataway, NJ: IEEE",False,False,False,False,False,False
+"Press, to be published in 2011). He is the coauthor of the monograph Despeckle",False,False,False,False,False,False
+"Filtering Algorithms and Software for Ultrasound Imaging (San Mateo, CA:",False,False,False,False,False,False
+"Morgan Kaufmann, 2008).",False,False,False,False,False,False
+Dr. Pattichis was the Guest Co-Editor of the Special Issues on Emerg-,False,False,False,False,False,False
+"ing Health Telematics Applications in Europe, Biomedical Informatics,and",False,False,False,False,False,False
+Computational Intelligence in Medical Systems of the IEEE T,False,False,False,False,False,False
+RANSACTIONS,True,False,False,True,False,False
+ON,True,False,False,True,False,False
+INFORMATION TECHNOLOGY IN BIOMEDICINE. He was the General Co-,False,False,False,False,False,False
+Chairman of the Medical and Biological Engineering and Computing Con-,False,False,False,False,False,False
+"ference (MEDICON’98), and the IEEE Region 8 Mediterranean Conference on",False,False,False,False,False,False
+"Information Technology and Electrotechnology (MELECON’2000), Program",False,False,False,False,False,False
+"Co-Chair of the IEEE Information Technology in Biomedicine, ITAB06, and",False,False,False,False,False,False
+"General Co-Chair of ITAB09 organized in Cyprus. Moreover, he has been an",False,False,False,False,False,False
+Associate Editor of the IEEE T,False,False,False,False,False,False
+RANSACTIONS ON INFORMATION TECHNOLOGY,True,False,False,True,False,False
+IN,True,False,False,True,False,False
+"BIOMEDICINE, since 2000, he serves on the Editorial Board of the Journal",False,False,False,False,False,False
+"of Biomedical Signal Processing and Control, and served as Associate Editor",False,False,False,False,False,False
+of the IEEE T,False,False,False,False,False,False
+RANSACTIONS ON NEURAL NETWORKS (2005–2007). He served,False,False,False,False,False,False
+as Chairperson of the Cyprus Association of Medical Physics and Biomedical,False,False,False,False,False,False
+"Engineering (1996–1998), and the IEEE Cyprus Section (1998-2000).",False,False,False,False,False,False
